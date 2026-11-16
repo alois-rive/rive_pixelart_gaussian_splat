@@ -4,7 +4,8 @@
 // parcel left on the belt falls off its end: each costs one of three stamps. The belt speeds up;
 // every 8 sorted parcels the chute signs swap places. One verb (drag and release), one world.
 // Demo mode (api.demo) sorts by itself like a decent clerk with a few slips.
-import { GameApi, POINTER_DOWN, POINTER_MOVE, POINTER_UP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, POINTER_UP, SFX_BELL, SFX_CLICK, SFX_THUD, SFX_TICK, SFX_BLIP, SFX_WHOOSH,
+    SFX_COIN, SFX_POP, SFX_HIT, SFX_LOSE } from "./game_api";
 
 const N: i32 = 18;              // parcel bones: red0-5, green0-5, cream0-5
 const PER: i32 = 6;
@@ -127,6 +128,11 @@ export class Game {
     popNext: i32 = 0;
     banner: string = "";
     bannerT: f64 = 9;
+
+    // sound: bells queued for a later frame (the swap's ding-dong), the belt's last cleat
+    qAt: Array<i32> = new Array<i32>();
+    qMidi: Array<f64> = new Array<f64>();
+    cleatN: i32 = 0;
 
     // the demo clerk
     wasDemo: bool = false;
@@ -279,6 +285,23 @@ export class Game {
             }
         }
 
+        // queued bells
+        for (let k = this.qAt.length - 1; k >= 0; k--) {
+            if (this.qAt[k] <= api.frame) {
+                api.note(this.qMidi[k], 0.6, 0, SFX_BELL);
+                this.qAt.splice(k, 1);
+                this.qMidi.splice(k, 1);
+            }
+        }
+        // the belt clacks softly as each cleat comes round (faster as the belt speeds up)
+        let cn = <i32>Math.floor(this.beltPos / ((BELT_X1 - BELT_X0) / <f64>CLEATS));
+        if (cn != this.cleatN) {
+            this.cleatN = cn;
+            if (this.mode == M_PLAY) {
+                api.sound(SFX_TICK, 0.45, 0.4, 0.3);
+            }
+        }
+
         this.updateParcels(api, dt);
         this.updateSigns(api, dt);
         this.updateConfetti(api, dt);
@@ -342,6 +365,7 @@ export class Game {
                     this.py[i] = BELT_Y;
                     this.st[i] = S_RIDE;
                     this.t[i] = 0;
+                    api.soundAt(SFX_THUD, this.px[i], BELT_Y, this.pz[i], 1.7, 0.45);   // onto the belt
                 }
             } else if (s == S_RIDE) {
                 if (moving) {
@@ -403,6 +427,7 @@ export class Game {
                     this.roll[i] = Math.round(this.roll[i] / 90) * 90;
                     this.st[i] = S_FLOOR;
                     this.t[i] = 0;
+                    api.soundAt(SFX_THUD, this.px[i], 0, this.pz[i], 1.0, 0.6);   // on the floorboards
                 }
             } else if (s == S_FLOOR) {
                 if (this.t[i] < 0.12) {
@@ -451,6 +476,11 @@ export class Game {
                     this.best = this.score;
                 }
                 this.wiggle[colour] = 0;
+                // sorted: a coin climbing with the streak; a bell each time the streak earns more
+                api.soundAt(SFX_COIN, chuteX(c), MOUTH_Y, CHUTE_Z, 1.0 + 0.05 * <f64>min<i32>(this.streak - 1, 12), 0.7);
+                if (this.streak % 5 == 0) {
+                    api.note(<f64>(84 + 2 * min<i32>(this.streak / 5 - 1, 5)), 0.55, 0, SFX_BELL);
+                }
                 this.burst(api, chuteX(c), MOUTH_Y + 0.2, CHUTE_Z);
                 this.pop(api, chuteX(c), 2.9, CHUTE_Z, pts > 1 ? "+" + pts.toString() + " STREAK" : "+1", 4);
                 if (this.sorted % 8 == 0) {
@@ -463,6 +493,7 @@ export class Game {
                 this.vx[i] = api.range(-1.2, 1.2);
                 this.vy[i] = 4.2;
                 this.vz[i] = 1.25;
+                api.soundAt(SFX_POP, chuteX(c), MOUTH_Y, CHUTE_Z, 0.45, 0.8);   // spat back out
                 this.lose(api, chuteX(c), 2.9, CHUTE_Z, "WRONG CHUTE!");
             }
             return;
@@ -472,10 +503,12 @@ export class Game {
             this.st[i] = S_RIDE;
             this.t[i] = 0;
             this.py[i] = BELT_Y;
+            api.soundAt(SFX_THUD, this.px[i], BELT_Y, this.pz[i], 1.5, 0.45);
             return;
         }
         this.st[i] = S_FLOOR;
         this.t[i] = 0;
+        api.soundAt(SFX_THUD, this.px[i], 0, this.pz[i], 1.0, 0.6);
         this.lose(api, this.px[i], 1.2, this.pz[i], "MISSED!");
     }
 
@@ -486,9 +519,11 @@ export class Game {
         this.lives--;
         this.streak = 0;
         this.shake = 1.0;
+        api.soundAt(SFX_HIT, x, y, z, 0.7, 0.7);   // a stamp lost
         this.flash = 0;
         this.pop(api, x, y, z, why, 2);
         if (this.lives <= 0) {
+            api.sound(SFX_LOSE, 0.9, 0.7);
             this.mode = M_OVER;
             this.mt = 0;
             this.held = -1;
@@ -517,6 +552,11 @@ export class Game {
         }
         this.swapT = 0;
         this.swapped = false;
+        // the counter's ding-dong announces it
+        this.qAt.push(api.frame + 1);
+        this.qMidi.push(79);
+        this.qAt.push(api.frame + 13);
+        this.qMidi.push(74);
         this.banner = "THE CHUTES SWAP!";
         this.bannerT = 0;
     }
@@ -530,6 +570,7 @@ export class Game {
             turn = u < 0.3 ? u / 0.3 * 90 : (0.6 - u) / 0.3 * 90;
             if (u >= 0.3 && !this.swapped) {
                 this.swapped = true;
+                api.sound(SFX_WHOOSH, 1.1, 0.45);   // the signs flip over
                 for (let c = 0; c < 3; c++) {
                     this.slotOf[c] = this.nextSlot[c];
                 }
@@ -617,6 +658,7 @@ export class Game {
             return;   // a tap, not a flick
         }
         let c = this.aimChute(this.px[i], this.pz[i], dx, dz);
+        api.soundAt(SFX_WHOOSH, this.px[i], this.py[i], this.pz[i], 1.6, 0.5);   // flicked
         this.st[i] = S_FLY;
         this.t[i] = 0;
         this.tgt[i] = c;
@@ -738,6 +780,7 @@ export class Game {
             if (this.mode == M_OVER) {
                 if (this.mt > 0.6) {
                     this.newRun(api, M_PLAY);
+                    this.shiftBell(api);
                 }
                 return true;
             }
@@ -745,6 +788,7 @@ export class Game {
                 this.mode = M_PLAY;
                 this.mt = 0;
                 this.spawnT = 0.6;
+                this.shiftBell(api);
             }
             // grab the parcel under the pointer (the nearest within a few pixels)
             let pick = -1;
@@ -765,6 +809,9 @@ export class Game {
             this.held = pick;
             this.hx = x;
             this.hy = y;
+            if (pick >= 0) {
+                api.sound(SFX_BLIP, 0.9, 0.5);   // a parcel in hand
+            }
         } else if (kind == POINTER_MOVE) {
             this.hx = x;
             this.hy = y;
@@ -778,6 +825,12 @@ export class Game {
             }
         }
         return true;
+    }
+
+    // a shift starts: the belt's lever and the counter bell
+    shiftBell(api: GameApi): void {
+        api.sound(SFX_CLICK, 0.4, 0.7);
+        api.note(88, 0.6, 0, SFX_BELL);
     }
 
     // ---------------------------------------------------------------- HUD

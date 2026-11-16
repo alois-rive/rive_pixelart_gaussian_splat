@@ -2,7 +2,8 @@
 // to slide it, click to drop a coin; the coin rattles down through the brass pegs (and past the
 // swinging pendulum) into one of seven cups. Ten coins a run; the lit cup doubles. The coins stay in
 // the cups as a pile until the next run. Pointer only; demo mode plays itself.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_BELL, SFX_CLICK, SFX_COIN, SFX_NOTE, SFX_POP, SFX_POWERUP, SFX_TICK,
+    SFX_WHOOSH, SFX_WIN } from "./game_api";
 
 const ST_IDLE: i32 = 0;
 const ST_PLAY: i32 = 1;
@@ -49,6 +50,8 @@ const PEG_Y: StaticArray<f64> = [5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 4.9, 4.
 const DIV_X: StaticArray<f64> = [-2.85, -1.75, -0.6, 0.6, 1.75, 2.85];
 const EDGE: StaticArray<f64> = [-4.0, -2.85, -1.75, -0.6, 0.6, 1.75, 2.85, 4.0];
 const VALUE: StaticArray<i32> = [20, 50, 10, 100, 10, 50, 20];
+// sound: the peg rows ring a pentatonic scale, high at the top, low at the bottom (MIDI)
+const ROW_NOTE: StaticArray<f64> = [86, 84, 81, 79, 76, 74, 72];
 
 // palette indices (art/palette.json "colors")
 const C_GOLD: i32 = 4;        // #ffe478
@@ -130,6 +133,11 @@ export class Game {
     dPlanX: f64 = 0;
     dWait: f64 = 0;
     dHasPlan: bool = false;
+
+    // sound (decided from the game's state only, never from api.rand)
+    hitF: StaticArray<i32> = new StaticArray<i32>(NCOIN);   // each coin's last knock (frame)
+    knockF: i32 = -99;          // the last knock on any peg (a global cooldown)
+    lastTk: f64 = -1;           // the escapement's last tick
 
     start(api: GameApi): void {
         api.playable = true;
@@ -247,6 +255,9 @@ export class Game {
         this.cCheckT[i] = 0;
         this.reload = RELOAD;
         this.squash = 0.25;
+        this.hitF[i] = api.frame;
+        api.soundAt(SFX_CLICK, this.dx, RAIL_Y, 0, 0.7, 0.9);    // the latch lets go
+        api.soundAt(SFX_POP, this.dx, RAIL_Y, 0, 1.3, 0.45);
         return true;
     }
 
@@ -269,6 +280,9 @@ export class Game {
         this.stateT += dt;
         if (this.reload > 0) {
             this.reload -= dt;
+            if (this.reload <= 0 && this.state == ST_PLAY && this.left > 0) {
+                api.soundAt(SFX_CLICK, this.dx, RAIL_Y, 0, 1.2, 0.6);   // wound up: ready
+            }
         }
         if (api.demo) {
             this.demoThink(api, dt);
@@ -298,7 +312,15 @@ export class Game {
             if (!busy) {
                 this.endT += dt;
                 if (this.endT > 0.7) {
+                    let record = this.score > this.best;
                     this.endRun();
+                    if (record) {
+                        api.sound(SFX_WIN, 1.0, 0.85);      // a new best
+                    } else {
+                        api.note(72, 0.6, 0, SFX_BELL);     // the run is over: a calm chord
+                        api.note(76, 0.5, 0, SFX_BELL);
+                        api.note(79, 0.5, 0, SFX_BELL);
+                    }
                 }
             }
         }
@@ -356,6 +378,13 @@ export class Game {
         api.place(this.pendulum, PIV_X, PIV_Y, 0, 0, 0, th);
         let ticks = api.time * 2.0 / PERIOD * 2.0;
         let tk = Math.floor(ticks);
+        if (tk != this.lastTk) {
+            // the escapement: tick, tock, quietly, only while a run is on
+            if (this.state == ST_PLAY && this.lastTk >= 0) {
+                api.sound(SFX_TICK, <i32>tk % 2 == 0 ? 0.55 : 0.42, 0.45, -0.5);
+            }
+            this.lastTk = tk;
+        }
         let fr = Math.min(1.0, (ticks - tk) / 0.18);
         let a = (tk + fr) * 9.0;
         api.place(this.gearA, api.restX[this.gearA], api.restY[this.gearA], api.restZ[this.gearA], 0, 0, -a);
@@ -458,6 +487,27 @@ export class Game {
         if (hard > 2.6) {
             this.spark(api, cx + nx * r, cy + ny * r, nx * 1.5, ny * 1.5 + 1.0);
         }
+        this.knock(api, i, cx, cy, r, hard);
+    }
+
+    // a knock: a quiet pluck tuned by the peg's row (the coin's height), a bonk off the bob, a tick off
+    // the hub and the dividers; rate-limited per coin (5 frames) and across coins (3 frames)
+    knock(api: GameApi, i: i32, cx: f64, cy: f64, r: f64, hard: f64): void {
+        if (hard < 0.9 || api.frame - this.hitF[i] < 5 || api.frame - this.knockF < 3) {
+            return;
+        }
+        this.hitF[i] = api.frame;
+        this.knockF = api.frame;
+        let v = Math.min(1.0, 0.35 + hard * 0.1);
+        if (r == RP) {
+            let row = <i32>Math.round((5.5 - cy) / 0.6);
+            row = max<i32>(0, min<i32>(6, row));
+            api.soundAt(SFX_NOTE, cx, cy, 0, Math.pow(2, (ROW_NOTE[row] - 69) / 12), v * 0.8);
+        } else if (r == BOB_R) {
+            api.soundAt(SFX_POP, cx, cy, 0, 0.5, 0.9);
+        } else {
+            api.soundAt(SFX_TICK, cx, cy, 0, 0.8, v);
+        }
     }
 
     stepCoin(api: GameApi, i: i32, h: f64, t: f64): void {
@@ -536,6 +586,16 @@ export class Game {
         }
         if (doubled) {
             this.litT = 0.5;
+        }
+        // the cup rings by its value: a coin and a bell (10 low .. 100 high), a fifth more when doubled
+        let bell = VALUE[c] >= 100 ? 84.0 : (VALUE[c] >= 50 ? 79.0 : (VALUE[c] >= 20 ? 76.0 : 72.0));
+        api.soundAt(SFX_COIN, mid, 0.8, 0, Math.pow(2, (bell - 84) / 12), 0.8);
+        api.note(bell - 12, 0.6, 0, SFX_BELL);
+        if (doubled) {
+            api.note(bell - 5, 0.5, 0, SFX_BELL);
+        }
+        if (pts >= 100) {
+            api.sound(SFX_POWERUP, doubled ? 1.5 : 1.0, 0.75);
         }
     }
 
@@ -629,12 +689,15 @@ export class Game {
         }
         if (kind == POINTER_DOWN) {
             if (this.state == ST_IDLE) {
+                api.sound(SFX_WIN, 1.0, 0.6);
                 this.beginRun(api);
                 this.dx = Math.max(RAIL_MIN, Math.min(RAIL_MAX, this.tx));
                 this.dv = 0;
                 this.drop(api);
             } else if (this.state == ST_OVER) {
                 if (this.stateT > 0.8) {
+                    api.sound(SFX_WHOOSH, 0.45, 0.7);      // the coins drain through the tray
+                    api.sound(SFX_WIN, 1.0, 0.6);
                     this.beginRun(api);
                 }
             } else {

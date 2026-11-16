@@ -12,6 +12,12 @@ clears the stack and starts again on the same peak. Demo mode aims each drop wit
 as the tower rises) and now and then a clumsy one, so a run ends after 10 to 25 floors; it restarts two
 seconds after a miss.
 
+Sound (`sfx.as`, silent in demo mode): a low gong and its fifth start a run; each storey lands with a
+thud whose pitch climbs with the height; a cut is a sharp chop and a low pluck, a PERFECT a bell that
+climbs a pentatonic scale with the streak (with a power-up from the third, WIDER); the sliding storey
+ticks quietly where it turns. A miss whooshes off into the clouds, then the losing arpeggio, and the gold
+spire lands with a thud and a high bell that rises with the tower.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra
 0.1.0, codex-cli. Palette: [NA16](https://lospec.com/palette-list/na16) by Nauris (loaded from Lospec; the
 spare `pear36` was not needed), 7 ramps. Orthographic three-quarter view (yaw 45, pitch 28) that climbs

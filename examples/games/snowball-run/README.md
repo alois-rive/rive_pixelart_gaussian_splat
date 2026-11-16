@@ -21,6 +21,12 @@ the ball rolls (pitch by distance over radius, roll by swerve), squashes on hits
 recovers; pines wobble (stepped); snowmen sway while they wait, squash flat in two frames and sink;
 spray flies off the ball, chunks fly on hits; the camera shakes in whole pixels.
 
+Sound (`sfx.as`, silent in demo mode): a whoosh and a bright bell push off; the rolling ball crunches
+softly in the snow (quicker as it speeds up, lower as it grows), hops over mounds and rings a bell a step
+higher at every 100 m. A snowman is a pop and a note climbing a major arpeggio with the combo (bells for
+x2 to x4); a pine is a crunchy hit and a thud (deeper for a bigger ball), with a low two-note warning
+when the next pine would burst it; the burst is an explosion and the losing arpeggio.
+
 Demo mode (`--arg demo=true`, or the `Sample` view model's `demo`): a skier that looks 9.5 m ahead
 across 13 lanes, avoids pines, goes for snowmen, re-plans five times a second with a little aim
 error and now and then keeps its line without looking (a 0.7 s lapse), so it takes hits and bursts

@@ -17,5 +17,5 @@
   "real_sky": true,
   "look": "lit",
   "texel": 0.0256,
-  "elevation": 0
+  "elevation": 0.0
 }

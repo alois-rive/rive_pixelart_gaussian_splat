@@ -20,6 +20,14 @@ merlons, gloats, and is swatted off, but costs a heart; three hearts. Knights co
 faster and more of them at once as the run goes on. A run starts on the first press (which already
 breathes fire); after "THE TOWER FELL!" the next click starts again. Pointer only.
 
+Sound (procedural, `sfx.as`; silent in demo mode): a low fanfare starts a run; the flame roars as a
+breathy gust every 10 frames, lower as the fire runs out; overheating zaps and the smoke puffs pop,
+a two-blip "ready" when the fire is back. A burnt knight crunches and chimes a pickup a semitone
+higher for each knight burnt in the same breath (a +2 a third higher); a knight landing thuds.
+Knights in the top third tick on every rung, higher as they climb; one hopping onto the walk boings,
+the swat whooshes and the lost heart hurts; THE TOWER FELL plays the lose jingle. Sounds are panned
+by where they happen.
+
 Demo mode (`--arg demo=true`, or the `Sample` view model's `demo`): it opens with two knights already
 on the ladders and the dragon breathing within the first second; it aims at the highest climber,
 leads it a little, with a reaction delay, a hand's speed and some wild misses, holds while the fire

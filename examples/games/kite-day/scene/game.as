@@ -1,7 +1,13 @@
 // Kite Day: a kid flies a kite over a hill at dusk. Hold the pointer to lift the kite, let go to
 // let it dip; catch the stars drifting in on the wind, dodge the birds. A bird or the ground costs
 // one of three hearts. Pointer only; a run starts on the first press; demo mode plays itself.
-import { GameApi, POINTER_DOWN, POINTER_UP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_UP, SFX_BELL, SFX_NOTE, SFX_WHOOSH, SFX_HIT, SFX_THUD, SFX_SHOOT,
+         SFX_LOSE, SFX_WIN } from "./game_api";
+
+// sound: airy and chiming. A star is a bell climbing a pentatonic scale with the streak of stars
+// caught since the last hit; the wind blows a soft gust every two seconds (higher as it picks up)
+// and a press lifts with a whoosh; a gull cries as it comes in, a hit is a crunch and its cry.
+const PENTA: StaticArray<i32> = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21, 24, 26, 28, 31];
 
 const ST_IDLE: i32 = 0;
 const ST_PLAY: i32 = 1;
@@ -44,6 +50,7 @@ export class Game {
     hurtT: f64 = 9;       // time since the last hit (blink while < 1.2)
     popT: f64 = 9;        // time since the last star (the kite's pop)
     lean: f64 = 0;
+    streak: i32 = 0;      // stars since the last hit (the bell's step)
 
     kite: i32 = -1;
     kid: i32 = -1;
@@ -170,6 +177,8 @@ export class Game {
         this.clearWorld();
         this.seedStars(api, true);
         this.aiT = 0;
+        this.streak = 0;
+        api.sound(SFX_WIN, 1.0, 0.55);
     }
 
     private gameOver(): void {
@@ -236,6 +245,7 @@ export class Game {
             // half the birds come at the kite's height, the others anywhere
             let y = api.rand() < 0.5 ? this.ky + api.range(-1.0, 1.0) : api.range(3.2, 8.4);
             this.addBird(api, SPAWN_X + 0.5, Math.min(Math.max(y, 3.2), 8.5));
+            api.sound(SFX_SHOOT, 1.9, 0.4, 0.8);
             let gap = Math.max(0.85, 2.6 - 0.035 * this.runT);
             this.birdT = gap + api.range(0, 0.9);
         }
@@ -301,6 +311,7 @@ export class Game {
             }
             if (this.ky < YMIN) {
                 // the tip touches the hill: a bounce and a heart
+                api.soundAt(SFX_THUD, this.kx, YMIN, KZ, 1.1, 0.9);
                 this.ky = YMIN;
                 this.vy = 6.0;
                 this.hurt(api);
@@ -312,7 +323,9 @@ export class Game {
         } else {
             // game over: the kite spins down onto the knoll and rests there
             this.vy = Math.max(this.vy - 4.0 * dt, -2.2);
+            let wasUp = this.ky > 2.25;
             this.ky = Math.max(this.ky + this.vy * dt, 2.25);
+            if (wasUp && this.ky <= 2.25) api.soundAt(SFX_THUD, this.kx, 2.25, KZ, 1.3, 0.6);
         }
         this.kx = KX + 0.3 * Math.sin(t * 1.1) + 0.12 * Math.sin(t * 2.7);
         let wobble = 5.0 * Math.sin(t * 2.3) + 2.0 * Math.sin(t * 5.1);
@@ -348,6 +361,9 @@ export class Game {
         this.updateClouds(api, dt);
 
         let sp = this.speed();
+        if (this.state == ST_PLAY && api.frame % 120 == 60) {
+            api.sound(SFX_WHOOSH, 0.7 + 0.1 * sp, 0.45, 0.3);
+        }
         if (this.state != ST_OVER) {
             this.spawn(api, dt, this.state == ST_PLAY);
         }
@@ -368,9 +384,12 @@ export class Game {
         }
         this.hurtT = 0;
         this.hearts -= 1;
+        this.streak = 0;
+        api.soundAt(SFX_HIT, this.kx, this.ky, KZ, 0.7 + 0.15 * <f64>this.hearts, 0.9);
         if (this.hearts <= 0) {
             this.hearts = 0;
             this.gameOver();
+            api.sound(SFX_LOSE, 1.0, 0.7);
         }
     }
 
@@ -500,6 +519,10 @@ export class Game {
                     if (this.state == ST_PLAY) {
                         this.score += 1;
                         this.popup(this.sX[i], y + 0.6, 1);
+                        let step = min<i32>(this.streak, PENTA.length - 1);
+                        api.note(<f64>(72 + PENTA[step]), 0.8, 0, SFX_BELL);
+                        api.note(<f64>(60 + PENTA[step]), 0.4, 0, SFX_NOTE);
+                        this.streak += 1;
                     }
                 }
             }
@@ -545,6 +568,7 @@ export class Game {
                     this.bVY[i] = 3.0;
                     this.vy = Math.min(this.vy, 0) - 2.5;
                     this.burst(api, this.bX[i], this.bY[i], 4);
+                    api.soundAt(SFX_SHOOT, this.bX[i], this.bY[i], 0.7, 1.4, 0.7);
                     this.hurt(api);
                 }
             }
@@ -635,6 +659,7 @@ export class Game {
                 }
                 this.startRun(api);
             }
+            if (!this.holding) api.sound(SFX_WHOOSH, 1.2, 0.6, -0.3);
             this.holding = true;
         } else if (kind == POINTER_UP) {
             this.holding = false;

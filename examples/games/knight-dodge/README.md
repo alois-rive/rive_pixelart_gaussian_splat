@@ -35,6 +35,12 @@ now and then (6 % of its decisions), takes knocks into other boulders, and its r
 45 seconds; it restarts itself two seconds after GAME OVER. When demo is switched off, a fresh run
 starts at once.
 
+Sound (procedural, `api.sound`; silent in demo): heavy stone and armour. A low fanfare starts a run; a boulder
+blips as it appears in its gate, rumbles with rising low thuds while it rocks there, thumps as it sets off, bumps
+once a turn as it rolls and bursts on the wall; the knight's armour jingles every few strides; a coin chimes,
+a semitone higher for each coin since the last hit; a hit is a crunch and a clank, the last one a falling
+tune and a thud as the knight topples; a bell rings every ten seconds survived, higher each time.
+
 ## What is where
 
 ```

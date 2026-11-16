@@ -155,7 +155,7 @@ template changes, refresh them and re-check every golden:
 
 ```sh
 K=../.claude/skills/pixel-splat-scene
-for d in {dioramas,games}/*/scene {dioramas,games}/*/lookdev; do cp $K/assets/template/{resolve.wgsl,splat_scene.as,game_api.as} $d/; done
+for d in {dioramas,games}/*/scene {dioramas,games}/*/lookdev; do cp $K/assets/template/{resolve.wgsl,splat_scene.as,game_api.as,sfx.as} $d/; done
 for d in {dioramas,games}/*/scene {dioramas,games}/*/lookdev; do [ "$d" != dioramas/rive/scene ] && cp $K/assets/template/splat.wgsl $d/; done
 for s in {dioramas,games}/*/; do s=${s%/}; [ -d $s/goldens/scene ] || continue
   mkdir -p /tmp/chk/$s
@@ -173,6 +173,9 @@ Exceptions and conventions:
   template's; merge template changes into it by hand.
 - **Every diorama sets `orbit` true** in its `scene.rml` (the template leaves
   it off), so the previews can be dragged and zoomed. Games leave it off.
+- **Sound**: every game plays procedural effects through `api.sound` /
+  `api.soundAt` / `api.note` (the skill's games.md, "Sound"); silent in demo
+  mode, so the gallery's tiles stay quiet until one is played.
 - **`game.as` is the project's own** (the template's is empty; most dioramas
   keep it, `space-outpost` flies its ships with one); `game_api.as` is synced
   with the other renderer files.
@@ -208,7 +211,7 @@ played in demo mode from its first frame (`--demo`):
 ```sh
 python3 tools/record_tour.py dioramas/*/scene dioramas/rive/scene -o ../showcase.mp4 --seconds 10 --loops 2 \
   --overlap 1.2 --hold 1.5 --scene-arg dioramas/rive/scene:fxOffset=3.6 --scene-arg dioramas/rive/scene:fxStopAt=10.05 \
-  --demo games/*/scene --demo-seconds 8 --music
+  --demo games/*/scene --demo-seconds 8 --demo-first --music
 ```
 
 ## The gallery
@@ -229,6 +232,12 @@ built on the reel's own clock, so every scene starts a bar and every
 transition falls on a downbeat with a soft accent and a riser into it. The
 recorder writes `<out>.timeline.json`; `reel_music.py --timeline ... --mux
 <video>` re-scores an existing video without recording again.
+
+**Weight.** The splat blobs are format v3, 16 bytes a splat (the skill's
+renderer.md, "The blob"); `splat_bake.py --upgrade` converted every blob in
+place, which reshuffled the per-splat dither noise, so every golden was
+looked at and re-snapped once. The published gallery went from about 98 MB
+to 59 MB (21 MB gzipped).
 
 ## Concept sheets awaiting review
 

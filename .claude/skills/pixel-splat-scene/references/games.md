@@ -160,6 +160,31 @@ scale 2 under a heavy shadow; prefer words that survive it.
 unlit geometry (a cone, a floor disc; a disc floats over gaps rather than
 lying on props) or HUD lines (always on top).
 
+**Sound.** `api.sound(SFX_COIN)`, `api.soundAt(SFX_HIT, x, y, z)` (panned by
+where the point shows) and `api.note(midi, volume, pan, SFX_NOTE | SFX_BELL)`
+play procedural chiptune effects: `sfx.as` is an `AudioProcessor` on Rive's
+audio thread (a voice pool of square, triangle, sine and noise with slides,
+arpeggios, a soft low-pass), started on the first sound and fed through a
+ring, each event stamped with the audio clock so it starts on its frame.
+Presets: `SFX_BLIP JUMP COIN HIT EXPLODE SHOOT POWERUP THUD SPLASH WHOOSH NOTE
+BELL LOSE WIN TICK POP CLICK ZAP`; vary `pitch` (a combo climbing in pitch,
+a heavier object lower) rather than adding presets. Every call takes a
+`delay` in seconds (sample-accurate), so a jingle is a few `note` calls with
+growing delays; `noteAt(midi, x, y, z)` pans a tuned note by a world point,
+and `panAt` gives the pan without touching `screenX`/`screenY`. Pitch
+references: NOTE and BELL are A4 at pitch 1 (`note` handles it), COIN B5,
+POWERUP and WIN C5 (play melodies alongside them in C), LOSE A4. Levels are
+uneven by design (TICK and CLICK are quiet, THUD and EXPLODE loud): balance
+with `volume`. All are one-shots with fixed lengths: a continuous engine,
+wind or hum is sparse repeated ticks keyed to `api.frame`. A headless
+`--render-audio` of a demo run writes no wav (no processor ever starts): that
+is the expected silence, not a failure. Sounds never play in
+demo mode, so a gallery stays quiet until a tile is played; never decide a
+sound with `api.rand()` (it would change the demo). The `sound` and
+`soundVolume` inputs switch and scale them. Hear them headless: `rive <scene>
+--render-audio=<abs>.wav --advance=8s` with `--pointer` input (play mode)
+writes what the synth renders, deterministically.
+
 **State on the ground** (mowed grass, painted tiles, lit floor cells): pool
 one bone per cell over a baked "after" surface and squash or hide each cell's
 "before" tile as it changes. It costs a bone a cell (an 8 x 6 lawn is 48 of

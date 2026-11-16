@@ -205,7 +205,8 @@ def compose(segments, total, bpm, seed):
         bars = max(1, int(math.ceil(dur / bar - 1e-6)))
         half = max(1, bars // 2 + (bars % 2))
         arp = ARPS[(idx * 7 + 3) % len(ARPS)]
-        first_demo = demo and (idx == 0 or segments[idx - 1]["kind"] != "demo")
+        # a change of section (tour <-> demos) gets the bigger accent
+        first_demo = idx > 0 and segments[idx - 1]["kind"] != kind
         last = idx == len(segments) - 1
         for b in range(bars):
             t0 = start + b * bar
@@ -304,13 +305,15 @@ def segments_from_args(a):
     if a.timeline:
         d = json.load(open(a.timeline))
         return d["segments"], d["total"]
-    segs, t = [], 0.0
+    segs = []
+    tour_at = a.demos * a.demo_seconds if a.demo_first else 0.0
     for i in range(a.tour):
         dur = a.seconds + (a.hold if i == a.tour - 1 else 0)
-        segs.append({"start": i * a.seconds, "duration": dur, "kind": "tour"})
-    t = a.tour * a.seconds + (a.hold if a.tour else 0)
+        segs.append({"start": tour_at + i * a.seconds, "duration": dur, "kind": "tour"})
+    t = 0.0 if a.demo_first else a.tour * a.seconds + (a.hold if a.tour else 0)
     for k in range(a.demos):
         segs.append({"start": t + k * a.demo_seconds, "duration": a.demo_seconds, "kind": "demo"})
+    segs.sort(key=lambda s: s["start"])
     total = segs[-1]["start"] + segs[-1]["duration"]
     return segs, total
 
@@ -331,6 +334,7 @@ def main():
     ap.add_argument("--hold", type=float, default=1.5)
     ap.add_argument("--demos", type=int, default=0)
     ap.add_argument("--demo-seconds", type=float, default=8)
+    ap.add_argument("--demo-first", action="store_true", help="the demo scenes come before the tour")
     ap.add_argument("--bpm", type=float, default=120)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("-o", "--out", required=True, help="the .wav to write")

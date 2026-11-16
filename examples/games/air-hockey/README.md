@@ -38,6 +38,12 @@ strike lands within a second, and the first goals fall at about 5.8 s and 7.6 s.
 two seconds after the final whistle. When demo is switched off, a fresh match waits for the first
 click (the hint).
 
+**Sound** (`sfx.as`, silent in demo mode): an air whoosh and a blip at each face-off; a plastic clack
+on every strike (brighter and louder the harder, a neon zap on a slap), a dry tick off the rails and
+posts (rate limited); your goal is a coin that climbs a whole tone per goal (a fanfare on a slap
+shot), the computer's a crunch and two falling notes; a thud as the puck drops in the pocket; a win
+plays an arpeggio and a rising tune, a loss the lose jingle.
+
 ## What is where
 
 ```

@@ -28,6 +28,15 @@ pitch 30, key 0.35), per-splat dither, ink 1, no fog.
 - With no voices left the choir stops (heads down): GAME OVER with the score, the session's best and
   the longest run of notes; the next click starts a new run. Runs last about 20 to 90 seconds.
 
+**Sound** (procedural, `sfx.as`; silent in demo mode): the choir sings. A run opens with a pitch
+pipe (the C chord on soft bells). Each note sung on the beat is the frog's own chord tone: the song
+walks I - V - vi - IV in C, a chord every four notes, voiced over the five frogs from left (low) to
+right (high), panned by where the frog sits; a PERFECT is louder than a GOOD, and from a combo of 8
+a bell doubles it an octave up. A soft tick marks each ring reaching its circle. A sour note (LATE,
+EARLY, SOUR) is the frog's tone a semitone sharp against a tritone below, with a jolt. The
+multiplier going up plays a rising arpeggio, a voice won back a chime, a click on the water a plop,
+GAME OVER the lose jingle.
+
 **Demo** (`--arg demo=true`, or the gallery's `Sample.demo`): a run starts at once with the first ring
 already closing (the first PERFECT about half a second in). The demo player decides each note's click time when the note is
 scheduled: a timing error that grows with the tempo (sigma 0.035 s, plus 0.0011 s per second of run),

@@ -26,7 +26,8 @@ themselves dither. Captions name the scene and its palette (from ../art/palette.
 
 Games (or any scene) can follow the tour: `--demo games/*/scene` appends each one played by
 itself (`--arg demo=true`) from its first frame for `--demo-seconds`, handing over with the same
-dithered fade; the turn of the tour ends before them.
+dithered fade; the turn of the tour ends before them. `--demo-first` puts them before the tour
+instead, so the reel ends on the tour's last scene at rest.
 
 A scene named twice keeps its LAST position (`dioramas/*/scene dioramas/rive/scene` puts the Rive scene last). Frames are
 scaled by a whole `--scale` with nearest-neighbour sampling. `--fps` must divide 60. Needs ffmpeg,
@@ -124,6 +125,8 @@ def main():
     ap.add_argument("--demo", nargs="*", default=[], metavar="SCENE",
                     help="scenes appended after the tour, each played in demo mode from its first frame")
     ap.add_argument("--demo-seconds", type=float, default=8, help="each demo scene's time on screen")
+    ap.add_argument("--demo-first", action="store_true",
+                    help="play the demo scenes first and end on the tour (the turn eases in where it begins)")
     ap.add_argument("--scene-arg", action="append", default=[], metavar="SCENE:NAME=VALUE",
                     help="a renderer input for one scene (its directory), e.g. dioramas/rive/scene:fxOffset=3.6")
     ap.add_argument("--keep", help="keep the frames in this directory")
@@ -156,14 +159,17 @@ def main():
 
     # the segments: (scene, start on the reel, seconds on screen, renderer args, local time offset)
     segs = []
+    demo_len = len(demos) * a.demo_seconds
+    tour_at = demo_len if a.demo_first else 0.0
     for i, scene in enumerate(order):
         dur = D + (a.hold if i == n - 1 else 0)
         args = {"tourRate": f"{rate:.6f}", "tourOffset": f"{i * D:.6f}", "tourLength": f"{length:.6f}",
                 "tourEase": f"{a.ease:.6f}", "spin": "0", "yaw": f"{base:.6f}"}
-        segs.append((scene, i * D, dur, args))
-    t0 = n * D + (a.hold if n else 0)
+        segs.append((scene, tour_at + i * D, dur, args))
+    demo_at = 0.0 if a.demo_first else n * D + (a.hold if n else 0)
     for k, scene in enumerate(demos):
-        segs.append((scene, t0 + k * a.demo_seconds, a.demo_seconds, {"demo": "true"}))
+        segs.append((scene, demo_at + k * a.demo_seconds, a.demo_seconds, {"demo": "true"}))
+    segs.sort(key=lambda sg: sg[1])
     total = segs[-1][1] + segs[-1][2]
     total_frames = int(round(total * fps))
 

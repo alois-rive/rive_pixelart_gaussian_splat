@@ -15,6 +15,12 @@ grazes when left alone. One that walks through the gate is penned: +100, or +150
 otherwise. A click after the game-over line starts a new run in the same meadow; the best score is kept for
 the session.
 
+Sound (`sfx.as`, silent in demo mode): a rising two-note shepherd's whistle starts a run; a sheep startled
+by the dog gives one short note in its own voice (one of three, at most one every third of a second); a
+penned sheep is a coin climbing with every sheep in (brighter for a +150 follow-up) and a bleat of three
+soft high notes, the last one falling, panned to the pen. The last ten seconds tick (sharper for the last
+three); all six penned is a win fanfare and the gate's latch clicking shut, time up the losing arpeggio.
+
 Demo (`--arg demo=true`, or the `Sample` view model's `demo`): a decent shepherd that picks the free sheep
 nearest the gate, runs round behind it (flanking on the side the pen does not block) and drives it at the gate,
 aiming up to 0.8 m off and re-thinking every 0.3 s; it pens about four of six in 45 s and starts again 2 s after

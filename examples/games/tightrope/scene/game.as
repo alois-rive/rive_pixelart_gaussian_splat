@@ -6,7 +6,7 @@
 // Game bones from scene.bake.json: the walker and his pole (attached to his hands with
 // api.transform), the rope's two spans (stretched from each anchor to his feet, so the rope sags under
 // him), two pennants, 8 wind streaks, a splash and a hawk. Deterministic: api.rand() only.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_NOTE, SFX_BELL, SFX_TICK, SFX_CLICK, SFX_WHOOSH, SFX_COIN, SFX_SHOOT, SFX_SPLASH, SFX_LOSE } from "./game_api";
 
 const R_ROCK: i32 = 0;    // plum, red-brown, rust, ochre, cream
 const R_COOL: i32 = 1;    // plum, slate, teal-grey, sage, cream
@@ -104,6 +104,12 @@ export class Game {
     walkerSX: f64 = 160;
     walkerSY: f64 = 120;
 
+    // sound: notes queued for a later frame (the opening fanfare)
+    qAt: Array<i32> = new Array<i32>();
+    qMidi: Array<f64> = new Array<f64>();
+    qVol: Array<f64> = new Array<f64>();
+    tickIn: i32 = 0;            // frames to the next lean warning tick
+
     start(api: GameApi): void {
         api.playable = true;
         this.body = api.bone("walker");
@@ -160,6 +166,44 @@ export class Game {
         this.popT = 9;
     }
 
+    // ------------------------------------------------------------------ sound
+
+    // where the walker shows, as a pan
+    private pan(api: GameApi): f64 {
+        if (api.hudW <= 0) {
+            return 0;
+        }
+        return Math.max(-0.8, Math.min(0.8, (this.walkerSX / <f64>api.hudW * 2.0 - 1.0) * 0.8));
+    }
+
+    private later(api: GameApi, frames: i32, midi: f64, vol: f64): void {
+        this.qAt.push(api.frame + frames);
+        this.qMidi.push(midi);
+        this.qVol.push(vol);
+    }
+
+    private playQueued(api: GameApi): void {
+        for (let k = this.qAt.length - 1; k >= 0; k--) {
+            if (this.qAt[k] <= api.frame) {
+                api.note(this.qMidi[k], this.qVol[k], 0, SFX_NOTE);
+                this.qAt.splice(k, 1); this.qMidi.splice(k, 1); this.qVol.splice(k, 1);
+            }
+        }
+    }
+
+    // a run starts: a little circus fanfare
+    private fanfare(api: GameApi): void {
+        this.later(api, 0, 67, 0.55);
+        this.later(api, 6, 72, 0.55);
+        this.later(api, 12, 76, 0.6);
+        this.later(api, 18, 79, 0.65);
+    }
+
+    // the lean, 0 upright .. 1 falling
+    private tip(): f64 {
+        return Math.min(1.0, Math.abs(this.lean) / FALL_AT);
+    }
+
     // the demo starts on the rope, a gust already blowing
     private opening(api: GameApi): void {
         this.resetWalker();
@@ -193,6 +237,8 @@ export class Game {
             this.gustWarn -= dt;
             if (this.gustWarn <= 0) {
                 this.gustT = 0;
+                // the gust arrives: a big low whoosh blowing the way it pushes, stronger gusts lower
+                api.sound(SFX_WHOOSH, Math.max(0.35, 0.75 - 0.08 * this.gustPow), Math.min(1.0, 0.6 + 0.08 * this.gustPow), this.gustDir * 0.5);
             }
         } else if (this.gustT < this.gustLen) {
             this.gustT += dt;
@@ -210,6 +256,8 @@ export class Game {
                 this.gustPow = (1.6 + 0.55 * lvl) * api.range(0.75, 1.25);
                 this.gustLen = api.range(1.0, 1.7) + lvl * 0.1;
                 this.gustT = 0;
+                // it is coming: a faint high whoosh from the side it blows from
+                api.sound(SFX_WHOOSH, 1.3, 0.45, -this.gustDir * 0.6);
             }
         }
     }
@@ -300,6 +348,15 @@ export class Game {
                 if (this.stepT > 0.38) {
                     this.stepT -= 0.38;
                     this.leanV += api.range(-0.12, 0.12);
+                    // a step: the rope creaks, higher and louder the more he leans
+                    api.sound(SFX_CLICK, 0.16 + 0.22 * this.tip(), 0.45 + 0.35 * this.tip(), this.pan(api));
+                }
+                // leaning hard: warning ticks that speed up and climb as he tips
+                let f = this.tip();
+                this.tickIn--;
+                if (f > 0.5 && this.tickIn <= 0) {
+                    api.sound(SFX_TICK, 0.7 + 1.3 * f, 0.5 + 0.4 * f, this.pan(api));
+                    this.tickIn = <i32>Math.round(16.0 - 12.0 * (f - 0.5) / 0.5);
                 }
             }
             if (Math.abs(this.lean) > FALL_AT && this.mode == PLAY) {
@@ -314,6 +371,8 @@ export class Game {
                 this.poleVY = 2.0;
                 this.poleZ = 0;
                 this.gameOver(api);
+                api.sound(SFX_SHOOT, 0.45, 0.8, this.pan(api));   // a long falling whistle
+                api.sound(SFX_SHOOT, 0.3, 0.5, this.pan(api));
             } else if (Math.abs(this.x) > ANCHOR) {
                 // onto the far platform: a crossing
                 this.ws = W_STAND;
@@ -323,6 +382,9 @@ export class Game {
                 this.arrived = true;
                 this.score += 10;
                 this.popT = 0;
+                // across: a coin and a cheer note, both climbing with every crossing
+                api.sound(SFX_COIN, 1.0 + 0.06 * <f64>min<i32>(this.crossings, 10), 0.7, this.pan(api));
+                api.note(<f64>(72 + 2 * min<i32>(this.crossings, 8)), 0.5, this.pan(api), SFX_BELL);
                 this.gustT = this.gustLen;
                 this.gustWarn = 0;
             }
@@ -340,6 +402,8 @@ export class Game {
                 this.splashT = 0;
                 this.splashX = this.fallX;
                 this.splashZ = this.fallZ;
+                api.sound(SFX_SPLASH, 0.8, 0.9, this.pan(api));
+                api.sound(SFX_LOSE, 0.85, 0.6);
                 api.hide(this.body);
                 api.hide(this.pole);
             }
@@ -477,6 +541,7 @@ export class Game {
         } else {
             this.u = 0;
         }
+        this.playQueued(api);
         this.updateWind(api, dt);
         this.updateWalker(api, dt);
         this.updateRope(api);
@@ -520,10 +585,12 @@ export class Game {
         if (kind == POINTER_DOWN) {
             if (this.mode == IDLE) {
                 this.newRun(api);
+                this.fanfare(api);
             } else if (this.mode == OVER && this.overTime > 1.0) {
                 this.resetWalker();
                 this.newRun(api);
                 this.popT = 0;
+                this.fanfare(api);
             }
         }
         return true;

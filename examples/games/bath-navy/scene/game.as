@@ -5,7 +5,8 @@
 //
 // Everything is in this file (references/games.md, "The game hook"); the bones come from
 // scene.bake.json: duck, sail0..3, tug0..2, speed0..2, bubble0..5, drop0..9.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_POP, SFX_SPLASH, SFX_JUMP, SFX_THUD, SFX_HIT, SFX_BLIP, SFX_LOSE,
+    SFX_NOTE, SFX_BELL } from "./game_api";
 
 const WATER: f64 = 0.85;          // the water's height
 const DUCK_X: f64 = -3.3;
@@ -106,6 +107,10 @@ export class Game {
     pText: Array<string> = ["", "", "", "", "", ""];
     nextPop: i32 = 0;
 
+    // sound (never decided by a random draw)
+    chain: i32 = 0;               // boats popped without a wasted bubble or a bonk: the pops climb
+    sndRiseF: i32 = -99;          // the frame of the last faucet bloop
+
     // the demo player
     dWait: f64 = 0.3;
 
@@ -122,6 +127,7 @@ export class Game {
     }
 
     reset(api: GameApi): void {
+        this.chain = 0;
         this.score = 0;
         this.lives = LIVES;
         this.popped = 0;
@@ -165,6 +171,11 @@ export class Game {
         this.bV[b] = (k == K_SAIL ? 0.5 : (k == K_TUG ? 0.36 : 0.95)) * Math.min(pace, 2.6);
         this.bHp[b] = k == K_TUG ? 2 : 1;
         this.bHitT[b] = 9;
+        if (this.bState[b] == B_RISE && this.mode == M_PLAY && api.frame - this.sndRiseF > 12) {
+            // a low bloop under the faucet as a boat bobs up (a tug lower, a speedboat higher)
+            api.soundAt(SFX_POP, x, WATER, z, k == K_TUG ? 0.35 : (k == K_SPEED ? 0.55 : 0.45), 0.4);
+            this.sndRiseF = api.frame;
+        }
         this.bPhase[b] = api.range(0, 6.28);
         this.bYaw[b] = 270;
         this.spawned += 1;
@@ -238,12 +249,18 @@ export class Game {
         this.sink(api, b);
         this.bonkT = 0;
         this.lives -= 1;
+        this.chain = 0;
+        // the duck squeaks (lower with each life lost) as the boat thumps it
+        api.soundAt(SFX_JUMP, DUCK_X, DUCK_Y, DUCK_Z, 1.7 - 0.2 * <f64>(LIVES - 1 - this.lives), 0.85);
+        api.soundAt(SFX_THUD, DUCK_X, DUCK_Y, DUCK_Z, 1.4, 0.7);
         this.popup(DUCK_X, 2.3, DUCK_Z, "BONK!", 3);
         this.splash(api, DUCK_X + 0.9, this.bZ[b], 6);
         if (this.lives <= 0 && this.mode == M_PLAY) {
             this.mode = M_OVER;
             this.overT = 0;
             if (this.score > this.best) this.best = this.score;
+            api.sound(SFX_LOSE, 1.0, 0.75);
+            api.sound(SFX_SPLASH, 0.6, 0.6);
             for (let i = 0; i < NB; i++) {
                 if (this.bState[i] == B_SAIL || this.bState[i] == B_RISE) this.sink(api, i);
             }
@@ -277,6 +294,7 @@ export class Game {
         this.uT[u] = 0;
         this.uFor[u] = forBoat;
         this.fireT = 0;
+        api.soundAt(SFX_POP, bx, WATER, bz, 0.8, 0.5);    // a bloop out of the beak
         return true;
     }
 
@@ -306,6 +324,11 @@ export class Game {
                 this.uOn[u] = false;
                 api.hide(bone);
                 this.splash(api, x, z, hit ? 0 : 3);
+                if (!hit) {
+                    // a wasted bubble: a soft plip on the water, and the chain is broken
+                    api.soundAt(SFX_SPLASH, x, WATER, z, 1.6, 0.4);
+                    if (this.uFor[u] < 0) this.chain = 0;
+                }
                 continue;
             }
             let wob = 1 + 0.08 * Math.sin(Math.floor(this.uT[u] * 12) * 1.7);
@@ -322,12 +345,24 @@ export class Game {
         if (this.bHp[b] > 0) {
             this.splash(api, this.bX[b], this.bZ[b], 3);
             this.popup(this.bX[b], 1.9, this.bZ[b], "CLANG", 0);
+            // the tug's tin hull rings
+            api.soundAt(SFX_HIT, this.bX[b], WATER, this.bZ[b], 1.5, 0.5);
+            api.note(81, 0.45, 0, SFX_NOTE);
             return;
         }
         let pts = k == K_SAIL ? 10 : (k == K_TUG ? 30 : 20);
+        let before = this.score;
         if (this.mode == M_PLAY) {
             this.score += pts;
             this.popped += 1;
+        }
+        // the pop: higher for a speedboat, lower for a tug, a whole tone up with each boat in the chain
+        let base = k == K_SAIL ? 1.0 : (k == K_TUG ? 0.8 : 1.2);
+        api.soundAt(SFX_POP, this.bX[b], WATER, this.bZ[b], base * Math.pow(2, <f64>min<i32>(this.chain, 8) / 6.0), 0.85);
+        api.soundAt(SFX_SPLASH, this.bX[b], WATER, this.bZ[b], 1.0, 0.45);
+        this.chain++;
+        if (this.mode == M_PLAY && before / 100 != this.score / 100) {
+            api.note(84 + 2 * <f64>min<i32>(this.score / 100, 6), 0.55, 0, SFX_BELL);   // every 100: a bell
         }
         this.sink(api, b);
         this.splash(api, this.bX[b], this.bZ[b], 7);
@@ -465,12 +500,16 @@ export class Game {
         }
         if (kind == POINTER_DOWN) {
             if (this.mode == M_OVER) {
-                if (this.overT > 0.6) this.reset(api);
+                if (this.overT > 0.6) {
+                    this.reset(api);
+                    api.sound(SFX_BLIP, 1.0, 0.6);
+                }
                 return true;
             }
             if (this.mode == M_READY) {
                 this.mode = M_PLAY;
                 this.spawnT = 1.2;
+                api.soundAt(SFX_JUMP, DUCK_X, DUCK_Y, DUCK_Z, 2.0, 0.6);   // a cheerful squeak: battle stations
             }
             // turn at once, then fire
             this.duckYaw = clamp(deg(Math.atan2(this.aimX - DUCK_X, this.aimZ - DUCK_Z)), 15, 165);

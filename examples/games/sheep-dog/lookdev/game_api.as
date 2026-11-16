@@ -7,6 +7,26 @@
 
 const FONT: StaticArray<u16> = [0, 9346, 0, 24445, 0, 21157, 0, 9216, 10530, 8778, 24528, 1488, 20, 448, 2, 4772, 31599, 11415, 29671, 29647, 23497, 31183, 31215, 29330, 31727, 31695, 1040, 0, 5393, 3640, 17492, 25218, 0, 11245, 27566, 14627, 27502, 31143, 31140, 14699, 23533, 29847, 4714, 23469, 18727, 24557, 27501, 11114, 27556, 11123, 27565, 14478, 29842, 23407, 23402, 23549, 23213, 23186, 29351, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2728, 0, 0, 0, 0, 0, 0, 0];
 
+// sounds (sfx.as plays them): api.sound(SFX_COIN), api.soundAt(SFX_HIT, x, y, z), api.note(60)
+export const SFX_BLIP: i32 = 0;      // a menu blip, a select
+export const SFX_JUMP: i32 = 1;      // a rising hop
+export const SFX_COIN: i32 = 2;      // a two-note pickup
+export const SFX_HIT: i32 = 3;       // a crunchy hurt
+export const SFX_EXPLODE: i32 = 4;   // a low burst
+export const SFX_SHOOT: i32 = 5;     // a falling pew
+export const SFX_POWERUP: i32 = 6;   // a rising arpeggio
+export const SFX_THUD: i32 = 7;      // a low landing
+export const SFX_SPLASH: i32 = 8;    // water
+export const SFX_WHOOSH: i32 = 9;    // a swing, a gust
+export const SFX_NOTE: i32 = 10;     // a plucked note: api.note(midi)
+export const SFX_BELL: i32 = 11;     // a long sine bell: api.note(midi, 1, 0, SFX_BELL)
+export const SFX_LOSE: i32 = 12;     // game over
+export const SFX_WIN: i32 = 13;      // a start, a clear, a win
+export const SFX_TICK: i32 = 14;     // a quiet tick (a clock, a step)
+export const SFX_POP: i32 = 15;      // a bubble, a pop
+export const SFX_CLICK: i32 = 16;    // a switch, a latch
+export const SFX_ZAP: i32 = 17;      // a laser, a spark
+
 export const POINTER_DOWN: i32 = 0;
 export const POINTER_MOVE: i32 = 1;
 export const POINTER_UP: i32 = 2;
@@ -98,6 +118,13 @@ export class GameApi {
     rectC: Array<u32> = new Array<u32>();
 
     seed: u32 = 12345;
+
+    // --- the sounds asked for this frame (the renderer sends them, unless in demo mode)
+    sfxKind: Array<f64> = new Array<f64>();
+    sfxPitch: Array<f64> = new Array<f64>();
+    sfxVol: Array<f64> = new Array<f64>();
+    sfxPan: Array<f64> = new Array<f64>();
+    sfxDelay: Array<f64> = new Array<f64>();
 
     // ---------------------------------------------------------------- bones
 
@@ -312,6 +339,50 @@ export class GameApi {
         this.screenY = this.gridOY + (1 - ny) * 0.5 * this.gridH;
         this.screenDepth = depth;
         return true;
+    }
+
+    // ---------------------------------------------------------------- sound
+
+    // Plays a sound effect (SFX_*): pitch multiplies its frequency, pan is -1 left .. 1 right.
+    // Silent in demo mode (a gallery of tiles stays quiet until one is played). Never draw
+    // api.rand() to decide a sound: it would change what the demo does.
+    // delay: seconds from now (a jingle's later notes, a crash after a whistle), sample-accurate.
+    sound(kind: i32, pitch: f64 = 1, volume: f64 = 1, pan: f64 = 0, delay: f64 = 0): void {
+        if (this.sfxKind.length >= 64) {
+            return;
+        }
+        this.sfxKind.push(<f64>kind);
+        this.sfxPitch.push(pitch);
+        this.sfxVol.push(volume);
+        this.sfxPan.push(pan);
+        this.sfxDelay.push(Math.max(0, delay));
+    }
+
+    // The pan (-0.8 .. 0.8) of where a world point shows; leaves screenX/screenY/screenDepth alone.
+    panAt(x: f64, y: f64, z: f64): f64 {
+        let sx = this.screenX, sy = this.screenY, sd = this.screenDepth;
+        let pan = 0.0;
+        if (this.project(<f32>x, <f32>y, <f32>z) && this.hudW > 0) {
+            pan = Math.min(Math.max((<f64>this.screenX / <f64>this.hudW) * 2 - 1, -1), 1) * 0.8;
+        }
+        this.screenX = sx; this.screenY = sy; this.screenDepth = sd;
+        return pan;
+    }
+
+    // A sound panned by where a world point shows on screen.
+    soundAt(kind: i32, x: f64, y: f64, z: f64, pitch: f64 = 1, volume: f64 = 1, delay: f64 = 0): void {
+        this.sound(kind, pitch, volume, this.panAt(x, y, z), delay);
+    }
+
+    // A tuned note (MIDI number, 60 = middle C) on SFX_NOTE or SFX_BELL: melodies, chords, chimes.
+    // A few notes with growing delays make a jingle: note(72), note(76, 1, 0, SFX_NOTE, 0.12), ...
+    note(midi: f64, volume: f64 = 1, pan: f64 = 0, kind: i32 = SFX_NOTE, delay: f64 = 0): void {
+        this.sound(kind, Math.pow(2, (midi - 69) / 12), volume, pan, delay);
+    }
+
+    // A tuned note panned by a world point.
+    noteAt(midi: f64, x: f64, y: f64, z: f64, volume: f64 = 1, kind: i32 = SFX_NOTE, delay: f64 = 0): void {
+        this.sound(kind, Math.pow(2, (midi - 69) / 12), volume, this.panAt(x, y, z), delay);
     }
 
     // ---------------------------------------------------------------- random (deterministic)

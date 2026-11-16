@@ -29,6 +29,12 @@ so shadows fall back and short, per-splat dither, ink 1, a flat plum sky.
   session's best. The next click (after 0.6 s) starts a new run in the same world.
 - Runs last about 15 to 45 seconds.
 
+**Sound** (`sfx.as`, silent in demo mode): a low start arpeggio and a latch click; a leap over the alley
+(a hop, then soft paws); a lamp waking clicks and buzzes on where it stands; a fish appears with a soft pop
+and is grabbed with a coin a semitone higher for each fish (an octave at most), plus a high pluck when
+quick; in the light the alarm beeps every 8 frames, rising in pitch and volume as the meter fills;
+CAUGHT! is a crunch and the falling game-over arpeggio.
+
 **Demo** (`--arg demo=true`, or the gallery's `Sample.demo`): the run starts at once, the cat already
 walking towards the first fish with a lamp sweeping. The demo re-plans 4 to 8 times a second: it tries
 twelve directions and takes the best trade between closing on the fish and keeping out of each pool,

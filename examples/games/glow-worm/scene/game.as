@@ -3,7 +3,10 @@
 // head must never touch its own body, nor a stalagmite. Pointer only: move to steer, click to start.
 // The body is a chain of pooled bead bones laid along the path the head has drawn; every bead and
 // the head carry their own stippled pool of light, so the worm lights the cave as it crawls.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_BELL, SFX_HIT, SFX_LOSE, SFX_POP, SFX_TICK } from "./game_api";
+
+// the crystals' chime (sound only): an A minor pentatonic climbing two octaves with the score
+const PENTA: StaticArray<i32> = [0, 3, 5, 7, 10];
 
 const ST_IDLE: i32 = 0;   // before the first click: the worm idles round the middle, no deaths
 const ST_PLAY: i32 = 1;
@@ -107,6 +110,9 @@ export class Game {
     dErrZ: f64 = 0;
     dGoal: i32 = -1;
 
+    // sound only (never read by the game): beads gone out so far while dying
+    dieSnd: f64 = 0;
+
     start(api: GameApi): void {
         api.playable = true;
         this.head = api.bone("head");
@@ -190,6 +196,10 @@ export class Game {
         this.state = ST_DIE;
         this.stateT = 0;
         this.cause = cause;
+        this.dieSnd = 0;
+        // a dull knock, a low bell
+        api.soundAt(SFX_HIT, this.hx, 0.3, this.hz, 0.5, 0.75);
+        api.note(45, 0.6, 0, SFX_BELL);
         this.shakeT = 0.35;
         this.burst(api, this.hx, 0.3, this.hz, 6);
         if (this.score > this.best) {
@@ -230,6 +240,11 @@ export class Game {
         if (this.state == ST_DIE && this.stateT > 1.6) {
             this.state = ST_OVER;
             this.stateT = 0;
+            api.sound(SFX_LOSE, 0.6, 0.6);
+        }
+        // the crawl: a soft tick every 30 frames, quicker in pitch as the worm speeds up
+        if (this.state == ST_PLAY && api.frame % 30 == 0) {
+            api.soundAt(SFX_TICK, this.hx, 0, this.hz, 0.3 + 0.1 * this.speed, 0.4);
         }
         if (this.state == ST_OVER && api.demo && this.stateT > 2.0) {
             this.resetWorld(api, true);
@@ -337,6 +352,14 @@ export class Game {
         this.gT[g] = 0;
         this.score += 1;
         this.gulpT = 0.3;
+        // a gulp and a bell up the pentatonic with the score; every tenth, the octave rings with it
+        let n = (this.score - 1) % 10;
+        let midi = 69 + PENTA[n % 5] + 12 * (n / 5);
+        api.soundAt(SFX_POP, this.gX[g], 0.4, this.gZ[g], 0.8, 0.5);
+        api.soundAt(SFX_BELL, this.gX[g], 0.4, this.gZ[g], Math.pow(2.0, <f64>(midi - 69) / 12.0), 0.6);
+        if (this.score % 10 == 0) {
+            api.note(<f64>(midi + 12), 0.4, 0, SFX_BELL);
+        }
         this.speed = Math.min(3.0, 2.0 + 0.04 * <f64>this.score);
         for (let k = 0; k < 6; k++) {
             if (this.bulge[k] < 0) {
@@ -367,6 +390,8 @@ export class Game {
                     if (this.len < NSEG && this.state == ST_PLAY) {
                         this.len += 1;
                         this.growT = 0;
+                        // the tail grows a bead: a soft low plip
+                        api.soundAt(SFX_POP, this.segX[this.len - 2], 0, this.segZ[this.len - 2], 0.55, 0.4);
                     }
                 }
             }
@@ -410,6 +435,14 @@ export class Game {
         let popRate = 26.0;
         if (dying) {
             this.dieK = (this.stateT - 0.35) * popRate;
+            // the light goes out bead by bead: a falling pop for every fourth bead
+            while (this.dieSnd < this.dieK && this.dieSnd < <f64>this.len) {
+                let i = <i32>this.dieSnd;
+                if (i % 4 == 0 && this.state == ST_DIE) {
+                    api.soundAt(SFX_POP, this.segX[i], 0, this.segZ[i], Math.max(0.35, 1.1 - 0.02 * <f64>i), 0.4);
+                }
+                this.dieSnd += 1.0;
+            }
         }
         for (let i = 0; i < NSEG; i++) {
             let b = this.segB[i];
@@ -543,6 +576,8 @@ export class Game {
                             this.spawnT = 0.2;
                         } else {
                             this.spawnT = 0.35;
+                            // a crystal grows: a faint glint
+                            api.soundAt(SFX_TICK, this.gX[g], 0, this.gZ[g], 1.8, 0.4);
                         }
                         break;
                     }
@@ -739,6 +774,11 @@ export class Game {
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
         let hit = api.pick(x, y, 0.2);
         if (kind == POINTER_DOWN) {
+            if (this.state == ST_IDLE || (this.state == ST_OVER && this.stateT > 0.6)) {
+                // a run starts: a low open fifth on bells
+                api.note(57, 0.5, -0.2, SFX_BELL);
+                api.note(64, 0.4, 0.2, SFX_BELL);
+            }
             if (this.state == ST_IDLE) {
                 this.beginRun();
             } else if (this.state == ST_OVER && this.stateT > 0.6) {

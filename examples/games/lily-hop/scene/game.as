@@ -2,7 +2,13 @@
 // Rows: 0 the near bank, 1..5 lanes of pads drifting left or right, 6 the far bank. Each hop that lands
 // on a pad scores 1, each bank reached scores 5 more and turns the frog round; the lanes speed up.
 // Missing a pad, or riding one into the reeds at the pond's sides, is a splash: game over.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_JUMP, SFX_POP, SFX_NOTE, SFX_THUD, SFX_POWERUP, SFX_COIN, SFX_BELL, SFX_SPLASH,
+         SFX_LOSE, SFX_WIN, SFX_WHOOSH, SFX_BLIP } from "./game_api";
+
+// sound: a springy hop, then a soft plop on a pad with a plucked note that climbs a pentatonic
+// scale lane by lane across the pond (a step higher each crossing); a bank lands with a thud and a
+// rising arpeggio; a firefly chimes; a miss is a splash and a falling tune (the reeds rustle first).
+const PENTA: StaticArray<i32> = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21, 24];
 
 const LANES: i32 = 5;
 const PER_LANE: i32 = 4;
@@ -180,6 +186,7 @@ export class Game {
             if (this.state == HOP || this.state == CROUCH) this.queued = true;
             return;
         }
+        if (this.state == READY) api.sound(SFX_WIN, 1.2, 0.45);
         this.state = CROUCH;
         this.stateT = 0;
         this.queued = false;
@@ -207,6 +214,8 @@ export class Game {
             this.crossings++;
             this.score += 5;
             this.pop(this.x, BANK_Y + 1.0, this.z, "+5 CROSSED!");
+            api.soundAt(SFX_THUD, this.x, BANK_Y, this.z, 1.6, 0.6);
+            api.sound(SFX_POWERUP, Math.pow(2, <f64>min<i32>(this.crossings - 1, 7) / 12), 0.8);
             this.dir = -this.dir;
             this.yawFrom = this.yaw;
             this.turnT = 0;
@@ -230,15 +239,22 @@ export class Game {
             this.stateT = 0;
             this.score += 1;
             this.pop(this.x, PAD_TOP + 0.9, this.z, "+1");
+            let step = (this.dir > 0 ? next : 6 - next) - 1 + min<i32>(this.crossings, 5);
+            api.soundAt(SFX_POP, this.x, PAD_TOP, this.z, 0.55, 0.8);
+            api.note(<f64>(62 + PENTA[min<i32>(step, PENTA.length - 1)]), 0.55, 0, SFX_NOTE);
             this.rippleT = 0; this.rippleX = this.padX[bestK]; this.rippleZ = this.z; this.rippleY = 0.0;
             if (this.flyAlive && this.flyLane == next && Math.abs(this.flyPos(api.time) - this.x) < 0.95) {
                 this.flyAlive = false;
                 this.flyT = 0;
                 this.score += 3;
                 this.pop(this.x, PAD_TOP + 1.5, this.z, "+3 FIREFLY");
+                api.soundAt(SFX_COIN, this.x, PAD_TOP + 1.0, this.z, 1.5, 0.7);
+                api.note(91, 0.5, 0, SFX_BELL);
             }
         } else {
             this.splashDown("SPLASH!");
+            api.soundAt(SFX_SPLASH, this.x, 0, this.z, 0.8, 1.0);
+            api.sound(SFX_LOSE, 1.0, 0.6);
         }
     }
 
@@ -287,7 +303,10 @@ export class Game {
         this.turnT += dt;
         if (this.state == CROUCH) {
             if (this.pad >= 0) this.x = this.padX[this.pad] + this.padOff;
-            if (this.stateT >= CROUCH_T) this.takeOff();
+            if (this.stateT >= CROUCH_T) {
+                this.takeOff();
+                api.soundAt(SFX_JUMP, this.x, this.y, this.z, 1.0 + 0.03 * <f64>min<i32>(this.crossings, 8), 0.7);
+            }
         } else if (this.state == HOP) {
             let u = Math.min(this.stateT / HOP_T, 1);
             this.z = this.hopZ0 + (this.hopZ1 - this.hopZ0) * u;
@@ -301,7 +320,12 @@ export class Game {
         } else if (this.state == SIT) {
             if (this.pad >= 0) {
                 this.x = this.padX[this.pad] + this.padOff;
-                if (Math.abs(this.x) > EDGE) this.splashDown("INTO THE REEDS!");
+                if (Math.abs(this.x) > EDGE) {
+                    this.splashDown("INTO THE REEDS!");
+                    api.soundAt(SFX_WHOOSH, this.x, 0, this.z, 1.6, 0.8);
+                    api.soundAt(SFX_SPLASH, this.x, 0, this.z, 0.8, 1.0);
+                    api.sound(SFX_LOSE, 1.0, 0.6);
+                }
             }
             if (this.queued && this.stateT > 0.06) this.hop(api);
         } else if (this.state == SINK) {
@@ -376,7 +400,10 @@ export class Game {
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
         if (kind != POINTER_DOWN) return true;
         if (this.state == OVER) {
-            if (this.stateT > 0.5) this.newRun(api);
+            if (this.stateT > 0.5) {
+                this.newRun(api);
+                api.sound(SFX_BLIP, 1.0, 0.6);
+            }
             return true;
         }
         if (this.state == SINK) return true;

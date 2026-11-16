@@ -64,7 +64,8 @@ specks (true: its parts are particles, tiny on purpose: no "specks" warning), an
 
 Without "ramp" a material's colour picks the nearest colour that belongs to any ramp.
 
-Blob layout (little endian), read by assets/template/splat_scene.as:
+Blob layout (little endian; the bake assembles this v2 layout and writes it as v3, 16 bytes a
+splat: see upgrade_blob; `splat_bake.py --upgrade <bin>...` converts older blobs in place):
   0   'SPLT' u32 version u32 count u32 stride u32
   16  bounds min f32x3, max f32x3 (over the animation), spacing f32, palette count u32, ramp count u32
   52  roles u8 x4 (sky_top, sky_bottom, fog, void; 255 = unset)
@@ -72,8 +73,8 @@ Blob layout (little endian), read by assets/template/splat_scene.as:
   320 ramps 32 x 8 palette indices (u8)
   576 ramp lengths 32 x u8
   56  bone count u32 (bone 0 = identity), track count u32
-  608 track table offset u32, bone data bytes u32
-  612 bone name table offset u32 (0: none), named bone count u32
+  608 track table offset u32
+  612 bone name table offset u32 (0: none), named bone count u32 (616)
   then (after the track frames) the name table: per named bone u8 bone index, u8 name length,
       the name (ascii), rest position f32x3, rest yaw f32 (degrees)
   640 splats, 32 bytes each: position f32x3 | normal snorm8x4 | ramp u8, step u8, flags u8, 0 | sigma f32
@@ -97,8 +98,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from splatlib import MAX_COLORS, MAX_RAMPS, MAX_STEPS, Palette  # noqa: E402
 
 FLAG_BITS = {"unlit": 1, "double": 2, "sway": 4, "nocast": 8, "fx": 16}
-HEADER = 640
+HEADER = 640      # the v2 layout the bake assembles; written out as v3 by upgrade_blob
 STRIDE = 32
+HEADER3 = 672     # v3: the v2 header + a 32-byte dequantization block
+STRIDE3 = 16
 MAX_BONES = 64
 
 # ---------------------------------------------------------------- glTF
@@ -705,18 +708,87 @@ def write_blob(out, pal, p, n, info, sigma, joints, weights, tracks, bone_count,
         off += len(names)
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
     with open(out, "wb") as f:
-        f.write(head)
-        f.write(rec.tobytes())
-        f.write(table)
-        for b in blobs:
-            f.write(b)
-        f.write(names)
+        f.write(upgrade_blob(bytes(head) + rec.tobytes() + bytes(table) + b"".join(blobs) + bytes(names)))
     return off, world
+
+
+def upgrade_blob(data):
+    """A v2 blob (32 bytes a splat) as v3 (16 bytes a splat), the format the renderer reads.
+
+    v3 splat, 16 bytes: x, y, z u16 (quantized over the splats' own box), then sigma u8 | ramp u8 << 8
+    (sigma quantized over its range) | octahedral normal u16 x2 | step | flags << 3, joint 0, joint 1,
+    weight 0 (weight 1 = 1 - weight 0; a splat with more bones keeps its two strongest). Header: the v2
+    header (version 3, stride 16), then at 640: box min f32x3, box step f32x3, sigma min f32, sigma
+    step f32; splats start at 672. Every absolute offset into the data after the splats moves with
+    them. A v3 blob comes back unchanged."""
+    head = bytearray(data[:HEADER])
+    version = struct.unpack_from("<I", head, 4)[0]
+    if version == 3:
+        return data
+    assert version == 2, f"blob version {version}"
+    count = struct.unpack_from("<I", head, 8)[0]
+    rec = np.frombuffer(data[HEADER:HEADER + count * STRIDE],
+                        dtype=[("p", "<f4", 3), ("n", "i1", 4), ("info", "u1", 4), ("sigma", "<f4"),
+                               ("j", "u1", 4), ("w", "u1", 4)])
+    tail = data[HEADER + count * STRIDE:]
+    p = rec["p"].astype(np.float64)
+    lo = p.min(0) if count else np.zeros(3)
+    hi = p.max(0) if count else np.ones(3)
+    step = np.maximum(hi - lo, 1e-6) / 65535.0
+    q = np.clip(np.round((p - lo) / step), 0, 65535).astype(np.uint32)
+    sg = rec["sigma"].astype(np.float64)
+    smin, smax = (float(sg.min()), float(sg.max())) if count else (0.0, 1.0)
+    sstep = max(smax - smin, 1e-9) / 255.0
+    sq = np.clip(np.round((sg - smin) / sstep), 0, 255).astype(np.uint32)
+    # octahedral normal (z-major)
+    n = rec["n"][:, :3].astype(np.float64) / 127.0
+    n = n / np.maximum(np.abs(n).sum(1, keepdims=True), 1e-9)
+    ox, oy = n[:, 0].copy(), n[:, 1].copy()
+    neg = n[:, 2] < 0
+    sx = np.where(ox >= 0, 1.0, -1.0)
+    sy = np.where(oy >= 0, 1.0, -1.0)
+    ox[neg], oy[neg] = ((1 - np.abs(n[neg, 1])) * sx[neg], (1 - np.abs(n[neg, 0])) * sy[neg])
+    oct16 = np.clip(np.round((np.stack([ox, oy], 1) * 0.5 + 0.5) * 65535), 0, 65535).astype(np.uint32)
+    # the two strongest bones
+    w = rec["w"].astype(np.float64)
+    order = np.argsort(-w, 1, kind="stable")[:, :2]
+    rows = np.arange(count)[:, None]
+    j2 = rec["j"][rows, order]
+    w2 = w[rows, order]
+    tot = np.maximum(w2.sum(1), 1e-9)
+    w0 = np.clip(np.round(w2[:, 0] / tot * 255), 0, 255).astype(np.uint32)
+    ramp, stp, flags = rec["info"][:, 0], rec["info"][:, 1], rec["info"][:, 2]
+    out = np.zeros(count, dtype=[("q", "<u2", 4), ("n", "<u2", 2), ("b", "u1", 4)])
+    out["q"][:, :3] = q
+    out["q"][:, 3] = sq | (ramp.astype(np.uint32) << 8)
+    out["n"] = oct16
+    out["b"][:, 0] = (stp & 7) | ((flags & 31) << 3)
+    out["b"][:, 1] = j2[:, 0]
+    out["b"][:, 2] = j2[:, 1]
+    out["b"][:, 3] = w0
+    shift = (HEADER3 + count * STRIDE3) - (HEADER + count * STRIDE)
+    struct.pack_into("<I", head, 4, 3)
+    struct.pack_into("<I", head, 12, STRIDE3)
+    table_at, = struct.unpack_from("<I", head, 608)
+    tracks, = struct.unpack_from("<I", head, 60)
+    names_at, = struct.unpack_from("<I", head, 612)
+    named, = struct.unpack_from("<I", head, 616)
+    tail = bytearray(tail)
+    for t in range(tracks):  # each track's frame data offset (absolute)
+        at = table_at - (HEADER + count * STRIDE) + t * 32 + 20
+        off, = struct.unpack_from("<I", tail, at)
+        struct.pack_into("<I", tail, at, off + shift)
+    struct.pack_into("<I", head, 608, table_at + shift)
+    if named:
+        struct.pack_into("<I", head, 612, names_at + shift)
+    quant = struct.pack("<8f", *lo, *step, smin, sstep)
+    return bytes(head) + quant + out.tobytes() + bytes(tail)
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("input", help="a .bake.json scene, or one .glb")
+    ap.add_argument("input", nargs="?", help="a .bake.json scene, or one .glb")
+    ap.add_argument("--upgrade", nargs="+", metavar="BIN", help="rewrite v2 blobs as v3 in place, and stop")
     ap.add_argument("-p", "--palette")
     ap.add_argument("-o", "--out")
     ap.add_argument("--spacing", type=float)
@@ -724,6 +796,14 @@ def main():
     ap.add_argument("--seed", type=int)
     ap.add_argument("--ramp", action="append", default=[], help="MATERIAL=ramp (single-model mode)")
     a = ap.parse_args()
+    if a.upgrade:
+        for b in a.upgrade:
+            data = open(b, "rb").read()
+            new = upgrade_blob(data)
+            if new is not data:
+                open(b, "wb").write(new)
+            print(f"{b}: {len(data) / 1024:.0f} KiB -> {len(new) / 1024:.0f} KiB")
+        return
     if a.input.endswith(".json"):
         cfg = json.load(open(a.input))
         base = os.path.dirname(os.path.abspath(a.input))

@@ -2,7 +2,11 @@
 // when it flattens a snowman (points, and a combo for quick ones); a pine knocks a third of it off.
 // Too small after a crash and it bursts: game over. One verb (move the pointer), one world.
 // Demo mode (api.demo) skis itself like a decent player, with the odd pine.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_WHOOSH, SFX_BELL, SFX_CLICK, SFX_JUMP, SFX_POP, SFX_NOTE, SFX_HIT,
+    SFX_THUD, SFX_BLIP, SFX_EXPLODE, SFX_LOSE } from "./game_api";
+
+// a snowman combo climbs a major arpeggio
+const COMBO_NOTE: StaticArray<f64> = [72, 76, 79, 84];
 
 const BALL_Z: f64 = 3.4;      // the snowball's centre, metres towards the camera
 const SPAWN_Z: f64 = -12.6;   // obstacles come up at the piste's far edge (in the fog)
@@ -166,6 +170,11 @@ export class Game {
     popZ: f64 = 0;
     flash: f64 = 9;           // seconds since a pine hit (the size line blinks)
 
+    // sound
+    crunchIn: i32 = 0;        // frames to the next crunch of the rolling ball
+    hopping: bool = false;    // over a mound this frame
+    nextMark: f64 = 100;      // the next 100 m marker
+
     wasDemo: bool = false;
     demoT: f64 = 0;
     demoAim: f64 = 0;
@@ -211,6 +220,7 @@ export class Game {
         this.inv = 0;
         this.popT = 9;
         this.flash = 9;
+        this.nextMark = 100;
         for (let i = 0; i < NT; i++) { this.tOn[i] = false; api.hide(this.tree[i]); }
         for (let i = 0; i < NS; i++) { this.sOn[i] = false; api.hide(this.man[i]); }
         for (let i = 0; i < NM; i++) { this.mOn[i] = false; api.hide(this.mound[i]); }
@@ -362,6 +372,18 @@ export class Game {
         }
         if (this.mode == RUN) {
             this.score = <i32>Math.floor(this.dist) + this.bonus;
+            // the roll: a soft crunch of snow, quicker as the ball speeds up, lower as it grows
+            this.crunchIn--;
+            if (this.crunchIn <= 0) {
+                api.soundAt(SFX_CLICK, this.bx, 0.1, BALL_Z, 0.16 - 0.06 * (this.r - R0), 0.45);
+                this.crunchIn = max<i32>(7, <i32>(24.0 - this.speed * 1.3));
+            }
+            // every 100 m: a bell, a step higher each time
+            if (this.dist >= this.nextMark) {
+                let k = <i32>(this.nextMark / 100);
+                api.note(<f64>(79 + 2 * min<i32>(k - 1, 6)), 0.5, 0, SFX_BELL);
+                this.nextMark += 100;
+            }
         }
         this.inv = Math.max(0, this.inv - dt);
         this.squash = Math.max(0, this.squash - dt * 3.5);
@@ -403,6 +425,12 @@ export class Game {
                 this.hop = Math.max(this.hop, 0.32 * (1 - ddz / 0.7));
             }
         }
+        // over a mound: a little hop
+        let hopNow = this.hop > 0.05 && this.mode == RUN;
+        if (hopNow && !this.hopping) {
+            api.soundAt(SFX_JUMP, this.bx, this.r, BALL_Z, 0.55, 0.45);
+        }
+        this.hopping = hopNow;
         for (let i = 0; i < NR; i++) {
             if (!this.rOn[i]) continue;
             this.rZ[i] += dz;
@@ -451,8 +479,15 @@ export class Game {
             this.throwChunk(api, this.bx, this.r, BALL_Z, api.range(-3, 3), api.range(2.5, 5), api.range(0.5, 3.5), this.r * 0.9);
         }
         this.r *= HIT;
+        // a pine: a crunchy hit and a thud, deeper for a bigger ball
+        api.soundAt(SFX_HIT, this.tX[i], 1.0, this.tZ[i], 0.8, 0.8);
+        api.soundAt(SFX_THUD, this.bx, this.r, BALL_Z, 1.5 - 0.6 * this.r, 0.7);
         if (this.r < R_MIN) {
             this.burst(api);
+        } else if (this.r * HIT < R_MIN) {
+            // one more pine bursts it: a low two-note warning
+            api.note(57, 0.6, 0, SFX_NOTE);
+            api.sound(SFX_BLIP, 0.5, 0.5);
         }
     }
 
@@ -461,6 +496,8 @@ export class Game {
         this.t = 0;
         this.shake = 0.8;
         if (this.score > this.best) this.best = this.score;
+        api.soundAt(SFX_EXPLODE, this.bx, this.r, BALL_Z, 1.2, 0.85);
+        api.sound(SFX_LOSE, 1.0, 0.6);
         for (let k = 0; k < NC; k++) {
             this.throwChunk(api, this.bx, this.r, BALL_Z, api.range(-4, 4), api.range(3, 6), api.range(-1, 4), 0.9);
         }
@@ -483,6 +520,9 @@ export class Game {
         this.r = Math.min(R_MAX, this.r + 0.05);
         this.squash = 0.6;
         this.shake = 0.15;
+        // a snowman flattened: a pop and a note, climbing with the combo
+        api.soundAt(SFX_POP, this.sX[i], 1.0, this.sZ[i], 0.8 + 0.2 * <f64>this.combo, 0.8);
+        api.note(COMBO_NOTE[this.combo], 0.55, 0, this.combo > 0 ? SFX_BELL : SFX_NOTE);
         this.popText = "+" + pts.toString() + (this.combo > 0 ? " X" + (this.combo + 1).toString() : "");
         this.popT = 0;
         this.popX = this.sX[i];
@@ -678,12 +718,21 @@ export class Game {
                 this.mode = RUN;
                 this.t = 0;
                 this.squash = 0.8;   // the push-off
+                this.pushOff(api);
             } else if (this.mode == OVER && this.t > 0.7) {
                 this.newRun(api, RUN);
                 this.squash = 0.8;
+                this.pushOff(api);
             }
         }
         return true;
+    }
+
+    // a run starts: a whoosh down the slope and a bright bell
+    pushOff(api: GameApi): void {
+        api.sound(SFX_WHOOSH, 0.6, 0.7);
+        api.note(84, 0.45, 0, SFX_BELL);
+        this.crunchIn = 12;
     }
 
     hud(api: GameApi): void {

@@ -24,6 +24,12 @@ time the one nearest its last click, to keep a chain), needs a second to notice 
 between clicks and aims a few pixels off (some clicks miss and break the chain). A cross marks where it
 clicked. It lights the first lantern at 0.75 s, runs about 48 s, and starts again 2 s after the game-over line.
 
+Sound (procedural, `api.sound`; silent in demo): bells on a quiet night. A soft jingle starts a run; a lit
+lantern chimes a bell (over a paper pop) that climbs a pentatonic scale with the chain, with an octave chord
+at x8; a launch is a low plop on the water; a click on empty sky a dry tick, and a low pluck if it broke a
+chain; a dark lantern lost into the sky a gust and a low bell (lower with each flame); the river going dark
+a falling tune.
+
 ```
 art/palette.json, palette.png   Midnight Ablaze with its ramps and roles
 art/assets.md                   the asset list, the art grid, the play area

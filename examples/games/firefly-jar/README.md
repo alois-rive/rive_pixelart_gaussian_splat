@@ -18,6 +18,12 @@ three fireflies escape from the jar (-3) and knocks the net aside for a moment. 
 seconds; "TIME!" shows the jar's count and the session's best; the next click starts again (the jar's
 fireflies fly off first). Pointer only.
 
+Sound (procedural, `sfx.as`; silent in demo mode): a run opens on a soft bell fifth; a catch pops
+where the net is, and the firefly reaching the jar rings a bell that climbs a major pentatonic with
+the jar's count (two octaves, then round again), with a sparkle every tenth. A new moth flutters in
+low; a moth on the net knocks and the escaping fireflies whoosh out of the jar. The last ten seconds
+tick (higher for the last three); TIME! plays a fanfare, with a sparkle for a new best.
+
 Demo mode (`--arg demo=true`, or the `Sample` view model's `demo`): it opens with the net already
 sweeping into a line of fireflies (a catch within the first second); it chases the nearest firefly not
 next to a moth, aims a little off, moves at a hand's speed, sidesteps moths that come close (not

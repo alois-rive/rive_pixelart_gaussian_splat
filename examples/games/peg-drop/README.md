@@ -29,6 +29,14 @@ dither, ink 1.
   session's best; the next click empties the cups (the coins drop through the tray) and starts a new run.
 - A run lasts 15 to 30 seconds.
 
+**Sound** (`sfx.as`, silent in demo mode): a start arpeggio; a drop is the latch's click and a pop, and
+a click when the dropper has wound up again; each peg knock is a quiet pluck tuned by the peg's row (a
+pentatonic scale from high at the top to low at the bottom, panned where it rattles; at most one knock
+per coin every 5 frames and one per board every 3), a bonk off the pendulum's bob, a tick off the hub
+and the dividers; a cup rings by its value (a coin and a bell, 10 low to 100 high, a fifth more when
+doubled, an arpeggio on 100 or more); the escapement ticks and tocks quietly through a run; GAME OVER
+is a bright arpeggio for a new best, else a soft bell chord; a new run drains the cups with a whoosh.
+
 **Demo** (`--arg demo=true`, or the gallery's `Sample.demo`): the dropper sets off at once and drops its
 first coin within half a second. For each coin the demo player picks a plan (half the time the
 jackpot, a third the lit cup, otherwise a whim) with a little aim error, waits a moment, and before a

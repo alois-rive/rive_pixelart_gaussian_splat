@@ -17,6 +17,12 @@ fish, and the next click starts a new run on the same ice. Score = metres slid +
 score is kept for the session. The speed rises from 4 to 8.5 m/s, the holes widen with it and the
 seals come more often, so every run gets harder until it ends.
 
+Sound (`sfx.as`, silent in demo mode): a start arpeggio and a push-off whoosh; each jump a hop (a little
+higher as the run speeds up), each landing a soft belly thud with a crunch of snow; a fish is a coin a
+semitone higher for each fish of the run (an octave at most); every 50 m a bell, a step higher each
+time; sliding off an edge a falling "uh-oh", then SPLASH! into the sea; a seal is a BONK! and a thud as
+the penguin lands on its back; a game over plays the falling arpeggio, with a high bell for a new best.
+
 Demo mode (`--arg demo=true`, the gallery's `demo`): the penguin plays itself from frame 0 (the first
 hole comes up at once: a jump with a fish at about 0.6 s, a seal hopped at 2.8 s). It plans each jump
 from the hole's or seal's take-off window like a player, aims a little late with an error that grows

@@ -28,6 +28,14 @@ view, `orthoHeight` 10, `pixelSize` 3 (texel 0.0735 m), one sun from the upper l
   shrink (1.1 m outside the orbit down to 0.6 m): the launch window narrows.
 - Game over shows the score and the session's best; the next click starts a new run from the home planet.
 
+**Sound** (`sfx.as`, silent in demo mode): the first click plays a start arpeggio; each launch is a
+whoosh with an engine zap (a little higher as the orbits speed up); a capture rings the planet's own
+chime, a bell and a pluck a fifth up (meadow C, dune D, ice G, mushroom E, lava low G, giant low D; an
+octave up and an arpeggio on a SKIP); a star is a coin a semitone higher for each star of the run; a
+decaying orbit beeps with the `!` (every half second, then twice as fast past 60 %, rising); a crash
+explodes, every game over falls (lower when lost in space), with a high bell for a new best; a new run
+returns home on two soft notes.
+
 **Demo** (`--arg demo=true`, or the gallery's `Sample.demo`): the run starts in orbit with the launch
 window half a second away. Each frame the demo pilot looks ahead along the tangent (the same pull as the
 game) and lets go once the path would pass within a fraction of the next ring chosen per orbit (most

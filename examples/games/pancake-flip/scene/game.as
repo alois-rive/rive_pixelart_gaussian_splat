@@ -2,7 +2,8 @@
 // browned to burnt. Click a pan to flip its pancake: golden is perfect (+3), browned is fine (+1),
 // raw flops (0). A pancake left to burn is a strike; three strikes and the kitchen closes. Served
 // pancakes stack up on the plate. Pointer only; a run starts on the first click; demo plays itself.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BELL, SFX_BLIP, SFX_COIN, SFX_EXPLODE, SFX_HIT, SFX_LOSE, SFX_NOTE, SFX_POP, SFX_SPLASH,
+    SFX_THUD, SFX_TICK, SFX_WHOOSH, SFX_WIN } from "./game_api";
 
 const ST_IDLE: i32 = 0;
 const ST_PLAY: i32 = 1;
@@ -94,6 +95,10 @@ export class Game {
     camTX: f64 = 0;
     texel: f64 = 0.03;
     demoNext: f64 = 0;      // the demo's hand needs a moment between clicks
+
+    // sound (decided from the game's state only, never from api.rand)
+    cue: StaticArray<i32> = new StaticArray<i32>(NPAN);      // the look last heard per pan
+    streak: i32 = 0;        // perfect flips in a row (the chime climbs)
 
     start(api: GameApi): void {
         api.playable = true;
@@ -291,6 +296,10 @@ export class Game {
                 this.pState[i] = P_POUR;
                 this.pT[i] = 0;
                 this.newCake(api, i);
+                this.cue[i] = L_RAW;
+                if (this.state == ST_PLAY) {
+                    api.soundAt(SFX_POP, x, CAKE_Y, 0, 0.42, 0.6);  // a blop of batter
+                }
             }
         } else if (st == P_POUR) {
             // a blob of batter spreads out (stepped)
@@ -307,6 +316,15 @@ export class Game {
             }
             let c = this.pCook[i];
             let look = this.lookAt(i, c);
+            if (look != this.cue[i] && playing) {
+                if (look == L_GOLD) {
+                    // golden: a ding, its own note per pan (C, E, G left to right)
+                    api.soundAt(SFX_NOTE, x, CAKE_Y, 0, Math.pow(2, (<f64>(i == 0 ? 72 : (i == 1 ? 76 : 79)) - 69) / 12), 0.65);
+                } else if (look == L_DARK) {
+                    api.soundAt(SFX_SPLASH, x, CAKE_Y, 0, 1.4, 0.45);   // browning: a hiss
+                }
+            }
+            this.cue[i] = look;
             // sizzle: the cake breathes a little, browned ones smoke as a warning
             let breathe = Math.floor(api.time * 6 + <f64>i) % 2 == 0 ? 1.0 : 1.03;
             this.showLook(api, i, look, x, CAKE_Y, 0, 0, breathe, 2.0 - breathe);
@@ -369,6 +387,7 @@ export class Game {
                 this.hideLooks(api, i);
                 this.served++;
                 this.stackPop = 0.2;
+                api.soundAt(SFX_POP, PLATE_X, top, PLATE_Z, 0.8 + <f64>min<i32>(this.served, 12) * 0.05, 0.55);
                 this.pState[i] = P_EMPTY;
                 this.pT[i] = 0;
             }
@@ -390,19 +409,31 @@ export class Game {
         let st = this.pState[i];
         if (st != P_COOK) {
             this.pWob[i] = 0.3;
+            api.soundAt(SFX_TICK, this.px[i], PAN_Y, 0, 0.4, 0.6);   // a tink on an empty pan
             return;
         }
         let look = this.lookAt(i, this.pCook[i]);
         this.pLook[i] = look;
         this.pState[i] = P_FLIP;
         this.pT[i] = 0;
+        api.soundAt(SFX_WHOOSH, this.px[i], 0.6, 0, 1.0, 0.7);
     }
 
     landed(api: GameApi, i: i32): void {
         let look = this.pLook[i];
         let x = this.px[i];
         this.pT[i] = 0;
+        if (look != L_GOLD) {
+            this.streak = 0;
+        }
+        if (look == L_GOLD || look == L_DARK) {
+            api.soundAt(SFX_THUD, x, CAKE_Y, 0, 2.2, 0.5);     // a soft landing in the pan
+        }
         if (look == L_GOLD) {
+            // PERFECT: a chime two semitones higher for each perfect in a row (up to an octave and a half)
+            this.streak++;
+            let semi = <f64>min<i32>(this.streak - 1, 9) * 2;
+            api.soundAt(SFX_COIN, x, 0.5, 0, Math.pow(2, semi / 12) * 0.9, 0.8);
             this.score += 3;
             this.pState[i] = P_SERVE;
             this.burst(api, x);
@@ -411,9 +442,12 @@ export class Game {
             this.score += 1;
             this.pState[i] = P_SERVE;
             this.pop(api, x, "OK", C_MAUVE);
+            api.soundAt(SFX_BLIP, x, 0.5, 0, 0.6, 0.6);
         } else if (look == L_RAW) {
             this.pState[i] = P_FLOP;
             this.pop(api, x, "RAW!", C_MAUVE);
+            api.soundAt(SFX_SPLASH, x, CAKE_Y, 0, 0.35, 0.65);   // a wet flop
+            api.soundAt(SFX_NOTE, x, CAKE_Y, 0, Math.pow(2, (45.0 - 69) / 12), 0.6);
         } else {
             this.pState[i] = P_FLOP;
             this.puff(api, x, 1.0);
@@ -429,8 +463,16 @@ export class Game {
         this.strikes++;
         this.flashT = 0.6;
         this.shakeT = 0.25;
+        // a strike: a crunch, lower with each one, and a poof of smoke
+        api.soundAt(SFX_HIT, this.px[i], 0.3, 0, 1.0 - <f64>this.strikes * 0.12, 0.8);
+        api.soundAt(SFX_EXPLODE, this.px[i], 0.3, 0, 1.6, 0.4);
         if (this.strikes >= 3) {
+            let record = this.score > this.best;
             this.endRun();
+            api.sound(SFX_LOSE, 1.0, 0.85);
+            if (record) {
+                api.note(84, 0.5, 0, SFX_BELL);   // a new best
+            }
         }
     }
 
@@ -593,11 +635,15 @@ export class Game {
         if (this.state == ST_OVER) {
             if (this.stateT > 0.8) {
                 this.beginRun(api);
+                this.streak = 0;
+                api.sound(SFX_WIN, 1.2, 0.6);
             }
             return true;
         }
         if (this.state == ST_IDLE) {
             this.beginRun(api);
+            this.streak = 0;
+            api.sound(SFX_WIN, 1.2, 0.6);
         }
         let i = this.panAt(api, x, y);
         if (i >= 0) {

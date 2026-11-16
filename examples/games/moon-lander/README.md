@@ -28,6 +28,14 @@ error, small most of the time and big about one time in six, so it lands four to
 misses or runs dry (a run of 30 to 50 s); it is descending with the flame lit from frame 0 and
 restarts 2 s after a crash. When demo turns off, a fresh run waits for the first press.
 
+Sound (`sfx.as` presets, silent in demo; the idle hover before the first press is quiet too): a rising
+arpeggio as the first press starts the run; the jet lights with a whoosh, then crackles every 6
+frames and breathes every 24 while held; fuel alarms blip at 30, 20 and 10 % and the tank sputters
+dry; a touchdown clunks (heavier the harder) and plays a three-note jingle, a semitone higher each
+landing of the run: a major arpeggio and a high note for FEATHER or BULLSEYE, a smaller step for NICE,
+a flat fall for BUMPY; lift-off whooshes and the pad pops up round the moon; a crash bursts, debris
+clinks on the moon, then a falling sting.
+
 ```
 art/palette.json, palette.png   Nyx8, ramps rock, dust, foil, cabin, metal, glass, flame, planet, star
 art/assets.md                   the asset list, bones, layout

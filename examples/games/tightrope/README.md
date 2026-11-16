@@ -18,6 +18,12 @@ the river. Score: the metres he walked plus 10 for each crossing (a cheer and a 
 platform); the gusts grow stronger and more frequent with every crossing. "HE FELL!" ends the run;
 the next click starts again on the first platform. Pointer only.
 
+Sound (`sfx.as`, silent in demo mode): a little four-note circus fanfare starts a run; every step on
+the rope creaks, higher and louder the more he leans, and past half the fall angle warning ticks speed up
+and climb as he tips. A gust is announced by a faint high whoosh from the side it blows from and arrives
+as a big low whoosh (lower and louder for a stronger gust); a crossing is a coin and a bell, both higher
+with every crossing. A fall is a long falling whistle, then a splash and the losing arpeggio.
+
 Demo mode (`--arg demo=true`, or the `Sample` view model's `demo`): it opens mid-rope with a gust
 blowing; a controller that sees his lean 0.2 s late pulls against it (and against a gust it has seen
 coming), at a hand's speed, and looks away for a moment every few seconds (longer as the crossings

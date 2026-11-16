@@ -22,6 +22,14 @@ and the hook waits for a fresh press). Best score for the session. Motion: the w
 wiggle; the rod bends with a fish on; the fisher breathes, hops on a catch, flinches at a snap;
 drops splash where the lure breaks the surface; bubbles rise from two vents and the lure.
 
+Sound (procedural, `sfx.as`; silent in demo mode): the cast whips and rings two calm bells; the
+line paying out ticks softly every 12 frames (lower as it goes deeper), the reel ratchets every 5
+frames (slower and lower with a fish on); the lure plops in and splashes out. A bite tugs (lower for
+a bigger fish); a landed fish chimes a pickup (a power-up for a big one) climbing a whole tone per
+fish since the last snap, and thuds into the basket. A snap stings and whips (lower with each line
+lost); the last ten seconds of the day tick; sunset plays a gentle fanfare, OUT OF LINE the lose
+jingle.
+
 Demo mode (`--arg demo=true`, or the `Sample` view model's `demo`): an angler that picks the fish it
 can reach before the fish crosses the line (valuable ones first), sinks to its depth at the right
 moment, hovers there with taps and reels when it bites; it mostly waits out jellyfish in the line's

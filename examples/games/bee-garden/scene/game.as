@@ -2,7 +2,8 @@
 // pollinate them (hover over one for a moment) before they wilt. A spider guards one flower now
 // and then (worth 3): it lunges when the bee comes close. A wilted flower or a spider bite costs
 // one of three lives. Pointer only; a run starts on the first click; demo mode plays itself.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_JUMP, SFX_TICK, SFX_POP, SFX_COIN, SFX_THUD, SFX_HIT,
+    SFX_CLICK, SFX_WHOOSH, SFX_LOSE, SFX_NOTE, SFX_BELL } from "./game_api";
 
 const ST_IDLE: i32 = 0;
 const ST_PLAY: i32 = 1;
@@ -35,6 +36,10 @@ const C_WHITE: i32 = 3;
 const C_ORANGE: i32 = 4;
 const C_YELLOW: i32 = 5;
 const C_CYAN: i32 = 7;
+
+// sound: each mound's own note (a major pentatonic), and the scale a pollination chain climbs
+const SLOT_NOTE: StaticArray<f64> = [67, 74, 69, 64, 62, 72, 76];
+const PENTA: StaticArray<f64> = [0, 2, 4, 7, 9, 12, 14, 16, 19];
 
 export class Game {
     state: i32 = ST_IDLE;
@@ -119,6 +124,16 @@ export class Game {
     camTY: f64 = 0;
     camTZ: f64 = 0;
 
+    // sound (never decided by a random draw)
+    chain: i32 = 0;           // flowers pollinated in quick succession
+    lastPolT: f64 = -9;       // runT of the last pollination
+    tune: StaticArray<f64> = new StaticArray<f64>(8);
+    tuneN: i32 = 0;
+    tuneI: i32 = 0;
+    tuneAt: i32 = 0;
+    tuneStep: i32 = 6;
+    tuneKind: i32 = SFX_NOTE;
+
     // the demo player
     dThink: f64 = 0;
     dAimX: f64 = 0;
@@ -196,9 +211,32 @@ export class Game {
         this.stateT = 0;
         this.runT = 0;
         this.dThink = 0;
+        this.chain = 0;
+        this.lastPolT = -9;
+        api.sound(SFX_JUMP, 1.3, 0.55);          // the bee lifts off
+        this.playTune(api, [0, 72, 76, 79], 5, SFX_NOTE);
     }
 
-    endRun(): void {
+    playTune(api: GameApi, notes: Array<f64>, step: i32, kind: i32): void {
+        this.tuneN = min<i32>(notes.length, 8);
+        for (let i = 0; i < this.tuneN; i++) this.tune[i] = notes[i];
+        this.tuneI = 0;
+        this.tuneAt = api.frame;
+        this.tuneStep = step;
+        this.tuneKind = kind;
+    }
+
+    tuneTick(api: GameApi): void {
+        if (this.tuneI < this.tuneN && api.frame >= this.tuneAt) {
+            let m = this.tune[this.tuneI];
+            if (m > 0) api.note(m, 0.6, 0, this.tuneKind);
+            this.tuneI++;
+            this.tuneAt = api.frame + this.tuneStep;
+        }
+    }
+
+    endRun(api: GameApi): void {
+        api.sound(SFX_LOSE, 1.0, 0.75);
         this.state = ST_OVER;
         this.stateT = 0;
         this.fallT = 0.001;
@@ -250,6 +288,7 @@ export class Game {
         this.updateSpider(api, dt);
         this.updateSparks(api, dt);
         this.updateWilts(api, dt);
+        this.tuneTick(api);
         // camera shake: a stepped offset of the target (whole art pixels after the snap)
         if (this.shakeT > 0) {
             this.shakeT -= dt;
@@ -299,6 +338,9 @@ export class Game {
                     }
                     let life = 7.5 - 4.0 * d + api.range(-0.4, 0.6);
                     this.bloom(api, i, life);
+                    // a flower opens: a soft pluck, each mound its own note
+                    api.soundAt(SFX_POP, this.sx[i], 0.5, this.sz[i], 0.7, 0.4);
+                    api.note(SLOT_NOTE[i], 0.4, 0, SFX_NOTE);
                     if (this.guarded < 0 && this.runT > 3.0 && api.rand() < 0.6) {
                         this.guarded = i;
                         this.sLife[i] = life * 1.35;
@@ -330,6 +372,8 @@ export class Game {
                     // pollination: the bee hovers over the head
                     let dx = this.bx - x, dz = this.bz - (z + 0.1);
                     if (dx * dx + dz * dz < REACH * REACH && this.hurtT <= 0) {
+                        // hovering: a buzzing tick every 5 frames, climbing as the pollen takes
+                        if (api.frame % 5 == 0) api.sound(SFX_TICK, 0.5 + this.sDwell[i] / DWELL * 0.6, 0.5);
                         this.sDwell[i] += dt;
                         if (this.sDwell[i] >= DWELL) {
                             this.pollinate(api, i);
@@ -342,6 +386,10 @@ export class Game {
                         this.sState[i] = F_DROOP;
                         this.sT[i] = 0;
                         continue;
+                    }
+                    if (this.sLife[i] < 0.3 * this.sMax[i] && this.sLife[i] + dt >= 0.3 * this.sMax[i]) {
+                        // its bar starts to blink: a low warning blip on its own note
+                        api.note(SLOT_NOTE[i] - 12, 0.5, 0, SFX_NOTE);
                     }
                 }
                 // grow in with an overshoot (stepped at 15 fps: hand-animated), then sway; droop when low
@@ -389,6 +437,17 @@ export class Game {
     pollinate(api: GameApi, i: i32): void {
         let pts = i == this.guarded ? 3 : 1;
         this.score += pts;
+        // a bright pluck that climbs the scale with each flower in quick succession; a coin and a bell
+        // for the spider's flower
+        this.chain = this.runT - this.lastPolT < 3.0 ? this.chain + 1 : 0;
+        this.lastPolT = this.runT;
+        let up = PENTA[min<i32>(this.chain, 8)];
+        api.soundAt(SFX_POP, this.sx[i], HEAD_Y, this.sz[i], 1.3, 0.6);
+        api.note(72 + up, 0.65, 0, SFX_NOTE);
+        if (pts > 1) {
+            api.soundAt(SFX_COIN, this.sx[i], HEAD_Y, this.sz[i], 1.2, 0.7);
+            api.note(84 + up, 0.45, 0, SFX_BELL);
+        }
         this.sState[i] = F_HAPPY;
         this.sT[i] = 0;
         this.bpop = 0.3;
@@ -405,6 +464,12 @@ export class Game {
     }
 
     wilt(api: GameApi, i: i32): void {
+        if (this.state == ST_PLAY) {
+            // a flower lost: a soft flop and two falling notes from its own
+            api.soundAt(SFX_THUD, this.sx[i], 0, this.sz[i], 1.1, 0.6);
+            this.playTune(api, [SLOT_NOTE[i] - 5, SLOT_NOTE[i] - 10], 8, SFX_NOTE);
+            this.chain = 0;
+        }
         api.hide(this.slotBone[i]);
         this.sState[i] = F_EMPTY;
         this.sCool[i] = 2.8;
@@ -432,7 +497,7 @@ export class Game {
         this.flashT = 0.5;
         if (this.lives <= 0) {
             this.lives = 0;
-            this.endRun();
+            this.endRun(api);
         }
     }
 
@@ -468,6 +533,9 @@ export class Game {
         if (this.state == ST_OVER) {
             // bitten out of the air: it tumbles down onto the lawn and lies there, wings twitching
             this.fallT += dt;
+            if (this.fallT >= 0.7 && this.fallT - dt < 0.7) {
+                api.soundAt(SFX_THUD, this.bx, 0.4, this.bz, 1.6, 0.6);   // it lands on the lawn
+            }
             let k = Math.min(1.0, this.fallT / 0.7);
             this.by = FLY_Y - (FLY_Y - 0.42) * k * k;
             this.byaw += dt * 400 * (1 - k);
@@ -598,6 +666,7 @@ export class Game {
             if (playing && nearFlower && dBee < 1.05 && this.hurtT <= 0 && this.spT > 0.9) {
                 this.spMode = 1;
                 this.spT = 0;
+                api.soundAt(SFX_CLICK, this.spx, 0, this.spz, 0.35, 0.7);   // the spider crouches: a dry click
                 this.spYaw = Math.atan2(dbx, dbz) * 180 / Math.PI;
             }
         } else if (this.spMode == 1) {
@@ -609,6 +678,7 @@ export class Game {
             if (this.spT >= 0.36) {
                 this.spMode = 2;
                 this.spT = 0;
+                api.soundAt(SFX_WHOOSH, this.spx, 0.4, this.spz, 1.3, 0.5);  // and leaps
                 this.spFromX = this.spx;
                 this.spFromZ = this.spz;
                 // aims where the bee is, a little short
@@ -654,6 +724,7 @@ export class Game {
         this.bvx = dx / d * 9.0;
         this.bvz = dz / d * 9.0;
         this.hurtT = 1.5;
+        api.soundAt(SFX_HIT, this.bx, this.by, this.bz, 1.0, 0.8);
         this.burst(api, this.bx, this.by, this.bz, 4);
         this.loseLife(api);
     }

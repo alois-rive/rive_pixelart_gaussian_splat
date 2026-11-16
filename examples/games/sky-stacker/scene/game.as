@@ -2,7 +2,10 @@
 // storey below is sliced off and tumbles into the clouds; the next storey is only as big as what
 // stayed. A drop within a hair of the one below is PERFECT (no cut, +1 more; three in a row grow the
 // storey back a little). Miss the tower and the storey falls: the run ends. One verb: click.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_THUD, SFX_CLICK, SFX_BELL, SFX_POWERUP, SFX_WHOOSH, SFX_LOSE, SFX_TICK, SFX_NOTE } from "./game_api";
+
+// a perfect streak climbs a pentatonic scale of chimes
+const CHIME: StaticArray<f64> = [76, 79, 81, 84, 86, 88, 91, 93];
 
 const POOL: i32 = 18;           // storeys on screen at most; the lowest is recycled to the top
 const CHUNKS: i32 = 4;
@@ -126,6 +129,9 @@ export class Game {
         this.score = 0;
         this.combo = 0;
         this.spireT = -1;
+        // a run starts: a low gong and its fifth
+        api.note(55, 0.5, 0, SFX_BELL);
+        api.note(62, 0.35, 0, SFX_BELL);
         this.beginSlide(api, true);
     }
 
@@ -170,6 +176,8 @@ export class Game {
             this.state = FALL;
             this.stateT = 0;
             if (this.score > this.best) this.best = this.score;
+            // the storey slides off into the clouds
+            api.soundAt(SFX_WHOOSH, alongX ? this.pos : other, y, alongX ? other : this.pos, 0.45, 0.8);
             return;
         }
         let perfect = Math.abs(d) < PERFECT;
@@ -194,8 +202,29 @@ export class Game {
         this.sx.push(alongX ? keep : otherW);
         this.sz.push(alongX ? otherW : keep);
         this.landT.push(0);
+        // a placed storey: a thud whose pitch climbs with the height (k floors), a chime on a perfect
+        let cxN = this.cx[k], czN = this.cz[k];
+        api.soundAt(SFX_THUD, cxN, y, czN, Math.min(0.8 + 0.06 * <f64>(k - 1), 2.6), 0.9);
+        if (perfect) {
+            let m = CHIME[min<i32>(this.combo - 1, CHIME.length - 1)];
+            api.note(m, 0.7, 0, SFX_BELL);
+            if (this.combo >= 3) api.sound(SFX_POWERUP, 1.0 + 0.05 * <f64>min<i32>(this.combo - 3, 8), 0.5);
+        } else {
+            // the overhang is sliced off: a sharp chop, higher for a thin sliver
+            api.soundAt(SFX_CLICK, alongX ? this.pos : other, y, alongX ? other : this.pos, 0.35, 0.8);
+            api.note(Math.max(40, 52 - Math.abs(d) * 6), 0.4, 0, SFX_NOTE);
+        }
         this.state = SETTLE;
         this.stateT = 0;
+    }
+
+    // the sliding storey turns at the end of its run: a quiet tick, panned to that side
+    edgeTick(api: GameApi): void {
+        let n = this.count();
+        let alongX = this.axisX(n);
+        let x = alongX ? this.pos : this.cx[n - 1];
+        let z = alongX ? this.cz[n - 1] : this.pos;
+        api.soundAt(SFX_TICK, x, BASE_Y + <f64>n * H, z, 0.5 + 0.03 * <f64>min<i32>(n, 20), 0.45);
     }
 
     spawnChunk(x: f64, y: f64, z: f64, sx: f64, sz: f64, alongX: bool, d: f64): void {
@@ -230,8 +259,8 @@ export class Game {
             this.slideT += dt;
             let prev = this.axisX(k) ? this.cx[k - 1] : this.cz[k - 1];
             this.pos += this.vel * dt;
-            if (this.pos > prev + RANGE) { this.pos = prev + RANGE; this.vel = -Math.abs(this.vel); }
-            if (this.pos < prev - RANGE) { this.pos = prev - RANGE; this.vel = Math.abs(this.vel); }
+            if (this.pos > prev + RANGE) { this.pos = prev + RANGE; this.vel = -Math.abs(this.vel); this.edgeTick(api); }
+            if (this.pos < prev - RANGE) { this.pos = prev - RANGE; this.vel = Math.abs(this.vel); this.edgeTick(api); }
             if (api.demo) {
                 let d = this.pos - prev;
                 // drop when the storey crosses the spot it meant to hit (not in the first moment)
@@ -245,12 +274,21 @@ export class Game {
                 this.state = OVER;
                 this.stateT = 0;
                 this.spireT = 0;
+                api.sound(SFX_LOSE, 0.9, 0.7);
             }
         } else if (this.state == OVER) {
             if (api.demo && this.stateT > 2.0) this.newRun(api);
         }
         for (let i = 0; i < this.landT.length; i++) this.landT[i] += dt;
-        if (this.spireT >= 0) this.spireT += dt;
+        if (this.spireT >= 0) {
+            let was = this.spireT;
+            this.spireT += dt;
+            // the gold spire lands on the top (place(): it drops for 0.3 s after 0.25 s)
+            if (was < 0.55 && this.spireT >= 0.55 && this.count() > 1) {
+                api.sound(SFX_THUD, 1.6, 0.6);
+                api.note(<f64>min<i32>(72 + this.count(), 96), 0.6, 0, SFX_BELL);
+            }
+        }
         // offcuts fall and tumble
         for (let i = 0; i < CHUNKS; i++) {
             if (this.chT[i] > 3) continue;

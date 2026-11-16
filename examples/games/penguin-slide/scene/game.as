@@ -10,7 +10,8 @@
 // camera's 1.6 m lead are whole texels (orthoHeight 4.352 / 136 rows = 0.032 m), so a wrap changes
 // no pixel. Things that travel with the camera (the penguin, the sea, the parallax backdrop) are put
 // on the snapped camera's grid, so they do not crawl.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BELL, SFX_COIN, SFX_HIT, SFX_JUMP, SFX_LOSE, SFX_POP, SFX_SHOOT, SFX_SPLASH, SFX_THUD,
+    SFX_WHOOSH, SFX_WIN } from "./game_api";
 
 const IDLE: i32 = 0;
 const RUN: i32 = 1;
@@ -106,6 +107,7 @@ export class Game {
     popX: f64 = 0;
     popY: f64 = 0;
     wasDemo: bool = false;
+    mark: i32 = 0;          // sound: the last 50 m mark chimed
 
     // demo player
     aimFor: f64 = 1e9;      // logical x of the hazard being planned for
@@ -253,6 +255,9 @@ export class Game {
             this.v = 4.0;
             this.startT = api.time;
             this.landT = api.time; // a push-off squash
+            this.mark = 0;
+            api.sound(SFX_WIN, 1.0, 0.6);
+            api.sound(SFX_WHOOSH, 1.2, 0.5);   // the push-off
             return;
         }
         if (this.state == DEAD) {
@@ -346,6 +351,8 @@ export class Game {
                 this.air = true;
                 this.vy = JUMPV;
                 this.jumpT = t;
+                // a hop, a little higher as the run gets faster
+                api.soundAt(SFX_JUMP, this.x - this.origin, 0.3, 0, 1.0 + (this.v - 4.0) * 0.05, 0.6);
             }
             this.x += this.v * dt;
             if (this.air) {
@@ -355,6 +362,8 @@ export class Game {
                     if (this.floeAt(this.x, 0.12) >= 0) {
                         this.y = 0; this.vy = 0; this.air = false; this.landT = t;
                         this.puffBurst(api, 2);
+                        api.soundAt(SFX_THUD, this.x - this.origin, 0, 0, 1.8, 0.5);    // belly on the ice
+                        api.soundAt(SFX_HIT, this.x - this.origin, 0, 0, 2.2, 0.3);     // a crunch of snow
                         if (t - this.buffered < 0.16) { this.prepT = t; this.buffered = -10; }
                     } else if (this.y < -0.05) {
                         this.die(api, 1);
@@ -363,6 +372,7 @@ export class Game {
             } else if (this.floeAt(this.x, 0.05) < 0 && this.prepT < 0) {
                 // slid off the edge: drop
                 this.air = true; this.vy = 0; this.jumpT = t - 1;
+                api.soundAt(SFX_SHOOT, this.x - this.origin, 0, 0, 0.45, 0.55);   // over the edge: uh-oh
             }
             // seals
             for (let i = 0; i < NSEAL; i++) {
@@ -378,10 +388,19 @@ export class Game {
                     && Math.abs(this.y + 0.18 - this.fishY[i]) < 0.42) {
                     this.fishGot[i] = t;
                     this.fish++;
+                    // a coin a semitone higher for each fish this run (an octave at most)
+                    api.soundAt(SFX_COIN, this.fishX[i] - this.origin, this.fishY[i], 0,
+                        Math.pow(2, <f64>min<i32>(this.fish - 1, 12) / 12), 0.75);
                     this.popT = t; this.popX = this.fishX[i]; this.popY = this.fishY[i];
                 }
             }
             this.score = <i32>Math.floor(this.x) + this.fish * 5;
+            let m = <i32>Math.floor(this.x / 50);
+            if (m > this.mark) {
+                // every 50 m: a bell, a step higher each time (the run is getting faster)
+                this.mark = m;
+                api.note(<f64>(76 + min<i32>(m - 1, 8) * 2), 0.5, 0, SFX_BELL);
+            }
             if (!this.air && t - this.lastPuff > 0.13) { this.lastPuff = t; this.puffBurst(api, 1); }
             this.camX = this.x + LEAD;
             this.generate(api);
@@ -404,6 +423,7 @@ export class Game {
                         if (this.floeAt(this.x, 0.1) >= 0) {
                             this.y = 0; this.air = false; this.landT = t; this.spin = 180;
                             this.puffBurst(api, 2);
+                            api.soundAt(SFX_THUD, this.x - this.origin, 0, 0, 1.2, 0.6);
                         } else if (this.y < -0.05) {
                             this.cause = 1; this.deadVX = 0; // into a hole after all
                         }
@@ -435,6 +455,14 @@ export class Game {
             this.air = true;
         }
         this.runs++;
+        if (cause == 2) {
+            api.soundAt(SFX_POP, this.x - this.origin, 0.3, 0, 0.32, 1.0);   // BONK!
+            api.soundAt(SFX_HIT, this.x - this.origin, 0.3, 0, 0.9, 0.6);
+        }
+        api.sound(SFX_LOSE, 1.0, 0.8);
+        if (this.score > this.best && this.best > 0) {
+            api.note(84, 0.45, 0, SFX_BELL);   // a new best
+        }
         if (this.score > this.best) this.best = this.score;
     }
 
@@ -634,7 +662,10 @@ export class Game {
             let k = t - this.deadT;
             if (this.cause == 1) {
                 pitch = Math.min(70, 30 + k * 120);
-                if (this.y < SEA + 0.1 && this.splashT < 0) { this.splashT = t; this.splashX = this.x; this.shake = t; }
+                if (this.y < SEA + 0.1 && this.splashT < 0) {
+                    this.splashT = t; this.splashX = this.x; this.shake = t;
+                    api.soundAt(SFX_SPLASH, this.x - this.origin, SEA, 0, 0.8, 0.9);   // SPLASH!
+                }
                 if (this.y < SEA - 0.45) { api.hide(this.penguin); return; }
             } else {
                 if (this.air) {

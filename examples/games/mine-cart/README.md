@@ -29,6 +29,13 @@ and with a chance that grows with the score, 2.5 % rising to 30 %, too late). A 
 15 to 25 gems and crashes after 30 to 60 s; two seconds after the crash it rolls again. Turning demo off
 starts a fresh run at once.
 
+Sound (`sfx.as` presets, silent in demo): a fanfare rolls the cart; the wheels clack over a rail joint
+every 1.2 m, so the rhythm quickens with the speed; a flipped lever latches with a click and a clunk
+(a little higher towards lane B); each gem rings a coin, quick pickups climbing a pentatonic step each,
+every tenth gem a rising arpeggio; a loose rock whooshes from the roof and lands with a thud and a
+gravel crunch (louder near the cart); a crash bursts and crunches, the tub thuds down, then a falling
+sting with CRASH! and a rising arpeggio for a new best.
+
 ```
 art/palette.json, palette.png   EN4 with ramps rock, wood, iron, rail, gem, glow, cave
 art/assets.md                   the asset list: sizes, ramps, the value plan, bones (17 of 63, all game bones)

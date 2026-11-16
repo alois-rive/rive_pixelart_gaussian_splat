@@ -4,7 +4,8 @@
 // the run goes on and they sweep faster. One verb: move the pointer (the first click starts a run).
 // Demo mode (api.demo) plays like a decent sneak: it goes for the fish, waits out the light, sometimes
 // gets greedy and gets caught.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_BLIP, SFX_CLICK, SFX_COIN, SFX_HIT, SFX_JUMP, SFX_LOSE, SFX_NOTE,
+    SFX_POP, SFX_THUD, SFX_WIN, SFX_ZAP } from "./game_api";
 
 const NL: i32 = 3;              // searchlights
 const NS: i32 = 8;              // sparkles
@@ -123,6 +124,11 @@ export class Game {
     dErrX: f64 = 0;
     dErrZ: f64 = 0;
 
+    // sound (decided from the game's state only, never from api.rand)
+    seenN: i32 = 0;           // frames in the light this time (the alarm's beeps every 8)
+    wasHop: bool = false;     // over the alley last frame
+    hopFrame: i32 = -99;      // the frame of the last leap's sound
+
     start(api: GameApi): void {
         api.playable = true;
         this.cat = api.bone("cat");
@@ -221,6 +227,16 @@ export class Game {
                 this.demoSteer(api, dt);
             }
             this.moveCat(api, dt);
+            let hopping = this.hop > 0;
+            if (hopping != this.wasHop && api.frame - this.hopFrame > 12) {
+                this.hopFrame = api.frame;
+                if (hopping) {
+                    api.soundAt(SFX_JUMP, this.cx, 0.3, this.cz, 1.3, 0.45);     // a leap
+                } else {
+                    api.soundAt(SFX_THUD, this.cx, 0.0, this.cz, 1.5, 0.4);     // soft paws
+                }
+            }
+            this.wasHop = hopping;
             this.lights(api, dt);
             this.fishes(api, dt);
             this.watch(api, dt);
@@ -308,6 +324,8 @@ export class Game {
                 this.on[i] = true;
                 this.wake[i] = 0;
                 this.farFromCat(i);
+                api.soundAt(SFX_CLICK, LX[i], LY[i], LZ[i], 0.5, 1.0);   // the switch
+                api.soundAt(SFX_ZAP, LX[i], LY[i], LZ[i], 0.35, 0.5);    // the lamp buzzes on
             }
             this.wake[i] += dt;
             if (!this.on[i]) {
@@ -352,6 +370,14 @@ export class Game {
         }
         if (lit && !this.seen) {
             this.flinch = 1;
+            this.seenN = 0;
+        }
+        // the alarm beeps while the cat is lit: every 8 frames, rising with the meter
+        if (lit) {
+            if (this.seenN % 8 == 0) {
+                api.soundAt(SFX_BLIP, this.cx, 0.5, this.cz, 0.5 + this.alarm * 0.9, 0.5 + this.alarm * 0.35);
+            }
+            this.seenN++;
         }
         this.seen = lit;
         this.alarm = lit ? this.alarm + FILL * dt : Math.max(0, this.alarm - DRAIN * dt);
@@ -360,6 +386,8 @@ export class Game {
             this.mode = MODE_CAUGHT;
             this.t = 0;
             this.shakeT = 0.5;
+            api.soundAt(SFX_HIT, this.cx, 0.5, this.cz, 0.8, 0.7);   // the cat jumps
+            api.sound(SFX_LOSE, 0.85, 0.85);
             if (this.score > this.best) {
                 this.best = this.score;
             }
@@ -387,6 +415,11 @@ export class Game {
                 this.best = this.score;
             }
             this.popText = this.fishT < 2.5 ? "+1 QUICK!" : "+1";
+            let semi = <f64>min<i32>(this.score - 1, 12);
+            api.soundAt(SFX_COIN, this.fx, 0.5, this.fz, Math.pow(2, semi / 12) * 0.8, 0.75);
+            if (this.fishT < 2.5) {
+                api.note(76 + semi, 0.5, 0, SFX_NOTE);
+            }
             this.popT = 0;
             this.popX = this.fx;
             this.popZ = this.fz;
@@ -414,6 +447,7 @@ export class Game {
         }
         this.fishOn = true;
         this.fishT = 0;
+        api.soundAt(SFX_POP, this.fx, 0.4, this.fz, 0.7, 0.45);
         this.dGreedy = api.rand() < 0.12;
         this.dErrX = api.range(-0.25, 0.25);
         this.dErrZ = api.range(-0.25, 0.25);
@@ -602,6 +636,8 @@ export class Game {
         if (kind == POINTER_DOWN) {
             if (this.mode == MODE_READY || (this.mode == MODE_CAUGHT && this.t > 0.6)) {
                 this.newRun(api, MODE_RUN);
+                api.sound(SFX_WIN, 0.75, 0.8);   // a low start
+                api.sound(SFX_CLICK, 0.6, 0.8);
             }
         }
         if ((kind == POINTER_DOWN || kind == POINTER_MOVE) && this.mode == MODE_RUN) {

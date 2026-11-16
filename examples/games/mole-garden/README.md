@@ -11,6 +11,13 @@ like a decent human: it notices a mole after 0.3 to 0.6 s, glides the mallet ove
 swing in six, lets some moles get away, almost never hits a rabbit, and restarts two seconds after the
 end (about 45 moles and 55 points a run).
 
+Sound (`sfx.as` presets, silent in demo, and the peeks before the first click stay quiet): a rising
+arpeggio starts the clock; in a run each mole pops out of its hole (back row highest, front row lowest,
+panned by column) and a rabbit hops out; a hit is the mallet's bonk and a coin a whole tone higher for
+each mole of the streak, with a bright blip from the fifth (+2); a miss thumps the earth (lower when it
+breaks a streak of 3 or more); a bonked bunny crunches with a falling buzz; the last five seconds tick,
+higher each second; TIME'S UP is a low fanfare, then a rising arpeggio for a new best.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra
 0.1.0, codex-cli. Palette: [Steam Lords](https://lospec.com/palette-list/steam-lords) by Slynyrd (loaded
 from Lospec; the spare `pear36` was not needed), 9 ramps. Orthographic, yaw 0, pitch 52, 4.8 m tall,

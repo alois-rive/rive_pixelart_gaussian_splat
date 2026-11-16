@@ -18,6 +18,13 @@ click to shoot again. Best score for the session. Demo mode (`--arg demo=true`) 
 first frame: it leads the targets, half-corrects the wind, misses now and then (a short draw, an
 overheld one, a bad lead) and starts a new quiver 2 s after the last arrow.
 
+Sound (`sfx.as`, silent in demo mode): the string coming back, a tick at full draw and a nervous tick
+while an overheld draw trembles; the release is a plucked twang (higher with the draw) and a whoosh. A
+hit is a straw thump (lighter on a farther lane) and its ring's chime on a pentatonic scale that climbs
+with each arrow in a row (a bell and a coin on a bullseye); a miss a dull thunk in the turf; the next
+arrow clicks onto the string. An empty quiver plays a fanfare for 7+ hits, a three-bell call for 4+, the
+lose jingle below that (a higher last note on a new best).
+
 ```
 art/palette.json, palette.png   Island Joy 16 with its ramps and roles (sky #11adc1 over #6df7c1, void #393457)
 art/assets.md                   the asset list

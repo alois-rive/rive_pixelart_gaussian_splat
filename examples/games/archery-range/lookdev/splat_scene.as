@@ -20,6 +20,9 @@ import { Path } from "rive/path";
 import { Paint, PaintStyle } from "rive/paint";
 import { Color } from "rive/color";
 import { Vector } from "rive/vector";
+import { Audio, AudioHandle } from "rive/audio";
+import { Ring } from "rive/shared";
+import { SfxEvent, SfxSynth } from "./sfx";
 import { Game } from "./game";
 import { GameApi, POINTER_DOWN, POINTER_MOVE, POINTER_UP } from "./game_api";
 import {
@@ -34,11 +37,11 @@ import {
     VertexFormat, VertexStepMode,
 } from "rive/gpu_enums";
 
-const HEADER: u32 = 640;
-const STRIDE: u32 = 32;
+const HEADER: u32 = 672;   // blob v3: 640 bytes of header + 32 of dequantization (splat_bake.py)
+const STRIDE: u32 = 16;
 const MAX_BONES: i32 = 64;
 const BONE_BYTES: i32 = 48;   // 3 rows of vec4
-const FRAME_BYTES: i32 = 1488;
+const FRAME_BYTES: i32 = 1520;
 const LOOK_BYTES: i32 = 2256;
 
 export class SplatScene extends Layout {
@@ -123,6 +126,9 @@ export class SplatScene extends Layout {
     // demo mode (gallery tiles, video captures): a game plays itself and ignores the pointer; a
     // diorama turns at demoSpin degrees a second. Bound to the Sample view model's `demo`
     @input demo: bool = false;
+    // the game's sound effects (sfx.as): never in demo mode
+    @input sound: bool = true;
+    @input soundVolume: f64 = 0.6;
     @input demoSpin: f64 = 12;
     @input tour: f64 = 0;
     @input tourLoops: f64 = 2;
@@ -140,6 +146,7 @@ export class SplatScene extends Layout {
     spacing: f32 = 0.05;
     fxCount: i32 = 0;
     fxBox: StaticArray<f32> = new StaticArray<f32>(4);
+    quant: StaticArray<f32> = new StaticArray<f32>(8);   // box min xyz, sigma min, box step xyz, sigma step
     time: f64 = 0;
     spinTime: f64 = 0;
     argsReapplied: bool = false;
@@ -147,6 +154,10 @@ export class SplatScene extends Layout {
     api: GameApi = new GameApi();
     started: bool = false;
     demoYaw: f64 = 0;
+    sfxRing: Ring<SfxEvent>? = null;
+    sfxHandle: AudioHandle? = null;
+    sfxStarts: i32 = 0;
+    sfxEvent: SfxEvent = new SfxEvent();
     gameBones: ArrayBuffer = new ArrayBuffer(MAX_BONES * BONE_BYTES);
     hudPath: Path = new Path();
     hudPaint: Paint = new Paint();               // the auto spin's clock: it holds while the pointer drags
@@ -402,8 +413,8 @@ export class SplatScene extends Layout {
             this.context!.log("splat_scene: not a SPLT blob");
             return false;
         }
-        if (v.getUint32(4, true) != 2) {
-            this.context!.log("splat_scene: blob version " + v.getUint32(4, true).toString() + ", this renderer reads 2: re-bake it");
+        if (v.getUint32(4, true) != 3) {
+            this.context!.log("splat_scene: blob version " + v.getUint32(4, true).toString() + ", this renderer reads 3: re-bake it, or `splat_bake.py --upgrade` it");
             return false;
         }
         this.count = v.getUint32(8, true);
@@ -428,13 +439,18 @@ export class SplatScene extends Layout {
         for (let i = 0; i < 32; i++) {
             this.rampLen[i] = v.getUint8(576 + i);
         }
+        // dequantization: positions and sigma (16-byte splats)
+        let q = this.quant;
+        q[0] = v.getFloat32(640, true); q[1] = v.getFloat32(644, true); q[2] = v.getFloat32(648, true);
+        q[4] = v.getFloat32(652, true); q[5] = v.getFloat32(656, true); q[6] = v.getFloat32(660, true);
+        q[3] = v.getFloat32(664, true); q[7] = v.getFloat32(668, true);
         // the FX splats' bounds (x, y at rest), for the effects' left-right and bottom-top
         let minX: f32 = 1e9, maxX: f32 = -1e9, minY: f32 = 1e9, maxY: f32 = -1e9;
         for (let i: u32 = 0; i < this.count; i++) {
             let at = <i32>(HEADER + i * STRIDE);
-            if ((v.getUint8(at + 18) & 16) != 0) {
-                let x = v.getFloat32(at, true);
-                let y = v.getFloat32(at + 4, true);
+            if (((v.getUint8(at + 12) >> 3) & 16) != 0) {
+                let x = q[0] + <f32>v.getUint16(at, true) * q[4];
+                let y = q[1] + <f32>v.getUint16(at + 2, true) * q[5];
                 minX = Mathf.min(minX, x); maxX = Mathf.max(maxX, x);
                 minY = Mathf.min(minY, y); maxY = Mathf.max(maxY, y);
                 this.fxCount++;
@@ -495,12 +511,11 @@ export class SplatScene extends Layout {
         layout.stride = STRIDE;
         layout.stepMode = VertexStepMode.instance;
         layout.attributes = [
-            new GPUVertexAttribute(VertexFormat.float3, 0, 0),
-            new GPUVertexAttribute(VertexFormat.snorm8x4, 1, 12),
-            new GPUVertexAttribute(VertexFormat.uint8x4, 2, 16),
-            new GPUVertexAttribute(VertexFormat.float1, 3, 20),
-            new GPUVertexAttribute(VertexFormat.uint8x4, 4, 24),
-            new GPUVertexAttribute(VertexFormat.unorm8x4, 5, 28),
+            // the 16-byte splat as four uint8x4 (16-bit vertex formats are not dependable everywhere)
+            new GPUVertexAttribute(VertexFormat.uint8x4, 0, 0),   // x u16, y u16
+            new GPUVertexAttribute(VertexFormat.uint8x4, 1, 4),   // z u16, sigma u8, ramp u8
+            new GPUVertexAttribute(VertexFormat.uint8x4, 2, 8),   // octahedral normal u16 x2
+            new GPUVertexAttribute(VertexFormat.uint8x4, 3, 12),  // step | flags << 3, joint 0, joint 1, weight 0
         ];
 
         let depthState = new GPUDepthStencilDesc();
@@ -687,9 +702,50 @@ export class SplatScene extends Layout {
         }
         this.game.update(a);
         this.fromApi();
+        this.sendSounds();
         if (a.playable && this.ready && this.canvas != null) {
             this.updateUniforms(); // picking and projecting see the camera the game just set
         }
+    }
+
+    // The game's sounds of this frame, to the synth on the audio thread (started on the first one).
+    private sendSounds(): void {
+        let a = this.api;
+        let n = a.sfxKind.length;
+        if (n > 0 && !this.demo && this.sound) {
+            let h = this.sfxHandle;
+            if (h != null && h.failed != null) {
+                this.sfxHandle = null; // a failed processor plays silence: start a new one (a few times)
+            }
+            if (this.sfxHandle == null && this.sfxStarts < 3 && Audio.processorSampleRate() > 0) {
+                let ring = this.sfxRing;
+                if (ring == null) {
+                    ring = Ring.create<SfxEvent>(8192);
+                    this.sfxRing = ring;
+                }
+                this.sfxHandle = Audio.start(() => new SfxSynth(), ring);
+                this.sfxStarts++;
+            }
+            let ring = this.sfxRing;
+            if (this.sfxHandle != null && ring != null) {
+                let at = Audio.timeFrame();
+                let sr = Audio.processorSampleRate();
+                let e = this.sfxEvent;
+                for (let i = 0; i < n; i++) {
+                    e.kind = a.sfxKind[i];
+                    e.pitch = a.sfxPitch[i];
+                    e.volume = a.sfxVol[i] * this.soundVolume;
+                    e.pan = a.sfxPan[i];
+                    e.at = at + Math.round(a.sfxDelay[i] * sr);
+                    ring.send(e);
+                }
+            }
+        }
+        a.sfxKind.length = 0;
+        a.sfxPitch.length = 0;
+        a.sfxVol.length = 0;
+        a.sfxPan.length = 0;
+        a.sfxDelay.length = 0;
     }
 
     private gamePointer(event: PointerEvent, kind: i32): bool {
@@ -1057,6 +1113,9 @@ export class SplatScene extends Layout {
         f[o + 30] = <f32>this.fxRampA; f[o + 31] = <f32>this.fxRampB;
         f[o + 32] = this.fxBox[0]; f[o + 33] = this.fxBox[1]; f[o + 34] = this.fxBox[2]; f[o + 35] = this.fxBox[3];
         this.writeTables(f, u, 84, 340);
+        for (let k = 0; k < 8; k++) {
+            f[372 + k] = this.quant[k];
+        }
     }
 
     // --- drawing

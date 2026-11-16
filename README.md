@@ -29,14 +29,14 @@ Run one: `rive examples/dioramas/winter/scene` (the live preview: drag to orbit,
 (after `python3 examples/gallery/build_gallery.py`, which signs the samples; needs `rive login`).
 
 Record the showcase video (one continuous camera turn through the dioramas, each handing over to
-the next with a dithered fade, the Rive scene last, then every game playing its demo, scored with a
+the next with a dithered fade, every game playing its demo first, then the dioramas with the Rive scene last, scored with a
 generated soundtrack whose downbeats land on the transitions):
 
 ```sh
 cd examples && python3 tools/record_tour.py dioramas/*/scene dioramas/rive/scene -o ../showcase.mp4 \
   --seconds 10 --overlap 1.2 --hold 1.5 \
   --scene-arg dioramas/rive/scene:fxOffset=3.6 --scene-arg dioramas/rive/scene:fxStopAt=10.05 \
-  --demo games/*/scene --demo-seconds 8 --music
+  --demo games/*/scene --demo-seconds 8 --demo-first --music
 ```
 
 Requirements: the Rive CLI 1.9+ (`rive`), hedra 0.1+ (`hedra`), the Codex CLI signed in

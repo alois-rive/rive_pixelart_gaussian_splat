@@ -5,7 +5,8 @@
 // Everything here drives game bones baked by scene.bake.json ("bone" / "copies"): the barrel, a
 // pool of four ships, the ball, the aim marker, the muzzle flash, splashes, smoke puffs and planks.
 // Deterministic: api.rand() only.
-import { GameApi, POINTER_DOWN, POINTER_UP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_UP, SFX_EXPLODE, SFX_THUD, SFX_TICK, SFX_SHOOT, SFX_HIT, SFX_COIN,
+    SFX_SPLASH, SFX_POP, SFX_BLIP, SFX_CLICK, SFX_WIN, SFX_LOSE, SFX_NOTE, SFX_BELL } from "./game_api";
 
 // ramps in art/palette.json order
 const R_SEA: i32 = 0;
@@ -41,6 +42,8 @@ const Z_NEAR: f64 = 0.0;
 const Z_FAR: f64 = -10.0;
 const RATE: f64 = 0.62;          // charge per second (it swings back down past full)
 const X_EDGE: f64 = 10.5;        // ships appear and leave beyond this
+// sound: the major scale the hit bell climbs with a streak (semitones)
+const STREAK_STEPS: StaticArray<f64> = [0, 2, 4, 5, 7, 9, 11, 12];
 
 export class Game {
     barrel: i32 = -1;
@@ -131,6 +134,15 @@ export class Game {
     toZ: f64 = 0;
     apex: f64 = 1;
 
+    // sound (never decided by a random draw)
+    streak: i32 = 0;         // hits in a row: the bell climbs
+    tune: StaticArray<f64> = new StaticArray<f64>(8);
+    tuneN: i32 = 0;
+    tuneI: i32 = 0;
+    tuneAt: i32 = 0;
+    tuneStep: i32 = 6;
+    tuneKind: i32 = SFX_NOTE;
+
     // the demo player
     aiWait: f64 = 0.15;
     aiAim: f64 = 0;
@@ -193,6 +205,29 @@ export class Game {
         this.firstShot = false;
         this.aiWait = 0.1;
         this.aiIdle = 0;
+        this.streak = 0;
+    }
+
+    playTune(api: GameApi, notes: Array<f64>, step: i32, kind: i32): void {
+        this.tuneN = min<i32>(notes.length, 8);
+        for (let i = 0; i < this.tuneN; i++) this.tune[i] = notes[i];
+        this.tuneI = 0;
+        this.tuneAt = api.frame;
+        this.tuneStep = step;
+        this.tuneKind = kind;
+    }
+
+    sounds(api: GameApi): void {
+        // the fuse while charging: a tick every 6 frames whose pitch follows the gauge (up, then back down)
+        if (this.charging && api.frame % 6 == 0) {
+            api.sound(SFX_TICK, 0.45 + 0.9 * this.charge, 0.45);
+        }
+        if (this.tuneI < this.tuneN && api.frame >= this.tuneAt) {
+            let m = this.tune[this.tuneI];
+            if (m > 0) api.note(m, 0.65, 0, this.tuneKind);
+            this.tuneI++;
+            this.tuneAt = api.frame + this.tuneStep;
+        }
     }
 
     level(): f64 {
@@ -233,6 +268,7 @@ export class Game {
         let targetElev = this.charging ? REST_ELEV + (MAX_ELEV - REST_ELEV) * this.charge : REST_ELEV;
         this.elev += (targetElev - this.elev) * Math.min(1.0, dt * 14.0);
 
+        this.sounds(api);
         this.updateShips(api, dt);
         this.updateBall(api, dt);
         this.updateEffects(api, dt);
@@ -258,6 +294,18 @@ export class Game {
             if (this.endWait <= 0) {
                 this.mode = OVER;
                 this.overT = 0;
+                // the verdict, by rank: a hornpipe for an admiral, a fanfare for a captain, a call on
+                // the ship's bell for a gunner, the lose jingle for a deckhand
+                if (this.hits >= 9) {
+                    api.sound(SFX_WIN, 1.0, 0.8);
+                    this.playTune(api, [0, 0, 0, 67, 72, 72, 76, 79], 6, SFX_NOTE);
+                } else if (this.hits >= 6) {
+                    api.sound(SFX_WIN, 0.9, 0.8);
+                } else if (this.hits >= 3) {
+                    this.playTune(api, [72, 72, 79], 9, SFX_BELL);
+                } else {
+                    api.sound(SFX_LOSE, 0.85, 0.75);
+                }
                 if (api.demo) {
                     this.bestDemo = max<i32>(this.bestDemo, this.score);
                 } else {
@@ -288,27 +336,30 @@ export class Game {
 
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
         if (kind == POINTER_DOWN) {
-            this.press();
+            this.press(api);
         } else if (kind == POINTER_UP) {
             this.release(api);
         }
         return true;
     }
 
-    press(): void {
+    press(api: GameApi): void {
         if (this.mode == OVER) {
             if (this.overT > 0.6) {
                 this.newRun();
+                api.sound(SFX_BLIP, 0.9, 0.6);
             }
             return;
         }
         if (this.mode == IDLE) {
             this.newRun();
+            api.sound(SFX_BLIP, 0.9, 0.6);
         }
         if (this.mode == PLAY && !this.flying && this.shotsLeft > 0 && !this.charging) {
             this.charging = true;
             this.chargeT = 0;
             this.charge = 0;
+            api.sound(SFX_CLICK, 0.4, 0.7);     // the fuse is lit
         }
     }
 
@@ -335,6 +386,9 @@ export class Game {
         this.firstShot = true;
         this.recoilT = 0;
         this.flashT = 0;
+        // the boom: a deep burst and a thump of the carriage, deeper with a bigger charge
+        api.sound(SFX_EXPLODE, 0.75 - 0.2 * c, 0.9);
+        api.sound(SFX_THUD, 0.9, 0.8);
         // smoke: three puffs rolling out of the muzzle
         for (let i = 0; i < 3; i++) {
             let k = this.smNext;
@@ -406,7 +460,7 @@ export class Game {
         }
         this.aiAim = Math.max(0.03, Math.min(0.97, bestC + err));
         this.aiIdle = 0;
-        this.press();
+        this.press(api);
     }
 
     // ---------------------------------------------------------------- ships
@@ -487,6 +541,10 @@ export class Game {
                 let list = 14.0 * Math.min(1.0, u / 0.6);
                 let ss = s * pop;
                 this.pose(api, b, this.shX[i], y, z, yaw, list, tilt, ss, ss, ss);
+                // two glugs as the hull goes under
+                if ((u >= 0.6 && u - dt < 0.6) || (u >= 1.15 && u - dt < 1.15)) {
+                    api.soundAt(SFX_POP, this.shX[i], 0, z, u < 1.0 ? 0.42 : 0.32, 0.55);
+                }
                 if (u > 1.9) {
                     this.shState[i] = OFF;
                     api.hide(b);
@@ -505,6 +563,9 @@ export class Game {
         }
         this.flyT += dt;
         let u = Math.min(1.0, this.flyT / this.flyDur);
+        if (u >= 0.5 && (this.flyT - dt) / this.flyDur < 0.5) {
+            api.sound(SFX_SHOOT, 0.5, 0.4);      // the ball whistles down from its apex
+        }
         let z = this.fromZ + (this.toZ - this.fromZ) * u;
         let y = this.fromY + (0.1 - this.fromY) * u + 4.0 * this.apex * u * (1.0 - u);
         api.place(this.ball, 0, y, z);
@@ -537,6 +598,13 @@ export class Game {
             }
             this.shState[hit] = SINK;
             this.shSink[hit] = 0;
+            // a crunch of timber, and a coin (higher on a farther lane) and a bell that climbs with the streak
+            let sxh = this.shX[hit], szh = this.laneZ[lane];
+            api.soundAt(SFX_EXPLODE, sxh, 0.5, szh, 1.2, 0.7);
+            api.soundAt(SFX_HIT, sxh, 0.5, szh, 0.7, 0.75);
+            api.soundAt(SFX_COIN, sxh, 0.5, szh, 1.0 + 0.12 * <f64>lane, 0.75);
+            api.note(72 + STREAK_STEPS[min<i32>(this.streak, 7)], 0.45, 0, SFX_BELL);
+            this.streak++;
             this.splash(this.shX[hit], this.laneZ[lane], 1.3);
             let sx = this.shX[hit];
             for (let j = 0; j < 6; j++) {
@@ -555,6 +623,8 @@ export class Game {
         } else {
             this.splash(0, z, 1.0);
             this.popup("MISS", 0, 1.6, z, false);
+            api.soundAt(SFX_SPLASH, 0, 0, z, 0.8, 0.75);   // a plain splash
+            this.streak = 0;
         }
     }
 

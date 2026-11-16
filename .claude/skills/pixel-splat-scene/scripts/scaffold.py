@@ -18,7 +18,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "..", "assets", "template")
-CODE = ["splat.wgsl", "resolve.wgsl", "splat_scene.as", "game_api.as"]
+CODE = ["splat.wgsl", "resolve.wgsl", "splat_scene.as", "game_api.as", "sfx.as"]
 OWN = ["game.as"]  # the project's own: copied when missing, never refreshed
 
 

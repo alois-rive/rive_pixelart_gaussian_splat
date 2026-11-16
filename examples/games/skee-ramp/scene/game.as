@@ -2,7 +2,8 @@
 // drag, the harder the roll; sideways steers it. The ball climbs the lane, jumps the hump and lands
 // on the target board: the centre hole 50, the rings 30 / 20 / 10, the board 10, the cup at the top
 // 100. Too soft and it rolls back for nothing. 300 or more wins a prize. One lane, pointer only.
-import { GameApi, POINTER_DOWN, POINTER_MOVE, POINTER_UP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, POINTER_UP, SFX_COIN, SFX_CLICK, SFX_TICK, SFX_THUD, SFX_JUMP, SFX_NOTE,
+    SFX_BELL, SFX_POWERUP, SFX_SHOOT, SFX_WIN, SFX_LOSE, SFX_BLIP } from "./game_api";
 
 const BALLS: i32 = 9;
 const PRIZE: i32 = 300;
@@ -76,6 +77,10 @@ export class Game {
     ay0: f32 = 0;
     ax: f32 = 0;
     ay: f32 = 0;
+
+    // sound
+    powerStep: i32 = 0;      // the power notch last ticked while aiming
+    rollTick: i32 = 0;       // frames to the next rumble tick of a rolling ball
 
     // demo
     dWait: f64 = 0.15;
@@ -155,8 +160,15 @@ export class Game {
             this.s += this.v * dt;
             this.v -= DECEL * dt;
             this.x += this.vx * dt;
-            if (this.x > XMAX) { this.x = XMAX; this.vx = -this.vx * 0.6; }
-            if (this.x < -XMAX) { this.x = -XMAX; this.vx = -this.vx * 0.6; }
+            if (this.x > XMAX) { this.x = XMAX; this.vx = -this.vx * 0.6; this.rail(api); }
+            if (this.x < -XMAX) { this.x = -XMAX; this.vx = -this.vx * 0.6; this.rail(api); }
+            // the roll: a low rumble of ticks, quicker and higher while the ball is fast
+            this.rollTick--;
+            if (this.rollTick <= 0) {
+                let sp = Math.abs(this.v);
+                api.soundAt(SFX_TICK, this.x, this.laneY(this.s), this.laneZ(this.s), 0.22 + 0.05 * sp, 0.6);
+                this.rollTick = max<i32>(4, <i32>(10.0 - sp));
+            }
             this.spin += this.v * dt / R * 57.3;
             if (this.s >= S_HUMP && this.v > 0) {
                 this.takeOff(api);
@@ -189,6 +201,7 @@ export class Game {
                 this.t = 0;
                 this.s = S0;
                 this.x = 0;
+                api.soundAt(SFX_CLICK, 0, this.laneY(S0), this.laneZ(S0), 0.3, 0.6);   // clack onto the lane
                 this.dWait = api.range(0.6, 1.1);
             }
         } else if (st == OVER) {
@@ -217,6 +230,7 @@ export class Game {
         this.fy1 = 0.99 + 0.95 * bt + NY * off;
         this.fz1 = -0.775 - 0.64 * bt + NZ * off;
         this.fArc = 0.25 + 0.3 * Math.max(0, this.landT);
+        api.soundAt(SFX_JUMP, this.x, this.fy0, this.fz0, 0.7 + 0.25 * Math.max(0, this.landT), 0.5);   // over the hump
         this.state = FLY;
         this.t = 0;
     }
@@ -243,6 +257,21 @@ export class Game {
             rr = 0.38;
         }
         this.scoreBall(api, pts, rr, pts == 100 ? CUP_T : RING_T);
+        // the board: a thud, then the ring's bell, higher for the better holes
+        api.soundAt(SFX_THUD, this.fx1, this.fy1, this.fz1, 1.3, 0.7);
+        if (pts == 100) {
+            api.sound(SFX_POWERUP, 1.2, 0.7);
+            api.note(88, 0.6, 0, SFX_BELL);
+        } else if (pts == 50) {
+            api.sound(SFX_COIN, 1.2, 0.7);
+            api.note(84, 0.5, 0, SFX_BELL);
+        } else if (pts == 30) {
+            api.sound(SFX_COIN, 1.0, 0.6);
+        } else if (pts == 20) {
+            api.note(76, 0.55, 0, SFX_NOTE);
+        } else {
+            api.note(69, 0.5, 0, SFX_NOTE);
+        }
         this.state = SINK;
         this.t = 0;
     }
@@ -259,6 +288,7 @@ export class Game {
         let px = this.fx1, py = this.fy1, pz = this.fz1;
         if (pts == 0) {
             px = this.x; py = this.laneY(S0); pz = this.laneZ(S0);
+            api.sound(SFX_SHOOT, 0.35, 0.5);   // too soft: a sad falling bloop
             this.thrown++;
             this.cur++;
             if (this.thrown >= BALLS) {
@@ -275,6 +305,12 @@ export class Game {
 
     finish(api: GameApi): void {
         this.overAt = api.time;
+        if (this.score >= PRIZE) {
+            api.sound(SFX_WIN, 1.0, 0.8);
+            api.note(this.score >= 450 ? 91 : 84, 0.5, 0, SFX_BELL);
+        } else {
+            api.sound(SFX_LOSE, 1.0, 0.7);
+        }
         if (this.score > this.best) {
             this.best = this.score;
         }
@@ -390,6 +426,17 @@ export class Game {
         return Math.min(1, Math.max(-1, <f64>(this.ax - this.ax0) / 60.0));
     }
 
+    // the ball knocks a side rail
+    rail(api: GameApi): void {
+        api.soundAt(SFX_CLICK, this.x, this.laneY(this.s), this.laneZ(this.s), 0.5, 0.6);
+    }
+
+    // the release: a thump, deeper for a harder roll; the roll's ticks start at once
+    throwSound(api: GameApi): void {
+        api.sound(SFX_THUD, 1.8 - 0.6 * this.power(), 0.6);
+        this.rollTick = 4;
+    }
+
     throwBall(): void {
         let p = this.power();
         this.v = V_MIN + V_SPAN * p;
@@ -407,6 +454,7 @@ export class Game {
                     return true;
                 }
                 this.newRun(api);
+                api.sound(SFX_COIN, 0.7, 0.6);   // a token in the slot: a new run
                 return true;
             }
             if (this.state == READY || this.state == IDLE) {
@@ -416,11 +464,14 @@ export class Game {
                 this.ay0 = y;
                 this.ax = x;
                 this.ay = y;
+                this.powerStep = 0;
+                api.sound(SFX_BLIP, 0.6, 0.45);   // the ball is in hand
             }
         } else if (kind == POINTER_MOVE) {
             if (this.state == AIM) {
                 this.ax = x;
                 this.ay = y;
+                this.notch(api);
             }
         } else if (kind == POINTER_UP) {
             if (this.state == AIM) {
@@ -429,11 +480,23 @@ export class Game {
                 if (this.ay0 - this.ay < DRAG_MIN) {
                     this.state = this.thrown == 0 && this.score == 0 ? READY : IDLE; // too short: no throw
                 } else {
+                    this.throwSound(api);
                     this.throwBall();
                 }
             }
         }
         return true;
+    }
+
+    // aiming: a tick at every fifth of the power, climbing (and once going back down)
+    notch(api: GameApi): void {
+        let k = <i32>Math.floor(this.power() * 5.0 + 0.001);
+        if (k != this.powerStep) {
+            if (k > this.powerStep) {
+                api.note(<f64>(60 + 3 * k), 0.4, 0, SFX_NOTE);
+            }
+            this.powerStep = k;
+        }
     }
 
     // ---------------------------------------------------------------- the demo player

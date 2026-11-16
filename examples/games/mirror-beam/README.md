@@ -38,6 +38,14 @@ to a wrong mirror, which it turns back later. It solves eight to ten courts and 
 about 65 s, then restarts two seconds later. When demo is switched off, a fresh run waits for the first
 click on a mirror.
 
+**Sound** (`sfx.as` presets, silent in demo): a rising arpeggio as the first click (or a restart)
+starts the sun's clock; a mirror pivots with a latch click and a short grind, panned where it stands;
+each crystal the beam lights chimes a sine bell, the next note of a C major chord up (C6, E6, G6, C7),
+so a court's progress climbs by ear, and one the beam leaves dims with a low pluck; a solved court
+rings a fanfare over the temple's deep bell (C4), PERFECT adds a high arpeggio; whooshes as the court
+sinks and the next one rises; the last five seconds of daylight tick, higher each second; sunset is a
+falling sting.
+
 ## What is where
 
 ```

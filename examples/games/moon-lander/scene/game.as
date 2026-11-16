@@ -3,7 +3,8 @@
 // and refuels a little; then the pad sinks and comes up somewhere else and the moon turns faster.
 // Touching the bare moon, landing too fast or off the pad's middle is a crash: game over.
 // Demo mode (api.demo) flies itself like a decent pilot with a few misses.
-import { GameApi, POINTER_DOWN, POINTER_UP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_UP, SFX_POWERUP, SFX_WHOOSH, SFX_CLICK, SFX_THUD, SFX_NOTE, SFX_BLIP,
+    SFX_POP, SFX_EXPLODE, SFX_HIT, SFX_LOSE, SFX_TICK, SFX_ZAP } from "./game_api";
 
 const R: f64 = 4.0;          // the moon's radius; its centre at (0, CY)
 const CY: f64 = -4.0;
@@ -137,6 +138,12 @@ export class Game {
     popY: f64 = 0;
 
     wasDemo: bool = false;
+
+    // sound (never decided by api.rand: the demo stays the same)
+    sJet: i32 = -1;           // frames since the flame lit (-1: out): a sparse crackle while it burns
+    sSoft: f64 = 0;           // the last touchdown's softness and centring, for its jingle
+    sCentre: f64 = 0;
+    sDebris: i32 = -100;      // the frame of the last debris clink
     demoErr: f64 = 0;
     demoThrust: bool = false;
     demoPlanned: bool = false;
@@ -207,6 +214,8 @@ export class Game {
             this.held = false;
             this.newRun(api, api.demo ? MODE_FLY : MODE_READY);
         }
+        let prevT = this.t;
+        let prevFuel = this.fuel;
         this.t += dt;
 
         // the moon turns; the pad rides on it (sinking and rising when it moves)
@@ -221,6 +230,11 @@ export class Game {
                 this.padLocal = world - this.moonA;
                 this.padState = 2;
                 this.padT = 0;
+                if (this.mode == MODE_FLY || this.mode == MODE_LIFT) {
+                    // the pad pops up round the moon
+                    let pw = this.padWorld();
+                    api.sound(SFX_POP, 0.8, 0.4, clamp(-Math.sin(pw * Math.PI / 180), -1, 1) * 0.8);
+                }
             }
         } else if (this.padState == 2) {
             this.padT += dt;
@@ -257,6 +271,7 @@ export class Game {
             this.roll = w;
             if (this.t > 1.25) {
                 // lift off by itself, the pad sinks away and comes up elsewhere
+                api.sound(SFX_WHOOSH, 0.7, 0.55);
                 this.mode = MODE_LIFT;
                 this.t = 0;
                 this.vy = 1.6;
@@ -280,6 +295,7 @@ export class Game {
         } else {
             this.thrustT = 0;
         }
+        this.sounds(api, prevT, prevFuel);
         this.updateDust(api, dt);
         this.updateDebris(api, dt);
         this.squash = Math.max(0, this.squash - dt * 4);
@@ -297,6 +313,60 @@ export class Game {
         api.targetY = CAM_Y + this.shakeY;
 
         this.draw(api);
+    }
+
+    // The sounds that follow the state: the jet, the landing jingle, the alarms, the game-over sting.
+    sounds(api: GameApi, prevT: f64, prevFuel: f64): void {
+        // the jet (in flight and lifting off; the idle bob before the first press is quiet): a whoosh
+        // as it lights, then a low crackle every 6 frames and a breath every 24 while it burns
+        let jet = this.thrusting && (this.mode == MODE_FLY || this.mode == MODE_LIFT);
+        if (jet) {
+            this.sJet++;
+            if (this.sJet == 0) {
+                api.sound(SFX_WHOOSH, 0.55, 0.5);
+            } else if (this.sJet % 24 == 0) {
+                api.sound(SFX_WHOOSH, 0.5, 0.3);
+            }
+            if (this.sJet % 6 == 0) {
+                api.sound(SFX_CLICK, 0.22, 0.45);
+            }
+        } else {
+            this.sJet = -1;
+        }
+        // fuel: an alarm blip at 30, 20 and 10 %, a sputter when the tank runs dry
+        if (this.mode == MODE_FLY) {
+            for (let k = 1; k <= 3; k++) {
+                let lvl = 10.0 * <f64>k;
+                if (prevFuel > lvl && this.fuel <= lvl) {
+                    api.sound(SFX_BLIP, 1.9 - 0.15 * <f64>k, 0.5);
+                }
+            }
+            if (prevFuel > 0 && this.fuel <= 0) {
+                api.sound(SFX_ZAP, 0.35, 0.6);
+            }
+        }
+        // the landing jingle: three plucked notes after the touchdown, a major arpeggio for a soft
+        // landing (FEATHER / BULLSEYE), a smaller step for NICE, a flat fall for BUMPY; each landing
+        // of a run a semitone higher (up to a fifth)
+        if (this.mode == MODE_LANDED) {
+            let base = 72.0 + <f64>min<i32>(this.landings - 1, 7);
+            let good = this.sSoft > 0.75 || this.sCentre > 0.75;
+            let bumpy = !good && this.sSoft < 0.3;
+            for (let k = 0; k < 3; k++) {
+                let at = 0.12 + 0.11 * <f64>k;
+                if (prevT < at && this.t >= at) {
+                    let semis = good ? (k == 0 ? 0.0 : (k == 1 ? 4.0 : 7.0)) : (bumpy ? (k == 0 ? 0.0 : (k == 1 ? -1.0 : -3.0)) : (k == 0 ? 0.0 : (k == 1 ? 2.0 : 4.0)));
+                    api.note(base + semis, k == 2 ? 0.75 : 0.6, 0, SFX_NOTE);
+                }
+            }
+            if (good && prevT < 0.45 && this.t >= 0.45) {
+                api.note(base + 12, 0.5, 0, SFX_NOTE);
+            }
+        }
+        // the crash: the sting once the debris settles a little
+        if (this.mode == MODE_OVER && prevT < 0.6 && this.t >= 0.6 && this.bOn) {
+            api.sound(SFX_LOSE, 0.85, 0.75);
+        }
     }
 
     fly(api: GameApi, dt: f64, input: bool): void {
@@ -360,6 +430,11 @@ export class Game {
             this.best = this.score;
         }
         this.lastLandScore = pts;
+        // the touchdown: the legs' clunk (heavier the harder) and the latch; the jingle follows
+        this.sSoft = soft;
+        this.sCentre = centre;
+        api.sound(SFX_THUD, 1.2 - 0.3 * (1 - soft), 0.5 + 0.4 * (1 - soft));
+        api.sound(SFX_CLICK, 0.5, 0.5);
         this.fuel = Math.min(100, this.fuel + 28 + soft * 14);
         this.squash = 1 + (1 - soft) * 0.6;
         this.shake = (1 - soft) * 0.25;
@@ -383,6 +458,8 @@ export class Game {
         this.mode = MODE_OVER;
         this.t = 0;
         this.thrusting = false;
+        api.sound(SFX_EXPLODE, 0.9, 1.0);
+        api.sound(SFX_HIT, 0.6, 0.7);
         this.shake = 0.6;
         if (this.score > this.best) {
             this.best = this.score;
@@ -462,6 +539,11 @@ export class Game {
             this.bR[i] += this.bVR[i] * dt;
             let g = this.groundAt(this.bX[i]) + 0.12;
             if (this.bY[i] < g) {
+                // a piece clinks on the moon (a hard bounce while it shows, one per 6 frames at most)
+                if (this.bVY[i] < -1.5 && this.t < 2.2 && Math.abs(this.bX[i]) < R && api.frame - this.sDebris >= 6) {
+                    this.sDebris = api.frame;
+                    api.sound(SFX_TICK, 0.4 + 0.05 * <f64>i, 0.5, clamp(this.bX[i] / 5.0, -1, 1) * 0.8);
+                }
                 this.bY[i] = g;
                 this.bVY[i] = -this.bVY[i] * 0.35;
                 this.bVX[i] *= 0.6;
@@ -566,9 +648,11 @@ export class Game {
             if (this.mode == MODE_READY) {
                 this.newRun(api, MODE_FLY);
                 this.vy = 0.3;
+                api.sound(SFX_POWERUP, 1.2, 0.5);   // systems on
             } else if (this.mode == MODE_OVER && this.t > 0.6) {
                 this.newRun(api, MODE_FLY);
                 this.vy = 0.3;
+                api.sound(SFX_POWERUP, 1.2, 0.5);
             }
         } else if (kind == POINTER_UP) {
             this.held = false;

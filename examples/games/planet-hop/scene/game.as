@@ -4,7 +4,8 @@
 // and a rocket that misses every ring is lost in space: game over. Stars on the way are a bonus.
 // Demo mode (api.demo) flies itself: it times its launches by looking ahead along the tangent, with a
 // little error, and now and then lets go too early or too late.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BELL, SFX_BLIP, SFX_COIN, SFX_EXPLODE, SFX_LOSE, SFX_NOTE, SFX_POWERUP, SFX_WHOOSH, SFX_WIN,
+    SFX_ZAP } from "./game_api";
 
 const TEX: f64 = 10.0 / 136.0;   // the texel (orthoHeight / art rows): the world scrolls in whole texels
 const NP: i32 = 6;               // planet bones, used in turn
@@ -22,6 +23,9 @@ const MODE_FLY: i32 = 2;
 const MODE_OVER: i32 = 3;
 
 const NAMES: StaticArray<string> = ["meadow", "dune", "ice", "mushroom", "lava", "giant"];
+// sound: each planet's capture chime (MIDI, a pentatonic set): meadow, dune, ice (bright), mushroom,
+// lava (low), giant (lowest)
+const CHIME: StaticArray<f64> = [72, 74, 79, 76, 67, 62];
 const TITLES: StaticArray<string> = ["MEADOW", "DUNE", "ICE", "MUSHROOM", "LAVA", "GIANT"];
 
 function clamp(v: f64, a: f64, b: f64): f64 {
@@ -120,6 +124,10 @@ export class Game {
     demoWait: f64 = 0;         // a demo reaction delay
     demoArmed: bool = false;
 
+    // sound (decided from the game's state only, never from api.rand)
+    decN: i32 = 0;             // frames of a decaying orbit (its warning beeps)
+    best0: i32 = 0;            // the best when this run started (a new best at game over)
+
     start(api: GameApi): void {
         api.playable = true;
         for (let i = 0; i < NP; i++) {
@@ -207,6 +215,8 @@ export class Game {
         this.stretch = 0;
         this.cOn = false;
         this.popT = 9;
+        this.decN = 0;
+        this.best0 = this.best;
         this.demoArm(api);
         this.camX = (this.px[0] + this.px[1]) * 0.5;
         this.camY = (this.py[0] + this.py[1]) * 0.5;
@@ -245,6 +255,16 @@ export class Game {
 
         if (this.mode == MODE_READY || this.mode == MODE_ORBIT) {
             this.orbit(api, dt);
+            // a decaying orbit beeps with the blinking "!" at half its rate: every 30 frames, every 15 past 60 %, rising
+            let dec = this.decay();
+            if (dec > 0.05) {
+                if (this.decN % (dec > 0.6 ? 15 : 30) == 0) {
+                    api.soundAt(SFX_BLIP, this.rx - this.qx, this.ry - this.qy, 0, 0.6 + dec * 0.7, 0.45 + dec * 0.3);
+                }
+                this.decN++;
+            } else {
+                this.decN = 0;
+            }
             if (api.demo && this.mode == MODE_ORBIT && this.demoLaunch(api, dt)) {
                 this.launch(api);
             }
@@ -325,6 +345,10 @@ export class Game {
         this.vy = this.vy / d * sp;
         this.stretch = 1;
         this.fTimer = 0;
+        this.decN = 0;
+        // a launch: a whoosh with a spark of the engine, a little higher as the orbits get faster
+        api.soundAt(SFX_WHOOSH, this.rx - this.qx, this.ry - this.qy, 0, 0.9 + <f64>min<i32>(this.hops, 20) * 0.02, 0.85);
+        api.soundAt(SFX_ZAP, this.rx - this.qx, this.ry - this.qy, 0, 0.5, 0.4);
     }
 
     fly(api: GameApi, dt: f64): void {
@@ -396,6 +420,14 @@ export class Game {
         this.popX = this.px[k % MAXK];
         this.popY = this.py[k % MAXK] + this.pR(k) + 0.6;
         this.burst(api, this.rx, this.ry, 4);
+        // the capture chime: a bell and a pluck on the planet's own note (an octave up on a skip)
+        let midi = CHIME[k % NP] + (skipped > 1 ? 12.0 : 0.0);
+        let cx = this.px[k % MAXK] - this.qx, cy = this.py[k % MAXK] - this.qy;
+        api.soundAt(SFX_BELL, cx, cy, 0, Math.pow(2, (midi - 69) / 12), 0.7);
+        api.soundAt(SFX_NOTE, cx, cy, 0, Math.pow(2, (midi + 7 - 69) / 12), 0.55);
+        if (skipped > 1) {
+            api.sound(SFX_POWERUP, 1.2, 0.7);
+        }
         while (this.built < this.cur + 4) this.addPlanet(api);
         this.demoArm(api);
     }
@@ -412,6 +444,7 @@ export class Game {
         }
         this.burst(api, this.rx, this.ry, 8);
         this.shake = 0.5;
+        api.soundAt(SFX_EXPLODE, this.rx - this.qx, this.ry - this.qy, 0, 1.0, 0.9);
         this.over(api);
     }
 
@@ -419,6 +452,10 @@ export class Game {
         this.mode = MODE_OVER;
         this.t = 0;
         if (this.score > this.best) this.best = this.score;
+        api.sound(SFX_LOSE, this.cOn ? 1.0 : 0.8, 0.8);   // lost in space: lower
+        if (this.best > this.best0 && this.best0 > 0) {
+            api.note(84, 0.5, 0, SFX_BELL);                // a new best
+        }
     }
 
     collectStars(api: GameApi): void {
@@ -430,6 +467,9 @@ export class Game {
                 this.sOn[i] = false;
                 this.stars++;
                 this.score += 1;
+                // a coin a semitone higher for each star this run (an octave at most)
+                api.soundAt(SFX_COIN, this.sx[i] - this.qx, this.sy[i] - this.qy, 0,
+                    Math.pow(2, <f64>min<i32>(this.stars - 1, 12) / 12) * 1.2, 0.75);
                 if (this.score > this.best) this.best = this.score;
                 this.popText = "+1";
                 this.popText2 = "STAR!";
@@ -652,11 +692,14 @@ export class Game {
         if (kind != POINTER_DOWN) return true;
         if (this.mode == MODE_READY) {
             this.mode = MODE_ORBIT;
+            api.sound(SFX_WIN, 1.0, 0.5);      // the run starts
             this.launch(api);
         } else if (this.mode == MODE_ORBIT) {
             this.launch(api);
         } else if (this.mode == MODE_OVER && this.t > 0.6) {
             this.newRun(api);
+            api.note(67, 0.5, 0, SFX_NOTE);     // back home, waiting in orbit
+            api.note(74, 0.4, 0, SFX_NOTE);
         }
         return true;
     }

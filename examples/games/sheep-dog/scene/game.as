@@ -2,7 +2,7 @@
 // timer runs out. Sheep flee the dog, flock a little and graze when left alone; a sheep that walks
 // through the gate is penned (+100, +50 more when it follows another within 3 s). Pen all six and
 // every second left is worth 10; the gate swings shut. One run, one meadow, pointer only.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_NOTE, SFX_COIN, SFX_TICK, SFX_WIN, SFX_LOSE, SFX_CLICK } from "./game_api";
 
 // the meadow (world metres; models/env/make_env.py builds the same fence)
 const X0: f64 = -6.4;
@@ -88,6 +88,15 @@ export class Game {
     ptext: StaticArray<i32> = new StaticArray<i32>(8);
     pnext: i32 = 0;
 
+    // sound: notes queued for a later frame (a bleat, a whistle), the last startle, the last second shown
+    qAt: Array<i32> = new Array<i32>();
+    qMidi: Array<f64> = new Array<f64>();
+    qVol: Array<f64> = new Array<f64>();
+    qPan: Array<f64> = new Array<f64>();
+    lastStartle: i32 = -100;
+    lastSec: i32 = 99;
+    latchIn: i32 = -1;
+
     // demo player
     aimT: f64 = 0;
     aimOX: f64 = 0;
@@ -148,6 +157,41 @@ export class Game {
     begin(api: GameApi): void {
         this.reset(api);
         this.state = PLAY;
+        this.whistle(api);
+    }
+
+    // ---------------------------------------------------------------- sound
+
+    // the shepherd's whistle that starts a run: a rising two-note call
+    whistle(api: GameApi): void {
+        this.later(api, 0, 81, 0.55, 0);
+        this.later(api, 7, 88, 0.6, 0);
+        this.lastSec = 99;
+    }
+
+    // a note played `frames` from now (frames 0: this frame)
+    later(api: GameApi, frames: i32, midi: f64, vol: f64, pan: f64): void {
+        this.qAt.push(api.frame + frames);
+        this.qMidi.push(midi);
+        this.qVol.push(vol);
+        this.qPan.push(pan);
+    }
+
+    playQueued(api: GameApi): void {
+        for (let k = this.qAt.length - 1; k >= 0; k--) {
+            if (this.qAt[k] <= api.frame) {
+                api.note(this.qMidi[k], this.qVol[k], this.qPan[k], SFX_NOTE);
+                this.qAt.splice(k, 1); this.qMidi.splice(k, 1); this.qVol.splice(k, 1); this.qPan.splice(k, 1);
+            }
+        }
+    }
+
+    // where a world point shows, as a pan (-0.8 .. 0.8)
+    panAt(api: GameApi, x: f64, z: f64): f64 {
+        if (api.project(<f32>x, 0.4, <f32>z) && api.hudW > 0) {
+            return Math.min(Math.max((<f64>api.screenX / <f64>api.hudW) * 2 - 1, -1), 1) * 0.8;
+        }
+        return 0;
     }
 
     update(api: GameApi): void {
@@ -160,8 +204,17 @@ export class Game {
                 this.hasTarget = false;
             }
         }
+        this.playQueued(api);
         if (this.state == PLAY) {
             this.timeLeft -= dt;
+            // the last ten seconds tick, sharper for the last three
+            let sec = <i32>Math.ceil(this.timeLeft);
+            if (sec < this.lastSec) {
+                if (sec <= 10 && sec > 0) {
+                    api.sound(SFX_TICK, sec <= 3 ? 1.5 : 1.0, sec <= 3 ? 0.9 : 0.6);
+                }
+                this.lastSec = sec;
+            }
             if (this.timeLeft <= 0) {
                 this.timeLeft = 0;
                 this.finish(api, false);
@@ -175,6 +228,10 @@ export class Game {
         this.moveDog(api, dt);
         this.moveSheep(api, dt);
         // the gate: open during a run, swings shut once all six are in
+        if (this.latchIn >= 0 && api.frame >= this.latchIn) {
+            api.sound(SFX_CLICK, 0.35, 0.8, this.panAt(api, GATE0, PZ1));   // the gate's latch
+            this.latchIn = -1;
+        }
         let gy = this.won ? 180.0 : 0.0;
         this.gateYaw += (gy - this.gateYaw) * Math.min(1, dt * 5);
         api.place(this.gateB, GATE0, 0, PZ1 + 0.12, this.gateYaw);
@@ -190,6 +247,10 @@ export class Game {
         if (won) {
             let bonus = <i32>Math.ceil(this.timeLeft) * 10;
             this.score += bonus;
+            api.sound(SFX_WIN, 1.0, 0.8);
+            this.latchIn = api.frame + 24;
+        } else {
+            api.sound(SFX_LOSE, 1.0, 0.75);
         }
         if (this.score > this.best) {
             this.best = this.score;
@@ -264,6 +325,11 @@ export class Game {
                     fright = 1 - d / FLEE_R;
                     if (this.spanic[i] <= 0) {
                         this.sstartle[i] = 0.12; // anticipation: a squash before the dash
+                        // a startled sheep: one short note in its own voice (not more than one a third of a second)
+                        if (api.frame - this.lastStartle > 20) {
+                            this.lastStartle = api.frame;
+                            api.note(<f64>(74 + (i % 3) * 2), 0.4, this.panAt(api, x, z), SFX_NOTE);
+                        }
                     }
                     this.spanic[i] = 0.7;
                     let s = SHEEP_MAX * (0.45 + 0.55 * fright);
@@ -413,7 +479,15 @@ export class Game {
         this.lastPen = api.time;
         if (this.state == PLAY) {
             this.score += pts;
+            // penned: a coin that climbs with every sheep in, brighter for a quick follow-up
+            api.sound(SFX_COIN, (pts > 100 ? 1.19 : 1.0) * (1.0 + 0.06 * <f64>this.penned), 0.6, this.panAt(api, this.sx[i], this.sz[i]));
         }
+        // and the sheep bleats: three soft high notes in its own voice, the last one falling
+        let v = <f64>(81 + (i % 3) * 2);
+        let pan = this.panAt(api, this.sx[i], this.sz[i]);
+        this.later(api, 2, v, 0.45, pan);
+        this.later(api, 6, v, 0.4, pan);
+        this.later(api, 10, v - 2, 0.35, pan);
         let p = this.pnext;
         this.pnext = (this.pnext + 1) % 8;
         this.px[p] = this.sx[i];
@@ -602,6 +676,7 @@ export class Game {
         if (kind == POINTER_DOWN) {
             if (this.state == READY) {
                 this.state = PLAY;
+                this.whistle(api);
             } else if (this.state == OVER) {
                 if (api.time - this.overAt < 0.6) {
                     return true;

@@ -28,6 +28,13 @@ The game (all in `scene/game.as`):
   with a small error and now and then a clear miss (never on its first two shots, so the reel shows a
   hit within two seconds); restarts two seconds after a game over. Switching demo off starts a fresh
   run. Typical demo run: 5-7 hits, 12-16 points.
+- Sound (`sfx.as`, silent in demo mode): a blip at a run's start, a click as the fuse is lit, then a
+  fuse tick every 6 frames whose pitch follows the gauge up and back down (you can charge by ear); the
+  shot is a deep boom and a thump (deeper with a bigger charge), and the ball whistles down from its
+  apex. A hit is a crunch of timber, a coin (higher on a farther lane) and a ship's bell that climbs
+  the major scale with each hit in a row, then two glugs as the hull goes under; a miss is a splash.
+  The verdict by rank: a hornpipe for an admiral, a fanfare for a captain, three bells for a gunner,
+  the lose jingle for a deckhand.
 
 ```
 art/palette.json, palette.png   SLSO8 with its ramps and roles (sky #8d697a over #ffaa5e, void #0d2b45)

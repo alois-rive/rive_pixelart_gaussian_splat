@@ -37,6 +37,13 @@ full speed and still clips a gnome or a bed now and then; a stall of 3 s makes i
 runs last 45 to 70 s and clear one or two lawns. It restarts two seconds after TIME'S UP; when demo is
 switched off, a fresh run waits for the first click.
 
+Sound (procedural, `api.sound`; silent in demo): a little two-stroke and a lawn that plays a scale. A start
+jingle; the engine putts (low thuds, 3 a second idling to 7 at full speed, higher as it goes); each cut tile
+snips and plucks a note that climbs two octaves of a major scale as the lawn fills; a gnome bump is a crunch and
+a ceramic clink, a bed bump a crunch and a pop, both with a falling zap for the seconds lost; the clock ticks
+its last eight seconds, higher as they run out; a clear lawn rings a fanfare and the gnomes hop; TIME'S UP
+a falling tune.
+
 How coverage is shown with splats: the mowed lawn (one stripe per column) is baked static under the
 grass; each tile of long grass is its own game bone (44 of 63). Cutting squashes a tile flat in stepped
 frames and hides it; a cleared lawn grows every tile back with an overshoot. The tiles lean in a stepped

@@ -18,6 +18,13 @@ click the fleet waits under the faucet. Demo mode (`--arg demo=true`) starts mid
 it leads the nearest boat, misses now and then (a wild shot one time in ten), loses about a minute in, and
 starts again 2 s after the game over.
 
+Sound (`sfx.as`, silent in demo mode): a cheerful squeak at the first click; each bubble is a bloop out
+of the beak and a boat bobbing up under the faucet a low bloop (rate limited). A popped boat is a pop
+(higher for a speedboat, lower for a tug) with a splash, climbing a whole tone with each boat in a chain
+(a wasted bubble or a bonk breaks it), and a bell every 100 points; a tug's first hit rings its tin hull;
+a wasted bubble plips on the water. A bonk is the duck's squeak (lower for each life lost) and a thump;
+the game over the lose jingle and a splash.
+
 ```
 art/palette.json, palette.png   Lost Century with its ramps and roles (void #4b3d44; no sky in view: horizon 2)
 art/assets.md                   the asset list

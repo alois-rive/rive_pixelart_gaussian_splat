@@ -5,7 +5,10 @@
 //
 // Game bones from scene.bake.json: the net, 16 fireflies, 12 fireflies shown in the jar, 5 moths and
 // 4 twinkles. Deterministic: api.rand() only. Demo mode plays itself like a decent human.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BELL, SFX_HIT, SFX_POP, SFX_POWERUP, SFX_TICK, SFX_WHOOSH, SFX_WIN, SFX_BLIP } from "./game_api";
+
+// the jar's chime: a major pentatonic climbing two octaves with the catch count, then round again
+const PENTA: StaticArray<i32> = [0, 2, 4, 7, 9];
 
 // ramps in art/palette.json order
 const R_GRASS: i32 = 0;   // plum, dark teal, green, cream
@@ -108,6 +111,9 @@ export class Game {
     dErrIn: f64 = 0;
     dWander: f64 = 0;
 
+    // sound only (never read by the game)
+    lastSec: i32 = 99;
+
     start(api: GameApi): void {
         api.playable = true;
         this.net = api.bone("net");
@@ -160,6 +166,11 @@ export class Game {
         this.left = RUN;
         this.overTime = 0;
         this.stun = 0;
+        this.lastSec = 99;
+        // a soft open fifth on bells
+        api.note(72, 0.55, 0, SFX_BELL);
+        api.note(79, 0.45, 0, SFX_BELL);
+        api.sound(SFX_WHOOSH, 1.6, 0.4);
         for (let i = 1; i < NM; i++) {
             if (this.mOn[i]) {
                 this.mOn[i] = false;
@@ -203,6 +214,11 @@ export class Game {
     private gameOver(api: GameApi): void {
         this.mode = OVER;
         this.overTime = 0;
+        // time: a fanfare, and a sparkle on top for a new best
+        api.sound(SFX_WIN, 1.0, 0.7);
+        if (!api.demo && this.score > this.best && this.score > 0) {
+            api.sound(SFX_POWERUP, 1.5, 0.5);
+        }
         if (api.demo) {
             this.bestDemo = max<i32>(this.bestDemo, this.score);
         } else {
@@ -296,6 +312,7 @@ export class Game {
                     this.fSZ[i] = z;
                     this.catchT = 0;
                     this.spark(x, y, z);
+                    api.soundAt(SFX_POP, x, y, z, 1.5, 0.45);
                 }
             }
         }
@@ -304,6 +321,13 @@ export class Game {
     private intoJar(api: GameApi): void {
         if (this.mode == PLAY) {
             this.score++;
+            // a bell climbing the pentatonic with the jar's count; every tenth, a sparkle
+            let n = (this.score - 1) % 10;
+            let midi = 72 + PENTA[n % 5] + 12 * (n / 5);
+            api.soundAt(SFX_BELL, JAR_X, JAR_TOP, JAR_Z, Math.pow(2.0, <f64>(midi - 69) / 12.0), 0.6);
+            if (this.score % 10 == 0) {
+                api.sound(SFX_POWERUP, 1.25, 0.45, -0.4);
+            }
         }
         if (this.shownInJar < NJ) {
             let j = this.shownInJar;
@@ -395,6 +419,9 @@ export class Game {
             }
             if (have < min<i32>(want, NM)) {
                 this.wakeMoth(api);
+                // a new moth: a low flutter
+                api.sound(SFX_BLIP, 0.3, 0.5);
+                api.sound(SFX_WHOOSH, 0.7, 0.4);
             }
         }
         let netOn = api.project(<f32>this.nX, <f32>NET_Y, <f32>this.nZ);
@@ -441,6 +468,10 @@ export class Game {
                     }
                     this.popN = lost;
                     this.popT = lost > 0 ? 0.0 : 9.0;
+                    api.soundAt(SFX_HIT, this.nX, NET_Y, this.nZ, 0.9, 0.7);
+                    if (lost > 0) {
+                        api.soundAt(SFX_WHOOSH, JAR_X, JAR_TOP, JAR_Z, 1.4, 0.6);
+                    }
                     this.popX = this.nX;
                     this.popZ = this.nZ;
                 }
@@ -535,6 +566,12 @@ export class Game {
         }
         if (this.mode == PLAY) {
             this.left -= dt;
+            // the last ten seconds tick, higher for the last three
+            let sec = <i32>Math.ceil(this.left);
+            if (sec != this.lastSec && sec <= 10 && sec > 0) {
+                api.sound(SFX_TICK, sec <= 3 ? 1.5 : 1.0, 0.7);
+            }
+            this.lastSec = sec;
             if (this.left <= 0) {
                 this.left = 0;
                 this.gameOver(api);

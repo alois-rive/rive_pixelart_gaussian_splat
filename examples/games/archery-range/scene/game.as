@@ -5,11 +5,15 @@
 //
 // Everything is in this file (references/games.md, "The game hook"); the bones come from
 // scene.bake.json: archer, bow, flag, target0..3, arrow0..10, chip0..7.
-import { GameApi, POINTER_DOWN, POINTER_UP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_UP, SFX_BLIP, SFX_CLICK, SFX_TICK, SFX_WHOOSH, SFX_THUD, SFX_COIN,
+    SFX_NOTE, SFX_BELL, SFX_WIN, SFX_LOSE } from "./game_api";
 
 const LANE_Z: StaticArray<f64> = [-3.0, -6.5, -10.0];
 const LANE_SPEED: StaticArray<f64> = [1.35, 1.85, 2.35];
 const RING_PTS: StaticArray<i32> = [10, 8, 6, 4, 2];
+// sound: the chime of each ring (a major pentatonic, the bullseye on top), MIDI
+const RING_NOTE: StaticArray<f64> = [79, 76, 74, 72, 69];
+const PENTA: StaticArray<f64> = [0, 2, 4, 7, 9, 12, 14, 16];
 const NT: i32 = 6;            // targets in the pool (up to two a lane)
 const NA: i32 = 11;           // arrows in the pool (ten a run, one spare for the reload slide)
 const NC: i32 = 8;            // straw chips
@@ -125,6 +129,15 @@ export class Game {
     pText: Array<string> = ["", "", "", "", "", ""];
     nextPop: i32 = 0;
 
+    // sound (never decided by a random draw)
+    streak: i32 = 0;          // arrows on target in a row: the chime climbs the scale
+    tune: StaticArray<f64> = new StaticArray<f64>(8);
+    tuneN: i32 = 0;
+    tuneI: i32 = 0;
+    tuneAt: i32 = 0;
+    tuneStep: i32 = 6;
+    tuneKind: i32 = SFX_NOTE;
+
     // demo player
     dWait: f64 = 0.1;
     dHold: f64 = 0.7;
@@ -153,6 +166,7 @@ export class Game {
     // ------------------------------------------------------------------ run
 
     newRun(api: GameApi): void {
+        this.streak = 0;
         this.score = 0;
         this.left = ARROWS;
         this.shot = 0;
@@ -310,6 +324,9 @@ export class Game {
         this.left -= 1;
         this.shot += 1;
         this.releaseT = 0;
+        // the bowstring's twang (a plucked note, higher with the draw) and the arrow's whoosh
+        api.note(43 + 9 * d, 0.75, -0.2);
+        api.sound(SFX_WHOOSH, 0.7 + 0.6 * d, 0.35 + 0.3 * d, -0.1);
         this.drawT = 0;
     }
 
@@ -353,6 +370,9 @@ export class Game {
                         this.resolve(api, false);
                         break;
                     }
+                }
+                if (this.aState[a] == A_IDLE) {
+                    api.sound(SFX_BLIP, 0.45, 0.4);      // gone over the range: a low blip
                 }
                 if (this.aState[a] == A_FLYING) {
                     let vx = this.aVX[a], vy = this.aVY[a], vz = this.aVZ[a];
@@ -406,6 +426,12 @@ export class Game {
             this.score += pts;
             this.hits += 1;
             this.burst(api, hx, hy, fz + 0.1, 5);
+            // a straw thump (lighter on a farther lane) and the ring's chime, climbing with the streak
+            api.soundAt(SFX_THUD, hx, hy, fz, 1.6 + 0.35 * <f64>this.tLane[t], 0.85);
+            let up = PENTA[min<i32>(this.streak, 7)];
+            api.note(RING_NOTE[ring] + up, ring == 0 ? 0.6 : 0.45, 0, ring == 0 ? SFX_BELL : SFX_NOTE);
+            if (ring == 0) api.soundAt(SFX_COIN, hx, hy, fz, 1.0 + 0.06 * <f64>min<i32>(this.streak, 6), 0.7);
+            this.streak++;
             this.popup(hx, hy + 0.9, fz, ring == 0 ? "BULLSEYE +" + pts.toString() : "+" + pts.toString(), ring == 0 ? 2 : 1);
             this.resolve(api, true);
             return true;
@@ -425,19 +451,58 @@ export class Game {
         this.aAge[a] = 0;
         this.burst(api, this.aX[a], 0.05, this.aZ[a], 2);
         this.popup(this.aX[a], 0.9, this.aZ[a], "MISS", 0);
+        api.soundAt(SFX_THUD, this.aX[a], 0, this.aZ[a], 0.7, 0.6);   // a dull thunk in the turf
+        this.streak = 0;
         this.resolve(api, false);
     }
 
     // an arrow came down: the next one, a new wind, or the end of the run
     resolve(api: GameApi, hit: bool): void {
         if (this.mode == M_READY) this.mode = M_PLAY;
+        if (!hit) this.streak = 0;
         if (this.left > 0) {
             this.newWind(api);
             this.nock();
+            api.sound(SFX_CLICK, 0.45, 0.4, -0.2);       // the next arrow clicks onto the string
         } else if (this.mode == M_PLAY) {
             this.mode = M_OVER;
             this.overT = 0;
+            let record = this.score > this.best && this.score > 0;
             if (this.score > this.best) this.best = this.score;
+            // the quiver is empty: a fanfare for a good round, a short call for a fair one, a sigh otherwise
+            if (this.hits >= 7) {
+                api.sound(SFX_WIN, 1.0, 0.8);
+                this.playTune(api, [0, 0, 0, 67, 72, 76, 79, record ? 84 : 0], 7, SFX_NOTE);
+            } else if (this.hits >= 4) {
+                this.playTune(api, [67, 72, 76, record ? 84 : 0], 8, SFX_BELL);
+            } else {
+                api.sound(SFX_LOSE, 1.0, 0.7);
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ sound
+
+    playTune(api: GameApi, notes: Array<f64>, step: i32, kind: i32): void {
+        this.tuneN = min<i32>(notes.length, 8);
+        for (let i = 0; i < this.tuneN; i++) this.tune[i] = notes[i];
+        this.tuneI = 0;
+        this.tuneAt = api.frame;
+        this.tuneStep = step;
+        this.tuneKind = kind;
+    }
+
+    sounds(api: GameApi, dt: f64): void {
+        if (this.drawing) {
+            // a tick when the draw is full (the meter turns mint), then a nervous tick while it trembles
+            if (this.drawT >= 0.65 && this.drawT - dt < 0.65) api.sound(SFX_TICK, 0.8, 0.8, -0.2);
+            if (this.drawT > 1.5 && api.frame % 10 == 0) api.sound(SFX_TICK, 0.5, 0.5, -0.2);
+        }
+        if (this.tuneI < this.tuneN && api.frame >= this.tuneAt) {
+            let m = this.tune[this.tuneI];
+            if (m > 0) api.note(m, 0.65, 0, this.tuneKind);
+            this.tuneI++;
+            this.tuneAt = api.frame + this.tuneStep;
         }
     }
 
@@ -556,6 +621,7 @@ export class Game {
         this.nockT += dt;
         if (this.drawing) this.drawT += dt;
         if (api.demo) this.demoPlay(api, dt);
+        this.sounds(api, dt);
 
         this.updateTargets(api, dt);
 
@@ -608,11 +674,17 @@ export class Game {
                 if (this.overT > 0.6) {
                     this.newRun(api);
                     this.mode = M_PLAY;
+                    api.sound(SFX_BLIP, 1.0, 0.6);       // a fresh quiver
                 }
                 return true;
             }
-            if (this.mode == M_READY) this.mode = M_PLAY;
+            if (this.mode == M_READY) {
+                this.mode = M_PLAY;
+                api.sound(SFX_BLIP, 1.0, 0.6);
+            }
+            let was = this.drawing;
             this.beginDraw();
+            if (this.drawing && !was) api.sound(SFX_WHOOSH, 0.45, 0.4, -0.2);   // the string comes back
         } else if (kind == POINTER_UP) {
             this.release(api);
         }

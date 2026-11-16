@@ -2,7 +2,13 @@
 // through four gates (each gate shakes and puffs dust for a moment first), roll across and smash on
 // the far wall. Survive: a point a second, gold coins +5. Three hearts; a hit knocks the knight
 // back and blinks. Pointer only; a run starts on the first click; demo mode plays itself.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_WIN, SFX_THUD, SFX_EXPLODE, SFX_HIT, SFX_CLICK, SFX_LOSE,
+         SFX_COIN, SFX_TICK, SFX_BLIP, SFX_BELL } from "./game_api";
+
+// sound: heavy stone and armour. A boulder in its gate rumbles (low thuds with its dust), bumps
+// along as it rolls (a thud a turn) and bursts on the wall; a hit is a crunch and a clank, the
+// knight's armour jingles a step every few strides, coins climb in pitch while no boulder lands,
+// and every ten seconds alive a bell rings.
 
 const ST_IDLE: i32 = 0;
 const ST_PLAY: i32 = 1;
@@ -47,6 +53,7 @@ export class Game {
     best: i32 = 0;
     lives: i32 = 3;
     wasDemo: bool = false;
+    coinRun: i32 = 0;    // coins since the last hit (the coin's pitch)
 
     knight: i32 = -1;
     bBone: StaticArray<i32> = new StaticArray<i32>(NB);
@@ -163,6 +170,8 @@ export class Game {
         this.spawnT = 0;
         this.launch(api, 0.35);
         this.spawnT = 1.6;
+        this.coinRun = 0;
+        api.sound(SFX_WIN, 0.8, 0.6);
     }
 
     endRun(): void {
@@ -187,6 +196,9 @@ export class Game {
             this.state = ST_OVER;
             this.beginRun(api);
         }
+        if (this.state == ST_OVER && this.stateT < 0.5 && this.stateT + dt >= 0.5) {
+            api.soundAt(SFX_THUD, this.kx, 0, this.kz, 0.8, 0.9); // the knight hits the sand
+        }
         this.stateT += dt;
         if (this.state == ST_PLAY) {
             this.runT += dt;
@@ -194,6 +206,10 @@ export class Game {
             while (this.tickT >= 1.0) {
                 this.tickT -= 1.0;
                 this.score += 1;
+                let secs = <i32>Math.round(this.runT);
+                if (secs > 0 && secs % 10 == 0) {
+                    api.note(<f64>(67 + min<i32>(secs / 10, 6) * 2), 0.5, 0, SFX_BELL);
+                }
             }
         }
         if (api.demo) {
@@ -251,6 +267,7 @@ export class Game {
             this.bZ[i] = GATE_R * Math.sin(a);
             this.bRoll[i] = api.range(0, 360);
             this.bHit[i] = false;
+            api.soundAt(SFX_BLIP, this.bX[i], BR, this.bZ[i], 0.5, 0.6);
             return;
         }
     }
@@ -285,6 +302,9 @@ export class Game {
                 api.place(b, this.bX[i] + ix * rock, BR, this.bZ[i] + iz * rock,
                           Math.atan2(ix, iz) * 180 / Math.PI, this.bRoll[i] + rock * 120, 0, 1.0);
                 if (Math.floor((this.bT[i] - dt) * 6) != Math.floor(this.bT[i] * 6)) {
+                    if (Math.floor(this.bT[i] * 6) % 2 == 1) { // a rumble: three low thuds, rising
+                        api.soundAt(SFX_THUD, this.bX[i], BR, this.bZ[i], 0.55 + 0.1 * Math.floor(this.bT[i] * 6), 0.45);
+                    }
                     this.puff(api, this.bX[i] + ix * 0.4 + api.range(-0.4, 0.4), 0.15, this.bZ[i] + iz * 0.4 + api.range(-0.4, 0.4), 0.6, 0.8);
                 }
                 if (this.bT[i] >= WARN_T) {
@@ -299,6 +319,7 @@ export class Game {
                     this.bState[i] = B_ROLL;
                     this.bT[i] = 0;
                     this.shakeT = Math.max(this.shakeT, 0.08);
+                    api.soundAt(SFX_THUD, this.bX[i], BR, this.bZ[i], 0.5, 0.9);
                 }
                 continue;
             }
@@ -306,7 +327,11 @@ export class Game {
             let sp = this.bSp[i] * Math.min(1.0, 0.4 + this.bT[i] * 3.0);
             this.bX[i] += this.bDX[i] * sp * dt;
             this.bZ[i] += this.bDZ[i] * sp * dt;
+            let turn = Math.floor(this.bRoll[i] / 360);
             this.bRoll[i] += sp * dt / BR * 180 / Math.PI;
+            if (Math.floor(this.bRoll[i] / 360) != turn) {
+                api.soundAt(SFX_THUD, this.bX[i], BR, this.bZ[i], 0.6, 0.3);
+            }
             let heading = Math.atan2(this.bDX[i], this.bDZ[i]) * 180 / Math.PI;
             let hop = Math.floor(this.bRoll[i] / 60) % 2 == 0 ? 0.0 : 0.04;
             api.place(b, this.bX[i], BR + hop, this.bZ[i], heading, this.bRoll[i], 0, 1.0);
@@ -326,6 +351,7 @@ export class Game {
                     this.puff(api, this.bX[i] + api.range(-0.3, 0.3), api.range(0.2, 0.8), this.bZ[i] + api.range(-0.3, 0.3), 1.0, 1.4);
                 }
                 this.shakeT = Math.max(this.shakeT, 0.12);
+                api.soundAt(SFX_EXPLODE, this.bX[i], BR, this.bZ[i], 1.3, 0.55);
                 this.bState[i] = B_IDLE;
                 api.hide(b);
             }
@@ -346,9 +372,13 @@ export class Game {
             this.puff(api, this.kx + api.range(-0.3, 0.3), api.range(0.4, 1.2), this.kz + api.range(-0.3, 0.3), 1.2, 1.8);
         }
         this.lives -= 1;
+        this.coinRun = 0;
+        api.soundAt(SFX_HIT, this.kx, 0.6, this.kz, 0.8, 1.0);
+        api.soundAt(SFX_CLICK, this.kx, 0.6, this.kz, 0.5, 0.9);
         if (this.lives <= 0) {
             this.lives = 0;
             this.endRun();
+            api.sound(SFX_LOSE, 0.8, 0.7);
         }
     }
 
@@ -413,6 +443,8 @@ export class Game {
                     this.cOn[c] = false;
                     this.cGot[c] = 0;
                     this.score += 5;
+                    api.soundAt(SFX_COIN, this.cX[c], 0.45, this.cZ[c], Math.pow(2, <f64>min<i32>(this.coinRun, 7) / 12), 0.8);
+                    this.coinRun += 1;
                     if (api.project(<f32>this.cX[c], 1.4, <f32>this.cZ[c])) {
                         this.popX = api.screenX;
                         this.popY = api.screenY;
@@ -473,7 +505,11 @@ export class Game {
             while (d < -180) { d += 360; }
             this.kyaw += d * Math.min(1.0, dt * 12);
         }
+        let stride = Math.floor(this.kstep * 0.8);
         this.kstep += sp * dt;
+        if (sp > 0.6 && !stunned && Math.floor(this.kstep * 0.8) != stride) {
+            api.sound(SFX_TICK, 0.35 + 0.05 * (stride % 2), 0.7, 0); // an armour jingle every fourth step
+        }
         if (this.hurtT > 0) {
             this.hurtT -= dt;
             if (this.hurtT < 1.2 && Math.floor(this.hurtT * 12) % 2 == 0) {

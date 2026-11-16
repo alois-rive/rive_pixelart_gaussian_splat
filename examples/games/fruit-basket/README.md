@@ -23,6 +23,13 @@ the distance (15 degree steps); fruit pops in, wobbles, stretches on its stalk, 
 stretched along its speed, sinks into the tray or squashes flat on the grass and blinks out; cream
 sparks burst on every catch; the canopies shake before they drop something.
 
+Sound (procedural, `sfx.as`; silent in demo mode): a fanfare starts a run; each stalk snaps as its
+fruit lets go (lower for a rotten one); a catch knocks on the tray and chimes up a major scale with
+the streak of good fruit (a plum a fifth higher, the golden pear a power-up arpeggio). A rotten
+apple in the cart squelches and crunches; a good fruit on the grass splats; a dodged rotten one
+thuds softly; the wheels knock once a turn; GAME OVER plays the lose jingle. Panned by where it
+happens.
+
 Demo (`--arg demo=true`, the gallery's `Sample.demo`): an apple is already falling on frame 0 and caught
 by frame 30. The demo player aims at the good fruit that will land first, a beat late (it re-decides every
 0.12-0.24 s) and a little off (+-0.5 m), sidesteps rotten apples 85 % of the time and lets about one aim

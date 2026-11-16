@@ -17,6 +17,13 @@ nine balls: "PRIZE!" at 300 or more, else "NO PRIZE"; best is kept for the sessi
 While aiming, the ball is drawn back and squashed, a dotted path and a power bar grow with the drag
 (mint, yellow, pink).
 
+Sound (`sfx.as`, silent in demo mode): a blip when the ball is pressed, a rising note at every fifth of
+the power while dragging, a thump on release (deeper for a harder roll), then a low rumble of ticks while
+it rolls (quicker and higher when fast), a click off a rail and a hop over the hump. On the board a thud
+and the hole's sound: 10 a low note, 20 a higher one, 30 a coin, 50 a coin and a bell, the 100 cup a
+power-up and a high bell; too soft is a sad falling bloop. The next ball clacks onto the lane; a run ends
+with a fanfare and a bell for a prize, the losing arpeggio without; a new run drops a token in the slot.
+
 Demo (`--arg demo=true`): a fair player who mostly goes for the 50 hole, now and then the cup (15 %), with a
 hand that is off in strength by up to 0.18 of the power range and sideways by up to 20 px; its drag is shown
 like a player's. It aims within the first half second and throws at 0.6 s; a run takes about 22 s, scores

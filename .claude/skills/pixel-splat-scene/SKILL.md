@@ -109,7 +109,7 @@ the blob format, the traps and how to extend it; [games.md](references/games.md)
 how a game drives the camera, moves objects, layers a HUD and stays fast. A game's
 logic lives in one file, `game.as` (the renderer calls it every frame with a `GameApi`:
 game bones from the bake, camera, pointer picking, a pixel HUD, a seeded random, demo
-mode); the renderer files are never edited in a project.
+mode, procedural sound effects on Rive's audio thread); the renderer files are never edited in a project.
 
 ## Files
 
@@ -125,7 +125,7 @@ pixel-splat-scene/
   references/games.md               cameras for every genre, the game hook (game.as), demo mode, HUD, input, performance
   references/style.md               the look in depth, tuning recipes, the frame audit, motion
   references/sources.md             the references behind the choices
-  assets/template/                  splat.wgsl, resolve.wgsl, splat_scene.as, game_api.as, game.as (a game's own file),
+  assets/template/                  splat.wgsl, resolve.wgsl, splat_scene.as, game_api.as, sfx.as, game.as (a game's own file),
                                     scene.rml (with the Sample view model: demo), rive.yaml, scene.bake.json
   assets/palettes/endesga32.json    a starter palette with ramps and roles
   scripts/palette.py                lospec (fetch + ramps), check, swatch, fit (image -> palette), audit, frame

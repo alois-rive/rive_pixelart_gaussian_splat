@@ -1,7 +1,8 @@
 // Mole Garden: moles pop out of nine molehills in a vegetable bed; click them before they duck back.
 // Rabbits pop up too: spare them (a bonked rabbit costs 3 points). 45 seconds a run, faster and
 // busier towards the end. One verb: click (the mallet follows the pointer).
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_POP, SFX_JUMP, SFX_THUD, SFX_COIN, SFX_BLIP, SFX_HIT, SFX_ZAP,
+    SFX_TICK, SFX_POWERUP, SFX_WIN } from "./game_api";
 
 const HOLES: i32 = 9;
 const RABBITS: i32 = 3;
@@ -87,6 +88,8 @@ export class Game {
     popZ: Array<f64> = new Array<f64>();
     popT: Array<f64> = new Array<f64>();
     popBad: Array<bool> = new Array<bool>();
+    // sound (never decided by api.rand: the demo stays the same)
+    sNewBest: bool = false;
     // demo
     wasDemo: bool = false;
     dTarget: i32 = -1;
@@ -162,6 +165,16 @@ export class Game {
         this.hT[hole] = 0;
         this.hStay[hole] = (1.25 - 0.55 * p) * api.range(0.85, 1.15) + (who >= 0 ? 0.3 : 0.0);
         this.hYaw[hole] = api.range(-18, 18);
+        // out of the hole (in a run: the peeks before it stay quiet): a mole pops, each row its own
+        // pitch (the back row highest), a rabbit hops
+        if (this.state != PLAY) {
+            // quiet
+        } else if (who < 0) {
+            let row = hole / 3;
+            api.soundAt(SFX_POP, holeX(hole), 0, holeZ(hole), row == 0 ? 1.2 : (row == 1 ? 1.0 : 0.84), 0.45);
+        } else {
+            api.soundAt(SFX_JUMP, holeX(hole), 0, holeZ(hole), 1.5, 0.35);
+        }
     }
 
     occupantY(i: i32): f64 {
@@ -180,12 +193,14 @@ export class Game {
             if (this.stateT > 0.8) {
                 this.reset(api);
                 this.state = PLAY; // the click that restarts also starts the clock
+                api.sound(SFX_POWERUP, 1.0, 0.55);
             }
             return;
         }
         if (this.state == READY) {
             this.state = PLAY;
             this.stateT = 0;
+            api.sound(SFX_POWERUP, 1.0, 0.55);
         }
         this.swingT = 0;
         // the nearest occupant whose head is under the pointer
@@ -203,6 +218,8 @@ export class Game {
         if (bestI < 0) {
             // a miss: the mallet thumps the earth where the pointer is
             if (api.pick(hx, hy, 0.3)) { this.mx = api.hitX; this.mz = api.hitZ; this.goalX = this.mx; this.goalZ = this.mz; }
+            // a dull thump in the earth (a broken streak sounds lower still)
+            api.soundAt(SFX_THUD, this.mx, 0, this.mz, this.streak >= 3 ? 0.8 : 1.0, 0.65);
             this.streak = 0;
             return;
         }
@@ -216,12 +233,21 @@ export class Game {
             this.streak = 0;
             this.shakeT = 0;
             this.pop(holeX(i), 1.0, holeZ(i), "-3 NOT THE BUNNY!", true);
+            // a bonked bunny: a crunch and a falling buzz
+            api.soundAt(SFX_HIT, holeX(i), 0, holeZ(i), 0.8, 0.85);
+            api.soundAt(SFX_ZAP, holeX(i), 0, holeZ(i), 0.5, 0.6);
         } else {
             this.moles++;
             this.streak++;
             let gain = this.streak >= 5 ? 2 : 1;
             this.score += gain;
             this.pop(holeX(i), 0.95, holeZ(i), gain > 1 ? "+2 STREAK" : "+1", false);
+            // the mallet's bonk, and a coin a whole tone higher for each mole of a streak (up an
+            // octave and a bit); from the fifth (+2) a bright blip on top
+            api.soundAt(SFX_THUD, holeX(i), 0, holeZ(i), 1.6, 0.8);
+            let st = min<i32>(this.streak - 1, 7);
+            api.soundAt(SFX_COIN, holeX(i), 0, holeZ(i), Math.pow(2, <f64>(2 * st) / 12.0), 0.6);
+            if (gain > 1) api.soundAt(SFX_BLIP, holeX(i), 0, holeZ(i), 1.5, 0.4);
             let b = this.nextBonk;
             this.nextBonk = (b + 1) % BONKS;
             this.bX[b] = holeX(i); this.bY[b] = 0.55; this.bZ[b] = holeZ(i); this.bT[b] = 0;
@@ -242,11 +268,18 @@ export class Game {
         }
         this.stateT += dt;
         if (this.state == PLAY) {
+            let l0 = this.left;
             this.left -= dt;
+            // the last five seconds tick, higher each second
+            for (let k = 1; k <= 5; k++) {
+                if (l0 > <f64>k && this.left <= <f64>k) api.sound(SFX_TICK, 0.5 + 0.08 * <f64>(5 - k), 0.6);
+            }
             if (this.left <= 0) {
                 this.left = 0;
                 this.state = OVER;
                 this.stateT = 0;
+                api.sound(SFX_WIN, 0.75, 0.75);     // TIME'S UP!
+                this.sNewBest = this.score > this.best && !api.demo;
                 if (this.score > this.best) this.best = this.score;
                 for (let i = 0; i < HOLES; i++) {
                     if (this.hState[i] == RISE || this.hState[i] == UP) {
@@ -279,6 +312,10 @@ export class Game {
             else if ((s == SINK && this.hT[i] >= SINK_T) || (s == HIT && this.hT[i] >= HIT_T)) {
                 this.hState[i] = EMPTY; this.hT[i] = 0; this.hLast[i] = 0;
             }
+        }
+        if (this.sNewBest && this.state == OVER && this.stateT > 0.7) {
+            this.sNewBest = false;
+            api.sound(SFX_POWERUP, 1.3, 0.6);       // a new best
         }
         if (this.state == OVER && api.demo && this.stateT > 2.0) {
             this.reset(api);

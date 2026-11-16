@@ -19,6 +19,13 @@ the session (the demo keeps its own). The satellite follows the pointer as it mo
 and fires (one shot in flight per 0.16 s). The first click starts the run; after a game over the next
 click (after 0.8 s) starts a new one in the same world, the houses popping back.
 
+Sound (`sfx.as`, silent in demo mode): a run starts with a rising arpeggio; each shot is a pew (its pitch
+cycles over three shots); a hit is a burst (deeper for a boulder) with a note that climbs a pentatonic run
+for each hit in a row (a miss or a lost house starts it again); a boulder rushes in with a low whoosh from
+its side; the satellite blocking a rock crunches and zaps; a rock reaching the ground booms, a flattened
+house crunches with a low note that sinks with each house lost; the last house plays the falling game-over
+arpeggio, with a high bell for a new best.
+
 Demo (`--arg demo=true`, the gallery's `Sample.demo`): a run starts at once with a meteor already in view;
 the demo waits until a meteor is well inside the frame, aims at the most urgent one with lead, clicks at a
 human pace (0.3 to 0.8 s, slowing as it tires), with a small aim error and a clear miss about one shot in

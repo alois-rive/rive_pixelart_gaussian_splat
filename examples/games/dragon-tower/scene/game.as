@@ -6,7 +6,8 @@
 // Every moving thing is a game bone from scene.bake.json: the dragon's body and head (the head turns
 // and dips towards the aim), a pool of 9 knights, 16 fireballs, 6 puffs and 3 clouds.
 // Deterministic: api.rand() only. Demo mode (api.demo) plays itself like a decent human.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BLIP, SFX_COIN, SFX_HIT, SFX_JUMP, SFX_LOSE, SFX_POP, SFX_THUD, SFX_TICK, SFX_WHOOSH,
+    SFX_WIN, SFX_ZAP } from "./game_api";
 
 // ramps in art/palette.json order
 const R_STONE: i32 = 0;   // purple, thistle, yellow
@@ -131,6 +132,10 @@ export class Game {
     dTarget: i32 = -1;
     dReact: f64 = 0;
 
+    // sound only (never read by the game): knights burnt in the current breath, frames breathing
+    burnStreak: i32 = 0;
+    roarTick: i32 = 0;
+
     start(api: GameApi): void {
         api.playable = true;
         this.body = api.bone("dragon");
@@ -177,6 +182,8 @@ export class Game {
         this.hot = false;
         this.hurtT = 9;
         this.spawnIn = 0.4;
+        this.burnStreak = 0;
+        api.sound(SFX_WIN, 0.75, 0.6);
         for (let i = 0; i < NK; i++) {
             if (this.kState[i] == K_CHEER || this.kState[i] == K_CLIMB || this.kState[i] == K_WALK || this.kState[i] == K_BREACH) {
                 this.knockOff(api, i, false);
@@ -199,6 +206,7 @@ export class Game {
         this.mode = OVER;
         this.overTime = 0;
         this.breath = -1;
+        api.sound(SFX_LOSE, 0.8, 0.9);
         if (api.demo) {
             this.bestDemo = max<i32>(this.bestDemo, this.score);
         } else {
@@ -340,10 +348,14 @@ export class Game {
                 this.knightPos(k);
                 let rung = <i32>Math.floor(this.kH[k] / RUNG);
                 let roll = (rung % 2 == 0 ? 6.0 : -6.0);
+                if (this.mode == PLAY && this.kH[k] > TOP_H * 0.6 && rung != <i32>Math.floor((this.kH[k] - this.kV[k] * dt) / RUNG)) {
+                    api.soundAt(SFX_TICK, this.kX[k], this.kY[k], this.kZ[k], 0.7 + 0.12 * <f64>rung, 0.7);
+                }
                 api.place(b, this.kX[k], this.kY[k], this.kZ[k], a + 180.0, 0, roll, 1);
                 if (this.kH[k] >= TOP_H && this.mode == PLAY) {
                     this.kState[k] = K_BREACH;
                     this.kT[k] = 0;
+                    api.soundAt(SFX_JUMP, this.kX[k], this.kY[k], this.kZ[k], 0.8, 0.7);
                 }
             } else if (s == K_BREACH) {
                 // hop from the ladder's top onto the merlons (0.35 s), gloat (0.45 s), then get swatted
@@ -358,6 +370,7 @@ export class Game {
                     this.kY[k] = y;
                     this.kZ[k] = r * Math.cos(ar);
                     this.knockOff(api, k, false);
+                    api.sound(SFX_WHOOSH, 1.3, 0.7);
                     this.hurt(api);
                 }
             } else if (s == K_BURN) {
@@ -379,6 +392,7 @@ export class Game {
                 if (this.kY[k] < GROUND + 0.2 || Math.abs(this.kX[k]) > 10.0) {
                     if (this.kY[k] < GROUND + 0.2) {
                         this.puff(api, this.kX[k], GROUND + 0.35, this.kZ[k], 1.2);
+                        api.soundAt(SFX_THUD, this.kX[k], GROUND, this.kZ[k], 0.9 + 0.1 * <f64>(k % 3), 0.55);
                     }
                     this.kState[k] = K_OFF;
                     api.hide(b);
@@ -399,6 +413,7 @@ export class Game {
         }
         this.hearts--;
         this.hurtT = 0;
+        api.sound(SFX_HIT, 0.6, 0.95);
         if (this.hearts <= 0) {
             this.gameOver(api);
         }
@@ -434,6 +449,8 @@ export class Game {
             if (this.breath < 0) {
                 this.breath = 0;
                 this.emitIn = 0.14;   // the inhale before the flame
+                this.burnStreak = 0;
+                this.roarTick = 0;
             }
             this.breath += dt;
             this.sinceBreath = 0;
@@ -443,6 +460,7 @@ export class Game {
                 this.hot = true;
                 this.breath = -1;
                 this.smokeIn = 0;
+                api.sound(SFX_ZAP, 0.45, 0.7);
             }
         } else {
             this.breath = -1;
@@ -452,6 +470,8 @@ export class Game {
             }
             if (this.hot && this.fuel >= 0.5) {
                 this.hot = false;
+                api.sound(SFX_BLIP, 0.75, 0.5);
+                api.sound(SFX_BLIP, 1.0, 0.5);
             }
         }
         // the mouth: the snout's tip turned with the head
@@ -463,6 +483,13 @@ export class Game {
         let mx = lz * Math.sin(yr);
         let my = hy + ly;
         let mz = NECK_Z + lz * Math.cos(yr);
+        if (this.breath >= 0.14) {
+            // the roar: a breathy gust every 10 frames while the flame lasts, lower as the fire runs out
+            if (this.roarTick % 10 == 0) {
+                api.sound(SFX_WHOOSH, 0.42 + 0.2 * this.fuel, 0.75, Math.max(-0.8, Math.min(0.8, this.aimX / 7.0)));
+            }
+            this.roarTick++;
+        }
         if (this.breath >= 0) {
             this.emitIn -= dt;
             while (this.emitIn <= 0) {
@@ -475,6 +502,7 @@ export class Game {
             if (this.smokeIn <= 0) {
                 this.smokeIn = 0.32;
                 this.puff(api, mx, my + 0.15, mz, 0.55);
+                api.sound(SFX_POP, 0.45, 0.4);
             }
         }
         // fireballs fly, grow and flicker; each one tests the knights on screen
@@ -559,6 +587,11 @@ export class Game {
                 let high = s == K_BREACH || this.kH[k] > TOP_H * 0.66;
                 let pts = high ? 2 : 1;
                 this.score += pts;
+                // a crunch, and a pickup climbing a semitone per knight burnt in this breath
+                this.burnStreak++;
+                let up = Math.pow(2.0, <f64>min<i32>(this.burnStreak - 1, 12) / 12.0);
+                api.soundAt(SFX_HIT, this.kX[k], y + 0.5, this.kZ[k], 1.1, 0.5);
+                api.soundAt(SFX_COIN, this.kX[k], y + 0.5, this.kZ[k], (high ? 1.26 : 1.0) * up, high ? 0.9 : 0.7);
                 this.popText(high ? "+2!" : "+1", this.kX[k], y + 1.0, this.kZ[k]);
                 this.puff(api, this.kX[k], y + 0.45, this.kZ[k] + 0.3, 0.8);
                 if (s == K_WALK) {

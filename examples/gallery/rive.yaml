@@ -3,3 +3,6 @@ scripting: wasm
 logs:
   file: build/rive.log
   problems: build/problems.log
+pages:
+  workspaceId: 40887
+  name: "gallery"

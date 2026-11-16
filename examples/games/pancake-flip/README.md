@@ -26,6 +26,13 @@ burnt.
   score and the session's best; the next click starts a new run in the same kitchen.
 - Runs last about 30 to 90 seconds.
 
+**Sound** (`sfx.as`, silent in demo mode): a bright start arpeggio; batter pours with a low blop; a
+pancake turning golden dings its pan's own note (C, E, G left to right), browning hisses; a flip is a
+whoosh, an empty pan a tink; PERFECT lands with a soft thud and a chime two semitones higher for each
+perfect in a row, OK with a low blip, RAW! with a wet flop; a served pancake pops onto the plate, higher
+as the stack grows; a strike is a crunch (lower with each one) and a poof; KITCHEN CLOSED is the falling
+game-over arpeggio, with a high bell for a new best.
+
 **Demo** (`--arg demo=true`, or the gallery's `Sample.demo`): the run starts at once with the middle
 pan golden; the demo cook flips it within half a second. For each new pancake it picks its moment:
 mostly inside the golden window, 14 % a little late (browned), 6 % too eager (raw), 6 % forgotten

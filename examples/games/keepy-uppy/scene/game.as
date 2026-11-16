@@ -4,7 +4,12 @@
 //
 // Everything is in this file (references/games.md, "The game hook"); the bones come from
 // scene.bake.json: ball0..3, shadow0..3, puff0..7, spark0..5, crab.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_POP, SFX_BELL, SFX_WIN, SFX_THUD, SFX_LOSE, SFX_WHOOSH,
+         SFX_TICK, SFX_BLIP } from "./game_api";
+
+// sound: a kick is a rubbery pop (higher with more balls in play) and a plucked note that climbs a
+// major pentatonic with the rally's kicks; walls tick, a new ball rings a bell then whooshes in
+const PENTA: StaticArray<i32> = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21, 24];
 
 const NB: i32 = 4;
 const NPF: i32 = 8;
@@ -167,6 +172,7 @@ export class Game {
             this.mode = M_PLAY;
             this.runT = 0;
             this.joinT = 0;
+            api.sound(SFX_WIN, 1.0, 0.5);
         }
         let off = clamp((this.x[i] - hx) / RB, -1, 1);
         this.vy[i] = Math.max(this.vy[i], 0) * 0.25 + KICK;
@@ -176,6 +182,9 @@ export class Game {
         this.kicks += 1;
         let n = this.count();
         this.score += n;
+        // the pop and a note climbing the scale with the rally (back to the bottom every 2 octaves)
+        api.soundAt(SFX_POP, this.x[i], this.y[i], 0, 0.62 + 0.12 * <f64>n, 0.85);
+        api.note(<f64>(62 + PENTA[(this.kicks - 1) % 11]), 0.5 + 0.1 * <f64>(n - 1), 0);
         this.popup(this.x[i], this.y[i] + RB + 0.3, "+" + n.toString(), n > 1 ? 1 : 0);
         this.sparks(api, hx, hy);
     }
@@ -190,6 +199,7 @@ export class Game {
                     let sum = 0.0;
                     for (let i = 0; i < NB; i++) if (this.on[i]) sum += this.x[i];
                     this.warnX = sum > 0 ? api.range(-4.2, -1.5) : api.range(1.5, 4.2);
+                    api.note(81, 0.45, this.warnX > 0 ? 0.6 : -0.6, SFX_BELL);
                 }
             } else {
                 this.joinT = 0;
@@ -200,6 +210,7 @@ export class Game {
                     this.addBall(api, this.warnX);
                     this.joinT = 0;
                     this.popup(this.warnX, CEIL - 0.6, "NEW BALL!", 2);
+                    api.soundAt(SFX_WHOOSH, this.warnX, CEIL, 0, 0.8, 1.0);
                 }
             }
         }
@@ -210,7 +221,10 @@ export class Game {
             if (this.mode == M_READY) {
                 // waiting on the sand: a little hop now and then, asking to be kicked
                 this.hopT += dt;
-                if (this.hopT > 1.6) { this.hopT = 0; this.vy[i] = 2.6; this.kickT[i] = 0.15; }
+                if (this.hopT > 1.6) {
+                    this.hopT = 0; this.vy[i] = 2.6; this.kickT[i] = 0.15;
+                    api.soundAt(SFX_POP, this.x[i], this.y[i], 0, 0.5, 0.4);
+                }
             }
             if (this.landT[i] >= 0) {
                 this.landT[i] += dt;
@@ -221,14 +235,24 @@ export class Game {
                 this.yaw[i] += this.spin[i] * dt;
                 this.spin[i] *= Math.exp(-dt * 0.4);
                 this.vx[i] *= Math.exp(-dt * 0.15);
-                if (this.x[i] > WALL) { this.x[i] = WALL; this.vx[i] = -Math.abs(this.vx[i]) * 0.8; }
-                if (this.x[i] < -WALL) { this.x[i] = -WALL; this.vx[i] = Math.abs(this.vx[i]) * 0.8; }
-                if (this.y[i] > CEIL && this.vy[i] > 0) { this.y[i] = CEIL; this.vy[i] = -this.vy[i] * 0.4; }
+                if (this.x[i] > WALL) {
+                    if (this.vx[i] > 0.3) api.sound(SFX_TICK, 0.5, 0.6, 0.8);
+                    this.x[i] = WALL; this.vx[i] = -Math.abs(this.vx[i]) * 0.8;
+                }
+                if (this.x[i] < -WALL) {
+                    if (this.vx[i] < -0.3) api.sound(SFX_TICK, 0.5, 0.6, -0.8);
+                    this.x[i] = -WALL; this.vx[i] = Math.abs(this.vx[i]) * 0.8;
+                }
+                if (this.y[i] > CEIL && this.vy[i] > 0) {
+                    if (this.vy[i] > 1.0) api.soundAt(SFX_TICK, this.x[i], CEIL, 0, 0.7, 0.5);
+                    this.y[i] = CEIL; this.vy[i] = -this.vy[i] * 0.4;
+                }
                 if (this.y[i] <= RB) {
                     this.y[i] = RB;
                     if (this.mode == M_PLAY) {
                         this.land(api, i);
                     } else if (this.mode == M_OVER && Math.abs(this.vy[i]) > 1.2) {
+                        api.soundAt(SFX_THUD, this.x[i], RB, 0, 1.2, Math.min(0.9, 0.25 + Math.abs(this.vy[i]) * 0.1));
                         this.vy[i] = -this.vy[i] * 0.45;
                         this.vx[i] *= 0.6;
                         this.puffs(api, this.x[i], 3);
@@ -277,6 +301,8 @@ export class Game {
         if (this.score > this.best) this.best = this.score;
         this.puffs(api, this.x[i], 8);
         this.popup(this.x[i], RB * 2 + 0.6, "THUD!", 3);
+        api.soundAt(SFX_THUD, this.x[i], RB, 0, 0.9, 1.0);
+        api.sound(SFX_LOSE, 0.9, 0.6);
         this.warnT = -1;
     }
 
@@ -400,6 +426,7 @@ export class Game {
             this.kick(api, best, hx, hy);
         } else {
             this.popup(hx, hy + 0.5, "WHIFF", 0);
+            api.soundAt(SFX_WHOOSH, hx, hy, 0, 1.3, 0.4);
         }
         this.dKickH[best] = api.rand() < 0.07 ? 0.75 : api.range(1.3, 2.7);
         this.dCool = api.range(0.2, 0.34);
@@ -430,7 +457,10 @@ export class Game {
     pointer(api: GameApi, kind: i32, px: f32, py: f32): bool {
         if (kind != POINTER_DOWN) return true;
         if (this.mode == M_OVER) {
-            if (this.overT > 0.6) this.reset(api);
+            if (this.overT > 0.6) {
+                this.reset(api);
+                api.sound(SFX_BLIP, 1.0, 0.6);
+            }
             return true;
         }
         // the ball under the pointer (the lowest one if several), with a little slack

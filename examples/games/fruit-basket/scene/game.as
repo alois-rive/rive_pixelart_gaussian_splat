@@ -5,7 +5,11 @@
 // Everything here drives game bones baked by scene.bake.json ("bone" / "copies"): the cart and its
 // wheels, three tree canopies (they shake before a fruit drops), fruit pools per kind and a pool of
 // sparks. Deterministic: api.rand() only.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_CLICK, SFX_COIN, SFX_HIT, SFX_LOSE, SFX_POWERUP, SFX_SPLASH, SFX_THUD, SFX_TICK,
+    SFX_WIN } from "./game_api";
+
+// the catch chime climbs a major scale with the streak (sound only)
+const MAJOR: StaticArray<i32> = [0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19];
 
 // ramps in art/palette.json order
 const R_LEAF: i32 = 1;
@@ -116,6 +120,10 @@ export class Game {
     aiErr: f64 = 0;
     aiSkip: i32 = -1;
 
+    // sound only (never read by the game): good fruit caught since the last life lost, the wheel's turns
+    streak: i32 = 0;
+    wheelTurn: i32 = 0;
+
     start(api: GameApi): void {
         api.playable = true;
         this.cart = api.bone("cart");
@@ -171,6 +179,8 @@ export class Game {
         this.runTime = 0;
         this.caughtCount = 0;
         this.overTime = 0;
+        this.streak = 0;
+        api.sound(SFX_WIN, 1.0, 0.6);
         // fruit already hanging stays and falls in turn, one after another: the world goes on, and
         // a new run opens gently
         let k = 0;
@@ -208,6 +218,7 @@ export class Game {
     private gameOver(api: GameApi): void {
         this.mode = OVER;
         this.overTime = 0;
+        api.sound(SFX_LOSE, 1.0, 0.8);
         if (api.demo) {
             this.bestDemo = max<i32>(this.bestDemo, this.score);
         } else {
@@ -362,6 +373,12 @@ export class Game {
         this.placeCart(api, this.cart, x, CART_Y, LANE_Z, rollDeg, 1.0 + s * 0.5, 1.0 - s, 1.0 + s * 0.5);
         // wheels roll with the distance travelled
         let wheelDeg = -(this.cartX / WHEEL_R) * 180.0 / Math.PI;
+        // a soft knock of the wheels at every turn
+        let turn = <i32>Math.floor(wheelDeg / 360.0);
+        if (turn != this.wheelTurn && this.mode == PLAY) {
+            api.soundAt(SFX_TICK, this.cartX, 0.3, LANE_Z, 0.45, 0.4);
+        }
+        this.wheelTurn = turn;
         api.place(this.wheels, x, 0.32 - s * 0.1, LANE_Z, 0, 0, Math.round(wheelDeg / 15.0) * 15.0);
     }
 
@@ -412,6 +429,8 @@ export class Game {
                 let stretch = t > hang * 0.8 ? 1.0 + 0.12 * (t - hang * 0.8) / (hang * 0.2) : 1.0;
                 api.placeScaled(b, this.fX[i], this.fY[i], LANE_Z, this.fSpin[i] + w, pop / Math.sqrt(stretch), pop * stretch, pop / Math.sqrt(stretch));
                 if (t >= hang && this.mode == PLAY) {
+                    // the stalk snaps
+                    api.soundAt(SFX_CLICK, this.fX[i], this.fY[i], LANE_Z, this.fKind[i] == ROTTEN ? 0.5 : 0.8, 0.5);
                     this.fState[i] = FALL;
                     this.fT[i] = 0;
                     this.fVY[i] = 0.0;
@@ -478,6 +497,10 @@ export class Game {
         this.fT[i] = 0;
         let kind = this.fKind[i];
         if (kind == ROTTEN) {
+            // yuck: a squelch and a crunch
+            this.streak = 0;
+            api.soundAt(SFX_HIT, this.fX[i], RIM_Y, LANE_Z, 0.7, 0.8);
+            api.soundAt(SFX_SPLASH, this.fX[i], RIM_Y, LANE_Z, 0.35, 0.5);
             this.lives--;
             this.shakeT = 0;
             this.hurtTime = 0;
@@ -491,6 +514,16 @@ export class Game {
         }
         let pts = kind == PEAR ? 5 : (kind == PLUM ? 2 : 1);
         this.score += pts;
+        // into the tray: a wooden knock and a chime up the scale with the streak (a plum a fifth up,
+        // the golden pear a fanfare)
+        let up = Math.pow(2.0, <f64>MAJOR[min<i32>(this.streak, 11)] / 12.0);
+        this.streak++;
+        api.soundAt(SFX_THUD, this.fX[i], RIM_Y, LANE_Z, 1.5, 0.45);
+        if (kind == PEAR) {
+            api.soundAt(SFX_POWERUP, this.fX[i], RIM_Y, LANE_Z, 1.2 * up, 0.7);
+        } else {
+            api.soundAt(SFX_COIN, this.fX[i], RIM_Y, LANE_Z, (kind == PLUM ? 1.5 : 1.0) * up, 0.65);
+        }
         this.caughtCount++;
         this.squash = kind == PEAR ? 0.3 : 0.2;
         this.squashT = 0;
@@ -504,8 +537,13 @@ export class Game {
             return;
         }
         if (this.fKind[i] == ROTTEN) {
+            api.soundAt(SFX_THUD, this.fX[i], GROUND_Y, LANE_Z, 0.8, 0.4);
             return; // dodged
         }
+        // splat
+        this.streak = 0;
+        api.soundAt(SFX_SPLASH, this.fX[i], GROUND_Y, LANE_Z, 0.45, 0.7);
+        api.soundAt(SFX_THUD, this.fX[i], GROUND_Y, LANE_Z, 1.0, 0.6);
         this.lives--;
         this.hurtTime = 0;
         this.lifeLostAt = api.time;

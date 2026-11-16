@@ -30,6 +30,13 @@ seen).
   the belt. At zero: SHIFT OVER with the score and the session's best; the next click starts a new
   run in the same room. Runs last about 20 to 60 seconds.
 
+**Sound** (`sfx.as`, silent in demo mode): a shift opens with the belt's lever and the counter bell;
+the belt clacks softly as each cleat comes round (faster as it speeds up); a parcel thuds onto the belt,
+blips when grabbed and whooshes when flicked. Into the right chute it is a coin that climbs with the
+streak, with a bell each time the streak earns another point; the wrong chute spits it out with a pop,
+and every lost stamp is a crunchy hit, the parcel thudding on the floorboards. The chutes' swap is
+announced by a ding-dong and the signs whoosh as they flip; SHIFT OVER plays the losing arpeggio.
+
 **Demo** (`--arg demo=true`, or the gallery's `Sample.demo`): the run starts mid-shift with two
 parcels riding and one dropping; a cursor reaches for the first one at once and flicks it at 0.6 s.
 The demo clerk lets each parcel ride a little (to a random spot), then takes the one nearest the end,

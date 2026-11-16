@@ -4,7 +4,8 @@
 // 60 seconds a run, the last grab always finishes. One verb (point and click), one machine.
 // Demo mode (api.demo) plays itself: it picks a good toy, steers with a little aim error, and now and
 // then grabs an edge (a slip) or misses.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_TICK, SFX_SHOOT, SFX_CLICK, SFX_BLIP, SFX_JUMP, SFX_WHOOSH, SFX_THUD,
+    SFX_COIN, SFX_POWERUP, SFX_WIN, SFX_LOSE, SFX_NOTE, SFX_BELL } from "./game_api";
 
 const NT: i32 = 13;              // toys
 const NCONF: i32 = 8;            // confetti
@@ -44,6 +45,10 @@ const KIND_H: StaticArray<f64> = [0.62, 0.72, 0.86, 0.54, 0.43];
 const KIND_PTS: StaticArray<i32> = [10, 20, 20, 10, 50];
 const KIND_HOLD: StaticArray<f64> = [1.0, 1.0, 0.95, 0.85, 0.75];
 const KIND_NAME: StaticArray<string> = ["DUCK", "BEAR", "BUNNY", "BALL", "GEM"];
+// sound: each kind's thud pitch (a gem rings higher, a bear lands soft and low)
+const KIND_THUD: StaticArray<f64> = [1.4, 1.1, 1.2, 1.7, 2.4];
+// the arcade jingle's notes, one higher for each prize this run (a major scale)
+const PRIZE_NOTE: StaticArray<f64> = [72, 74, 76, 77, 79, 81, 83, 84, 86, 88];
 
 function clamp(v: f64, a: f64, b: f64): f64 {
     return v < a ? a : (v > b ? b : v);
@@ -130,6 +135,15 @@ export class Game {
     fvy: StaticArray<f64> = new StaticArray<f64>(NCONF);
     fvz: StaticArray<f64> = new StaticArray<f64>(NCONF);
     fT: StaticArray<f64> = new StaticArray<f64>(NCONF);
+
+    // sound (never decided by a random draw)
+    motorF: i32 = 0;            // frames the gantry has been moving
+    tune: StaticArray<f64> = new StaticArray<f64>(8);
+    tuneN: i32 = 0;
+    tuneI: i32 = 0;
+    tuneAt: i32 = 0;
+    tuneStep: i32 = 6;
+    tuneKind: i32 = SFX_NOTE;
 
     // the demo player
     demoTarget: i32 = -1;
@@ -240,10 +254,15 @@ export class Game {
             this.newRun(api);
         }
         if (this.started && !this.over) {
+            let was = this.timeLeft;
             this.timeLeft = Math.max(0, this.timeLeft - dt);
+            // the last ten seconds: a tick on every second, higher as time runs out
+            if (this.timeLeft > 0 && this.timeLeft < 10 && Math.ceil(this.timeLeft) != Math.ceil(was)) {
+                api.sound(SFX_TICK, 1.0 + 0.06 * (10 - Math.ceil(this.timeLeft)), 0.7);
+            }
             if (this.timeLeft <= 0) {
                 if (this.state == S_IDLE) {
-                    this.finish();
+                    this.finish(api);
                 } else {
                     this.lastGrab = true;   // the claw is working: this grab still counts
                 }
@@ -257,15 +276,45 @@ export class Game {
         this.claw(api, dt);
         this.toys(api, dt);
         this.confetti(api, dt);
+        this.tuneTick(api);
         this.popT += dt;
         this.draw(api);
     }
 
-    finish(): void {
+    finish(api: GameApi): void {
         this.over = true;
         this.overT = 0;
         this.lastGrab = false;
         if (this.score > this.best) this.best = this.score;
+        // time up: a fanfare and a run up the prize scale if anything was won, the lose jingle if not
+        if (this.prizes > 0) {
+            api.sound(SFX_WIN, 1.0, 0.8);
+            let n = min<i32>(this.prizes, 5);
+            let notes = new Array<f64>();
+            for (let i = 0; i < n; i++) notes.push(PRIZE_NOTE[i * 2]);
+            notes.push(PRIZE_NOTE[min<i32>(n * 2, 9)] + 5);
+            this.playTune(api, notes, 6, SFX_NOTE, 36);     // after the fanfare
+        } else {
+            api.sound(SFX_LOSE, 1.0, 0.75);
+        }
+    }
+
+    playTune(api: GameApi, notes: Array<f64>, step: i32, kind: i32, delay: i32 = 0): void {
+        this.tuneN = min<i32>(notes.length, 8);
+        for (let i = 0; i < this.tuneN; i++) this.tune[i] = notes[i];
+        this.tuneI = 0;
+        this.tuneAt = api.frame + delay;
+        this.tuneStep = step;
+        this.tuneKind = kind;
+    }
+
+    tuneTick(api: GameApi): void {
+        if (this.tuneI < this.tuneN && api.frame >= this.tuneAt) {
+            let m = this.tune[this.tuneI];
+            if (m > 0) api.note(m, 0.6, 0, this.tuneKind);
+            this.tuneI++;
+            this.tuneAt = api.frame + this.tuneStep;
+        }
     }
 
     moveTo(x: f64, z: f64, dt: f64): bool {
@@ -291,6 +340,7 @@ export class Game {
         if (st == S_IDLE) {
             this.close = Math.max(0, this.close - dt * 3);
             let arrived = this.moveTo(this.aimX, this.aimZ, dt);
+            this.motor(api, arrived);
             this.cy = Y_TOP + Math.sin(api.time * 2.0) * 0.015;
             if (this.queued && arrived && !this.over) {
                 this.queued = false;
@@ -302,6 +352,7 @@ export class Game {
                 this.cy = this.dropTo;
                 this.state = S_CLOSE;
                 this.st = 0;
+                api.soundAt(SFX_CLICK, this.cx, this.cy, this.cz, 0.55, 0.7);   // the prongs snap shut
             }
         } else if (st == S_CLOSE) {
             this.close = Math.min(1, this.st / 0.32);
@@ -316,9 +367,12 @@ export class Game {
             }
         } else if (st == S_CARRY) {
             this.carryT += dt;
-            if (this.moveTo(CHUTE_X, CHUTE_Z, dt)) {
+            let there = this.moveTo(CHUTE_X, CHUTE_Z, dt);
+            this.motor(api, there);
+            if (there) {
                 this.state = S_RELEASE;
                 this.st = 0;
+                api.soundAt(SFX_CLICK, this.cx, this.cy, this.cz, 0.8, 0.6);   // the prongs open over the chute
             }
         } else if (st == S_RELEASE) {
             this.close = Math.max(0, 1 - this.st / 0.25);
@@ -328,10 +382,10 @@ export class Game {
                 this.tstate[h] = T_CHUTE;
                 this.tvx[h] = 0; this.tvy[h] = -0.5; this.tvz[h] = 0;
             }
-            if (this.st > 0.45) this.home();
+            if (this.st > 0.45) this.home(api);
         } else if (st == S_EMPTY) {
             this.close = Math.max(0, 1 - this.st / 0.3);
-            if (this.st > 0.35) this.home();
+            if (this.st > 0.35) this.home(api);
         }
         // the slip: an edge grab lets go somewhere along the way
         if (this.held >= 0 && this.slipAt >= 0 && this.carryT >= this.slipAt) this.slip(api);
@@ -342,17 +396,29 @@ export class Game {
         this.swayZ = Math.cos(ph * 0.83) * this.wob * 0.002;
     }
 
-    home(): void {
+    home(api: GameApi): void {
         this.state = S_IDLE;
         this.st = 0;
-        if (this.lastGrab) this.finish();
+        if (this.lastGrab) this.finish(api);
+    }
+
+    // the gantry's motor: a low tick every 7 frames while it travels
+    motor(api: GameApi, arrived: bool): void {
+        if (arrived) {
+            this.motorF = 0;
+            return;
+        }
+        if (this.motorF % 7 == 0) api.soundAt(SFX_TICK, this.cx, Y_TOP, this.cz, 0.3, 0.4);
+        this.motorF++;
     }
 
     drop(api: GameApi): void {
         if (!this.started) {
             this.started = true;
             this.timeLeft = RUN;
+            api.sound(SFX_COIN, 0.8, 0.7);       // a coin in the slot: the clock starts
         }
+        api.soundAt(SFX_SHOOT, this.cx, Y_TOP, this.cz, 0.35, 0.5);   // the claw winds down
         // how far down: onto the toy under the claw (or the pile)
         let ground = surface(this.cx, this.cz);
         let target = -1;
@@ -395,14 +461,19 @@ export class Game {
         this.st = 0;
         this.carryT = 0;
         this.wobT = 0;
+        // the winch pulls the claw back up
+        api.soundAt(SFX_JUMP, this.cx, this.cy, this.cz, 0.5, 0.45);
         if (best < 0) {
             this.held = -1;
             this.wob = 4;
             this.pop("MISS", "", this.cx, this.cy - 0.3, this.cz, false);
+            this.playTune(api, [62, 57], 7, SFX_NOTE);     // empty-handed: two falling notes
             return;
         }
         let q = 1 - bestD / GRAB_R;
         this.quality = q;
+        // a grab: a blip that rings brighter the nearer the middle
+        api.soundAt(SFX_BLIP, this.cx, this.cy, this.cz, 0.7 + 0.6 * q, 0.6);
         this.held = best;
         this.tstate[best] = T_HELD;
         let p = clamp(0.12 + 0.8 * q, 0, 0.9) * KIND_HOLD[this.kind[best]];
@@ -423,6 +494,10 @@ export class Game {
         this.tvz[h] = api.range(-0.3, 0.3);
         this.wob = 6;
         this.pop("SLIPPED!", "", this.tx[h], this.ty[h] + 0.8, this.tz[h], false);
+        if (!this.over) {
+            api.soundAt(SFX_WHOOSH, this.tx[h], this.ty[h], this.tz[h], 0.5, 0.5);
+            this.playTune(api, [67, 63, 60], 6, SFX_NOTE);   // aww
+        }
     }
 
     pop(a: string, b: string, x: f64, y: f64, z: f64, good: bool): void {
@@ -469,6 +544,11 @@ export class Game {
                 let g = surface(this.tx[i], this.tz[i]) - 0.05;
                 if (this.ty[i] <= g) {
                     this.ty[i] = g;
+                    if (this.tvy[i] < -2.0) {
+                        // a toy lands on the pile: a thud by its kind, softer on the rebound
+                        api.soundAt(SFX_THUD, this.tx[i], g, this.tz[i], KIND_THUD[this.kind[i]],
+                            clamp(-this.tvy[i] * 0.12, 0.4, 0.8));
+                    }
                     if (this.tvy[i] < -1.2) {
                         this.tvy[i] = -this.tvy[i] * 0.3;
                         this.tvx[i] *= 0.5;
@@ -500,6 +580,14 @@ export class Game {
         let k = this.kind[i];
         this.score += KIND_PTS[k];
         this.prizes++;
+        // the prize: a coin and the jingle's next note (each prize this run one higher); the gem a
+        // power-up and a bell
+        api.soundAt(SFX_COIN, CHUTE_X, 0.5, CHUTE_Z, k == 4 ? 1.25 : (KIND_PTS[k] >= 20 ? 1.12 : 1.0), 0.8);
+        api.note(PRIZE_NOTE[min<i32>(this.prizes - 1, 9)], 0.55, -0.5, SFX_NOTE);
+        if (k == 4) {
+            api.sound(SFX_POWERUP, 1.0, 0.7, -0.5);
+            api.note(PRIZE_NOTE[min<i32>(this.prizes - 1, 9)] + 12, 0.5, -0.5, SFX_BELL);
+        }
         if (this.score > this.best) this.best = this.score;
         this.pop("+" + KIND_PTS[k].toString(), KIND_NAME[k] + "!", CHUTE_X, 1.25, CHUTE_Z, true);
         for (let j = 0; j < NCONF; j++) {
@@ -627,7 +715,10 @@ export class Game {
 
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
         if (this.over) {
-            if (kind == POINTER_DOWN && this.overT > 0.6) this.newRun(api);
+            if (kind == POINTER_DOWN && this.overT > 0.6) {
+                this.newRun(api);
+                api.sound(SFX_BLIP, 1.0, 0.6);
+            }
             return true;
         }
         if (api.pick(x, y, 0.62)) {

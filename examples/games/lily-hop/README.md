@@ -10,6 +10,11 @@ with the score and the session's best; the next click starts a new run on the sa
 each landing, judges the gap with an error that grows as the lanes speed up, hops early when a pad nears
 the reeds, and restarts two seconds after a splash.
 
+Sound (procedural, `api.sound`; silent in demo): a short jingle on the first hop; each hop springs up, and a
+pad landing is a soft plop with a plucked note that climbs a pentatonic scale lane by lane across the pond (a
+step higher each crossing); a bank lands with a thud and a rising arpeggio (higher each crossing); a firefly
+chimes; a miss is a splash and a falling tune (into the reeds: a rustle first); a blip to play again.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra
 0.1.0, codex-cli. Palette: [Sweetie 16](https://lospec.com/palette-list/sweetie-16) by GrafxKid (loaded from
 Lospec; the spare `pear36` was not needed), 7 ramps. Orthographic camera, yaw 0, pitch 48, 7.4 m tall,

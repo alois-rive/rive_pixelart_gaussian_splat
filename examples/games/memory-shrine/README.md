@@ -34,6 +34,13 @@ tune) and never slips on short tunes; from six notes on each answer has a growin
 40 to 60 s. It restarts two seconds after the game-over panel. When demo is switched off, a fresh run
 starts at once.
 
+**Sound** (`sfx.as` presets, silent in demo): a gust and a deep temple bell start a run; each bell
+rings its own sine-bell pitch, biggest to smallest E4, G4, B4, E5 (panned where it hangs), whether
+the shrine or the player strikes it, so the tune can be followed by ear; a soft blip says YOUR TURN;
+a round clear plucks the four notes an octave up, with a rising arpeggio on WONDERFUL; the last
+three seconds of patience tick; a wrong bell clanks (a toneless crunch and knock), then the right
+bell sounds softly once as it flashes; the game over is a falling sting.
+
 ## What is where
 
 ```

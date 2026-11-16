@@ -2,7 +2,8 @@
 // sequence; ring it back in order by clicking the bells. Each round adds one note and plays a
 // little faster. A wrong bell (or a long silence) ends the run. Pointer only; a run starts on the
 // first click; demo mode plays itself.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BELL, SFX_NOTE, SFX_HIT, SFX_THUD, SFX_WHOOSH, SFX_BLIP, SFX_TICK,
+    SFX_LOSE, SFX_POWERUP } from "./game_api";
 
 const ST_IDLE: i32 = 0;   // before the first click: the bells stir in the wind
 const ST_WAIT: i32 = 1;   // a short breath before the shrine plays
@@ -20,6 +21,8 @@ const BELL_Z: f64 = -1.0;   // the gate's plane
 const BELL_H: f64 = 1.78;   // the hero bell's height at scale 1
 const RING_T: f64 = 0.42;   // how long a bell glows when rung
 const PATIENCE: f64 = 6.0;  // seconds the shrine waits for the next bell
+// each bell's own pitch (MIDI), the biggest the lowest: E4 G4 B4 E5, far enough apart to follow by ear
+const BELL_MIDI: StaticArray<f64> = [64, 67, 71, 76];
 
 // palette indices (art/palette.json "colors")
 const C_WHITE: i32 = 0;
@@ -128,6 +131,11 @@ export class Game {
         this.gap = Math.max(0.3, 0.64 - 0.028 * <f64>(this.len - 1));
     }
 
+    // a bell's pitch, panned where it hangs
+    bellNote(api: GameApi, i: i32, volume: f64, kind: i32 = SFX_BELL, up: f64 = 0): void {
+        api.note(BELL_MIDI[i] + up, volume, this.bellX[i] / 4.5 * 0.7, kind);
+    }
+
     endRun(): void {
         this.state = ST_OVER;
         this.stateT = 0;
@@ -137,6 +145,9 @@ export class Game {
     }
 
     strike(api: GameApi, i: i32, dull: bool): void {
+        if (!dull) {
+            this.bellNote(api, i, this.state == ST_SHOW ? 0.8 : 0.9);
+        }
         this.ringT[i] = 0;
         this.ringA[i] = dull ? 1.0 : 0.7 + 0.25 * api.rand();
         this.ringDull[i] = dull;
@@ -168,8 +179,10 @@ export class Game {
                 this.ringT[i] = -1;
                 this.flashT[i] = -1;
             }
+            this.wake(api);
             this.beginRun(api);
         }
+        let prevT = this.stateT;
         this.stateT += dt;
         let st = this.state;
         if (st == ST_WAIT) {
@@ -191,24 +204,47 @@ export class Game {
                     this.stateT = 0;
                     this.pos = 0;
                     this.quiet = 0;
+                    api.sound(SFX_BLIP, 0.75, 0.4);     // your turn
                     this.dNext = api.range(0.45, 0.8);
                 }
             }
         } else if (st == ST_INPUT) {
+            let q0 = this.quiet;
             this.quiet += dt;
+            // the last seconds of patience tick away, faster and higher
+            for (let k = 3; k < 6; k++) {
+                if (q0 < <f64>k && this.quiet >= <f64>k) {
+                    api.sound(SFX_TICK, 0.5 + 0.12 * <f64>(k - 3), 0.5 + 0.1 * <f64>(k - 3));
+                }
+            }
             if (this.quiet > PATIENCE) {
                 this.failSlow = true;
+                api.sound(SFX_THUD, 0.8, 0.8);
                 this.fail(this.seq[this.pos], -1);
             }
         } else if (st == ST_CLEAR) {
+            // a little chime: the four bells' notes plucked an octave up, quickly, low to high
+            for (let k = 0; k < NBELL; k++) {
+                let at = 0.3 + 0.07 * <f64>k;
+                if (prevT < at && this.stateT >= at) {
+                    this.bellNote(api, k, 0.5, SFX_NOTE, 12);
+                }
+            }
+            if (this.len % 5 == 0 && prevT < 0.62 && this.stateT >= 0.62) {
+                api.sound(SFX_POWERUP, 1.0, 0.6);   // WONDERFUL!
+            }
             if (this.stateT > 1.0) {
                 this.addNote(api);
                 this.state = ST_WAIT;
                 this.stateT = 0.2;
             }
         } else if (st == ST_FAIL) {
-            // the right bell flashes three times, then the run ends
+            // the right bell flashes three times (and sounds softly once), then the run ends
+            if (prevT < 0.5 && this.stateT >= 0.5) {
+                this.bellNote(api, this.wantBell, 0.4);
+            }
             if (this.stateT > 1.6) {
+                api.sound(SFX_LOSE, 0.8, 0.7);
                 this.endRun();
             }
         } else if (st == ST_OVER) {
@@ -269,6 +305,10 @@ export class Game {
         let want = this.seq[this.pos];
         if (i != want) {
             this.failSlow = false;
+            // the wrong bell clanks: a crunch and a dead knock, no tone
+            let pan = this.bellX[i] / 4.5 * 0.7;
+            api.sound(SFX_HIT, 0.55, 0.85, pan);
+            api.sound(SFX_THUD, 1.6, 0.7, pan);
             this.fail(want, i);
             return;
         }
@@ -349,15 +389,23 @@ export class Game {
         return bd < 1.2 ? best : -1;
     }
 
+    // a run starts: a gust through the gate and a deep temple bell
+    wake(api: GameApi): void {
+        api.sound(SFX_WHOOSH, 0.7, 0.5);
+        api.note(52, 0.7, 0, SFX_BELL);
+    }
+
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
         this.hover = this.bellAt(api, x, y);
         if (kind != POINTER_DOWN) {
             return true;
         }
         if (this.state == ST_IDLE) {
+            this.wake(api);
             this.beginRun(api);
         } else if (this.state == ST_OVER) {
             if (this.stateT > 0.6) {
+                this.wake(api);
                 this.beginRun(api);
             }
         } else if (this.state == ST_INPUT && this.hover >= 0) {

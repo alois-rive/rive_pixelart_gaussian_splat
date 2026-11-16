@@ -35,6 +35,14 @@ flower, and darts away when it crouches (usually in time: a fifth of its reactio
 last about 45 to 60 seconds and end by bites and the odd wilt; it restarts itself two seconds after
 GAME OVER. When demo is switched off, a fresh run starts at once.
 
+**Sound** (`sfx.as`, silent in demo mode): the bee lifts off with a hop and three rising notes; each
+flower that opens plucks its own mound's note (a pentatonic garden that plays itself), and a low pluck
+of that note warns when its bar starts to blink. Hovering buzzes in ticks that climb as the pollen
+takes; a pollination is a pop and a pluck that climbs the scale with each flower in quick succession (a
+coin and a bell for the spider's flower). The spider crouches with a dry click and leaps with a whoosh;
+a bite is a crunch; a wilt a soft flop and two falling notes; the game over the lose jingle and a thud
+as the bee lands on the lawn.
+
 ## What is where
 
 ```

@@ -80,7 +80,7 @@ For art pixel p, the four G-buffer samples `2p + (0|1, 0|1)`:
 
 ## Uniform layouts (std140-like, bytes)
 
-`Frame` (G-buffer and shadow, 1456 bytes; two buffers, one per pass):
+`Frame` (G-buffer and shadow, 1520 bytes; two buffers, one per pass):
 
 | Offset | Field | Contents |
 |---|---|---|
@@ -94,8 +94,11 @@ For art pixel p, the four G-buffer samples `2p + (0|1, 0|1)`:
 | 256 | `shadow` | map size (0 off), depth bias (`shadowBias` spacings / 3R), normal offset (`shadowOffset` spacings), dither mode (1 per splat) |
 | 272 | `wind` | xyz amplitude, w frequency |
 | 288 | `tone` | x highlight |
-| 304 | `ramps` array<vec4u, 64> | ramp r step s at `[r*2 + s/4][s%4]` |
-| 1328 | `rampLen` array<vec4u, 8> | |
+| 304 | `fx` | FX clock in its period, on, ramp A, ramp B |
+| 320 | `fxBox` | the FX splats' bounds: min x, max x, min y, max y |
+| 336 | `ramps` array<vec4u, 64> | ramp r step s at `[r*2 + s/4][s%4]` |
+| 1360 | `rampLen` array<vec4u, 8> | |
+| 1488 | `qmin`, `qstep` | splat dequantization (blob v3): box min / step xyz, sigma min / step w; 1520 bytes in all |
 
 `Look` (resolve, 2256 bytes): `palette` array<vec4f, 64> at 0, `ramps` at
 1024, `rampLen` at 2048, then `grid` (W, H, ink, edgeDepth), `depth` (near,
@@ -110,20 +113,35 @@ it.
 ## The blob (`splat_bake.py` → `*.bin`)
 
 ```
-0    'SPLT'  version u32 (2)  count u32  stride u32 (32)
-16   bounds min f32x3, max f32x3 (over sampled frames of every track), spacing f32, palette count u32, ramp count u32
+0    'SPLT'  version u32 (3)  count u32  stride u32 (16)
+16   bounds min f32x3, max f32x3 (over sampled frames of every track, or the bake's "bounds"), spacing f32, palette count u32, ramp count u32
 52   roles u8 x4: sky_top, sky_bottom, fog, void (255 unset)
 56   bone count u32 (bone 0 = identity), track count u32
 64   palette 64 x rgba8
 320  ramps 32 x 8 u8 palette indices
 576  ramp lengths 32 x u8
-608  track table offset u32, bone data bytes u32
-640  splats: position f32x3 | normal snorm8x4 | ramp u8, step u8, flags u8, 0 | sigma f32
-           | joints u8x4 | weights unorm8x4 (summing to 255)
+608  track table offset u32 (absolute)
+612  game bone name table offset u32 (0: none), named bone count u32
+640  dequantization: box min f32x3, box step f32x3, sigma min f32, sigma step f32
+672  splats, 16 bytes each: x, y, z u16 (min + q * step) | sigma u8, ramp u8 | octahedral normal u16x2
+           | step | flags << 3, joint 0, joint 1, weight 0 (weight 1 = 255 - weight 0)
 ...  track table, 32 bytes a track: first bone, bone count, frames, fps f32, phase f32,
-           data offset, speed f32, 0
+           data offset (absolute), speed f32, 0
 ...  each track's frames: frames x bones x 3 x vec4 f32 (row-major 3x4 matrices)
+...  game bone names: per bone u8 index, u8 length, the name, rest position f32x3, rest yaw f32
 ```
+
+The splats are 16 bytes (half of version 2): positions are quantized to 16
+bits over the splats' own box (well under a millimetre for a 10 m scene),
+normals are octahedral 16-bit, sigma 8-bit over its range, and a skinned
+splat keeps its two strongest bones. The bake assembles the old layout and
+writes it through `upgrade_blob`; `splat_bake.py --upgrade <bin>...`
+converts version 2 blobs in place. The shader reads the 16 bytes as four
+`uint8x4` attributes and rebuilds the 16-bit fields itself (16-bit vertex
+formats are not dependable across backends), dequantizing with `qmin` /
+`qstep` from the frame uniform. Per-splat dither and jitter hash the
+decoded position, so the conversion reshuffles their noise (a few percent of
+pixels) without changing the picture.
 
 A splat's position is stored where its bones expect it: a static splat in
 the world; a rigid part's splat in the world at frame 0 (its bone holds
@@ -187,6 +205,7 @@ applies the `--arg`s again on its first frame: the command line wins.
 | `fx`, `fxPeriod`, `fxRampA`, `fxRampB` | true, 12, -1, -1 | the shader FX hook on splats flagged `fx`: the time in a `fxPeriod` loop and two ramp ids reach `fxApply` (an empty hook in the template) |
 | `fxOffset`, `fxStopAt` | 0, 0 | the FX clock shifted by `fxOffset` s, and frozen from scene time `fxStopAt` on (0: never): start a cycle mid-way, desync copies, or end a capture on a chosen state |
 | `demo`, `demoSpin` | false, 12 | demo mode, bound to the `Sample` view model: a game (`game.as`) plays itself and gets no pointer; a diorama turns at `demoSpin` degrees a second (counter-clockwise seen from above, like `spin`). A host such as a gallery sets it per sample |
+| `sound`, `soundVolume` | true, 0.6 | the game's sound effects (`sfx.as`, an audio processor started on the first `api.sound`); silent in demo mode |
 | `tour`, `tourLoops` | 0, 2 | a turntable for captures (orbit camera): `tourLoops` turns in `tour` seconds, eased in and out (`0.5 − 0.5 cos πt`); spin and pointer are ignored meanwhile |
 | `tourRate`, `tourOffset`, `tourLength`, `tourEase` | 0, 0, 0, 1.5 | a turntable shared by several captures (a reel whose scenes cross-fade while turning in step): `tourRate` degrees a second on one timeline `tourLength` s long, eased in over the first `tourEase` s and out over the last; this capture starts at `tourOffset` on it. Overrides `tour` when non-zero |
 | `maskSky` | false | a pure magenta sky (in no palette), for silhouette masks: `golden.py views` sets it |

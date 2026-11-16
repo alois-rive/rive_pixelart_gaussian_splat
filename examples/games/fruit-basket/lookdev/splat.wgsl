@@ -30,6 +30,8 @@ struct Frame {
     fxBox: vec4f,           // the FX splats' bounds: x min x, y max x, z min y, w max y (world, at rest)
     ramps: array<vec4u, 64>,  // ramp r, step s -> palette index: ramps[r * 2 + s / 4][s % 4]
     rampLen: array<vec4u, 8>, // steps of ramp r: rampLen[r / 4][r % 4]
+    qmin: vec4f,              // dequantization of the 16-byte splats: box min xyz, sigma min
+    qstep: vec4f,             // box step xyz, sigma step
 }
 
 @group(0) @binding(0) var<uniform> F: Frame;
@@ -48,14 +50,49 @@ const FLAG_SWAY: u32 = 4u;
 const FLAG_NOCAST: u32 = 8u;
 const FLAG_FX: u32 = 16u;
 
-struct VIn {
+// A splat as stored (blob v3, 16 bytes): splat_bake.py upgrade_blob
+// (read as four uint8x4: 16-bit vertex formats are not dependable across backends; the u16 fields
+// are little endian, rebuilt here)
+struct VRaw {
     @builtin(vertex_index) vi: u32,
-    @location(0) pos: vec3f,
-    @location(1) nrm: vec4f,   // snorm8x4
-    @location(2) info: vec4u,  // uint8x4: ramp, step, flags, 0
-    @location(3) sigma: f32,
-    @location(4) joints: vec4u,  // uint8x4: up to 4 bones
-    @location(5) weights: vec4f, // unorm8x4: their weights, summing to 1
+    @location(0) xy: vec4u,  // x u16, y u16 quantized over the box
+    @location(1) zs: vec4u,  // z u16, sigma u8, ramp u8
+    @location(2) n: vec4u,   // octahedral normal, u16 x2
+    @location(3) b: vec4u,   // step | flags << 3, joint 0, joint 1, weight 0
+}
+
+fn u16at(lo: u32, hi: u32) -> f32 {
+    return f32(lo | (hi << 8u));
+}
+
+// A splat decoded
+struct VIn {
+    vi: u32,
+    pos: vec3f,
+    nrm: vec4f,
+    info: vec4u,     // ramp, step, flags, 0
+    sigma: f32,
+    joints: vec4u,   // up to 2 bones
+    weights: vec4f,  // their weights, summing to 1
+}
+
+fn decodeSplat(r: VRaw) -> VIn {
+    var v: VIn;
+    v.vi = r.vi;
+    let q = vec3f(u16at(r.xy.x, r.xy.y), u16at(r.xy.z, r.xy.w), u16at(r.zs.x, r.zs.y));
+    v.pos = F.qmin.xyz + q * F.qstep.xyz;
+    v.sigma = F.qmin.w + f32(r.zs.z) * F.qstep.w;
+    let e = vec2f(u16at(r.n.x, r.n.y), u16at(r.n.z, r.n.w)) / 65535.0 * 2.0 - 1.0;
+    var n = vec3f(e.x, e.y, 1.0 - abs(e.x) - abs(e.y));
+    let t = clamp(-n.z, 0.0, 1.0);
+    n.x += select(t, -t, n.x >= 0.0);
+    n.y += select(t, -t, n.y >= 0.0);
+    v.nrm = vec4f(normalize(n), 0.0);
+    v.info = vec4u(r.zs.w, r.b.x & 7u, r.b.x >> 3u, 0u);
+    v.joints = vec4u(r.b.y, r.b.z, 0u, 0u);
+    let w0 = f32(r.b.w) / 255.0;
+    v.weights = vec4f(w0, 1.0 - w0, 0.0, 0.0);
+    return v;
 }
 
 struct VOut {
@@ -220,7 +257,8 @@ fn shadowed(p: vec3f, n: vec3f) -> f32 {
 }
 
 @vertex
-fn vs_main(v: VIn) -> VOut {
+fn vs_main(raw: VRaw) -> VOut {
+    let v = decodeSplat(raw);
     var flags = v.info.z;
     var p = swayed(skinPoint(v), flags);
     var ramp = f32(v.info.x);
@@ -318,7 +356,8 @@ fn fs_main(i: VOut) -> @location(0) vec4f {
 }
 
 @vertex
-fn vs_shadow(v: VIn) -> VOut {
+fn vs_shadow(raw: VRaw) -> VOut {
+    let v = decodeSplat(raw);
     let flags = v.info.z;
     if ((flags & (FLAG_NOCAST | FLAG_UNLIT)) != 0u) {
         return culled();

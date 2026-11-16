@@ -2,7 +2,15 @@
 // down to the striped lawn underneath. Mow the whole lawn before the clock runs out; bumping a garden
 // gnome (-3 s) or a flower bed (-2 s) costs time. A cleared lawn scores a bonus, adds time, grows back
 // and the gnomes move (one more each lawn). Pointer only; demo mode plays itself.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_WIN, SFX_THUD, SFX_CLICK, SFX_NOTE, SFX_HIT, SFX_POP, SFX_ZAP,
+         SFX_TICK, SFX_POWERUP, SFX_JUMP, SFX_LOSE } from "./game_api";
+
+// sound: a little two-stroke and a lawn that plays a scale. The engine putts (low thuds, faster and
+// higher with speed); each cut tile snips and plucks a note that climbs a major scale as the lawn
+// fills; a gnome bump is a crunch and a ceramic clink, a bed bump a crunch and a pop, both with a
+// falling zap for the seconds lost; the clock ticks its last eight seconds; a clear lawn rings a
+// fanfare and the gnomes hop.
+const MAJOR: StaticArray<i32> = [0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19, 21, 23, 24];
 
 const ST_IDLE: i32 = 0;
 const ST_PLAY: i32 = 1;
@@ -98,6 +106,7 @@ export class Game {
     stun: f64 = 0;
     guard: f64 = 0;        // > 0: just bumped; touching again only slides (no second penalty)
     cutGlow: f64 = 0;      // > 0: just cut grass (engine shakes, clippings fly)
+    enginePh: f64 = 0;     // the engine's putt phase (sound only)
     clipT: f64 = 0;
 
     // particles
@@ -212,6 +221,7 @@ export class Game {
                     this.tT[i] = -this.growDelay(i);
                 }
             }
+            api.sound(SFX_JUMP, 0.8, 0.5);
             this.mowed = 0;
             this.score = 0;
             this.clock = START_TIME;
@@ -223,6 +233,7 @@ export class Game {
         this.stateT = 0;
         this.dThink = 0;
         this.dTile = -1;
+        api.sound(SFX_WIN, 1.0, 0.55);
     }
 
     endRun(): void {
@@ -321,10 +332,14 @@ export class Game {
             }
         }
         if (this.state == ST_PLAY) {
+            let was = Math.ceil(this.clock);
             this.clock -= dt;
             if (this.clock <= 0) {
                 this.clock = 0;
                 this.endRun();
+                api.sound(SFX_LOSE, 1.0, 0.7);
+            } else if (this.clock < 8.0 && Math.ceil(this.clock) != was) {
+                api.sound(SFX_TICK, 0.45 + 0.04 * (8.0 - Math.ceil(this.clock)), 0.9);
             }
         }
         this.updateMower(api, dt);
@@ -403,6 +418,12 @@ export class Game {
         this.mx = Math.max(-LIM_X, Math.min(LIM_X, this.mx));
         this.mz = Math.max(-LIM_Z, Math.min(LIM_Z, this.mz));
         if (playing) {
+            // the engine: a putt a phase step, 3 a second at idle to 7 at full speed
+            let ph = this.enginePh;
+            this.enginePh += dt * (3.0 + 1.5 * Math.abs(this.mv));
+            if (Math.floor(this.enginePh) != Math.floor(ph) && this.stun <= 0) {
+                api.soundAt(SFX_THUD, this.mx, 0.3, this.mz, 1.4 + 0.25 * Math.abs(this.mv), 0.35);
+            }
             this.collide(api);
             this.cut(api);
         }
@@ -460,6 +481,13 @@ export class Game {
 
     bump(api: GameApi, cost: f64, x: f64, z: f64, bed: bool): void {
         this.clock = Math.max(0.0, this.clock - cost);
+        api.soundAt(SFX_HIT, x, 0.3, z, bed ? 0.7 : 0.9, 0.9);
+        if (bed) {
+            api.soundAt(SFX_POP, x, 0.3, z, 0.8, 0.7);
+        } else {
+            api.note(88, 0.45, 0, SFX_NOTE); // the gnome's ceramic clink
+        }
+        api.sound(SFX_ZAP, 0.5, 0.45);
         // the demo gives up on that patch for a while (a player would go round and come back)
         this.dSkip = this.dTile;
         this.dSkipT = 3.0;
@@ -500,6 +528,8 @@ export class Game {
                 this.tT[i] = 0;
                 this.mowed++;
                 this.score += 10;
+                api.soundAt(SFX_CLICK, this.tX[i], 0, this.tZ[i], 0.6, 0.7);
+                api.note(<f64>(60 + MAJOR[min<i32>(14, (this.mowed - 1) * 15 / NTILE)]), 0.55, 0, SFX_NOTE);
                 this.cutGlow = 0.3;
                 for (let s = 0; s < 3; s++) {
                     this.clip(api);
@@ -522,6 +552,9 @@ export class Game {
             }
             this.placeGnomes(api, true);
             this.dTile = -1;
+            api.sound(SFX_POWERUP, 1.0, 0.8);
+            api.sound(SFX_WIN, 1.5, 0.6);
+            api.sound(SFX_JUMP, 0.8, 0.5);
         }
     }
 

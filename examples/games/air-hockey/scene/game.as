@@ -5,7 +5,8 @@
 // and the session's best; the next click starts a new match at the same table.
 // Demo mode (api.demo) plays the left mallet with the same bot as the computer, a little slower and
 // a little less accurate, so the matches are close and both sides miss.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BLIP, SFX_CLICK, SFX_TICK, SFX_ZAP, SFX_WHOOSH, SFX_COIN, SFX_POWERUP,
+    SFX_HIT, SFX_THUD, SFX_LOSE, SFX_WIN, SFX_NOTE, SFX_BELL } from "./game_api";
 
 // ---------------------------------------------------------------- the table (world metres, Y up)
 const SURF: f64 = 1.06;      // the playing surface's height
@@ -257,6 +258,23 @@ export class Game {
 
     started: bool = false;
 
+    // sound (never decided by a random draw): the contacts of this frame's sub-steps, played once
+    hitHard: f64 = 0;         // the hardest mallet strike this frame
+    hitWho: i32 = 0;
+    hitX: f64 = 0;
+    hitZ: f64 = 0;
+    railSp: f64 = 0;          // the fastest rail or post bounce this frame
+    railX: f64 = 0;
+    railZ: f64 = 0;
+    sndHitF: i32 = -99;       // the frame of the last strike sound (a pinned puck must not buzz)
+    sndRailF: i32 = -99;
+    tune: StaticArray<f64> = new StaticArray<f64>(8);   // a short melody, one note every tuneStep frames
+    tuneN: i32 = 0;
+    tuneI: i32 = 0;
+    tuneAt: i32 = 0;
+    tuneStep: i32 = 6;
+    tuneKind: i32 = SFX_NOTE;
+
     start(api: GameApi): void {
         api.playable = true;
         this.malletP = api.bone("malletP");
@@ -325,6 +343,44 @@ export class Game {
         this.anchorX = x;
         this.anchorZ = z;
         this.lastHit = 0;
+    }
+
+    playTune(api: GameApi, notes: Array<f64>, step: i32, kind: i32): void {
+        this.tuneN = min<i32>(notes.length, 8);
+        for (let i = 0; i < this.tuneN; i++) this.tune[i] = notes[i];
+        this.tuneI = 0;
+        this.tuneAt = api.frame;
+        this.tuneStep = step;
+        this.tuneKind = kind;
+    }
+
+    sounds(api: GameApi): void {
+        // the puck's contacts: a plastic clack for a strike (brighter and louder the harder), a
+        // neon zap on a slap shot, a dry tick off the rails and posts
+        if (this.hitHard > 0.6 && api.frame - this.sndHitF >= 4) {
+            let hd = this.hitHard;
+            let side = this.hitWho < 0 ? 1.0 : 0.94;
+            api.soundAt(SFX_CLICK, this.hitX, SURF, this.hitZ, clamp(0.28 + hd * 0.07, 0.3, 0.85) * side,
+                clamp(0.5 + hd * 0.07, 0.5, 0.95));
+            api.soundAt(SFX_TICK, this.hitX, SURF, this.hitZ, this.hitWho < 0 ? 0.36 : 0.32, 0.5);
+            if (hd > 6.0) {
+                api.soundAt(SFX_ZAP, this.hitX, SURF, this.hitZ, 1.0 + (hd - 6.0) * 0.08, 0.45);
+            }
+            this.sndHitF = api.frame;
+        } else if (this.railSp > 1.2 && api.frame - this.sndRailF >= 4 && api.frame - this.sndHitF >= 2) {
+            api.soundAt(SFX_TICK, this.railX, SURF, this.railZ, 0.45 + this.railSp * 0.025,
+                clamp(0.35 + this.railSp * 0.06, 0.4, 0.8));
+            this.sndRailF = api.frame;
+        }
+        this.hitHard = 0;
+        this.railSp = 0;
+        // the melody in progress
+        if (this.tuneI < this.tuneN && api.frame >= this.tuneAt) {
+            let m = this.tune[this.tuneI];
+            if (m > 0) api.note(m, this.tuneKind == SFX_BELL ? 0.6 : 0.7, 0, this.tuneKind);
+            this.tuneI++;
+            this.tuneAt = api.frame + this.tuneStep;
+        }
     }
 
     cx(b: Bot): f64 {
@@ -396,6 +452,7 @@ export class Game {
             }
         }
         this.mvx = pvx; this.mvz = pvz; this.cvx = cvx; this.cvz = cvz;
+        this.sounds(api);
 
         if (this.mode == MODE_PLAY) {
             // a puck that dies somewhere, or is pinned in a corner, gets a puff of air towards the middle
@@ -416,10 +473,15 @@ export class Game {
                 this.pz += this.vz * 0.05;
                 this.stillT = 0;
                 this.burst(api, this.px, SURF + 0.05, this.pz, this.px < 0 ? 0 : 1, 2, 0.6);
+                api.soundAt(SFX_WHOOSH, this.px, SURF, this.pz, 0.8, 0.5);
             }
         } else if (this.mode == MODE_GOAL) {
             // the puck drops into the pocket, then the next face-off on the side that conceded
             this.py = SURF - Math.min(0.35, this.t * 1.6);
+            if (this.t >= 0.2 && this.t - dt < 0.2) {
+                // the puck lands in the pocket
+                api.soundAt(SFX_THUD, this.px, SURF, this.pz, 1.2, 0.6);
+            }
             if (this.t > 1.3) {
                 if (this.goalsP >= WIN || this.goalsC >= WIN) {
                     this.gameOver(api);
@@ -429,6 +491,7 @@ export class Game {
                     let s = this.lastGoal < 0 ? 1.0 : -1.0;   // the side that conceded serves
                     let z = api.range(-0.4, 0.4);
                     this.faceOff(api, s * 0.9, z, 0.0, 0.0);
+                    api.soundAt(SFX_BLIP, s * 0.9, SURF, z, 1.0, 0.5);
                     this.cpu.reset();
                     this.demoBot.reset();
                 }
@@ -517,6 +580,12 @@ export class Game {
                 this.vz *= VMAX / sp;
             }
             let hard = -vn;
+            if (hard > this.hitHard) {
+                this.hitHard = hard;
+                this.hitWho = who;
+                this.hitX = this.px;
+                this.hitZ = this.pz;
+            }
             if (who < 0) this.squashP = Math.min(1, hard / 4); else this.squashC = Math.min(1, hard / 4);
             this.lastHit = who;
             if (hard > 3.0) {
@@ -527,6 +596,11 @@ export class Game {
 
     railHit(api: GameApi): void {
         let sp = Math.sqrt(this.vx * this.vx + this.vz * this.vz);
+        if (sp > this.railSp) {
+            this.railSp = sp;
+            this.railX = this.px;
+            this.railZ = this.pz;
+        }
         if (sp > 4.5) {
             this.burst(api, this.px, SURF + 0.06, this.pz, this.lastHit < 0 ? 0 : 1, 2, 0.8);
         }
@@ -552,11 +626,18 @@ export class Game {
             this.popText = "GOAL!";
             this.popSub = "+" + pts.toString() + (sp > 6.5 ? " SLAP SHOT" : "");
             this.toughen();
+            // your goal: a coin that climbs a whole tone with each goal, a fanfare on a slap shot
+            api.sound(SFX_COIN, Math.pow(2, <f64>(this.goalsP - 1) * 2 / 12), 0.85, 0.6);
+            if (sp > 6.5) api.sound(SFX_POWERUP, 1.25, 0.6, 0.6);
         } else {
             this.goalsC++;
             this.toughen();
             this.popText = "CPU SCORES";
             this.popSub = "";
+            // conceded: a crunch in your goal and two falling notes, lower as the computer closes in
+            api.sound(SFX_HIT, 0.55, 0.6, -0.6);
+            let base = 64.0 - <f64>this.goalsC;
+            this.playTune(api, [0, base, base - 4], 7, SFX_NOTE);
         }
         if (this.score > this.best) {
             this.best = this.score;
@@ -582,6 +663,11 @@ export class Game {
         this.t = 0;
         if (this.goalsP >= WIN) {
             this.score += 300;
+            // the win: a rising arcade fanfare, then a bell
+            api.sound(SFX_WIN, 1.0, 0.8);
+            this.playTune(api, [0, 0, 72, 76, 79, 84, 0, 88], 6, SFX_NOTE);
+        } else {
+            api.sound(SFX_LOSE, 0.9, 0.8);
         }
         if (this.score > this.best) {
             this.best = this.score;
@@ -700,8 +786,12 @@ export class Game {
                 this.t = 0;
                 // the face-off: the puck drifts to your side
                 this.faceOff(api, 0, 0, -1.4, api.range(-0.6, 0.6));
+                api.sound(SFX_WHOOSH, 0.6, 0.55);      // the air table switches on
+                api.sound(SFX_BLIP, 1.0, 0.6);
             } else if (this.mode == MODE_OVER && this.t > 0.6) {
                 this.newRun(api, true);
+                api.sound(SFX_WHOOSH, 0.6, 0.55);
+                api.sound(SFX_BLIP, 1.0, 0.6);
             }
         }
         return true;

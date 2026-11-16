@@ -4,7 +4,16 @@
 // is a sour note: three sour notes and the choir stops. The tempo rises, rings overlap; a run of good
 // notes builds a combo that multiplies the score and wins a lost voice back. Pointer only; a run
 // starts on the first click; demo mode plays itself.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BELL, SFX_COIN, SFX_LOSE, SFX_NOTE, SFX_POP, SFX_POWERUP, SFX_THUD, SFX_TICK } from "./game_api";
+
+// the choir's song (sound only): a chord every four notes, I - V - vi - IV in C, voiced over the five
+// frogs from left (low) to right (high); a frog sings its chord tone when hit on the beat
+const VOICING: StaticArray<i32> = [
+    60, 64, 67, 72, 76,    // C
+    59, 62, 67, 71, 74,    // G
+    57, 60, 64, 69, 72,    // Am
+    57, 60, 65, 69, 72,    // F
+];
 
 const ST_IDLE: i32 = 0;
 const ST_PLAY: i32 = 1;
@@ -109,6 +118,13 @@ export class Game {
     curY: f32 = 100;
     curTap: f64 = 1;
 
+    // sound only (never read by the game): each note's chord, the notes scheduled this run, the song
+    // time of the last frame (a soft tick as each ring closes)
+    nChord: StaticArray<i32> = new StaticArray<i32>(NN);
+    noteIdx: i32 = 0;
+    chordNow: i32 = 0;
+    prevRunT: f64 = 0;
+
     start(api: GameApi): void {
         api.playable = true;
         for (let i = 0; i < NF; i++) {
@@ -147,6 +163,9 @@ export class Game {
         this.bestCombo = 0;
         this.perfects = 0;
         this.runT = 0;
+        this.prevRunT = 0;
+        this.noteIdx = 0;
+        this.chordNow = 0;
         this.lastF = 2;
         for (let i = 0; i < NF; i++) {
             this.lastSung[i] = -2.0;
@@ -162,6 +181,10 @@ export class Game {
         this.nextT = first;
         this.lastF = <i32>Math.floor(api.rand() * 5.0) % NF;
         this.wordT = -1;
+        // the pitch pipe: the first chord, softly on bells
+        api.note(60, 0.4, -0.3, SFX_BELL);
+        api.note(64, 0.4, 0, SFX_BELL);
+        api.note(67, 0.4, 0.3, SFX_BELL);
     }
 
     endRun(): void {
@@ -196,8 +219,10 @@ export class Game {
         }
         this.stateT += dt;
         if (this.state == ST_PLAY) {
+            this.prevRunT = this.runT;
             this.runT += dt;
             this.schedule(api);
+            this.beatTicks(api);
             this.judgeLate(api);
             if (api.demo) {
                 this.demoPlay(api);
@@ -273,6 +298,8 @@ export class Game {
             this.nF[slot] = f;
             this.nT[slot] = this.nextT;
             this.nLead[slot] = ld;
+            this.nChord[slot] = (this.noteIdx / 4) % 4;
+            this.noteIdx++;
             // the demo player decides now how well it will hit this one
             let sigma = 0.035 + this.runT * 0.0011;
             let err = (api.rand() + api.rand() + api.rand() - 1.5) * sigma * 2.0;
@@ -316,11 +343,26 @@ export class Game {
         return this.lastF == 0 ? 1 : this.lastF - 1;
     }
 
+    // a frog's note in a chord, panned by where it sits
+    frogNote(api: GameApi, f: i32, chord: i32, shift: i32, vol: f64, kind: i32): void {
+        api.note(<f64>(VOICING[chord * NF + f] + shift), vol, this.fx[f] / 4.5, kind);
+    }
+
+    // a soft tick as each ring reaches its circle: the beat, by ear
+    beatTicks(api: GameApi): void {
+        for (let i = 0; i < NN; i++) {
+            if (this.nOn[i] && this.nT[i] > this.prevRunT && this.nT[i] <= this.runT) {
+                api.sound(SFX_TICK, 0.8, 0.4, this.fx[this.nF[i]] / 4.5);
+            }
+        }
+    }
+
     // rings that closed without a click
     judgeLate(api: GameApi): void {
         for (let i = 0; i < NN; i++) {
             if (this.nOn[i] && this.runT > this.nT[i] + GOOD) {
                 this.nOn[i] = false;
+                this.chordNow = this.nChord[i];
                 this.sour(api, this.nF[i], "LATE");
                 if (this.state != ST_PLAY) {
                     return;
@@ -347,6 +389,7 @@ export class Game {
         let d = this.runT - this.nT[best];
         let ad = Math.abs(d);
         this.nOn[best] = false;
+        this.chordNow = this.nChord[best];
         if (ad <= GOOD) {
             this.sing(api, f, ad <= PERFECT);
         } else {
@@ -361,6 +404,15 @@ export class Game {
         }
         let mult = this.mult();
         this.score += (perfect ? 100 : 50) * mult;
+        // the frog sings its chord tone; a perfect one rings louder, and from x2 on a bell doubles it an
+        // octave up
+        this.frogNote(api, f, this.chordNow, 0, perfect ? 0.9 : 0.65, SFX_NOTE);
+        if (perfect && this.combo >= 8) {
+            this.frogNote(api, f, this.chordNow, 12, 0.4, SFX_BELL);
+        }
+        if (this.combo % 8 == 0 && this.combo <= 24) {
+            api.sound(SFX_POWERUP, 1.0 + 0.12 * <f64>(this.combo / 8 - 1), 0.45);
+        }
         if (perfect) {
             this.perfects++;
         }
@@ -368,6 +420,7 @@ export class Game {
         if (this.combo % 16 == 0 && this.lives < 3) {
             this.lives++;
             this.gainT = 0.8;
+            api.sound(SFX_COIN, 1.5, 0.5, 0.7);
         }
         this.singT[f] = 0;
         this.singQ[f] = perfect ? 1.0 : 0.75;
@@ -382,6 +435,10 @@ export class Game {
         if (this.state != ST_PLAY) {
             return;
         }
+        // a sour note: the frog's tone a semitone sharp against a tritone below, and a jolt
+        this.frogNote(api, f, this.chordNow, 1, 0.6, SFX_NOTE);
+        this.frogNote(api, f, this.chordNow, -6, 0.45, SFX_NOTE);
+        api.sound(SFX_THUD, 1.3, 0.4, this.fx[f] / 4.5);
         this.combo = 0;
         this.lives--;
         this.flashT = 0.6;
@@ -393,6 +450,7 @@ export class Game {
         if (this.lives <= 0) {
             this.lives = 0;
             this.endRun();
+            api.sound(SFX_LOSE, 0.75, 0.8);
         }
     }
 
@@ -622,6 +680,7 @@ export class Game {
         } else {
             // a click on the water: a plop, and the combo is broken
             this.combo = 0;
+            api.sound(SFX_POP, 0.5, 0.5, (<f64>x / <f64>api.hudW) * 1.6 - 0.8);
         }
         return true;
     }

@@ -35,6 +35,13 @@ now and then it hurries (aims further ahead with more error), and the holes' pul
 scores 1 to 7 goals a run (about 25 to 80 s) and restarts two seconds after OUT OF MARBLES. When demo is
 switched off, a fresh run starts at once.
 
+**Sound** (`sfx.as` presets, silent in demo): a fanfare starts a run; the marble lands with a wooden
+knock and a glass click, softer each bounce; rails and the frame clack (higher and louder the harder
+the knock, at most one per 5 frames); a low blip when it teeters on a hole's rim; a plop and a falling
+pew down a hole; a hop as the next marble leaves the dish; each goal a coin one step higher up the
+major scale, with a confetti pop; a whoosh as the layout swaps; OUT OF MARBLES a falling sting, then
+a rising arpeggio for a new best.
+
 ## What is where
 
 ```

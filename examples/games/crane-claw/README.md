@@ -39,6 +39,14 @@ sees a prize land (the gem, +50, at 3.7 s; a ball slips at 6.7 s). A run has abo
 dozen slips and two to four misses (230 to 300 points); it restarts two seconds after TIME UP. When demo
 is switched off, a fresh run waits for the first drop.
 
+**Sound** (`sfx.as`, silent in demo mode): a coin in the slot at the first drop; the gantry's motor ticks
+every 7 frames while it travels; the claw winds down, its prongs snap shut, the winch pulls it up; a
+grab blips brighter the nearer the middle, an empty claw plays two falling notes, a slip a whoosh and an
+"aww" (three falling notes); toys land on the pile with a thud by kind (the gem rings higher). A prize is
+a coin and the next note of an arcade jingle (one step up the scale for each prize of the run; the gem
+adds a power-up and a bell). The last ten seconds tick, higher each second; TIME UP plays a fanfare and
+a run up the prize scale if anything was won, the lose jingle if not.
+
 ## What is where
 
 ```

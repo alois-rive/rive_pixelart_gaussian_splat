@@ -5,7 +5,8 @@
 //
 // The play plane is z = 0 (the camera looks at it face-on). The pointer arrives in HUD pixels and is
 // turned into a point on that plane here (toPlane), because api.pick only meets horizontal planes.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_BELL, SFX_EXPLODE, SFX_HIT, SFX_LOSE, SFX_NOTE, SFX_POWERUP, SFX_SHOOT,
+    SFX_WHOOSH, SFX_ZAP } from "./game_api";
 
 const R: f64 = 1.4;          // planet radius
 const RS: f64 = 2.75;        // the satellite's orbit (its body centre)
@@ -19,6 +20,9 @@ const NBURST: i32 = 5;
 const NDEBRIS: i32 = 12;
 const NPUFF: i32 = 2;
 const NLABEL: i32 = 6;
+
+// sound: a chain of hits climbs this pentatonic run (MIDI)
+const CHAIN: StaticArray<f64> = [72, 74, 76, 79, 81, 84, 86, 88, 91];
 
 const READY: i32 = 0;
 const PLAY: i32 = 1;
@@ -119,6 +123,11 @@ export class Game {
     // the demo player
     aiNext: f64 = 0.3;
 
+    // sound (decided from the game's state only, never from api.rand)
+    shots: i32 = 0;          // shots fired (the pew's pitch cycles)
+    chain: i32 = 0;          // hits in a row without a miss (the hit's note climbs)
+    best0: i32 = 0;          // the best when this run started
+
     // the plane point of the last pointer conversion
     px: f64 = 0;
     py: f64 = 0;
@@ -171,6 +180,9 @@ export class Game {
         this.spawn(api, false, 5.2);
         this.spawnT = 0.8;
         this.aiNext = 0.35;
+        this.chain = 0;
+        this.best0 = this.best;
+        api.sound(SFX_POWERUP, 1.0, 0.6);      // the run starts
     }
 
     // ------------------------------------------------------------ the pointer on the play plane
@@ -263,6 +275,9 @@ export class Game {
         this.mRate[i] = api.range(60, 160) * (api.rand() < 0.5 ? -1 : 1);
         this.mHit[i] = -9;
         this.mBorn[i] = this.t;
+        if (big) {
+            api.soundAt(SFX_WHOOSH, sx, sy, 0, 0.35, 0.5);   // a boulder rushes in
+        }
     }
 
     // ------------------------------------------------------------ effects
@@ -381,6 +396,8 @@ export class Game {
             }
         }
         this.lastShot = this.t;
+        this.shots++;
+        api.soundAt(SFX_SHOOT, mx, my, 0, this.shots % 3 == 0 ? 1.08 : (this.shots % 3 == 1 ? 1.0 : 0.94), 0.55);
     }
 
     stepBolts(api: GameApi, dt: f64): void {
@@ -391,6 +408,7 @@ export class Game {
             let x = this.bX[i], y = this.bY[i];
             if (Math.abs(x) > 8.5 || Math.abs(y) > 5.5 || x * x + y * y < R * R) {
                 this.bOn[i] = false;
+                this.chain = 0;     // a miss breaks the chain
                 continue;
             }
             for (let j = 0; j < NMET; j++) {
@@ -408,6 +426,10 @@ export class Game {
 
     hitMeteor(api: GameApi, j: i32, bvx: f64, bvy: f64): void {
         let x = this.mX[j], y = this.mY[j];
+        // a hit: a burst (lower for a boulder) and a note climbing with the chain of hits
+        api.soundAt(SFX_EXPLODE, x, y, 0, j >= NSMALL ? 1.1 : 2.0, j >= NSMALL ? 0.75 : 0.55);
+        api.soundAt(SFX_NOTE, x, y, 0, Math.pow(2, (CHAIN[min<i32>(this.chain, CHAIN.length - 1)] - 69) / 12), 0.55);
+        this.chain++;
         if (j >= NSMALL) {
             // a big one splits: two small halves veer off to either side
             this.mOn[j] = false;
@@ -464,6 +486,8 @@ export class Game {
                 this.burst(x, y, 0.6);
                 this.debris(api, x, y, 3, this.mVX[j], this.mVY[j]);
                 this.stun = this.t;
+                api.soundAt(SFX_HIT, sx, sy, 0, 1.3, 0.7);    // the satellite takes it and reels
+                api.soundAt(SFX_ZAP, sx, sy, 0, 0.6, 0.45);
                 continue;
             }
             let d = Math.sqrt(x * x + y * y);
@@ -484,11 +508,22 @@ export class Game {
         this.nextPuff = (k + 1) % NPUFF;
         this.pT[k] = this.t; this.pA[k] = a;
         this.shake = this.t;
+        if (this.state == PLAY) {
+            api.soundAt(SFX_EXPLODE, x, y, 0, big ? 0.6 : 0.8, 0.85);   // a rock hits the ground
+        }
         for (let i = 0; i < 4; i++) {
             let off = Math.abs(wrap180(a - this.hAng[i]));
             if (this.hAlive[i] && off < 24 && this.state == PLAY) {
                 this.hAlive[i] = false;
                 this.hBorn[i] = this.t;
+                this.chain = 0;
+                // a house falls: a crunch, and a low note that sinks with each house lost
+                let left = 0;
+                for (let h = 0; h < 4; h++) if (this.hAlive[h]) left++;
+                api.soundAt(SFX_HIT, x, y, 0, 0.6, 0.8);
+                if (left > 0) {
+                    api.soundAt(SFX_NOTE, x, y, 0, Math.pow(2, (<f64>(50 + left * 3) - 69) / 12), 0.7);
+                }
             } else if (this.hAlive[i] && off < 60) {
                 this.hShake[i] = this.t;
             }
@@ -500,6 +535,10 @@ export class Game {
                 this.state = OVER;
                 this.overT = this.t;
                 this.wantFire = false;
+                api.sound(SFX_LOSE, 0.9, 0.85);
+                if (!this.wasDemo && this.best > this.best0 && this.best0 > 0) {
+                    api.note(84, 0.5, 0, SFX_BELL);   // a new best
+                }
             }
         }
     }

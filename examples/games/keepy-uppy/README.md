@@ -17,6 +17,11 @@ Before the first click the ball waits on the sand, hopping now and then; the fir
 aims at the side that sends it back to the middle, whiffs now and then and sometimes waits too long; a run
 lasts about half a minute, and it starts again 2 s after the game over.
 
+Sound (procedural, `api.sound`; silent in demo): the first kick a start jingle; every kick a rubbery pop
+(higher the more balls are in play) and a plucked note that climbs a pentatonic scale with the rally; a soft pop
+for the waiting hop, ticks off the walls and the ceiling, a bell when the arrow warns of a new ball and a whoosh as
+it drops; a landing is a THUD and a falling game-over tune; a blip for play again.
+
 ```
 art/palette.json, palette.png   Journey with its ramps and roles (sky #691749 over #f5a15d, void #110524)
 art/assets.md                   the asset list

@@ -2,7 +2,8 @@
 // reel it out of the water to score it (deeper fish are worth more). A jellyfish on the hook snaps the
 // line: three lines a day. The day lasts 60 seconds (the sun sets as the clock). One verb, one world.
 // Demo mode (api.demo) fishes by itself like a patient angler, with the odd jellyfish.
-import { GameApi, POINTER_DOWN, POINTER_UP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_UP, SFX_BELL, SFX_BLIP, SFX_CLICK, SFX_COIN, SFX_LOSE, SFX_POWERUP, SFX_SPLASH, SFX_THUD,
+    SFX_TICK, SFX_WHOOSH, SFX_WIN, SFX_ZAP } from "./game_api";
 
 const HANDS_X: f64 = -4.02;   // the rod's pivot (the fisher's hands) and its tip offset at rest
 const HANDS_Y: f64 = 1.85;
@@ -136,6 +137,11 @@ export class Game {
     dThink: f64 = 0;
     dCareless: bool = false;
 
+    // sound only (never read by the game): fish landed since the last snap, the clock's last second
+    streak: i32 = 0;
+    lastSec: i32 = 99;
+    lastHookY: f64 = REST_Y;
+
     start(api: GameApi): void {
         api.playable = true;
         this.fisher = api.bone("fisher");
@@ -188,6 +194,11 @@ export class Game {
         this.popT = 9;
         this.dTarget = -1;
         this.dHold = false;
+        this.streak = 0;
+        this.lastSec = 99;
+        if (mode == RUN) {
+            this.castSound(api);
+        }
         for (let i = 0; i < NF; i++) {
             if (this.fFly[i] >= 0 || this.fFlee[i]) {
                 this.fFly[i] = -1;
@@ -208,6 +219,13 @@ export class Game {
         this.fV[i] = sp * dir;
         this.fX[i] = inView ? api.range(-6, 6) : -dir * EDGE;
         this.fWait[i] = inView ? 0 : api.range(0.3, 2.5);
+    }
+
+    // a run starts: the line whips out, a calm bell
+    castSound(api: GameApi): void {
+        api.sound(SFX_WHOOSH, 1.25, 0.6, -0.4);
+        api.note(67, 0.5, -0.2, SFX_BELL);
+        api.note(74, 0.4, -0.2, SFX_BELL);
     }
 
     tipX(): f64 {
@@ -237,9 +255,16 @@ export class Game {
         let input = false;
         if (this.mode == RUN) {
             this.clock -= dt;
+            // the last ten seconds of the day tick, higher for the last three
+            let sec = <i32>Math.ceil(this.clock);
+            if (sec != this.lastSec && sec <= 10 && sec > 0) {
+                api.sound(SFX_TICK, sec <= 3 ? 1.4 : 0.9, 0.65);
+            }
+            this.lastSec = sec;
             if (this.clock <= 0) {
                 this.clock = 0;
                 this.endRun("THE SUN HAS SET");
+                api.sound(SFX_WIN, 0.8, 0.7);
             }
             input = api.demo ? this.demoInput(api, dt) : (this.held && api.pointerDown && !this.needPress);
         } else if (this.mode == OVER && api.demo && this.t > 2.0) {
@@ -255,8 +280,20 @@ export class Game {
         } else {
             this.hookY = Math.min(REST_Y, this.hookY + REEL * (this.hooked >= 0 ? 0.85 : 1) * dt);
         }
+        // the reel: a ratchet click every 5 frames while it winds in (slower and lower with a fish on),
+        // a soft tick every 12 frames while the line pays out, lower as it goes deeper
+        if (this.mode == RUN && this.snapT >= 0.8) {
+            if (this.hookY > this.lastHookY + 0.001 && api.frame % (this.hooked >= 0 ? 7 : 5) == 0) {
+                api.sound(SFX_CLICK, this.hooked >= 0 ? 0.45 : 0.65, 0.45, -0.5);
+            } else if (this.hookY < this.lastHookY - 0.001 && api.frame % 12 == 0) {
+                api.sound(SFX_TICK, 0.75 + 0.06 * this.hookY, 0.45, -0.3);
+            }
+        }
+        this.lastHookY = this.hookY;
         let under = this.hookY < -0.05;
         if (under != this.wasUnder) {
+            // a plop going in, a lighter splash coming out
+            api.soundAt(SFX_SPLASH, this.hookX, 0, 0.3, under ? 0.7 : 1.15, under ? 0.6 : 0.45);
             this.splash(api, this.hookX, 0.05, 4);
             this.wasUnder = under;
         }
@@ -289,6 +326,8 @@ export class Game {
                 // a caught fish flies over the rail into the basket
                 this.fFly[i] += dt;
                 if (this.fFly[i] > 0.7) {
+                    // into the basket
+                    api.soundAt(SFX_THUD, -5.4, 1.2, 0.6, this.fKind[i] == 2 ? 0.8 : 1.1, 0.5);
                     this.spawnFish(api, i, false);
                 }
                 continue;
@@ -317,6 +356,10 @@ export class Game {
                 Math.abs(this.fX[i] - this.hookX) < half && Math.abs(this.fY[i] - (this.hookY - 0.3)) < 0.32) {
                 this.hooked = i;
                 this.splash(api, this.hookX, this.hookY - 0.3, 2);
+                // a bite: a tug, lower for a bigger fish
+                let kp = this.fKind[i] == 0 ? 1.3 : (this.fKind[i] == 1 ? 1.0 : 0.7);
+                api.soundAt(SFX_BLIP, this.hookX, this.hookY, 0.3, 0.5 * kp, 0.7);
+                api.soundAt(SFX_BLIP, this.hookX, this.hookY, 0.3, 0.75 * kp, 0.5);
             }
         }
     }
@@ -337,6 +380,14 @@ export class Game {
         this.popX = this.hookX;
         this.popY = REST_Y + 0.4;
         this.splash(api, this.hookX, REST_Y - 0.3, 2);
+        // landed: a pickup, deeper fish lower and richer, climbing a whole tone per fish since the last snap
+        let up = Math.pow(2.0, <f64>(2 * min<i32>(this.streak, 6)) / 12.0);
+        this.streak++;
+        if (k == 2) {
+            api.sound(SFX_POWERUP, 0.9 * up, 0.6, -0.3);
+        } else {
+            api.sound(SFX_COIN, (k == 0 ? 1.0 : 0.84) * up, 0.65, -0.3);
+        }
     }
 
     updateJellies(api: GameApi, dt: f64): void {
@@ -374,11 +425,16 @@ export class Game {
         this.hookY = REST_Y;
         this.wasUnder = false;
         this.popText = "SNAP!";
+        // a sting and the line whipping loose; lower with each line lost
+        this.streak = 0;
+        api.soundAt(SFX_ZAP, this.jX[j], this.jY[j], 0.4, 0.6 + 0.2 * <f64>this.lines, 0.8);
+        api.sound(SFX_WHOOSH, 1.6, 0.5, -0.4);
         this.popT = 0;
         this.popX = this.jX[j];
         this.popY = this.jY[j] + 0.6;
         if (this.lines <= 0) {
             this.endRun("OUT OF LINE");
+            api.sound(SFX_LOSE, 0.9, 0.8);
         }
     }
 
@@ -576,6 +632,7 @@ export class Game {
             if (this.mode == READY) {
                 this.mode = RUN;
                 this.t = 0;
+                this.castSound(api);
             } else if (this.mode == OVER && this.t > 0.7) {
                 this.newRun(api, RUN);
             }

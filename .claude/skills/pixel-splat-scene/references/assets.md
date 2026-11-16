@@ -106,5 +106,5 @@ The list becomes a bake file (`assets/template/scene.bake.json` to copy): one
 entry per instance with its model, position (Y up, metres), yaw (degrees),
 scale, animation options, and its materials mapped to ramps and flags (see
 `splat_bake.py --help`). The bake reports splats per material and warns on
-starved parts. Keep a blob under ~100 000 splats for phones (32 bytes each).
+starved parts. Keep a blob under ~100 000 splats for phones (16 bytes each).
 A game usually bakes several: static level geometry, props, each character.

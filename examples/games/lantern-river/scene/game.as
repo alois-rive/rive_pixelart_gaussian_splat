@@ -3,7 +3,7 @@
 // follows the last within 0.9 s (a click on nothing breaks it). A dark lantern that drifts out of the
 // sky costs one of three flames; the river launches them faster and faster. One run, one river,
 // pointer only.
-import { GameApi, POINTER_DOWN } from "./game_api";
+import { GameApi, POINTER_DOWN, SFX_BELL, SFX_NOTE, SFX_POP, SFX_TICK, SFX_WHOOSH, SFX_LOSE, SFX_WIN } from "./game_api";
 
 const ND: i32 = 16;          // dark lanterns (the "lantern" pool)
 const NL: i32 = 10;          // lit lanterns (the "lit" pool)
@@ -16,6 +16,12 @@ const HIT_H: f32 = 10;
 const CENTRE: f32 = 0.66;    // the lantern's centre above its pivot (the fuel block's bottom), metres
 
 // ramps, in art/palette.json order
+// sound: bells on a quiet night. A lit lantern chimes a bell (with a paper pop) that climbs a
+// pentatonic scale with the chain, and rings an octave chord at the chain's top; a launch is a soft
+// plop on the water, a click on empty sky a dry tick (a low pluck if it broke a chain), a dark lantern
+// lost into the sky a gust and a low bell.
+const PENTA: StaticArray<i32> = [0, 2, 4, 7, 9, 12, 14, 16];
+
 const R_NIGHT: i32 = 0;
 const R_PAPER: i32 = 3;
 const R_GLOW: i32 = 4;
@@ -121,6 +127,7 @@ export class Game {
         this.bestChain = 0;
         this.lastLight = -10;
         this.thinkT = 0.3;
+        api.sound(SFX_WIN, 0.9, 0.45);
     }
 
     level(): f64 {
@@ -168,7 +175,10 @@ export class Game {
         // launches: slow and gentle before the first click, faster as the run goes on
         this.spawnT -= dt;
         if (this.spawnT <= 0) {
-            this.spawn(api);
+            let first = this.spawn(api);
+            if (first >= 0 && this.state == PLAY) {
+                api.soundAt(SFX_POP, this.dx[first], 0, this.dz[first], 0.35, 0.4);
+            }
             if (this.state == PLAY && api.rand() < 0.15 + 0.3 * this.level()) {
                 this.spawn(api); // two at once
             }
@@ -204,10 +214,14 @@ export class Game {
                     this.lives--;
                     this.chain = 0;
                     this.lostFlash = 0;
+                    let pan = Math.min(Math.max(<f64>api.screenX / <f64>api.hudW * 2 - 1, -1), 1) * 0.8;
                     this.addFx(Mathf.max(6, Mathf.min(<f32>api.hudW - 6, api.screenX)), 4, 2, 0);
+                    api.sound(SFX_WHOOSH, 0.6, 0.8, pan);
+                    api.note(<f64>(50 + this.lives), 0.7, pan, SFX_BELL);
                     if (this.lives <= 0) {
                         this.state = OVER;
                         this.overAt = api.time;
+                        api.sound(SFX_LOSE, 0.75, 0.7);
                         if (this.score > this.best) {
                             this.best = this.score;
                         }
@@ -292,6 +306,11 @@ export class Game {
     click(api: GameApi, x: f32, y: f32): void {
         let i = this.under(api, x, y);
         if (i < 0) {
+            let pan = Math.min(Math.max(<f64>x / <f64>api.hudW * 2 - 1, -1), 1) * 0.8;
+            api.sound(SFX_TICK, 0.45, 0.7, pan);
+            if (this.chain >= 2) {
+                api.note(45, 0.6, pan, SFX_NOTE); // the chain is broken
+            }
             this.chain = 0;
             this.addFx(x, y, 1, 0);
             return;
@@ -322,6 +341,17 @@ export class Game {
                 this.bestChain = this.chain;
             }
             this.score += 10 * imin(this.chain, CHAIN_MAX);
+            let pan = 0.0;
+            if (api.project(<f32>this.dx[i], <f32>this.dy[i] + CENTRE, <f32>this.dz[i])) {
+                pan = Math.min(Math.max(<f64>api.screenX / <f64>api.hudW * 2 - 1, -1), 1) * 0.8;
+            }
+            let c = imin(this.chain, CHAIN_MAX);
+            api.note(<f64>(69 + PENTA[c - 1]), 0.85, pan, SFX_BELL);
+            api.sound(SFX_POP, 0.9 + 0.06 * <f64>c, 0.55, pan);
+            if (c == CHAIN_MAX) {
+                api.note(<f64>(69 + 12 + PENTA[c - 1]), 0.5, pan, SFX_BELL);
+                api.note(<f64>(69 + 4 + PENTA[c - 1]), 0.4, pan, SFX_BELL);
+            }
         }
         if (api.project(<f32>this.dx[i], <f32>this.dy[i] + CENTRE, <f32>this.dz[i])) {
             this.addFx(api.screenX, api.screenY, 0, this.state == PLAY ? imin(this.chain, CHAIN_MAX) : 0);

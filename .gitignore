@@ -3,3 +3,4 @@ __pycache__/
 *.rmdl.undo
 *.rmdl.activity
 .DS_Store
+showcase.wav

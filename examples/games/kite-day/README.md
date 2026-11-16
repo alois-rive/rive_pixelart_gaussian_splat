@@ -9,6 +9,12 @@ come more often, so a run lasts 20 to 60 seconds. One run in one world: the firs
 (and lifts), a game over shows the stars caught, the next click flies again; the best score is kept
 for the session. Pointer only.
 
+Sound (procedural, `api.sound`; silent in demo): airy and chiming. A start jingle; each press lifts with a
+whoosh and the wind blows a soft gust every two seconds, higher as it picks up; a star rings a bell (over a
+plucked note) that climbs a pentatonic scale with the streak of stars since the last hit; a gull cries as it
+comes in; a hit is a crunch with the gull's squawk (lower with each heart lost), the knoll a thud; the last
+heart a falling game-over tune and a soft thud as the kite lands.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Twilight 5](https://lospec.com/palette-list/twilight-5) by Star, five
 colours (peach, pink, haze blue, dusk blue, night) as six ramps (hill, kite, glow, bird, wood, cloud):

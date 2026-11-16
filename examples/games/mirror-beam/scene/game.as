@@ -4,7 +4,8 @@
 // larger layout rises in the same court. When the sun goes down behind the dunes the run is over.
 // Demo mode (api.demo) solves like a decent player: it follows the beam, hesitates, and sometimes
 // turns the wrong mirror and has to turn it back.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_BELL, SFX_NOTE, SFX_CLICK, SFX_TICK, SFX_POWERUP, SFX_WIN,
+    SFX_WHOOSH, SFX_LOSE } from "./game_api";
 
 // the grid (models/env/make_env.py builds the floor from the same numbers)
 const COLS: i32 = 7;
@@ -120,6 +121,9 @@ export class Game {
     spVZ: StaticArray<f64> = new StaticArray<f64>(NSP);
     spT: StaticArray<f64> = new StaticArray<f64>(NSP);
     spNext: i32 = 0;
+
+    // sound (never decided by api.rand: the demo stays the same)
+    sPerfect: bool = false;
 
     // demo
     dWait: f64 = 0.35;
@@ -425,6 +429,10 @@ export class Game {
     }
 
     turn(api: GameApi, i: i32): void {
+        // the stone mirror pivots: a latch click and a short grind (a hair higher one way than the other)
+        let x = cellX(this.mC[i]), z = cellZ(this.mR[i]);
+        api.soundAt(SFX_CLICK, x, BEAM_Y, z, 0.5, 0.8);
+        api.soundAt(SFX_TICK, x, BEAM_Y, z, this.mType[i] == 0 ? 0.42 : 0.36, 0.5);
         this.mType[i] ^= 1;
         this.mSwing[i] = 0;
         this.clicks++;
@@ -443,6 +451,7 @@ export class Game {
             if (this.t > 0.8) {
                 this.newRun(api);
                 this.mode = MODE_PLAY;   // the click that restarts also starts the clock
+                api.sound(SFX_POWERUP, 0.8, 0.6);   // the sun comes back up
             }
             return true;
         }
@@ -454,6 +463,7 @@ export class Game {
             }
             this.mode = MODE_PLAY;
             this.t = 0;
+            api.sound(SFX_POWERUP, 0.8, 0.6);       // the run (and the sun's clock) starts
         }
         if (this.mode == MODE_PLAY && i >= 0 && this.rise >= 1) {
             this.turn(api, i);
@@ -470,14 +480,23 @@ export class Game {
             this.hover = -1;
             this.newRun(api);
         }
+        let prevT = this.t;
         this.t += dt;
         this.hintT += dt;
         this.popT += dt;
         this.emblemT += dt;
 
         if (this.mode == MODE_PLAY || this.mode == MODE_SOLVED) {
+            let d0 = this.day;
             this.day -= dt;
+            // the last five seconds of daylight tick, higher as the sun touches the dunes
+            for (let k = 1; k <= 5; k++) {
+                if (d0 > <f64>k && this.day <= <f64>k) {
+                    api.sound(SFX_TICK, 0.5 + 0.08 * <f64>(5 - k), 0.6);
+                }
+            }
             if (this.day <= 0) {
+                api.sound(SFX_LOSE, 0.75, 0.8);     // the sun has set
                 this.day = 0;
                 this.mode = MODE_OVER;
                 this.t = 0;
@@ -519,13 +538,30 @@ export class Game {
             for (let i = 0; i < NC; i++) this.cHit[i] = false;
         }
 
-        // crystals light where the beam crosses them
+        // crystals light where the beam crosses them; each one lit chimes the next note of a C major
+        // chord (C6 E6 G6 C7), so a court's progress climbs by ear; one going dark dims a low pluck
+        let nLit = 0;
+        for (let i = 0; i < this.nc; i++) {
+            if (this.cLit[i]) nLit++;
+        }
         for (let i = 0; i < this.nc; i++) {
             this.cPop[i] += dt;
             let lit = this.cHit[i] && this.rise >= 1;
             if (lit != this.cLit[i]) {
                 this.cLit[i] = lit;
                 this.cPop[i] = 0;
+                let x = cellX(this.cC[i]), z = cellZ(this.cR[i]);
+                if (lit) {
+                    let step = min<i32>(nLit, 4);
+                    nLit++;
+                    let semis = step == 0 ? 0.0 : (step == 1 ? 4.0 : (step == 2 ? 7.0 : (step == 3 ? 12.0 : 16.0)));
+                    api.soundAt(SFX_BELL, x, 0.9, z, Math.pow(2, (84.0 + semis - 69.0) / 12.0), 0.7);
+                } else {
+                    nLit--;
+                    if (this.mode == MODE_PLAY && this.rise >= 1) {
+                        api.soundAt(SFX_NOTE, x, 0.9, z, Math.pow(2, (55.0 - 69.0) / 12.0), 0.4);
+                    }
+                }
                 if (lit) {
                     this.spawnSparks(api, cellX(this.cC[i]), 0.9, cellZ(this.cR[i]), 4, 2.2);
                 }
@@ -535,8 +571,13 @@ export class Game {
             this.solved(api);
         }
         if (this.mode == MODE_SOLVED) {
+            if (this.sPerfect && prevT < 0.45 && this.t >= 0.45) {
+                this.sPerfect = false;
+                api.sound(SFX_POWERUP, 1.5, 0.55);   // PERFECT!
+            }
             if (this.phase == 0 && this.t > 1.5) {
                 this.phase = 1;
+                api.sound(SFX_WHOOSH, 0.5, 0.5);    // the court sinks
             }
             if (this.phase == 1) {
                 // the solved court sinks into the floor ...
@@ -546,6 +587,7 @@ export class Game {
                     this.court++;
                     this.generate(api);
                     this.phase = 2;
+                    api.sound(SFX_WHOOSH, 0.8, 0.45);   // the next one rises
                 }
             } else if (this.phase == 2) {
                 // ... and the next one rises, turning
@@ -579,6 +621,10 @@ export class Game {
         this.day = Math.min(DAY, this.day + bonus);
         this.popText = "+" + pts.toString();
         this.popText2 = perfect ? "PERFECT!" : (this.nc >= 3 ? "RADIANT!" : "LIT!");
+        // the sun emblem: a fanfare over the temple's deep bell
+        api.sound(SFX_WIN, 1.0, 0.7);
+        api.note(60, 0.6, 0, SFX_BELL);
+        this.sPerfect = perfect;
         this.popT = 0;
         this.emblemT = 0;
         this.shake = 0.25;

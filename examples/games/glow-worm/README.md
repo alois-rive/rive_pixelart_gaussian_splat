@@ -32,6 +32,13 @@ A dark cave seen from above (orthographic, pitch 58, `orthoHeight` 6.2 m, `pixel
 - **Length of a run.** A long worm cannot circle in place (a tight turn is about 12 beads round), so
   the cave fills up: runs last 20 to 60 seconds.
 
+**Sound** (procedural, `sfx.as`; silent in demo mode): a run opens on a low bell fifth; the worm's
+crawl is a faint tick every half second (higher as it speeds up); a new crystal glints. Eating one
+gulps and rings a bell that climbs an A minor pentatonic with the score (two octaves, then round
+again; every tenth the octave rings too), and the bead the tail grows plips. A crash knocks and
+tolls a low bell, the beads go out with falling pops, and GAME OVER plays a low lose jingle. Panned
+by where it happens.
+
 **Demo** (`--arg demo=true`, or the gallery's `Sample.demo`): the worm is crawling from frame 0 and
 eats its first crystal at about 0.5 s. The demo player:
 - re-thinks 7 to 14 times a second;

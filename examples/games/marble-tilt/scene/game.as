@@ -3,7 +3,8 @@
 // the green-rimmed goal. Every goal brings a new layout with one more hole. Three marbles (the
 // spares wait in the dish); a marble that drops into a hole is gone. Pointer only; a run starts on
 // the first click; demo mode plays itself.
-import { GameApi, POINTER_DOWN, POINTER_MOVE } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_WIN, SFX_THUD, SFX_TICK, SFX_BLIP, SFX_POP, SFX_SHOOT,
+    SFX_LOSE, SFX_POWERUP, SFX_COIN, SFX_WHOOSH, SFX_JUMP } from "./game_api";
 
 const ST_IDLE: i32 = 0;   // before the first click: the marble waits on the start ring
 const ST_DROP: i32 = 1;   // a marble falls onto the start ring
@@ -133,6 +134,9 @@ export class Game {
     lifeT: f64 = -1;        // a spare marble leaving the dish
     lifeIdx: i32 = -1;
     nearMiss: f64 = 0;
+    // sound (never decided by api.rand: the demo stays the same)
+    sClack: i32 = -100;     // the frame of the last rail clack (sparse: one per 5 frames at most)
+    sBest: bool = false;    // a new best to cheer once the game-over sting has played
 
     // the demo player
     dist: StaticArray<i32> = new StaticArray<i32>(GW * GH);
@@ -199,6 +203,7 @@ export class Game {
         if (this.state == ST_OVER) {
             this.resetRun(api);
         }
+        api.sound(SFX_WIN, 1.0, 0.6);
         this.dropMarble();
     }
 
@@ -419,6 +424,10 @@ export class Game {
         if (this.nearMiss > 0) {
             this.nearMiss -= dt;
         }
+        if (this.sBest && this.state == ST_OVER && this.stateT > 0.9) {
+            this.sBest = false;
+            api.sound(SFX_POWERUP, 1.0, 0.6);
+        }
         this.pose(api);
     }
 
@@ -451,6 +460,12 @@ export class Game {
             this.mh += this.mvh * dt;
             if (this.mh <= 0) {
                 this.mh = 0;
+                // glass on wood: a knock and a click, softer each bounce
+                let hit = Math.min(1.0, -this.mvh / 10.0);
+                if (hit > 0.08) {
+                    api.soundAt(SFX_THUD, this.mu, FLOOR_Y, this.mv, 1.3, 0.35 + 0.6 * hit);
+                    api.soundAt(SFX_TICK, this.mu, FLOOR_Y, this.mv, 0.55, 0.4 + 0.5 * hit);
+                }
                 if (this.mvh < -2.5) {
                     this.mvh = -this.mvh * 0.32;
                 } else {
@@ -470,9 +485,12 @@ export class Game {
             if (this.stateT > 1.0) {
                 this.marbles--;
                 if (this.marbles <= 0) {
+                    this.sBest = this.score > this.best && this.score > 0;
+                    api.sound(SFX_LOSE, 1.0, 0.8);
                     this.endRun();
                 } else {
                     // the next marble leaves the dish
+                    api.sound(SFX_JUMP, 1.25, 0.5, -0.5);
                     this.lifeIdx = this.marbles - 1;
                     this.lifeT = 0;
                     this.dropMarble();
@@ -532,10 +550,11 @@ export class Game {
         this.mv += this.mvv * dt;
         // the frame
         let lu = HALF_U - R, lv = HALF_V - R;
-        if (this.mu > lu) { this.mu = lu; this.mvu = -Math.abs(this.mvu) * 0.35; }
-        if (this.mu < -lu) { this.mu = -lu; this.mvu = Math.abs(this.mvu) * 0.35; }
-        if (this.mv > lv) { this.mv = lv; this.mvv = -Math.abs(this.mvv) * 0.35; }
-        if (this.mv < -lv) { this.mv = -lv; this.mvv = Math.abs(this.mvv) * 0.35; }
+        let imp = 0.0;  // the hardest knock this frame, for the clack
+        if (this.mu > lu) { imp = Math.max(imp, Math.abs(this.mvu)); this.mu = lu; this.mvu = -Math.abs(this.mvu) * 0.35; }
+        if (this.mu < -lu) { imp = Math.max(imp, Math.abs(this.mvu)); this.mu = -lu; this.mvu = Math.abs(this.mvu) * 0.35; }
+        if (this.mv > lv) { imp = Math.max(imp, Math.abs(this.mvv)); this.mv = lv; this.mvv = -Math.abs(this.mvv) * 0.35; }
+        if (this.mv < -lv) { imp = Math.max(imp, Math.abs(this.mvv)); this.mv = -lv; this.mvv = Math.abs(this.mvv) * 0.35; }
         // the rails
         for (let j = 0; j < this.nWall; j++) {
             let hu = this.wVert[j] ? WALL_T * 0.5 : WALL_L * 0.5;
@@ -555,12 +574,20 @@ export class Game {
                 this.mv = cv + nv * R;
                 let vn = this.mvu * nu + this.mvv * nv;
                 if (vn < 0) {
+                    imp = Math.max(imp, -vn);
                     this.mvu -= 1.35 * vn * nu;
                     this.mvv -= 1.35 * vn * nv;
                 }
             }
         }
         this.roll(this.mu - ou, this.mv - ov);
+        // a clack against a rail or the frame: harder knocks ring higher and louder
+        if (imp > 0.7 && api.frame - this.sClack >= 5) {
+            this.sClack = api.frame;
+            let k = Math.min(1.0, imp / 4.0);
+            api.soundAt(SFX_TICK, this.mu, FLOOR_Y, this.mv, 0.45 + 0.35 * k, 0.45 + 0.5 * k);
+            api.soundAt(SFX_THUD, this.mu, FLOOR_Y, this.mv, 1.8, 0.25 + 0.35 * k);
+        }
         // the goal
         if (Math.hypot(this.mu - this.goalU, this.mv - this.goalV) < GOAL_IN) {
             this.scoreGoal(api);
@@ -575,6 +602,9 @@ export class Game {
                 this.fallU = this.hU[j];
                 this.fallV = this.hV[j];
                 this.burst(api, this.hU[j], this.hV[j], 3, 0.6);
+                // plop, and the marble rattling away under the board
+                api.soundAt(SFX_POP, this.hU[j], FLOOR_Y, this.hV[j], 0.45, 1.0);
+                api.soundAt(SFX_SHOOT, this.hU[j], FLOOR_Y, this.hV[j], 0.4, 0.5);
                 if (api.project(<f32>this.hU[j], <f32>(FLOOR_Y + 0.6), <f32>this.hV[j])) {
                     this.popX = api.screenX;
                     this.popY = api.screenY;
@@ -584,6 +614,10 @@ export class Game {
                 return;
             }
             if (d < 0.5) {
+                if (this.nearMiss <= 0) {
+                    // teetering on a rim: a low warning blip
+                    api.soundAt(SFX_BLIP, this.mu, FLOOR_Y, this.mv, 0.5, 0.45);
+                }
                 this.nearMiss = 0.6;
             }
         }
@@ -594,6 +628,11 @@ export class Game {
         this.stateT = 0;
         this.score++;
         this.flagT = 0;
+        // each goal of the run a step up the major scale, and the confetti pops
+        let step = min<i32>(this.score - 1, 7);
+        let semis = step == 0 ? 0 : (step == 1 ? 2 : (step == 2 ? 4 : (step == 3 ? 5 : (step == 4 ? 7 : (step == 5 ? 9 : (step == 6 ? 11 : 12))))));
+        api.soundAt(SFX_COIN, this.goalU, FLOOR_Y, this.goalV, Math.pow(2, <f64>semis / 12), 0.8);
+        api.soundAt(SFX_POP, this.goalU, FLOOR_Y, this.goalV, 1.4, 0.5);
         this.burst(api, this.goalU, this.goalV, NSPARK, 1.0);
         if (api.project(<f32>this.goalU, <f32>(FLOOR_Y + 1.9), <f32>this.goalV)) {
             this.popX = api.screenX;
@@ -617,6 +656,7 @@ export class Game {
         this.oStartU = this.startU; this.oStartV = this.startV;
         this.round++;
         this.makeLayout(api);
+        api.sound(SFX_WHOOSH, 0.6, 0.6);
         this.state = ST_SWAP;
         this.stateT = 0;
         this.sink = 1;
