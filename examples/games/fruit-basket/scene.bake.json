@@ -1,0 +1,416 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.055,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -7,
+   0,
+   -3.8
+  ],
+  [
+   7,
+   3.8,
+   4
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/ground.glb",
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "spacing": 0.07
+    },
+    "Path": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/hedge.glb",
+   "position": [
+    0,
+    0,
+    -3.7
+   ],
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ],
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/fence.glb",
+   "position": [
+    0,
+    0,
+    -3.0
+   ],
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -3.4,
+    0,
+    -1.25
+   ],
+   "yaw": 20,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    0,
+    0,
+    -1.35
+   ],
+   "yaw": -35,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    3.4,
+    0,
+    -1.25
+   ],
+   "yaw": 70,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    }
+   }
+  },
+  {
+   "model": "models/env/canopy.glb",
+   "position": [
+    -3.4,
+    2.55,
+    -1.25
+   ],
+   "yaw": 10,
+   "bone": "canopyL",
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf"
+    },
+    "Apple": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/canopy.glb",
+   "position": [
+    0,
+    2.65,
+    -1.35
+   ],
+   "yaw": -12,
+   "bone": "canopyM",
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf"
+    },
+    "Apple": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/canopy.glb",
+   "position": [
+    3.4,
+    2.55,
+    -1.25
+   ],
+   "yaw": 25,
+   "bone": "canopyR",
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf"
+    },
+    "Apple": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/crate.glb",
+   "position": [
+    -5.0,
+    0,
+    1.9
+   ],
+   "yaw": 14,
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Slat": {
+     "ramp": "wood"
+    },
+    "Apple": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/bush.glb",
+   "position": [
+    5.05,
+    0,
+    1.9
+   ],
+   "yaw": 30,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    },
+    "Flower": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/bush.glb",
+   "position": [
+    -6.2,
+    0,
+    -1.6
+   ],
+   "yaw": -40,
+   "scale": 0.85,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    },
+    "Flower": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    4.1,
+    0,
+    2.7
+   ],
+   "yaw": 40,
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    1.8,
+    0,
+    -2.4
+   ],
+   "yaw": 110,
+   "scale": 0.7,
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/cart/cart_body.glb",
+   "position": [
+    0,
+    0,
+    0.3
+   ],
+   "bone": "cart",
+   "materials": {
+    "Paint": {
+     "ramp": "blue"
+    },
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Red": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/cart/cart_wheels.glb",
+   "position": [
+    0,
+    0.32,
+    0.3
+   ],
+   "bone": "wheels",
+   "materials": {
+    "WheelWood": {
+     "ramp": "wood"
+    },
+    "Red": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/apple.glb",
+   "position": [
+    0,
+    3,
+    0.3
+   ],
+   "bone": "apple",
+   "copies": 6,
+   "materials": {
+    "Body": {
+     "ramp": "red"
+    },
+    "Stem": {
+     "ramp": "wood",
+     "specks": true
+    },
+    "Leaf": {
+     "ramp": "leaf"
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/orange.glb",
+   "position": [
+    0,
+    3,
+    0.3
+   ],
+   "bone": "orange",
+   "copies": 3,
+   "materials": {
+    "Body": {
+     "ramp": "orange"
+    },
+    "Stem": {
+     "ramp": "wood",
+     "specks": true
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/plum.glb",
+   "position": [
+    0,
+    3,
+    0.3
+   ],
+   "bone": "plum",
+   "copies": 3,
+   "materials": {
+    "Body": {
+     "ramp": "plum"
+    },
+    "Stem": {
+     "ramp": "wood",
+     "specks": true
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/pear.glb",
+   "position": [
+    0,
+    3,
+    0.3
+   ],
+   "bone": "pear",
+   "copies": 2,
+   "materials": {
+    "Body": {
+     "ramp": "pear",
+     "flags": [
+      "unlit"
+     ]
+    },
+    "Stem": {
+     "ramp": "wood",
+     "specks": true
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/rotten.glb",
+   "position": [
+    0,
+    3,
+    0.3
+   ],
+   "bone": "rotten",
+   "copies": 5,
+   "materials": {
+    "Body": {
+     "ramp": "rot"
+    },
+    "Stem": {
+     "ramp": "rot",
+     "specks": true
+    },
+    "Mould": {
+     "ramp": "grass"
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/spark.glb",
+   "position": [
+    0,
+    3,
+    0.3
+   ],
+   "bone": "spark",
+   "copies": 8,
+   "materials": {
+    "Spark": {
+     "ramp": "stone",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "specks": true
+    }
+   }
+  }
+ ]
+}

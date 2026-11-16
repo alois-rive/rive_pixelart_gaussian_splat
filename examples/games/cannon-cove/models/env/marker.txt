@@ -1,0 +1,14 @@
+# The aim marker: a flat ring 1.0 m across and a centre dot, lying on the water, unlit. Origin at the centre.
+new
+material new Mark --base-color 1.0000 0.6667 0.3686 --no-slot --emission 1.0000 0.6667 0.3686
+add mesh torus --name Ring --major-radius 0.42 --minor-radius 0.07 --major-segments 12 --minor-segments 4 --location 0 0 0
+scale 1 1 0.6
+apply --scale
+material assign Mark
+add mesh cylinder --name Dot --vertices 6 --radius 0.1 --depth 0.06 --location 0 0 0
+material assign Mark
+select Ring Dot
+active Ring
+join
+shade flat
+export marker.glb

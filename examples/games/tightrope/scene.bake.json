@@ -1,0 +1,460 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.08,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -12,
+   -8,
+   -14
+  ],
+  [
+   34,
+   5,
+   14
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/cliffs.glb",
+   "position": [
+    0,
+    -0.9,
+    0
+   ],
+   "materials": {
+    "Sand": {
+     "ramp": "rock",
+     "spacing": 0.12
+    },
+    "Rust": {
+     "ramp": "rock",
+     "spacing": 0.11
+    },
+    "Brick": {
+     "ramp": "rock",
+     "spacing": 0.13
+    },
+    "Plateau": {
+     "ramp": "rock",
+     "spacing": 0.26
+    }
+   }
+  },
+  {
+   "model": "models/env/river.glb",
+   "position": [
+    0,
+    -0.9,
+    0
+   ],
+   "materials": {
+    "Water": {
+     "ramp": "water",
+     "spacing": 0.15
+    },
+    "Bank": {
+     "ramp": "rock",
+     "spacing": 0.15
+    }
+   }
+  },
+  {
+   "model": "models/env/mesas.glb",
+   "position": [
+    0,
+    -0.9,
+    0
+   ],
+   "materials": {
+    "Far": {
+     "ramp": "cool",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/stand.glb",
+   "position": [
+    -6.9,
+    -0.9,
+    0
+   ],
+   "materials": {
+    "Wood": {
+     "ramp": "red",
+     "spacing": 0.05
+    },
+    "Deck": {
+     "ramp": "rope",
+     "spacing": 0.06
+    },
+    "Cap": {
+     "ramp": "red",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/stand.glb",
+   "position": [
+    6.9,
+    -0.9,
+    0
+   ],
+   "yaw": 180,
+   "materials": {
+    "Wood": {
+     "ramp": "red",
+     "spacing": 0.05
+    },
+    "Deck": {
+     "ramp": "rope",
+     "spacing": 0.06
+    },
+    "Cap": {
+     "ramp": "red",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/cactus.glb",
+   "position": [
+    9.5,
+    -0.9,
+    -3.2
+   ],
+   "yaw": 10,
+   "scale": 1.0,
+   "materials": {
+    "Cactus": {
+     "ramp": "cool"
+    }
+   }
+  },
+  {
+   "model": "models/env/cactus.glb",
+   "position": [
+    11.5,
+    -0.9,
+    4.0
+   ],
+   "yaw": 80,
+   "scale": 1.2,
+   "materials": {
+    "Cactus": {
+     "ramp": "cool"
+    }
+   }
+  },
+  {
+   "model": "models/env/cactus.glb",
+   "position": [
+    8.6,
+    -0.9,
+    6.5
+   ],
+   "yaw": 200,
+   "scale": 0.9,
+   "materials": {
+    "Cactus": {
+     "ramp": "cool"
+    }
+   }
+  },
+  {
+   "model": "models/env/cactus.glb",
+   "position": [
+    12.8,
+    -0.9,
+    -8.0
+   ],
+   "yaw": 300,
+   "scale": 1.3,
+   "materials": {
+    "Cactus": {
+     "ramp": "cool"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    8.0,
+    -0.9,
+    -1.4
+   ],
+   "yaw": 20,
+   "scale": 1.0,
+   "materials": {
+    "Stone": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    10.4,
+    -0.9,
+    1.8
+   ],
+   "yaw": 120,
+   "scale": 0.8,
+   "materials": {
+    "Stone": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -7.6,
+    -0.9,
+    1.9
+   ],
+   "yaw": 250,
+   "scale": 0.7,
+   "materials": {
+    "Stone": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    13.5,
+    -0.9,
+    -4.5
+   ],
+   "yaw": 300,
+   "scale": 1.3,
+   "materials": {
+    "Stone": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/sun.glb",
+   "position": [
+    45,
+    1.5,
+    9
+   ],
+   "materials": {
+    "Sun": {
+     "ramp": "wind",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/walker/walker_body.glb",
+   "position": [
+    -7.45,
+    0,
+    0
+   ],
+   "bone": "walker",
+   "materials": {
+    "Cloth": {
+     "ramp": "cool"
+    },
+    "Sash": {
+     "ramp": "cool"
+    },
+    "Red": {
+     "ramp": "red"
+    },
+    "Skin": {
+     "ramp": "red"
+    },
+    "Hair": {
+     "ramp": "red"
+    },
+    "Pole": {
+     "ramp": "rope",
+     "spacing": 0.045
+    },
+    "Weight": {
+     "ramp": "rope"
+    }
+   }
+  },
+  {
+   "model": "models/walker/walker_pole.glb",
+   "position": [
+    -7.45,
+    0.97,
+    0.16
+   ],
+   "bone": "pole",
+   "materials": {
+    "Cloth": {
+     "ramp": "cool"
+    },
+    "Sash": {
+     "ramp": "cool"
+    },
+    "Red": {
+     "ramp": "red"
+    },
+    "Skin": {
+     "ramp": "red"
+    },
+    "Hair": {
+     "ramp": "red"
+    },
+    "Pole": {
+     "ramp": "rope",
+     "spacing": 0.045
+    },
+    "Weight": {
+     "ramp": "rope"
+    }
+   }
+  },
+  {
+   "model": "models/env/rope.glb",
+   "position": [
+    -6.9,
+    0,
+    0
+   ],
+   "bone": "ropeA",
+   "materials": {
+    "Rope": {
+     "ramp": "rope",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/rope.glb",
+   "position": [
+    -6.9,
+    0,
+    0
+   ],
+   "bone": "ropeB",
+   "materials": {
+    "Rope": {
+     "ramp": "rope",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/flag.glb",
+   "position": [
+    -6.9,
+    0.59,
+    0.42
+   ],
+   "bone": "flagA",
+   "materials": {
+    "Staff": {
+     "ramp": "red",
+     "spacing": 0.04
+    },
+    "Cloth": {
+     "ramp": "red",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/flag.glb",
+   "position": [
+    6.9,
+    0.59,
+    -0.42
+   ],
+   "bone": "flagB",
+   "materials": {
+    "Staff": {
+     "ramp": "red",
+     "spacing": 0.04
+    },
+    "Cloth": {
+     "ramp": "red",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/streak.glb",
+   "position": [
+    0,
+    1,
+    0
+   ],
+   "bone": "streak",
+   "copies": 8,
+   "materials": {
+    "Wind": {
+     "ramp": "wind",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/splash.glb",
+   "position": [
+    0,
+    -4.5,
+    0
+   ],
+   "bone": "splash",
+   "materials": {
+    "Spray": {
+     "ramp": "water",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/bird.glb",
+   "position": [
+    4,
+    4,
+    0
+   ],
+   "bone": "bird",
+   "materials": {
+    "Feather": {
+     "ramp": "red",
+     "spacing": 0.05
+    },
+    "Belly": {
+     "ramp": "red",
+     "spacing": 0.05
+    }
+   }
+  }
+ ]
+}

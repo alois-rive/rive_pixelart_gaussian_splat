@@ -1,0 +1,7 @@
+# Dust: a small faceted puff of sand, origin at its centre (pools of puffs: gate warnings, hits). Up Z.
+new
+material new Dust --base-color 0.7333 0.4980 0.3412 --no-slot
+add mesh ico-sphere --name Dust --subdivisions 1 --radius 0.16 --location 0 0 0
+material assign Dust
+shade flat
+export dust.glb

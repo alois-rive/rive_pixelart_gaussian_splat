@@ -1,0 +1,37 @@
+# Fruit cart, phase 2: an open tray (the top inset and sunk), CC-29 materials (exact sRGB of the ramp
+# steps), joins into two rigid parts, exports. Cart = everything but the wheels; Wheels = both wheels
+# and hubs, exported with its origin at the axle so the game rolls it (api.place roll about Z).
+material new Paint --base-color 0.2941 0.5020 0.7922 --no-slot
+material new Wood --base-color 0.6549 0.4824 0.3569 --no-slot
+material new WheelWood --base-color 0.5020 0.2863 0.2275 --no-slot
+material new Red --base-color 0.7059 0.3216 0.3216 --no-slot
+active Body
+material assign Paint
+mode edit
+select face where "normal.z > 0.9"
+inset 0.04
+extrude 0 0 -0.4
+mode object
+select RimF RimB RimL RimR PostFL PostFR PostBL PostBR ShaftF ShaftB Grip Leg
+material assign Wood
+select WheelF WheelB
+material assign WheelWood
+select HubF HubB Apple0 Apple1 Apple2
+material assign Red
+select Body RimF RimB RimL RimR PostFL PostFR PostBL PostBR ShaftF ShaftB Grip Leg Apple0 Apple1 Apple2
+active Body
+join
+rename Body Cart
+select WheelF WheelB HubF HubB
+active WheelF
+join
+rename WheelF Wheels
+select all
+shade flat
+export cart.glb
+select Cart
+export cart_body.glb --selection
+select Wheels
+translate 0 0 -0.32
+export cart_wheels.glb --selection
+translate 0 0 0.32

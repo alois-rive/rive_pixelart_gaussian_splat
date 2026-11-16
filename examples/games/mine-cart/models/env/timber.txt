@@ -1,0 +1,29 @@
+# Timber support: two posts and a cap beam (2.5 m wide, 2.4 m tall) with a lantern under an iron bracket.
+# Static scenery along the back wall. Up Z, facing -Y.
+new
+material new Wood --base-color 0.898 0.690 0.514 --no-slot
+material new Iron --base-color 0.125 0.157 0.239 --no-slot
+material new Glow --base-color 0.984 0.969 0.953 --emission 0.984 0.969 0.953 --no-slot
+add mesh cube --name PostL --size 1 --location -1.0 0 1.1
+scale 0.2 0.2 2.2
+apply --scale
+add mesh cube --name PostR --size 1 --location 1.0 0 1.1
+scale 0.2 0.2 2.2
+apply --scale
+add mesh cube --name Beam --size 1 --location 0 0 2.3
+scale 2.5 0.24 0.22
+apply --scale
+select PostL PostR Beam
+material assign Wood
+active PostL
+join
+rename PostL Timber
+add mesh cube --name Bracket --size 1 --location 0.45 -0.05 2.13
+scale 0.36 0.3 0.1
+apply --scale
+material assign Iron
+add mesh cylinder --name Lamp --vertices 6 --radius 0.13 --depth 0.3 --location 0.45 -0.05 1.93
+material assign Glow
+select all
+shade flat
+export timber.glb

@@ -1,0 +1,22 @@
+A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: an ancient desert-temple sun mirror, a round bronze mirror held upright in a U-shaped yoke on a short octagonal stone pedestal.
+
+Canvas and layout, keep exactly:
+- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.
+- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).
+- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.
+- Every view sits whole inside its panel with a clear margin of background all round (at least a tenth of the panel): nothing touches or crosses a panel edge.
+- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).
+- The four panels show the SAME object, only turned: FRONT: the mirror's bright reflecting face looks straight at the camera, a full octagon. RIGHT: the camera has walked round to the object's own left-hand side, so the mirror is seen exactly edge-on as a thin upright slab between the two yoke arms, which overlap. BACK: seen from behind: the mirror's dark bronze back plate with a round boss in its middle. TOP: seen from straight above, looking down: the mirror is a thin horizontal bar across the middle, the yoke's arms at its ends, the octagonal pedestal around and below, the front towards the BOTTOM edge of the image. Each detail appears only in the views from which it is really visible.
+- One flat, uniform, light grey background (#d9d9d9) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.
+
+The object (identical in all four views), total 1.1 m tall, 0.95 m wide, 0.7 m deep:
+- Pedestal: an octagonal stone block 0.7 m across and 0.2 m tall, with a smaller octagonal step 0.5 m across and 0.12 m tall on top of it.
+- Post: a square stone post 0.16 m wide rising 0.18 m from the step's middle.
+- Yoke: a chunky U of square bronze bars 0.09 m thick: a crossbar 0.95 m wide at 0.5 m height, and two upright arms at its ends rising to 1.05 m.
+- Mirror: a flat octagonal disc 0.72 m across and 0.08 m thick, its centre at 0.75 m height, hung between the yoke arms on two short pins at its left and right edges. Its front face is a bright reflecting octagon inside a raised bronze rim 0.07 m wide.
+- The back of the mirror: a flat bronze plate with one round boss 0.2 m wide in the middle.
+
+Style, keep exactly:
+- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 400 triangles worth of detail. No smooth organic surfaces, no engravings, no tiny details, no texture noise, no grain.
+- Flat colour areas only, ONLY these colours (a five-colour red sunset palette): mirror face #ee243d; mirror rim, yoke and pins #af2747; mirror back plate and boss #6b2341; pedestal and post #281a2d with their top faces #6b2341; deepest shadows #0d101b.
+- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.

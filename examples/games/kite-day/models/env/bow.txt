@@ -1,0 +1,23 @@
+# A tail bow: two flat triangles tip to tip with a knot, 0.36 m wide, pink. Pooled game bone (the
+# kite's tail is a chain of these that the game swings). Origin at the knot.
+new
+material new Bow --base-color 0.9333 0.5255 0.5843 --no-slot
+add mesh cone --name BL --vertices 3 --radius1 0.11 --radius2 0 --depth 0.18 --location 0 0 0
+scale 1 0.5 1
+apply --scale
+set rotation 0 90 0
+set location -0.09 0 0
+add mesh cone --name BR --vertices 3 --radius1 0.11 --radius2 0 --depth 0.18 --location 0 0 0
+scale 1 0.5 1
+apply --scale
+set rotation 0 -90 0
+set location 0.09 0 0
+add mesh ico-sphere --name Knot --subdivisions 1 --radius 0.05 --location 0 0 0
+select all
+material assign Bow
+active BL
+join
+rename BL Bow
+select all
+shade flat
+export bow.glb

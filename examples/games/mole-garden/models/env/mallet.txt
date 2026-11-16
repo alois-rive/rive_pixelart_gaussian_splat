@@ -1,0 +1,17 @@
+# The player's mallet: a wooden handle from the grip (the origin) 0.9 m along +Y (away from the camera)
+# to a barrel head lying across X. The game swings it about the grip. Up Z.
+new
+add mesh cylinder --name Handle --vertices 6 --radius 0.055 --depth 0.9 --location 0 0.45 0 --rotation 90 0 0
+material new Handle --base-color 0.631 0.624 0.486
+material assign Handle
+add mesh cylinder --name Head --vertices 8 --radius 0.17 --depth 0.46 --location 0 0.9 0 --rotation 0 90 0
+material new Head --base-color 0.467 0.361 0.310
+material assign Head
+add mesh cylinder --name BandL --vertices 8 --radius 0.18 --depth 0.06 --location -0.17 0.9 0 --rotation 0 90 0
+add mesh cylinder --name BandR --vertices 8 --radius 0.18 --depth 0.06 --location 0.17 0.9 0 --rotation 0 90 0
+material new Band --base-color 0.486 0.580 0.631
+select BandL BandR
+material assign Band
+select all
+shade flat
+export mallet.glb

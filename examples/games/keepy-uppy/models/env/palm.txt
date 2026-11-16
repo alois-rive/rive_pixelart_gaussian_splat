@@ -1,0 +1,116 @@
+# A leaning palm: six trunk segments bending right, eight drooping fronds, three coconuts.
+new
+material new Trunk --base-color 0.6118 0.2039 0.1020 --no-slot
+material new Frond --base-color 0.2588 0.5647 0.3451 --no-slot
+material new Nut --base-color 0.8314 0.4000 0.1843 --no-slot
+add mesh cylinder --name T0 --vertices 6 --radius 0.260 --depth 1.030 --location 0 0 0
+set rotation 0 4.00 0
+apply --rotation
+set location 0.033 0.000 0.474
+material assign Trunk
+add mesh cylinder --name T1 --vertices 6 --radius 0.240 --depth 1.030 --location 0 0 0
+set rotation 0 8.50 0
+apply --rotation
+set location 0.136 0.000 1.417
+material assign Trunk
+add mesh cylinder --name T2 --vertices 6 --radius 0.220 --depth 1.030 --location 0 0 0
+set rotation 0 13.00 0
+apply --rotation
+set location 0.314 0.000 2.350
+material assign Trunk
+add mesh cylinder --name T3 --vertices 6 --radius 0.200 --depth 1.030 --location 0 0 0
+set rotation 0 17.50 0
+apply --rotation
+set location 0.563 0.000 3.266
+material assign Trunk
+add mesh cylinder --name T4 --vertices 6 --radius 0.180 --depth 1.030 --location 0 0 0
+set rotation 0 22.00 0
+apply --rotation
+set location 0.884 0.000 4.159
+material assign Trunk
+add mesh cylinder --name T5 --vertices 6 --radius 0.160 --depth 1.030 --location 0 0 0
+set rotation 0 26.50 0
+apply --rotation
+set location 1.274 0.000 5.025
+material assign Trunk
+add mesh cone --name Fr0 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 10
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh cone --name Fr1 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 55
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh cone --name Fr2 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 100
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh cone --name Fr3 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 145
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh cone --name Fr4 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 190
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh cone --name Fr5 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 235
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh cone --name Fr6 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 280
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh cone --name Fr7 --vertices 4 --radius1 0.42 --radius2 0.02 --depth 2.4 --location 0 0 0
+scale 1 0.2 1
+apply --scale
+set rotation 0 105 0
+apply --rotation
+set rotation 0 0 325
+apply --rotation
+set location 1.486 0.000 5.500
+material assign Frond
+add mesh ico-sphere --name N0 --subdivisions 1 --radius 0.17 --location 1.686 0.150 5.270
+material assign Nut
+add mesh ico-sphere --name N1 --subdivisions 1 --radius 0.17 --location 1.336 0.200 5.270
+material assign Nut
+add mesh ico-sphere --name N2 --subdivisions 1 --radius 0.17 --location 1.536 -0.220 5.270
+material assign Nut
+select all
+shade flat
+export palm.glb

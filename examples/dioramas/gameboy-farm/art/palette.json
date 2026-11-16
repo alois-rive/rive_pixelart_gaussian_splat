@@ -1,0 +1,50 @@
+{
+  "name": "Kirokaze Gameboy",
+  "source": "https://lospec.com/palette-list/kirokaze-gameboy",
+  "author": "Kirokaze",
+  "colors": [
+    "#332c50",
+    "#46878f",
+    "#94e344",
+    "#e2f3e4"
+  ],
+  "ramps": {
+    "grass": [
+      "#332c50",
+      "#46878f",
+      "#94e344",
+      "#e2f3e4"
+    ],
+    "barn": [
+      "#332c50",
+      "#46878f",
+      "#94e344",
+      "#e2f3e4"
+    ],
+    "wood": [
+      "#332c50",
+      "#46878f",
+      "#94e344"
+    ],
+    "roof": [
+      "#332c50",
+      "#46878f"
+    ],
+    "paint": [
+      "#46878f",
+      "#94e344",
+      "#e2f3e4"
+    ],
+    "water": [
+      "#332c50",
+      "#46878f",
+      "#e2f3e4"
+    ]
+  },
+  "roles": {
+    "sky_top": "#e2f3e4",
+    "sky_bottom": "#e2f3e4",
+    "fog": "#94e344",
+    "void": "#332c50"
+  }
+}

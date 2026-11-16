@@ -1,0 +1,381 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.14,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "objects": [
+  {
+   "model": "models/env/ground.glb",
+   "materials": {
+    "Ground": {
+     "ramp": "ground"
+    },
+    "Dirt": {
+     "ramp": "ground"
+    }
+   }
+  },
+  {
+   "model": "models/cabin/cabin.glb",
+   "position": [
+    0.3,
+    0,
+    -1.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Stone": {
+     "ramp": "roof"
+    },
+    "Logs": {
+     "ramp": "wood",
+     "spacing": 0.11
+    },
+    "Roof": {
+     "ramp": "roof"
+    },
+    "Door": {
+     "ramp": "wood"
+    },
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.08,
+     "step": 1
+    }
+   }
+  },
+  {
+   "model": "models/env/maple.glb",
+   "position": [
+    -3.2,
+    0,
+    -2.4
+   ],
+   "yaw": 10,
+   "scale": 1.1,
+   "fps": 8,
+   "phase": 0.0,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/maple.glb",
+   "position": [
+    2.7,
+    0,
+    -3.1
+   ],
+   "yaw": 70,
+   "scale": 1.0,
+   "fps": 8,
+   "phase": 1.3,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "step": -1,
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/maple.glb",
+   "position": [
+    3.9,
+    0,
+    -0.6
+   ],
+   "yaw": 140,
+   "scale": 0.9,
+   "fps": 8,
+   "phase": 2.1,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/maple.glb",
+   "position": [
+    -3.7,
+    0,
+    1.0
+   ],
+   "yaw": 200,
+   "scale": 1.0,
+   "fps": 8,
+   "phase": 0.7,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "step": -1,
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/maple.glb",
+   "position": [
+    -1.3,
+    0,
+    -3.9
+   ],
+   "yaw": 260,
+   "scale": 0.85,
+   "fps": 8,
+   "phase": 2.9,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/maple.glb",
+   "position": [
+    0.9,
+    0,
+    -4.1
+   ],
+   "yaw": 320,
+   "scale": 0.75,
+   "fps": 8,
+   "phase": 1.8,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "step": -1,
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/maple.glb",
+   "position": [
+    -2.5,
+    0,
+    3.4
+   ],
+   "yaw": 30,
+   "scale": 0.6,
+   "fps": 8,
+   "phase": 3.4,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/woodpile.glb",
+   "position": [
+    -2.4,
+    0,
+    -0.7
+   ],
+   "yaw": 80,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Ends": {
+     "ramp": "wood"
+    }
+   }
+  },
+  {
+   "model": "models/env/mushrooms.glb",
+   "position": [
+    -1.6,
+    0,
+    2.3
+   ],
+   "yaw": 30,
+   "scale": 1.2,
+   "materials": {
+    "Stem": {
+     "ramp": "smoke",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "leaf",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/mushrooms.glb",
+   "position": [
+    2.3,
+    0,
+    1.6
+   ],
+   "yaw": 200,
+   "scale": 1.0,
+   "materials": {
+    "Stem": {
+     "ramp": "smoke",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "leaf",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    1.6,
+    0,
+    3.6
+   ],
+   "yaw": 20,
+   "materials": {
+    "Stone": {
+     "ramp": "roof"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -3.6,
+    0,
+    2.4
+   ],
+   "yaw": 100,
+   "scale": 0.8,
+   "materials": {
+    "Stone": {
+     "ramp": "roof"
+    }
+   }
+  },
+  {
+   "model": "models/env/leaves.glb",
+   "fps": 10,
+   "materials": {
+    "LeafA": {
+     "ramp": "leaf",
+     "flags": [
+      "double",
+      "nocast"
+     ],
+     "spacing": 0.06
+    },
+    "LeafB": {
+     "ramp": "leaf",
+     "flags": [
+      "double",
+      "nocast"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    1.9,
+    2.72,
+    -1.0
+   ],
+   "fps": 8,
+   "phase": 0,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    1.9,
+    2.72,
+    -1.0
+   ],
+   "fps": 8,
+   "phase": 1.333,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    1.9,
+    2.72,
+    -1.0
+   ],
+   "fps": 8,
+   "phase": 2.667,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "spacing": 0.09
+    }
+   }
+  }
+ ]
+}

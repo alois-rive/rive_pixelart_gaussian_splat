@@ -1,0 +1,35 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.1,
+  "fat": 1.0,
+  "out": "../../lookdev/rocket.bin",
+  "objects": [
+    {
+      "model": "rocket.glb",
+      "materials": {
+        "Hull": {
+          "ramp": "hull"
+        },
+        "Trim": {
+          "ramp": "trim"
+        },
+        "Glass": {
+          "ramp": "glass",
+          "spacing": 0.06
+        },
+        "Rim": {
+          "ramp": "rock",
+          "spacing": 0.06
+        },
+        "Nozzle": {
+          "ramp": "rock",
+          "spacing": 0.08
+        },
+        "Band": {
+          "ramp": "trim",
+          "spacing": 0.05
+        }
+      }
+    }
+  ]
+}

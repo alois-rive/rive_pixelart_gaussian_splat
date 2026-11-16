@@ -1,0 +1,8 @@
+# A soap bubble the duck fires: a faceted ball 0.44 across, sage with a cream light side.
+new
+material new Bubble --base-color 0.5490 0.6706 0.6314 --no-slot
+add mesh ico-sphere --name Bubble --subdivisions 2 --radius 0.22 --location 0 0 0
+material assign Bubble
+select all
+shade flat
+export bubble.glb

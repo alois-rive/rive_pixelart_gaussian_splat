@@ -1,0 +1,7 @@
+# Start ring: a sky-blue ring proud of the floor where each marble drops in. Origin at its centre.
+new
+material new Ring --base-color 0.4706 0.7608 0.8392 --no-slot
+add mesh torus --name Start --major-segments 14 --minor-segments 4 --major-radius 0.4 --minor-radius 0.07 --location 0 0 0.05
+material assign Ring
+shade flat
+export start.glb

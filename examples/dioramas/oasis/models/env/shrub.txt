@@ -1,0 +1,17 @@
+# Shrub: two jittered, flattened icospheres. Up Z.
+new
+add mesh ico-sphere --name ShrubA --subdivisions 1 --radius 0.30 --location 0 0 0.18
+scale 1 1 0.7
+material new Leaf --base-color 0.533 0.486 0.337
+add mesh ico-sphere --name ShrubB --subdivisions 1 --radius 0.22 --location 0.25 0.12 0.14
+scale 1 1 0.7
+material assign Leaf
+select all
+apply
+join
+mode edit
+select all
+randomize --amount 0.05 --seed 11
+mode object
+shade flat
+export shrub.glb

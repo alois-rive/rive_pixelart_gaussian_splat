@@ -1,0 +1,62 @@
+# Pan, phase 2: the hollow (the rim's top inset 0.06 and pushed down 0.15 to the pan's floor), the
+# handle's taper and tilt, materials in Vanilla Milkshake (exact sRGB of the ramp steps), joins,
+# flat shading, export of the whole hero (pan + golden pancake). Run after p1_blockout.txt.
+material new Iron --base-color 0.4235 0.3373 0.4431 --no-slot
+material new Rim --base-color 0.6902 0.6627 0.8941 --no-slot
+material new Handle --base-color 0.9765 0.5098 0.5176 --no-slot
+material new Cap --base-color 0.9961 0.6667 0.8941 --no-slot
+material new Golden --base-color 1.0 0.7647 0.5176 --no-slot
+material new Crust --base-color 0.8706 0.6392 0.5451 --no-slot
+select Body
+active Body
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+mode object
+select Rim
+active Rim
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+select face where "normal.z > 0.9"
+inset 0.06
+translate 0 0 -0.15
+mode object
+select Body
+material assign Iron
+select Rim
+active Rim
+material assign Rim
+mode edit
+# the inner walls and the floor of the hollow are iron; the rim's top ring and outer band stay lavender
+select face where "pos.z < 0.0"
+material assign Iron
+mode object
+select Handle
+active Handle
+mode edit
+select vert where "pos.y > 0"
+scale 0.75 1 0.85
+mode object
+set rotation -5 0 0
+select Handle
+material assign Handle
+select Cap
+material assign Cap
+select Pancake
+active Pancake
+material assign Crust
+mode edit
+select face where "normal.z > 0.9"
+material assign Golden
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Body Rim Handle Cap
+active Body
+join
+rename Body Pan
+select all
+shade flat
+inspect stats
+export pan.glb

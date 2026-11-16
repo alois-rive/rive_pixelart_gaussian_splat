@@ -1,0 +1,16 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.043,
+  "fat": 1.0,
+  "out": "../../lookdev/table.bin",
+  "objects": [
+    { "model": "table.glb",
+      "materials": { "Rink": { "ramp": "rink", "spacing": 0.04 },
+                     "Cap": { "ramp": "neon", "flags": ["unlit"] },
+                     "Rail": { "ramp": "neon" },
+                     "Body": { "ramp": "steel" },
+                     "Pocket": { "ramp": "steel" },
+                     "Leg": { "ramp": "steel" },
+                     "Coin": { "ramp": "player" } } }
+  ]
+}

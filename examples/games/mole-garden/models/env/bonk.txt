@@ -1,0 +1,13 @@
+# A bonk: five little pale stars (octahedra) in a ring 0.7 m across, glowing. The game spins it and
+# scales it out over a hit mole.
+new
+add mesh ico-sphere --name S0 --subdivisions 1 --radius 0.09 --location 0.350 0.000 0.00
+add mesh ico-sphere --name S1 --subdivisions 1 --radius 0.09 --location 0.108 0.333 0.05
+add mesh ico-sphere --name S2 --subdivisions 1 --radius 0.09 --location -0.283 0.206 0.00
+add mesh ico-sphere --name S3 --subdivisions 1 --radius 0.09 --location -0.283 -0.206 0.05
+add mesh ico-sphere --name S4 --subdivisions 1 --radius 0.09 --location 0.108 -0.333 0.00
+material new Star --base-color 0.753 0.820 0.800
+select all
+material assign Star
+shade flat
+export bonk.glb

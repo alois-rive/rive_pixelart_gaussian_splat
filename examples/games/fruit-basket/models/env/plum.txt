@@ -1,0 +1,19 @@
+# Plum: a pink-purple egg 0.32 m across, 0.4 m tall.
+# Origin at the fruit's centre (a game bone pool: the game drops, catches and pops it).
+new
+material new Body --base-color 0.8118 0.5412 0.7961 --no-slot
+material new Stem --base-color 0.2941 0.2549 0.3451 --no-slot
+add mesh ico-sphere --name Fruit --subdivisions 1 --radius 0.16 --location 0 0 0
+scale 1 1 1.25
+apply --scale
+material assign Body
+add mesh cube --name Stalk --size 1 --location 0.02 0 0.250
+scale 0.06 0.06 0.14
+apply --scale
+material assign Stem
+select all
+active Fruit
+join
+select all
+shade flat
+export plum.glb

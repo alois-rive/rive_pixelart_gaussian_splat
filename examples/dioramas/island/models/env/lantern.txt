@@ -1,0 +1,17 @@
+# Lantern on a post: the glass is emissive (unlit splats). Up Z.
+new
+add mesh cube --name Post --size 1 --location 0 0 0.5
+scale 0.08 0.08 1.0
+apply --scale
+material new Wood --base-color 0.392 0.325 0.333
+add mesh cube --name Arm --size 1 --location 0.14 0 0.95
+scale 0.28 0.06 0.06
+apply --scale
+material assign Wood
+add mesh cube --name Lamp --size 1 --location 0.26 0 0.78
+scale 0.16 0.16 0.2
+apply --scale
+material new Light --base-color 0.867 0.812 0.600 --emission 0.867 0.812 0.600
+select all
+shade flat
+export lantern.glb

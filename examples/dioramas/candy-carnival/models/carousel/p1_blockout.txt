@@ -1,0 +1,49 @@
+# Carousel, phase 1: blockout of every named part at the spec's sizes (metres). Up Z, front -Y.
+# Octagons are turned 22.5 degrees so a flat side faces each axis, as in the sheet's top view.
+new
+add mesh cylinder --name Platform --vertices 8 --radius 1.62 --depth 0.34 --location 0 0 0.17 --rotation 0 0 22.5
+apply --rotation
+add mesh cylinder --name Column --vertices 8 --radius 0.2 --depth 1.68 --location 0 0 1.18 --rotation 0 0 22.5
+apply --rotation
+add mesh cylinder --name Band --vertices 8 --radius 1.55 --depth 0.29 --location 0 0 2.145 --rotation 0 0 22.5
+apply --rotation
+add mesh cone --name Cone --vertices 8 --radius1 1.55 --radius2 0.04 --depth 0.67 --location 0 0 2.625 --rotation 0 0 22.5
+apply --rotation
+add mesh ico-sphere --name Ball --subdivisions 1 --radius 0.11 --location 0 0 3.04
+add mesh cylinder --name FlagPole --vertices 6 --radius 0.035 --depth 0.32 --location 0 0 3.26
+add mesh cube --name Flag --size 1 --location 0.17 0 3.33
+scale 0.3 0.05 0.18
+apply --scale
+# six poles on a ring of 0.96 m, at 0, 60, ... 300 degrees (two on the X axis: the front view's outer poles).
+# (Tried 30, 90, ...: a horse in front of the column as the sheet draws it; IoU fell to 0.75, reverted.)
+add mesh cylinder --name Pole0 --vertices 6 --radius 0.05 --depth 1.68 --location 0.96 0 1.18
+add mesh cylinder --name Pole1 --vertices 6 --radius 0.05 --depth 1.68 --location 0.48 0.831 1.18
+add mesh cylinder --name Pole2 --vertices 6 --radius 0.05 --depth 1.68 --location -0.48 0.831 1.18
+add mesh cylinder --name Pole3 --vertices 6 --radius 0.05 --depth 1.68 --location -0.96 0 1.18
+add mesh cylinder --name Pole4 --vertices 6 --radius 0.05 --depth 1.68 --location -0.48 -0.831 1.18
+add mesh cylinder --name Pole5 --vertices 6 --radius 0.05 --depth 1.68 --location 0.48 -0.831 1.18
+# one horse on pole 0, facing +Y (counter-clockwise round the ring seen from above), body centre z 1.3
+add mesh cube --name Body --size 1 --location 0.96 0 1.3
+scale 0.2 0.6 0.24
+apply --scale
+add mesh cube --name Neck --size 1 --location 0.96 0.26 1.48
+scale 0.16 0.16 0.3
+apply --scale
+add mesh cube --name Head --size 1 --location 0.96 0.38 1.63
+scale 0.15 0.3 0.14
+apply --scale
+add mesh cube --name LegsF --size 1 --location 0.96 0.22 1.04
+scale 0.16 0.12 0.3
+apply --scale
+add mesh cube --name LegsB --size 1 --location 0.96 -0.22 1.04
+scale 0.16 0.12 0.3
+apply --scale
+add mesh cube --name Saddle --size 1 --location 0.96 -0.02 1.44
+scale 0.26 0.22 0.06
+apply --scale
+add mesh cube --name Mane --size 1 --location 0.96 0.16 1.6
+scale 0.1 0.1 0.3
+apply --scale
+add mesh cube --name Tail --size 1 --location 0.96 -0.34 1.27
+scale 0.08 0.12 0.24
+apply --scale

@@ -1,0 +1,34 @@
+# A clump of reeds with three cattails: flat two-sided blades (0.1 m wide cards) leaning out. Up Z.
+new
+add mesh cube --name B0 --size 1 --location 0 0 0.55
+scale 0.11 0.03 1.1
+apply --scale
+set rotation 0 10 0
+add mesh cube --name B1 --size 1 --location 0.18 0.08 0.45
+scale 0.11 0.03 0.9
+apply --scale
+set rotation 0 -14 25
+add mesh cube --name B2 --size 1 --location -0.17 0.05 0.5
+scale 0.11 0.03 1.0
+apply --scale
+set rotation 0 16 -30
+add mesh cube --name B3 --size 1 --location 0.05 -0.15 0.4
+scale 0.11 0.03 0.8
+apply --scale
+set rotation -12 0 70
+add mesh cube --name B4 --size 1 --location -0.08 0.16 0.6
+scale 0.11 0.03 1.2
+apply --scale
+set rotation 10 0 100
+material new Reed --base-color 0.220 0.718 0.392
+select B0 B1 B2 B3 B4
+material assign Reed
+add mesh cylinder --name T0 --vertices 6 --radius 0.07 --depth 0.26 --location 0.02 0.02 1.25
+add mesh cylinder --name T1 --vertices 6 --radius 0.065 --depth 0.24 --location 0.3 0.1 1.0
+add mesh cylinder --name T2 --vertices 6 --radius 0.065 --depth 0.24 --location -0.3 0.1 1.05
+material new Cattail --base-color 0.365 0.153 0.365
+select T0 T1 T2
+material assign Cattail
+select all
+shade flat
+export reeds.glb

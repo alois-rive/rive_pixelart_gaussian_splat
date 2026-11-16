@@ -1,0 +1,15 @@
+# A big meteor (two hits): a jittered icosahedron of radius 0.46 m centred on the origin (its pivot), mauve rock
+# with a few glowing plum faces (hot spots). One bone each, tumbled by the game.
+new
+material new Rock --base-color 0.431 0.318 0.506 --no-slot
+material new Hot --base-color 0.435 0.114 0.361 --emission 0.435 0.114 0.361 --no-slot
+add mesh ico-sphere --name boulder --radius 0.46 --subdivisions 1 --location 0 0 0
+material assign Rock
+mode edit
+select vert where "true"
+randomize --amount 0.101 --seed 8
+select face where "pos.x + pos.z > 0.414"
+material assign Hot
+mode object
+shade flat
+export boulder.glb

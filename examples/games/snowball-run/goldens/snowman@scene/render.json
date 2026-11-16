@@ -1,0 +1,21 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "snowman",
+  "views": "front,right,back,top,iso",
+  "size": 120,
+  "pixel": 2,
+  "arg": [
+    "sunYaw=-55",
+    "sunPitch=30",
+    "keyLight=0.42",
+    "highlight=0.85",
+    "splatDither=0",
+    "bandDither=0.45"
+  ],
+  "advance": "2",
+  "real_sky": true,
+  "look": "lit",
+  "texel": 0.075,
+  "elevation": 0
+}

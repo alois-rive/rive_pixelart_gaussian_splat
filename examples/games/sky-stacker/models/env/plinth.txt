@@ -1,0 +1,14 @@
+# The stone plinth under the pagoda: two square steps, 0.4 m in all (the first storey stands on it).
+new
+add mesh cube --name Low --size 1 --location 0 0 0.125
+scale 3.0 3.0 0.25
+apply --scale
+add mesh cube --name High --size 1 --location 0 0 0.325
+scale 2.5 2.5 0.15
+apply --scale
+material new Stone --base-color 0.549 0.561 0.682
+select Low High
+material assign Stone
+select all
+shade flat
+export plinth.glb

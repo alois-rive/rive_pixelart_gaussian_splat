@@ -1,0 +1,76 @@
+# Bee, phase 2: materials in FunkyFuture 8 (exact sRGB of the ramp steps), the wings' white inner
+# panel (an inset of both big faces), joins, flat shading, export. Run after p1_blockout.txt.
+material new Body --base-color 1.0 0.8549 0.2706 --no-slot
+material new Band --base-color 0.1686 0.0588 0.3294 --no-slot
+material new Tip --base-color 1.0 0.3098 0.4118 --no-slot
+material new Wing --base-color 0.2863 0.9059 0.9255 --no-slot
+material new Panel --base-color 1.0 0.9686 0.9725 --no-slot
+select Seg0 Seg2 Seg4 Seg6 Head
+material assign Body
+select Seg1 Seg3 Seg5 Seg7 Stinger EyeL EyeR StalkL StalkR
+material assign Band
+select BallL BallR
+material assign Tip
+select WingL WingR
+material assign Wing
+active WingL
+mode edit
+select face where "abs(normal.z) > 0.9"
+inset 0.06
+material assign Panel
+mode object
+active WingR
+mode edit
+select face where "abs(normal.z) > 0.9"
+inset 0.06
+material assign Panel
+mode object
+# the ring caps between abdomen segments are hidden inside the body: delete them (they would bake)
+active Seg0
+mode edit
+select face where "abs(normal.y) > 0.9"
+delete only-faces
+mode object
+active Seg1
+mode edit
+select face where "abs(normal.y) > 0.9"
+delete only-faces
+mode object
+active Seg2
+mode edit
+select face where "abs(normal.y) > 0.9"
+delete only-faces
+mode object
+active Seg3
+mode edit
+select face where "abs(normal.y) > 0.9"
+delete only-faces
+mode object
+active Seg4
+mode edit
+select face where "abs(normal.y) > 0.9"
+delete only-faces
+mode object
+active Seg5
+mode edit
+select face where "abs(normal.y) > 0.9"
+delete only-faces
+mode object
+active Seg6
+mode edit
+select face where "abs(normal.y) > 0.9"
+delete only-faces
+mode object
+active Seg7
+mode edit
+select face where "normal.y < -0.9"
+delete only-faces
+mode object
+select Seg0 Seg1 Seg2 Seg3 Seg4 Seg5 Seg6 Seg7 Stinger Head EyeL EyeR StalkL StalkR BallL BallR
+active Seg4
+join
+rename Seg4 Body
+select all
+shade flat
+inspect stats
+export bee.glb

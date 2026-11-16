@@ -1,0 +1,270 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.09,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "objects": [
+  {
+   "model": "models/env/island.glb",
+   "materials": {
+    "Rock": {
+     "ramp": "rock",
+     "step": 1
+    },
+    "Crack": {
+     "ramp": "ember",
+     "flags": [
+      "unlit"
+     ]
+    },
+    "Lava": {
+     "ramp": "lava",
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/forge/forge.glb",
+   "position": [
+    0,
+    0,
+    -0.8
+   ],
+   "materials": {
+    "Stone": {
+     "ramp": "rock",
+     "step": 1
+    },
+    "Iron": {
+     "ramp": "iron",
+     "step": 1
+    },
+    "Rim": {
+     "ramp": "ember",
+     "flags": [
+      "unlit"
+     ],
+     "step": -1
+    },
+    "Fire": {
+     "ramp": "lava",
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/hammer.glb",
+   "position": [
+    -1.45,
+    0,
+    -0.55
+   ],
+   "yaw": -22.4,
+   "fps": 12,
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Iron": {
+     "ramp": "iron"
+    },
+    "Hot": {
+     "ramp": "lava",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.06,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/crane.glb",
+   "position": [
+    0.6,
+    0,
+    2.2
+   ],
+   "yaw": 36.87,
+   "fps": 12,
+   "materials": {
+    "Iron": {
+     "ramp": "iron",
+     "step": 1
+    },
+    "Chain": {
+     "ramp": "iron",
+     "spacing": 0.06
+    },
+    "Melt": {
+     "ramp": "lava",
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/blobs.glb",
+   "position": [
+    1.4,
+    0,
+    1.6
+   ],
+   "fps": 12,
+   "materials": {
+    "Blob": {
+     "ramp": "ember",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/embers.glb",
+   "position": [
+    1.4,
+    0,
+    1.6
+   ],
+   "fps": 12,
+   "materials": {
+    "Ember": {
+     "ramp": "lava",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/lavafall.glb",
+   "position": [
+    2.263,
+    0,
+    2.61
+   ],
+   "yaw": -49.1,
+   "fps": 12,
+   "materials": {
+    "Fall": {
+     "ramp": "lava",
+     "flags": [
+      "unlit"
+     ]
+    },
+    "Glob": {
+     "ramp": "lava",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/basalt.glb",
+   "position": [
+    -2.3,
+    0,
+    -1.7
+   ],
+   "yaw": 20,
+   "materials": {
+    "Rock": {
+     "ramp": "rock",
+     "step": 1
+    },
+    "Crack": {
+     "ramp": "ember",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   },
+   "scale": 0.7
+  },
+  {
+   "model": "models/env/basalt.glb",
+   "position": [
+    2.3,
+    0,
+    -1.6
+   ],
+   "yaw": 140,
+   "scale": 0.6,
+   "materials": {
+    "Rock": {
+     "ramp": "rock",
+     "step": 1
+    },
+    "Crack": {
+     "ramp": "ember",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -2.5,
+    0,
+    1.3
+   ],
+   "yaw": 30,
+   "materials": {
+    "Rock": {
+     "ramp": "rock",
+     "step": 1
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -0.9,
+    0,
+    2.7
+   ],
+   "yaw": 110,
+   "scale": 0.7,
+   "materials": {
+    "Rock": {
+     "ramp": "rock",
+     "step": 1
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    2.8,
+    0,
+    0.4
+   ],
+   "yaw": 200,
+   "scale": 0.85,
+   "materials": {
+    "Rock": {
+     "ramp": "rock",
+     "step": 1
+    }
+   }
+  }
+ ]
+}

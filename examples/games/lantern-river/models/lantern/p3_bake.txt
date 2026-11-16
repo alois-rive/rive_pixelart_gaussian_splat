@@ -1,0 +1,8 @@
+# Sky lantern, phase 3 (bake prep): splats reach about one radius past every edge, so the baked
+# lantern comes out wider than drawn. The solid is narrowed 0.88 in X and Y (about one splat radius a
+# side at the scene's 0.09 m spacing and 1.4 scale) and exported as lantern_bake.glb for the bake;
+# lantern.glb stays the form-gated model.
+select Lantern
+scale 0.88 0.88 1
+apply --scale
+export lantern_bake.glb

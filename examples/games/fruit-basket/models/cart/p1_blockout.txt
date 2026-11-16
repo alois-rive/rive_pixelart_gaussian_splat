@@ -1,0 +1,56 @@
+# Fruit cart, phase 1: one primitive per named part at the spec's sizes (metres). Up Z, front -Y.
+# Origin on the ground under the body's centre. The body's long axis is X; the handles point to -X.
+new
+# body: 1.4 x 0.75, from z 0.29 to 0.8
+add mesh cube --name Body --size 1 --location 0 0 0.545
+scale 1.4 0.75 0.51
+apply --scale
+# rim: four bars 0.09 thick round the top edge (top at z 0.855)
+add mesh cube --name RimF --size 1 --location 0 -0.37 0.81
+scale 1.48 0.07 0.09
+apply --scale
+add mesh cube --name RimB --size 1 --location 0 0.37 0.81
+scale 1.48 0.07 0.09
+apply --scale
+add mesh cube --name RimL --size 1 --location -0.7 0 0.81
+scale 0.07 0.83 0.09
+apply --scale
+add mesh cube --name RimR --size 1 --location 0.7 0 0.81
+scale 0.07 0.83 0.09
+apply --scale
+# corner posts 0.1 square, z 0.27 to 0.87
+add mesh cube --name PostFL --size 1 --location -0.7 -0.37 0.57
+scale 0.11 0.11 0.6
+apply --scale
+add mesh cube --name PostFR --size 1 --location 0.7 -0.37 0.57
+scale 0.11 0.11 0.6
+apply --scale
+add mesh cube --name PostBL --size 1 --location -0.7 0.37 0.57
+scale 0.11 0.11 0.6
+apply --scale
+add mesh cube --name PostBR --size 1 --location 0.7 0.37 0.57
+scale 0.11 0.11 0.6
+apply --scale
+# wheels: octagons 0.64 across, 0.11 thick, on an axle along Y at z 0.32; hubs 0.16 across
+add mesh cylinder --name WheelF --vertices 8 --radius 0.33 --depth 0.11 --location 0 -0.43 0.32 --rotation 90 22.5 0
+add mesh cylinder --name WheelB --vertices 8 --radius 0.33 --depth 0.11 --location 0 0.43 0.32 --rotation 90 22.5 0
+add mesh cylinder --name HubF --vertices 8 --radius 0.085 --depth 0.06 --location 0 -0.51 0.32 --rotation 90 22.5 0
+add mesh cylinder --name HubB --vertices 8 --radius 0.085 --depth 0.06 --location 0 0.51 0.32 --rotation 90 22.5 0
+# handles: the front shaft low, the back shaft high (the sheet's front view shows both)
+add mesh cube --name ShaftF --size 1 --location -1.0 -0.34 0.64
+scale 0.62 0.08 0.08
+apply --scale
+add mesh cube --name ShaftB --size 1 --location -1.0 0.34 0.81
+scale 0.62 0.08 0.08
+apply --scale
+add mesh cube --name Grip --size 1 --location -1.33 0 0.74
+scale 0.1 0.8 0.32
+apply --scale
+# a leg under the left end
+add mesh cube --name Leg --size 1 --location -0.62 0 0.15
+scale 0.08 0.08 0.3
+apply --scale
+# three apples heaped over the rim
+add mesh ico-sphere --name Apple0 --subdivisions 1 --radius 0.125 --location -0.14 -0.04 0.84
+add mesh ico-sphere --name Apple1 --subdivisions 1 --radius 0.125 --location 0.14 -0.04 0.84
+add mesh ico-sphere --name Apple2 --subdivisions 1 --radius 0.125 --location 0 0.06 0.95

@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "out": "../../lookdev/forge.bin",
+  "objects": [
+    { "model": "forge.glb",
+      "materials": { "Stone": { "ramp": "stone" }, "Iron": { "ramp": "iron" },
+                     "Rim": { "ramp": "ember", "flags": ["unlit"] }, "Fire": { "ramp": "lava", "flags": ["unlit"] } } }
+  ]
+}

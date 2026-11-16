@@ -1,0 +1,36 @@
+# Rover: a 0.9 x 1.6 m body on six wheels, a cab with a glowing windscreen at the front (-Y), a
+# short mast with a small dish at the back. Up Z, facing -Y.
+new
+add mesh cube --name Body --size 1 --location 0 0.05 0.5
+scale 0.9 1.6 0.36
+apply --scale
+material new Hull --base-color 0.302 0.502 0.380
+add mesh cube --name Cab --size 1 --location 0 -0.38 0.86
+scale 0.8 0.6 0.38
+apply --scale
+material assign Hull
+add mesh cube --name Screen --size 1 --location 0 -0.7 0.9
+scale 0.62 0.08 0.2
+apply --scale
+material new Glow --base-color 0.745 0.863 0.498 --emission 0.745 0.863 0.498
+add mesh cylinder --name W0 --vertices 8 --radius 0.26 --depth 0.18 --location -0.52 -0.55 0.26 --rotation 0 90 0
+material new Wheel --base-color 0.118 0.227 0.161
+add mesh cylinder --name W1 --vertices 8 --radius 0.26 --depth 0.18 --location 0.52 -0.55 0.26 --rotation 0 90 0
+material assign Wheel
+add mesh cylinder --name W2 --vertices 8 --radius 0.26 --depth 0.18 --location -0.52 0.05 0.26 --rotation 0 90 0
+material assign Wheel
+add mesh cylinder --name W3 --vertices 8 --radius 0.26 --depth 0.18 --location 0.52 0.05 0.26 --rotation 0 90 0
+material assign Wheel
+add mesh cylinder --name W4 --vertices 8 --radius 0.26 --depth 0.18 --location -0.52 0.65 0.26 --rotation 0 90 0
+material assign Wheel
+add mesh cylinder --name W5 --vertices 8 --radius 0.26 --depth 0.18 --location 0.52 0.65 0.26 --rotation 0 90 0
+material assign Wheel
+add mesh cube --name Mast --size 1 --location 0.25 0.6 0.95
+scale 0.12 0.12 0.6
+apply --scale
+material assign Wheel
+add mesh cone --name MiniDish --vertices 8 --radius1 0.08 --radius2 0.3 --depth 0.14 --location 0.25 0.6 1.3 --rotation -40 0 0
+material new Dish --base-color 0.537 0.635 0.341
+select all
+shade flat
+export rover.glb

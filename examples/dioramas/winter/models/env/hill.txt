@@ -1,0 +1,25 @@
+# Snowy hilltop: a 9-sided slab, its top poked and lifted into a low mound, stone sides, a rocky underside. Up Z.
+new
+add mesh cylinder --name Top --vertices 9 --radius 3.3 --depth 0.5 --location 0 0 -0.25
+material new Snow --base-color 0.745 0.898 0.882
+material new Stone --base-color 0.235 0.263 0.282 --no-slot
+material slot add
+active Top
+mode edit
+select face where "normal.z < 0.9"
+material assign Stone
+select face where "normal.z > 0.9"
+poke
+select vert where "abs(pos.x) < 0.01 && abs(pos.y) < 0.01 && pos.z > 0"
+translate 0 0 0.25
+mode object
+add mesh cone --name Under --vertices 9 --radius1 0.7 --radius2 3.2 --depth 2.0 --location 0 0 -1.5
+material assign Stone
+active Under
+mode edit
+select vert where "pos.z < -0.5"
+randomize --amount 0.3 --seed 5
+mode object
+select all
+shade flat
+export hill.glb

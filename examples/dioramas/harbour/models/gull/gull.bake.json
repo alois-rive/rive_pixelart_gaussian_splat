@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/gull.bin",
+  "objects": [
+    { "model": "gull.glb", "fps": 12, "loop": 8.0,
+      "materials": { "GullWhite": { "ramp": "white", "spacing": 0.06 },
+                     "WingTip":   { "ramp": "rock", "spacing": 0.06 },
+                     "Beak":      { "ramp": "hull", "spacing": 0.05 } } }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Berry Nebula",
+  "source": "https://lospec.com/palette-list/berry-nebula",
+  "author": "LostInIndigo",
+  "colors": ["#6ceded", "#6cb9c9", "#6d85a5", "#6e5181", "#6f1d5c", "#4f1446", "#2e0a30", "#0d001a"],
+  "ramps": {
+    "rock":   ["#0d001a", "#2e0a30", "#4f1446", "#6e5181", "#6d85a5"],
+    "sea":    ["#0d001a", "#2e0a30", "#6e5181", "#6d85a5", "#6cb9c9"],
+    "wall":   ["#2e0a30", "#6e5181", "#6d85a5", "#6cb9c9", "#6ceded"],
+    "roof":   ["#0d001a", "#2e0a30", "#4f1446", "#6f1d5c", "#6e5181"],
+    "metal":  ["#0d001a", "#2e0a30", "#4f1446", "#6e5181", "#6d85a5", "#6cb9c9"],
+    "panel":  ["#2e0a30", "#4f1446", "#6d85a5", "#6cb9c9", "#6ceded"],
+    "meteor": ["#0d001a", "#2e0a30", "#4f1446", "#6f1d5c", "#6e5181"],
+    "glow":   ["#6cb9c9", "#6ceded"],
+    "star":   ["#6d85a5", "#6cb9c9", "#6ceded"],
+    "nebula": ["#2e0a30", "#4f1446", "#6f1d5c"],
+    "fire":   ["#6f1d5c", "#6e5181", "#6cb9c9", "#6ceded"]
+  },
+  "roles": { "sky_top": "#0d001a", "sky_bottom": "#0d001a", "fog": "#2e0a30", "void": "#0d001a" }
+}

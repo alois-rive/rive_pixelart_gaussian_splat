@@ -1,0 +1,195 @@
+# Camel, phase 3: rig and walk. Runs after p2_form.txt.
+# hedra's `join` maps vertex groups by INDEX, not name: every part first gets the same group list
+# (one `parent set --empty-groups` for all of them), its own bone's group is filled, THEN they join.
+select all
+apply
+# one mesh per bone (all verts of a part move rigidly with its bone: a segmented toy)
+select Torso Hump Blanket
+active Torso
+join
+select Head Snout EarL EarR
+active Head
+join
+select Tail Tuft
+active Tail
+join
+select LowerFL HoofFL
+active LowerFL
+join
+select LowerFR HoofFR
+active LowerFR
+join
+select LowerBL HoofBL
+active LowerBL
+join
+select LowerBR HoofBR
+active LowerBR
+join
+# the armature, in hedra space (Z up, facing -Y)
+add armature --name Rig --location 0 0 0
+mode edit
+bone select all
+bone delete
+bone add Body --head 0 0.45 1.0 --tail 0 -0.45 1.0
+bone add Neck --head 0 -0.63 0.94 --tail 0 -0.97 1.66 --parent Body
+bone add Head --head 0 -0.97 1.66 --tail 0 -1.40 1.72 --parent Neck --connected
+bone add Tail --head 0 0.58 1.06 --tail 0 0.78 0.72 --parent Body
+bone add ThighFL --head -0.21 -0.35 0.78 --tail -0.21 -0.35 0.42 --parent Body
+bone add ShinFL --head -0.21 -0.35 0.42 --tail -0.21 -0.35 0.0 --parent ThighFL --connected
+bone add ThighFR --head 0.21 -0.35 0.78 --tail 0.21 -0.35 0.42 --parent Body
+bone add ShinFR --head 0.21 -0.35 0.42 --tail 0.21 -0.35 0.0 --parent ThighFR --connected
+bone add ThighBL --head -0.21 0.46 0.78 --tail -0.21 0.46 0.42 --parent Body
+bone add ShinBL --head -0.21 0.46 0.42 --tail -0.21 0.46 0.0 --parent ThighBL --connected
+bone add ThighBR --head 0.21 0.46 0.78 --tail 0.21 0.46 0.42 --parent Body
+bone add ShinBR --head 0.21 0.46 0.42 --tail 0.21 0.46 0.0 --parent ThighBR --connected
+mode object
+select Torso Neck Head Tail UpperFL LowerFL UpperFR LowerFR UpperBL LowerBL UpperBR LowerBR Rig
+parent set Rig --type armature --empty-groups
+active Torso
+mode edit
+select all
+vgroup assign Body --weight 1
+mode object
+active Neck
+mode edit
+select all
+vgroup assign Neck --weight 1
+mode object
+active Head
+mode edit
+select all
+vgroup assign Head --weight 1
+mode object
+active Tail
+mode edit
+select all
+vgroup assign Tail --weight 1
+mode object
+active UpperFL
+mode edit
+select all
+vgroup assign ThighFL --weight 1
+mode object
+active LowerFL
+mode edit
+select all
+vgroup assign ShinFL --weight 1
+mode object
+active UpperFR
+mode edit
+select all
+vgroup assign ThighFR --weight 1
+mode object
+active LowerFR
+mode edit
+select all
+vgroup assign ShinFR --weight 1
+mode object
+active UpperBL
+mode edit
+select all
+vgroup assign ThighBL --weight 1
+mode object
+active LowerBL
+mode edit
+select all
+vgroup assign ShinBL --weight 1
+mode object
+active UpperBR
+mode edit
+select all
+vgroup assign ThighBR --weight 1
+mode object
+active LowerBR
+mode edit
+select all
+vgroup assign ShinBR --weight 1
+mode object
+select Torso Neck Head Tail UpperFL LowerFL UpperFR LowerFR UpperBL LowerBL UpperBR LowerBR
+active Torso
+join
+rename Torso Camel
+vgroup list
+# the walk: a camel PACES (both legs of one side together), 1.2 s = 24 frames at 20 fps.
+# A down-pointing bone's +X rotation swings its tip to +Y (backwards: the camel faces -Y).
+fps 20
+frame range 0 24
+active Rig
+mode pose
+pose select all
+frame set 0
+pose set ThighFL rotation -22 0 0
+pose set ShinFL rotation 0 0 0
+pose set ThighBL rotation -22 0 0
+pose set ShinBL rotation 0 0 0
+pose set ThighFR rotation 22 0 0
+pose set ShinFR rotation 0 0 0
+pose set ThighBR rotation 22 0 0
+pose set ShinBR rotation 0 0 0
+pose set Body rotation 0 3 0
+pose set Neck rotation 4 0 0
+pose set Head rotation -4 0 0
+pose set Tail rotation 0 0 10
+keyframe insert --channels rot
+frame set 6
+pose set ThighFL rotation 0 0 0
+pose set ShinFL rotation 0 0 0
+pose set ThighBL rotation 0 0 0
+pose set ShinBL rotation 0 0 0
+pose set ThighFR rotation -8 0 0
+pose set ShinFR rotation 40 0 0
+pose set ThighBR rotation -8 0 0
+pose set ShinBR rotation 40 0 0
+pose set Body rotation 0 0 0
+pose set Neck rotation -2 0 0
+pose set Head rotation 2 0 0
+pose set Tail rotation 0 0 0
+keyframe insert --channels rot
+frame set 12
+pose set ThighFL rotation 22 0 0
+pose set ShinFL rotation 0 0 0
+pose set ThighBL rotation 22 0 0
+pose set ShinBL rotation 0 0 0
+pose set ThighFR rotation -22 0 0
+pose set ShinFR rotation 0 0 0
+pose set ThighBR rotation -22 0 0
+pose set ShinBR rotation 0 0 0
+pose set Body rotation 0 -3 0
+pose set Neck rotation 4 0 0
+pose set Head rotation -4 0 0
+pose set Tail rotation 0 0 -10
+keyframe insert --channels rot
+frame set 18
+pose set ThighFL rotation -8 0 0
+pose set ShinFL rotation 40 0 0
+pose set ThighBL rotation -8 0 0
+pose set ShinBL rotation 40 0 0
+pose set ThighFR rotation 0 0 0
+pose set ShinFR rotation 0 0 0
+pose set ThighBR rotation 0 0 0
+pose set ShinBR rotation 0 0 0
+pose set Body rotation 0 0 0
+pose set Neck rotation -2 0 0
+pose set Head rotation 2 0 0
+pose set Tail rotation 0 0 0
+keyframe insert --channels rot
+frame set 24
+pose set ThighFL rotation -22 0 0
+pose set ShinFL rotation 0 0 0
+pose set ThighBL rotation -22 0 0
+pose set ShinBL rotation 0 0 0
+pose set ThighFR rotation 22 0 0
+pose set ShinFR rotation 0 0 0
+pose set ThighBR rotation 22 0 0
+pose set ShinBR rotation 0 0 0
+pose set Body rotation 0 3 0
+pose set Neck rotation 4 0 0
+pose set Head rotation -4 0 0
+pose set Tail rotation 0 0 10
+keyframe insert --channels rot
+# a loop must not ease: linear keys, and cyclic so p4 can bake it over the orbit
+keyframe interpolation linear --all
+keyframe extrapolation cyclic
+action rename RigAction Walk
+frame set 0
+mode object

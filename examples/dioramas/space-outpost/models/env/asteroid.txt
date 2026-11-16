@@ -1,0 +1,31 @@
+# Asteroid: an 11-sided slab (top at z 0) with a regolith texture, a rocky underside tapering to a
+# point, and two crater rims (low tori, half buried). Up Z.
+new
+add mesh cylinder --name Top --vertices 11 --radius 4.6 --depth 0.5 --location 0 0 -0.25
+material new Regolith --base-color 1 1 1
+material new Rock --base-color 0.188 0.365 0.259 --no-slot
+active Top
+mode edit
+select face where "normal.z < 0.9"
+material assign Rock
+select vert where "pos.z < 0"
+randomize --amount 0.2 --seed 11
+# the regolith: 48 texels over the 9.2 m top (0.19 m a texel, ~2.4 splats), projected from above
+select face where "normal.z > 0.9"
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Regolith base-color textures/regolith_48.png
+add mesh cone --name Under --vertices 11 --radius1 0.8 --radius2 4.5 --depth 2.6 --location 0 0 -1.8
+material assign Rock
+active Under
+mode edit
+select vert where "pos.z < 0.5"
+randomize --amount 0.45 --seed 5
+mode object
+add mesh torus --name CraterA --major-segments 9 --minor-segments 4 --major-radius 0.55 --minor-radius 0.16 --location -3.0 -2.2 -0.04
+material assign Rock
+add mesh torus --name CraterB --major-segments 8 --minor-segments 4 --major-radius 0.4 --minor-radius 0.14 --location 0.9 -3.3 -0.04
+material assign Rock
+select all
+shade flat
+export asteroid.glb

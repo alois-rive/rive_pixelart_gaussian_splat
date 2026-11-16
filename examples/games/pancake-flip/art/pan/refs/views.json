@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/pancake-flip/art/pan/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        158,
+        174,
+        450,
+        200
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4444,
+      "fill": 0.7522,
+      "background": "#929191"
+    },
+    "right": {
+      "box": [
+        814,
+        213,
+        665,
+        102
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.1534,
+      "fill": 0.8105,
+      "background": "#929191"
+    },
+    "back": {
+      "box": [
+        158,
+        685,
+        451,
+        169
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.3747,
+      "fill": 0.8632,
+      "background": "#919191"
+    },
+    "top": {
+      "box": [
+        1014,
+        555,
+        273,
+        419
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5348,
+      "fill": 0.5664,
+      "background": "#919191"
+    }
+  }
+}

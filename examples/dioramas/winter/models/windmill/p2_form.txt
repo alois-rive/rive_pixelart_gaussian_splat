@@ -1,0 +1,41 @@
+# Windmill, phase 2: materials (Apollo ramp steps, sRGB 0..1), planks, glowing windows, the sails' turn.
+material new Stone --base-color 0.400 0.545 0.565 --no-slot
+material new Planks --base-color 1 1 1 --no-slot
+material texture Planks base-color textures/planks.png
+material new Gable --base-color 0.349 0.118 0.216 --no-slot
+material new Snow --base-color 0.745 0.898 0.882 --no-slot
+material new Door --base-color 0.110 0.118 0.122 --no-slot
+material new Glow --base-color 0.941 0.953 0.769 --emission 0.941 0.953 0.769 --no-slot
+select Base
+material assign Stone
+select House
+material assign Planks
+# cube projection: on every wall u runs along the wall and v up it, so the stripes lie flat;
+# 16 texels over 1.6 m = 0.1 m a texel, a plank 2 texels = about 2 splats
+active House
+mode edit
+select all
+uv cube-project --size 1.6
+mode object
+select Attic
+material assign Gable
+select RoofL RoofR
+material assign Snow
+select Door
+material assign Door
+select WinL WinR
+material assign Glow
+select all
+shade flat
+# one turn of the sails every 6 s (144 frames at 24 fps), linear, so it loops without a hitch
+fps 24
+frame range 0 144
+select Sails
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 -360 0
+keyframe insert --channels rot --frame 144
+keyframe interpolation linear --all
+frame set 0
+render shots/p2_iso.png --view iso --shading material --overlay none --size 500 500
+export windmill.glb --bake-animations

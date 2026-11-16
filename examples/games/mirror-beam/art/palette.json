@@ -1,0 +1,27 @@
+{
+  "name": "Sunset Red",
+  "source": "https://lospec.com/palette-list/sunset-red",
+  "author": "Cabezinu",
+  "colors": [
+    "#0d101b",
+    "#281a2d",
+    "#6b2341",
+    "#af2747",
+    "#ee243d"
+  ],
+  "ramps": {
+    "sand":   ["#0d101b", "#281a2d", "#6b2341", "#af2747"],
+    "stone":  ["#0d101b", "#281a2d", "#6b2341", "#af2747"],
+    "bronze": ["#0d101b", "#281a2d", "#6b2341", "#af2747", "#ee243d"],
+    "glass":  ["#6b2341", "#af2747", "#ee243d"],
+    "ember":  ["#0d101b", "#281a2d", "#6b2341"],
+    "glow":   ["#6b2341", "#af2747", "#ee243d", "#ee243d"],
+    "night":  ["#0d101b", "#0d101b", "#281a2d"]
+  },
+  "roles": {
+    "void": "#0d101b",
+    "fog": "#281a2d",
+    "sky_top": "#6b2341",
+    "sky_bottom": "#af2747"
+  }
+}

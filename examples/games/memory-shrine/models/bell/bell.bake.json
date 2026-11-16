@@ -1,0 +1,10 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.058,
+  "fat": 1.0,
+  "out": "../../lookdev/bell.bin",
+  "objects": [
+    { "model": "bell.glb",
+      "materials": { "Bronze": { "ramp": "gold" }, "Band": { "ramp": "teal" } } }
+  ]
+}

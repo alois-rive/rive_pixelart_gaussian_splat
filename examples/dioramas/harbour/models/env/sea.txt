@@ -1,0 +1,21 @@
+# The sea: a 10 x 8 m slab, top at the waterline (z 0), 0.6 m deep so the diorama has sides.
+# Top: the sea texture (5e80b2 water, 6db7c3 crests, ece8c2 glints; 0.25 m a texel), `sway` in the bake.
+# Sides: deep water, 5f3a60. In place: the scene's origin is the sea's centre. Up Z, front -Y.
+new
+add mesh cube --name Sea --size 1 --location 0 0 -0.3
+scale 10 8 0.6
+apply
+material new SeaSide --base-color 0.373 0.227 0.376
+material new SeaTop --base-color 1 1 1 --no-slot
+material texture SeaTop base-color textures/sea.png
+active Sea
+mode edit
+select face where "normal.z > 0.9"
+material assign SeaTop
+uv project-from-view top --scale-to-bounds
+# the underside is never seen: no splats for it
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+shade flat
+export sea.glb

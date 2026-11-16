@@ -1,0 +1,16 @@
+# A puffy sunset cloud: five faceted balls, flat-ish underneath, about 2.6 m long. Up Z.
+new
+add mesh ico-sphere --name A --subdivisions 1 --radius 0.6 --location 0 0 0.35
+add mesh ico-sphere --name B --subdivisions 1 --radius 0.45 --location 0.7 0.1 0.2
+add mesh ico-sphere --name C --subdivisions 1 --radius 0.42 --location -0.7 -0.05 0.22
+add mesh ico-sphere --name D --subdivisions 1 --radius 0.35 --location 0.2 0.4 0.15
+add mesh ico-sphere --name E --subdivisions 1 --radius 0.3 --location -1.1 0.1 0.08
+select A B C D E
+join
+cursor set 0 0 0
+scale 1 0.85 0.75 --pivot cursor
+apply --scale
+material new Cloud --base-color 0.961 0.929 0.729
+material assign Cloud
+shade flat
+export cloud.glb

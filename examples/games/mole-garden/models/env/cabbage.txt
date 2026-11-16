@@ -1,0 +1,11 @@
+# A cabbage: a faceted head in a ring of four broad outer leaves. Up Z.
+new
+add mesh ico-sphere --name Head --subdivisions 1 --radius 0.22 --location 0 0 0.2
+material new Heart --base-color 0.310 0.467 0.329
+material assign Heart
+add mesh cone --name Leaves --vertices 5 --radius1 0.42 --radius2 0.18 --depth 0.24 --cap-fill none --location 0 0 0.12 --rotation 0 0 18
+material new Leaf --base-color 0.227 0.376 0.290
+material assign Leaf
+select all
+shade flat
+export cabbage.glb

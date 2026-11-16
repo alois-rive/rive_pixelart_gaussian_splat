@@ -1,0 +1,43 @@
+# Fisher, phase 1: one primitive per part at the spec's sizes (fisher.spec.md). Up Z, facing -Y, origin
+# on the ground under the bucket's centre. Total height 1.3 m. He sits on an upturned bucket, hands
+# together in front of his chest (the rod is a separate scene part held there).
+new
+add mesh cone --name Bucket --vertices 8 --radius1 0.27 --radius2 0.22 --depth 0.38 --location 0 0 0.21
+add mesh cylinder --name Rim --vertices 8 --radius 0.29 --depth 0.06 --location 0 0 0.03
+add mesh cone --name Body --vertices 8 --radius1 0.34 --radius2 0.29 --depth 0.5 --location 0 0.03 0.63
+add mesh cube --name ThighR --size 1 --location -0.17 -0.22 0.44
+scale 0.2 0.42 0.17
+apply --scale
+add mesh cube --name ThighL --size 1 --location 0.17 -0.22 0.44
+scale 0.2 0.42 0.17
+apply --scale
+add mesh cube --name BootR --size 1 --location -0.21 -0.42 0.2
+scale 0.2 0.22 0.4
+apply --scale
+add mesh cube --name BootL --size 1 --location 0.21 -0.42 0.2
+scale 0.2 0.22 0.4
+apply --scale
+add mesh cube --name FootR --size 1 --location -0.21 -0.47 0.06
+scale 0.21 0.24 0.12
+apply --scale
+add mesh cube --name FootL --size 1 --location 0.21 -0.47 0.06
+scale 0.21 0.24 0.12
+apply --scale
+add mesh cube --name ArmR --size 1 --location -0.2 -0.22 0.74
+scale 0.17 0.46 0.17
+apply --scale
+set rotation 0 0 -28
+add mesh cube --name ArmL --size 1 --location 0.2 -0.22 0.74
+scale 0.17 0.46 0.17
+apply --scale
+set rotation 0 0 28
+add mesh ico-sphere --name HandR --subdivisions 1 --radius 0.1 --location -0.07 -0.45 0.73
+add mesh ico-sphere --name HandL --subdivisions 1 --radius 0.1 --location 0.07 -0.45 0.73
+add mesh ico-sphere --name Head --subdivisions 1 --radius 0.22 --location 0 -0.06 0.95
+add mesh ico-sphere --name Crown --subdivisions 1 --radius 0.26 --location 0 0.02 1.11
+scale 1 1 0.95
+apply --scale
+add mesh cone --name Brim --vertices 8 --radius1 0.34 --radius2 0.24 --depth 0.15 --location 0 0.0 1.0
+scale 1 1.0 1
+apply --scale
+set rotation -8 0 0

@@ -1,0 +1,400 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.05,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -3.2,
+   -1.9,
+   -0.6
+  ],
+  [
+   3.2,
+   2.4,
+   0.8
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/kitchen.glb",
+   "materials": {
+    "Counter": {
+     "ramp": "cream"
+    },
+    "Cabinet": {
+     "ramp": "iron"
+    },
+    "Stove": {
+     "ramp": "mint"
+    },
+    "StoveFront": {
+     "ramp": "mint"
+    },
+    "Knob": {
+     "ramp": "iron"
+    },
+    "TileA": {
+     "ramp": "tile"
+    },
+    "TileB": {
+     "ramp": "tile"
+    },
+    "Shelf": {
+     "ramp": "cream"
+    },
+    "Door": {
+     "ramp": "tile"
+    },
+    "Oven": {
+     "ramp": "iron"
+    }
+   }
+  },
+  {
+   "model": "models/env/burner.glb",
+   "position": [
+    -1.0,
+    0,
+    0
+   ],
+   "materials": {
+    "Grate": {
+     "ramp": "iron"
+    },
+    "Flame": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/burner.glb",
+   "position": [
+    0.0,
+    0,
+    0
+   ],
+   "materials": {
+    "Grate": {
+     "ramp": "iron"
+    },
+    "Flame": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/burner.glb",
+   "position": [
+    1.0,
+    0,
+    0
+   ],
+   "materials": {
+    "Grate": {
+     "ramp": "iron"
+    },
+    "Flame": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/plate.glb",
+   "position": [
+    -2.35,
+    0,
+    0.1
+   ],
+   "materials": {
+    "Plate": {
+     "ramp": "cream"
+    }
+   }
+  },
+  {
+   "model": "models/env/bottle.glb",
+   "position": [
+    2.7,
+    0,
+    -0.25
+   ],
+   "yaw": 20,
+   "materials": {
+    "Glass": {
+     "ramp": "berry"
+    },
+    "Label": {
+     "ramp": "cream"
+    },
+    "Cap": {
+     "ramp": "iron",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/bowl.glb",
+   "position": [
+    2.1,
+    0,
+    0.2
+   ],
+   "yaw": -30,
+   "materials": {
+    "Bowl": {
+     "ramp": "mint"
+    },
+    "Batter": {
+     "ramp": "batter"
+    },
+    "Whisk": {
+     "ramp": "berry",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/butter.glb",
+   "position": [
+    2.8,
+    0,
+    0.4
+   ],
+   "yaw": 25,
+   "materials": {
+    "Dish": {
+     "ramp": "iron"
+    },
+    "Butter": {
+     "ramp": "golden"
+    }
+   }
+  },
+  {
+   "model": "models/env/bottle.glb",
+   "position": [
+    -0.4,
+    1.59,
+    -0.45
+   ],
+   "scale": 0.55,
+   "materials": {
+    "Glass": {
+     "ramp": "berry"
+    },
+    "Label": {
+     "ramp": "cream"
+    },
+    "Cap": {
+     "ramp": "iron",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/bowl.glb",
+   "position": [
+    0.4,
+    1.59,
+    -0.45
+   ],
+   "scale": 0.6,
+   "materials": {
+    "Bowl": {
+     "ramp": "mint"
+    },
+    "Batter": {
+     "ramp": "batter"
+    },
+    "Whisk": {
+     "ramp": "berry"
+    }
+   }
+  },
+  {
+   "model": "models/pan/pan_only.glb",
+   "bone": "pan",
+   "copies": 3,
+   "position": [
+    0,
+    0.05,
+    0
+   ],
+   "materials": {
+    "Iron": {
+     "ramp": "iron",
+     "spacing": 0.034
+    },
+    "Rim": {
+     "ramp": "iron",
+     "spacing": 0.034
+    },
+    "Handle": {
+     "ramp": "berry",
+     "spacing": 0.034
+    },
+    "Cap": {
+     "ramp": "berry",
+     "spacing": 0.034
+    }
+   }
+  },
+  {
+   "model": "models/env/pancake_raw.glb",
+   "bone": "raw",
+   "copies": 3,
+   "position": [
+    0,
+    0.1,
+    0
+   ],
+   "materials": {
+    "Top": {
+     "ramp": "batter",
+     "spacing": 0.034
+    },
+    "Edge": {
+     "ramp": "batter",
+     "spacing": 0.034
+    }
+   }
+  },
+  {
+   "model": "models/env/pancake_golden.glb",
+   "bone": "gold",
+   "copies": 3,
+   "position": [
+    0,
+    0.1,
+    0
+   ],
+   "materials": {
+    "Top": {
+     "ramp": "cake",
+     "spacing": 0.034
+    },
+    "Edge": {
+     "ramp": "golden",
+     "spacing": 0.034
+    }
+   }
+  },
+  {
+   "model": "models/env/pancake_dark.glb",
+   "bone": "dark",
+   "copies": 3,
+   "position": [
+    0,
+    0.1,
+    0
+   ],
+   "materials": {
+    "Top": {
+     "ramp": "burnt",
+     "spacing": 0.034
+    },
+    "Edge": {
+     "ramp": "burnt",
+     "spacing": 0.034
+    }
+   }
+  },
+  {
+   "model": "models/env/pancake_burnt.glb",
+   "bone": "burnt",
+   "copies": 3,
+   "position": [
+    0,
+    0.1,
+    0
+   ],
+   "materials": {
+    "Top": {
+     "ramp": "burnt",
+     "spacing": 0.034
+    },
+    "Edge": {
+     "ramp": "burnt",
+     "spacing": 0.034
+    }
+   }
+  },
+  {
+   "model": "models/env/pancake_golden.glb",
+   "bone": "stack",
+   "copies": 10,
+   "position": [
+    -2.35,
+    0.1,
+    0.1
+   ],
+   "materials": {
+    "Top": {
+     "ramp": "cake",
+     "spacing": 0.034
+    },
+    "Edge": {
+     "ramp": "golden",
+     "spacing": 0.034
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "bone": "smoke",
+   "copies": 6,
+   "position": [
+    0,
+    0.4,
+    0
+   ],
+   "materials": {
+    "Smoke": {
+     "ramp": "cream",
+     "flags": [
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/star.glb",
+   "bone": "star",
+   "copies": 6,
+   "position": [
+    0,
+    0.6,
+    0
+   ],
+   "materials": {
+    "Spark": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  }
+ ]
+}

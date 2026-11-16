@@ -1,0 +1,17 @@
+# Giant clam, phase 3: the upper shell breathes. Its origin is the hinge (0, 0.82, 0.5) since p1;
+# the rest pose (frame 0) is the gated one, 30 degrees open. It closes 10 degrees and opens again
+# over 6 s (72 frames at 12 fps), eased (hedra's default bezier keys), last key = first key.
+fps 12
+frame range 0 72
+select Upper
+frame set 0
+set rotation 0 0 0
+keyframe insert --channels rot
+frame set 36
+set rotation 10 0 0
+keyframe insert --channels rot
+frame set 72
+set rotation 0 0 0
+keyframe insert --channels rot
+frame set 0
+export clam.glb --bake-animations

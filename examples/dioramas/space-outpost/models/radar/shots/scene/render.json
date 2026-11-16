@@ -1,0 +1,16 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "radar",
+  "views": "front,right,back,top,iso",
+  "size": 160,
+  "pixel": 2,
+  "arg": [
+    "ink=2",
+    "bandDither=0.15",
+    "splatDither=0"
+  ],
+  "look": "lit",
+  "texel": 0.064,
+  "elevation": 0
+}

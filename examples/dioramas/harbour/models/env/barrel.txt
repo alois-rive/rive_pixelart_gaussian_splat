@@ -1,0 +1,17 @@
+# A barrel: 8 sides, r 0.22, 0.55 tall, a bulge at mid-height; hull ramp 933942, lid c66f5e.
+new
+add mesh cylinder --name Barrel --vertices 8 --radius 0.22 --depth 0.55 --location 0 0 0.275 --rotation 0 0 22.5
+apply
+material new Barrel --base-color 0.576 0.224 0.259
+material new Lid --base-color 0.776 0.435 0.369 --no-slot
+active Barrel
+mode edit
+select all
+bisect --plane-co 0 0 0.275
+select vert where "pos.z > 0.2 && pos.z < 0.35"
+scale 1.12 1.12 1
+select face where "normal.z > 0.9"
+material assign Lid
+mode object
+shade flat
+export barrel.glb

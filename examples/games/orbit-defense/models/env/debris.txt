@@ -1,0 +1,11 @@
+# A chunk of meteor debris: a tiny tumbling rock (the game flings a pool of them out of each burst).
+new
+material new Rock --base-color 0.435 0.114 0.361 --no-slot
+add mesh ico-sphere --name Chunk --radius 0.09 --subdivisions 1 --location 0 0 0
+material assign Rock
+mode edit
+select vert where "true"
+randomize --amount 0.02 --seed 2
+mode object
+shade flat
+export debris.glb

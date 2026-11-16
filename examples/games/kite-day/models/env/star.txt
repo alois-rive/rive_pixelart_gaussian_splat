@@ -1,0 +1,40 @@
+# A star to catch: five chunky spikes round a faceted core, 0.7 m across, in the XZ plane (facing
+# the camera), unlit peach. Pooled game bone; the game spins and pops it. Origin at the centre.
+new
+material new Star --base-color 0.9843 0.7333 0.6784 --no-slot
+add mesh ico-sphere --name Core --subdivisions 1 --radius 0.17 --location 0 0 0
+scale 1 0.7 1
+apply --scale
+add mesh cone --name S0 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.26 --location 0 0 0
+scale 1 0.6 1
+apply --scale
+set rotation 0 0.0 0
+set location 0.000 0 0.200
+add mesh cone --name S1 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.26 --location 0 0 0
+scale 1 0.6 1
+apply --scale
+set rotation 0 -72.0 0
+set location -0.190 0 0.062
+add mesh cone --name S2 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.26 --location 0 0 0
+scale 1 0.6 1
+apply --scale
+set rotation 0 -144.0 0
+set location -0.118 0 -0.162
+add mesh cone --name S3 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.26 --location 0 0 0
+scale 1 0.6 1
+apply --scale
+set rotation 0 -216.0 0
+set location 0.118 0 -0.162
+add mesh cone --name S4 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.26 --location 0 0 0
+scale 1 0.6 1
+apply --scale
+set rotation 0 -288.0 0
+set location 0.190 0 0.062
+select all
+material assign Star
+active Core
+join
+rename Core Star
+select all
+shade flat
+export star.glb

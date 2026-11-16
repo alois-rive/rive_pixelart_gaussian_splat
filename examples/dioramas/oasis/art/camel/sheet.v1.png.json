@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v1.png",
+  "sha256": "e622ceb3595cc961d6df3043dc269b45dac072a45b84f5abc7713cec5c426c55",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v1.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game character: a chunky, friendly desert camel, standing in a neutral pose (all four legs straight, head forward).\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- One flat, uniform, pale grey background (#d9d9d9) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n- In the FRONT view the camel faces the camera; in the RIGHT view it faces to the right of the image.\n\nThe character (identical in all four views):\n- Body about 1.8 m long, 0.7 m wide; one big hump on the back; total height about 2.0 m at the head.\n- A long curved neck rising forward, a blocky head with a short snout, small ears.\n- Four straight legs, each two simple segments (upper and lower) with flat feet, a short tail.\n- A woven saddle blanket over the hump, with a simple stripe.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes. No smooth organic surfaces, no tiny details, no texture noise, no grain.\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.\n- Built from simple boxy segments a 3D artist can rig: separate readable leg segments, neck, head.\n- Flat colour areas only, from these colours: fur #cd683d #e6904e #fbb954, darker hooves and snout #9e4539 #694f62, blanket #4d65b4 #4d9be6 #f9c22b, eyes #2e222f.\n- About 400 to 800 triangles worth of detail.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e4e3-2e6e-7de0-8408-bd09c276075c",
+    "source": "/Users/alois/.codex/generated_images/01a1e4e3-2e6e-7de0-8408-bd09c276075c/exec-a18e36e4-cb50-4cf1-bc43-f4d88271b4be.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e4e3-2e6e-7de0-8408-bd09c276075c/exec-a18e36e4-cb50-4cf1-bc43-f4d88271b4be.png"
+    ]
+  },
+  "seconds": 67.4,
+  "created": "2026-11-16T16:05:23+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/oasis/art/camel/sheet.v1.png",
+  "reviewed": false
+}

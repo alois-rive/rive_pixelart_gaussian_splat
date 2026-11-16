@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.045,
+  "fat": 1.0,
+  "out": "../../lookdev/cannon.bin",
+  "objects": [
+    { "model": "cannon.glb",
+      "materials": { "Iron": { "ramp": "iron" }, "IronLight": { "ramp": "iron", "spacing": 0.035 },
+                     "Bore": { "ramp": "iron" }, "Wood": { "ramp": "wood" }, "Wheel": { "ramp": "sand", "spacing": 0.035 } } }
+  ]
+}

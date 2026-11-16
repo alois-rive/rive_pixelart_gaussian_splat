@@ -1,0 +1,29 @@
+# Branching (staghorn) coral: a short trunk and five 6-sided branches fanning up and out, tips a
+# step lighter. About 1.2 m across, 1.1 m tall. Branches 0.18 m thick (two splats). Up Z.
+new
+material new Coral --base-color 0.624 0.957 0.898 --no-slot
+add mesh cylinder --name Trunk --vertices 6 --radius 0.13 --depth 0.4 --location 0 0 0.2
+add mesh cone --name Br0 --vertices 6 --radius1 0.1 --radius2 0.07 --depth 0.8 --location 0 0 0
+apply --location
+mode edit
+select all
+translate 0 0 0.4
+mode object
+set location 0 0 0.3
+set rotation 0 32 0
+duplicate
+set rotation 0 28 72
+duplicate
+set rotation 0 35 144
+duplicate
+set rotation 0 25 216
+duplicate
+set rotation 0 33 288
+add mesh cone --name Mid --vertices 6 --radius1 0.11 --radius2 0.07 --depth 0.9 --location 0 0 0.75
+select all
+material assign Coral
+active Trunk
+join
+apply
+shade flat
+export coral_branch.glb

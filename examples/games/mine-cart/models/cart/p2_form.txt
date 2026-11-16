@@ -1,0 +1,43 @@
+# Mine cart, phase 2: form and surfacing. Materials are exact EN4 colours (sRGB 0..1):
+# Wood #e5b083 (wood ramp, step 2), Iron #20283d (iron ramp, baked at step 1 so lit faces reach green),
+# Gem #fbf7f3 and GemTan #e5b083 (gem ramp; GemTan also paints the heap: the tub's top face), Glow #fbf7f3 (glow ramp, unlit: the lantern glass).
+material new Wood --base-color 0.898 0.690 0.514 --no-slot
+material new Iron --base-color 0.125 0.157 0.239 --no-slot
+material new Gem --base-color 0.984 0.969 0.953 --no-slot
+material new GemTan --base-color 0.898 0.690 0.514 --no-slot
+material new Glow --base-color 0.984 0.969 0.953 --emission 0.984 0.969 0.953 --no-slot
+select Tub
+material assign Wood
+# the iron corner strips: a chamfer on the tub's four sloped corner edges, painted iron
+active Tub
+mode edit
+select edge where "abs(pos.z) < 0.01"
+bevel 0.05 --segments 1
+material assign Iron
+select face where "normal.z < -0.9"
+delete only-faces
+# the tub's top face is the ore heap the gems lie on
+select face where "normal.z > 0.9"
+material assign GemTan
+mode object
+select Rim RimR RimF RimB WheelFL WheelFR WheelBL WheelBR AxleF AxleB LampCap LampBase
+material assign Iron
+select Gem1 Gem2 Gem3 Gem6 Gem8
+material assign Gem
+select Gem4 Gem5 Gem7
+material assign GemTan
+select LampGlass
+material assign Glow
+# joins: one mesh per material group (the cart is one rigid game bone anyway)
+select Rim RimR RimF RimB WheelFL WheelFR WheelBL WheelBR AxleF AxleB LampCap LampBase
+active Rim
+join
+rename Rim Irons
+select Gem1 Gem2 Gem3 Gem4 Gem5 Gem6 Gem7 Gem8
+active Gem1
+join
+rename Gem1 Gems
+select all
+shade flat
+inspect stats
+export cart.glb

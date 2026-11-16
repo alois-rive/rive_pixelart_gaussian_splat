@@ -1,0 +1,19 @@
+# Moon: a big faceted disc (a flat 16-sided cylinder) facing the camera, unlit in the scene.
+new
+material new Moon --base-color 1.0000 1.0000 1.0000 --no-slot
+material new Mare --base-color 0.9882 0.9647 0.3765 --no-slot
+add mesh cylinder --name Moon --vertices 16 --radius 2.6 --depth 0.2 --location 0 0 0 --rotation 90 0 0
+apply --rotation
+material assign Moon
+mode edit
+select face where "normal.y < -0.9"
+poke
+select face where "normal.y < -0.9"
+subdivide --cuts 3
+select face where "normal.y < -0.9 && (((pos.x - 0.8)*(pos.x - 0.8) + (pos.z - 0.6)*(pos.z - 0.6) < 0.5) || ((pos.x + 0.9)*(pos.x + 0.9) + (pos.z + 0.7)*(pos.z + 0.7) < 0.35) || ((pos.x - 0.3)*(pos.x - 0.3) + (pos.z + 1.3)*(pos.z + 1.3) < 0.2))"
+material assign Mare
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+shade flat
+export moon.glb

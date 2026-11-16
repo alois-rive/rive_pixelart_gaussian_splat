@@ -1,0 +1,13 @@
+# Butter: a pale yellow block on a small lilac dish. Up Z.
+new
+material new Dish --base-color 0.6902 0.6627 0.8941 --no-slot
+material new Butter --base-color 1.0000 0.9686 0.6275 --no-slot
+add mesh cylinder --name Dish --vertices 10 --radius 0.3 --depth 0.06 --location 0 0 0.03
+material assign Dish
+add mesh cube --name Block --size 1 --location 0 0 0.14
+scale 0.32 0.2 0.16
+apply --scale
+material assign Butter
+select all
+shade flat
+export butter.glb

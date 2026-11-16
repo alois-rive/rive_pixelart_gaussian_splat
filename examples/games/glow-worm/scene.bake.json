@@ -1,0 +1,230 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.07,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "bounds": [
+    [
+      -6.5,
+      -0.5,
+      -4.6
+    ],
+    [
+      6.5,
+      3.2,
+      5.0
+    ]
+  ],
+  "objects": [
+    {
+      "model": "models/env/cave.glb",
+      "materials": {
+        "Floor": {
+          "ramp": "floor"
+        },
+        "Rock": {
+          "ramp": "rock",
+          "spacing": 0.09
+        },
+        "Speck": {
+          "ramp": "spark",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.045,
+          "specks": true
+        }
+      }
+    },
+    {
+      "model": "models/env/stalagmite.glb",
+      "position": [
+        -1.8,
+        0,
+        -0.35
+      ],
+      "yaw": 20,
+      "materials": {
+        "Stone": {
+          "ramp": "stone",
+          "step": 1,
+          "spacing": 0.05
+        }
+      },
+      "scale": 1.35
+    },
+    {
+      "model": "models/env/stalagmite.glb",
+      "position": [
+        1.95,
+        0,
+        -0.55
+      ],
+      "yaw": 140,
+      "scale": 1.2,
+      "materials": {
+        "Stone": {
+          "ramp": "stone",
+          "step": 1,
+          "spacing": 0.05
+        }
+      }
+    },
+    {
+      "model": "models/env/stalagmite.glb",
+      "position": [
+        0.25,
+        0,
+        1.5
+      ],
+      "yaw": 250,
+      "scale": 1.15,
+      "materials": {
+        "Stone": {
+          "ramp": "stone",
+          "step": 1,
+          "spacing": 0.05
+        }
+      }
+    },
+    {
+      "model": "models/env/crystal.glb",
+      "bone": "gem",
+      "copies": 4,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "materials": {
+        "Shard": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.045
+        },
+        "Facet": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.045
+        },
+        "Halo": {
+          "ramp": "halo",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.05
+        }
+      },
+      "scale": 1.35
+    },
+    {
+      "model": "models/env/spark.glb",
+      "bone": "spark",
+      "copies": 8,
+      "position": [
+        0,
+        0.5,
+        0
+      ],
+      "materials": {
+        "Spark": {
+          "ramp": "spark",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.04,
+          "specks": true
+        }
+      }
+    },
+    {
+      "model": "models/worm/bead.glb",
+      "bone": "seg",
+      "copies": 46,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "materials": {
+        "Glow": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.045
+        },
+        "Band": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.045
+        },
+        "Halo": {
+          "ramp": "halo",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.05
+        }
+      }
+    },
+    {
+      "model": "models/worm/head.glb",
+      "bone": "head",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "materials": {
+        "Glow": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.045
+        },
+        "Band": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.045
+        },
+        "Eye": {
+          "ramp": "dim",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.04
+        },
+        "Halo": {
+          "ramp": "halo",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.05
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Walker, phase 3: the game parts. Run after p1 + p2 on a fresh model, once per part (build.sh).
+select Pole
+delete
+export walker_body.glb

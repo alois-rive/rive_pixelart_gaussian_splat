@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/night-heist/art/cat/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        283,
+        26,
+        204,
+        456
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.2353,
+      "fill": 0.7531,
+      "background": "#d2d2d1"
+    },
+    "right": {
+      "box": [
+        886,
+        25,
+        493,
+        457
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.927,
+      "fill": 0.4298,
+      "background": "#d2d2d2"
+    },
+    "back": {
+      "box": [
+        283,
+        536,
+        204,
+        455
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.2304,
+      "fill": 0.7546,
+      "background": "#d2d2d2"
+    },
+    "top": {
+      "box": [
+        1045,
+        526,
+        195,
+        474
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.4308,
+      "fill": 0.7358,
+      "background": "#d2d2d2"
+    }
+  }
+}

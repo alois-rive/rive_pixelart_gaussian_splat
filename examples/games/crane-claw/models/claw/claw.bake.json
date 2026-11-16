@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.045,
+  "fat": 1.0,
+  "out": "../../lookdev/claw.bin",
+  "objects": [
+    { "model": "claw.glb",
+      "materials": { "Hub": { "ramp": "red" }, "Chrome": { "ramp": "chrome" }, "Cable": { "ramp": "ink" },
+                     "Lamp": { "ramp": "glow", "flags": ["unlit"], "spacing": 0.03 } } }
+  ]
+}

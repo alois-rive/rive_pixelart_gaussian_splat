@@ -1,0 +1,30 @@
+# Ghost, phase 1: a sheet ghost 1.2 m tall, built at the origin facing -Y. Up Z.
+new
+# the sheet: an 8-sided tapering body with a zigzag hem, and a round head
+add mesh cone --name Body --vertices 8 --radius1 0.44 --radius2 0.3 --depth 0.72 --location 0 0 0.36
+active Body
+mode edit
+select vert where "pos.z < 0 && index % 2 == 0"
+translate 0 0 -0.16
+mode object
+add mesh uv-sphere --name Head --segments 8 --rings 5 --radius 0.34 --location 0 0 0.82
+# stubby arms, raised forward
+add mesh cube --name ArmL --size 1 --location -0.42 -0.1 0.58
+scale 0.14 0.14 0.42
+apply --scale
+set rotation 30 -45 0
+add mesh cube --name ArmR --size 1 --location 0.42 -0.1 0.58
+scale 0.14 0.14 0.42
+apply --scale
+set rotation 30 45 0
+# a face of a few art pixels (texel 0.068 m): two small upright eyes 1.5 x 2.2 texels and a small mouth 1.8 x 1.5 texels,
+# each at least 2 splats across at the face's own 0.05 m spacing (scene.bake.json), standing proud of the sheet
+add mesh cube --name EyeL --size 1 --location -0.12 -0.3 0.9
+scale 0.1 0.1 0.15
+apply --scale
+add mesh cube --name EyeR --size 1 --location 0.12 -0.3 0.9
+scale 0.1 0.1 0.15
+apply --scale
+add mesh cube --name Mouth --size 1 --location 0 -0.34 0.62
+scale 0.12 0.1 0.1
+apply --scale

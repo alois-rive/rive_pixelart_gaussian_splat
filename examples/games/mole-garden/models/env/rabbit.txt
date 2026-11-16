@@ -1,0 +1,45 @@
+# A rabbit popping out of a hole (spare it!): a pale round body, a head with two tall ears, dark eyes,
+# a khaki nose. Cut at the ground like the mole. Up Z, facing -Y, origin on the ground.
+new
+add mesh uv-sphere --name Body --segments 8 --rings 6 --radius 1 --location 0 0 0.1
+scale 0.22 0.2 0.32
+apply --scale
+apply --location
+mode edit
+select all
+bisect --plane-co 0 0 0 --plane-no 0 0 1 --clear-inner
+mode object
+add mesh ico-sphere --name Head --subdivisions 1 --radius 0.17 --location 0 -0.04 0.46
+add mesh cube --name EarL --size 1 --location -0.08 0 0.74
+scale 0.09 0.05 0.36
+apply --scale
+set rotation 0 -10 0
+add mesh cube --name EarR --size 1 --location 0.08 0 0.74
+scale 0.09 0.05 0.36
+apply --scale
+set rotation 0 10 0
+material new Fur --base-color 0.627 0.725 0.729
+select Body Head EarL EarR
+material assign Fur
+add mesh cube --name InL --size 1 --location -0.085 -0.03 0.74
+scale 0.05 0.03 0.26
+apply --scale
+set rotation 0 -10 0
+add mesh cube --name InR --size 1 --location 0.085 -0.03 0.74
+scale 0.05 0.03 0.26
+apply --scale
+set rotation 0 10 0
+material new Inner --base-color 0.467 0.361 0.310
+select InL InR
+material assign Inner
+add mesh ico-sphere --name Nose --subdivisions 1 --radius 0.035 --location 0 -0.2 0.44
+material new Nose --base-color 0.631 0.624 0.486
+material assign Nose
+add mesh ico-sphere --name EyeL --subdivisions 1 --radius 0.028 --location -0.075 -0.14 0.51
+add mesh ico-sphere --name EyeR --subdivisions 1 --radius 0.028 --location 0.075 -0.14 0.51
+material new Eye --base-color 0.090 0.055 0.098
+select EyeL EyeR
+material assign Eye
+select all
+shade flat
+export rabbit.glb

@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/harbour/art/boat/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        247,
+        34,
+        276,
+        436
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5797,
+      "fill": 0.6027,
+      "background": "#d1d1d2"
+    },
+    "right": {
+      "box": [
+        838,
+        34,
+        659,
+        437
+      ],
+      "flipped": true,
+      "rotated": 0,
+      "aspect": 0.6631,
+      "fill": 0.4474,
+      "background": "#d1d2d3"
+    },
+    "back": {
+      "box": [
+        243,
+        545,
+        284,
+        436
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5352,
+      "fill": 0.6253,
+      "background": "#d1d2d3"
+    },
+    "top": {
+      "box": [
+        876,
+        550,
+        276,
+        658
+      ],
+      "flipped": false,
+      "rotated": -90.0,
+      "aspect": 2.3841,
+      "fill": 0.845,
+      "background": "#d1d2d3"
+    }
+  }
+}

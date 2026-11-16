@@ -1,0 +1,11 @@
+# Plate: a wide shallow 12-sided dish (the served pancakes stack on it). Up Z.
+new
+material new Plate --base-color 1.0000 0.9686 0.8941 --no-slot
+add mesh cone --name Plate --vertices 12 --radius1 0.3 --radius2 0.48 --depth 0.07 --location 0 0 0.035
+material assign Plate
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+shade flat
+export plate.glb

@@ -1,0 +1,55 @@
+# Camel, phase 1 blockout: one primitive per named part at the spec's sizes. Up Z, facing -Y.
+# Sizes from camel.spec.md (250 px per metre on the sheet's right panel).
+new
+add mesh cube --name Torso --size 1 --location 0 -0.01 0.98
+scale 0.68 1.14 0.52
+add mesh uv-sphere --name Hump --segments 8 --rings 6 --radius 1 --location 0 -0.06 1.18
+scale 0.36 0.52 0.48
+add mesh cube --name Blanket --size 1 --location 0 0.03 1.10
+scale 0.85 0.80 0.32
+add mesh cube --name Neck --size 1 --location 0 -0.80 1.30
+scale 0.26 0.32 0.80
+apply --scale
+set rotation 25 0 0
+add mesh cube --name Head --size 1 --location 0 -1.00 1.76
+scale 0.36 0.42 0.30
+add mesh cube --name Snout --size 1 --location 0 -1.32 1.70
+scale 0.26 0.28 0.20
+add mesh cube --name EarL --size 1 --location -0.20 -0.86 1.94
+scale 0.16 0.14 0.16
+add mesh cube --name EarR --size 1 --location 0.20 -0.86 1.94
+scale 0.16 0.14 0.16
+# legs: upper, lower, hoof; front at y -0.35, back at y +0.46, x +-0.21
+add mesh cube --name UpperFL --size 1 --location -0.21 -0.35 0.59
+scale 0.21 0.21 0.38
+add mesh cube --name LowerFL --size 1 --location -0.21 -0.35 0.25
+scale 0.17 0.17 0.36
+add mesh cube --name HoofFL --size 1 --location -0.21 -0.38 0.04
+scale 0.22 0.26 0.08
+add mesh cube --name UpperFR --size 1 --location 0.21 -0.35 0.59
+scale 0.21 0.21 0.38
+add mesh cube --name LowerFR --size 1 --location 0.21 -0.35 0.25
+scale 0.17 0.17 0.36
+add mesh cube --name HoofFR --size 1 --location 0.21 -0.38 0.04
+scale 0.22 0.26 0.08
+add mesh cube --name UpperBL --size 1 --location -0.21 0.46 0.59
+scale 0.21 0.21 0.38
+add mesh cube --name LowerBL --size 1 --location -0.21 0.46 0.25
+scale 0.17 0.17 0.36
+add mesh cube --name HoofBL --size 1 --location -0.21 0.43 0.04
+scale 0.22 0.26 0.08
+add mesh cube --name UpperBR --size 1 --location 0.21 0.46 0.59
+scale 0.21 0.21 0.38
+add mesh cube --name LowerBR --size 1 --location 0.21 0.46 0.25
+scale 0.17 0.17 0.36
+add mesh cube --name HoofBR --size 1 --location 0.21 0.43 0.04
+scale 0.22 0.26 0.08
+# tail: thickened to 0.12 (a splat and a half), hanging back and down
+add mesh cube --name Tail --size 1 --location 0 0.67 0.90
+scale 0.12 0.12 0.36
+apply --scale
+set rotation 35 0 0
+add mesh cube --name Tuft --size 1 --location 0 0.77 0.73
+scale 0.13 0.13 0.14
+select all
+apply --scale

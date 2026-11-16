@@ -1,0 +1,61 @@
+# Ghost, phase 2: materials (Hollow), one object, then the haunt: an orbit 2 m round the graves every 10 s
+# (an empty turning linearly, clockwise from above) carrying the ghost, which bobs and rocks on its own.
+material new Sheet --base-color 0.980 0.984 0.965 --emission 0.980 0.984 0.965 --no-slot
+material new Eyes --base-color 0.059 0.059 0.106 --no-slot
+select Body Head ArmL ArmR
+material assign Sheet
+select EyeL EyeR Mouth
+material assign Eyes
+select Body Head ArmL ArmR EyeL EyeR Mouth
+active Body
+join
+rename Body Ghost
+cursor set 0 0 0.5
+origin set --to cursor
+select all
+shade flat
+# out onto the orbit's rim, floating 0.4 m up; facing -Y is the direction of travel there (clockwise)
+select Ghost
+translate 2.0 0 0.4
+add empty --name Orbit --location 0 0 0
+select Ghost Orbit
+parent set Orbit
+fps 24
+frame range 0 240
+select Orbit
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 0 -360
+keyframe insert --channels rot --frame 240
+keyframe interpolation linear --all
+# bob 0.18 m and rock 6 degrees, 2.5 s a cycle (4 per orbit), eased
+select Ghost
+set location 2.0 0 0.99
+set rotation -6 0 0
+keyframe insert --channels loc,rot --frame 0
+set location 2.0 0 0.81
+set rotation 6 0 0
+keyframe insert --channels loc,rot --frame 30
+set location 2.0 0 0.99
+set rotation -6 0 0
+keyframe insert --channels loc,rot --frame 60
+set location 2.0 0 0.81
+set rotation 6 0 0
+keyframe insert --channels loc,rot --frame 90
+set location 2.0 0 0.99
+set rotation -6 0 0
+keyframe insert --channels loc,rot --frame 120
+set location 2.0 0 0.81
+set rotation 6 0 0
+keyframe insert --channels loc,rot --frame 150
+set location 2.0 0 0.99
+set rotation -6 0 0
+keyframe insert --channels loc,rot --frame 180
+set location 2.0 0 0.81
+set rotation 6 0 0
+keyframe insert --channels loc,rot --frame 210
+set location 2.0 0 0.99
+set rotation -6 0 0
+keyframe insert --channels loc,rot --frame 240
+frame set 0
+export ghost.glb --bake-animations

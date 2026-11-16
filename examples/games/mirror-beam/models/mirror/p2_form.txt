@@ -1,0 +1,53 @@
+# Sun mirror, phase 2: materials (exact Sunset Red sRGB of the ramp steps), the face recessed inside
+# a rim (inset), the back boss, hidden faces removed, flat shading, export. Run after p1_blockout.txt.
+material new Face --base-color 0.9333 0.1412 0.2392 --no-slot
+material new Rim --base-color 0.6863 0.1529 0.2784 --no-slot
+material new Back --base-color 0.4196 0.1373 0.2549 --no-slot
+material new Stone --base-color 0.1569 0.1020 0.1765 --no-slot
+material new StoneTop --base-color 0.4196 0.1373 0.2549 --no-slot
+select Base Step Post
+material assign Stone
+select Bar ArmL ArmR Pins
+material assign Rim
+select Mirror
+material assign Rim
+active Mirror
+mode edit
+select face where "normal.y < -0.9"
+inset 0.06
+material assign Face
+select face where "normal.y > 0.9"
+material assign Back
+mode object
+add mesh cylinder --name Boss --vertices 8 --radius 0.1 --depth 0.05 --location 0 0 0
+set rotation 90 0 0
+apply --rotation
+set location 0 0.0675 0.974
+apply --location
+material assign Back
+# the pedestal's top faces in the lighter stone; their bottoms sit on the ground: delete them
+active Base
+mode edit
+select face where "normal.z > 0.9"
+material assign StoneTop
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+active Step
+mode edit
+select face where "normal.z > 0.9"
+material assign StoneTop
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+active Post
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Base Step Post Bar ArmL ArmR Mirror Pins Boss
+active Base
+join
+rename Base SunMirror
+shade flat
+export mirror_p2.glb

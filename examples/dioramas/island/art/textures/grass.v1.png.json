@@ -1,0 +1,24 @@
+{
+  "image": "grass.v1.png",
+  "sha256": "af51c448e2320ed9d28fb93d46043b465daa98c1455182a2707e5f644d2b1d7d",
+  "size": [
+    1254,
+    1254
+  ],
+  "brief_file": "grass.v1.prompt.md",
+  "brief": "A seamless, tileable top-down texture of a grass meadow for a low-poly pixel-art game, to be shrunk to 32 x 32 pixels.\n\nKeep exactly:\n- 1024 x 1024, square, seamless on all four edges (it repeats).\n- Flat colour shapes only, no gradients, no lighting, no shadows, no blur, no noise, no grain, no photo detail.\n- Big, simple shapes: a mid-green base (#3e8948) covering about 70 percent, irregular clumps of lighter grass (#63c74d) about one tenth of the image wide each, a few darker patches (#265c42), and five or six small round flower dots in pale yellow (#fee761), each about one twentieth of the image wide.\n- Only those four colours. Nothing smaller than one twentieth of the image: anything finer disappears when shrunk.\n- No text, no border, no frame.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e4d0-071c-71b3-887c-269fd9a685eb",
+    "source": "/Users/alois/.codex/generated_images/01a1e4d0-071c-71b3-887c-269fd9a685eb/exec-d2c999a0-5581-4dab-8e0d-f59f545d7cba.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e4d0-071c-71b3-887c-269fd9a685eb/exec-d2c999a0-5581-4dab-8e0d-f59f545d7cba.png"
+    ]
+  },
+  "seconds": 46.4,
+  "created": "2026-11-16T15:44:07+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/example/art/textures/grass.v1.png",
+  "reviewed": false
+}

@@ -1,0 +1,23 @@
+# A towel on a brass rail on the wall: rust, a cream band, rust; 1.6 wide, 1.5 tall. Faces -Y.
+# Origin at the rail's centre.
+new
+material new Rail --base-color 0.7294 0.5686 0.3451 --no-slot
+material new Towel --base-color 0.6824 0.3647 0.2510 --no-slot
+material new Band --base-color 0.8235 0.7882 0.6471 --no-slot
+add mesh cylinder --name Rail --vertices 6 --radius 0.07 --depth 2.2 --location 0 -0.12 0 --rotation 0 90 0
+material assign Rail
+add mesh cube --name T1 --size 1 --location 0 -0.2 -0.35
+scale 1.6 0.12 0.7
+apply --scale
+material assign Towel
+add mesh cube --name T2 --size 1 --location 0 -0.2 -0.85
+scale 1.6 0.12 0.3
+apply --scale
+material assign Band
+add mesh cube --name T3 --size 1 --location 0 -0.2 -1.2
+scale 1.6 0.12 0.4
+apply --scale
+material assign Towel
+select all
+shade flat
+export towel.glb

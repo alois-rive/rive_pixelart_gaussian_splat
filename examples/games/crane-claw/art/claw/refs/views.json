@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/crane-claw/art/claw/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        202,
+        19,
+        363,
+        453
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2479,
+      "fill": 0.3563,
+      "background": "#91908f"
+    },
+    "right": {
+      "box": [
+        989,
+        19,
+        355,
+        453
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2761,
+      "fill": 0.3243,
+      "background": "#91908f"
+    },
+    "back": {
+      "box": [
+        202,
+        532,
+        363,
+        452
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2452,
+      "fill": 0.3648,
+      "background": "#919090"
+    },
+    "top": {
+      "box": [
+        950,
+        543,
+        404,
+        366
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9059,
+      "fill": 0.3411,
+      "background": "#919190"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# Supply crate: a 0.6 m box with a darker lid band and a glowing label light. Up Z.
+new
+add mesh cube --name Box --size 1 --location 0 0 0.3
+scale 0.6 0.6 0.56
+apply --scale
+material new Crate --base-color 0.537 0.635 0.341
+add mesh cube --name Lid --size 1 --location 0 0 0.6
+scale 0.66 0.66 0.12
+apply --scale
+material new Lid --base-color 0.188 0.365 0.259
+add mesh cube --name Band --size 1 --location 0 0 0.25
+scale 0.64 0.64 0.12
+apply --scale
+material assign Lid
+select all
+shade flat
+export crate.glb

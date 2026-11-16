@@ -1,0 +1,32 @@
+{
+  "palette": "art/palette.json", "spacing": 0.09, "fat": 1.0, "seed": 1, "out": "scene/splats.bin",
+  "bounds": [[-6.0, -5.0, -6.0], [6.0, 26.0, 6.0]],
+  "objects": [
+    {"model": "models/env/peak.glb", "materials": {"Rock": {"ramp": "earth"}, "Grass": {"ramp": "pine"}}},
+    {"model": "models/env/plinth.glb", "materials": {"Stone": {"ramp": "stone"}}},
+    {"model": "models/storey/storey.glb", "bone": "floor", "copies": 18, "position": [0, 0.4, 0], "materials": {"Lacquer": {"ramp": "lacquer"}, "Post": {"ramp": "lacquer"}, "Gold": {"ramp": "gold", "spacing": 0.07, "specks": true}, "Door": {"ramp": "lacquer"}, "Roof": {"ramp": "roof"}, "Fascia": {"ramp": "roof"}, "Deck": {"ramp": "stone"}}},
+    {"model": "models/storey/storey.glb", "bone": "chunk", "copies": 4, "position": [0, 0.4, 0], "materials": {"Lacquer": {"ramp": "lacquer"}, "Post": {"ramp": "lacquer"}, "Gold": {"ramp": "gold", "spacing": 0.07, "specks": true}, "Door": {"ramp": "lacquer"}, "Roof": {"ramp": "roof"}, "Fascia": {"ramp": "roof"}, "Deck": {"ramp": "stone"}}},
+    {"model": "models/env/spire.glb", "bone": "spire", "position": [0, 0.4, 0], "materials": {"Gold": {"ramp": "gold", "spacing": 0.06}}},
+    {"model": "models/env/cloud.glb", "bone": "cloud", "copies": 6, "position": [0, 0, 0], "scale": 1.3, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.12}}},
+    {"model": "models/env/pine.glb", "position": [-1.99, -0.8, 1.67], "yaw": 94, "scale": 1.3, "materials": {"Bark": {"ramp": "earth"}, "Needles": {"ramp": "pine", "flags": ["sway"]}}},
+    {"model": "models/env/pine.glb", "position": [-2.35, -0.7, -0.86], "yaw": 141, "scale": 0.9, "materials": {"Bark": {"ramp": "earth"}, "Needles": {"ramp": "pine", "flags": ["sway"]}}},
+    {"model": "models/env/pine.glb", "position": [-0.66, -0.75, -2.46], "yaw": 188, "scale": 1.1, "materials": {"Bark": {"ramp": "earth"}, "Needles": {"ramp": "pine", "flags": ["sway"]}}},
+    {"model": "models/env/pine.glb", "position": [1.99, -0.8, -1.67], "yaw": 235, "scale": 1.3, "materials": {"Bark": {"ramp": "earth"}, "Needles": {"ramp": "pine", "flags": ["sway"]}}},
+    {"model": "models/env/pine.glb", "position": [-3.35, -2.1, 0.59], "yaw": 329, "scale": 1.1, "materials": {"Bark": {"ramp": "earth"}, "Needles": {"ramp": "pine", "flags": ["sway"]}}},
+    {"model": "models/env/pine.glb", "position": [1.13, -2.0, -3.1], "yaw": 16, "scale": 1.3, "materials": {"Bark": {"ramp": "earth"}, "Needles": {"ramp": "pine", "flags": ["sway"]}}},
+    {"model": "models/env/cloud.glb", "position": [5.12, -3.0, 0.9], "yaw": 30, "scale": 2.2, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [3.44, -3.4, 4.91], "yaw": 165, "scale": 2.6, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [-0.87, -2.8, 4.92], "yaw": 300, "scale": 2.0, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [-5.37, -3.3, 3.1], "yaw": 90, "scale": 2.5, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [-5.22, -3.1, -1.4], "yaw": 225, "scale": 2.3, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [-3.2, -3.5, -5.54], "yaw": 0, "scale": 2.7, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [1.32, -2.9, -4.93], "yaw": 135, "scale": 2.1, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [5.28, -3.3, -3.05], "yaw": 270, "scale": 2.4, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [7.36, -4.0, 4.25], "yaw": 90, "scale": 3.0, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [-4.4, -4.2, 7.62], "yaw": 0, "scale": 3.2, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [-7.45, -4.1, -4.3], "yaw": 270, "scale": 3.0, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [4.45, -4.3, -7.71], "yaw": 180, "scale": 3.1, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [2.46, -4.6, 9.18], "yaw": 225, "scale": 3.3, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}},
+    {"model": "models/env/cloud.glb", "position": [-2.48, -4.5, -9.27], "yaw": 45, "scale": 3.2, "materials": {"Cloud": {"ramp": "cloud", "flags": ["nocast"], "spacing": 0.17}}}
+  ]
+}

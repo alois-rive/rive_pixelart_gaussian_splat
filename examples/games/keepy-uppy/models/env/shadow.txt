@@ -1,0 +1,15 @@
+# A ball's blob shadow on the sand: a flat dark 12-gon, 1.2 m across. Origin at its centre.
+new
+material new Shadow --base-color 0.5608 0.3412 0.3961 --no-slot
+add mesh cylinder --name Shadow --vertices 12 --radius 0.6 --depth 0.04 --location 0 0 0
+scale 1 0.7 1
+apply --scale
+material assign Shadow
+active Shadow
+mode edit
+select face where "normal.z < 0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export shadow.glb

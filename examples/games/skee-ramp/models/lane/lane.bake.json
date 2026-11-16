@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.035,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/lane.bin",
+  "objects": [
+    { "model": "lane.glb",
+      "materials": { "Lane": { "ramp": "fire" }, "Rail": { "ramp": "pink" }, "Cabinet": { "ramp": "pink" },
+                     "Board": { "ramp": "blue" }, "White": { "ramp": "blue" }, "Blue": { "ramp": "blue" },
+                     "Hole": { "ramp": "dusk" }, "Marquee": { "ramp": "fire" } } }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.046,
+  "fat": 1.0,
+  "out": "../../lookdev/mole.bin",
+  "objects": [
+    { "model": "mole.glb",
+      "materials": { "Fur": { "ramp": "fur" }, "Belly": { "ramp": "fur" }, "Snout": { "ramp": "snout" },
+                     "Nose": { "ramp": "snout" }, "Claw": { "ramp": "steel", "specks": true },
+                     "Eye": { "ramp": "fur", "specks": true } } }
+  ]
+}

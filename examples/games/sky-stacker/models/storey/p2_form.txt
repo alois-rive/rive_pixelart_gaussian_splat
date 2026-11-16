@@ -1,0 +1,63 @@
+# Pagoda storey, phase 2: the doorway (front only), upturned gold corner tips, materials (NA16), export.
+# The doorway stands one splat spacing proud of the front wall so it does not smear into it.
+add mesh cube --name Door --size 1 --location 0 -0.78 0.17
+scale 0.5 0.07 0.34
+apply --scale
+add mesh cube --name Tip0 --size 1 --location -0.97 -0.97 0.66
+scale 0.1 0.1 0.11
+apply --scale
+add mesh cube --name Tip1 --size 1 --location 0.97 -0.97 0.66
+scale 0.1 0.1 0.11
+apply --scale
+add mesh cube --name Tip2 --size 1 --location 0.97 0.97 0.66
+scale 0.1 0.1 0.11
+apply --scale
+add mesh cube --name Tip3 --size 1 --location -0.97 0.97 0.66
+scale 0.1 0.1 0.11
+apply --scale
+material new Lacquer --base-color 0.616 0.188 0.231 --no-slot
+material new Post --base-color 0.243 0.129 0.216 --no-slot
+material new Gold --base-color 0.894 0.580 0.227 --no-slot
+material new Door --base-color 0.122 0.055 0.110 --no-slot
+material new Roof --base-color 0.204 0.522 0.616 --no-slot
+material new Fascia --base-color 0.090 0.263 0.294 --no-slot
+material new Deck --base-color 0.345 0.271 0.388 --no-slot
+select Walls
+material assign Lacquer
+select Post0 Post1 Post2 Post3
+material assign Post
+select Band Tip0 Tip1 Tip2 Tip3
+material assign Gold
+select Door
+material assign Door
+select Roof
+material assign Roof
+select Fascia
+material assign Fascia
+select Deck
+material assign Deck
+# hidden faces still bake: the tops of the walls, the band and the fascia (under the next part up)
+# and the deck's underside (on the roof)
+active Walls
+mode edit
+select face where "normal.z > 0.9"
+delete face
+mode object
+active Band
+mode edit
+select face where "abs(normal.z) > 0.9"
+delete face
+mode object
+active Fascia
+mode edit
+select face where "normal.z > 0.9"
+delete face
+mode object
+active Deck
+mode edit
+select face where "normal.z < -0.9"
+delete face
+mode object
+select all
+shade flat
+export storey.glb

@@ -1,0 +1,15 @@
+# Flame: three stacked faceted cones of fire, gold inside rust, origin at its foot (the game
+# flickers it with stepped squash and stretch). Up Z.
+new
+material new Fire --base-color 0.6745 0.4196 0.1490 --emission 0.6745 0.4196 0.1490 --no-slot
+material new Core --base-color 0.9647 0.8039 0.1490 --emission 0.9647 0.8039 0.1490 --no-slot
+add mesh cone --name Outer --vertices 6 --radius1 0.26 --radius2 0 --depth 0.62 --location 0 0 0.31
+material assign Fire
+add mesh cone --name Inner --vertices 5 --radius1 0.15 --radius2 0 --depth 0.42 --location 0 -0.08 0.22 --rotation 0 0 20
+material assign Core
+select Outer Inner
+active Outer
+join
+rename Outer Flame
+shade flat
+export flame.glb

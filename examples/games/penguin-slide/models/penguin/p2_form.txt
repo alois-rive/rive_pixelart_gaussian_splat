@@ -1,0 +1,47 @@
+# Penguin, phase 2: form and surfacing. Materials are exact Mist GB colours (sRGB 0..1):
+# Feather #2d1b00 (feather ramp, step 0), Belly #c4f0c2 (belly ramp, step 2: the belly band and the face
+# patch), Beak #5ab9a8 (glint ramp, step 0: beak and feet), Scarf #1e606e (water ramp, step 1),
+# Eye #2d1b00 (two small eyes, specks on purpose), Flipper #2d1b00 (the feather ramp, its own
+# material so the bake samples the thin flippers finer). Everything joined into one mesh: the game moves it
+# as one bone and animates it in code (squash, stretch, tilt).
+material new Feather --base-color 0.176 0.106 0.000 --no-slot
+material new Belly --base-color 0.769 0.941 0.761 --no-slot
+material new Beak --base-color 0.353 0.725 0.659 --no-slot
+material new Scarf --base-color 0.118 0.376 0.431 --no-slot
+material new Eye --base-color 0.176 0.106 0.000 --no-slot
+material new Flipper --base-color 0.176 0.106 0.000 --no-slot
+select Body Head
+material assign Feather
+select FlipperR FlipperL
+material assign Flipper
+select Beak FootR FootL
+material assign Beak
+select Scarf ScarfEnd
+material assign Scarf
+# the pale belly: the body's lowest faces (a band along the ice in the side view)
+active Body
+mode edit
+select face where "pos.z < 0.07"
+material assign Belly
+mode object
+# the pale face patch round the eyes, under the dark cap of the head
+active Head
+mode edit
+select face where "normal.y < -0.35 && pos.z < 0.29 && pos.z > 0.12"
+material assign Belly
+mode object
+add mesh cube --name EyeR --size 1 --location -0.075 -0.318 0.24
+scale 0.045 0.03 0.06
+apply --scale
+material assign Eye
+add mesh cube --name EyeL --size 1 --location 0.075 -0.318 0.24
+scale 0.045 0.03 0.06
+apply --scale
+material assign Eye
+select all
+active Body
+join
+rename Body Penguin
+shade flat
+inspect stats
+export penguin.glb

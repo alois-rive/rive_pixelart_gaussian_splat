@@ -1,0 +1,13 @@
+# Pine: a 6-sided trunk and three stacked 7-sided cones, chunky. Up Z.
+new
+add mesh cylinder --name Trunk --vertices 6 --radius 0.12 --depth 0.7 --location 0 0 0.35
+material new Bark --base-color 0.392 0.325 0.333
+add mesh cone --name Low --vertices 7 --radius1 0.85 --radius2 0.1 --depth 0.9 --location 0 0 0.85
+material new Needles --base-color 0.357 0.490 0.451
+add mesh cone --name Mid --vertices 7 --radius1 0.65 --radius2 0.05 --depth 0.8 --location 0 0 1.35 --rotation 0 0 25
+material assign Needles
+add mesh cone --name Tip --vertices 7 --radius1 0.42 --radius2 0 --depth 0.7 --location 0 0 1.85 --rotation 0 0 50
+material assign Needles
+select all
+shade flat
+export pine.glb

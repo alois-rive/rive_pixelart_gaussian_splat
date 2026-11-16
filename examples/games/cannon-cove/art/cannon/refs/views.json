@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/cannon-cove/art/cannon/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        181,
+        41,
+        406,
+        431
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0616,
+      "fill": 0.576,
+      "background": "#d2d1d1"
+    },
+    "right": {
+      "box": [
+        812,
+        67,
+        665,
+        393
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.591,
+      "fill": 0.6458,
+      "background": "#d2d1d1"
+    },
+    "back": {
+      "box": [
+        177,
+        556,
+        414,
+        421
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0169,
+      "fill": 0.5193,
+      "background": "#d2d1d1"
+    },
+    "top": {
+      "box": [
+        1012,
+        525,
+        281,
+        483
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.7189,
+      "fill": 0.6756,
+      "background": "#d2d2d2"
+    }
+  }
+}

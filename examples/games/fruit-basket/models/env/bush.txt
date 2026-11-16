@@ -1,0 +1,24 @@
+# A round bush with pink flowers, 1.2 m wide, 0.8 m tall. Static (sways with the wind).
+new
+material new Leaf --base-color 0.5412 0.6902 0.3765 --no-slot
+material new Flower --base-color 0.9294 0.7843 0.7686 --no-slot
+add mesh ico-sphere --name B0 --subdivisions 1 --radius 0.5 --location 0 0 0.35
+material assign Leaf
+add mesh ico-sphere --name B1 --subdivisions 1 --radius 0.38 --location -0.38 0.05 0.25
+material assign Leaf
+add mesh ico-sphere --name B2 --subdivisions 1 --radius 0.36 --location 0.4 0 0.24
+material assign Leaf
+add mesh ico-sphere --name F0 --subdivisions 1 --radius 0.1 --location -0.2 -0.44 0.48
+material assign Flower
+add mesh ico-sphere --name F1 --subdivisions 1 --radius 0.1 --location 0.22 -0.42 0.36
+material assign Flower
+add mesh ico-sphere --name F2 --subdivisions 1 --radius 0.1 --location -0.5 -0.3 0.28
+material assign Flower
+add mesh ico-sphere --name F3 --subdivisions 1 --radius 0.1 --location 0.05 -0.3 0.78
+material assign Flower
+select all
+active B0
+join
+select all
+shade flat
+export bush.glb

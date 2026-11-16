@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.05,
+  "fat": 1.0,
+  "out": "../../lookdev/mirror.bin",
+  "objects": [
+    { "model": "mirror.glb",
+      "materials": { "Face": { "ramp": "glass" }, "Rim": { "ramp": "bronze" }, "Back": { "ramp": "bronze" },
+                     "Stone": { "ramp": "stone" }, "StoneTop": { "ramp": "stone" } } }
+  ]
+}

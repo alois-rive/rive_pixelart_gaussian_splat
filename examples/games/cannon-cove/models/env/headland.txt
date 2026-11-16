@@ -1,0 +1,131 @@
+# A rocky headland: stacked faceted boulders 5 m long, 3 m deep, up to 2.6 m tall, a sand top and one
+# palm. Placed twice (left, right) to frame the cove.
+new
+material new Rock --base-color 0.3294 0.3059 0.4078 --no-slot
+material new Sand --base-color 0.8157 0.5059 0.3490 --no-slot
+material new Trunk --base-color 0.1255 0.2353 0.3373 --no-slot
+material new Frond --base-color 0.0510 0.1686 0.2706 --no-slot
+add mesh ico-sphere --name R0 --subdivisions 1 --radius 1.6 --location 0 0 1.0
+scale 1.25 1.0 0.95
+apply --scale
+mode edit
+select all
+randomize --amount 0.12 --seed 2
+mode object
+material assign Rock
+add mesh ico-sphere --name R1 --subdivisions 1 --radius 1.2 --location -1.6 0.6 0.7
+scale 1.25 1.0 0.95
+apply --scale
+mode edit
+select all
+randomize --amount 0.12 --seed 3
+mode object
+material assign Rock
+add mesh ico-sphere --name R2 --subdivisions 1 --radius 1.15 --location 1.5 -0.4 0.6
+scale 1.25 1.0 0.95
+apply --scale
+mode edit
+select all
+randomize --amount 0.12 --seed 4
+mode object
+material assign Rock
+add mesh ico-sphere --name R3 --subdivisions 1 --radius 1.0 --location 0.4 1.2 0.5
+scale 1.25 1.0 0.95
+apply --scale
+mode edit
+select all
+randomize --amount 0.12 --seed 5
+mode object
+material assign Rock
+add mesh ico-sphere --name R4 --subdivisions 1 --radius 0.9 --location -0.8 -1.0 0.4
+scale 1.25 1.0 0.95
+apply --scale
+mode edit
+select all
+randomize --amount 0.12 --seed 6
+mode object
+material assign Rock
+add mesh ico-sphere --name R5 --subdivisions 1 --radius 0.8 --location 2.4 0.6 0.3
+scale 1.25 1.0 0.95
+apply --scale
+mode edit
+select all
+randomize --amount 0.12 --seed 7
+mode object
+material assign Rock
+add mesh ico-sphere --name Top --subdivisions 1 --radius 1.0 --location 0.1 0.2 2.25
+scale 1.4 1.1 0.35
+apply --scale
+material assign Sand
+add mesh cube --name HT0 --size 1 --location 0.384 0.300 2.683
+scale 0.160 0.160 0.807
+apply --scale
+set rotation 0 12.407418527400745 0
+apply --rotation
+material assign Trunk
+add mesh cube --name HT1 --size 1 --location 0.553 0.300 3.450
+scale 0.140 0.140 0.807
+apply --scale
+set rotation 0 12.407418527400745 0
+apply --rotation
+material assign Trunk
+add mesh cube --name HT2 --size 1 --location 0.722 0.300 4.217
+scale 0.120 0.120 0.807
+apply --scale
+set rotation 0 12.407418527400745 0
+apply --rotation
+material assign Trunk
+add mesh cube --name HF0 --size 1 --location 0 0 0
+scale 1.1 0.32 0.07
+apply --scale
+set rotation 0 25 -1.1
+apply --rotation
+set location 1.306 0.290 4.420
+apply --location
+material assign Frond
+add mesh cube --name HF1 --size 1 --location 0 0 0
+scale 1.1 0.32 0.07
+apply --scale
+set rotation 0 25 68.2
+apply --rotation
+set location 0.992 0.764 4.420
+apply --location
+material assign Frond
+add mesh cube --name HF2 --size 1 --location 0 0 0
+scale 1.1 0.32 0.07
+apply --scale
+set rotation 0 25 133.2
+apply --rotation
+set location 0.464 0.665 4.420
+apply --location
+material assign Frond
+add mesh cube --name HF3 --size 1 --location 0 0 0
+scale 1.1 0.32 0.07
+apply --scale
+set rotation 0 25 227.0
+apply --rotation
+set location 0.465 -0.066 4.420
+apply --location
+material assign Frond
+add mesh cube --name HF4 --size 1 --location 0 0 0
+scale 1.1 0.32 0.07
+apply --scale
+set rotation 0 25 273.2
+apply --rotation
+set location 0.834 -0.199 4.420
+apply --location
+material assign Frond
+add mesh ico-sphere --name HC --subdivisions 1 --radius 0.16 --location 0.806 0.300 4.600
+material assign Frond
+select R0 R1 R2 R3 R4 R5 Top HT0 HT1 HT2 HF0 HF1 HF2 HF3 HF4 HC
+active R0
+join
+rename R0 Headland
+apply --location
+mode edit
+select face where "pos.z < -0.1"
+delete only-faces
+mode object
+select all
+shade flat
+export headland.glb

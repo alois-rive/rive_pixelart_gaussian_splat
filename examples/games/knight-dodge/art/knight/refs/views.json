@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/knight-dodge/art/knight/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        171,
+        15,
+        414,
+        479
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.157,
+      "fill": 0.5799,
+      "background": "#d2d2d2"
+    },
+    "right": {
+      "box": [
+        995,
+        15,
+        278,
+        479
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.723,
+      "fill": 0.6338,
+      "background": "#d3d2d2"
+    },
+    "back": {
+      "box": [
+        197,
+        525,
+        398,
+        480
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.206,
+      "fill": 0.5898,
+      "background": "#d3d2d2"
+    },
+    "top": {
+      "box": [
+        954,
+        601,
+        384,
+        341
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.888,
+      "fill": 0.5875,
+      "background": "#d3d2d2"
+    }
+  }
+}

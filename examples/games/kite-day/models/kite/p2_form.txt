@@ -1,0 +1,23 @@
+# Diamond kite, phase 2: Twilight 5 materials (exact sRGB of the ramp steps), the four panels picked by
+# face (front: top-left and bottom-right pink, the others peach; the back as the sheet draws it), the
+# spars, knot and stub dark; joined into one rigid object (the game moves it), flat shaded, exported.
+material new Pink --base-color 0.9333 0.5255 0.5843 --no-slot
+material new Peach --base-color 0.9843 0.7333 0.6784 --no-slot
+material new Spar --base-color 0.1608 0.1569 0.1922 --no-slot
+active Sail
+material assign Pink
+mode edit
+select face where "normal.y < -0.5 && ((pos.x < 0 && pos.z < 0) || (pos.x > 0 && pos.z > 0))"
+material assign Peach
+select face where "normal.y > 0.5 && ((pos.x < 0 && pos.z > 0) || (pos.x > 0 && pos.z < 0))"
+material assign Peach
+mode object
+select SparV SparL SparR Knot Stub
+material assign Spar
+select Sail SparV SparL SparR Knot Stub
+active Sail
+join
+rename Sail Kite
+select all
+shade flat
+export kite.glb

@@ -1,0 +1,42 @@
+# Iron fence section, 3 m: six spiked bars and two rails (bars 0.12 square, exaggerated), on a stone kerb. Up Z.
+new
+add mesh cube --name Kerb --size 1 --location 0 0 0.08
+scale 3.1 0.26 0.16
+apply --scale
+material new Kerb --base-color 0.337 0.353 0.459
+add mesh cube --name Rail1 --size 1 --location 0 0 0.4
+scale 3.0 0.1 0.1
+apply --scale
+add mesh cube --name Rail2 --size 1 --location 0 0 0.95
+scale 3.0 0.1 0.1
+apply --scale
+add mesh cube --name Bar0 --size 1 --location -1.4 0 0.65
+scale 0.12 0.12 1.0
+apply --scale
+add mesh cone --name Tip0 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.22 --location -1.4 0 1.26 --rotation 0 0 45
+add mesh cube --name Bar1 --size 1 --location -0.84 0 0.65
+scale 0.12 0.12 1.0
+apply --scale
+add mesh cone --name Tip1 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.22 --location -0.84 0 1.26 --rotation 0 0 45
+add mesh cube --name Bar2 --size 1 --location -0.28 0 0.65
+scale 0.12 0.12 1.0
+apply --scale
+add mesh cone --name Tip2 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.22 --location -0.28 0 1.26 --rotation 0 0 45
+add mesh cube --name Bar3 --size 1 --location 0.28 0 0.65
+scale 0.12 0.12 1.0
+apply --scale
+add mesh cone --name Tip3 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.22 --location 0.28 0 1.26 --rotation 0 0 45
+add mesh cube --name Bar4 --size 1 --location 0.84 0 0.65
+scale 0.12 0.12 1.0
+apply --scale
+add mesh cone --name Tip4 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.22 --location 0.84 0 1.26 --rotation 0 0 45
+add mesh cube --name Bar5 --size 1 --location 1.40 0 0.65
+scale 0.12 0.12 1.0
+apply --scale
+add mesh cone --name Tip5 --vertices 4 --radius1 0.11 --radius2 0 --depth 0.22 --location 1.40 0 1.26 --rotation 0 0 45
+material new Iron --base-color 0.059 0.059 0.106 --no-slot
+select Rail1 Rail2 Bar0 Bar1 Bar2 Bar3 Bar4 Bar5 Tip0 Tip1 Tip2 Tip3 Tip4 Tip5
+material assign Iron
+select all
+shade flat
+export fence.glb

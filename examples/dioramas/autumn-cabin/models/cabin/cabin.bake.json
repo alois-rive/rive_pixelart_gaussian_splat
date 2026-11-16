@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.14,
+  "fat": 1.0,
+  "out": "../../lookdev/cabin.bin",
+  "objects": [
+    { "model": "cabin.glb",
+      "materials": {
+        "Stone": { "ramp": "roof" }, "Logs": { "ramp": "wood", "spacing": 0.11 }, "Roof": { "ramp": "roof" },
+        "Door": { "ramp": "wood" }, "Glow": { "ramp": "glow", "step": 1, "flags": ["unlit"], "spacing": 0.08 } } }
+  ]
+}

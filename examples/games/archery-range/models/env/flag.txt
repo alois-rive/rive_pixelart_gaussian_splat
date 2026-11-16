@@ -1,0 +1,14 @@
+# The wind pennant: a crimson wedge 1.3 m long pointing +X from the pole, 0.6 m tall at the pole,
+# 0.1 thick; origin at the pole (its top). The game turns it downwind and droops it in a calm.
+new
+material new Flag --base-color 0.7882 0.1412 0.3922 --no-slot
+add mesh cone --name Flag --vertices 3 --radius1 0.36 --radius2 0 --depth 1.3 --location 0 0 0
+scale 1 0.28 1
+apply --scale
+set rotation 0 90 0
+set location 0.65 0 -0.3
+apply --location --rotation
+material assign Flag
+select all
+shade flat
+export flag.glb

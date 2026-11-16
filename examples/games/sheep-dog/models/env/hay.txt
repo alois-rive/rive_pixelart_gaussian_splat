@@ -1,0 +1,8 @@
+# A hay bale: an 8-sided drum on its side, 0.9 m long, r 0.4. Up Z.
+new
+material new Hay --base-color 0.855 0.831 0.369
+add mesh cylinder --name Hay --vertices 8 --radius 0.4 --depth 0.9 --location 0 0 0.4 --rotation 0 90 0
+apply --rotation
+material assign Hay
+shade flat
+export hay.glb

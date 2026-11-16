@@ -1,0 +1,344 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.08,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -7.2,
+   -0.2,
+   -4.0
+  ],
+  [
+   7.2,
+   4.5,
+   4.6
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/room.glb",
+   "materials": {
+    "Floor": {
+     "spacing": 0.12
+    },
+    "Wall": {
+     "spacing": 0.12
+    },
+    "Mat": {
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tub.glb",
+   "materials": {
+    "Enamel": {
+     "ramp": "enamel"
+    },
+    "Water": {
+     "flags": [
+      "sway"
+     ],
+     "spacing": 0.1
+    },
+    "Brass": {
+     "ramp": "wood"
+    }
+   }
+  },
+  {
+   "model": "models/env/faucet.glb",
+   "position": [
+    4.38,
+    1.3,
+    0
+   ],
+   "scale": 1.2,
+   "materials": {
+    "Brass": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Knob": {
+     "ramp": "enamel",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/props.glb",
+   "materials": {
+    "Dish": {
+     "ramp": "enamel",
+     "spacing": 0.06
+    },
+    "Soap": {
+     "ramp": "enamel",
+     "spacing": 0.06
+    },
+    "Bottle": {
+     "ramp": "red"
+    },
+    "Cap": {
+     "ramp": "water",
+     "spacing": 0.06
+    },
+    "Sponge": {
+     "ramp": "sponge",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/foam.glb",
+   "position": [
+    -3.75,
+    0.85,
+    -1.75
+   ],
+   "yaw": 20,
+   "scale": 1.0,
+   "materials": {
+    "Foam": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    },
+    "FoamShade": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/foam.glb",
+   "position": [
+    3.5,
+    0.85,
+    1.8
+   ],
+   "yaw": 140,
+   "scale": 0.9,
+   "materials": {
+    "Foam": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    },
+    "FoamShade": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/foam.glb",
+   "position": [
+    -3.9,
+    0.85,
+    1.85
+   ],
+   "yaw": 250,
+   "scale": 0.75,
+   "materials": {
+    "Foam": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    },
+    "FoamShade": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/foam.glb",
+   "position": [
+    1.6,
+    0.85,
+    -1.95
+   ],
+   "yaw": 80,
+   "scale": 0.7,
+   "materials": {
+    "Foam": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    },
+    "FoamShade": {
+     "ramp": "bubble",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/towel.glb",
+   "position": [
+    -4.2,
+    3.2,
+    -3.8
+   ],
+   "materials": {
+    "Rail": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Towel": {
+     "ramp": "red"
+    },
+    "Band": {
+     "ramp": "enamel"
+    }
+   }
+  },
+  {
+   "model": "models/duck/duck.glb",
+   "bone": "duck",
+   "position": [
+    -3.3,
+    0.78,
+    0
+   ],
+   "yaw": 90,
+   "scale": 2.0,
+   "materials": {
+    "Body": {
+     "ramp": "duck",
+     "spacing": 0.07
+    },
+    "Beak": {
+     "ramp": "beak",
+     "spacing": 0.05
+    },
+    "Eye": {
+     "ramp": "ink",
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/sailboat.glb",
+   "bone": "sail",
+   "copies": 4,
+   "position": [
+    0,
+    -6,
+    0
+   ],
+   "scale": 1.15,
+   "materials": {
+    "Hull": {
+     "ramp": "red",
+     "spacing": 0.06
+    },
+    "Deck": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Mast": {
+     "ramp": "wood",
+     "spacing": 0.045
+    },
+    "Sail": {
+     "ramp": "enamel",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/tugboat.glb",
+   "bone": "tug",
+   "copies": 3,
+   "position": [
+    0,
+    -6,
+    0
+   ],
+   "scale": 1.15,
+   "materials": {
+    "Hull": {
+     "ramp": "red",
+     "spacing": 0.06
+    },
+    "Deck": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Cabin": {
+     "ramp": "enamel",
+     "spacing": 0.06
+    },
+    "Funnel": {
+     "ramp": "red",
+     "spacing": 0.05
+    },
+    "Band": {
+     "ramp": "ink",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/speedboat.glb",
+   "bone": "speed",
+   "copies": 3,
+   "position": [
+    0,
+    -6,
+    0
+   ],
+   "scale": 1.15,
+   "materials": {
+    "Hull": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Stripe": {
+     "ramp": "red",
+     "spacing": 0.05
+    },
+    "Screen": {
+     "ramp": "water",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/bubble.glb",
+   "bone": "bubble",
+   "copies": 6,
+   "position": [
+    0,
+    -7,
+    0
+   ],
+   "materials": {
+    "Bubble": {
+     "ramp": "bubble",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/drop.glb",
+   "bone": "drop",
+   "copies": 10,
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "materials": {
+    "Drop": {
+     "ramp": "bubble",
+     "spacing": 0.045,
+     "flags": [
+      "nocast"
+     ],
+     "specks": true
+    }
+   }
+  }
+ ]
+}

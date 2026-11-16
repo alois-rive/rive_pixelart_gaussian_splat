@@ -1,0 +1,29 @@
+# Beach ball, phase 2: surfacing. Six gores by angle, white pole fans and caps.
+material new Red --base-color 0.8314 0.1176 0.2353 --no-slot
+material new Blue --base-color 0.2824 0.5451 0.8314 --no-slot
+material new Yellow --base-color 1.0000 0.7216 0.2902 --no-slot
+material new White --base-color 0.9804 1.0000 1.0000 --no-slot
+material new Green --base-color 0.1569 0.7529 0.4549 --no-slot
+material new Cap --base-color 0.9804 1.0000 1.0000 --no-slot
+active Ball
+mode edit
+select face where "pos.y < 0 && abs(pos.x) < -0.5774 * pos.y"
+material assign Red
+select face where "pos.y < 0 && pos.x > 0 && pos.x >= -0.5774 * pos.y"
+material assign Blue
+select face where "pos.y >= 0 && pos.x > 0 && pos.y < 1.7321 * pos.x"
+material assign Yellow
+select face where "pos.y > 0 && abs(pos.x) <= 0.5774 * pos.y"
+material assign White
+select face where "pos.y >= 0 && pos.x < 0 && pos.y < -1.7321 * pos.x"
+material assign Green
+select face where "pos.y < 0 && pos.x < 0 && -pos.x >= -0.5774 * pos.y"
+material assign White
+select face where "abs(normal.z) > 0.9"
+material assign White
+mode object
+select CapTop CapBot
+material assign Cap
+select all
+shade flat
+export ball.glb

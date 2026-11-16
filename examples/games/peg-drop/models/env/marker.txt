@@ -1,0 +1,12 @@
+# The lit bulb over the doubled cup: an unlit diamond, origin at its centre. make_env.py.
+new
+material new Lamp --base-color 1.000 0.894 0.471 --no-slot --emission 1.000 0.894 0.471
+add mesh cone --name Up --vertices 4 --radius1 0.17 --radius2 0 --depth 0.18 --location 0 0 0.09
+material assign Lamp
+add mesh cone --name Down --vertices 4 --radius1 0.17 --radius2 0 --depth 0.18 --location 0 0 -0.09 --rotation 180 0 0
+material assign Lamp
+select Up Down
+active Up
+join
+shade flat
+export marker.glb

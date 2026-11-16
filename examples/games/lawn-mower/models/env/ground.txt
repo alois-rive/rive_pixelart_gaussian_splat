@@ -1,0 +1,112 @@
+# The ground: the mowed lawn (stripes by column, light and mid green) that the tall grass tiles
+# cover, a sandy path round it, soil borders, the two raised flower beds. make_env.py.
+new
+material new Light --base-color 0.388 0.776 0.302 --no-slot
+material new Mid --base-color 0.196 0.451 0.271 --no-slot
+material new Sand --base-color 0.722 0.435 0.314 --no-slot
+material new Soil --base-color 0.455 0.247 0.224 --no-slot
+material new Edge --base-color 0.686 0.749 0.824 --no-slot
+material new BedSoil --base-color 0.455 0.247 0.224 --no-slot
+add mesh cube --name Stripe0_0 --size 1 --location -2.9750 0.0000 -0.0600
+scale 0.8500 5.1000 0.1200
+apply --scale
+material assign Light
+add mesh cube --name Stripe1_0 --size 1 --location -2.1250 2.1250 -0.0600
+scale 0.8500 0.8500 0.1200
+apply --scale
+material assign Mid
+add mesh cube --name Stripe1_1 --size 1 --location -2.1250 -0.8500 -0.0600
+scale 0.8500 3.4000 0.1200
+apply --scale
+material assign Mid
+add mesh cube --name Stripe2_0 --size 1 --location -1.2750 2.1250 -0.0600
+scale 0.8500 0.8500 0.1200
+apply --scale
+material assign Light
+add mesh cube --name Stripe2_1 --size 1 --location -1.2750 -0.8500 -0.0600
+scale 0.8500 3.4000 0.1200
+apply --scale
+material assign Light
+add mesh cube --name Stripe3_0 --size 1 --location -0.4250 0.0000 -0.0600
+scale 0.8500 5.1000 0.1200
+apply --scale
+material assign Mid
+add mesh cube --name Stripe4_0 --size 1 --location 0.4250 0.0000 -0.0600
+scale 0.8500 5.1000 0.1200
+apply --scale
+material assign Light
+add mesh cube --name Stripe5_0 --size 1 --location 1.2750 0.8500 -0.0600
+scale 0.8500 3.4000 0.1200
+apply --scale
+material assign Mid
+add mesh cube --name Stripe5_1 --size 1 --location 1.2750 -2.1250 -0.0600
+scale 0.8500 0.8500 0.1200
+apply --scale
+material assign Mid
+add mesh cube --name Stripe6_0 --size 1 --location 2.1250 0.8500 -0.0600
+scale 0.8500 3.4000 0.1200
+apply --scale
+material assign Light
+add mesh cube --name Stripe6_1 --size 1 --location 2.1250 -2.1250 -0.0600
+scale 0.8500 0.8500 0.1200
+apply --scale
+material assign Light
+add mesh cube --name Stripe7_0 --size 1 --location 2.9750 0.0000 -0.0600
+scale 0.8500 5.1000 0.1200
+apply --scale
+material assign Mid
+select Stripe0_0 Stripe1_0 Stripe1_1 Stripe2_0 Stripe2_1 Stripe3_0 Stripe4_0 Stripe5_0 Stripe5_1 Stripe6_0 Stripe6_1 Stripe7_0
+active Stripe0_0
+join
+rename Stripe0_0 Lawn
+add mesh cube --name PathN --size 1 --location 0.0000 2.8250 -0.0850
+scale 7.9000 0.5500 0.1100
+apply --scale
+material assign Sand
+add mesh cube --name PathS --size 1 --location 0.0000 -2.8250 -0.0850
+scale 7.9000 0.5500 0.1100
+apply --scale
+material assign Sand
+add mesh cube --name PathW --size 1 --location -3.6750 0.0000 -0.0850
+scale 0.5500 5.1000 0.1100
+apply --scale
+material assign Sand
+add mesh cube --name PathE --size 1 --location 3.6750 0.0000 -0.0850
+scale 0.5500 5.1000 0.1100
+apply --scale
+material assign Sand
+add mesh cube --name SoilN --size 1 --location 0.0000 4.1500 -0.1300
+scale 12.8000 2.1000 0.1400
+apply --scale
+material assign Soil
+add mesh cube --name SoilS --size 1 --location 0.0000 -4.2500 -0.1300
+scale 12.8000 2.3000 0.1400
+apply --scale
+material assign Soil
+add mesh cube --name SoilW --size 1 --location -5.1750 0.0000 -0.1300
+scale 2.4500 6.2000 0.1400
+apply --scale
+material assign Soil
+add mesh cube --name SoilE --size 1 --location 5.1750 0.0000 -0.1300
+scale 2.4500 6.2000 0.1400
+apply --scale
+material assign Soil
+add mesh cube --name Kerb0 --size 1 --location -1.7000 1.2750 0.0550
+scale 1.6200 0.7700 0.2100
+apply --scale
+material assign Edge
+add mesh cube --name Bed0 --size 1 --location -1.7000 1.2750 0.1000
+scale 1.3800 0.5300 0.2000
+apply --scale
+material assign BedSoil
+add mesh cube --name Kerb1 --size 1 --location 1.7000 -1.2750 0.0550
+scale 1.6200 0.7700 0.2100
+apply --scale
+material assign Edge
+add mesh cube --name Bed1 --size 1 --location 1.7000 -1.2750 0.1000
+scale 1.3800 0.5300 0.2000
+apply --scale
+material assign BedSoil
+select all
+shade flat
+export ground.glb

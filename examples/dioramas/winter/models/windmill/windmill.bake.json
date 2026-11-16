@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "out": "../../lookdev/windmill.bin",
+  "objects": [
+    { "model": "windmill.glb", "fps": 12,
+      "materials": {
+        "Stone": { "ramp": "stone" }, "Planks": { "ramp": "wood" }, "Gable": { "ramp": "wood" },
+        "Snow": { "ramp": "snow" }, "Door": { "ramp": "wood" }, "Glow": { "ramp": "lamp", "flags": ["unlit"] },
+        "Cloth": { "ramp": "wood", "flags": ["double"] }, "Spar": { "ramp": "wood" } } }
+  ]
+}

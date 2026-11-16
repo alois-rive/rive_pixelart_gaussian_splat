@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/candy-carnival/art/carousel/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        178,
+        17,
+        411,
+        470
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1436,
+      "fill": 0.5692,
+      "background": "#d4d3d3"
+    },
+    "right": {
+      "box": [
+        947,
+        17,
+        409,
+        470
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1491,
+      "fill": 0.5776,
+      "background": "#d5d4d4"
+    },
+    "back": {
+      "box": [
+        179,
+        529,
+        410,
+        469
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1439,
+      "fill": 0.5641,
+      "background": "#d4d3d3"
+    },
+    "top": {
+      "box": [
+        960,
+        563,
+        381,
+        381
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0,
+      "fill": 0.8185,
+      "background": "#d4d4d4"
+    }
+  }
+}

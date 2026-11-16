@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/bee-garden/art/bee/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        155,
+        25,
+        458,
+        438
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9563,
+      "fill": 0.5256,
+      "background": "#949493"
+    },
+    "right": {
+      "box": [
+        889,
+        13,
+        521,
+        460
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8829,
+      "fill": 0.5501,
+      "background": "#949493"
+    },
+    "back": {
+      "box": [
+        154,
+        540,
+        460,
+        455
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9891,
+      "fill": 0.5395,
+      "background": "#939292"
+    },
+    "top": {
+      "box": [
+        923,
+        525,
+        458,
+        476
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0393,
+      "fill": 0.5283,
+      "background": "#949393"
+    }
+  }
+}

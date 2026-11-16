@@ -1,0 +1,45 @@
+# Frog, phase 1: one primitive per named part at the spec's sizes (metres). Up Z, front -Y,
+# origin on the ground under the body. Scale from the sheet: 0.60 m snout to rump = 532 px (887 px/m).
+new
+# head and back: the upper body, snout at y -0.31, rump at +0.27 (wedged in p2)
+add mesh cube --name Back --size 1 --location 0 -0.02 0.31
+scale 0.41 0.58 0.13
+apply --scale
+# lower body, behind the throat
+add mesh cube --name Lower --size 1 --location 0 0.05 0.145
+scale 0.34 0.44 0.21
+apply --scale
+# the pale throat and belly under the mouth line
+add mesh cube --name Throat --size 1 --location 0 -0.23 0.14
+scale 0.30 0.16 0.21
+apply --scale
+# two bulging eyes on the front corners of the head
+add mesh ico-sphere --name EyeL --subdivisions 1 --radius 0.066 --location -0.113 -0.17 0.38
+add mesh ico-sphere --name EyeR --subdivisions 1 --radius 0.066 --location 0.113 -0.17 0.38
+# folded back legs (thighs) at the sides
+add mesh ico-sphere --name ThighL --subdivisions 1 --radius 1 --location -0.225 0.13 0.15
+scale 0.09 0.16 0.13
+apply --scale
+add mesh ico-sphere --name ThighR --subdivisions 1 --radius 1 --location 0.225 0.13 0.15
+scale 0.09 0.16 0.13
+apply --scale
+# front arms under the chin and their flat hands
+add mesh cube --name ArmL --size 1 --location -0.125 -0.16 0.12
+scale 0.08 0.08 0.2
+apply --scale
+add mesh cube --name ArmR --size 1 --location 0.125 -0.16 0.12
+scale 0.08 0.08 0.2
+apply --scale
+add mesh cube --name HandL --size 1 --location -0.13 -0.22 0.022
+scale 0.13 0.11 0.045
+apply --scale
+add mesh cube --name HandR --size 1 --location 0.13 -0.22 0.022
+scale 0.13 0.11 0.045
+apply --scale
+# long webbed back feet beside the body, reaching forward
+add mesh cube --name FootL --size 1 --location -0.26 -0.03 0.022
+scale 0.17 0.22 0.045
+apply --scale
+add mesh cube --name FootR --size 1 --location 0.26 -0.03 0.022
+scale 0.17 0.22 0.045
+apply --scale

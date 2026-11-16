@@ -1,0 +1,16 @@
+# A kick spark: a small four-pointed star of two crossed slabs, unlit yellow.
+new
+material new Spark --base-color 1.0000 0.9608 0.2510 --emission 1.0000 0.9608 0.2510 --no-slot
+add mesh cube --name A --size 1 --location 0 0 0
+scale 0.36 0.08 0.1
+apply --scale
+add mesh cube --name B --size 1 --location 0 0 0
+scale 0.1 0.08 0.36
+apply --scale
+select A B
+active A
+join
+material assign Spark
+select all
+shade flat
+export spark.glb

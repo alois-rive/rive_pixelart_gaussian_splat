@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/sorting-belt/art/chute/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        232,
+        20,
+        304,
+        464
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5263,
+      "fill": 0.533,
+      "background": "#929191"
+    },
+    "right": {
+      "box": [
+        1000,
+        20,
+        288,
+        464
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6111,
+      "fill": 0.4661,
+      "background": "#929291"
+    },
+    "back": {
+      "box": [
+        231,
+        531,
+        306,
+        468
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5294,
+      "fill": 0.5361,
+      "background": "#929291"
+    },
+    "top": {
+      "box": [
+        994,
+        602,
+        316,
+        316
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0,
+      "fill": 0.9278,
+      "background": "#929292"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+# The setting sun: a 12-sided disc 3.6 m across standing upright, facing the camera (-Y), and two long
+# flat clouds. Unlit. Placed far behind the shore.
+new
+material new Sun --base-color 1.0000 0.9255 0.8392 --no-slot --emission 1.0000 0.9255 0.8392
+material new Cloud --base-color 1.0000 0.8314 0.6392 --no-slot --emission 1.0000 0.8314 0.6392
+add mesh cylinder --name Sun --vertices 12 --radius 1.8 --depth 0.2 --location 0 0 0 --rotation 90 0 0
+apply --rotation
+material assign Sun
+add mesh cube --name C0 --size 1 --location -5.5 0.5 1.1
+scale 5.0 0.2 0.45
+apply --scale
+material assign Cloud
+add mesh cube --name C1 --size 1 --location -3.4 0.5 1.7
+scale 2.6 0.2 0.4
+apply --scale
+material assign Cloud
+add mesh cube --name C2 --size 1 --location 6.0 0.5 1.5
+scale 4.2 0.2 0.4
+apply --scale
+material assign Cloud
+add mesh cube --name C3 --size 1 --location 3.0 -0.3 0.4
+scale 3.0 0.2 0.35
+apply --scale
+material assign Cloud
+select Sun C0 C1 C2 C3
+active Sun
+join
+select all
+shade flat
+export sun.glb

@@ -1,0 +1,29 @@
+# Fruit crate: an open box 0.8 x 0.55 x 0.45 m of light wood with a heap of apples on top. Static.
+new
+material new Wood --base-color 0.6549 0.4824 0.3569 --no-slot
+material new Slat --base-color 0.5020 0.2863 0.2275 --no-slot
+material new Apple --base-color 0.7059 0.3216 0.3216 --no-slot
+add mesh cube --name Box --size 1 --location 0 0 0.225
+scale 0.8 0.55 0.45
+apply --scale
+material assign Wood
+add mesh cube --name Band --size 1 --location 0 0 0.25
+scale 0.84 0.59 0.1
+apply --scale
+material assign Slat
+add mesh ico-sphere --name A0 --subdivisions 1 --radius 0.15 --location -0.2 -0.05 0.5
+material assign Apple
+add mesh ico-sphere --name A1 --subdivisions 1 --radius 0.15 --location 0.12 0.06 0.5
+material assign Apple
+add mesh ico-sphere --name A2 --subdivisions 1 --radius 0.15 --location -0.02 -0.08 0.62
+material assign Apple
+select all
+active Box
+join
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export crate.glb

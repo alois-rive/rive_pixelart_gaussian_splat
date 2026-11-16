@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/mine-cart/art/cart/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        221,
+        69,
+        342,
+        401
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1725,
+      "fill": 0.6771,
+      "background": "#929193"
+    },
+    "right": {
+      "box": [
+        838,
+        70,
+        575,
+        400
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6957,
+      "fill": 0.653,
+      "background": "#929293"
+    },
+    "back": {
+      "box": [
+        221,
+        560,
+        342,
+        404
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1813,
+      "fill": 0.673,
+      "background": "#929193"
+    },
+    "top": {
+      "box": [
+        967,
+        548,
+        364,
+        456
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2527,
+      "fill": 0.8132,
+      "background": "#919193"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# Batter bowl: a mint bowl full of batter, a coral whisk handle sticking out. Up Z.
+new
+material new Bowl --base-color 0.6902 0.9216 0.5765 --no-slot
+material new Batter --base-color 1.0000 0.9686 0.8941 --no-slot
+material new Whisk --base-color 0.9765 0.5098 0.5176 --no-slot
+add mesh cone --name Bowl --vertices 10 --radius1 0.2 --radius2 0.34 --depth 0.26 --location 0 0 0.13
+material assign Bowl
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+select face where "normal.z > 0.9"
+material assign Batter
+translate 0 0 -0.03
+mode object
+add mesh cube --name Whisk --size 1 --location 0.12 0.05 0.36
+scale 0.07 0.07 0.42
+apply --scale
+set rotation 0 28 0
+material assign Whisk
+select all
+shade flat
+export bowl.glb

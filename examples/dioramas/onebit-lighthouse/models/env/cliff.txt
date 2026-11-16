@@ -1,0 +1,32 @@
+# Rocky headland: a 16-sided block 11 x 8.5 m, its top 4 m above the sea (its foot 1.2 m under it), cut into bands and jittered so
+# the cliff faces break into big facets; turf on the faces that look up. Up Z, sea level z 0.
+new
+add mesh cylinder --name Cliff --vertices 16 --radius 5.5 --depth 5.2 --location 0 0 1.4
+scale 1 0.78 1
+apply --scale
+apply --location
+material new Rock --base-color 0.133 0.137 0.137
+material new Turf --base-color 0.941 0.965 0.941 --no-slot
+active Cliff
+mode edit
+select all
+bisect --plane-co 0 0 3.2 --plane-no 0 0 1
+select all
+bisect --plane-co 0 0 2.2 --plane-no 0 0 1
+select all
+bisect --plane-co 0 0 1.2 --plane-no 0 0 1
+select all
+bisect --plane-co 0 0 0.2 --plane-no 0 0 1
+# the top keeps its height (the lighthouse and hut stand on it); everything below it breaks up
+select vert where "pos.z < 3.9"
+randomize --amount 0.7 --seed 11
+select vert where "pos.z > 3.9"
+randomize --amount 0.12 --seed 12
+select face where "normal.z > 0.75"
+material assign Turf
+# the bottom cap is under the sea: no splats for it
+select face where "normal.z < -0.9"
+delete face
+mode object
+shade flat
+export cliff.glb

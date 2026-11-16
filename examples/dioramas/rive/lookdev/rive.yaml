@@ -1,0 +1,10 @@
+name: lookdev
+scripting: wasm
+main: splat_scene
+artboard:
+  width: 320
+  height: 320
+  background: "#181425"
+logs:
+  file: build/rive.log
+  problems: build/problems.log

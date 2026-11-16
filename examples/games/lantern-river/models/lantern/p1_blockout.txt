@@ -1,0 +1,12 @@
+# Sky lantern, phase 1: blockout of every named part at the spec's sizes (metres, measured off the
+# sheet at 568 px a metre). Up Z, facing -Y, origin on the ground line under the fuel block.
+new
+add mesh cube --name Fuel --size 0.085 --location 0 0 0.0425
+add mesh cube --name Ring --size 1 --location 0 0 0.168
+scale 0.40 0.40 0.044
+apply --scale
+# the paper body: a square frustum, 0.38 wide at the bottom to 0.50 at the top, 0.53 tall
+add mesh cone --name Body --vertices 4 --radius1 0.269 --radius2 0.354 --depth 0.53 --location 0 0 0.455 --rotation 0 0 45
+apply --rotation
+add mesh cone --name Roof --vertices 4 --radius1 0.354 --radius2 0 --depth 0.134 --location 0 0 0.787 --rotation 0 0 45
+apply --rotation

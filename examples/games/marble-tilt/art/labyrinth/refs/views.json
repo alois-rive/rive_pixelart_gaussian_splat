@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/marble-tilt/art/labyrinth/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        59,
+        198,
+        671,
+        163
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.2429,
+      "fill": 0.8292,
+      "background": "#949393"
+    },
+    "right": {
+      "box": [
+        910,
+        198,
+        505,
+        163
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.3228,
+      "fill": 0.8248,
+      "background": "#949493"
+    },
+    "back": {
+      "box": [
+        54,
+        677,
+        662,
+        162
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.2447,
+      "fill": 0.8227,
+      "background": "#939393"
+    },
+    "top": {
+      "box": [
+        876,
+        547,
+        589,
+        417
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.708,
+      "fill": 0.818,
+      "background": "#939393"
+    }
+  }
+}

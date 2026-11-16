@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/coral-reef/art/clam/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        114,
+        37,
+        547,
+        434
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7934,
+      "fill": 0.7555,
+      "background": "#d0d0d2"
+    },
+    "right": {
+      "box": [
+        910,
+        31,
+        453,
+        441
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9735,
+      "fill": 0.6248,
+      "background": "#d1d1d2"
+    },
+    "back": {
+      "box": [
+        117,
+        551,
+        539,
+        430
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7978,
+      "fill": 0.7705,
+      "background": "#d0d0d2"
+    },
+    "top": {
+      "box": [
+        883,
+        540,
+        549,
+        456
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8306,
+      "fill": 0.7417,
+      "background": "#d1d1d3"
+    }
+  }
+}

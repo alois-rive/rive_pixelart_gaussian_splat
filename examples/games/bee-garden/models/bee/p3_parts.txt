@@ -1,0 +1,15 @@
+# Bee, phase 3 (run with --no-save, after p2_form.txt): the game's parts. The body, and each wing
+# with its origin moved to the wing root (the hinge it flaps about) and set at the world origin, so
+# the bake places the hinge where the scene entry says. bee.glb (whole) stays the gated hero.
+select Body
+export bee_body.glb --selection
+cursor set -0.10 -0.20 0.20
+select WingL
+origin set --to cursor
+set location 0 0 0
+export wing_l.glb --selection
+cursor set 0.10 -0.20 0.20
+select WingR
+origin set --to cursor
+set location 0 0 0
+export wing_r.glb --selection

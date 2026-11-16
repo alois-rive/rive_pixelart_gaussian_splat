@@ -1,0 +1,14 @@
+# Labyrinth box, phase 3 (splat fit, runs on the gated p2): splats grow about one radius past every
+# flat top and bottom, so the flat box comes out 10 % too tall against its width (splat aspect
+# drift 0.11 front, 0.24 right). Only for the splats: the whole box is squashed to 0.88 of its height
+# about the ground and the knobs moved 0.08 m further out. The splat gate and the bake use this.
+cursor set 0 0 0
+select Frame Floor KnobF KnobR
+scale 1 1 0.88 --pivot cursor
+apply --scale
+select KnobF
+translate 0 -0.08 0
+apply --location
+select KnobR
+translate 0.08 0 0
+apply --location

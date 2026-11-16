@@ -1,0 +1,40 @@
+# Grass plateau, 10 x 7.5 m: a grass top (a grid, 0.5 m cells, edges kept straight to meet the cliff) with a sunken pond, earth cliff sides 1.4 m
+# deep and a rocky underside tapering to a point (a floating diorama). Up Z, top at z 0.
+new
+add mesh grid --name Top --size 1 --x-subdivisions 20 --y-subdivisions 15 --location 0 0 0
+scale 10 7.5 1
+apply --scale
+material new Grass --base-color 0.580 0.890 0.267
+material new Water --base-color 0.275 0.529 0.561 --no-slot
+active Top
+mode edit
+# the pond: an oval basin at (2.0, 1.7) (behind-right of the barn), 0.25 m deep; the faces whose corners
+# all sank are the water
+select vert where "pow((pos.x - 2.0) / 1.7, 2) + pow((pos.y - 1.7) / 1.25, 2) < 1.0"
+translate 0 0 -0.25
+select face where "pos.z < -0.24"
+material assign Water
+mode object
+# cliff sides: a box under the top with its top face removed (a coplanar face would fight the grass)
+add mesh cube --name Cliff --size 1 --location 0 0 -0.7
+scale 10 7.5 1.4
+apply --scale
+material new Earth --base-color 0.275 0.529 0.561
+active Cliff
+mode edit
+select face where "normal.z > 0.9"
+delete face
+mode object
+add mesh cone --name Under --vertices 8 --radius1 1.0 --radius2 5.41 --depth 2.4 --location 0 0 -2.6 --rotation 0 0 22.5
+apply --rotation
+scale 1 0.75 1
+apply --scale
+material new Rock --base-color 0.200 0.173 0.314
+active Under
+mode edit
+select vert where "pos.z < 0"
+randomize --amount 0.35 --seed 9
+mode object
+select all
+shade flat
+export plateau.glb

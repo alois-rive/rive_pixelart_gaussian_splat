@@ -1,0 +1,75 @@
+<Rive version="1" kind="fragment">
+<!-- The kit's Wordmark shapes (rive-branding, artboard 5:12), white on black: the reference the 3D letters are gated against. -->
+<Artboard defaultStateMachineId="0:7" width="460" height="100" name="Wordmark" id="0:2">
+  <Fill name="Bg"><SolidColor colorValue="FF000000" name="C"/></Fill>
+  <Node x="230" y="50" name="Art">
+        <Shape x="-179.57" y="0" name="R">
+            <PointsPath isClosed="true" name="Path">
+                <StraightVertex x="29.465" y="7.75"/>
+                <StraightVertex x="18.045" y="7.7800002"/>
+                <StraightVertex x="45.044998" y="40"/>
+                <StraightVertex x="25.715" y="40"/>
+                <StraightVertex x="-1.245" y="7.8200002"/>
+                <StraightVertex x="-17.415001" y="7.8600001"/>
+                <StraightVertex x="-17.415001" y="-7.0500002"/>
+                <CubicDetachedVertex outDistance="0.82999998" x="28.754999" y="-7.0500002"/>
+                <CubicDetachedVertex inDistance="0.82999998" inRotation="1.5707964" x="30.254999" y="-8.5500002"/>
+                <CubicDetachedVertex outDistance="0.82999998" outRotation="-1.5707964" x="30.254999" y="-23.82"/>
+                <CubicDetachedVertex inDistance="0.82999998" x="28.754999" y="-25.32"/>
+                <StraightVertex x="-45.044998" y="-25.32"/>
+                <StraightVertex x="-45.044998" y="-40"/>
+                <CubicDetachedVertex outDistance="2.8199999" x="29.465" y="-40"/>
+                <CubicDetachedVertex inDistance="2.7612317" inRotation="-2.6098685" outDistance="2.7577164" outRotation="0.53668815" x="37.255001" y="-37.889999"/>
+                <CubicDetachedVertex inDistance="2.7319772" inRotation="-2.1130991" outDistance="2.7319772" outRotation="1.0284936" x="42.924999" y="-32.27"/>
+                <CubicDetachedVertex inDistance="2.8199999" inRotation="-1.5707964" x="45.035" y="-24.540001"/>
+                <CubicDetachedVertex outDistance="2.8199999" outRotation="1.5707964" x="45.035" y="-7.7199998"/>
+                <CubicDetachedVertex inDistance="2.7526169" inRotation="-1.0372303" outDistance="2.7577164" outRotation="2.1074846" x="42.924999" y="0.07"/>
+                <CubicDetachedVertex inDistance="2.7374806" inRotation="-0.52413023" outDistance="2.7461429" outRotation="2.6192849" x="37.255001" y="5.6900001"/>
+                <CubicDetachedVertex inDistance="2.8199999" x="29.465" y="7.75"/>
+            </PointsPath>
+            <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"></SolidColor></Fill>
+        </Shape>
+        <Shape x="-58.125" y="-0.11499" name="I">
+            <PointsPath isClosed="true" name="Path">
+                <StraightVertex x="-7.29" y="39.884998"/>
+                <StraightVertex x="-7.29" y="-39.884998"/>
+                <StraightVertex x="7.29" y="-39.884998"/>
+                <StraightVertex x="7.29" y="39.884998"/>
+            </PointsPath>
+            <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"></SolidColor></Fill>
+        </Shape>
+        <Shape x="49.49" y="-0.11499" name="V">
+            <PointsPath isClosed="true" name="Path">
+                <StraightVertex x="-6.5349998" y="39.884998"/>
+                <StraightVertex x="-52.735001" y="-39.884998"/>
+                <StraightVertex x="-35.674999" y="-39.884998"/>
+                <StraightVertex x="0.0049999999" y="22.155001"/>
+                <StraightVertex x="35.785" y="-39.884998"/>
+                <StraightVertex x="52.735001" y="-39.884998"/>
+                <StraightVertex x="6.5349998" y="39.884998"/>
+            </PointsPath>
+            <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"></SolidColor></Fill>
+        </Shape>
+        <Shape x="187.22" y="-0.10498" name="E">
+            <PointsPath isClosed="true" name="Path">
+                <StraightVertex x="-37.395" y="39.875"/>
+                <StraightVertex x="-37.395" y="-39.895"/>
+                <StraightVertex x="37.395" y="-39.895"/>
+                <StraightVertex x="37.395" y="-25.155001"/>
+                <StraightVertex x="-22.655001" y="-25.155001"/>
+                <StraightVertex x="-22.655001" y="-7.4250002"/>
+                <StraightVertex x="24.545" y="-7.4250002"/>
+                <StraightVertex x="24.545" y="7.4250002"/>
+                <StraightVertex x="-22.655001" y="7.4250002"/>
+                <StraightVertex x="-22.655001" y="25.155001"/>
+                <StraightVertex x="37.395" y="25.155001"/>
+                <StraightVertex x="37.395" y="39.895"/>
+                <StraightVertex x="-37.395" y="39.895"/>
+            </PointsPath>
+            <Fill name="Fill"><SolidColor colorValue="FFFFFFFF" name="Color"></SolidColor></Fill>
+        </Shape>
+    </Node>
+  <StateMachine name="SM" id="0:7"><StateMachineLayer name="L" id="0:8"><AnyState x="0" y="-100"/><ExitState x="200" y="-100"/><EntryState><StateTransition stateToId="0:9"/></EntryState><AnimationState x="100" y="0" animationId="0:6" id="0:9"/></StateMachineLayer></StateMachine>
+  <LinearAnimation loopValue="loop" duration="60" name="Idle" id="0:6"/>
+</Artboard>
+</Rive>

@@ -1,0 +1,27 @@
+# Things on the rim: a soap bar in its dish, a shampoo bottle with a teal cap, an olive sponge.
+# Each its own object; the bake places the whole set once (origin at the tub's centre, rim at 1.3).
+new
+material new Dish --base-color 0.6706 0.6078 0.5569 --no-slot
+material new Soap --base-color 0.8235 0.7882 0.6471 --no-slot
+material new Bottle --base-color 0.6824 0.3647 0.2510 --no-slot
+material new Cap --base-color 0.2941 0.4471 0.4314 --no-slot
+material new Sponge --base-color 0.4667 0.4549 0.2314 --no-slot
+add mesh cube --name Dish --size 1 --location 2.2 -2.52 1.33
+scale 0.8 0.36 0.06
+apply --scale
+material assign Dish
+add mesh cube --name Soap --size 1 --location 2.2 -2.52 1.44
+scale 0.56 0.3 0.18
+apply --scale
+material assign Soap
+add mesh cylinder --name Bottle --vertices 6 --radius 0.22 --depth 0.8 --location -1.6 2.9 0.4
+material assign Bottle
+add mesh cylinder --name Cap --vertices 6 --radius 0.12 --depth 0.2 --location -1.6 2.9 0.9
+material assign Cap
+add mesh cube --name Sponge --size 1 --location -3.0 2.52 1.42
+scale 0.6 0.34 0.24
+apply --scale
+material assign Sponge
+select all
+shade flat
+export props.glb

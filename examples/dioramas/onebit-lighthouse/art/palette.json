@@ -1,0 +1,34 @@
+{
+  "name": "1bit Monitor Glow",
+  "source": "https://lospec.com/palette-list/1bit-monitor-glow",
+  "author": "Polyducks",
+  "colors": [
+    "#222323",
+    "#f0f6f0"
+  ],
+  "ramps": {
+    "lit": [
+      "#222323",
+      "#f0f6f0"
+    ],
+    "pale": [
+      "#222323",
+      "#f0f6f0",
+      "#f0f6f0"
+    ],
+    "tar": [
+      "#222323",
+      "#222323",
+      "#f0f6f0"
+    ],
+    "glow": [
+      "#f0f6f0"
+    ]
+  },
+  "roles": {
+    "sky_top": "#222323",
+    "sky_bottom": "#f0f6f0",
+    "fog": "#f0f6f0",
+    "void": "#222323"
+  }
+}

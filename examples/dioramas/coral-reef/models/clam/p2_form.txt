@@ -1,0 +1,9 @@
+# Giant clam, phase 2: the pearl joins the lower shell (they never move), flat shading, the static
+# export used by the gates. The upper shell stays its own object: it is the animated part (p3).
+select Lower Pearl
+active Lower
+join
+select all
+shade flat
+inspect stats
+export clam_rest.glb

@@ -1,0 +1,12 @@
+# Brazier: an iron bowl on a short stem (sits on a pillar top), origin at its foot. Up Z.
+new
+material new Iron --base-color 0.2235 0.2235 0.2235 --no-slot
+add mesh cone --name Bowl --vertices 8 --radius1 0.16 --radius2 0.32 --depth 0.24 --location 0 0 0.2
+add mesh cylinder --name Stem --vertices 6 --radius 0.08 --depth 0.1 --location 0 0 0.05
+select Bowl Stem
+active Bowl
+join
+rename Bowl Brazier
+material assign Iron
+shade flat
+export brazier.glb

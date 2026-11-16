@@ -1,0 +1,8 @@
+# A splash drop: a small cream lump (popped boats and bubbles throw a ring of them).
+new
+material new Drop --base-color 0.8235 0.7882 0.6471 --no-slot
+add mesh ico-sphere --name Drop --subdivisions 1 --radius 0.09 --location 0 0 0
+material assign Drop
+select all
+shade flat
+export drop.glb

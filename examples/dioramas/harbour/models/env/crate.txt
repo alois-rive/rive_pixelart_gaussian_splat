@@ -1,0 +1,13 @@
+# A crate: 0.5 m cube, a lid frame (inset top, sunk 0.04). Hull ramp, f7d554 (reads on the pier planks).
+new
+add mesh cube --name Crate --size 0.5 --location 0 0 0.25
+apply
+material new Crate --base-color 0.969 0.835 0.329
+active Crate
+mode edit
+select face where "normal.z > 0.9"
+inset 0.07
+extrude 0 0 -0.04
+mode object
+shade flat
+export crate.glb

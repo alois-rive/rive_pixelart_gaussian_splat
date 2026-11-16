@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.05,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/dog.bin",
+  "objects": [
+    { "model": "dog.glb", 
+      "materials": { "Fur": { "ramp": "fur" }, "Cream": { "ramp": "cream" },
+                     "Dark": { "ramp": "face", "spacing": 0.04, "specks": true } } }
+  ]
+}

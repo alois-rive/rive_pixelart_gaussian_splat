@@ -1,0 +1,12 @@
+# A meteor's fiery tail: an outer plum cone and a mauve inner one, base at the origin (the meteor's
+# centre) tapering along +Z for 1.4 m; unlit. The game points +Z away from the meteor's motion.
+new
+material new Outer --base-color 0.435 0.114 0.361 --emission 0.435 0.114 0.361 --no-slot
+material new Inner --base-color 0.431 0.318 0.506 --emission 0.431 0.318 0.506 --no-slot
+add mesh cone --name Outer --vertices 6 --radius1 0.26 --radius2 0.03 --depth 1.4 --location 0 0.06 0.7
+material assign Outer
+add mesh cone --name Inner --vertices 6 --radius1 0.16 --radius2 0.02 --depth 0.75 --location 0 -0.02 0.4
+material assign Inner
+select all
+shade flat
+export trail.glb

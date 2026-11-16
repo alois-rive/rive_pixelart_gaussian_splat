@@ -1,0 +1,42 @@
+# Keeper's hut: whitewashed walls 2.4 x 2.0 x 1.7, a dark gabled roof (ridge along X), a chimney, a dark
+# door and window painted as protruding slabs a full splat proud. Up Z, facing -Y.
+new
+add mesh cube --name Walls --size 1 --location 0 0 0.85
+scale 2.4 2.0 1.7
+apply --scale
+material new White --base-color 0.941 0.965 0.941
+add mesh cube --name Gable --size 1 --location 0 0 2.1
+scale 2.4 2.0 0.8
+apply --scale
+material assign White
+active Gable
+mode edit
+select vert where "pos.z > 0"
+scale 1 0 1
+merge --by-distance 0.001
+mode object
+add mesh cube --name RoofF --size 1 --location 0 -0.62 2.15
+scale 2.7 1.45 0.18
+apply --scale
+set rotation 38.7 0 0
+material new Dark --base-color 0.133 0.137 0.137
+add mesh cube --name RoofB --size 1 --location 0 0.62 2.15
+scale 2.7 1.45 0.18
+apply --scale
+set rotation -38.7 0 0
+material assign Dark
+add mesh cube --name Chimney --size 1 --location 0.75 0.35 2.5
+scale 0.32 0.32 0.9
+apply --scale
+material assign Dark
+add mesh cube --name Door --size 1 --location -0.45 -1.04 0.55
+scale 0.55 0.1 1.1
+apply --scale
+material assign Dark
+add mesh cube --name Window --size 1 --location 0.55 -1.04 1.0
+scale 0.5 0.1 0.45
+apply --scale
+material assign Dark
+select all
+shade flat
+export hut.glb

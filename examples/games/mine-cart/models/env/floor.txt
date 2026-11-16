@@ -1,0 +1,24 @@
+# Cave floor: a slab 10.4 x 6.6 m, top at z 0, its vertical corners chamfered and its
+# lower rim made rocky. The top face carries textures/floor.png (the painted track beds, drawn by
+# make_env.py from the same layout as the rails), projected from the top over the slab's bounds.
+new
+material new Floor --base-color 1 1 1 --no-slot
+material texture Floor base-color textures/floor.png
+material new Rock --base-color 0.259 0.431 0.365 --no-slot
+add mesh cube --name Floor --size 1 --location 0.000 0.000 -0.35
+scale 10.400 6.600 0.7
+apply --scale
+material assign Rock
+mode edit
+select edge where "abs(pos.z) < 0.01"
+bevel 0.7 --segments 2
+select face where "normal.z < -0.9"
+delete only-faces
+select vert where "pos.z < -0.3"
+randomize --amount 0.18 --seed 3
+select face where "normal.z > 0.9"
+material assign Floor
+uv project-from-view top --scale-to-bounds
+mode object
+shade flat
+export floor.glb

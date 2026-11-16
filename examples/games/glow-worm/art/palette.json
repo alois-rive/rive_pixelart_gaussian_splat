@@ -1,0 +1,25 @@
+{
+  "name": "Cold Light",
+  "source": "https://lospec.com/palette-list/cold-light",
+  "author": "A_Lamp",
+  "colors": [
+    "#08001f",
+    "#444d84",
+    "#b2d5d1"
+  ],
+  "ramps": {
+    "rock": ["#08001f", "#444d84", "#444d84"],
+    "floor": ["#08001f", "#08001f", "#444d84"],
+    "stone": ["#08001f", "#444d84", "#444d84", "#b2d5d1"],
+    "glow": ["#444d84", "#b2d5d1"],
+    "dim": ["#08001f", "#444d84"],
+    "halo": ["#444d84"],
+    "spark": ["#b2d5d1"]
+  },
+  "roles": {
+    "void": "#08001f",
+    "fog": "#444d84",
+    "sky_top": "#08001f",
+    "sky_bottom": "#08001f"
+  }
+}

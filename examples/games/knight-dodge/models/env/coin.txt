@@ -1,0 +1,14 @@
+# Coin: a fat gold octagonal coin standing upright (the game spins it), origin at its centre. Up Z.
+new
+material new Gold --base-color 0.9647 0.8039 0.1490 --no-slot
+material new Face --base-color 0.6745 0.4196 0.1490 --no-slot
+add mesh cylinder --name Coin --vertices 8 --radius 0.24 --depth 0.09 --location 0 0 0 --rotation 90 0 0
+apply --rotation
+material assign Gold
+mode edit
+select face where "abs(normal.y) > 0.9"
+inset 0.08
+material assign Face
+mode object
+shade flat
+export coin.glb

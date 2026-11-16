@@ -1,0 +1,5 @@
+name: scene
+scripting: wasm
+logs:
+  file: build/rive.log
+  problems: build/problems.log

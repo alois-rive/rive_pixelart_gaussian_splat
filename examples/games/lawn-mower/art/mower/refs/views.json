@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/lawn-mower/art/mower/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        172,
+        41,
+        373,
+        434
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1635,
+      "fill": 0.5693,
+      "background": "#939292"
+    },
+    "right": {
+      "box": [
+        875,
+        41,
+        509,
+        435
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8546,
+      "fill": 0.5266,
+      "background": "#939392"
+    },
+    "back": {
+      "box": [
+        226,
+        554,
+        370,
+        432
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1676,
+      "fill": 0.568,
+      "background": "#939292"
+    },
+    "top": {
+      "box": [
+        988,
+        560,
+        305,
+        422
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3836,
+      "fill": 0.8264,
+      "background": "#939292"
+    }
+  }
+}

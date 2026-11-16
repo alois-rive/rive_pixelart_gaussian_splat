@@ -1,0 +1,18 @@
+# Rock with snow on its upward faces. Up Z.
+new
+add mesh ico-sphere --name Rock --subdivisions 1 --radius 0.4 --location 0 0 0.18
+scale 1.3 1.0 0.7
+apply --scale
+mode edit
+select all
+randomize --amount 0.06 --seed 3
+mode object
+material new Stone --base-color 0.400 0.545 0.565
+material new Snow --base-color 0.745 0.898 0.882 --no-slot
+material slot add
+mode edit
+select face where "normal.z > 0.6"
+material assign Snow
+mode object
+shade flat
+export rock.glb

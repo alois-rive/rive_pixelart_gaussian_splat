@@ -1,0 +1,9 @@
+# Debris: a broken plank 0.5 x 0.14 x 0.1 m. Origin at its centre.
+new
+material new Deck --base-color 0.5529 0.4118 0.4784 --no-slot
+add mesh cube --name Plank --size 1 --location 0 0 0
+scale 0.5 0.14 0.1
+apply --scale
+material assign Deck
+shade flat
+export plank.glb

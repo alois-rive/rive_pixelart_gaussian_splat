@@ -1,0 +1,7 @@
+# A petal: a small red chip (a bed hit throws them). make_env.py.
+new
+material new Petal --base-color 0.898 0.231 0.267 --no-slot
+add mesh cube --name Petal --size 0.11
+scale 1 1 0.6
+material assign Petal
+export petal.glb

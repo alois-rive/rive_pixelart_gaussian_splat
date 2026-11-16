@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/keepy-uppy/art/ball/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        168,
+        20,
+        430,
+        462
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0744,
+      "fill": 0.7597,
+      "background": "#939292"
+    },
+    "right": {
+      "box": [
+        932,
+        20,
+        438,
+        462
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0548,
+      "fill": 0.7591,
+      "background": "#939291"
+    },
+    "back": {
+      "box": [
+        166,
+        530,
+        435,
+        465
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.069,
+      "fill": 0.7594,
+      "background": "#939392"
+    },
+    "top": {
+      "box": [
+        932,
+        533,
+        439,
+        443
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0091,
+      "fill": 0.7567,
+      "background": "#939292"
+    }
+  }
+}

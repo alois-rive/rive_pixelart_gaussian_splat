@@ -1,0 +1,82 @@
+# Skee-ball lane, phase 1: blockout of every named part at the spec's sizes (metres, measured off the
+# sheet at 174 px a metre). Up Z, facing -Y: the player's end at y -1.595, the backboard at y +1.595;
+# origin on the ground under the middle. Lane 2.37 m long, target section 0.64 m, backboard 0.18 m.
+new
+# the cabinet base under the lane: its top slopes from 0.52 m at the front to 0.84 m at the back
+add mesh cube --name Base --size 1 --location 0 -0.41 0.42
+scale 1.3 2.37 0.84
+apply --scale
+active Base
+mode edit
+select vert where "pos.z > 0.3 && pos.y < -1.0"
+translate 0 0 -0.32
+mode object
+# the lane surface, 1.04 m wide, 4 cm over the base
+add mesh cube --name Lane --size 1 --location 0 -0.41 0.86
+scale 1.04 2.37 0.08
+apply --scale
+active Lane
+mode edit
+select vert where "pos.y < -1.0"
+translate 0 0 -0.32
+mode object
+# side rails, 0.13 m wide, their tops 0.68 m at the front to 0.98 m at the back
+add mesh cube --name RailL --size 1 --location 0.585 -0.41 0.91
+scale 0.13 2.37 0.14
+apply --scale
+active RailL
+mode edit
+select vert where "pos.y < -1.0"
+translate 0 0 -0.30
+mode object
+add mesh cube --name RailR --size 1 --location -0.585 -0.41 0.91
+scale 0.13 2.37 0.14
+apply --scale
+active RailR
+mode edit
+select vert where "pos.y < -1.0"
+translate 0 0 -0.30
+mode object
+# the hump at the lane's end
+add mesh cube --name Hump --size 1 --location 0 0.69 0.95
+scale 1.04 0.17 0.12
+apply --scale
+# under the target: the cabinet continues to the backboard
+add mesh cube --name Under --size 1 --location 0 1.095 0.495
+scale 1.3 0.64 0.99
+apply --scale
+# the target's side walls: 1.27 m tall at the front, sloping up to 1.94 m at the back
+add mesh cube --name WallL --size 1 --location 0.565 1.095 0.97
+scale 0.13 0.64 1.94
+apply --scale
+active WallL
+mode edit
+select vert where "pos.z > 0.5 && pos.y < 0"
+translate 0 0 -0.67
+mode object
+add mesh cube --name WallR --size 1 --location -0.565 1.095 0.97
+scale 0.13 0.64 1.94
+apply --scale
+active WallR
+mode edit
+select vert where "pos.z > 0.5 && pos.y < 0"
+translate 0 0 -0.67
+mode object
+# the target board: 0.93 m wide, from (y 0.775, z 0.99) to (y 1.415, z 1.94), leaning back 34 degrees
+add mesh cube --name Board --size 1 --location 0 1.12 1.465
+scale 0.93 0.06 1.145
+apply --scale
+set rotation -34 0 0
+apply --rotation
+# the backboard and the marquee (top corners cut)
+add mesh cube --name Back --size 1 --location 0 1.505 1.175
+scale 1.15 0.18 2.35
+apply --scale
+add mesh cube --name Marquee --size 1 --location 0 1.505 2.5
+scale 1.15 0.18 0.3
+apply --scale
+active Marquee
+mode edit
+select vert where "pos.z > 0.1"
+scale 0.84 1 1
+mode object

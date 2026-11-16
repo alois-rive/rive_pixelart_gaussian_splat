@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/lily-hop/art/frog/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        81,
+        67,
+        606,
+        387
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6386,
+      "fill": 0.647,
+      "background": "#919091"
+    },
+    "right": {
+      "box": [
+        873,
+        67,
+        532,
+        386
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7256,
+      "fill": 0.6915,
+      "background": "#919091"
+    },
+    "back": {
+      "box": [
+        81,
+        572,
+        606,
+        381
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6287,
+      "fill": 0.6563,
+      "background": "#919091"
+    },
+    "top": {
+      "box": [
+        877,
+        539,
+        549,
+        444
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8087,
+      "fill": 0.6725,
+      "background": "#929192"
+    }
+  }
+}

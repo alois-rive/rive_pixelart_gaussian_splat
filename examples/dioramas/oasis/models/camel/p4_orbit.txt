@@ -1,0 +1,29 @@
+# Camel, phase 4 (scene only): walk in a circle round the pond. Runs after p3_rig.txt and the
+# export of camel.glb. The baker plays every animation of a GLB at the same time t (mod the longest),
+# so the 1.2 s walk is baked out over the whole 14.4 s orbit (12 strides) before export.
+# Clockwise seen from above: at (R, 0, 0) the velocity is -Y, the way the camel faces.
+frame range 0 288
+add empty --name Orbit --location 0 0 0
+select Rig
+set location 2.3 0 0
+select Rig Orbit
+parent set Orbit
+# only the Rig: `action bake --only-selected` bakes every SELECTED object (an Orbit baked here
+# gets constant rotation keys on every frame, and the turn below would be lost)
+select Rig
+active Rig
+mode pose
+pose select all
+action bake --only-selected --start 0 --end 288
+mode object
+select Orbit
+active Orbit
+frame set 0
+set rotation 0 0 0
+keyframe insert --channels rot
+frame set 288
+set rotation 0 0 -360
+keyframe insert --channels rot
+keyframe interpolation linear --all
+action rename OrbitAction Orbit
+frame set 0

@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.075,
+  "fat": 1.0,
+  "out": "../../lookdev/mower.bin",
+  "objects": [
+    { "model": "mower.glb",
+      "materials": { "Red": { "ramp": "red" }, "Tyre": { "ramp": "wood" }, "Hub": { "ramp": "stone", "spacing": 0.05 },
+                     "Deck": { "ramp": "stone" }, "Seat": { "ramp": "wood", "spacing": 0.06 }, "Shirt": { "ramp": "blue", "spacing": 0.06 },
+                     "Skin": { "ramp": "skin", "spacing": 0.06 }, "Hat": { "ramp": "straw", "spacing": 0.06 } } }
+  ]
+}

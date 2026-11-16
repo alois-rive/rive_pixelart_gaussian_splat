@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmdl format="1">
+  <sub_resource id="Material_0" type="Material">
+    <property name="name">"Flag"</property>
+    <property name="base_color">Color(0.7882, 0.1412, 0.3922)</property>
+  </sub_resource>
+  <sub_resource id="Mesh_0" type="Mesh">
+    <property name="verts">4</property>
+    <property name="co">PackedVector3Array(
+        -0.00000011920929, 0, -0.65999997,
+        -0.000000059604645, 0.08729536, -0.1199999,
+        -0.000000059604645, -0.087295376, -0.119999945,
+        1.3, 0, -0.3000001)</property>
+    <property name="edges">6</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 0,
+        1, 2,
+        2, 3,
+        2, 0)</property>
+    <property name="faces">4</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 3,
+        3, 3,
+        6, 3,
+        9, 3)</property>
+    <property name="face_normals">PackedVector3Array(
+        0.044150006, 0.9862214, -0.15943064,
+        0.1371532, -0.00000026013086, 0.99054986,
+        0.044150017, -0.9862214, -0.15943068,
+        -1, 0, 0.00000011037896)</property>
+    <property name="loops">12</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        1, 3, 1,
+        2, 4, 1,
+        3, 1, 1,
+        2, 5, 2,
+        0, 2, 2,
+        3, 4, 2,
+        2, 3, 3,
+        1, 0, 3,
+        0, 5, 3)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0, 0,
+        1, 0.33333334, 0,
+        1, 0.16666667, 1,
+        1, 0.33333334, 0,
+        1, 0.6666667, 0,
+        1, 0.5, 1,
+        1, 0.6666667, 0,
+        1, 1, 0,
+        1, 0.8333334, 1,
+        1, 0.25000006, 0.06698725,
+        1, 0.24999997, 0.9330127,
+        1, 1, 0.5)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+
+  <scene>
+    <property name="active">"Flag"</property>
+  </scene>
+
+  <object name="Flag" type="mesh">
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_0")</property>
+    <property name="material_slots">[SubResource("Material_0")]</property>
+  </object>
+</rmdl>

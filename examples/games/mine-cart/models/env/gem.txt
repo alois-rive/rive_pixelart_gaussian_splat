@@ -1,0 +1,10 @@
+# Gem: a six-sided faceted gem 0.26 across and 0.36 tall, pivot at its foot. A pool of game bones: the game
+# floats, spins and pops them.
+new
+material new Gem --base-color 0.984 0.969 0.953 --no-slot
+add mesh uv-sphere --name Gem --segments 6 --rings 3 --radius 0.13 --location 0 0 0.18
+scale 1 1 1.4
+apply --scale
+material assign Gem
+shade flat
+export gem.glb

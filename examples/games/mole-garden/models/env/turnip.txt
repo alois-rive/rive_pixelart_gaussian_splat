@@ -1,0 +1,23 @@
+# A turnip half out of the earth: a pale faceted bulb and a tuft of three leaves. Up Z.
+new
+add mesh ico-sphere --name Bulb --subdivisions 1 --radius 0.15 --location 0 0 0.08
+material new Bulb --base-color 0.627 0.725 0.729
+material assign Bulb
+add mesh cube --name L0 --size 1 --location 0 0 0.35
+scale 0.1 0.04 0.4
+apply --scale
+set rotation 0 15 0
+add mesh cube --name L1 --size 1 --location 0.06 0.04 0.32
+scale 0.1 0.04 0.36
+apply --scale
+set rotation 0 -18 60
+add mesh cube --name L2 --size 1 --location -0.06 0.04 0.32
+scale 0.1 0.04 0.36
+apply --scale
+set rotation 0 18 -60
+material new Leaf --base-color 0.310 0.467 0.329
+select L0 L1 L2
+material assign Leaf
+select all
+shade flat
+export turnip.glb

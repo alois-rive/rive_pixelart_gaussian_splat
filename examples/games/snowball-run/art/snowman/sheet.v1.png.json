@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v1.png",
+  "sha256": "e579ebb86d540b576f6597e74c246051743ee2902e8700d621150e9baf562694",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v1.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a classic snowman made of three stacked snowballs, with a top hat, a carrot nose, a scarf and two stick arms.\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).\n- The four panels show the SAME object, only turned: FRONT: the object faces the camera. RIGHT: the camera has walked round to the object's own right-hand side (not the image's right), so the object faces the LEFT edge of the image. BACK: seen from behind. TOP: seen from straight above, looking down, with its front towards the BOTTOM edge of the image and no wall showing. Each detail appears only in the views from which it is really visible (a part seen side-on in one view is seen end-on in another).\n- One flat, uniform, mid grey background (#9a9a9a) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views):\n- Three faceted low-poly snowballs stacked and slightly squashed into each other: the bottom one 0.9 m across, the middle one 0.66 m across, the head 0.46 m across. Total height of the three balls 1.7 m.\n- A black-purple top hat on the head: a flat round brim 0.42 m across, a straight crown 0.28 m across and 0.26 m tall, with a coral band around the crown. Total height with the hat 2.0 m.\n- A carrot nose, a chunky cone 0.24 m long, sticking straight forward out of the FRONT of the head.\n- Two dark eyes and three dark coal buttons down the FRONT of the middle ball (big round dots, 0.07 m across).\n- A thick coral scarf around the neck between the head and the middle ball, with ONE tail 0.35 m long hanging down over the snowman's own RIGHT shoulder (the image's left in the FRONT view).\n- Two thick stick arms, 0.5 m long, coming out of the left and right sides of the middle ball, angled up at 30 degrees, each ending in a small fork of two twigs.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 500 triangles worth of detail. No smooth organic surfaces, no tiny details, no texture noise, no grain.\n- Flat colour areas only, ONLY these colours (a 4-colour palette, Ice Cream GB): snow #fff6d3 (lit) and #f9a875 (shade), top hat, eyes, buttons and stick arms #7c3f58, carrot nose, hat band and scarf #eb6b6f.\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e56a-b4ed-7b80-9aaf-db0540a4aa5a",
+    "source": "/Users/alois/.codex/generated_images/01a1e56a-b4ed-7b80-9aaf-db0540a4aa5a/exec-95785859-9d9b-4659-9f4b-2496aad34c86.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e56a-b4ed-7b80-9aaf-db0540a4aa5a/exec-95785859-9d9b-4659-9f4b-2496aad34c86.png"
+    ]
+  },
+  "seconds": 61.8,
+  "created": "2026-11-16T18:33:19+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/snowball-run/art/snowman/sheet.v1.png",
+  "reviewed": false
+}

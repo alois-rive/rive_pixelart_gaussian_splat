@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.055,
+  "fat": 1.0,
+  "out": "../../lookdev/duck.bin",
+  "objects": [
+    { "model": "duck.glb",
+      "materials": { "Body": { "ramp": "duck" }, "Beak": { "ramp": "beak", "spacing": 0.04 },
+                     "Eye": { "ramp": "ink", "spacing": 0.025, "specks": true } } }
+  ]
+}

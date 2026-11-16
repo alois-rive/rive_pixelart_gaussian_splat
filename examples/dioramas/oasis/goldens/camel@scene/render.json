@@ -1,0 +1,14 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "camel",
+  "views": "front,right,back,top,iso",
+  "size": 160,
+  "pixel": 2,
+  "arg": [
+    "shadeSteps=1"
+  ],
+  "look": "lit",
+  "texel": 0.0705,
+  "elevation": 0
+}

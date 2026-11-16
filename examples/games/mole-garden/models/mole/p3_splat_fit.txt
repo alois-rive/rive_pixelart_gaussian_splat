@@ -1,0 +1,9 @@
+# Mole, phase 3 (splat fit): the form (p2) is gated against the sheet; this phase only compensates the
+# splat spread before the bake. At the scene's spacing the snout's tip erodes and the dome grows a
+# radius upward: the p2 mole bakes short in depth and tall (side splat aspect drift 0.096). Lengthen it
+# 9 % front to back and lower it 4 % about the ground.
+select all
+cursor set 0 0 0
+scale 1 1.09 0.96 --pivot cursor
+apply --scale
+export mole.glb

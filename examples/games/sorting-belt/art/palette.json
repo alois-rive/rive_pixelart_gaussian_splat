@@ -1,0 +1,31 @@
+{
+  "name": "Paper 8",
+  "source": "https://lospec.com/palette-list/paper-8",
+  "author": "Frosty Rabbid",
+  "colors": [
+    "#1f244b",
+    "#654053",
+    "#a8605d",
+    "#d1a67e",
+    "#f6e79c",
+    "#b6cf8e",
+    "#60ae7b",
+    "#3c6b64"
+  ],
+  "ramps": {
+    "wood":   ["#1f244b", "#654053", "#a8605d", "#d1a67e", "#f6e79c"],
+    "red":    ["#1f244b", "#654053", "#a8605d", "#d1a67e"],
+    "green":  ["#1f244b", "#3c6b64", "#60ae7b", "#b6cf8e"],
+    "paper":  ["#654053", "#a8605d", "#d1a67e", "#f6e79c"],
+    "wall":   ["#1f244b", "#3c6b64", "#60ae7b", "#b6cf8e", "#f6e79c"],
+    "rubber": ["#1f244b", "#1f244b", "#654053", "#a8605d"],
+    "metal":  ["#1f244b", "#3c6b64", "#b6cf8e", "#f6e79c"],
+    "glow":   ["#f6e79c", "#f6e79c"]
+  },
+  "roles": {
+    "void": "#1f244b",
+    "fog": "#654053",
+    "sky_top": "#3c6b64",
+    "sky_bottom": "#3c6b64"
+  }
+}

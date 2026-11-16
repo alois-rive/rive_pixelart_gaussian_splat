@@ -1,0 +1,14 @@
+# A low grey boulder 0.7 x 0.5 x 0.35 m. Static.
+new
+material new Stone --base-color 0.5255 0.5059 0.5333 --no-slot
+add mesh ico-sphere --name Rock --subdivisions 1 --radius 0.35 --location 0 0 0.12
+scale 1.0 0.75 0.6
+apply --scale
+mode edit
+select all
+randomize --amount 0.04 --seed 3
+mode object
+material assign Stone
+select all
+shade flat
+export rock.glb

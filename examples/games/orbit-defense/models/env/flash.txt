@@ -1,0 +1,15 @@
+# The muzzle flash: a four-pointed star 0.5 m across in the play plane, unlit cyan.
+new
+material new Flash --base-color 0.424 0.929 0.929 --emission 0.424 0.929 0.929 --no-slot
+add mesh cube --name H --size 1 --location 0 0 0
+scale 0.5 0.08 0.12
+apply --scale
+add mesh cube --name V --size 1 --location 0 0 0
+scale 0.12 0.08 0.5
+apply --scale
+select H V
+material assign Flash
+active H
+join
+shade flat
+export flash.glb

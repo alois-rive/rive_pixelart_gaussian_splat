@@ -1,0 +1,73 @@
+# Windmill, phase 1: blockout of every named part at the spec's sizes. Up Z, facing -Y.
+new
+add mesh cube --name Base --size 1 --location 0 0 0.2
+scale 1.9 1.9 0.4
+apply --scale
+add mesh cube --name House --size 1 --location 0 0 1.125
+scale 1.6 1.6 1.45
+apply --scale
+# the attic: a wedge (a box whose top edge is squeezed to the ridge), 0.75 tall: a 43 degree pitch
+add mesh cube --name Attic --size 1 --location 0 0 2.225
+scale 1.6 1.6 0.75
+apply --scale
+active Attic
+mode edit
+select vert where "pos.z > 0"
+scale 0 1 1
+merge --by-distance 0.001
+mode object
+# snow-covered roof slabs 1.35 down the slope, 2.0 front to back, scaled, applied, then tilted
+add mesh cube --name RoofL --size 1 --location -0.494 0 2.24
+scale 1.35 2.25 0.2
+apply --scale
+set rotation 0 -43 0
+add mesh cube --name RoofR --size 1 --location 0.494 0 2.24
+scale 1.35 2.25 0.2
+apply --scale
+set rotation 0 43 0
+add mesh cube --name Door --size 1 --location 0 -0.81 0.8
+scale 0.45 0.06 0.8
+apply --scale
+add mesh cube --name WinL --size 1 --location -0.81 0 1.3
+scale 0.06 0.36 0.36
+apply --scale
+add mesh cube --name WinR --size 1 --location 0.81 0 1.3
+scale 0.06 0.36 0.36
+apply --scale
+add mesh cylinder --name Hub --vertices 8 --radius 0.16 --depth 0.3 --location 0 -0.95 1.5 --rotation 90 0 0
+apply --rotation
+# one sail pointing up from the hub: a cloth panel and its spar; three copies turned about the hub
+add mesh cube --name Sail --size 1 --location 0.1 -1.06 2.125
+scale 0.38 0.05 0.95
+apply --scale
+add mesh cube --name Spar --size 1 --location 0 -1.1 2.05
+scale 0.09 0.09 1.1
+apply --scale
+# the sails are joined into one object, so their colours go on before the join
+material new Cloth --base-color 0.914 0.808 0.659 --no-slot
+material new Spar --base-color 0.349 0.118 0.216 --no-slot
+select Sail
+material assign Cloth
+select Spar
+material assign Spar
+select Sail Spar
+active Sail
+join
+cursor set 0 -1.06 1.5
+select Sail
+rotate y 45 --pivot cursor
+duplicate
+rotate y 90 --pivot cursor
+duplicate
+rotate y 90 --pivot cursor
+duplicate
+rotate y 90 --pivot cursor
+select Hub
+material assign Spar
+select Sail Sail.001 Sail.002 Sail.003 Hub
+active Hub
+join
+rename Hub Sails
+origin set --to cursor
+select all
+apply --scale

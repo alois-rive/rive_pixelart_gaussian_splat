@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.046,
+  "fat": 1.0,
+  "out": "../../lookdev/bee.bin",
+  "objects": [
+    { "model": "bee.glb",
+      "materials": { "Body": { "ramp": "gold" }, "Band": { "ramp": "ink", "step": 1 },
+                     "Tip": { "ramp": "petal" }, "Wing": { "ramp": "cloud", "flags": ["double"] },
+                     "Panel": { "ramp": "cloud", "flags": ["double"] } } }
+  ]
+}

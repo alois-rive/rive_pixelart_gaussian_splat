@@ -1,0 +1,42 @@
+# A burst: eight spikes round a core in the play plane, 1.4 m across, unlit cyan; the game pops it
+# (scale 0.3 -> 1 -> gone over a quarter second). Baked at full size: the game only scales it down.
+new
+material new Spike --base-color 0.424 0.725 0.788 --emission 0.424 0.725 0.788 --no-slot
+material new Core --base-color 0.424 0.929 0.929 --emission 0.424 0.929 0.929 --no-slot
+add mesh ico-sphere --name Core --radius 0.24 --subdivisions 1 --location 0 -0.05 0
+material assign Core
+add mesh cone --name Sp0 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.7 --location 0 0 0.47
+apply --location
+set rotation 0 67.5 0
+material assign Spike
+add mesh cone --name Sp1 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.48 --location 0 0 0.36
+apply --location
+set rotation 0 22.5 0
+material assign Spike
+add mesh cone --name Sp2 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.7 --location 0 0 0.47
+apply --location
+set rotation 0 -22.5 0
+material assign Spike
+add mesh cone --name Sp3 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.48 --location 0 0 0.36
+apply --location
+set rotation 0 -67.5 0
+material assign Spike
+add mesh cone --name Sp4 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.7 --location 0 0 0.47
+apply --location
+set rotation 0 -112.5 0
+material assign Spike
+add mesh cone --name Sp5 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.48 --location 0 0 0.36
+apply --location
+set rotation 0 -157.5 0
+material assign Spike
+add mesh cone --name Sp6 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.7 --location 0 0 0.47
+apply --location
+set rotation 0 -202.5 0
+material assign Spike
+add mesh cone --name Sp7 --vertices 4 --radius1 0.1 --radius2 0 --depth 0.48 --location 0 0 0.36
+apply --location
+set rotation 0 -247.5 0
+material assign Spike
+select all
+shade flat
+export burst.glb

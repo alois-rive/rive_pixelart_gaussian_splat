@@ -1,0 +1,12 @@
+# A dust puff where a meteor strikes the planet: three overlapping faceted balls, lit mauve.
+new
+material new Dust --base-color 0.431 0.318 0.506 --no-slot
+add mesh ico-sphere --name P0 --radius 0.3 --subdivisions 1 --location 0 0 0.2
+add mesh ico-sphere --name P1 --radius 0.22 --subdivisions 1 --location -0.28 -0.05 0.12
+add mesh ico-sphere --name P2 --radius 0.24 --subdivisions 1 --location 0.27 -0.05 0.15
+select P0 P1 P2
+material assign Dust
+active P0
+join
+shade flat
+export puff.glb

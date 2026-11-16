@@ -1,0 +1,13 @@
+# Pan, phase 3 (run with --no-save after p2_form.txt): the splat versions. A disc reaches past its
+# face, so a positive shape bakes fatter (assets.md, "Positive shapes come out fatter"): measured on
+# the bench at spacing 0.034, the silhouette grows ~0.06 m on every side. The hero is shrunk by that
+# much on every axis about its ground point before baking (0.93 m -> 0.82 wide, 1.47 -> 1.37 long,
+# 0.215 -> 0.10 tall) and gets it back as splat spread. pan_splat.glb (pan + golden pancake) is the
+# lookdev hero; pan_only.glb (no pancake: the scene's pancakes are separate bones) goes into the scene.
+select Pan Pancake
+cursor set 0 0 0
+pivot cursor
+scale 0.88 0.93 0.46
+export pan_splat.glb --selection
+select Pan
+export pan_only.glb --selection

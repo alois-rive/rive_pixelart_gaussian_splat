@@ -1,0 +1,8 @@
+# A sand puff thrown up when a ball lands: a light faceted lump.
+new
+material new Puff --base-color 1.0000 0.8118 0.5569 --no-slot
+add mesh ico-sphere --name Puff --subdivisions 1 --radius 0.16 --location 0 0 0
+material assign Puff
+select all
+shade flat
+export puff.glb

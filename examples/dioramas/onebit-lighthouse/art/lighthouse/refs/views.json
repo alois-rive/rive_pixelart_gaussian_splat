@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/onebit-lighthouse/art/lighthouse/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        280,
+        17,
+        209,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.2871,
+      "fill": 0.6035,
+      "background": "#909090"
+    },
+    "right": {
+      "box": [
+        1048,
+        16,
+        209,
+        479
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.2919,
+      "fill": 0.6037,
+      "background": "#919090"
+    },
+    "back": {
+      "box": [
+        280,
+        528,
+        209,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.2871,
+      "fill": 0.6055,
+      "background": "#909090"
+    },
+    "top": {
+      "box": [
+        1083,
+        694,
+        138,
+        137
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9928,
+      "fill": 0.818,
+      "background": "#919090"
+    }
+  }
+}

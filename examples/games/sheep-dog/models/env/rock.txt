@@ -1,0 +1,13 @@
+# A grey field stone: a jittered, squashed icosahedron, 1.0 x 0.8 x 0.5 m. Up Z.
+new
+add mesh ico-sphere --name Rock --subdivisions 1 --radius 0.5 --location 0 0 0.16
+scale 1.0 0.8 0.6
+apply --scale
+mode edit
+select all
+randomize --amount 0.07 --seed 4
+mode object
+material new Stone --base-color 0.459 0.443 0.380
+material assign Stone
+shade flat
+export rock.glb

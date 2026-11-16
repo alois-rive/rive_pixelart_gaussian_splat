@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmdl format="1">
+  <sub_resource id="Material_0" type="Material">
+    <property name="name">"Grass"</property>
+    <property name="base_color">Color(0.588, 0.984, 0.78)</property>
+  </sub_resource>
+  <sub_resource id="Material_1" type="Material">
+    <property name="name">"Path"</property>
+    <property name="base_color">Color(0.847, 0.749, 0.847)</property>
+  </sub_resource>
+  <sub_resource id="Mesh_0" type="Mesh">
+    <property name="verts">4</property>
+    <property name="co">PackedVector3Array(
+        -9, -8, 0,
+        9, -8, 0,
+        9, 8, 0,
+        -9, 8, 0)</property>
+    <property name="edges">4</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 2,
+        2, 3,
+        3, 0)</property>
+    <property name="faces">1</property>
+    <property name="face_loops">PackedInt32Array(0, 4)</property>
+    <property name="face_normals">PackedVector3Array(0, 0, 1)</property>
+    <property name="loops">4</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        2, 2, 0,
+        3, 3, 0)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0, 0,
+        1, 1, 0,
+        1, 1, 1,
+        1, 0, 1)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+  <sub_resource id="Mesh_1" type="Mesh">
+    <property name="verts">20</property>
+    <property name="co">PackedVector3Array(
+        3.4, 0, -0.18,
+        2.7506578, 1.9984698, -0.18,
+        1.0506577, 3.2335923, -0.18,
+        -1.050658, 3.233592, -0.18,
+        -2.750658, 1.9984697, -0.18,
+        -3.4, -0.00000029723745, -0.18,
+        -2.7506578, -1.9984703, -0.18,
+        -1.0506567, -3.2335925, -0.18,
+        1.0506582, -3.233592, -0.18,
+        2.7506578, -1.9984701, -0.18,
+        2.3, 0, 0.18,
+        1.8607391, 1.3519061, 0.18,
+        0.710739, 2.18743, 0.18,
+        -0.71073914, 2.18743, 0.18,
+        -1.8607392, 1.351906, 0.18,
+        -2.3, -0.00000020107238, 0.18,
+        -1.8607389, -1.3519063, 0.18,
+        -0.71073824, -2.1874301, 0.18,
+        0.7107394, -2.18743, 0.18,
+        1.8607389, -1.3519062, 0.18)</property>
+    <property name="vert_flags">PackedInt32Array(
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0)</property>
+    <property name="edges">30</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 11,
+        11, 10,
+        10, 0,
+        1, 2,
+        2, 12,
+        12, 11,
+        2, 3,
+        3, 13,
+        13, 12,
+        3, 4,
+        4, 14,
+        14, 13,
+        4, 5,
+        5, 15,
+        15, 14,
+        5, 6,
+        6, 16,
+        16, 15,
+        6, 7,
+        7, 17,
+        17, 16,
+        7, 8,
+        8, 18,
+        18, 17,
+        8, 9,
+        9, 19,
+        19, 18,
+        9, 0,
+        10, 19)</property>
+    <property name="edge_flags">PackedInt32Array(
+        1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
+        1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0)</property>
+    <property name="faces">12</property>
+    <property name="face_holes">PackedInt32Array(11)</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4,
+        24, 4,
+        28, 4,
+        32, 4,
+        36, 4,
+        40, 10)</property>
+    <property name="face_normals">PackedVector3Array(
+        0.3094627, 0.10055051, 0.9455804,
+        0.19125845, 0.26324466, 0.94558054,
+        -0.000000022021906, 0.3253884, 0.9455805,
+        -0.19125846, 0.26324466, 0.94558054,
+        -0.3094627, 0.100550465, 0.94558054,
+        -0.30946267, -0.10055049, 0.9455805,
+        -0.19125837, -0.26324475, 0.9455804,
+        0.00000006606572, -0.32538828, 0.94558054,
+        0.19125845, -0.26324466, 0.9455805,
+        0.3094627, -0.100550495, 0.94558054,
+        0.000000000958464, 0, 1)</property>
+    <property name="loops">60</property>
+    <property name="loop_holes">PackedInt32Array(50, 51, 52, 53, 54, 55, 56, 57, 58, 59)</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        11, 2, 0,
+        10, 3, 0,
+        1, 4, 1,
+        2, 5, 1,
+        12, 6, 1,
+        11, 1, 1,
+        2, 7, 2,
+        3, 8, 2,
+        13, 9, 2,
+        12, 5, 2,
+        3, 10, 3,
+        4, 11, 3,
+        14, 12, 3,
+        13, 8, 3,
+        4, 13, 4,
+        5, 14, 4,
+        15, 15, 4,
+        14, 11, 4,
+        5, 16, 5,
+        6, 17, 5,
+        16, 18, 5,
+        15, 14, 5,
+        6, 19, 6,
+        7, 20, 6,
+        17, 21, 6,
+        16, 17, 6,
+        7, 22, 7,
+        8, 23, 7,
+        18, 24, 7,
+        17, 20, 7,
+        8, 25, 8,
+        9, 26, 8,
+        19, 27, 8,
+        18, 23, 8,
+        9, 28, 9,
+        0, 3, 9,
+        10, 29, 9,
+        19, 26, 9,
+        10, 2, 10,
+        11, 6, 10,
+        12, 9, 10,
+        13, 12, 10,
+        14, 15, 10,
+        15, 18, 10,
+        16, 21, 10,
+        17, 24, 10,
+        18, 27, 10,
+        19, 29, 10)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0, 0,
+        1, 0.1, 0,
+        1, 0.1, 1,
+        1, 0, 1,
+        1, 0.1, 0,
+        1, 0.2, 0,
+        1, 0.2, 1,
+        1, 0.1, 1,
+        1, 0.2, 0,
+        1, 0.3, 0,
+        1, 0.3, 1,
+        1, 0.2, 1,
+        1, 0.3, 0,
+        1, 0.4, 0,
+        1, 0.4, 1,
+        1, 0.3, 1,
+        1, 0.4, 0,
+        1, 0.5, 0,
+        1, 0.5, 1,
+        1, 0.4, 1,
+        1, 0.5, 0,
+        1, 0.6, 0,
+        1, 0.6, 1,
+        1, 0.5, 1,
+        1, 0.6, 0,
+        1, 0.70000005, 0,
+        1, 0.70000005, 1,
+        1, 0.6, 1,
+        1, 0.7, 0,
+        1, 0.8, 0,
+        1, 0.8, 1,
+        1, 0.7, 1,
+        1, 0.8, 0,
+        1, 0.90000004, 0,
+        1, 0.90000004, 1,
+        1, 0.8, 1,
+        1, 0.90000004, 0,
+        1, 1, 0,
+        1, 1, 1,
+        1, 0.90000004, 1,
+        1, 1, 0.5,
+        1, 0.90450853, 0.7938926,
+        1, 0.6545085, 0.97552824,
+        1, 0.34549147, 0.97552824,
+        1, 0.09549147, 0.7938926,
+        1, 0, 0.49999997,
+        1, 0.09549153, 0.20610732,
+        1, 0.34549168, 0.0244717,
+        1, 0.6545086, 0.02447173,
+        1, 0.9045085, 0.20610735)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+  <sub_resource id="Mesh_2" type="Mesh">
+    <property name="verts">8</property>
+    <property name="co">PackedVector3Array(
+        -0.3, -0.225, -0.05,
+        -0.3, -0.225, 0.05,
+        -0.3, 0.225, -0.05,
+        -0.3, 0.225, 0.05,
+        0.3, -0.225, -0.05,
+        0.3, -0.225, 0.05,
+        0.3, 0.225, -0.05,
+        0.3, 0.225, 0.05)</property>
+    <property name="edges">12</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4)</property>
+    <property name="faces">6</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, -1,
+        0, 0, 1)</property>
+    <property name="loops">24</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        2, 6, 4,
+        6, 9, 4,
+        4, 11, 4,
+        0, 3, 4,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+  <sub_resource id="Mesh_3" type="Mesh">
+    <property name="verts">8</property>
+    <property name="co">PackedVector3Array(
+        -0.3, -0.225, -0.05,
+        -0.3, -0.225, 0.05,
+        -0.3, 0.225, -0.05,
+        -0.3, 0.225, 0.05,
+        0.3, -0.225, -0.05,
+        0.3, -0.225, 0.05,
+        0.3, 0.225, -0.05,
+        0.3, 0.225, 0.05)</property>
+    <property name="edges">12</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4)</property>
+    <property name="faces">6</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, -1,
+        0, 0, 1)</property>
+    <property name="loops">24</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        2, 6, 4,
+        6, 9, 4,
+        4, 11, 4,
+        0, 3, 4,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+  <sub_resource id="Mesh_4" type="Mesh">
+    <property name="verts">8</property>
+    <property name="co">PackedVector3Array(
+        -0.3, -0.225, -0.05,
+        -0.3, -0.225, 0.05,
+        -0.3, 0.225, -0.05,
+        -0.3, 0.225, 0.05,
+        0.3, -0.225, -0.05,
+        0.3, -0.225, 0.05,
+        0.3, 0.225, -0.05,
+        0.3, 0.225, 0.05)</property>
+    <property name="edges">12</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4)</property>
+    <property name="faces">6</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, -1,
+        0, 0, 1)</property>
+    <property name="loops">24</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        2, 6, 4,
+        6, 9, 4,
+        4, 11, 4,
+        0, 3, 4,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+  <sub_resource id="Mesh_5" type="Mesh">
+    <property name="verts">8</property>
+    <property name="co">PackedVector3Array(
+        -0.3, -0.225, -0.05,
+        -0.3, -0.225, 0.05,
+        -0.3, 0.225, -0.05,
+        -0.3, 0.225, 0.05,
+        0.3, -0.225, -0.05,
+        0.3, -0.225, 0.05,
+        0.3, 0.225, -0.05,
+        0.3, 0.225, 0.05)</property>
+    <property name="edges">12</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4)</property>
+    <property name="faces">6</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, -1,
+        0, 0, 1)</property>
+    <property name="loops">24</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        2, 6, 4,
+        6, 9, 4,
+        4, 11, 4,
+        0, 3, 4,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+  <sub_resource id="Mesh_6" type="Mesh">
+    <property name="verts">8</property>
+    <property name="co">PackedVector3Array(
+        -0.3, -0.225, -0.05,
+        -0.3, -0.225, 0.05,
+        -0.3, 0.225, -0.05,
+        -0.3, 0.225, 0.05,
+        0.3, -0.225, -0.05,
+        0.3, -0.225, 0.05,
+        0.3, 0.225, -0.05,
+        0.3, 0.225, 0.05)</property>
+    <property name="edges">12</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4)</property>
+    <property name="faces">6</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, -1,
+        0, 0, 1)</property>
+    <property name="loops">24</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        2, 6, 4,
+        6, 9, 4,
+        4, 11, 4,
+        0, 3, 4,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+  <sub_resource id="Mesh_7" type="Mesh">
+    <property name="verts">8</property>
+    <property name="co">PackedVector3Array(
+        -0.3, -0.225, -0.05,
+        -0.3, -0.225, 0.05,
+        -0.3, 0.225, -0.05,
+        -0.3, 0.225, 0.05,
+        0.3, -0.225, -0.05,
+        0.3, -0.225, 0.05,
+        0.3, 0.225, -0.05,
+        0.3, 0.225, 0.05)</property>
+    <property name="edges">12</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4)</property>
+    <property name="faces">6</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, -1,
+        0, 0, 1)</property>
+    <property name="loops">24</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        2, 6, 4,
+        6, 9, 4,
+        4, 11, 4,
+        0, 3, 4,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+
+  <scene>
+    <property name="active">"Flag5"</property>
+  </scene>
+
+  <object name="Plain" type="mesh">
+    <property name="location">Vector3(0, 1, 0)</property>
+    <property name="rotation">Vector3(0, -0, 0)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_0")</property>
+    <property name="material_slots">[SubResource("Material_0")]</property>
+  </object>
+  <object name="Knoll" type="mesh">
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_1")</property>
+    <property name="material_slots">[SubResource("Material_0")]</property>
+  </object>
+  <object name="Flag0" type="mesh">
+    <property name="location">Vector3(0.25, -3.2, 0.03)</property>
+    <property name="rotation">Vector3(0, 0, 0.17453292)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_2")</property>
+    <property name="material_slots">[SubResource("Material_1")]</property>
+  </object>
+  <object name="Flag1" type="mesh">
+    <property name="location">Vector3(-0.25, -3.9500003, 0.03)</property>
+    <property name="rotation">Vector3(0, 0, -0.17453292)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_3")</property>
+    <property name="material_slots">[SubResource("Material_1")]</property>
+  </object>
+  <object name="Flag2" type="mesh">
+    <property name="location">Vector3(0.25, -4.7, 0.03)</property>
+    <property name="rotation">Vector3(0, 0, 0.17453292)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_4")</property>
+    <property name="material_slots">[SubResource("Material_1")]</property>
+  </object>
+  <object name="Flag3" type="mesh">
+    <property name="location">Vector3(-0.25, -5.45, 0.03)</property>
+    <property name="rotation">Vector3(0, 0, -0.17453292)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_5")</property>
+    <property name="material_slots">[SubResource("Material_1")]</property>
+  </object>
+  <object name="Flag4" type="mesh">
+    <property name="location">Vector3(0.25, -6.2, 0.03)</property>
+    <property name="rotation">Vector3(0, 0, 0.17453292)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_6")</property>
+    <property name="material_slots">[SubResource("Material_1")]</property>
+  </object>
+  <object name="Flag5" type="mesh">
+    <property name="location">Vector3(-0.25, -6.95, 0.03)</property>
+    <property name="rotation">Vector3(0, 0, -0.17453292)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_7")</property>
+    <property name="material_slots">[SubResource("Material_1")]</property>
+  </object>
+</rmdl>

@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.045,
+  "fat": 1.0,
+  "out": "../../lookdev/worm.bin",
+  "objects": [
+    { "model": "worm.glb",
+      "materials": { "Glow": { "ramp": "glow", "flags": ["unlit"] }, "Band": { "ramp": "glow", "flags": ["unlit"] },
+                     "Eye": { "ramp": "dim", "flags": ["unlit"] } } }
+  ]
+}

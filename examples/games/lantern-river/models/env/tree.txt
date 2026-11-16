@@ -1,0 +1,15 @@
+# A night conifer: a short trunk and three stacked 6-sided cones, 2.2 m tall. Up Z.
+new
+material new Bark --base-color 0.1922 0.0196 0.1176 --no-slot
+material new Needles --base-color 0.1922 0.0196 0.1176 --no-slot
+add mesh cylinder --name Trunk --vertices 6 --radius 0.1 --depth 0.5 --location 0 0 0.25
+material assign Bark
+add mesh cone --name C1 --vertices 6 --radius1 0.62 --radius2 0.1 --depth 0.9 --location 0 0 0.85
+material assign Needles
+add mesh cone --name C2 --vertices 6 --radius1 0.5 --radius2 0.06 --depth 0.8 --location 0 0 1.35
+material assign Needles
+add mesh cone --name C3 --vertices 6 --radius1 0.36 --radius2 0 --depth 0.75 --location 0 0 1.85
+material assign Needles
+select all
+shade flat
+export tree.glb

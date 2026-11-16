@@ -1,0 +1,1490 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.07,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -8,
+   0,
+   -7
+  ],
+  [
+   8,
+   3,
+   6
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/meadow.glb",
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/pond.glb",
+   "position": [
+    3.3,
+    0,
+    -1.6
+   ],
+   "yaw": 10,
+   "materials": {
+    "Water": {
+     "ramp": "grass",
+     "spacing": 0.07
+    },
+    "Stone": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Pad": {
+     "ramp": "grass",
+     "spacing": 0.05
+    },
+    "Moon": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/stump.glb",
+   "position": [
+    -4.0,
+    0,
+    2.0
+   ],
+   "yaw": 20,
+   "materials": {
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Rings": {
+     "ramp": "wood",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/jar/jar.glb",
+   "position": [
+    -4.0,
+    0.5,
+    2.0
+   ],
+   "yaw": 18,
+   "scale": 1.5,
+   "materials": {
+    "Glass": {
+     "ramp": "glass",
+     "spacing": 0.05
+    },
+    "Cloth": {
+     "ramp": "cloth",
+     "spacing": 0.05
+    },
+    "String": {
+     "ramp": "glass",
+     "spacing": 0.04
+    },
+    "Wire": {
+     "ramp": "wood",
+     "spacing": 0.04
+    },
+    "Label": {
+     "ramp": "wood",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -6.0,
+    0,
+    -4.3
+   ],
+   "yaw": 10,
+   "scale": 1.1,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -2.9,
+    0,
+    -4.9
+   ],
+   "yaw": 70,
+   "scale": 1.25,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    0.2,
+    0,
+    -4.6
+   ],
+   "yaw": 140,
+   "scale": 1.0,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    3.0,
+    0,
+    -5.0
+   ],
+   "yaw": 200,
+   "scale": 1.2,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    6.0,
+    0,
+    -4.1
+   ],
+   "yaw": 260,
+   "scale": 1.05,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    7.0,
+    0,
+    -0.9
+   ],
+   "yaw": 300,
+   "scale": 1.0,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -7.0,
+    0,
+    -1.0
+   ],
+   "yaw": 40,
+   "scale": 0.95,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    7.2,
+    0,
+    2.6
+   ],
+   "yaw": 120,
+   "scale": 0.9,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -7.3,
+    0,
+    3.0
+   ],
+   "yaw": 330,
+   "scale": 0.85,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/bush.glb",
+   "position": [
+    -6.2,
+    0,
+    4.6
+   ],
+   "yaw": 116.57979533993846,
+   "scale": 1.0,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/bush.glb",
+   "position": [
+    6.4,
+    0,
+    4.4
+   ],
+   "yaw": 54.305702612820696,
+   "scale": 1.1,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/bush.glb",
+   "position": [
+    1.4,
+    0,
+    -4.4
+   ],
+   "yaw": 234.33641029434736,
+   "scale": 0.9,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/bush.glb",
+   "position": [
+    -2.0,
+    0,
+    -4.3
+   ],
+   "yaw": 26.077063200315393,
+   "scale": 0.8,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/bush.glb",
+   "position": [
+    5.6,
+    0,
+    -0.2
+   ],
+   "yaw": 192.9175215504081,
+   "scale": 0.8,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "step": 1,
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -0.67,
+    0,
+    1.1
+   ],
+   "yaw": 333,
+   "scale": 1.08,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    0.11,
+    0,
+    1.37
+   ],
+   "yaw": 66,
+   "scale": 1.11,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    1.82,
+    0,
+    3.43
+   ],
+   "yaw": 34,
+   "scale": 0.98,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -5.73,
+    0,
+    3.6
+   ],
+   "yaw": 250,
+   "scale": 0.83,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    6.75,
+    0,
+    5.15
+   ],
+   "yaw": 235,
+   "scale": 1.17,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -4.8,
+    0,
+    -4.35
+   ],
+   "yaw": 190,
+   "scale": 0.84,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -4.34,
+    0,
+    -2.08
+   ],
+   "yaw": 11,
+   "scale": 1.08,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -0.83,
+    0,
+    3.92
+   ],
+   "yaw": 187,
+   "scale": 1.18,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -0.0,
+    0,
+    2.12
+   ],
+   "yaw": 165,
+   "scale": 0.97,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    6.97,
+    0,
+    5.46
+   ],
+   "yaw": 302,
+   "scale": 1.22,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -2.59,
+    0,
+    -2.2
+   ],
+   "yaw": 104,
+   "scale": 0.84,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    6.41,
+    0,
+    3.97
+   ],
+   "yaw": 0,
+   "scale": 0.93,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    5.74,
+    0,
+    0.2
+   ],
+   "yaw": 353,
+   "scale": 1.04,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -5.98,
+    0,
+    1.79
+   ],
+   "yaw": 280,
+   "scale": 0.96,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -5.78,
+    0,
+    -1.17
+   ],
+   "yaw": 347,
+   "scale": 1.25,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -5.35,
+    0,
+    -2.04
+   ],
+   "yaw": 36,
+   "scale": 0.84,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    0.83,
+    0,
+    -0.03
+   ],
+   "yaw": 69,
+   "scale": 1.24,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -5.17,
+    0,
+    1.94
+   ],
+   "yaw": 42,
+   "scale": 1.05,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -4.02,
+    0,
+    -1.8
+   ],
+   "yaw": 350,
+   "scale": 1.28,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -2.74,
+    0,
+    4.35
+   ],
+   "yaw": 76,
+   "scale": 1.04,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    4.96,
+    0,
+    1.92
+   ],
+   "yaw": 36,
+   "scale": 1.39,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -4.01,
+    0,
+    -1.92
+   ],
+   "yaw": 278,
+   "scale": 1.0,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -2.85,
+    0,
+    -3.77
+   ],
+   "yaw": 32,
+   "scale": 1.15,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -1.8,
+    0,
+    0.03
+   ],
+   "yaw": 345,
+   "scale": 1.09,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    1.04,
+    0,
+    4.17
+   ],
+   "yaw": 66,
+   "scale": 0.89,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    5.72,
+    0,
+    3.68
+   ],
+   "yaw": 90,
+   "scale": 0.91,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    3.35,
+    0,
+    4.9
+   ],
+   "yaw": 71,
+   "scale": 1.37,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    5.35,
+    0,
+    1.54
+   ],
+   "yaw": 152,
+   "scale": 0.86,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -6.46,
+    0,
+    5.13
+   ],
+   "yaw": 86,
+   "scale": 1.22,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -3.4,
+    0,
+    3.74
+   ],
+   "yaw": 215,
+   "scale": 0.98,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -6.04,
+    0,
+    -2.22
+   ],
+   "yaw": 201,
+   "scale": 1.31,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    5.84,
+    0,
+    -2.46
+   ],
+   "yaw": 6,
+   "scale": 0.96,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    -0.76,
+    0,
+    -3.9
+   ],
+   "yaw": 63,
+   "scale": 1.02,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/tuft.glb",
+   "position": [
+    1.01,
+    0,
+    -3.18
+   ],
+   "yaw": 130,
+   "scale": 1.33,
+   "materials": {
+    "Blade": {
+     "ramp": "grass",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    6.25,
+    0,
+    1.91
+   ],
+   "yaw": 249,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    1.1,
+    0,
+    -2.74
+   ],
+   "yaw": 13,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    -6.27,
+    0,
+    4.19
+   ],
+   "yaw": 252,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    6.02,
+    0,
+    -3.81
+   ],
+   "yaw": 229,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    -0.23,
+    0,
+    2.57
+   ],
+   "yaw": 115,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    6.49,
+    0,
+    -3.32
+   ],
+   "yaw": 197,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    3.08,
+    0,
+    4.1
+   ],
+   "yaw": 265,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    2.65,
+    0,
+    3.14
+   ],
+   "yaw": 329,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    -1.93,
+    0,
+    2.17
+   ],
+   "yaw": 324,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    3.78,
+    0,
+    3.77
+   ],
+   "yaw": 206,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    1.07,
+    0,
+    1.48
+   ],
+   "yaw": 29,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    1.81,
+    0,
+    4.94
+   ],
+   "yaw": 317,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    3.06,
+    0,
+    1.23
+   ],
+   "yaw": 159,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    4.4,
+    0,
+    -3.25
+   ],
+   "yaw": 270,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    -6.11,
+    0,
+    1.41
+   ],
+   "yaw": 173,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flower.glb",
+   "position": [
+    -0.04,
+    0,
+    1.53
+   ],
+   "yaw": 331,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Petal": {
+     "ramp": "cloth",
+     "spacing": 0.04
+    },
+    "Heart": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/net.glb",
+   "position": [
+    0,
+    1.0,
+    0
+   ],
+   "bone": "net",
+   "materials": {
+    "Hoop": {
+     "ramp": "wood",
+     "spacing": 0.04
+    },
+    "Mesh": {
+     "ramp": "glass",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.05
+    },
+    "Handle": {
+     "ramp": "wood",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/firefly.glb",
+   "position": [
+    0,
+    1.0,
+    0
+   ],
+   "bone": "fly",
+   "copies": 16,
+   "materials": {
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    },
+    "Head": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/firefly.glb",
+   "position": [
+    -4.0,
+    1.0,
+    2.0
+   ],
+   "scale": 0.75,
+   "bone": "jfly",
+   "copies": 12,
+   "materials": {
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    },
+    "Head": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/moth.glb",
+   "position": [
+    0,
+    1.2,
+    0
+   ],
+   "bone": "moth",
+   "copies": 5,
+   "materials": {
+    "Body": {
+     "ramp": "moth",
+     "spacing": 0.04
+    },
+    "Wing": {
+     "ramp": "moth",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.04
+    },
+    "Spot": {
+     "ramp": "moth",
+     "spacing": 0.035,
+     "specks": true
+    }
+   },
+   "scale": 1.4
+  },
+  {
+   "model": "models/env/spark.glb",
+   "position": [
+    0,
+    1.0,
+    0
+   ],
+   "bone": "spark",
+   "copies": 4,
+   "materials": {
+    "Spark": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035
+    }
+   }
+  }
+ ]
+}

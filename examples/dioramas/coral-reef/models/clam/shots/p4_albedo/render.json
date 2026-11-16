@@ -1,0 +1,12 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "clam_rest",
+  "views": "front,right,back,top",
+  "size": 480,
+  "pixel": 2,
+  "arg": [],
+  "look": "albedo",
+  "texel": 0,
+  "elevation": 0
+}

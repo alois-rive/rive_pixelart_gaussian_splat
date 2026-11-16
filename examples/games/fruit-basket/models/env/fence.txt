@@ -1,0 +1,57 @@
+# Back fence: posts every 1.4 m and two rails, 13 m long along X, 0.9 m tall. Static.
+new
+material new Wood --base-color 0.6549 0.4824 0.3569 --no-slot
+add mesh cube --name Post0 --size 1 --location -6.30 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post1 --size 1 --location -4.90 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post2 --size 1 --location -3.50 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post3 --size 1 --location -2.10 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post4 --size 1 --location -0.70 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post5 --size 1 --location 0.70 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post6 --size 1 --location 2.10 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post7 --size 1 --location 3.50 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post8 --size 1 --location 4.90 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Post9 --size 1 --location 6.30 0 0.5
+scale 0.14 0.14 1.0
+apply --scale
+material assign Wood
+add mesh cube --name Rail0 --size 1 --location 0 0 0.75
+scale 13 0.08 0.12
+apply --scale
+material assign Wood
+add mesh cube --name Rail1 --size 1 --location 0 0 0.4
+scale 13 0.08 0.12
+apply --scale
+material assign Wood
+select all
+active Rail0
+join
+select all
+shade flat
+export fence.glb

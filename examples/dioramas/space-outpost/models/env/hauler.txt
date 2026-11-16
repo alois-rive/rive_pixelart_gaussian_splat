@@ -1,0 +1,74 @@
+# Hauler: a boxy cargo ship that visits the pad (moved by the scene's game.as: one game bone). A cab
+# with a glowing windscreen, a spine carrying a cargo pod, an engine block with two nozzles, four
+# legs on foot pads. 2.3 m long, 1.2 m wide, 1.25 m tall. Up Z, nose to -Y; origin on the ground
+# under its centre. Nozzles at (+-0.25, 1.2, 0.72): the jets attach there.
+new
+material new Hull --base-color 0.537 0.635 0.341 --no-slot
+material new Cargo --base-color 0.302 0.502 0.380 --no-slot
+material new Trim --base-color 0.188 0.365 0.259 --no-slot
+material new Glow --base-color 0.745 0.863 0.498 --emission 0.745 0.863 0.498 --no-slot
+add mesh cube --name Cab --size 1 --location 0 -0.78 0.78
+scale 0.9 0.62 0.62
+apply --scale
+apply --location
+material assign Hull
+active Cab
+mode edit
+select vert where "pos.y < -1.0 && pos.z > 0.9"
+translate 0 0.16 0
+mode object
+add mesh cube --name Screen --size 1 --location 0 -1.06 0.9
+scale 0.66 0.1 0.18
+apply --scale
+material assign Glow
+add mesh cube --name Spine --size 1 --location 0 0.15 0.62
+scale 0.5 1.5 0.3
+apply --scale
+material assign Trim
+add mesh cube --name Pod --size 1 --location 0 0.12 0.92
+scale 1.2 0.92 0.66
+apply --scale
+material assign Cargo
+add mesh cube --name Engine --size 1 --location 0 0.92 0.72
+scale 0.9 0.4 0.5
+apply --scale
+material assign Hull
+add mesh cylinder --name NozL --vertices 6 --radius 0.16 --depth 0.18 --location -0.25 1.13 0.72 --rotation 90 0 0
+material assign Trim
+add mesh cylinder --name NozR --vertices 6 --radius 0.16 --depth 0.18 --location 0.25 1.13 0.72 --rotation 90 0 0
+material assign Trim
+add mesh cube --name Leg0 --size 1 --location -0.48 -0.55 0.25
+scale 0.13 0.13 0.42
+apply --scale
+material assign Trim
+add mesh cube --name Leg1 --size 1 --location 0.48 -0.55 0.25
+scale 0.13 0.13 0.42
+apply --scale
+material assign Trim
+add mesh cube --name Leg2 --size 1 --location -0.48 0.7 0.25
+scale 0.13 0.13 0.42
+apply --scale
+material assign Trim
+add mesh cube --name Leg3 --size 1 --location 0.48 0.7 0.25
+scale 0.13 0.13 0.42
+apply --scale
+material assign Trim
+add mesh cube --name Foot0 --size 1 --location -0.48 -0.55 0.03
+scale 0.28 0.28 0.06
+apply --scale
+material assign Trim
+add mesh cube --name Foot1 --size 1 --location 0.48 -0.55 0.03
+scale 0.28 0.28 0.06
+apply --scale
+material assign Trim
+add mesh cube --name Foot2 --size 1 --location -0.48 0.7 0.03
+scale 0.28 0.28 0.06
+apply --scale
+material assign Trim
+add mesh cube --name Foot3 --size 1 --location 0.48 0.7 0.03
+scale 0.28 0.28 0.06
+apply --scale
+material assign Trim
+select all
+shade flat
+export hauler.glb

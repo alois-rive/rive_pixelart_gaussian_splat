@@ -1,0 +1,39 @@
+# Knight, phase 2: materials in Rust Gold 8 (exact sRGB of the ramp steps), the shield's face (an
+# inset of both flat faces: orange face, gold rim), the helm's top chamfer, joins, flat shading,
+# export. Run after p1_blockout.txt.
+material new Armour --base-color 0.4471 0.3490 0.3373 --no-slot
+material new Slit --base-color 0.1255 0.1255 0.1255 --no-slot
+material new Gold --base-color 0.9647 0.8039 0.1490 --no-slot
+material new Tabard --base-color 0.6745 0.4196 0.1490 --no-slot
+material new Leather --base-color 0.2000 0.1098 0.0902 --no-slot
+material new Blade --base-color 0.7333 0.4980 0.3412 --no-slot
+select Helm Dome Torso LegR LegL PauldronR PauldronL ArmR ArmL
+material assign Armour
+select Slit
+material assign Slit
+select Plume Guard Shield
+material assign Gold
+select TabardF TabardB
+material assign Tabard
+select BootR BootL GloveR GloveL
+material assign Leather
+select Blade
+material assign Blade
+active Shield
+mode edit
+select face where "abs(normal.x) > 0.9"
+inset 0.06
+material assign Tabard
+mode object
+active Plume
+mode edit
+select edge where "pos.z > 0.05"
+bevel 0.04 --segments 1
+mode object
+select all
+active Torso
+join
+rename Torso Knight
+shade flat
+inspect stats
+export knight.glb

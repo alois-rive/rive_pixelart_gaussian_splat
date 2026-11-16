@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/space-outpost/art/radar/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        192,
+        16,
+        383,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.248,
+      "fill": 0.7169,
+      "background": "#d2d2d1"
+    },
+    "right": {
+      "box": [
+        953,
+        16,
+        337,
+        480
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4243,
+      "fill": 0.4938,
+      "background": "#d3d2d2"
+    },
+    "back": {
+      "box": [
+        192,
+        529,
+        383,
+        477
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2454,
+      "fill": 0.7188,
+      "background": "#d3d2d2"
+    },
+    "top": {
+      "box": [
+        953,
+        569,
+        397,
+        381
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9597,
+      "fill": 0.6865,
+      "background": "#d3d2d2"
+    }
+  }
+}

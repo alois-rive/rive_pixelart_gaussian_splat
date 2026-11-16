@@ -1,0 +1,20 @@
+# The muzzle flash: three crossed spikes 0.9 m long, unlit cream. Origin at its centre.
+new
+material new Fire --base-color 1.0000 0.9255 0.8392 --no-slot --emission 1.0000 0.9255 0.8392
+add mesh cube --name F0 --size 1 --location 0 0 0
+scale 0.9 0.2 0.2
+apply --scale
+add mesh cube --name F1 --size 1 --location 0 0 0
+scale 0.2 0.9 0.2
+apply --scale
+add mesh cube --name F2 --size 1 --location 0 0 0
+scale 0.2 0.2 0.9
+apply --scale
+select F0 F1 F2
+active F0
+join
+set rotation 30 20 40
+apply --rotation
+material assign Fire
+shade flat
+export flash.glb

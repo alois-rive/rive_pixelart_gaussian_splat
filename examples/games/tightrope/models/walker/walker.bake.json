@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.05,
+  "fat": 1.0,
+  "out": "../../lookdev/walker.bin",
+  "objects": [
+    { "model": "walker.glb",
+      "materials": { "Cloth": { "ramp": "cool" }, "Sash": { "ramp": "cool" }, "Red": { "ramp": "red" },
+                     "Skin": { "ramp": "red" }, "Hair": { "ramp": "red", "spacing": 0.05 },
+                     "Pole": { "ramp": "rope", "spacing": 0.045 }, "Weight": { "ramp": "rope", "spacing": 0.05 } } }
+  ]
+}

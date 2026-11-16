@@ -1,0 +1,192 @@
+# Stars: small cubes scattered over a band x -7..7, height 0.7..3.9 m, all at world z -16 (far behind
+# the hills; the camera's pitch lifts them into the sky). Unlit, single art pixels. Up Z.
+new
+material new Star --base-color 0.4863 0.0941 0.2353 --emission 0.4863 0.0941 0.2353 --no-slot
+material new Bright --base-color 0.8353 0.2353 0.4157 --emission 0.8353 0.2353 0.4157 --no-slot
+add mesh cube --name S0 --size 1 --location -0.518 16.361 1.895
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S1 --size 1 --location 5.132 15.997 0.721
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S2 --size 1 --location 5.576 15.946 0.959
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S3 --size 1 --location 1.633 16.121 0.831
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S4 --size 1 --location 2.849 15.775 2.146
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S5 --size 1 --location -4.800 16.389 1.462
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S6 --size 1 --location 0.088 15.910 3.656
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S7 --size 1 --location 3.839 15.754 1.928
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S8 --size 1 --location -5.577 15.826 1.632
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S9 --size 1 --location 3.160 16.412 2.050
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S10 --size 1 --location -3.266 16.219 1.372
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S11 --size 1 --location 4.333 15.614 1.338
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S12 --size 1 --location 5.311 16.121 0.875
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S13 --size 1 --location -0.116 16.075 0.775
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S14 --size 1 --location 5.690 15.903 1.059
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S15 --size 1 --location -5.303 15.605 2.552
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S16 --size 1 --location -4.157 16.416 0.726
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S17 --size 1 --location 0.557 16.415 0.756
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S18 --size 1 --location -0.046 16.080 3.647
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S19 --size 1 --location -1.426 16.407 2.744
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S20 --size 1 --location 1.117 15.891 1.252
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S21 --size 1 --location 6.417 15.945 0.873
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S22 --size 1 --location 1.489 16.232 1.178
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S23 --size 1 --location 6.928 16.379 3.893
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S24 --size 1 --location 2.877 16.263 3.743
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S25 --size 1 --location 1.556 16.134 0.838
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S26 --size 1 --location 2.438 15.725 2.589
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S27 --size 1 --location -5.786 15.636 1.811
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S28 --size 1 --location 1.178 16.098 2.144
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S29 --size 1 --location 6.805 16.482 2.538
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S30 --size 1 --location 4.191 16.066 1.752
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S31 --size 1 --location -4.012 16.175 2.121
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S32 --size 1 --location -5.757 16.397 2.714
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S33 --size 1 --location 3.977 15.719 0.781
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S34 --size 1 --location 4.306 15.791 2.291
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S35 --size 1 --location -3.524 16.075 3.060
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S36 --size 1 --location -3.767 16.099 3.785
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S37 --size 1 --location -1.778 16.131 3.452
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S38 --size 1 --location 2.345 15.657 1.247
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S39 --size 1 --location -3.375 15.525 0.862
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S40 --size 1 --location -4.581 15.514 3.729
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S41 --size 1 --location 1.492 16.439 0.738
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S42 --size 1 --location -4.080 15.888 1.944
+scale 0.080 0.080 0.080
+apply --scale
+material assign Bright
+add mesh cube --name S43 --size 1 --location 6.530 16.359 1.834
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S44 --size 1 --location 0.867 16.413 1.139
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+add mesh cube --name S45 --size 1 --location 0.783 16.434 2.927
+scale 0.050 0.050 0.050
+apply --scale
+material assign Star
+select all
+shade flat
+export stars.glb

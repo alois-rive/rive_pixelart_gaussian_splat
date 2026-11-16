@@ -1,0 +1,49 @@
+# A pond: a 10-sided water disc (r 1.3) 4 cm under the grass in a ring of grey stones. Up Z.
+new
+material new Water --base-color 0.349 0.490 0.808 --no-slot
+material new Stone --base-color 0.522 0.584 0.631 --no-slot
+add mesh circle --name Water --vertices 10 --radius 1.3 --cap-fill triangle-fan --location 0 0 0.02
+material assign Water
+add mesh ico-sphere --name S0 --subdivisions 1 --radius 0.24 --location 1.357 0.420 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S1 --subdivisions 1 --radius 0.24 --location 0.851 1.137 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S2 --subdivisions 1 --radius 0.24 --location 0.020 1.420 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S3 --subdivisions 1 --radius 0.24 --location -0.818 1.161 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S4 --subdivisions 1 --radius 0.24 --location -1.344 0.458 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S5 --subdivisions 1 --radius 0.24 --location -1.357 -0.420 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S6 --subdivisions 1 --radius 0.24 --location -0.851 -1.137 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S7 --subdivisions 1 --radius 0.24 --location -0.020 -1.420 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S8 --subdivisions 1 --radius 0.24 --location 0.818 -1.161 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+add mesh ico-sphere --name S9 --subdivisions 1 --radius 0.24 --location 1.344 -0.458 0.06
+scale 1.2 1.0 0.6
+apply --scale
+material assign Stone
+select all
+shade flat
+export pond.glb

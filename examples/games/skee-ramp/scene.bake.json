@@ -1,0 +1,253 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.035,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -4.5,
+   -0.1,
+   -2.3
+  ],
+  [
+   4.5,
+   4.5,
+   4.5
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/floor.glb",
+   "materials": {
+    "Carpet": {
+     "ramp": "dusk",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/wall.glb",
+   "materials": {
+    "Wall": {
+     "ramp": "dusk",
+     "spacing": 0.08
+    },
+    "Skirt": {
+     "ramp": "dusk",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/neon.glb",
+   "position": [
+    0,
+    2.5,
+    -2.12
+   ],
+   "materials": {
+    "Star": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    },
+    "Ring": {
+     "ramp": "pink",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    },
+    "Bolt": {
+     "ramp": "mint",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/lane/lane.glb",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "materials": {
+    "Lane": {
+     "ramp": "fire"
+    },
+    "Rail": {
+     "ramp": "pink"
+    },
+    "Cabinet": {
+     "ramp": "pink"
+    },
+    "Board": {
+     "ramp": "blue"
+    },
+    "White": {
+     "ramp": "blue"
+    },
+    "Blue": {
+     "ramp": "blue"
+    },
+    "Hole": {
+     "ramp": "dusk"
+    },
+    "Marquee": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/lane/lane.glb",
+   "position": [
+    -1.75,
+    0,
+    0
+   ],
+   "materials": {
+    "Lane": {
+     "ramp": "fire",
+     "spacing": 0.06
+    },
+    "Rail": {
+     "ramp": "pink",
+     "spacing": 0.06
+    },
+    "Cabinet": {
+     "ramp": "pink",
+     "spacing": 0.06
+    },
+    "Board": {
+     "ramp": "blue",
+     "spacing": 0.06
+    },
+    "White": {
+     "ramp": "blue",
+     "spacing": 0.06
+    },
+    "Blue": {
+     "ramp": "blue",
+     "spacing": 0.06
+    },
+    "Hole": {
+     "ramp": "dusk",
+     "spacing": 0.06
+    },
+    "Marquee": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/lane/lane.glb",
+   "position": [
+    1.75,
+    0,
+    0
+   ],
+   "materials": {
+    "Lane": {
+     "ramp": "fire",
+     "spacing": 0.06
+    },
+    "Rail": {
+     "ramp": "pink",
+     "spacing": 0.06
+    },
+    "Cabinet": {
+     "ramp": "pink",
+     "spacing": 0.06
+    },
+    "Board": {
+     "ramp": "blue",
+     "spacing": 0.06
+    },
+    "White": {
+     "ramp": "blue",
+     "spacing": 0.06
+    },
+    "Blue": {
+     "ramp": "blue",
+     "spacing": 0.06
+    },
+    "Hole": {
+     "ramp": "dusk",
+     "spacing": 0.06
+    },
+    "Marquee": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/tray.glb",
+   "position": [
+    0,
+    0,
+    1.6
+   ],
+   "materials": {
+    "Tray": {
+     "ramp": "mint",
+     "spacing": 0.035
+    },
+    "Rim": {
+     "ramp": "pink",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/ball.glb",
+   "bone": "ball",
+   "copies": 9,
+   "position": [
+    0,
+    0.55,
+    1.78
+   ],
+   "materials": {
+    "Ball": {
+     "ramp": "mint",
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/env/flash.glb",
+   "bone": "flash",
+   "position": [
+    0,
+    -3,
+    0
+   ],
+   "materials": {
+    "Flash": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.03
+    }
+   }
+  }
+ ]
+}

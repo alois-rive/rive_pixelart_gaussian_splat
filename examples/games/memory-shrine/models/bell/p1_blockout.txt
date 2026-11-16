@@ -1,0 +1,18 @@
+# Bell, phase 1: one primitive per named part at the spec's sizes (bell.spec.md). Octagons turned
+# 22.5 degrees so a flat face looks to the front (as the sheet draws it). Up Z, front -Y, origin at
+# the lip's centre on the ground.
+new
+add mesh cone --name Flare --vertices 8 --radius1 0.676 --radius2 0.612 --depth 0.09 --location 0 0 0.045
+add mesh cone --name Body --vertices 8 --radius1 0.596 --radius2 0.495 --depth 1.0 --location 0 0 0.585
+add mesh cylinder --name BandLow --vertices 8 --radius 0.624 --depth 0.13 --location 0 0 0.155
+add mesh cylinder --name BandHigh --vertices 8 --radius 0.532 --depth 0.10 --location 0 0 0.957
+add mesh cone --name Dome --vertices 8 --radius1 0.495 --radius2 0.227 --depth 0.232 --location 0 0 1.201
+select Flare Body BandLow BandHigh Dome
+set rotation 0 0 22.5
+apply --rotation
+add mesh torus --name Loop --major-segments 10 --minor-segments 6 --major-radius 0.2 --minor-radius 0.07 --location 0 0 1.527 --rotation 90 0 0
+apply --rotation
+add mesh cylinder --name BossF --vertices 8 --radius 0.18 --depth 0.16 --location 0 -0.55 0.46 --rotation 90 0 0
+apply --rotation
+add mesh cylinder --name BossB --vertices 8 --radius 0.18 --depth 0.16 --location 0 0.55 0.46 --rotation 90 0 0
+apply --rotation

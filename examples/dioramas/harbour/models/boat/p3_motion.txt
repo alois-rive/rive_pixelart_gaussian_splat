@@ -1,0 +1,121 @@
+# Phase 3, motion: the boat bobs. Parts joined into one mesh (one bone in the blob), a skirt
+# below the waterline so a rolled hull never shows its foot, then a seamless 4 s loop at 12 fps:
+# roll 5 deg and pitch 2 deg on one period, a 0.035 m rise and fall twice per loop.
+# Keys every 2 frames from the curves below, interpolation linear; frame 48 = frame 0 (loop seam).
+# hedra exports frame f at f / fps seconds: keys start at frame 0 so the glTF runs 0..4.0 s exactly.
+# The export bakes them (`export boat.glb --bake-animations`): the baker samples them at 12 fps.
+select all
+active Hull
+join
+rename Hull Boat
+active Boat
+mode edit
+select face where "normal.z < -0.9 && pos.z < 0.01"
+extrude 0 0 -0.25
+mode object
+fps 12
+frame range 0 47
+select Boat
+frame set 0
+set location 0 0 0.0000
+set rotation 2.000 0.000 0
+keyframe insert --channels loc,rot
+frame set 2
+set location 0 0 0.0175
+set rotation 1.932 1.294 0
+keyframe insert --channels loc,rot
+frame set 4
+set location 0 0 0.0303
+set rotation 1.732 2.500 0
+keyframe insert --channels loc,rot
+frame set 6
+set location 0 0 0.0350
+set rotation 1.414 3.536 0
+keyframe insert --channels loc,rot
+frame set 8
+set location 0 0 0.0303
+set rotation 1.000 4.330 0
+keyframe insert --channels loc,rot
+frame set 10
+set location 0 0 0.0175
+set rotation 0.518 4.830 0
+keyframe insert --channels loc,rot
+frame set 12
+set location 0 0 0.0000
+set rotation 0.000 5.000 0
+keyframe insert --channels loc,rot
+frame set 14
+set location 0 0 -0.0175
+set rotation -0.518 4.830 0
+keyframe insert --channels loc,rot
+frame set 16
+set location 0 0 -0.0303
+set rotation -1.000 4.330 0
+keyframe insert --channels loc,rot
+frame set 18
+set location 0 0 -0.0350
+set rotation -1.414 3.536 0
+keyframe insert --channels loc,rot
+frame set 20
+set location 0 0 -0.0303
+set rotation -1.732 2.500 0
+keyframe insert --channels loc,rot
+frame set 22
+set location 0 0 -0.0175
+set rotation -1.932 1.294 0
+keyframe insert --channels loc,rot
+frame set 24
+set location 0 0 -0.0000
+set rotation -2.000 0.000 0
+keyframe insert --channels loc,rot
+frame set 26
+set location 0 0 0.0175
+set rotation -1.932 -1.294 0
+keyframe insert --channels loc,rot
+frame set 28
+set location 0 0 0.0303
+set rotation -1.732 -2.500 0
+keyframe insert --channels loc,rot
+frame set 30
+set location 0 0 0.0350
+set rotation -1.414 -3.536 0
+keyframe insert --channels loc,rot
+frame set 32
+set location 0 0 0.0303
+set rotation -1.000 -4.330 0
+keyframe insert --channels loc,rot
+frame set 34
+set location 0 0 0.0175
+set rotation -0.518 -4.830 0
+keyframe insert --channels loc,rot
+frame set 36
+set location 0 0 0.0000
+set rotation -0.000 -5.000 0
+keyframe insert --channels loc,rot
+frame set 38
+set location 0 0 -0.0175
+set rotation 0.518 -4.830 0
+keyframe insert --channels loc,rot
+frame set 40
+set location 0 0 -0.0303
+set rotation 1.000 -4.330 0
+keyframe insert --channels loc,rot
+frame set 42
+set location 0 0 -0.0350
+set rotation 1.414 -3.536 0
+keyframe insert --channels loc,rot
+frame set 44
+set location 0 0 -0.0303
+set rotation 1.732 -2.500 0
+keyframe insert --channels loc,rot
+frame set 46
+set location 0 0 -0.0175
+set rotation 1.932 -1.294 0
+keyframe insert --channels loc,rot
+frame set 48
+set location 0 0 -0.0000
+set rotation 2.000 -0.000 0
+keyframe insert --channels loc,rot
+keyframe interpolation linear --all
+frame set 0
+keyframe list

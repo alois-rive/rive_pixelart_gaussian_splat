@@ -1,0 +1,13 @@
+# Rock: a jittered, flattened icosphere. Up Z.
+new
+add mesh ico-sphere --name Rock --subdivisions 1 --radius 0.45 --location 0 0 0.18
+scale 1.0 0.8 0.6
+apply --scale
+material new Stone --base-color 0.545 0.427 0.612
+active Rock
+mode edit
+select all
+randomize --amount 0.07 --seed 9
+mode object
+shade flat
+export rock.glb

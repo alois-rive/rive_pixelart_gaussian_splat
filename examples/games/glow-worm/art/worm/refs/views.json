@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/glow-worm/art/worm/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        280,
+        120,
+        209,
+        251
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.201,
+      "fill": 0.6859,
+      "background": "#8f8f8e"
+    },
+    "right": {
+      "box": [
+        822,
+        116,
+        639,
+        255
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.3991,
+      "fill": 0.5622,
+      "background": "#908f8f"
+    },
+    "back": {
+      "box": [
+        280,
+        600,
+        208,
+        290
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3942,
+      "fill": 0.6429,
+      "background": "#908f8f"
+    },
+    "top": {
+      "box": [
+        1069,
+        536,
+        159,
+        426
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.6792,
+      "fill": 0.7032,
+      "background": "#90908f"
+    }
+  }
+}

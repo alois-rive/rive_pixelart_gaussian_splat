@@ -1,0 +1,49 @@
+{
+  "name": "Twilight 5",
+  "source": "https://lospec.com/palette-list/twilight-5",
+  "author": "Star",
+  "colors": [
+    "#fbbbad",
+    "#ee8695",
+    "#4a7a96",
+    "#333f58",
+    "#292831"
+  ],
+  "ramps": {
+    "hill": [
+      "#292831",
+      "#333f58",
+      "#4a7a96"
+    ],
+    "kite": [
+      "#292831",
+      "#ee8695",
+      "#fbbbad"
+    ],
+    "glow": [
+      "#ee8695",
+      "#fbbbad"
+    ],
+    "bird": [
+      "#292831",
+      "#333f58"
+    ],
+    "wood": [
+      "#292831",
+      "#333f58",
+      "#4a7a96",
+      "#ee8695"
+    ],
+    "cloud": [
+      "#4a7a96",
+      "#ee8695",
+      "#fbbbad"
+    ]
+  },
+  "roles": {
+    "sky_top": "#333f58",
+    "sky_bottom": "#ee8695",
+    "fog": "#4a7a96",
+    "void": "#292831"
+  }
+}

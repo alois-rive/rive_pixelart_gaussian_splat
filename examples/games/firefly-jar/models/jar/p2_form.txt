@@ -1,0 +1,25 @@
+# Firefly jar, phase 2: materials in exact retrocal-8 colours (sRGB 0..1), joined, flat, export.
+# Glass #6eb8a8 (glass ramp step 1), Cloth #c6505a (cloth step 2), String #fcffc0 (glass step 2),
+# Wire #774448 (wood step 1), Label #ee9c5d (wood step 2).
+material new Glass --base-color 0.431 0.722 0.659 --no-slot
+material new Cloth --base-color 0.776 0.314 0.353 --no-slot
+material new String --base-color 0.988 1.0 0.753 --no-slot
+material new Wire --base-color 0.467 0.267 0.282 --no-slot
+material new Label --base-color 0.933 0.612 0.365 --no-slot
+select Foot Body Shoulder Neck
+material assign Glass
+select Cap Point0 Point1 Point2 Point3
+material assign Cloth
+select Band
+material assign String
+select Wire0 Wire1 Wire2 Wire3 Wire4 Wire5 Wire6
+material assign Wire
+select Label
+material assign Label
+select all
+active Body
+join
+rename Body Jar
+shade flat
+inspect stats
+export jar.glb

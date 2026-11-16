@@ -1,0 +1,33 @@
+# Apple tree canopy: six faceted ico-sphere lumps (2.9 m wide, 1.9 m tall), centre at the origin,
+# with five small red apples set into its front (smaller than the falling fruit, so those stand out). A game bone: the game shakes it before a fruit drops.
+new
+material new Leaf --base-color 0.5412 0.6902 0.3765 --no-slot
+material new Apple --base-color 0.7059 0.3216 0.3216 --no-slot
+add mesh ico-sphere --name Lump0 --subdivisions 1 --radius 1.05 --location 0 0 0.0
+material assign Leaf
+add mesh ico-sphere --name Lump1 --subdivisions 1 --radius 0.75 --location -0.75 0.1 -0.15
+material assign Leaf
+add mesh ico-sphere --name Lump2 --subdivisions 1 --radius 0.8 --location 0.78 0.05 -0.1
+material assign Leaf
+add mesh ico-sphere --name Lump3 --subdivisions 1 --radius 0.75 --location 0.0 0.25 0.55
+material assign Leaf
+add mesh ico-sphere --name Lump4 --subdivisions 1 --radius 0.65 --location -0.35 -0.35 -0.35
+material assign Leaf
+add mesh ico-sphere --name Lump5 --subdivisions 1 --radius 0.6 --location 0.4 -0.4 -0.3
+material assign Leaf
+add mesh ico-sphere --name Dot0 --subdivisions 1 --radius 0.1 --location -0.6 -0.80 -0.6
+material assign Apple
+add mesh ico-sphere --name Dot1 --subdivisions 1 --radius 0.1 --location 0.7 -0.77 -0.55
+material assign Apple
+add mesh ico-sphere --name Dot2 --subdivisions 1 --radius 0.1 --location -0.1 -0.92 0.25
+material assign Apple
+add mesh ico-sphere --name Dot3 --subdivisions 1 --radius 0.1 --location 0.9 -0.72 0.0
+material assign Apple
+add mesh ico-sphere --name Dot4 --subdivisions 1 --radius 0.1 --location -0.85 -0.74 0.05
+material assign Apple
+select all
+active Lump0
+join
+select all
+shade flat
+export canopy.glb

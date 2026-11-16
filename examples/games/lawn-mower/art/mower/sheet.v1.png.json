@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v1.png",
+  "sha256": "c629317579200bb2f8d2420f2e12c89aa555caf0bd74f3e5269cf10357e5d78d",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v1.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small red ride-on lawn mower with a gardener in a straw hat sitting on it.\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- Every view sits whole inside its panel with a clear margin of background all round (at least a tenth of the panel): nothing touches or crosses a panel edge.\n- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).\n- The four panels show the SAME object, only turned: FRONT: the mower drives towards the camera. RIGHT: the camera has walked round to the side that was on the RIGHT of the image in the front view (the mower's own left-hand side), so the mower's front points to the LEFT edge of the image; the grass chute, which is on the mower's own RIGHT side, is on the far side. BACK: seen from behind. TOP: seen from straight above, looking down, with the mower's front towards the BOTTOM edge of the image. Each detail appears only in the views from which it is really visible.\n- One flat, uniform, mid grey background (#9a9a9a) everywhere: no floor, no grass, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views):\n- The body: a chunky red box 0.8 m wide, 1.4 m long and 0.35 m tall, its bottom 0.25 m above the ground; its front half is the engine hood, whose top slopes down towards the front.\n- Four dark wheels outside the body: two big rear wheels 0.56 m tall and 0.2 m wide, two small front wheels 0.36 m tall and 0.15 m wide, each with a pale grey round hub. Total width over the wheels 1.15 m.\n- The cutting deck: a flat grey plate 1.15 m wide and 0.55 m long under the middle of the body, 0.1 m above the ground.\n- A grass chute on the mower's own RIGHT side (the image's LEFT in the FRONT view): a dark grey box 0.25 m wide and 0.3 m long sticking out sideways from the deck.\n- A dark brown seat with a backrest on the rear half of the body, 0.45 m wide; a dark steering wheel on a short column in front of it.\n- The gardener sitting on the seat facing forward: a blue shirt torso 0.42 m wide, 0.26 m deep, 0.42 m tall; arms reaching forward to the steering wheel; a boxy skin-coloured head 0.24 m; a wide yellow straw hat, its round brim 0.55 m across, its crown 0.25 m across.\n- Total height 1.3 m, total length 1.5 m.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 600 triangles worth of detail. No smooth organic surfaces, no tiny details (no face features, no bolts, no tread pattern), no texture noise, no grain, no writing, no logos.\n- Flat colour areas only, ONLY these colours (from the Endesga 16 palette): body red #e53b44 (shade #9e2835), wheels #3f2832 with hubs #afbfd2, deck and chute #4f6781, seat and steering wheel #743f39, shirt #0484d1, skin #e4a672, hat #ffe762 (shade #fb922b).\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e5c8-fca0-7751-b2c7-18a348c5ae9a",
+    "source": "/Users/alois/.codex/generated_images/01a1e5c8-fca0-7751-b2c7-18a348c5ae9a/exec-29daf765-9f36-4ba7-a7fc-18103adbff86.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e5c8-fca0-7751-b2c7-18a348c5ae9a/exec-29daf765-9f36-4ba7-a7fc-18103adbff86.png"
+    ]
+  },
+  "seconds": 62.6,
+  "created": "2026-11-16T20:16:19+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/lawn-mower/art/mower/sheet.v1.png",
+  "reviewed": false
+}

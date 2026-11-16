@@ -1,0 +1,194 @@
+# Carousel, phase 2: materials (PICO-8 ramp steps, sRGB 0..1), joins, the turn and the bob, export.
+material new Blue --base-color 0.161 0.678 1 --no-slot
+material new Orange --base-color 1 0.639 0 --no-slot
+material new Pink --base-color 1 0.467 0.659 --no-slot
+material new Yellow --base-color 1 0.925 0.153 --no-slot
+material new Red --base-color 1 0 0.302 --no-slot
+material new Cream --base-color 1 0.945 0.910 --no-slot
+material new Mane --base-color 0.494 0.145 0.325 --no-slot
+material new Flag --base-color 0 0.894 0.212 --no-slot
+# platform: blue sides, orange top
+select Platform
+material assign Blue
+active Platform
+mode edit
+select face where "normal.z > 0.9"
+material assign Orange
+mode object
+select Column
+material assign Pink
+select Band Ball FlagPole Pole0 Pole1 Pole2 Pole3 Pole4 Pole5
+material assign Yellow
+select Flag
+material assign Flag
+# canopy: eight stripes, alternate side faces red and cream (the front face red, as in the sheet)
+select Cone
+material assign Cream
+active Cone
+mode edit
+select face where "normal.z < 0.99 && normal.z > -0.5 && index % 2 == 1"
+material assign Red
+mode object
+# the horse: cream, pink saddle, dark mane and tail, then one object
+select Body Neck Head LegsF LegsB
+material assign Cream
+select Saddle
+material assign Pink
+select Mane Tail
+material assign Mane
+select Body Neck Head LegsF LegsB Saddle Mane Tail
+active Body
+join
+rename Body Horse0
+# the sheet's horses are a little bigger than the blockout's: 1.15 x about the body centre
+scale 1.15 1.15 1.15
+apply --scale
+# the rotor: everything that turns as one, origin on the axis
+select Platform Column Band Cone Ball FlagPole Flag Pole0 Pole1 Pole2 Pole3 Pole4 Pole5
+active Platform
+join
+rename Platform Rotor
+cursor set 0 0 0
+origin set --to cursor
+# five more horses, each 60 degrees on round the axis; every other one sits 0.3 m lower
+select Horse0
+duplicate
+rotate z 60 --pivot cursor
+translate 0 0 -0.3
+duplicate
+rotate z 60 --pivot cursor
+translate 0 0 0.3
+duplicate
+rotate z 60 --pivot cursor
+translate 0 0 -0.3
+duplicate
+rotate z 60 --pivot cursor
+translate 0 0 0.3
+duplicate
+rotate z 60 --pivot cursor
+translate 0 0 -0.3
+select all
+shade flat
+# horses ride on the rotor
+select Horse0 Horse0.001 Horse0.002 Horse0.003 Horse0.004 Horse0.005 Rotor
+parent set Rotor
+# one turn every 8 s (192 frames at 24 fps), counter-clockwise from above, linear so the wrap is seamless
+fps 24
+frame range 0 192
+select Rotor
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 0 360
+keyframe insert --channels rot --frame 192
+keyframe interpolation linear --all
+# each horse bobs 0.3 m on its pole, one bob every 2 s (4 per turn); the high ones go down while the low ones go up (eased keys)
+select Horse0
+keyframe insert --channels loc --frame 0
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 24
+translate 0 0 0.3
+keyframe insert --channels loc --frame 48
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 72
+translate 0 0 0.3
+keyframe insert --channels loc --frame 96
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 120
+translate 0 0 0.3
+keyframe insert --channels loc --frame 144
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 168
+translate 0 0 0.3
+keyframe insert --channels loc --frame 192
+select Horse0.001
+keyframe insert --channels loc --frame 0
+translate 0 0 0.3
+keyframe insert --channels loc --frame 24
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 48
+translate 0 0 0.3
+keyframe insert --channels loc --frame 72
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 96
+translate 0 0 0.3
+keyframe insert --channels loc --frame 120
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 144
+translate 0 0 0.3
+keyframe insert --channels loc --frame 168
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 192
+select Horse0.002
+keyframe insert --channels loc --frame 0
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 24
+translate 0 0 0.3
+keyframe insert --channels loc --frame 48
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 72
+translate 0 0 0.3
+keyframe insert --channels loc --frame 96
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 120
+translate 0 0 0.3
+keyframe insert --channels loc --frame 144
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 168
+translate 0 0 0.3
+keyframe insert --channels loc --frame 192
+select Horse0.003
+keyframe insert --channels loc --frame 0
+translate 0 0 0.3
+keyframe insert --channels loc --frame 24
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 48
+translate 0 0 0.3
+keyframe insert --channels loc --frame 72
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 96
+translate 0 0 0.3
+keyframe insert --channels loc --frame 120
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 144
+translate 0 0 0.3
+keyframe insert --channels loc --frame 168
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 192
+select Horse0.004
+keyframe insert --channels loc --frame 0
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 24
+translate 0 0 0.3
+keyframe insert --channels loc --frame 48
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 72
+translate 0 0 0.3
+keyframe insert --channels loc --frame 96
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 120
+translate 0 0 0.3
+keyframe insert --channels loc --frame 144
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 168
+translate 0 0 0.3
+keyframe insert --channels loc --frame 192
+select Horse0.005
+keyframe insert --channels loc --frame 0
+translate 0 0 0.3
+keyframe insert --channels loc --frame 24
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 48
+translate 0 0 0.3
+keyframe insert --channels loc --frame 72
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 96
+translate 0 0 0.3
+keyframe insert --channels loc --frame 120
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 144
+translate 0 0 0.3
+keyframe insert --channels loc --frame 168
+translate 0 0 -0.3
+keyframe insert --channels loc --frame 192
+frame set 0
+export carousel.glb --bake-animations

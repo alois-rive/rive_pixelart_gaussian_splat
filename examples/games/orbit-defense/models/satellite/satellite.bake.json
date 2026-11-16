@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.07,
+  "fat": 1.0,
+  "out": "../../lookdev/satellite.bin",
+  "objects": [
+    { "model": "satellite.glb", "scale": 1.25,
+      "materials": { "Body": { "ramp": "metal" }, "Dome": { "ramp": "metal" }, "Dark": { "ramp": "metal" },
+                     "Muzzle": { "ramp": "glow", "flags": ["unlit"], "spacing": 0.06 },
+                     "Panel": { "ramp": "panel" }, "Stripe": { "ramp": "panel", "spacing": 0.05 } } }
+  ]
+}

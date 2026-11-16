@@ -1,0 +1,162 @@
+# Kelp: a 2.7 m stalk of six stacked 5-sided segments with five blades alternating sides, skinned
+# to a 3-bone chain (auto weights: the bend is shared smoothly between neighbouring bones). The sway is
+# a 4 s loop (48 frames at 12 fps): each bone leans on a small circle, more towards the tip, keys every
+# 6 frames, linear (constant speed round the loop), last key = first. Instances in the scene get
+# their own `phase`. Up Z. Written by hand (the keys from sin/cos, listed below).
+new
+fps 12
+frame range 0 48
+material new Stalk --base-color 0.0 0.373 0.549 --no-slot
+material new Blade --base-color 0.0 0.725 0.745 --no-slot
+add mesh cylinder --name S0 --vertices 5 --radius 0.090 --depth 0.47 --location -0.04 0 0.225
+material assign Stalk
+add mesh cylinder --name S1 --vertices 5 --radius 0.082 --depth 0.47 --location 0.04 0 0.675
+material assign Stalk
+add mesh cylinder --name S2 --vertices 5 --radius 0.074 --depth 0.47 --location -0.04 0 1.125
+material assign Stalk
+add mesh cylinder --name S3 --vertices 5 --radius 0.066 --depth 0.47 --location 0.04 0 1.575
+material assign Stalk
+add mesh cylinder --name S4 --vertices 5 --radius 0.058 --depth 0.47 --location -0.04 0 2.025
+material assign Stalk
+add mesh cylinder --name S5 --vertices 5 --radius 0.050 --depth 0.47 --location 0.04 0 2.475
+material assign Stalk
+add mesh cube --name B0 --size 1 --location 0 0 0
+scale 0.7 0.28 0.05
+apply --scale
+mode edit
+select all
+translate 0.33 0 0
+select vert where "pos.x > 0.5"
+scale 1 0.5 1
+translate 0 0 0.12
+mode object
+material assign Blade
+set location 0 0 0.55
+set rotation 0 -28 0
+apply --location --rotation
+add mesh cube --name B1 --size 1 --location 0 0 0
+scale 0.7 0.28 0.05
+apply --scale
+mode edit
+select all
+translate 0.33 0 0
+select vert where "pos.x > 0.5"
+scale 1 0.5 1
+translate 0 0 0.12
+mode object
+material assign Blade
+set location 0 0 1.0
+set rotation 0 -28 215
+apply --location --rotation
+add mesh cube --name B2 --size 1 --location 0 0 0
+scale 0.7 0.28 0.05
+apply --scale
+mode edit
+select all
+translate 0.33 0 0
+select vert where "pos.x > 0.5"
+scale 1 0.5 1
+translate 0 0 0.12
+mode object
+material assign Blade
+set location 0 0 1.45
+set rotation 0 -28 70
+apply --location --rotation
+add mesh cube --name B3 --size 1 --location 0 0 0
+scale 0.7 0.28 0.05
+apply --scale
+mode edit
+select all
+translate 0.33 0 0
+select vert where "pos.x > 0.5"
+scale 1 0.5 1
+translate 0 0 0.12
+mode object
+material assign Blade
+set location 0 0 1.9
+set rotation 0 -28 285
+apply --location --rotation
+add mesh cube --name B4 --size 1 --location 0 0 0
+scale 0.7 0.28 0.05
+apply --scale
+mode edit
+select all
+translate 0.33 0 0
+select vert where "pos.x > 0.5"
+scale 1 0.5 1
+translate 0 0 0.12
+mode object
+material assign Blade
+set location 0 0 2.35
+set rotation 0 -28 140
+apply --location --rotation
+select S0 S1 S2 S3 S4 S5 B0 B1 B2 B3 B4
+active S0
+join
+rename S0 Kelp
+apply
+add armature --name Rig --location 0 0 0
+mode edit
+bone select all
+bone delete
+bone add K0 --head 0 0 0 --tail 0 0 0.9
+bone add K1 --head 0 0 0.9 --tail 0 0 1.8 --parent K0 --connected
+bone add K2 --head 0 0 1.8 --tail 0 0 2.75 --parent K1 --connected
+mode object
+select Kelp Rig
+parent set Rig --type armature --auto-weights
+active Rig
+mode pose
+pose select all
+frame set 0
+pose set K0 rotation 0.00 4.80 0
+pose set K1 rotation 0.00 8.40 0
+pose set K2 rotation 0.00 12.00 0
+keyframe insert --channels rot
+frame set 6
+pose set K0 rotation 5.66 3.39 0
+pose set K1 rotation 9.90 5.94 0
+pose set K2 rotation 14.14 8.49 0
+keyframe insert --channels rot
+frame set 12
+pose set K0 rotation 8.00 0.00 0
+pose set K1 rotation 14.00 0.00 0
+pose set K2 rotation 20.00 0.00 0
+keyframe insert --channels rot
+frame set 18
+pose set K0 rotation 5.66 -3.39 0
+pose set K1 rotation 9.90 -5.94 0
+pose set K2 rotation 14.14 -8.49 0
+keyframe insert --channels rot
+frame set 24
+pose set K0 rotation 0.00 -4.80 0
+pose set K1 rotation 0.00 -8.40 0
+pose set K2 rotation 0.00 -12.00 0
+keyframe insert --channels rot
+frame set 30
+pose set K0 rotation -5.66 -3.39 0
+pose set K1 rotation -9.90 -5.94 0
+pose set K2 rotation -14.14 -8.49 0
+keyframe insert --channels rot
+frame set 36
+pose set K0 rotation -8.00 -0.00 0
+pose set K1 rotation -14.00 -0.00 0
+pose set K2 rotation -20.00 -0.00 0
+keyframe insert --channels rot
+frame set 42
+pose set K0 rotation -5.66 3.39 0
+pose set K1 rotation -9.90 5.94 0
+pose set K2 rotation -14.14 8.49 0
+keyframe insert --channels rot
+frame set 48
+pose set K0 rotation -0.00 4.80 0
+pose set K1 rotation -0.00 8.40 0
+pose set K2 rotation -0.00 12.00 0
+keyframe insert --channels rot
+keyframe interpolation linear --all
+action rename RigAction Sway
+frame set 0
+mode object
+select all
+shade flat
+export kelp.glb --bake-animations

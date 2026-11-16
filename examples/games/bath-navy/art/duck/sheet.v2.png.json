@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v2.png",
+  "sha256": "f93284a3e1832d3fb22916898773aa32558e4fba3e809892ce5bd4bc5721776a",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v2.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a classic yellow rubber duck bath toy, used as a little turret.\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).\n- The four panels show the SAME object, only turned: FRONT: the object faces the camera. RIGHT: the camera has walked round to the object's own right-hand side (not the image's right), so the object faces the LEFT edge of the image. BACK: seen from behind. TOP: seen from straight above, looking down, with its front towards the BOTTOM edge of the image and no wall showing. Each detail appears only in the views from which it is really visible (a part seen side-on in one view is seen end-on in another).\n- One flat, uniform background (#d9d9d9) everywhere: no floor, no water, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views):\n- A chunky rubber duck facing the FRONT (its beak points at the camera in the FRONT view, towards the LEFT edge in the RIGHT view, towards the BOTTOM edge in the TOP view).\n- Body: a rounded faceted egg shape 0.9 m long (front to back), 0.7 m wide, 0.45 m tall, with a short upturned tail at the back.\n- Head: a faceted ball 0.42 m across on top of the front half of the body, its top 0.85 m above the ground.\n- A wide flat beak 0.28 m wide, 0.18 m long, 0.1 m thick, sticking out at the front of the head.\n- Two big round dark eyes, one each side of the head, 0.1 m across.\n- Two small stubby wings, one on each side of the body.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 300 to 600 triangles worth of detail. No smooth organic surfaces, no tiny details, no texture noise, no grain.\n- Flat colour areas only, ONLY these colours (the Lost Century palette), each material's base colour first, then its shade and its light: body, head, wings and tail yellow #b3a555 (faces turned from the light #927441, the brightest top faces #d2c9a5); beak orange #c77b58 (shade #ae5d40); eyes dark #4b3d44. No other yellows, no olive or brown tones on the body.\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e57f-7afe-7241-8bf3-c40ce30868ed",
+    "source": "/Users/alois/.codex/generated_images/01a1e57f-7afe-7241-8bf3-c40ce30868ed/exec-0fb5fa59-c38a-4773-9044-8dbc06be7b14.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e57f-7afe-7241-8bf3-c40ce30868ed/exec-0fb5fa59-c38a-4773-9044-8dbc06be7b14.png"
+    ]
+  },
+  "seconds": 62.1,
+  "created": "2026-11-16T18:56:01+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/bath-navy/art/duck/sheet.v2.png",
+  "reviewed": false
+}

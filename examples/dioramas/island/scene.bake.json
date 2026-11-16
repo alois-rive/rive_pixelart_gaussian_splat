@@ -1,0 +1,451 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.09,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "objects": [
+  {
+   "model": "models/env/island.glb",
+   "materials": {
+    "Grass": {
+     "ramp": "grass"
+    },
+    "Dirt": {
+     "ramp": "wood",
+     "step": -1
+    },
+    "Rock": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/well/well.glb",
+   "position": [
+    -0.3,
+    0,
+    -0.3
+   ],
+   "yaw": 20,
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    },
+    "Moss": {
+     "ramp": "grass"
+    },
+    "Gap": {
+     "ramp": "stone"
+    },
+    "Post": {
+     "ramp": "wood"
+    },
+    "Beam": {
+     "ramp": "wood"
+    },
+    "Rope": {
+     "ramp": "wood",
+     "spacing": 0.045
+    },
+    "Roof": {
+     "ramp": "red"
+    },
+    "RoofDark": {
+     "ramp": "red"
+    }
+   }
+  },
+  {
+   "model": "models/env/pine.glb",
+   "position": [
+    -1.9,
+    0,
+    -1.3
+   ],
+   "yaw": 10,
+   "scale": 1.25,
+   "materials": {
+    "Bark": {
+     "ramp": "bark"
+    },
+    "Needles": {
+     "ramp": "foliage",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/pine.glb",
+   "position": [
+    1.8,
+    0,
+    -1.6
+   ],
+   "yaw": 70,
+   "scale": 1.05,
+   "materials": {
+    "Bark": {
+     "ramp": "bark"
+    },
+    "Needles": {
+     "ramp": "foliage",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/pine.glb",
+   "position": [
+    -2.3,
+    0,
+    0.9
+   ],
+   "yaw": 140,
+   "scale": 0.85,
+   "materials": {
+    "Bark": {
+     "ramp": "bark"
+    },
+    "Needles": {
+     "ramp": "foliage",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/pine.glb",
+   "position": [
+    0.8,
+    0,
+    -2.4
+   ],
+   "yaw": 200,
+   "scale": 0.9,
+   "materials": {
+    "Bark": {
+     "ramp": "bark"
+    },
+    "Needles": {
+     "ramp": "foliage",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    1.7,
+    0,
+    1.0
+   ],
+   "yaw": 30,
+   "scale": 1.1,
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    2.3,
+    0,
+    0.0
+   ],
+   "yaw": 100,
+   "scale": 0.7,
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -1.3,
+    0,
+    2.1
+   ],
+   "yaw": 250,
+   "scale": 0.8,
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/env/lantern.glb",
+   "position": [
+    1.0,
+    0,
+    0.6
+   ],
+   "yaw": -30,
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Light": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/campfire.glb",
+   "position": [
+    -0.9,
+    0,
+    1.3
+   ],
+   "yaw": 0,
+   "fps": 12,
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    },
+    "Log": {
+     "ramp": "wood"
+    },
+    "Embers": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ]
+    },
+    "FlameBase": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ]
+    },
+    "FlameCore": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "FlameOuter": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    -0.9,
+    0,
+    1.3
+   ],
+   "fps": 12,
+   "phase": 0,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "step": 1
+    },
+    "Glow": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    -0.9,
+    0,
+    1.3
+   ],
+   "fps": 12,
+   "phase": 1,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "step": 1
+    },
+    "Glow": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    -0.9,
+    0,
+    1.3
+   ],
+   "fps": 12,
+   "phase": 2,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "step": 1
+    },
+    "Glow": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    -0.9,
+    0,
+    1.3
+   ],
+   "fps": 12,
+   "phase": 3,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "step": 1
+    },
+    "Glow": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    -0.9,
+    0,
+    1.3
+   ],
+   "fps": 12,
+   "phase": 4,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "step": 1
+    },
+    "Glow": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/smoke.glb",
+   "position": [
+    -0.9,
+    0,
+    1.3
+   ],
+   "fps": 12,
+   "phase": 5,
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "step": 1
+    },
+    "Glow": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  }
+ ]
+}

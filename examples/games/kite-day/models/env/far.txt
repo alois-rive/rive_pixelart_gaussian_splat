@@ -1,0 +1,57 @@
+# The far hills: a row of five hazy lumps (z up to 2.9), 26 m long, seen against the sky's pink
+# glow. Static, behind everything else.
+new
+material new Haze --base-color 0.2902 0.4784 0.5882 --no-slot
+add mesh ico-sphere --name Far0 --subdivisions 2 --radius 1 --location 0 0 0
+scale 3.2 1.5 2.4
+apply --scale
+set location -10.5 0 0
+apply --location
+mode edit
+select face where "pos.z < 0.05 || normal.y > 0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Far1 --subdivisions 2 --radius 1 --location 0 0 0
+scale 3.6 1.5 2.9
+apply --scale
+set location -5.5 0 0
+apply --location
+mode edit
+select face where "pos.z < 0.05 || normal.y > 0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Far2 --subdivisions 2 --radius 1 --location 0 0 0
+scale 3.4 1.5 2.2
+apply --scale
+set location 0.5 0 0
+apply --location
+mode edit
+select face where "pos.z < 0.05 || normal.y > 0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Far3 --subdivisions 2 --radius 1 --location 0 0 0
+scale 3.8 1.5 2.7
+apply --scale
+set location 5.5 0 0
+apply --location
+mode edit
+select face where "pos.z < 0.05 || normal.y > 0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Far4 --subdivisions 2 --radius 1 --location 0 0 0
+scale 3.0 1.5 2.1
+apply --scale
+set location 10.5 0 0
+apply --location
+mode edit
+select face where "pos.z < 0.05 || normal.y > 0.3"
+delete only-faces
+mode object
+select all
+material assign Haze
+active Far0
+join
+rename Far0 Far
+select all
+shade flat
+export far.glb

@@ -1,0 +1,26 @@
+# A hut: the origin at the ground under its centre, up Z. Walls aqua, a pitched mauve roof,
+# a glowing window on the front (proud of the wall by a splat spacing) and a chimney. One bone each.
+new
+material new Wall --base-color 0.424 0.725 0.788 --no-slot
+material new Roof --base-color 0.431 0.318 0.506 --no-slot
+material new Window --base-color 0.424 0.929 0.929 --emission 0.424 0.929 0.929 --no-slot
+add mesh cube --name Walls --size 1 --location 0 0 0.17
+scale 0.44 0.36 0.34
+apply --scale
+material assign Wall
+add mesh cylinder --name Roof --vertices 3 --radius 0.33 --depth 0.42 --location 0 0 0.43 --rotation 90 0 90
+apply --rotation
+scale 1 1 0.75
+apply --scale
+material assign Roof
+add mesh cube --name Chimney --size 1 --location 0.13 0 0.55
+scale 0.11 0.11 0.2
+apply --scale
+material assign Roof
+add mesh cube --name Window --size 1 --location -0.06 -0.2 0.17
+scale 0.13 0.06 0.13
+apply --scale
+material assign Window
+select all
+shade flat
+export hut.glb

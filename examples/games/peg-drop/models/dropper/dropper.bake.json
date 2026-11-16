@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "out": "../../lookdev/dropper.bin",
+  "objects": [
+    { "model": "dropper_splat.glb",
+      "materials": { "Brass": { "ramp": "brass" }, "Copper": { "ramp": "copper" }, "CopperIn": { "ramp": "copper" },
+                     "Gold": { "ramp": "gold" }, "Dark": { "ramp": "brass", "spacing": 0.05 }, "Steel": { "ramp": "steel", "spacing": 0.05 } } }
+  ]
+}

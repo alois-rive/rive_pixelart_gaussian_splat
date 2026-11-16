@@ -1,0 +1,60 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/boat.bin",
+  "objects": [
+    {
+      "model": "boat.glb",
+      "fps": 12,
+      "loop": 4.0,
+      "materials": {
+        "HullRed": {
+          "ramp": "hull"
+        },
+        "HullOrange": {
+          "ramp": "hull"
+        },
+        "Rail": {
+          "ramp": "navy"
+        },
+        "Deck": {
+          "ramp": "deck"
+        },
+        "CabinWhite": {
+          "ramp": "white"
+        },
+        "CabinTrim": {
+          "ramp": "white"
+        },
+        "Roof": {
+          "ramp": "navy"
+        },
+        "Window": {
+          "ramp": "navy"
+        },
+        "Mast": {
+          "ramp": "rock",
+          "spacing": 0.06
+        },
+        "Flag": {
+          "ramp": "grass",
+          "spacing": 0.06,
+          "flags": [
+            "double"
+          ]
+        },
+        "Crate": {
+          "ramp": "hull"
+        },
+        "CrateRed": {
+          "ramp": "deck"
+        },
+        "Rope": {
+          "ramp": "deck"
+        }
+      }
+    }
+  ]
+}

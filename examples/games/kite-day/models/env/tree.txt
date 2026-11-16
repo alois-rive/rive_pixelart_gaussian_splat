@@ -1,0 +1,21 @@
+# A round dark tree: a six-sided trunk 1.1 m and two faceted crown lumps, 2.8 m tall in all. Static.
+new
+material new Bark --base-color 0.1608 0.1569 0.1922 --no-slot
+material new Crown --base-color 0.2000 0.2471 0.3451 --no-slot
+add mesh cylinder --name Trunk --vertices 6 --radius 0.13 --depth 1.2 --location 0 0 0.6
+material assign Bark
+add mesh ico-sphere --name Top --subdivisions 1 --radius 0.85 --location 0 0 1.85
+material assign Crown
+add mesh ico-sphere --name Side --subdivisions 1 --radius 0.55 --location 0.45 -0.1 1.45
+material assign Crown
+select Trunk Top Side
+active Trunk
+join
+rename Trunk Tree
+mode edit
+select face where "normal.z < -0.9 && pos.z < 0.1"
+delete only-faces
+mode object
+select all
+shade flat
+export tree.glb

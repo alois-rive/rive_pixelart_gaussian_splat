@@ -1,0 +1,19 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "clam",
+  "views": "front,right,back,top,iso",
+  "size": 160,
+  "pixel": 2,
+  "arg": [
+    "sunPitch=65",
+    "sunYaw=-30",
+    "keyLight=0.3",
+    "highlight=0.95"
+  ],
+  "advance": "2",
+  "real_sky": true,
+  "look": "lit",
+  "texel": 0.037,
+  "elevation": 0
+}

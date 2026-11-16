@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.1,
+  "fat": 1.0,
+  "out": "../../lookdev/lander.bin",
+  "objects": [
+    { "model": "lander.glb",
+      "materials": { "Foil": { "ramp": "foil" }, "Cabin": { "ramp": "cabin" }, "Pale": { "ramp": "cabin", "spacing": 0.07 },
+                     "Metal": { "ramp": "metal", "spacing": 0.08 }, "Glass": { "ramp": "glass", "spacing": 0.07 },
+                     "Hatch": { "ramp": "foil", "spacing": 0.06 } } }
+  ]
+}

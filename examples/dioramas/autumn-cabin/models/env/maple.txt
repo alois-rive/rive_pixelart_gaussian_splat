@@ -1,0 +1,40 @@
+# Maple: a 6-sided trunk and a round crown of three jittered icospheres; the whole tree sways about
+# its foot (rigid, +-2 degrees, a smooth 4 s loop). Up Z.
+new
+add mesh cylinder --name Trunk --vertices 6 --radius 0.15 --depth 1.6 --location 0 0 0.8
+material new Bark --base-color 0.286 0.302 0.494
+add mesh ico-sphere --name CrownA --subdivisions 1 --radius 1.0 --location 0 0 2.2
+material new Leaves --base-color 0.949 0.827 0.671
+add mesh ico-sphere --name CrownB --subdivisions 1 --radius 0.72 --location 0.62 0.2 1.85
+material assign Leaves
+add mesh ico-sphere --name CrownC --subdivisions 1 --radius 0.66 --location -0.5 -0.3 2.75
+material assign Leaves
+select CrownA CrownB CrownC
+active CrownA
+join
+mode edit
+select all
+randomize --amount 0.12 --seed 4
+mode object
+select Trunk CrownA
+active Trunk
+join
+rename Trunk Maple
+cursor set 0 0 0
+origin set --to cursor
+shade flat
+fps 24
+frame range 0 96
+select Maple
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 2 1.5 0
+keyframe insert --channels rot --frame 24
+set rotation 0 0 0
+keyframe insert --channels rot --frame 48
+set rotation -2 -1.5 0
+keyframe insert --channels rot --frame 72
+set rotation 0 0 0
+keyframe insert --channels rot --frame 96
+frame set 0
+export maple.glb --bake-animations

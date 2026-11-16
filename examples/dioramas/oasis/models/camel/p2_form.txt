@@ -1,0 +1,49 @@
+# Camel, phase 2: form and surfacing. Runs after p1_blockout.txt.
+# The blanket drapes: narrower at the top (front view), corners chamfered (top view).
+active Blanket
+mode edit
+select vert where "pos.z > 0"
+scale 0.80 1 1
+select edge where "abs(pos.z) < 0.01"
+bevel 0.12
+mode object
+# the rump and chest: chamfer the torso's four long horizontal edges a little
+active Torso
+mode edit
+select edge where "abs(pos.x) < 0.01 && abs(pos.z) > 0.2"
+bevel 0.08
+mode object
+# materials: exact Parchment and Ink colours (sRGB 0..1), each on one ramp of art/palette.json
+# chosen by fitting the sheet to the palette (palette.py fit): fur #c0977a (fur 3), muzzle #886243 (fur 1),
+# hooves and tail tuft #886243 (fur 1), blanket #87867a (stone 2), its top #a9a994 (stone 3), stripe #f0d696 (cloth 3).
+# The sheet fits to #944431 hooves and a #445162 blanket, but those are step 1 of ramps that start at
+# black: in shade they drop to #000000 (black blots). Every base sits a step higher instead.
+material new Fur --base-color 0.753 0.592 0.478 --no-slot
+material new Hoof --base-color 0.533 0.384 0.263 --no-slot
+material new Muzzle --base-color 0.533 0.384 0.263 --no-slot
+material new BlanketSide --base-color 0.529 0.525 0.478 --no-slot
+material new BlanketTop --base-color 0.663 0.663 0.580 --no-slot
+material new Stripe --base-color 0.941 0.839 0.588 --no-slot
+select all
+material assign Fur
+select HoofFL HoofFR HoofBL HoofBR Tuft
+material assign Hoof
+select Snout
+material assign Muzzle
+select Blanket Hump
+material assign BlanketSide
+active Blanket
+mode edit
+select face where "normal.z > 0.9"
+material assign BlanketTop
+mode object
+# the hump carries the stripe (the ring band just above the blanket) and the light top
+active Hump
+mode edit
+select face where "pos.z > 0.24"
+material assign BlanketTop
+select face where "pos.z > 0.02 && pos.z < 0.24"
+material assign Stripe
+mode object
+select all
+shade flat

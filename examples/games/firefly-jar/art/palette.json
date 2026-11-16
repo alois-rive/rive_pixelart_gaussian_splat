@@ -1,0 +1,60 @@
+{
+  "name": "retrocal-8",
+  "source": "https://lospec.com/palette-list/retrocal-8",
+  "author": "polyphrog",
+  "colors": [
+    "#6eb8a8",
+    "#2a584f",
+    "#74a33f",
+    "#fcffc0",
+    "#c6505a",
+    "#2f142f",
+    "#774448",
+    "#ee9c5d"
+  ],
+  "ramps": {
+    "grass": [
+      "#2f142f",
+      "#2a584f",
+      "#74a33f",
+      "#fcffc0"
+    ],
+    "leaf": [
+      "#2f142f",
+      "#2f142f",
+      "#2a584f",
+      "#6eb8a8"
+    ],
+    "wood": [
+      "#2f142f",
+      "#774448",
+      "#ee9c5d"
+    ],
+    "glass": [
+      "#2a584f",
+      "#6eb8a8",
+      "#fcffc0"
+    ],
+    "cloth": [
+      "#2f142f",
+      "#774448",
+      "#c6505a",
+      "#ee9c5d"
+    ],
+    "glow": [
+      "#ee9c5d",
+      "#fcffc0"
+    ],
+    "moth": [
+      "#2f142f",
+      "#774448",
+      "#c6505a"
+    ]
+  },
+  "roles": {
+    "sky_top": "#2f142f",
+    "sky_bottom": "#2a584f",
+    "fog": "#2a584f",
+    "void": "#2f142f"
+  }
+}

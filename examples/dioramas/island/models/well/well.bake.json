@@ -1,0 +1,19 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/well.bin",
+  "objects": [
+    { "model": "well.glb",
+      "materials": {
+        "Stone": { "ramp": "stone" },
+        "Moss":  { "ramp": "grass" },
+        "Gap":   { "ramp": "stone" },
+        "Post":  { "ramp": "wood" },
+        "Beam":  { "ramp": "wood" },
+        "Rope":  { "ramp": "wood", "spacing": 0.04 },
+        "Roof":  { "ramp": "red" },
+        "RoofDark": { "ramp": "red" } } }
+  ]
+}

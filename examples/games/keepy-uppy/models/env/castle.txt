@@ -1,0 +1,42 @@
+# A sandcastle: a keep with crenellations, two round towers, a flag. Light sand.
+new
+material new Castle --base-color 1.0000 0.8118 0.5569 --no-slot
+material new Flag --base-color 0.8314 0.1176 0.2353 --no-slot
+material new Door --base-color 0.5608 0.3412 0.3961 --no-slot
+add mesh cube --name Keep --size 1 --location 0 0 0.35
+scale 0.9 0.7 0.7
+apply --scale
+material assign Castle
+add mesh cube --name C0 --size 1 --location -0.32 -0.25 0.78
+scale 0.18 0.2 0.16
+apply --scale
+material assign Castle
+add mesh cube --name C1 --size 1 --location 0.0 -0.25 0.78
+scale 0.18 0.2 0.16
+apply --scale
+material assign Castle
+add mesh cube --name C2 --size 1 --location 0.32 -0.25 0.78
+scale 0.18 0.2 0.16
+apply --scale
+material assign Castle
+add mesh cylinder --name Tw0 --vertices 6 --radius 0.24 --depth 0.95 --location -0.62 0.05 0.47
+material assign Castle
+add mesh cone --name Tc0 --vertices 6 --radius1 0.27 --radius2 0.02 --depth 0.35 --location -0.62 0.05 1.12
+material assign Castle
+add mesh cylinder --name Tw1 --vertices 6 --radius 0.24 --depth 0.95 --location 0.62 0.05 0.47
+material assign Castle
+add mesh cone --name Tc1 --vertices 6 --radius1 0.27 --radius2 0.02 --depth 0.35 --location 0.62 0.05 1.12
+material assign Castle
+add mesh cube --name Door --size 1 --location 0 -0.36 0.2
+scale 0.26 0.04 0.32
+apply --scale
+material assign Door
+add mesh cylinder --name Mast --vertices 4 --radius 0.03 --depth 0.5 --location 0.62 0.05 1.45
+material assign Door
+add mesh cube --name Flag --size 1 --location 0.75 0.05 1.6
+scale 0.24 0.04 0.15
+apply --scale
+material assign Flag
+select all
+shade flat
+export castle.glb

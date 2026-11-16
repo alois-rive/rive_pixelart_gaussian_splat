@@ -1,0 +1,16 @@
+# A cannon bolt: a stretched octahedron 0.15 x 0.5 m along +Z (the game turns +Z along its flight),
+# bright cyan core, aqua rim; unlit.
+new
+material new Core --base-color 0.424 0.929 0.929 --emission 0.424 0.929 0.929 --no-slot
+material new Rim --base-color 0.424 0.725 0.788 --emission 0.424 0.725 0.788 --no-slot
+add mesh ico-sphere --name Bolt --radius 0.5 --subdivisions 1 --location 0 0 0
+scale 0.2 0.2 0.55
+apply --scale
+material assign Rim
+add mesh ico-sphere --name Core --radius 0.5 --subdivisions 1 --location 0 -0.04 0.05
+scale 0.12 0.12 0.36
+apply --scale
+material assign Core
+select all
+shade flat
+export bolt.glb

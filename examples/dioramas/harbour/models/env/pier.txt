@@ -1,0 +1,33 @@
+# The pier: a 1.4 x 3.6 m deck from the quay (y 2.2) out to y -1.4, its top at 0.5, on six posts
+# 0.18 square that stand 0.1 proud of the deck (mooring posts). Planks run across the pier:
+# textures/planks.png (10 x 24 texels over the deck, 0.14 m a texel). In place.
+new
+add mesh cube --name Deck --size 1 --location 0.3 0.4 0.44
+scale 1.4 3.6 0.12
+apply
+material new Planks --base-color 1 1 1
+material texture Planks base-color textures/planks.png
+active Deck
+mode edit
+select face where "normal.z > 0.9"
+uv project-from-view top --scale-to-bounds
+mode object
+material new Post --base-color 0.529 0.400 0.447 --no-slot
+add mesh cube --name PostA --size 1 --location -0.32 -1.2 0
+scale 0.18 0.18 1.2
+add mesh cube --name PostB --size 1 --location 0.92 -1.2 0
+scale 0.18 0.18 1.2
+add mesh cube --name PostC --size 1 --location -0.32 0 0
+scale 0.18 0.18 1.2
+add mesh cube --name PostD --size 1 --location 0.92 0 0
+scale 0.18 0.18 1.2
+add mesh cube --name PostE --size 1 --location -0.32 1.2 0
+scale 0.18 0.18 1.2
+add mesh cube --name PostF --size 1 --location 0.92 1.2 0
+scale 0.18 0.18 1.2
+select PostA PostB PostC PostD PostE PostF
+apply
+material assign Post
+select all
+shade flat
+export pier.glb

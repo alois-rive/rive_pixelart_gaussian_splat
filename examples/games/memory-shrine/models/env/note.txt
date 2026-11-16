@@ -1,0 +1,7 @@
+# Note spark: a small octahedron (a diamond) that rises from a ringing bell. Origin at its centre.
+new
+material new Spark --base-color 0.9882 0.9647 0.3765 --no-slot
+add mesh ico-sphere --name Note --subdivisions 1 --radius 0.18 --location 0 0 0
+material assign Spark
+shade flat
+export note.glb

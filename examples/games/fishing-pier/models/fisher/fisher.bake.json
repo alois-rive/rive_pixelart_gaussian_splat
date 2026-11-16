@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.07,
+  "fat": 1.0,
+  "out": "../../lookdev/fisher.bin",
+  "objects": [
+    { "model": "fisher.glb",
+      "materials": { "Coat": { "ramp": "coat" }, "Skin": { "ramp": "skin" }, "Beard": { "ramp": "beard" },
+                     "Boot": { "ramp": "boot" }, "Bucket": { "ramp": "bucket" }, "Rim": { "ramp": "bucket" },
+                     "Eye": { "ramp": "skin", "spacing": 0.05, "specks": true } } }
+  ]
+}

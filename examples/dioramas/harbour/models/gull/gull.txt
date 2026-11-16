@@ -1,0 +1,195 @@
+# Seagull circling: Orbit (empty, turns 360 deg in 8 s) > Body (3 m out, banked 15 deg) > WingL, WingR
+# (keyed flaps). Up Z, the bird faces -Y at rest. Three mesh nodes = three bones per instance.
+# Sizes are exaggerated for the splat grid (texel 0.068 m, spacing 0.1 m, gull material 0.06 m):
+# body 0.22 x 0.55, wings 0.70 x 0.30 each (span 1.62 m = 24 art pixels), beak 0.10 thick.
+new
+fps 12
+frame range 0 95
+material new GullWhite --base-color 0.925 0.910 0.761 --no-slot
+material new WingTip --base-color 0.529 0.400 0.447 --no-slot
+material new Beak --base-color 0.969 0.835 0.329 --no-slot
+
+# --- body: torso, head, tail and beak joined into one mesh (materials first)
+add mesh cube --name Body --size 1 --location 0 0 0
+scale 0.22 0.55 0.20
+apply --scale
+material assign GullWhite
+active Body
+mode edit
+select face where "normal.y < -0.9"
+scale 0.8 1 0.8
+select face where "normal.y > 0.9"
+scale 0.6 1 0.4
+mode object
+add mesh cube --name Head --size 1 --location 0 -0.32 0.08
+scale 0.18 0.18 0.18
+apply
+material assign GullWhite
+add mesh cube --name Tail --size 1 --location 0 0.36 0.02
+scale 0.26 0.20 0.05
+apply
+material assign GullWhite
+add mesh cube --name BeakPart --size 1 --location 0 -0.46 0.06
+scale 0.10 0.14 0.09
+apply
+material assign Beak
+select Head Tail BeakPart Body
+active Body
+join
+
+# --- wings: origin at the shoulder, the mesh reaching out from it, a grey tip on the outer third
+add mesh cube --name WingR --size 1 --location 0.10 0 0.04
+scale 0.70 0.30 0.06
+apply --scale
+material assign GullWhite
+active WingR
+mode edit
+select all
+translate x 0.35
+select face where "pos.x > 0.45"
+mode object
+add mesh cube --name TipR --size 1 --location 0.70 0.02 0.04
+scale 0.22 0.26 0.07
+apply
+material assign WingTip
+select TipR WingR
+active WingR
+join
+add mesh cube --name WingL --size 1 --location -0.10 0 0.04
+scale 0.70 0.30 0.06
+apply --scale
+material assign GullWhite
+active WingL
+mode edit
+select all
+translate x -0.35
+mode object
+add mesh cube --name TipL --size 1 --location -0.70 0.02 0.04
+scale 0.22 0.26 0.07
+apply
+material assign WingTip
+select TipL WingL
+active WingL
+join
+select all
+shade flat
+
+# --- hierarchy: wings under the body, the body 3 m out on the orbit, banked into the turn
+select WingL WingR Body
+parent set Body
+select Body
+set location 3.0 0 0
+set rotation 0 15 180
+add empty --name Orbit --location 0 0 0
+select Body Orbit
+parent set Orbit
+
+# --- motion, 96 frames = 8 s at 12 fps, frame 96 = frame 0
+# orbit: one full turn, counter-clockwise seen from above (the bird flies forward, +Y at +X)
+select Orbit
+frame set 0
+set rotation 0 0 0
+keyframe insert --channels rot
+frame set 96
+set rotation 0 0 360
+keyframe insert --channels rot
+# wings: six flaps (8 frames each: up 35, down -25), then half a loop of gliding with the wings
+# raised 8 degrees, then back to the flap
+select WingR
+frame set 0
+set rotation 0 -35 0
+keyframe insert --channels rot
+frame set 4
+set rotation 0 25 0
+keyframe insert --channels rot
+frame set 8
+set rotation 0 -35 0
+keyframe insert --channels rot
+frame set 12
+set rotation 0 25 0
+keyframe insert --channels rot
+frame set 16
+set rotation 0 -35 0
+keyframe insert --channels rot
+frame set 20
+set rotation 0 25 0
+keyframe insert --channels rot
+frame set 24
+set rotation 0 -35 0
+keyframe insert --channels rot
+frame set 28
+set rotation 0 25 0
+keyframe insert --channels rot
+frame set 32
+set rotation 0 -35 0
+keyframe insert --channels rot
+frame set 36
+set rotation 0 25 0
+keyframe insert --channels rot
+frame set 40
+set rotation 0 -35 0
+keyframe insert --channels rot
+frame set 44
+set rotation 0 25 0
+keyframe insert --channels rot
+frame set 48
+set rotation 0 -8 0
+keyframe insert --channels rot
+frame set 88
+set rotation 0 -8 0
+keyframe insert --channels rot
+frame set 96
+set rotation 0 -35 0
+keyframe insert --channels rot
+select WingL
+frame set 0
+set rotation 0 35 0
+keyframe insert --channels rot
+frame set 4
+set rotation 0 -25 0
+keyframe insert --channels rot
+frame set 8
+set rotation 0 35 0
+keyframe insert --channels rot
+frame set 12
+set rotation 0 -25 0
+keyframe insert --channels rot
+frame set 16
+set rotation 0 35 0
+keyframe insert --channels rot
+frame set 20
+set rotation 0 -25 0
+keyframe insert --channels rot
+frame set 24
+set rotation 0 35 0
+keyframe insert --channels rot
+frame set 28
+set rotation 0 -25 0
+keyframe insert --channels rot
+frame set 32
+set rotation 0 35 0
+keyframe insert --channels rot
+frame set 36
+set rotation 0 -25 0
+keyframe insert --channels rot
+frame set 40
+set rotation 0 35 0
+keyframe insert --channels rot
+frame set 44
+set rotation 0 -25 0
+keyframe insert --channels rot
+frame set 48
+set rotation 0 8 0
+keyframe insert --channels rot
+frame set 88
+set rotation 0 8 0
+keyframe insert --channels rot
+frame set 96
+set rotation 0 35 0
+keyframe insert --channels rot
+keyframe interpolation linear --all
+frame set 0
+inspect stats
+render shots/iso.png --view iso --shading material --overlay none --size 480 480
+render shots/flap.png --anim-sheet --frames 0,2,4,6,48,72 --view iso --shading material --overlay none --size 320 320
+export gull.glb --bake-animations

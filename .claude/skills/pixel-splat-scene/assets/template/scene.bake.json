@@ -1,0 +1,16 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "objects": [
+    { "model": "models/ground/ground.glb",
+      "materials": { "Grass": { "ramp": "grass" } } },
+    { "model": "models/hero/hero.glb", "position": [0, 0, 0], "yaw": 20, "scale": 1,
+      "materials": { "Stone": { "ramp": "stone" },
+                     "Leaves": { "ramp": "foliage", "flags": ["sway", "double"] },
+                     "Lamp": { "ramp": "glow", "flags": ["unlit"] },
+                     "Rope": { "ramp": "wood", "spacing": 0.05 } } }
+  ]
+}

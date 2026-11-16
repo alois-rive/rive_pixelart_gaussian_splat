@@ -1,0 +1,35 @@
+# Target, phase 1: blockout. One primitive per part at the spec's size (target.spec.md).
+new
+add mesh cylinder --name Boss --vertices 12 --radius 0.621 --depth 0.3 --location 0 0 0
+set rotation 0 0 15
+apply --rotation
+set rotation 78 0 0
+set location 0 0.0 1.08
+add mesh cube --name LegL --size 1 --location -0.4900 -0.0450 0.5350
+scale 0.12 0.12 0.9008
+apply --scale
+set rotation 22.865 0 180.000
+add mesh cube --name LegR --size 1 --location 0.4900 -0.0450 0.5350
+scale 0.12 0.12 0.9008
+apply --scale
+set rotation 22.865 0 180.000
+add mesh cube --name BackLeg --size 1 --location 0.0000 0.4450 0.6500
+scale 0.12 0.12 1.2489
+apply --scale
+set rotation 155.898 0 180.000
+add mesh cube --name RunnerL --size 1 --location -0.53 0.255 0.06
+scale 0.15 1.41 0.12
+apply --scale
+add mesh cube --name TipL --size 1 --location -0.5300 -0.4900 0.1100
+scale 0.15 0.1 0.1844
+apply --scale
+set rotation 49.399 0 0.000
+add mesh cube --name RunnerR --size 1 --location 0.53 0.255 0.06
+scale 0.15 1.41 0.12
+apply --scale
+add mesh cube --name TipR --size 1 --location 0.5300 -0.4900 0.1100
+scale 0.15 0.1 0.1844
+apply --scale
+set rotation 49.399 0 0.000
+select all
+shade flat

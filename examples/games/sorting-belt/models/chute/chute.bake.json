@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.07,
+  "fat": 1.0,
+  "out": "../../lookdev/chute.bin",
+  "objects": [
+    { "model": "chute.glb",
+      "materials": { "Wood": { "ramp": "wood", "flags": ["double"] }, "Rim": { "ramp": "wood" },
+                     "Sack": { "ramp": "paper" }, "Cord": { "ramp": "wood", "spacing": 0.05 },
+                     "Sign": { "ramp": "red", "spacing": 0.05 }, "Ring": { "ramp": "paper", "spacing": 0.05 } } }
+  ]
+}

@@ -1,0 +1,73 @@
+# Windpump: a tapered 4-legged lattice tower (bars along a frustum's edges), a gearbox, a 6-bladed rotor
+# facing -Y that turns (rigid: one turn in 4 s, linear), and a tail vane. Up Z, facing -Y. 4.3 m tall.
+new
+fps 24
+frame range 0 96
+# the tower: a 4-sided frustum turned so its faces look along the axes, caps removed, cut at two
+# heights, then every edge made a 0.14 m bar (a real angle-iron leg is a speck at 0.11 m spacing)
+add mesh cone --name Tower --vertices 4 --radius1 1.0 --radius2 0.25 --depth 3.5 --location 0 0 1.75 --rotation 0 0 45
+apply --rotation
+apply --location
+material new Iron --base-color 0.200 0.173 0.314
+active Tower
+mode edit
+select face where "abs(normal.z) > 0.9"
+delete face
+select all
+bisect --plane-co 0 0 1.2 --plane-no 0 0 1
+select all
+bisect --plane-co 0 0 2.4 --plane-no 0 0 1
+select all
+wireframe --thickness 0.14
+mode object
+add mesh cube --name Gearbox --size 1 --location 0 0.05 3.62
+scale 0.34 0.6 0.3
+apply --scale
+material assign Iron
+# the tail vane: a boom to the back and a vane 0.14 thick (a 5 cm plate seen edge-on is a row of specks)
+add mesh cube --name Boom --size 1 --location 0 0.75 3.62
+scale 0.1 0.9 0.1
+apply --scale
+material assign Iron
+add mesh cube --name Vane --size 1 --location 0 1.25 3.75
+scale 0.14 0.7 0.5
+apply --scale
+material new Vane --base-color 0.886 0.953 0.894
+# the rotor: a hub and 6 blades 0.9 long, 0.24 wide (a real windpump has 18 thin blades; at 0.12 m
+# spacing they fuse into a disc, so six wide-gapped ones); one blade made, then turned copies about the hub
+add mesh cylinder --name Hub --vertices 8 --radius 0.15 --depth 0.16 --location 0 -0.33 3.62 --rotation 90 0 0
+apply --rotation
+material new Blade --base-color 0.275 0.529 0.561
+add mesh cube --name B0 --size 1 --location 0 -0.33 4.12
+scale 0.24 0.05 0.9
+apply --scale
+material assign Blade
+cursor set 0 -0.33 3.62
+duplicate
+rotate y 60 --pivot cursor
+duplicate
+rotate y 60 --pivot cursor
+duplicate
+rotate y 60 --pivot cursor
+duplicate
+rotate y 60 --pivot cursor
+duplicate
+rotate y 60 --pivot cursor
+select Hub
+material assign Iron
+select Hub B0 B0.001 B0.002 B0.003 B0.004 B0.005
+active Hub
+join
+rename Hub Rotor
+origin set --to cursor
+select all
+shade flat
+select Rotor
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 -360 0
+keyframe insert --channels rot --frame 96
+keyframe interpolation linear --all
+frame set 0
+render shots/windpump_iso.png --view iso --shading material --overlay none --size 400 400
+export windpump.glb --bake-animations

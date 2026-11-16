@@ -1,0 +1,383 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.11,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "bounds": [
+    [
+      -9.0,
+      -6.0,
+      -13.0
+    ],
+    [
+      9.0,
+      6.0,
+      3.0
+    ]
+  ],
+  "objects": [
+    {
+      "model": "models/env/meadow.glb",
+      "position": [
+        -4.5,
+        0,
+        0
+      ],
+      "bone": "meadow",
+      "materials": {
+        "Grass": {
+          "ramp": "grass"
+        },
+        "Leaf": {
+          "ramp": "grass"
+        },
+        "Trunk": {
+          "ramp": "soil",
+          "spacing": 0.08
+        },
+        "Wall": {
+          "ramp": "hull",
+          "spacing": 0.08
+        },
+        "Roof": {
+          "ramp": "trim",
+          "spacing": 0.08
+        },
+        "Rock": {
+          "ramp": "rock"
+        }
+      }
+    },
+    {
+      "model": "models/env/dune.glb",
+      "position": [
+        1.5,
+        1.0,
+        0
+      ],
+      "bone": "dune",
+      "materials": {
+        "Sand": {
+          "ramp": "sand"
+        },
+        "Crater": {
+          "ramp": "sand",
+          "spacing": 0.08
+        },
+        "Cactus": {
+          "ramp": "grass",
+          "spacing": 0.08
+        },
+        "Pyramid": {
+          "ramp": "sand"
+        }
+      }
+    },
+    {
+      "model": "models/env/ice.glb",
+      "position": [
+        7.0,
+        -1.0,
+        0
+      ],
+      "bone": "ice",
+      "materials": {
+        "Snow": {
+          "ramp": "ice"
+        },
+        "Crystal": {
+          "ramp": "ice",
+          "spacing": 0.08
+        },
+        "Deep": {
+          "ramp": "ice",
+          "spacing": 0.08
+        }
+      }
+    },
+    {
+      "model": "models/env/mushroom.glb",
+      "position": [
+        12.0,
+        0,
+        0
+      ],
+      "bone": "mushroom",
+      "materials": {
+        "Candy": {
+          "ramp": "candy"
+        },
+        "Patch": {
+          "ramp": "candy"
+        },
+        "Stem": {
+          "ramp": "hull",
+          "spacing": 0.08
+        },
+        "Cap": {
+          "ramp": "trim",
+          "spacing": 0.08
+        }
+      }
+    },
+    {
+      "model": "models/env/lava.glb",
+      "position": [
+        17.0,
+        0,
+        0
+      ],
+      "bone": "lava",
+      "materials": {
+        "Basalt": {
+          "ramp": "rock"
+        },
+        "Lava": {
+          "ramp": "lava",
+          "flags": [
+            "unlit"
+          ]
+        },
+        "Cone": {
+          "ramp": "rock"
+        },
+        "Crater": {
+          "ramp": "lava",
+          "flags": [
+            "unlit"
+          ],
+          "spacing": 0.08
+        }
+      }
+    },
+    {
+      "model": "models/env/giant.glb",
+      "position": [
+        22.0,
+        0,
+        0
+      ],
+      "bone": "giant",
+      "materials": {
+        "Cream": {
+          "ramp": "sand"
+        },
+        "Band": {
+          "ramp": "trim"
+        },
+        "Ring": {
+          "ramp": "glass",
+          "spacing": 0.09
+        }
+      }
+    },
+    {
+      "model": "models/rocket/rocket.glb",
+      "position": [
+        -4.5,
+        2.2,
+        0.4
+      ],
+      "bone": "rocket",
+      "materials": {
+        "Hull": {
+          "ramp": "hull",
+          "spacing": 0.1
+        },
+        "Trim": {
+          "ramp": "trim",
+          "spacing": 0.1
+        },
+        "Band": {
+          "ramp": "trim",
+          "spacing": 0.05
+        },
+        "Glass": {
+          "ramp": "glass",
+          "spacing": 0.06
+        },
+        "Rim": {
+          "ramp": "rock",
+          "spacing": 0.06
+        },
+        "Nozzle": {
+          "ramp": "rock",
+          "spacing": 0.08
+        }
+      }
+    },
+    {
+      "model": "models/env/flame.glb",
+      "position": [
+        -4.5,
+        2.2,
+        0.4
+      ],
+      "bone": "flame",
+      "materials": {
+        "Sheath": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.07
+        },
+        "Core": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.07
+        }
+      }
+    },
+    {
+      "model": "models/env/star.glb",
+      "position": [
+        0,
+        -3,
+        0
+      ],
+      "bone": "star",
+      "copies": 3,
+      "materials": {
+        "Gold": {
+          "ramp": "glow",
+          "flags": [
+            "unlit"
+          ],
+          "spacing": 0.08
+        }
+      }
+    },
+    {
+      "model": "models/env/puff.glb",
+      "position": [
+        0,
+        -5,
+        0.3
+      ],
+      "bone": "puff",
+      "copies": 8,
+      "materials": {
+        "Puff": {
+          "ramp": "hull",
+          "flags": [
+            "nocast"
+          ],
+          "spacing": 0.08
+        }
+      }
+    },
+    {
+      "model": "models/env/spark.glb",
+      "position": [
+        0,
+        -5,
+        0.5
+      ],
+      "bone": "spark",
+      "copies": 8,
+      "materials": {
+        "Spark": {
+          "ramp": "stary",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "specks": true,
+          "spacing": 0.07
+        }
+      }
+    },
+    {
+      "model": "models/env/chunk.glb",
+      "position": [
+        0,
+        -5,
+        0.5
+      ],
+      "bone": "chunk",
+      "copies": 6,
+      "materials": {
+        "Hull": {
+          "ramp": "hull",
+          "flags": [
+            "nocast"
+          ],
+          "spacing": 0.07
+        },
+        "Trim": {
+          "ramp": "trim",
+          "flags": [
+            "nocast"
+          ],
+          "spacing": 0.07
+        }
+      }
+    },
+    {
+      "model": "models/env/stars.glb",
+      "position": [
+        0,
+        0,
+        -12
+      ],
+      "bone": "sky",
+      "copies": 2,
+      "materials": {
+        "StarW": {
+          "ramp": "starw",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "specks": true
+        },
+        "StarY": {
+          "ramp": "stary",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "specks": true
+        }
+      }
+    },
+    {
+      "model": "models/env/nebula.glb",
+      "position": [
+        0,
+        0,
+        -11
+      ],
+      "bone": "nebula",
+      "copies": 2,
+      "materials": {
+        "Cloud": {
+          "ramp": "nebula",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.16
+        },
+        "Far1": {
+          "ramp": "candy",
+          "flags": [
+            "nocast"
+          ]
+        },
+        "Far2": {
+          "ramp": "soil",
+          "flags": [
+            "nocast"
+          ]
+        }
+      }
+    }
+  ]
+}

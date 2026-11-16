@@ -1,0 +1,8 @@
+# A pop spark: a small faceted diamond 0.16 m, unlit peach; pooled: bursts when a star is caught.
+new
+material new Spark --base-color 0.9843 0.7333 0.6784 --no-slot
+add mesh cube --name Spark --size 0.16 --location 0 0 0 --rotation 45 35 0
+material assign Spark
+select all
+shade flat
+export spark.glb

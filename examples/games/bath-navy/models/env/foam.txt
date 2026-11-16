@@ -1,0 +1,21 @@
+# A clump of bath foam: faceted balls of three sizes, cream on top of sage. Origin at the water.
+new
+material new Foam --base-color 0.8235 0.7882 0.6471 --no-slot
+material new FoamShade --base-color 0.5490 0.6706 0.6314 --no-slot
+add mesh ico-sphere --name F0 --subdivisions 1 --radius 0.42 --location 0 0 0.12
+material assign Foam
+add mesh ico-sphere --name F1 --subdivisions 1 --radius 0.32 --location 0.5 0.2 0.08
+material assign Foam
+add mesh ico-sphere --name F2 --subdivisions 1 --radius 0.3 --location -0.45 0.25 0.06
+material assign Foam
+add mesh ico-sphere --name F3 --subdivisions 1 --radius 0.28 --location 0.2 -0.4 0.05
+material assign Foam
+add mesh ico-sphere --name F4 --subdivisions 1 --radius 0.24 --location -0.25 -0.35 0.04
+material assign FoamShade
+add mesh ico-sphere --name F5 --subdivisions 1 --radius 0.2 --location 0.75 -0.2 0.02
+material assign FoamShade
+add mesh ico-sphere --name F6 --subdivisions 1 --radius 0.26 --location 0.1 0.1 0.4
+material assign Foam
+select all
+shade flat
+export foam.glb

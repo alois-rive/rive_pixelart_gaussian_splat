@@ -1,0 +1,18 @@
+{
+  "name": "Endesga 16",
+  "source": "https://lospec.com/palette-list/endesga-16",
+  "author": "ENDESGA",
+  "colors": ["#e4a672", "#b86f50", "#743f39", "#3f2832", "#9e2835", "#e53b44", "#fb922b", "#ffe762",
+             "#63c64d", "#327345", "#193d3f", "#4f6781", "#afbfd2", "#ffffff", "#2ce8f4", "#0484d1"],
+  "ramps": {
+    "lawn":   ["#193d3f", "#327345", "#63c64d", "#ffe762"],
+    "rough":  ["#193d3f", "#193d3f", "#327345", "#63c64d"],
+    "wood":   ["#3f2832", "#743f39", "#b86f50", "#e4a672"],
+    "red":    ["#3f2832", "#9e2835", "#e53b44", "#fb922b"],
+    "straw":  ["#743f39", "#b86f50", "#fb922b", "#ffe762", "#ffffff"],
+    "stone":  ["#3f2832", "#4f6781", "#afbfd2", "#ffffff"],
+    "blue":   ["#193d3f", "#0484d1", "#2ce8f4", "#ffffff"],
+    "skin":   ["#743f39", "#b86f50", "#e4a672", "#ffffff"]
+  },
+  "roles": { "void": "#193d3f", "fog": "#4f6781", "sky_top": "#0484d1", "sky_bottom": "#2ce8f4" }
+}

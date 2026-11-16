@@ -1,0 +1,7 @@
+# A ripple ring on the water where the frog lands (scaled up and hidden by the game).
+new
+add mesh torus --name Ring --major-segments 12 --minor-segments 4 --major-radius 0.6 --minor-radius 0.05 --location 0 0 0.03
+material new Foam --base-color 0.451 0.937 0.969
+material assign Foam
+shade flat
+export ripple.glb

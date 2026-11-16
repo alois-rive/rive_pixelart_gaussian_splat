@@ -1,0 +1,41 @@
+# Ship's cannon, phase 2: SLSO8 materials (exact sRGB of the ramp steps), the muzzle bore, joins
+# into rigid parts, exports. Barrel = tube, muzzle ring, breech cap, knob, fuse ring, trunnions
+# (its own game bone, exported with its pivot - the trunnion axis - at the origin, unturned);
+# Carriage = cheeks, transom, axle blocks, wheels.
+material new Iron --base-color 0.1255 0.2353 0.3373 --no-slot
+material new IronLight --base-color 0.3294 0.3059 0.4078 --no-slot
+material new Bore --base-color 0.0510 0.1686 0.2706 --no-slot
+material new Wood --base-color 0.5529 0.4118 0.4784 --no-slot
+material new Wheel --base-color 0.8157 0.5059 0.3490 --no-slot
+active Barrel
+mode edit
+select all
+material assign Iron
+select face where "pos.y < -0.685 || pos.y > 0.445 || abs(pos.x) > 0.235 || (pos.z > 0.2 && abs(pos.y - 0.36) < 0.08)"
+material assign IronLight
+select face where "normal.y < -0.9 && pos.y < -0.84"
+inset 0.06
+extrude 0 0.14 0
+material assign Bore
+mode object
+select CheekLF CheekLM CheekLB CheekRF CheekRM CheekRB
+material assign Wood
+select Transom AxleF AxleB
+material assign IronLight
+select WheelLF WheelLB WheelRF WheelRB
+material assign Wheel
+select CheekLF CheekLM CheekLB CheekRF CheekRM CheekRB Transom AxleF AxleB WheelLF WheelLB WheelRF WheelRB
+active CheekLF
+join
+rename CheekLF Carriage
+select all
+shade flat
+export cannon.glb
+select Carriage
+export carriage.glb --selection
+select Barrel
+set location 0 0 0
+set rotation 0 0 0
+export barrel.glb --selection
+set location 0 -0.09 0.66
+set rotation -5 0 0

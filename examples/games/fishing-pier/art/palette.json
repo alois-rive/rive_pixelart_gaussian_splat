@@ -1,0 +1,24 @@
+{
+  "name": "Pollen8",
+  "source": "https://lospec.com/palette-list/pollen8",
+  "author": "Conker",
+  "colors": ["#73464c", "#ab5675", "#ee6a7c", "#ffa7a5", "#ffe07e", "#ffe7d6", "#72dcbb", "#34acba"],
+  "ramps": {
+    "coat":   ["#73464c", "#ee6a7c", "#ffe07e", "#ffe7d6"],
+    "skin":   ["#73464c", "#ab5675", "#ffa7a5", "#ffe7d6"],
+    "beard":  ["#ab5675", "#ffa7a5", "#ffe7d6"],
+    "boot":   ["#73464c", "#ab5675", "#ee6a7c"],
+    "bucket": ["#73464c", "#34acba", "#72dcbb"],
+    "wood":   ["#73464c", "#ab5675", "#ffa7a5"],
+    "sea":    ["#34acba", "#72dcbb", "#ffe7d6"],
+    "weed":   ["#73464c", "#34acba", "#72dcbb"],
+    "sand":   ["#73464c", "#ab5675", "#ee6a7c", "#ffa7a5"],
+    "fishy":  ["#ee6a7c", "#ffe07e", "#ffe7d6"],
+    "fishp":  ["#ab5675", "#ee6a7c", "#ffa7a5"],
+    "fishd":  ["#73464c", "#ab5675", "#ee6a7c"],
+    "jelly":  ["#ffa7a5", "#ffe7d6"],
+    "sun":    ["#ffe07e", "#ffe7d6"],
+    "deep":   ["#34acba"]
+  },
+  "roles": { "sky_top": "#ffa7a5", "sky_bottom": "#34acba", "fog": "#34acba", "void": "#73464c" }
+}

@@ -1,0 +1,14 @@
+# The moon: a crescent. A 12-sided disc r 0.6 and, 4 cm in front of it, a darker disc r 0.52 offset
+# up and right (the unlit side with a little earthshine). Upright, facing the camera (-Y in hedra). Up Z.
+new
+material new Moon --base-color 0.8353 0.2353 0.4157 --emission 0.8353 0.2353 0.4157 --no-slot
+material new Shade --base-color 0.1922 0.0196 0.1176 --no-slot
+add mesh circle --name Moon --vertices 12 --radius 0.6 --cap-fill triangle-fan --location 0 0 0 --rotation 90 0 0
+apply --rotation
+material assign Moon
+add mesh circle --name Dark --vertices 12 --radius 0.52 --cap-fill triangle-fan --location 0.24 -0.04 0.14 --rotation 90 0 0
+apply --rotation
+material assign Shade
+select all
+shade flat
+export moon.glb

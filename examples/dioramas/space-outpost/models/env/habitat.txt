@@ -1,0 +1,81 @@
+# Habitat: a long module (8-sided cylinder lying along X) on two skids, a dome module joined by a
+# tunnel, glowing window strips and a door screen, and a beacon whose arm spins on the long
+# module's roof (rigid, one turn per 2 s, linear). Up Z, facing -Y.
+new
+material new Hull --base-color 0.302 0.502 0.380
+material new Trim --base-color 0.188 0.365 0.259 --no-slot
+material new Glow --base-color 0.745 0.863 0.498 --emission 0.745 0.863 0.498 --no-slot
+material new Beacon --base-color 0.933 1.0 0.8 --emission 0.933 1.0 0.8 --no-slot
+# turned about its own axis first (a flat on top), then laid along X: Euler XYZ is extrinsic, so two steps
+add mesh cylinder --name Module --vertices 8 --radius 0.7 --depth 2.6 --location -0.9 0 0.95 --rotation 0 0 22.5
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+material assign Hull
+add mesh cylinder --name EndL --vertices 8 --radius 0.56 --depth 0.24 --location -2.3 0 0.95 --rotation 0 0 22.5
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+material assign Trim
+add mesh cube --name SkidF --size 1 --location -0.9 -0.45 0.12
+scale 2.2 0.18 0.24
+apply --scale
+material assign Trim
+add mesh cube --name SkidB --size 1 --location -0.9 0.45 0.12
+scale 2.2 0.18 0.24
+apply --scale
+material assign Trim
+add mesh cube --name Window --size 1 --location -1.0 -0.62 1.05
+scale 1.6 0.12 0.2
+apply --scale
+material assign Glow
+add mesh cylinder --name Tunnel --vertices 6 --radius 0.36 --depth 1.0 --location 0.75 0 0.6 --rotation 0 90 0
+apply --rotation
+material assign Trim
+# the dome: the upper half of a 10 x 6 sphere, 2 m across, on a short ring wall
+add mesh uv-sphere --name Dome --segments 10 --rings 6 --radius 1.0 --location 1.9 0 0.4
+material assign Hull
+active Dome
+mode edit
+select vert where "pos.z < -0.01"
+delete
+mode object
+add mesh cylinder --name Ring --vertices 10 --radius 1.04 --depth 0.4 --location 1.9 0 0.2
+material assign Trim
+add mesh cube --name Door --size 1 --location 1.9 -0.98 0.5
+scale 0.5 0.16 0.62
+apply --scale
+material assign Glow
+add mesh cube --name Porthole --size 1 --location 1.9 -0.62 1.02
+scale 0.34 0.4 0.2
+apply --scale
+set rotation 45 0 0
+material assign Glow
+add mesh cube --name Post --size 1 --location -0.4 0 1.85
+scale 0.14 0.14 0.4
+apply --scale
+material assign Trim
+# the spinning beacon arm: origin on the post's axis
+add mesh cube --name Spinner --size 1 --location -0.4 0 2.08
+scale 0.7 0.12 0.1
+apply --scale
+material assign Trim
+add mesh cube --name SpinLight --size 0.18 --location -0.1 0 2.12
+material assign Beacon
+select Spinner SpinLight
+active Spinner
+join
+cursor set -0.4 0 2.08
+origin set --to cursor
+select all
+shade flat
+fps 24
+frame range 0 48
+select Spinner
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 0 360
+keyframe insert --channels rot --frame 48
+keyframe interpolation linear --all
+frame set 0
+export habitat.glb --bake-animations

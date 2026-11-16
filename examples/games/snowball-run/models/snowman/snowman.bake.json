@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.11,
+  "fat": 1.0,
+  "out": "../../lookdev/snowman.bin",
+  "objects": [
+    { "model": "snowman.glb",
+      "materials": { "Snow": { "ramp": "snow" }, "Plum": { "ramp": "bark", "spacing": 0.08, "specks": true },
+                     "Coral": { "ramp": "accent", "spacing": 0.075 } } }
+  ]
+}

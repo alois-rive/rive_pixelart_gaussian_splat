@@ -1,0 +1,20 @@
+# Fair lamp post: a lavender post on a base, a crossbar with two glowing bulbs and one on top (unlit). Up Z.
+new
+add mesh cylinder --name Base --vertices 6 --radius 0.22 --depth 0.25 --location 0 0 0.125
+material new Iron --base-color 0.514 0.463 0.612
+add mesh cylinder --name Post --vertices 6 --radius 0.07 --depth 2.2 --location 0 0 1.2
+material assign Iron
+add mesh cube --name Bar --size 1 --location 0 0 2.05
+scale 0.9 0.1 0.1
+apply --scale
+material assign Iron
+add mesh ico-sphere --name BulbL --subdivisions 1 --radius 0.15 --location -0.45 0 1.92
+material new Bulb --base-color 1 0.925 0.153 --emission 1 0.925 0.153 --no-slot
+material assign Bulb
+add mesh ico-sphere --name BulbR --subdivisions 1 --radius 0.15 --location 0.45 0 1.92
+material assign Bulb
+add mesh ico-sphere --name BulbT --subdivisions 1 --radius 0.17 --location 0 0 2.42
+material assign Bulb
+select all
+shade flat
+export lamp.glb

@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v2.png",
+  "sha256": "5a16ec1c76193d7d1fa5df88945b5de72732b2d5cfe7e454e51a338104d5293c",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v2.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small wooden post windmill in winter.\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- FRONT: the object faces the camera. RIGHT: the camera stands at the object's right side, so the object faces the LEFT edge of the image. BACK: seen from behind. TOP: seen from straight above with its front towards the BOTTOM edge of the image.\n- One flat, uniform, pale grey background (#d9d9d9) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views):\n- A square wooden mill house about 1.6 m wide, 1.6 m deep and 1.8 m tall, standing on a short stone base 0.4 m tall.\n- A steep gabled roof covered in a thick cap of snow, ridge running front to back, total height about 3.2 m.\n- Four broad lattice sails on a hub at the FRONT of the house, about 1.4 m above the base; the sails form an X (diagonals) and reach about 1.5 m from the hub.\n- A small door on the front under the sails, a little square window on each side.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes. No smooth organic surfaces, no tiny details, no texture noise, no grain.\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.\n- Flat colour areas only, ONLY these colours (a 16-colour palette, Magik16): wood planks #591e37 #9b5a44, stone base #3c4348 #668b90, snow #bee5e1 #fbfceb, sails #e9cea8 with spars #591e37, door #1c1e1f, glowing windows #f0f3c4.\n- About 300 to 600 triangles worth of detail.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e4f7-8da2-7be0-935a-75b45a088ff2",
+    "source": "/Users/alois/.codex/generated_images/01a1e4f7-8da2-7be0-935a-75b45a088ff2/exec-c4503a08-c856-4346-88df-8fdf248e91c0.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e4f7-8da2-7be0-935a-75b45a088ff2/exec-c4503a08-c856-4346-88df-8fdf248e91c0.png"
+    ]
+  },
+  "seconds": 66.4,
+  "created": "2026-11-16T16:27:37+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/winter/art/windmill/sheet.v2.png",
+  "reviewed": false
+}

@@ -1,0 +1,61 @@
+# Shuttle: a small lander that visits the pad (moved by the scene's game.as: one game bone). A tapered
+# fuselage, swept wings (light, like the hull), a tail fin, a glowing canopy, two engine pods at the back and two skids.
+# 1.7 m long (nose to engines), 1.7 m span, 1.0 m tall. Up Z, nose to -Y; origin on the ground
+# under the skids' centre. Engine nozzles at (+-0.22, 0.93, 0.52): the jets attach there.
+new
+material new Hull --base-color 0.537 0.635 0.341 --no-slot
+material new Trim --base-color 0.188 0.365 0.259 --no-slot
+material new Glow --base-color 0.745 0.863 0.498 --emission 0.745 0.863 0.498 --no-slot
+add mesh cube --name Body --size 1 --location 0 0.05 0.55
+scale 0.62 1.5 0.38
+apply --scale
+apply --location
+material assign Hull
+active Body
+mode edit
+select vert where "pos.y < -0.5"
+scale 0.5 1 0.6
+mode object
+add mesh cube --name Wings --size 1 --location 0 0.3 0.46
+scale 1.7 0.62 0.12
+apply --scale
+apply --location
+material assign Hull
+active Wings
+mode edit
+select vert where "abs(pos.x) > 0.6"
+translate 0 0.24 0
+mode object
+add mesh cube --name Fin --size 1 --location 0 0.55 0.88
+scale 0.12 0.46 0.4
+apply --scale
+apply --location
+material assign Trim
+active Fin
+mode edit
+select vert where "pos.z > 1.0"
+translate 0 0.18 0
+mode object
+add mesh cylinder --name EngL --vertices 6 --radius 0.14 --depth 0.38 --location -0.22 0.74 0.52 --rotation 90 0 0
+material assign Trim
+add mesh cylinder --name EngR --vertices 6 --radius 0.14 --depth 0.38 --location 0.22 0.74 0.52 --rotation 90 0 0
+material assign Trim
+add mesh cube --name Canopy --size 1 --location 0 -0.3 0.77
+scale 0.38 0.36 0.1
+apply --scale
+material assign Glow
+add mesh cube --name SkidL --size 1 --location -0.28 0.05 0.05
+scale 0.11 1.0 0.1
+apply --scale
+material assign Trim
+add mesh cube --name SkidR --size 1 --location 0.28 0.05 0.05
+scale 0.11 1.0 0.1
+apply --scale
+material assign Trim
+add mesh cube --name Struts --size 1 --location 0 0.05 0.24
+scale 0.5 0.12 0.3
+apply --scale
+material assign Trim
+select all
+shade flat
+export shuttle.glb

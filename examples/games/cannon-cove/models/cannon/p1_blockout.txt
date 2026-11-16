@@ -1,0 +1,59 @@
+# Ship's cannon, phase 1: one primitive per named part at the spec's sizes (metres). Up Z, front -Y
+# (the muzzle points -Y). Origin on the ground under the carriage's centre. The barrel is built
+# round its trunnion pivot (0, 0, 0), joined into one object and then placed: trunnion at
+# (0, -0.09, 0.66), muzzle raised 5 degrees.
+new
+# --- barrel, around the pivot
+add mesh cone --name Tube --vertices 10 --radius1 0.22 --radius2 0.15 --depth 1.15 --location 0 -0.125 0 --rotation 90 0 0
+apply --rotation
+add mesh cylinder --name Ring --vertices 10 --radius 0.22 --depth 0.16 --location 0 -0.77 0 --rotation 90 0 0
+apply --rotation
+add mesh cone --name Cap --vertices 10 --radius1 0.22 --radius2 0.1 --depth 0.17 --location 0 0.535 0 --rotation -90 0 0
+apply --rotation
+add mesh ico-sphere --name Knob --subdivisions 1 --radius 0.075 --location 0 0.68 0
+add mesh torus --name Fuse --major-radius 0.05 --minor-radius 0.022 --major-segments 8 --minor-segments 4 --location 0 0.36 0.25 --rotation 0 90 0
+apply --rotation
+add mesh cylinder --name Trunnion --vertices 8 --radius 0.07 --depth 0.56 --location 0 0 0 --rotation 0 90 0
+apply --rotation
+select Tube Ring Cap Knob Fuse Trunnion
+apply --location
+active Tube
+join
+rename Tube Barrel
+set location 0 -0.09 0.66
+set rotation -5 0 0
+# --- carriage: two cheeks stepped down towards the back (x = +-0.27, 0.11 thick, z from 0.12)
+add mesh cube --name CheekLF --size 1 --location -0.27 -0.43 0.345
+scale 0.11 0.24 0.45
+apply --scale
+add mesh cube --name CheekLM --size 1 --location -0.27 -0.08 0.31
+scale 0.11 0.46 0.38
+apply --scale
+add mesh cube --name CheekLB --size 1 --location -0.27 0.35 0.26
+scale 0.11 0.40 0.28
+apply --scale
+add mesh cube --name CheekRF --size 1 --location 0.27 -0.43 0.345
+scale 0.11 0.24 0.45
+apply --scale
+add mesh cube --name CheekRM --size 1 --location 0.27 -0.08 0.31
+scale 0.11 0.46 0.38
+apply --scale
+add mesh cube --name CheekRB --size 1 --location 0.27 0.35 0.26
+scale 0.11 0.40 0.28
+apply --scale
+# transom: a beam between the cheeks under the barrel (the dark block behind it in the front view)
+add mesh cube --name Transom --size 1 --location 0 -0.1 0.49
+scale 0.56 0.2 0.16
+apply --scale
+# axle blocks: front and rear beams across the cheeks, out to the wheels
+add mesh cube --name AxleF --size 1 --location 0 -0.38 0.2
+scale 0.84 0.13 0.13
+apply --scale
+add mesh cube --name AxleB --size 1 --location 0 0.31 0.2
+scale 0.84 0.13 0.13
+apply --scale
+# wheels: 10-sided discs 0.30 across, 0.1 thick, axis X
+add mesh cylinder --name WheelLF --vertices 10 --radius 0.17 --depth 0.1 --location -0.40 -0.38 0.17 --rotation 0 90 0
+add mesh cylinder --name WheelLB --vertices 10 --radius 0.17 --depth 0.1 --location -0.40 0.31 0.17 --rotation 0 90 0
+add mesh cylinder --name WheelRF --vertices 10 --radius 0.17 --depth 0.1 --location 0.40 -0.38 0.17 --rotation 0 90 0
+add mesh cylinder --name WheelRB --vertices 10 --radius 0.17 --depth 0.1 --location 0.40 0.31 0.17 --rotation 0 90 0

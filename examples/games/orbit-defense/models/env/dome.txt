@@ -1,0 +1,29 @@
+# A dome house: a faceted half-dome on a ring wall, a glowing door, a mast with a cyan beacon.
+# Origin at the ground under its centre, up Z. One bone each.
+new
+material new Wall --base-color 0.424 0.725 0.788 --no-slot
+material new Base --base-color 0.431 0.318 0.506 --no-slot
+material new Window --base-color 0.424 0.929 0.929 --emission 0.424 0.929 0.929 --no-slot
+add mesh cylinder --name Ring --vertices 8 --radius 0.27 --depth 0.12 --location 0 0 0.06
+material assign Base
+add mesh uv-sphere --name Dome --segments 8 --rings 4 --radius 0.25 --location 0 0 0.12
+material assign Wall
+mode edit
+select vert where "pos.z < -0.01"
+delete
+mode object
+add mesh cube --name Door --size 1 --location 0 -0.24 0.11
+scale 0.11 0.07 0.16
+apply --scale
+material assign Window
+add mesh cube --name Mast --size 1 --location 0.08 0 0.45
+scale 0.09 0.09 0.22
+apply --scale
+material assign Base
+add mesh cube --name Beacon --size 1 --location 0.08 0 0.59
+scale 0.11 0.11 0.11
+apply --scale
+material assign Window
+select all
+shade flat
+export dome.glb

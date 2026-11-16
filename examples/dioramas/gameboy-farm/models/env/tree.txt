@@ -1,0 +1,17 @@
+# Round tree: a 6-sided trunk and two faceted foliage balls (icospheres), chunky. Up Z, 2.8 m tall.
+new
+add mesh cylinder --name Trunk --vertices 6 --radius 0.16 --depth 1.0 --location 0 0 0.5
+material new Bark --base-color 0.200 0.173 0.314
+add mesh ico-sphere --name Crown --subdivisions 1 --radius 0.95 --location 0 0 1.75
+scale 1 1 0.9
+apply --scale
+material new Leaves --base-color 0.275 0.529 0.561
+mode edit
+select all
+randomize --amount 0.08 --seed 5
+mode object
+add mesh ico-sphere --name Top --subdivisions 1 --radius 0.6 --location 0.15 -0.1 2.45 --rotation 0 0 30
+material assign Leaves
+select all
+shade flat
+export tree.glb

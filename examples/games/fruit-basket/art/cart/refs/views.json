@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/fruit-basket/art/cart/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        39,
+        78,
+        656,
+        332
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.5061,
+      "fill": 0.5353,
+      "background": "#939292"
+    },
+    "right": {
+      "box": [
+        1002,
+        81,
+        328,
+        329
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.003,
+      "fill": 0.6016,
+      "background": "#939392"
+    },
+    "back": {
+      "box": [
+        84,
+        590,
+        645,
+        333
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.5163,
+      "fill": 0.5333,
+      "background": "#939292"
+    },
+    "top": {
+      "box": [
+        822,
+        790,
+        438,
+        240
+      ],
+      "flipped": false,
+      "rotated": -90.0,
+      "aspect": 0.5479,
+      "fill": 0.6384,
+      "background": "#939292"
+    }
+  }
+}

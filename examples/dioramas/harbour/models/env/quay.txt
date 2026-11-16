@@ -1,0 +1,24 @@
+# The quay: the land along the back of the harbour, 10 x 1.8 m, its top 0.6 m above the water.
+# Top: grass texture (8da24e with d2cb3e / 627057 patches, an e8bf92 path to the pier; 0.2 m a texel).
+# Sides: stone blocks (876672 / b7a39d, 0.5 x 0.25 m), cube-projected at 2 m a tile. In place.
+new
+add mesh cube --name Quay --size 1 --location 0 3.1 0
+scale 10 1.8 1.2
+apply
+material new Quay --base-color 1 1 1
+material texture Quay base-color textures/quay.png
+material new Grass --base-color 1 1 1 --no-slot
+material texture Grass base-color textures/grass.png
+active Quay
+mode edit
+select all
+uv cube-project --size 2
+select face where "normal.z > 0.9"
+material assign Grass
+uv project-from-view top --scale-to-bounds
+# the underside is never seen: no splats for it
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+shade flat
+export quay.glb

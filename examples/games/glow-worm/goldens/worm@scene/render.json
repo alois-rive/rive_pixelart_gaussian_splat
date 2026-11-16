@@ -1,0 +1,14 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "worm",
+  "views": "front,right,back,top,iso",
+  "size": 120,
+  "pixel": 2,
+  "arg": [],
+  "advance": "2",
+  "real_sky": true,
+  "look": "lit",
+  "texel": 0.0456,
+  "elevation": 0
+}

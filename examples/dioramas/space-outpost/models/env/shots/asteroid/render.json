@@ -1,0 +1,12 @@
+{
+  "hedra": "models/env/asteroid.rmdl",
+  "rive": null,
+  "blob": "splats",
+  "views": "front,iso",
+  "size": 240,
+  "pixel": 2,
+  "arg": [],
+  "look": "lit",
+  "texel": 0,
+  "elevation": 0
+}

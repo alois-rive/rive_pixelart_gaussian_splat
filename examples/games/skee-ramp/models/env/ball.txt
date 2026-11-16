@@ -1,0 +1,7 @@
+# A skee ball: a faceted sphere r 0.1 (exaggerated from 0.075), mint. Origin at its centre. Up Z.
+new
+add mesh ico-sphere --name Ball --subdivisions 2 --radius 0.1 --location 0 0 0
+material new Ball --base-color 0.0627 0.8235 0.4588
+material assign Ball
+shade flat
+export ball.glb

@@ -1,0 +1,62 @@
+{
+  "name": "Cyclope6 (bench: the roof teal as sky)",
+  "source": "https://lospec.com/palette-list/cyclope6",
+  "author": "Naym",
+  "colors": [
+    "#411d31",
+    "#631b34",
+    "#32535f",
+    "#0b8a8f",
+    "#0eaf9b",
+    "#30e1b9"
+  ],
+  "ramps": {
+    "roof": [
+      "#411d31",
+      "#32535f",
+      "#0b8a8f",
+      "#0eaf9b"
+    ],
+    "brick": [
+      "#411d31",
+      "#631b34",
+      "#32535f"
+    ],
+    "fur": [
+      "#411d31",
+      "#631b34",
+      "#32535f"
+    ],
+    "metal": [
+      "#411d31",
+      "#32535f",
+      "#0b8a8f",
+      "#0eaf9b"
+    ],
+    "glass": [
+      "#32535f",
+      "#0b8a8f",
+      "#0eaf9b"
+    ],
+    "fish": [
+      "#32535f",
+      "#0b8a8f",
+      "#0eaf9b",
+      "#30e1b9"
+    ],
+    "light": [
+      "#0eaf9b",
+      "#30e1b9"
+    ],
+    "spark": [
+      "#30e1b9",
+      "#30e1b9"
+    ]
+  },
+  "roles": {
+    "sky_top": "#0b8a8f",
+    "sky_bottom": "#0b8a8f",
+    "fog": "#32535f",
+    "void": "#411d31"
+  }
+}

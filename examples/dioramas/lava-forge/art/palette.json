@@ -1,0 +1,15 @@
+{
+  "name": "Lava-GB",
+  "source": "https://lospec.com/palette-list/lava-gb",
+  "author": "Aero",
+  "colors": ["#051f39", "#4a2480", "#c53a9d", "#ff8e80"],
+  "ramps": {
+    "rock":  ["#051f39", "#4a2480", "#c53a9d"],
+    "stone": ["#051f39", "#4a2480", "#c53a9d", "#ff8e80"],
+    "iron":  ["#051f39", "#4a2480", "#c53a9d"],
+    "wood":  ["#051f39", "#4a2480", "#c53a9d", "#ff8e80"],
+    "ember": ["#4a2480", "#c53a9d", "#ff8e80"],
+    "lava":  ["#c53a9d", "#ff8e80"]
+  },
+  "roles": { "sky_top": "#051f39", "sky_bottom": "#4a2480", "fog": "#051f39", "void": "#051f39" }
+}

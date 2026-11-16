@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.1,
+  "fat": 1.0,
+  "out": "../../lookdev/target.bin",
+  "objects": [
+    { "model": "target.glb",
+      "materials": { "Straw": { "ramp": "straw" }, "White": { "ramp": "straw", "spacing": 0.06 },
+                     "Night": { "ramp": "stone", "spacing": 0.06 }, "Teal": { "ramp": "teal", "spacing": 0.06 },
+                     "Crimson": { "ramp": "crimson", "spacing": 0.06 }, "Gold": { "ramp": "straw", "spacing": 0.06 },
+                     "Leg": { "ramp": "wood", "spacing": 0.04 }, "Runner": { "ramp": "wood", "spacing": 0.04 } } }
+  ]
+}

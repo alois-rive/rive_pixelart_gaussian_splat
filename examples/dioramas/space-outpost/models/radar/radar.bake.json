@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "out": "../../lookdev/radar.bin",
+  "objects": [
+    { "model": "radar.glb", "scale": 1.25, "fps": 12,
+      "materials": {
+        "Base": { "ramp": "hull" }, "Yoke": { "ramp": "hull" },
+        "DishFace": { "ramp": "dish" }, "DishBack": { "ramp": "hull" },
+        "Strut": { "ramp": "hull", "spacing": 0.05 }, "Glow": { "ramp": "glow", "flags": ["unlit"], "spacing": 0.04 } } }
+  ]
+}

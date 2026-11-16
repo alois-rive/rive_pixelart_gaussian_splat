@@ -1,0 +1,27 @@
+# The sea, two objects: SeaNear, a 34 m disc of 1 m cells around the headland, and SeaFar, a ring from
+# 15 to 90 m of 4 m cells (baked with a coarse spacing: the fog dissolves it and it reaches the horizon).
+# Every vertex is jittered in height, so each facet catches the moon at its own angle: white dither
+# glints on a dark sea. Up Z, sea level z 0.
+new
+add mesh grid --name SeaNear --size 1 --x-subdivisions 34 --y-subdivisions 34 --location 0 0 0
+scale 34 34 1
+apply --scale
+material new Sea --base-color 0.133 0.137 0.137
+mode edit
+select vert where "pos.x * pos.x + pos.y * pos.y > 289"
+delete vert
+select all
+randomize --amount 0.18 --seed 21
+mode object
+add mesh grid --name SeaFar --size 1 --x-subdivisions 45 --y-subdivisions 45 --location 0 0 -0.05
+scale 180 180 1
+apply --scale
+material new SeaFar --base-color 0.133 0.137 0.137
+mode edit
+select vert where "pos.x * pos.x + pos.y * pos.y < 225 || pos.x * pos.x + pos.y * pos.y > 8100"
+delete vert
+select all
+randomize --amount 0.5 --seed 22
+mode object
+shade flat
+export sea.glb

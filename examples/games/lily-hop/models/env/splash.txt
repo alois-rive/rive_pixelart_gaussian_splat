@@ -1,0 +1,15 @@
+# A splash: a crown of six droplets on a low ring, 0.9 m across. The game scales it up and sinks it.
+new
+add mesh torus --name Ring --major-segments 12 --minor-segments 4 --major-radius 0.4 --minor-radius 0.06 --location 0 0 0.04
+add mesh ico-sphere --name D0 --subdivisions 1 --radius 0.07 --location 0.401 0.124 0.28
+add mesh ico-sphere --name D1 --subdivisions 1 --radius 0.07 --location 0.093 0.410 0.36
+add mesh ico-sphere --name D2 --subdivisions 1 --radius 0.07 --location -0.308 0.285 0.28
+add mesh ico-sphere --name D3 --subdivisions 1 --radius 0.07 --location -0.401 -0.124 0.36
+add mesh ico-sphere --name D4 --subdivisions 1 --radius 0.07 --location -0.093 -0.410 0.28
+add mesh ico-sphere --name D5 --subdivisions 1 --radius 0.07 --location 0.308 -0.285 0.36
+add mesh cone --name Spout --vertices 6 --radius1 0.12 --radius2 0.03 --depth 0.4 --location 0 0 0.2
+material new Foam --base-color 0.451 0.937 0.969
+select all
+material assign Foam
+shade flat
+export splash.glb

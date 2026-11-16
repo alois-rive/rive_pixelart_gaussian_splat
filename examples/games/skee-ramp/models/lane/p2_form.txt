@@ -1,0 +1,47 @@
+# Skee-ball lane, phase 2: the rings (stepped raised discs on the board: white r 0.38, blue 0.30,
+# white 0.20, a dark hole 0.09), the cup near the top (dark, r 0.11), Bubblegum 16 materials (sRGB
+# 0..1 of the ramp steps), one object, export. Ring centre at 0.42 of the board's height, cup at 0.884.
+material new Lane --base-color 1 0.5176 0.1490 --no-slot
+material new Rail --base-color 1 0.1490 0.4549 --no-slot
+material new Cabinet --base-color 0.5804 0.1294 0.4157 --no-slot
+material new Board --base-color 0.1373 0.2863 0.4588 --no-slot
+material new White --base-color 0.9804 0.9922 1 --no-slot
+material new Blue --base-color 0.4078 0.6824 0.8314 --no-slot
+material new Hole --base-color 0.0863 0.0902 0.1020 --no-slot
+material new Marquee --base-color 1 0.8196 0 --no-slot
+add mesh cylinder --name Ring0 --vertices 14 --radius 0.38 --depth 0.060 --location 0 1.0065 1.4142 --rotation 56 0 0
+apply --rotation
+material assign White
+add mesh cylinder --name Ring1 --vertices 14 --radius 0.3 --depth 0.090 --location 0 0.9941 1.4225 --rotation 56 0 0
+apply --rotation
+material assign Blue
+add mesh cylinder --name Ring2 --vertices 14 --radius 0.2 --depth 0.120 --location 0 0.9816 1.4309 --rotation 56 0 0
+apply --rotation
+material assign White
+add mesh cylinder --name Ring3 --vertices 14 --radius 0.09 --depth 0.135 --location 0 0.9754 1.4351 --rotation 56 0 0
+apply --rotation
+material assign Hole
+add mesh cylinder --name Cup --vertices 12 --radius 0.11 --depth 0.06 --location 0 1.2993 1.8578 --rotation 56 0 0
+apply --rotation
+material assign Hole
+select Lane Hump
+material assign Lane
+select RailL RailR WallL WallR
+material assign Rail
+select Base Under Back
+material assign Cabinet
+select Board
+material assign Board
+select Marquee
+material assign Marquee
+select all
+active Base
+join
+rename Base Lane
+# faces nobody sees still bake: every downward face (on the ground, or under a rail, the lane, the marquee)
+mode edit
+select face where "normal.z < -0.9"
+delete face
+mode object
+shade flat
+export lane.glb

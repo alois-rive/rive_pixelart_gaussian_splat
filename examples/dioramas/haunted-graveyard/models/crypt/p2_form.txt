@@ -1,0 +1,40 @@
+# Crypt chapel, phase 2: materials (Hollow, sRGB 0..1), the tower's lean, export.
+material new Stone --base-color 0.337 0.353 0.459 --no-slot
+material new Roof --base-color 0.059 0.059 0.106 --no-slot
+material new Trim --base-color 0.776 0.718 0.745 --no-slot
+material new Door --base-color 0.059 0.059 0.106 --no-slot
+material new Glow --base-color 0.980 0.984 0.965 --emission 0.980 0.984 0.965 --no-slot
+select Walls Gable ButLF ButLB ButRF ButRB Tower
+material assign Stone
+select Plinth RoofL RoofR Spire
+material assign Roof
+select Frame FrameTip Belfry
+material assign Trim
+select Door DoorTip
+material assign Door
+select WinL WinLTip WinR WinRTip
+material assign Glow
+# each pointed opening is one part (a tip alone is under 12 splats: a speck warning)
+select Frame FrameTip
+active Frame
+join
+select Door DoorTip
+active Door
+join
+select WinL WinLTip
+active WinL
+join
+select WinR WinRTip
+active WinR
+join
+# the tower leans as one piece about its foot
+select Tower Belfry Spire
+active Tower
+join
+cursor set 0.3 -0.95 2.25
+origin set --to cursor
+rotate y 15 --pivot cursor
+rotate x 8 --pivot cursor
+select all
+shade flat
+export crypt.glb

@@ -1,0 +1,32 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.1,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "bounds": [[-7.5, -4.5, -3.0], [7.5, 6.0, 3.0]],
+  "objects": [
+    { "model": "models/env/moon.glb", "position": [0, -4, 0], "bone": "moon",
+      "materials": { "Rock": { "ramp": "rock" }, "Dust": { "ramp": "dust" } } },
+    { "model": "models/env/pad.glb", "position": [0, 0, 0], "bone": "pad",
+      "materials": { "Metal": { "ramp": "metal", "spacing": 0.08 }, "Deck": { "ramp": "foil" }, "Stripe": { "ramp": "cabin", "spacing": 0.06 },
+                     "Lamp": { "ramp": "star", "flags": ["unlit"], "spacing": 0.06 } } },
+    { "model": "models/lander/lander.glb", "position": [0, 3, 0], "bone": "lander",
+      "materials": { "Foil": { "ramp": "foil" }, "Cabin": { "ramp": "cabin" }, "Pale": { "ramp": "cabin", "spacing": 0.07 },
+                     "Metal": { "ramp": "metal", "spacing": 0.08 }, "Glass": { "ramp": "glass", "spacing": 0.07 },
+                     "Hatch": { "ramp": "foil", "spacing": 0.06 } } },
+    { "model": "models/env/flame.glb", "position": [0, 3.17, 0], "bone": "flame",
+      "materials": { "Sheath": { "ramp": "flame", "flags": ["unlit", "nocast"], "spacing": 0.07 },
+                     "Core": { "ramp": "flame", "flags": ["unlit", "nocast"], "spacing": 0.07 } } },
+    { "model": "models/env/dust.glb", "position": [0, -2, 0], "bone": "dust", "copies": 6,
+      "materials": { "Dust": { "ramp": "dust", "flags": ["nocast"], "spacing": 0.08 } } },
+    { "model": "models/env/debris.glb", "position": [0, -2, 0], "bone": "debris", "copies": 6,
+      "materials": { "Foil": { "ramp": "foil", "flags": ["nocast"], "spacing": 0.08 } } },
+    { "model": "models/env/flag.glb", "position": [0, -2, 0], "bone": "flag", "copies": 6,
+      "materials": { "Pole": { "ramp": "metal", "spacing": 0.06, "specks": true }, "Cloth": { "ramp": "cabin", "spacing": 0.07 } } },
+    { "model": "models/env/stars.glb",
+      "materials": { "Star": { "ramp": "star", "flags": ["unlit", "nocast"], "specks": true } } },
+    { "model": "models/env/planet.glb", "position": [-5.0, 3.6, -8], "scale": 0.85,
+      "materials": { "Planet": { "ramp": "planet" }, "Band": { "ramp": "planet" }, "Ring": { "ramp": "planet", "spacing": 0.08 } } }
+  ]
+}

@@ -1,0 +1,7 @@
+# Beach ball, phase 1: blockout. A faceted ball 0.8 m across and two pole caps (ball.spec.md).
+new
+add mesh uv-sphere --name Ball --segments 12 --rings 8 --radius 0.4 --location 0 0 0
+add mesh cylinder --name CapTop --vertices 10 --radius 0.13 --depth 0.06 --location 0 0 0.395
+add mesh cylinder --name CapBot --vertices 10 --radius 0.13 --depth 0.06 --location 0 0 -0.395
+select all
+shade flat

@@ -1,0 +1,32 @@
+# Landing pad: an octagonal slab 3.4 m across, 0.16 m tall, a ring and an H painted in its texture,
+# eight glowing edge lights. Up Z.
+new
+add mesh cylinder --name Pad --vertices 8 --radius 1.7 --depth 0.16 --location 0 0 0.08 --rotation 0 0 22.5
+apply --rotation
+material new PadTop --base-color 1 1 1
+material new PadSide --base-color 0.118 0.227 0.161 --no-slot
+active Pad
+mode edit
+select face where "normal.z < 0.9"
+material assign PadSide
+select face where "normal.z > 0.9"
+uv project-from-view top --scale-to-bounds
+mode object
+material texture PadTop base-color textures/pad_32.png
+material new Glow --base-color 0.745 0.863 0.498 --emission 0.745 0.863 0.498 --no-slot
+add mesh cube --name L0 --size 0.14 --location 1.62 0 0.19
+add mesh cube --name L1 --size 0.14 --location 1.146 1.146 0.19
+add mesh cube --name L2 --size 0.14 --location 0 1.62 0.19
+add mesh cube --name L3 --size 0.14 --location -1.146 1.146 0.19
+add mesh cube --name L4 --size 0.14 --location -1.62 0 0.19
+add mesh cube --name L5 --size 0.14 --location -1.146 -1.146 0.19
+add mesh cube --name L6 --size 0.14 --location 0 -1.62 0.19
+add mesh cube --name L7 --size 0.14 --location 1.146 -1.146 0.19
+select L0 L1 L2 L3 L4 L5 L6 L7
+active L0
+join
+rename L0 Lights
+material assign Glow
+select all
+shade flat
+export pad.glb

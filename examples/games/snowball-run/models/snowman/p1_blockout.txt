@@ -1,0 +1,22 @@
+# Snowman, phase 1: one primitive per part at the spec's sizes (snowman.spec.md). Up Z, facing -Y,
+# origin on the ground under the bottom ball. The snowman's own right is -X (the image's left in FRONT).
+new
+add mesh ico-sphere --name Bottom --subdivisions 2 --radius 0.5 --location 0 0 0.42
+scale 1.03 1.03 0.86
+apply --scale
+add mesh ico-sphere --name Middle --subdivisions 2 --radius 0.4 --location 0 0 0.98
+scale 0.96 0.96 0.82
+apply --scale
+add mesh ico-sphere --name Head --subdivisions 2 --radius 0.29 --location 0 0 1.45
+add mesh cylinder --name Brim --vertices 8 --radius 0.3 --depth 0.05 --location 0 0 1.71
+add mesh cylinder --name Crown --vertices 8 --radius 0.18 --depth 0.27 --location 0 0 1.865
+add mesh cone --name Nose --vertices 6 --radius1 0.09 --radius2 0.0 --depth 0.26 --location 0 -0.39 1.43 --rotation 90 0 0
+# stick arms: chunky boxes from the middle ball's sides up and out at 29 degrees, tips at x +-0.8, z 1.26
+add mesh cube --name ArmR --size 1 --location -0.56 0 1.12
+scale 0.09 0.09 0.56
+apply --scale
+set rotation 0 -61 0
+add mesh cube --name ArmL --size 1 --location 0.56 0 1.12
+scale 0.09 0.09 0.56
+apply --scale
+set rotation 0 61 0

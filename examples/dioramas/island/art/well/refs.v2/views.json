@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/island/art/well/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        183,
+        19,
+        425,
+        475
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1176,
+      "fill": 0.6396,
+      "background": "#d1d1d1"
+    },
+    "right": {
+      "box": [
+        994,
+        19,
+        313,
+        475
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5176,
+      "fill": 0.5344,
+      "background": "#d2d2d1"
+    },
+    "back": {
+      "box": [
+        182,
+        533,
+        409,
+        479
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1711,
+      "fill": 0.666,
+      "background": "#d2d2d1"
+    },
+    "top": {
+      "box": [
+        950,
+        586,
+        452,
+        368
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8142,
+      "fill": 0.7134,
+      "background": "#d2d2d1"
+    }
+  }
+}

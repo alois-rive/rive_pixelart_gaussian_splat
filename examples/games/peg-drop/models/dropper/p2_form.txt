@@ -1,0 +1,24 @@
+# Dropper, phase 2: form (bevelled body corners, the hopper's inside), flat shading, export.
+select Body
+active Body
+mode edit
+select all
+bevel 0.07
+mode object
+select Hopper
+active Hopper
+mode edit
+select face where "normal.z > 0.9"
+material assign CopperIn
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Chute
+active Chute
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export dropper.glb

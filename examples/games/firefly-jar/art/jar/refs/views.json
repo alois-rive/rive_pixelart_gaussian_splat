@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/firefly-jar/art/jar/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        242,
+        11,
+        284,
+        474
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.669,
+      "fill": 0.7518,
+      "background": "#d2d1d1"
+    },
+    "right": {
+      "box": [
+        1006,
+        23,
+        285,
+        462
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6211,
+      "fill": 0.7307,
+      "background": "#d2d2d2"
+    },
+    "back": {
+      "box": [
+        242,
+        524,
+        283,
+        477
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6855,
+      "fill": 0.7551,
+      "background": "#d2d1d1"
+    },
+    "top": {
+      "box": [
+        996,
+        614,
+        311,
+        302
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9711,
+      "fill": 0.8204,
+      "background": "#d3d2d2"
+    }
+  }
+}

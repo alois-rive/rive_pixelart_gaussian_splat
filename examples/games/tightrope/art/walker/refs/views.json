@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/tightrope/art/walker/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        85,
+        16,
+        596,
+        470
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7886,
+      "fill": 0.1729,
+      "background": "#3d69da"
+    },
+    "right": {
+      "box": [
+        1082,
+        16,
+        133,
+        467
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 3.5113,
+      "fill": 0.4818,
+      "background": "#3d69da"
+    },
+    "back": {
+      "box": [
+        86,
+        528,
+        598,
+        474
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7926,
+      "fill": 0.1754,
+      "background": "#3d69da"
+    },
+    "top": {
+      "box": [
+        838,
+        674,
+        628,
+        153
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.2436,
+      "fill": 0.3006,
+      "background": "#3d69da"
+    }
+  }
+}

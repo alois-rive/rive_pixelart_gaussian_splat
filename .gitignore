@@ -1,0 +1,5 @@
+build/
+__pycache__/
+*.rmdl.undo
+*.rmdl.activity
+.DS_Store

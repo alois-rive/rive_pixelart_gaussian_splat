@@ -1,0 +1,21 @@
+{
+  "name": "PICO-8",
+  "source": "https://lospec.com/palette-list/pico-8",
+  "author": "Lexaloffle (Joseph White)",
+  "colors": [
+    "#000000", "#1d2b53", "#7e2553", "#008751", "#ab5236", "#5f574f", "#c2c3c7", "#fff1e8",
+    "#ff004d", "#ffa300", "#ffec27", "#00e436", "#29adff", "#83769c", "#ff77a8", "#ffccaa"
+  ],
+  "ramps": {
+    "red":   ["#7e2553", "#ff004d", "#ff77a8", "#ffccaa"],
+    "pink":  ["#7e2553", "#ff77a8", "#ffccaa", "#fff1e8"],
+    "cream": ["#83769c", "#c2c3c7", "#fff1e8"],
+    "gold":  ["#ab5236", "#ffa300", "#ffec27", "#fff1e8"],
+    "green": ["#1d2b53", "#008751", "#00e436", "#ffec27"],
+    "blue":  ["#1d2b53", "#29adff", "#c2c3c7"],
+    "wood":  ["#7e2553", "#ab5236", "#ffa300"],
+    "stone": ["#1d2b53", "#5f574f", "#83769c", "#c2c3c7"],
+    "glow":  ["#ffa300", "#ffec27", "#fff1e8"]
+  },
+  "roles": { "sky_top": "#29adff", "sky_bottom": "#ffccaa", "fog": "#c2c3c7", "void": "#000000" }
+}

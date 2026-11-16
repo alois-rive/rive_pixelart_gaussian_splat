@@ -1,0 +1,21 @@
+{
+  "name": "SLSO-CLR17",
+  "source": "https://lospec.com/palette-list/slso-clr17",
+  "author": "Luis Miguel Maldonado",
+  "colors": ["#2e2c3b", "#3e415f", "#55607d", "#747d88", "#41de95", "#2aa4aa", "#3b77a6", "#249337", "#56be44",
+             "#c6de78", "#f3c220", "#c4651c", "#b54131", "#61407a", "#8f3da7", "#ea619d", "#c1e5ea"],
+  "ramps": {
+    "steel":  ["#2e2c3b", "#3e415f", "#55607d", "#747d88", "#c1e5ea"],
+    "rink":   ["#3e415f", "#3b77a6", "#2aa4aa", "#41de95", "#c1e5ea"],
+    "neon":   ["#61407a", "#8f3da7", "#ea619d"],
+    "cpu":    ["#2e2c3b", "#61407a", "#8f3da7", "#ea619d"],
+    "player": ["#2e2c3b", "#b54131", "#c4651c", "#f3c220"],
+    "puck":   ["#c4651c", "#f3c220", "#c6de78"],
+    "leaf":   ["#2e2c3b", "#249337", "#56be44", "#c6de78"],
+    "carpet": ["#2e2c3b", "#3e415f", "#61407a"],
+    "screen": ["#3b77a6", "#2aa4aa", "#41de95", "#c1e5ea"],
+    "spark":  ["#f3c220", "#f3c220"],
+    "pspark": ["#ea619d", "#ea619d"]
+  },
+  "roles": { "sky_top": "#2e2c3b", "sky_bottom": "#2e2c3b", "fog": "#3e415f", "void": "#2e2c3b" }
+}

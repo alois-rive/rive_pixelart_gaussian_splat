@@ -1,0 +1,20 @@
+# Mushrooms: three, exaggerated (pixel-art scale): pale stems, round pink caps. Up Z.
+new
+material new Stem --base-color 0.984 0.961 0.937
+material new Cap --base-color 0.776 0.624 0.647 --no-slot
+add mesh cylinder --name S0 --vertices 6 --radius 0.08 --depth 0.3 --location 0 0 0.15
+add mesh uv-sphere --name C0 --segments 8 --rings 4 --radius 0.24 --location 0 0 0.3
+add mesh cylinder --name S1 --vertices 6 --radius 0.07 --depth 0.22 --location 0.3 0.12 0.11
+add mesh uv-sphere --name C1 --segments 8 --rings 4 --radius 0.18 --location 0.3 0.12 0.22
+add mesh cylinder --name S2 --vertices 6 --radius 0.06 --depth 0.16 --location -0.2 0.22 0.08
+add mesh uv-sphere --name C2 --segments 8 --rings 4 --radius 0.14 --location -0.2 0.22 0.16
+select S0 S1 S2
+material assign Stem
+select C0 C1 C2
+material assign Cap
+# the caps squashed to domes (scaled about their own centres, then applied)
+scale 1 1 0.65
+apply --scale
+select all
+shade flat
+export mushrooms.glb

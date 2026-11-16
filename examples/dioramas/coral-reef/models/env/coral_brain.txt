@@ -1,0 +1,17 @@
+# Brain coral: a squat, lumpy dome, 1.1 m across, 0.55 m tall, with a ring of darker folds round its
+# foot. Up Z.
+new
+material new Brain --base-color 0.0 0.725 0.745 --no-slot
+material new Fold --base-color 0.0 0.373 0.549 --no-slot
+add mesh ico-sphere --name Brain --subdivisions 2 --radius 0.55 --location 0 0 0.12
+scale 1 1 0.75
+apply --scale --location
+material assign Brain
+mode edit
+select all
+randomize --amount 0.05 --seed 8
+select face where "pos.z < 0.12 && pos.z > -0.05"
+material assign Fold
+mode object
+shade flat
+export coral_brain.glb

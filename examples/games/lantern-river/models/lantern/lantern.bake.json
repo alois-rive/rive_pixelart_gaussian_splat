@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/lantern.bin",
+  "objects": [
+    { "model": "lantern_bake.glb", "scale": 1.4,
+      "materials": { "Paper": { "ramp": "paper" }, "Frame": { "ramp": "paper", "spacing": 0.06 },
+                     "Fuel": { "ramp": "glow", "flags": ["unlit"], "spacing": 0.04, "specks": true } } }
+  ]
+}

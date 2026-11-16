@@ -1,0 +1,311 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.07,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -9,
+   -1,
+   -17
+  ],
+  [
+   9,
+   8,
+   3.6
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/beach.glb",
+   "materials": {
+    "Sand": {
+     "spacing": 0.1
+    },
+    "SandSide": {
+     "ramp": "sand",
+     "spacing": 0.1
+    },
+    "Sea": {
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/env/sun.glb",
+   "position": [
+    2.5,
+    0.25,
+    -16.4
+   ],
+   "materials": {
+    "Sun": {
+     "ramp": "glow",
+     "spacing": 0.09
+    },
+    "Halo": {
+     "ramp": "glow",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/clouds.glb",
+   "position": [
+    0,
+    0,
+    -16.9
+   ],
+   "materials": {
+    "CloudA": {
+     "ramp": "pink",
+     "spacing": 0.1
+    },
+    "CloudB": {
+     "ramp": "glow",
+     "spacing": 0.1
+    },
+    "CloudC": {
+     "ramp": "pink",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/rocks.glb",
+   "position": [
+    0,
+    0,
+    -9.5
+   ],
+   "materials": {
+    "Rock": {
+     "ramp": "rock",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/foam.glb",
+   "position": [
+    0,
+    0.02,
+    -3.05
+   ],
+   "fps": 12,
+   "materials": {
+    "Foam": {
+     "ramp": "foam",
+     "spacing": 0.08,
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Lace": {
+     "ramp": "foam",
+     "spacing": 0.08,
+     "flags": [
+      "nocast"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/palm.glb",
+   "position": [
+    -5.6,
+    0,
+    -1.4
+   ],
+   "materials": {
+    "Trunk": {
+     "ramp": "trunk"
+    },
+    "Frond": {
+     "ramp": "leaf",
+     "flags": [
+      "sway",
+      "double"
+     ],
+     "spacing": 0.08
+    },
+    "Nut": {
+     "ramp": "trunk"
+    }
+   }
+  },
+  {
+   "model": "models/env/umbrella.glb",
+   "position": [
+    4.7,
+    0,
+    -0.9
+   ],
+   "yaw": 20,
+   "materials": {
+    "Pole": {
+     "ramp": "white",
+     "spacing": 0.05
+    },
+    "Pink": {
+     "ramp": "pink"
+    },
+    "White": {
+     "ramp": "white"
+    }
+   }
+  },
+  {
+   "model": "models/env/castle.glb",
+   "position": [
+    3.1,
+    0,
+    1.7
+   ],
+   "yaw": -15,
+   "materials": {
+    "Castle": {
+     "ramp": "sand",
+     "spacing": 0.06
+    },
+    "Flag": {
+     "ramp": "red",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Door": {
+     "ramp": "sand",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/towel.glb",
+   "position": [
+    -2.7,
+    0,
+    1.5
+   ],
+   "yaw": 8,
+   "materials": {
+    "Towel": {
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/crab.glb",
+   "bone": "crab",
+   "position": [
+    0,
+    0,
+    2.2
+   ],
+   "scale": 1.3,
+   "materials": {
+    "Shell": {
+     "ramp": "red",
+     "spacing": 0.045
+    },
+    "Eye": {
+     "ramp": "white",
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/ball/ball.glb",
+   "bone": "ball",
+   "copies": 4,
+   "position": [
+    0,
+    -6,
+    0
+   ],
+   "scale": 1.6,
+   "materials": {
+    "Red": {
+     "ramp": "red"
+    },
+    "Blue": {
+     "ramp": "blue"
+    },
+    "Yellow": {
+     "ramp": "yellow"
+    },
+    "White": {
+     "ramp": "white"
+    },
+    "Green": {
+     "ramp": "green"
+    },
+    "Cap": {
+     "ramp": "white",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/shadow.glb",
+   "bone": "shadow",
+   "copies": 4,
+   "position": [
+    0,
+    -7,
+    0
+   ],
+   "materials": {
+    "Shadow": {
+     "ramp": "sand",
+     "spacing": 0.08,
+     "flags": [
+      "nocast"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "bone": "puff",
+   "copies": 8,
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "materials": {
+    "Puff": {
+     "ramp": "sand",
+     "spacing": 0.06,
+     "flags": [
+      "nocast"
+     ],
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/spark.glb",
+   "bone": "spark",
+   "copies": 6,
+   "position": [
+    0,
+    -9,
+    0
+   ],
+   "materials": {
+    "Spark": {
+     "ramp": "glow",
+     "spacing": 0.05,
+     "flags": [
+      "nocast"
+     ],
+     "specks": true
+    }
+   }
+  }
+ ]
+}

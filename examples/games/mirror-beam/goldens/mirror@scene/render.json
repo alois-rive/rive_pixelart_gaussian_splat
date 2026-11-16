@@ -1,0 +1,22 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "mirror",
+  "views": "front,right,back,top,iso",
+  "size": 100,
+  "pixel": 2,
+  "arg": [
+    "sunYaw=-70",
+    "sunPitch=42",
+    "keyLight=0.4",
+    "highlight=0.85",
+    "shadeSteps=1",
+    "splatDither=0",
+    "bandDither=0.4"
+  ],
+  "advance": "2",
+  "real_sky": true,
+  "look": "lit",
+  "texel": 0.0486,
+  "elevation": 0
+}

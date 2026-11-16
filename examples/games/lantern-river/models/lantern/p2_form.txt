@@ -1,0 +1,46 @@
+# Sky lantern, phase 2: the dark band (exaggerated to 0.08 m tall so it survives as splats), four
+# corner ribs (their outer faces on the corner lines), Midnight Ablaze materials (sRGB 0..1 of the ramp steps), one object, export.
+# The two wires of the sheet (2 cm) are below the splat size: dropped, the fuel block hangs free.
+material new Paper --base-color 0.486 0.094 0.235 --no-slot
+material new Frame --base-color 0.192 0.020 0.118 --no-slot
+material new Fuel --base-color 1 0.510 0.455 --no-slot
+add mesh cone --name Band --vertices 4 --radius1 0.338 --radius2 0.349 --depth 0.08 --location 0 0 0.595 --rotation 0 0 45
+apply --rotation
+add mesh cube --name RibA --size 1 --location 0.197 0.197 0.455
+scale 0.05 0.05 0.535
+apply --scale
+set rotation -6.46 6.46 0
+apply --rotation
+add mesh cube --name RibB --size 1 --location -0.197 0.197 0.455
+scale 0.05 0.05 0.535
+apply --scale
+set rotation -6.46 -6.46 0
+apply --rotation
+add mesh cube --name RibC --size 1 --location -0.197 -0.197 0.455
+scale 0.05 0.05 0.535
+apply --scale
+set rotation 6.46 -6.46 0
+apply --rotation
+add mesh cube --name RibD --size 1 --location 0.197 -0.197 0.455
+scale 0.05 0.05 0.535
+apply --scale
+set rotation 6.46 6.46 0
+apply --rotation
+# the roof's apex erodes under the splats: raise it one splat spacing (0.06 m, 0.09 m in the scene)
+active Roof
+mode edit
+select vert where "pos.z > 0.05"
+translate 0 0 0.06
+mode object
+select Body Roof
+material assign Paper
+select Ring Band RibA RibB RibC RibD
+material assign Frame
+select Fuel
+material assign Fuel
+select all
+active Body
+join
+rename Body Lantern
+shade flat
+export lantern.glb

@@ -1,0 +1,15 @@
+# Lighthouse, phase 1: blockout of every named part at the spec's sizes. Up Z, facing -Y.
+# Octagons are turned 22.5 deg so a flat faces the front (as the sheet's top view); radius = across-flats / 2 / cos 22.5.
+new
+add mesh cylinder --name Plinth --vertices 8 --radius 1.082 --depth 0.41 --location 0 0 0.205 --rotation 0 0 22.5
+apply --rotation
+add mesh cone --name Tower --vertices 8 --radius1 0.882 --radius2 0.536 --depth 2.86 --location 0 0 1.84 --rotation 0 0 22.5
+apply --rotation
+add mesh cylinder --name Gallery --vertices 8 --radius 0.714 --depth 0.27 --location 0 0 3.405 --rotation 0 0 22.5
+apply --rotation
+# the lamp head: glass room, roof cone, finial; one object later, turning about the tower's axis
+add mesh cylinder --name Glass --vertices 8 --radius 0.509 --depth 0.44 --location 0 0 3.76 --rotation 0 0 22.5
+apply --rotation
+add mesh cone --name Cap --vertices 8 --radius1 0.58 --radius2 0.04 --depth 0.34 --location 0 0 4.15 --rotation 0 0 22.5
+apply --rotation
+add mesh ico-sphere --name Finial --subdivisions 1 --radius 0.11 --location 0 0 4.42

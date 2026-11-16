@@ -1,0 +1,73 @@
+# Crucible crane over the lava pool: an iron post and arm, a chain of chunky links (exaggerated: each
+# link 0.16 wide, two splats; real links would vanish) and a crucible that swings on it. Rigid: chain
+# and crucible are one object whose origin is the hook at the arm's tip; +-7 degrees in a 3 s loop.
+# Up Z; the arm points along +X, its tip 1.0 m out (placed over the pool's centre in the scene).
+new
+fps 12
+frame range 0 36
+material new Iron --base-color 0.020 0.122 0.224 --no-slot
+material new Chain --base-color 0.290 0.141 0.502 --no-slot
+material new Melt --base-color 1.0 0.557 0.502 --emission 1.0 0.557 0.502 --no-slot
+add mesh cube --name Post --size 1 --location 0 0 1.1
+scale 0.2 0.2 2.2
+apply --scale
+material assign Iron
+add mesh cube --name Arm --size 1 --location 0.5 0 2.12
+scale 1.2 0.14 0.14
+apply --scale
+material assign Iron
+add mesh cube --name Brace --size 1 --location 0.25 0 1.85
+scale 0.62 0.1 0.1
+apply --scale
+set rotation 0 -40 0
+apply --rotation
+material assign Iron
+select Post Arm Brace
+active Post
+join
+# chain: links alternating flat and edge-on, 0.2 m apart, from the hook (1.0, 0, 2.05) down to 1.05
+add mesh cube --name L0 --size 1 --location 1.0 0 1.95
+scale 0.16 0.07 0.2
+apply --scale
+add mesh cube --name L1 --size 1 --location 1.0 0 1.75
+scale 0.07 0.16 0.2
+apply --scale
+add mesh cube --name L2 --size 1 --location 1.0 0 1.55
+scale 0.16 0.07 0.2
+apply --scale
+add mesh cube --name L3 --size 1 --location 1.0 0 1.35
+scale 0.07 0.16 0.2
+apply --scale
+add mesh cube --name L4 --size 1 --location 1.0 0 1.15
+scale 0.16 0.07 0.2
+apply --scale
+select L0 L1 L2 L3 L4
+material assign Chain
+# crucible: a tapered 6-sided pot, its molten top glowing
+add mesh cone --name Pot --vertices 6 --radius1 0.17 --radius2 0.26 --depth 0.36 --location 1.0 0 0.87
+material assign Iron
+active Pot
+mode edit
+select face where "normal.z > 0.9"
+material assign Melt
+mode object
+select L0 L1 L2 L3 L4 Pot
+active Pot
+join
+rename Pot Crucible
+cursor set 1.0 0 2.05
+origin set --to cursor
+select Crucible
+frame set 0
+set rotation -7 0 0
+keyframe insert --channels rot
+frame set 18
+set rotation 7 0 0
+keyframe insert --channels rot
+frame set 36
+set rotation -7 0 0
+keyframe insert --channels rot
+frame set 0
+select all
+shade flat
+export crane.glb --bake-animations

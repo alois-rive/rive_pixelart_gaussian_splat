@@ -1,0 +1,20 @@
+# A firefly, the bonus: a glowing body and two pale wings, about 0.3 m across (exaggerated). Up Z,
+# origin at its body.
+new
+add mesh ico-sphere --name Body --subdivisions 1 --radius 0.1 --location 0 0 0
+material new Glow --base-color 1.0 0.804 0.459
+material assign Glow
+add mesh cube --name WingL --size 1 --location -0.15 0.02 0.06
+scale 0.2 0.12 0.03
+apply --scale
+set rotation 0 -20 0
+add mesh cube --name WingR --size 1 --location 0.15 0.02 0.06
+scale 0.2 0.12 0.03
+apply --scale
+set rotation 0 20 0
+material new Wing --base-color 0.957 0.957 0.957
+select WingL WingR
+material assign Wing
+select all
+shade flat
+export fly.glb

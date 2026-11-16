@@ -1,0 +1,60 @@
+# A splash: a centre column and a crown of six leaning spikes, 1.3 m tall, unlit cream. Origin at the
+# water. The game grows and drops it (placeScaled).
+new
+material new Foam --base-color 1.0000 0.9255 0.8392 --no-slot --emission 1.0000 0.9255 0.8392
+add mesh cylinder --name Col --vertices 6 --radius 0.16 --depth 1.3 --location 0 0 0.65
+material assign Foam
+add mesh cube --name S0 --size 1 --location 0 0 0
+scale 0.12 0.12 0.7
+apply --scale
+set rotation 0 28 30
+apply --rotation
+set location 0.303 0.175 0.3
+apply --location
+material assign Foam
+add mesh cube --name S1 --size 1 --location 0 0 0
+scale 0.12 0.12 0.7
+apply --scale
+set rotation 0 28 90
+apply --rotation
+set location 0.000 0.350 0.3
+apply --location
+material assign Foam
+add mesh cube --name S2 --size 1 --location 0 0 0
+scale 0.12 0.12 0.7
+apply --scale
+set rotation 0 28 150
+apply --rotation
+set location -0.303 0.175 0.3
+apply --location
+material assign Foam
+add mesh cube --name S3 --size 1 --location 0 0 0
+scale 0.12 0.12 0.7
+apply --scale
+set rotation 0 28 210
+apply --rotation
+set location -0.303 -0.175 0.3
+apply --location
+material assign Foam
+add mesh cube --name S4 --size 1 --location 0 0 0
+scale 0.12 0.12 0.7
+apply --scale
+set rotation 0 28 270
+apply --rotation
+set location -0.000 -0.350 0.3
+apply --location
+material assign Foam
+add mesh cube --name S5 --size 1 --location 0 0 0
+scale 0.12 0.12 0.7
+apply --scale
+set rotation 0 28 330
+apply --rotation
+set location 0.303 -0.175 0.3
+apply --location
+material assign Foam
+select Col S0 S1 S2 S3 S4 S5
+active Col
+join
+select all
+shade flat
+export splash.glb

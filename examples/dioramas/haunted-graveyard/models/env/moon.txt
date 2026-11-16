@@ -1,0 +1,8 @@
+# Moon: a 16-sided disc 1.6 m across, 0.15 thick, standing upright facing -Y (the front). Drawn unlit, placed
+# low in the sky behind the hill (the renderer has no sky objects: it is a prop of the diorama). Up Z.
+new
+add mesh cylinder --name Moon --vertices 16 --radius 0.8 --depth 0.15 --location 0 0 0 --rotation 90 0 0
+apply --rotation
+material new Moon --base-color 0.980 0.984 0.965 --emission 0.980 0.984 0.965
+shade flat
+export moon.glb

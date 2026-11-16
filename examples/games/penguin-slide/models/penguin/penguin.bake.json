@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.04,
+  "fat": 1.0,
+  "out": "../../lookdev/penguin.bin",
+  "objects": [
+    { "model": "penguin.glb",
+      "materials": { "Feather": { "ramp": "feather" }, "Belly": { "ramp": "belly" }, "Beak": { "ramp": "glint", "spacing": 0.025 }, "Flipper": { "ramp": "feather", "spacing": 0.025 },
+                     "Scarf": { "ramp": "water" }, "Eye": { "ramp": "feather", "spacing": 0.02, "specks": true } } }
+  ]
+}

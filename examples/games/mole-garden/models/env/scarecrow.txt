@@ -1,0 +1,35 @@
+# A scarecrow keeping watch at the back of the bed: a post, outstretched arms, a straw head under a
+# wide dark hat, a rust shirt. Up Z, facing -Y.
+new
+add mesh cube --name Post --size 1 --location 0 0 0.8
+scale 0.1 0.1 1.6
+apply --scale
+material new Wood --base-color 0.467 0.361 0.310
+material assign Wood
+add mesh cube --name Shirt --size 1 --location 0 0 1.15
+scale 0.42 0.24 0.5
+apply --scale
+add mesh cube --name Arms --size 1 --location 0 0 1.3
+scale 1.2 0.12 0.14
+apply --scale
+material new Shirt --base-color 0.376 0.231 0.227
+select Shirt Arms
+material assign Shirt
+add mesh ico-sphere --name Head --subdivisions 1 --radius 0.18 --location 0 0 1.6
+add mesh cube --name HandL --size 1 --location -0.66 0 1.3
+scale 0.12 0.14 0.14
+apply --scale
+add mesh cube --name HandR --size 1 --location 0.66 0 1.3
+scale 0.12 0.14 0.14
+apply --scale
+material new Straw --base-color 0.631 0.624 0.486
+select Head HandL HandR
+material assign Straw
+add mesh cylinder --name Brim --vertices 8 --radius 0.34 --depth 0.05 --location 0 0 1.74
+add mesh cone --name Crown --vertices 8 --radius1 0.18 --radius2 0.1 --depth 0.24 --location 0 0 1.88
+material new Hat --base-color 0.184 0.129 0.231
+select Brim Crown
+material assign Hat
+select all
+shade flat
+export scarecrow.glb

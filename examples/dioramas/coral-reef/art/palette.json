@@ -1,0 +1,16 @@
+{
+  "name": "BLK AQU4",
+  "source": "https://lospec.com/palette-list/blk-aqu4",
+  "author": "BurakoIRL",
+  "colors": ["#002b59", "#005f8c", "#00b9be", "#9ff4e5"],
+  "ramps": {
+    "sand":   ["#005f8c", "#00b9be", "#9ff4e5"],
+    "rock":   ["#002b59", "#005f8c", "#00b9be"],
+    "coral":  ["#002b59", "#005f8c", "#00b9be", "#9ff4e5"],
+    "kelp":   ["#002b59", "#005f8c", "#00b9be"],
+    "shell":  ["#002b59", "#005f8c", "#00b9be", "#9ff4e5"],
+    "fish":   ["#005f8c", "#00b9be", "#9ff4e5"],
+    "glow":   ["#00b9be", "#9ff4e5"]
+  },
+  "roles": { "sky_top": "#005f8c", "sky_bottom": "#005f8c", "fog": "#005f8c", "void": "#002b59" }
+}

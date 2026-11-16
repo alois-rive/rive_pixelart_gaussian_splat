@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/lantern-river/art/lantern/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        240,
+        12,
+        287,
+        488
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.7003,
+      "fill": 0.6935,
+      "background": "#939291"
+    },
+    "right": {
+      "box": [
+        1009,
+        12,
+        286,
+        488
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.7063,
+      "fill": 0.6959,
+      "background": "#939292"
+    },
+    "back": {
+      "box": [
+        240,
+        524,
+        288,
+        488
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6944,
+      "fill": 0.691,
+      "background": "#929292"
+    },
+    "top": {
+      "box": [
+        1008,
+        618,
+        289,
+        290
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0035,
+      "fill": 0.9933,
+      "background": "#939392"
+    }
+  }
+}

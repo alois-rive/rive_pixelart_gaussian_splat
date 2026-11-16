@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmdl format="1">
+  <sub_resource id="Material_0" type="Material">
+    <property name="name">"Grass"</property>
+    <property name="base_color">Color(0.165, 0.345, 0.31)</property>
+  </sub_resource>
+  <sub_resource id="Mesh_0" type="Mesh">
+    <property name="verts">4</property>
+    <property name="co">PackedVector3Array(
+        -7.5, -7, 0,
+        7.5, -7, 0,
+        7.5, 7, 0,
+        -7.5, 7, 0)</property>
+    <property name="edges">4</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 2,
+        2, 3,
+        3, 0)</property>
+    <property name="faces">1</property>
+    <property name="face_loops">PackedInt32Array(0, 4)</property>
+    <property name="face_normals">PackedVector3Array(0, 0, 1)</property>
+    <property name="loops">4</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        2, 2, 0,
+        3, 3, 0)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0, 0,
+        1, 1, 0,
+        1, 1, 1,
+        1, 0, 1)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+
+  <scene>
+    <property name="active">"Meadow"</property>
+  </scene>
+
+  <object name="Meadow" type="mesh">
+    <property name="rotation">Vector3(0, -0, 0)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_0")</property>
+    <property name="material_slots">[SubResource("Material_0")]</property>
+  </object>
+</rmdl>

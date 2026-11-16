@@ -1,0 +1,35 @@
+# Radar dish, phase 2: materials, flat shading, the animation (8 s loop at 24 fps, linear):
+# the head and the dish turn one full turn about Z; the dish nods -36 -> -50 -> -36 -> -22 -> -36.
+material new Base --base-color 0.188 0.365 0.259 --no-slot
+select Pedestal
+material assign Base
+select all
+shade flat
+fps 24
+frame range 0 192
+select Head
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 0 90
+keyframe insert --channels rot --frame 48
+set rotation 0 0 180
+keyframe insert --channels rot --frame 96
+set rotation 0 0 270
+keyframe insert --channels rot --frame 144
+set rotation 0 0 360
+keyframe insert --channels rot --frame 192
+keyframe interpolation linear --all
+select Dish
+set rotation -36 0 0
+keyframe insert --channels rot --frame 0
+set rotation -50 0 90
+keyframe insert --channels rot --frame 48
+set rotation -36 0 180
+keyframe insert --channels rot --frame 96
+set rotation -22 0 270
+keyframe insert --channels rot --frame 144
+set rotation -36 0 360
+keyframe insert --channels rot --frame 192
+keyframe interpolation linear --all
+frame set 0
+export radar.glb --bake-animations

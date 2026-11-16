@@ -1,0 +1,18 @@
+# Rubber duck, phase 2: surfacing. Body, head, wings and tail one yellow; an orange beak; dark eyes.
+material new Body --base-color 0.7020 0.6471 0.3333 --no-slot
+material new Beak --base-color 0.7804 0.4824 0.3451 --no-slot
+material new Eye --base-color 0.2941 0.2392 0.2667 --no-slot
+select Body Head WingL WingR Tail
+material assign Body
+select Beak
+material assign Beak
+active Beak
+mode edit
+select face where "normal.y < -0.9"
+scale 0.8 1 0.7
+mode object
+select EyeL EyeR
+material assign Eye
+select all
+shade flat
+export duck.glb

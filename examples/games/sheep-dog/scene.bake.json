@@ -1,0 +1,327 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.07,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -8,
+   -0.2,
+   -6.5
+  ],
+  [
+   8,
+   2.8,
+   6.5
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/ground.glb",
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "spacing": 0.075
+    }
+   }
+  },
+  {
+   "model": "models/env/fence.glb",
+   "materials": {
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Post": {
+     "ramp": "cream",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/gate.glb",
+   "bone": "gate",
+   "position": [
+    3.7,
+    0,
+    -1.48
+   ],
+   "yaw": 0,
+   "materials": {
+    "Gate": {
+     "ramp": "red",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/pond.glb",
+   "position": [
+    -4.6,
+    0,
+    -2.6
+   ],
+   "materials": {
+    "Water": {
+     "ramp": "water"
+    },
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -0.8,
+    0,
+    0.9
+   ],
+   "yaw": 20,
+   "materials": {
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    1.9,
+    0,
+    2.7
+   ],
+   "yaw": 130,
+   "scale": 0.8,
+   "materials": {
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -5.5,
+    0,
+    3.3
+   ],
+   "yaw": 70,
+   "scale": 0.7,
+   "materials": {
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/hay.glb",
+   "position": [
+    5.6,
+    0,
+    -3.5
+   ],
+   "yaw": 20,
+   "materials": {
+    "Hay": {
+     "ramp": "grass"
+    }
+   }
+  },
+  {
+   "model": "models/env/trough.glb",
+   "position": [
+    3.9,
+    0,
+    -3.7
+   ],
+   "materials": {
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Water": {
+     "ramp": "water",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -7.0,
+    0,
+    -4.85
+   ],
+   "yaw": 10,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -3.4,
+    0,
+    -4.85
+   ],
+   "yaw": 140,
+   "scale": 0.9,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    0.6,
+    0,
+    -4.85
+   ],
+   "yaw": 250,
+   "scale": 1.1,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    7.3,
+    0,
+    -4.6
+   ],
+   "yaw": 60,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -7.4,
+    0,
+    1.2
+   ],
+   "yaw": 300,
+   "scale": 0.85,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    7.4,
+    0,
+    2.4
+   ],
+   "yaw": 200,
+   "scale": 0.95,
+   "materials": {
+    "Bark": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/dog/dog.glb",
+   "bone": "dog",
+   "position": [
+    0,
+    0,
+    3.0
+   ],
+   "materials": {
+    "Fur": {
+     "ramp": "fur",
+     "spacing": 0.05
+    },
+    "Cream": {
+     "ramp": "cream",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "face",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/sheep/sheep.glb",
+   "bone": "sheep",
+   "copies": 6,
+   "position": [
+    -2,
+    0,
+    0
+   ],
+   "materials": {
+    "Wool": {
+     "ramp": "wool",
+     "spacing": 0.06
+    },
+    "Face": {
+     "ramp": "face",
+     "spacing": 0.05
+    },
+    "Legs": {
+     "ramp": "face",
+     "spacing": 0.04
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/skee-ramp/art/lane/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        270,
+        24,
+        228,
+        463
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.0307,
+      "fill": 0.9139,
+      "background": "#a5a5a7"
+    },
+    "right": {
+      "box": [
+        872,
+        24,
+        556,
+        464
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8345,
+      "fill": 0.4157,
+      "background": "#a6a6a7"
+    },
+    "back": {
+      "box": [
+        281,
+        537,
+        206,
+        463
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.2476,
+      "fill": 0.9838,
+      "background": "#a5a5a6"
+    },
+    "top": {
+      "box": [
+        1055,
+        535,
+        194,
+        464
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.3918,
+      "fill": 0.992,
+      "background": "#a6a6a7"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v2.png",
+  "sha256": "ee8903884c1e384bfbf9c802c9dbc95364e4c07c6cc75ad32bdf66a45a6cd155",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v2.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a round cartoon frying pan with a golden pancake in it, the central prop of a cooking game.\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- In EVERY panel the whole object, its long handle included, fits inside its own panel with an empty margin of at least one tenth of the panel on every side: nothing crosses into another panel. Draw the object small enough for that (the TOP view is the tallest: pan plus handle about 70 percent of the panel height).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).\n- The four panels show the SAME object, only turned: FRONT: the handle points straight at the camera. RIGHT: the camera has walked round to the pan's own right-hand side, so the handle points to the LEFT edge of the image. BACK: seen from behind, the handle hidden behind the pan. TOP: seen from straight above, looking down, with the handle pointing towards the BOTTOM edge of the image. Each detail appears only in the views from which it is really visible.\n- One flat, uniform, mid grey background (#9a9a9a) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views), 1.45 m long in all with its handle:\n- The pan: a round, 12-sided pan 0.9 m across at the rim and 0.7 m across at the flat bottom, 0.16 m tall, with sloped side walls and a thick rolled rim.\n- The handle: a long thick straight handle 0.55 m long, 0.12 m wide, 0.1 m tall, sticking straight out from the pan's side towards the FRONT, rising slightly, with a rounded end cap.\n- In the pan: one thick round pancake 0.66 m across and 0.08 m thick, its top just below the rim, its top face golden with a darker golden edge.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 300 triangles worth of detail. No smooth organic surfaces, no tiny details, no texture noise, no grain, no bubbles.\n- Flat colour areas only, ONLY these colours (a pastel palette, Vanilla Milkshake): pan #6c5671 (lit) and #28282e (shade) with a #b0a9e4 rim top; handle #f98284 with a #feaae4 end cap; pancake top #ffc384, pancake edge #dea38b.\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e56d-166b-7091-ba4b-cdb3491424d8",
+    "source": "/Users/alois/.codex/generated_images/01a1e56d-166b-7091-ba4b-cdb3491424d8/exec-6684dd2a-1018-4222-b87d-8a0bce27f81c.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e56d-166b-7091-ba4b-cdb3491424d8/exec-6684dd2a-1018-4222-b87d-8a0bce27f81c.png"
+    ]
+  },
+  "seconds": 62.9,
+  "created": "2026-11-16T18:35:56+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/pancake-flip/art/pan/sheet.v2.png",
+  "reviewed": false
+}

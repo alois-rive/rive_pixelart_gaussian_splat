@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/sheep-dog/art/dog/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        262,
+        16,
+        246,
+        456
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.8537,
+      "fill": 0.7613,
+      "background": "#b5b4b4"
+    },
+    "right": {
+      "box": [
+        840,
+        16,
+        603,
+        456
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7562,
+      "fill": 0.4341,
+      "background": "#b5b5b4"
+    },
+    "back": {
+      "box": [
+        262,
+        533,
+        245,
+        459
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.8735,
+      "fill": 0.7592,
+      "background": "#b6b5b5"
+    },
+    "top": {
+      "box": [
+        1057,
+        524,
+        189,
+        477
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.5238,
+      "fill": 0.7192,
+      "background": "#b6b6b5"
+    }
+  }
+}

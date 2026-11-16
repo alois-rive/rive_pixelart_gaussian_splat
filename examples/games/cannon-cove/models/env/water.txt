@@ -1,0 +1,20 @@
+# The cove's water: a 24 x 26 m sheet (world z +10..-16) at z 0, subdivided into ~0.5 m facets with a little height
+# noise (waves that catch the low sun), and a path of glints under the setting sun (unlit faces).
+new
+material new Sea --base-color 0.1255 0.2353 0.3373 --no-slot
+material new Glint --base-color 1.0000 0.6667 0.3686 --no-slot --emission 1.0000 0.6667 0.3686
+add mesh grid --name Water --size 1 --x-subdivisions 48 --y-subdivisions 52 --location 0 0 0
+scale 24 26 1
+apply --scale
+set location 0 3 0
+apply --location
+material assign Sea
+mode edit
+select all
+randomize --amount 0.07 --seed 11
+select face where "(abs(pos.x - -2.15) < 0.15 && abs(pos.y - 15.16) < 0.2) || (abs(pos.x - -1.73) < 0.19 && abs(pos.y - 14.45) < 0.2) || (abs(pos.x - -1.55) < 0.22 && abs(pos.y - 14.10) < 0.2) || (abs(pos.x - -2.25) < 0.29 && abs(pos.y - 13.30) < 0.2) || (abs(pos.x - -1.51) < 0.26 && abs(pos.y - 12.73) < 0.2) || (abs(pos.x - -1.72) < 0.25 && abs(pos.y - 12.08) < 0.2) || (abs(pos.x - -0.74) < 0.43 && abs(pos.y - 11.55) < 0.2) || (abs(pos.x - -1.48) < 0.46 && abs(pos.y - 10.96) < 0.2) || (abs(pos.x - -1.46) < 0.34 && abs(pos.y - 10.20) < 0.2) || (abs(pos.x - -0.88) < 0.39 && abs(pos.y - 9.51) < 0.2) || (abs(pos.x - -0.53) < 0.61 && abs(pos.y - 8.86) < 0.2) || (abs(pos.x - 0.40) < 0.55 && abs(pos.y - 8.24) < 0.2) || (abs(pos.x - 0.59) < 0.73 && abs(pos.y - 7.85) < 0.2) || (abs(pos.x - 0.11) < 0.76 && abs(pos.y - 7.00) < 0.2) || (abs(pos.x - -0.07) < 0.50 && abs(pos.y - 6.56) < 0.2) || (abs(pos.x - 1.10) < 0.59 && abs(pos.y - 6.03) < 0.2) || (abs(pos.x - 0.72) < 0.80 && abs(pos.y - 5.43) < 0.2) || (abs(pos.x - 1.31) < 0.91 && abs(pos.y - 4.72) < 0.2)"
+material assign Glint
+mode object
+select all
+shade flat
+export water.glb

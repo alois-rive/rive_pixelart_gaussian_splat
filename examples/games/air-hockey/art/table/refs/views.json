@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/air-hockey/art/table/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        51,
+        210,
+        667,
+        162
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.2429,
+      "fill": 0.6166,
+      "background": "#d3d3d3"
+    },
+    "right": {
+      "box": [
+        986,
+        210,
+        333,
+        162
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4865,
+      "fill": 0.6491,
+      "background": "#d4d3d3"
+    },
+    "back": {
+      "box": [
+        51,
+        720,
+        667,
+        161
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.2414,
+      "fill": 0.6251,
+      "background": "#d3d3d3"
+    },
+    "top": {
+      "box": [
+        830,
+        610,
+        644,
+        327
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.5078,
+      "fill": 0.9036,
+      "background": "#d4d3d3"
+    }
+  }
+}

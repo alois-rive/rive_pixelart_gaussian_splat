@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.057,
+  "fat": 1.0,
+  "out": "../../lookdev/frog.bin",
+  "objects": [
+    { "model": "frog.glb",
+      "materials": { "Skin": { "ramp": "frog" }, "Feet": { "ramp": "frog", "spacing": 0.045 }, "Belly": { "ramp": "cream" },
+                     "Eye": { "ramp": "cream", "spacing": 0.04 }, "Pupil": { "ramp": "stone", "specks": true, "spacing": 0.03 } } }
+  ]
+}

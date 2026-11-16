@@ -1,0 +1,24 @@
+# Apple: a faceted red ball 0.38 m across, a dark stalk and a leaf.
+# Origin at the fruit's centre (a game bone pool: the game drops, catches and pops it).
+new
+material new Body --base-color 0.7059 0.3216 0.3216 --no-slot
+material new Stem --base-color 0.2941 0.2549 0.3451 --no-slot
+add mesh ico-sphere --name Fruit --subdivisions 1 --radius 0.19 --location 0 0 0
+scale 1 1 0.92
+apply --scale
+material assign Body
+add mesh cube --name Stalk --size 1 --location 0.02 0 0.225
+scale 0.06 0.06 0.14
+apply --scale
+material assign Stem
+material new Leaf --base-color 0.5412 0.6902 0.3765 --no-slot
+add mesh cube --name LeafA --size 1 --location 0.1 0 0.24
+scale 0.16 0.06 0.08
+apply --scale
+material assign Leaf
+select all
+active Fruit
+join
+select all
+shade flat
+export apple.glb

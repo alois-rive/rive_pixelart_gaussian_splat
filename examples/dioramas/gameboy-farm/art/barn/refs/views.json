@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/gameboy-farm/art/barn/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        177,
+        69,
+        414,
+        379
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9155,
+      "fill": 0.7313,
+      "background": "#d3d2d2"
+    },
+    "right": {
+      "box": [
+        909,
+        77,
+        487,
+        371
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7618,
+      "fill": 0.9128,
+      "background": "#d3d3d2"
+    },
+    "back": {
+      "box": [
+        177,
+        580,
+        414,
+        378
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.913,
+      "fill": 0.729,
+      "background": "#d3d2d2"
+    },
+    "top": {
+      "box": [
+        971,
+        559,
+        362,
+        407
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1243,
+      "fill": 0.9967,
+      "background": "#d4d3d3"
+    }
+  }
+}

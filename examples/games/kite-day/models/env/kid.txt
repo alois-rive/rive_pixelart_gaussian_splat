@@ -1,0 +1,45 @@
+# The kid flying the kite: 1.35 m tall, facing the camera (-Y), the right arm (the image's right)
+# raised up and out towards the kite, a pink scarf blowing to the right. Origin at the feet: a game
+# bone (leans back while the string pulls).
+new
+material new Coat --base-color 0.2000 0.2471 0.3451 --no-slot
+material new Dark --base-color 0.1608 0.1569 0.1922 --no-slot
+material new Skin --base-color 0.9843 0.7333 0.6784 --no-slot
+material new Scarf --base-color 0.9333 0.5255 0.5843 --no-slot
+add mesh cube --name LegL --size 1 --location -0.1 0 0.22
+scale 0.13 0.14 0.44
+apply --scale
+material assign Dark
+add mesh cube --name LegR --size 1 --location 0.1 0 0.22
+scale 0.13 0.14 0.44
+apply --scale
+material assign Dark
+add mesh cylinder --name Body --vertices 6 --radius 0.24 --depth 0.5 --location 0 0 0.68
+material assign Coat
+add mesh ico-sphere --name Head --subdivisions 1 --radius 0.18 --location 0 0 1.12
+material assign Skin
+add mesh ico-sphere --name Hair --subdivisions 1 --radius 0.19 --location 0 0.05 1.18
+scale 1 1 0.75
+apply --scale
+material assign Dark
+add mesh cube --name Scarf --size 1 --location 0.12 -0.02 0.93
+scale 0.5 0.3 0.12
+apply --scale
+material assign Scarf
+add mesh cube --name ArmL --size 1 --location -0.29 0 0.66
+scale 0.1 0.12 0.4
+apply --scale
+material assign Coat
+add mesh cube --name ArmR --size 1 --location 0 0 0
+scale 0.1 0.12 0.5
+apply --scale
+set rotation 0 40 0
+set location 0.38 0 1.02
+material assign Coat
+select LegL LegR Body Head Hair Scarf ArmL ArmR
+active Body
+join
+rename Body Kid
+select all
+shade flat
+export kid.glb

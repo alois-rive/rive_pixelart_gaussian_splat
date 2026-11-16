@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/sky-stacker/art/storey/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        100,
+        144,
+        568,
+        244
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4296,
+      "fill": 0.8081,
+      "background": "#929191"
+    },
+    "right": {
+      "box": [
+        868,
+        144,
+        568,
+        244
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4296,
+      "fill": 0.8078,
+      "background": "#939291"
+    },
+    "back": {
+      "box": [
+        100,
+        656,
+        568,
+        245
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4313,
+      "fill": 0.8041,
+      "background": "#929191"
+    },
+    "top": {
+      "box": [
+        937,
+        536,
+        430,
+        431
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0023,
+      "fill": 0.9571,
+      "background": "#939292"
+    }
+  }
+}

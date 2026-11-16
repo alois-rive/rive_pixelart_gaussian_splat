@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v1.png",
+  "sha256": "260cd432bee5b901c24b9aa5fa24777d489c9f03d991e3c5c3aeafce5d4b6f16",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v1.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small toy fairground carousel (merry-go-round).\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- FRONT: the object faces the camera. RIGHT: the camera stands at the object's right side, so the object faces the LEFT edge of the image. BACK: seen from behind. TOP: seen from straight above with its front towards the BOTTOM edge of the image.\n- One flat, uniform, pale grey background (#d9d9d9) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views):\n- A round platform 3.0 m across and 0.3 m tall (an 8-sided disc), standing on the ground.\n- A thick central column 0.5 m across rising from the platform centre to the canopy.\n- Six thin vertical poles in a ring 1.1 m from the centre, from the platform to the canopy; on each pole a chunky blocky horse about 0.8 m long and 0.6 m tall, all horses facing the same way round the ring (counter-clockwise seen from above). Three horses sit higher (0.9 m above the platform), three lower (0.5 m), alternating.\n- A wide, shallow cone canopy 3.2 m across: a vertical skirt band 0.35 m tall at its rim, at 2.4 m above the ground, then a cone rising to 3.2 m, with eight broad alternating stripes running from the rim to the top.\n- A small ball and a little pennant flag on top of the cone, total height about 3.6 m.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 400 to 700 triangles worth of detail. No smooth organic surfaces, no tiny details, no texture noise, no grain.\n- Flat colour areas only, ONLY these colours (the 16-colour PICO-8 palette): canopy stripes red #ff004d and cream #fff1e8, canopy skirt band yellow #ffec27, platform side blue #29adff with a top of orange #ffa300, central column pink #ff77a8, poles yellow #ffec27, horses cream #fff1e8 with pink #ff77a8 saddles and dark #7e2553 manes, flag green #00e436, top ball yellow #ffec27.\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e504-7e52-7060-81dd-5574a31b72d5",
+    "source": "/Users/alois/.codex/generated_images/01a1e504-7e52-7060-81dd-5574a31b72d5/exec-4753e7e8-72bb-4c98-80c2-24ab2d120eee.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e504-7e52-7060-81dd-5574a31b72d5/exec-4753e7e8-72bb-4c98-80c2-24ab2d120eee.png"
+    ]
+  },
+  "seconds": 68.6,
+  "created": "2026-11-16T16:41:47+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/candy-carnival/art/carousel/sheet.v1.png",
+  "reviewed": false
+}

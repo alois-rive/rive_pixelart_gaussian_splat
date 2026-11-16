@@ -1,0 +1,15 @@
+{
+  "name": "Oil 6",
+  "source": "https://lospec.com/palette-list/oil-6",
+  "author": "GrafxKid",
+  "colors": ["#fbf5ef", "#f2d3ab", "#c69fa5", "#8b6d9c", "#494d7e", "#272744"],
+  "ramps": {
+    "ground": ["#272744", "#494d7e", "#8b6d9c", "#c69fa5", "#f2d3ab"],
+    "wood":   ["#272744", "#494d7e", "#8b6d9c", "#c69fa5", "#f2d3ab"],
+    "roof":   ["#272744", "#494d7e", "#8b6d9c", "#c69fa5"],
+    "leaf":   ["#494d7e", "#8b6d9c", "#c69fa5", "#f2d3ab", "#fbf5ef"],
+    "smoke":  ["#8b6d9c", "#c69fa5", "#f2d3ab", "#fbf5ef"],
+    "glow":   ["#c69fa5", "#f2d3ab", "#fbf5ef"]
+  },
+  "roles": { "sky_top": "#8b6d9c", "sky_bottom": "#c69fa5", "fog": "#c69fa5", "void": "#272744" }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Ice Cream GB",
+  "source": "https://lospec.com/palette-list/ice-cream-gb",
+  "author": "Kerrie Lake",
+  "colors": ["#7c3f58", "#eb6b6f", "#f9a875", "#fff6d3"],
+  "ramps": {
+    "snow":   ["#7c3f58", "#eb6b6f", "#f9a875", "#fff6d3"],
+    "pine":   ["#7c3f58", "#eb6b6f", "#f9a875"],
+    "bark":   ["#7c3f58", "#eb6b6f"],
+    "accent": ["#7c3f58", "#eb6b6f", "#f9a875", "#fff6d3"],
+    "far":    ["#eb6b6f", "#f9a875", "#fff6d3"],
+    "flake":  ["#fff6d3", "#fff6d3"]
+  },
+  "roles": { "sky_top": "#eb6b6f", "sky_bottom": "#f9a875", "fog": "#f9a875", "void": "#7c3f58" }
+}

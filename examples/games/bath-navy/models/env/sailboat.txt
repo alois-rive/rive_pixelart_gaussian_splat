@@ -1,0 +1,31 @@
+# A toy sailboat: a rust hull with a pointed bow, a tan deck, a mast and a cream triangular sail.
+new
+material new Hull --base-color 0.6824 0.3647 0.2510 --no-slot
+material new Deck --base-color 0.8196 0.6941 0.5294 --no-slot
+material new Mast --base-color 0.5725 0.4549 0.2549 --no-slot
+material new Sail --base-color 0.8235 0.7882 0.6471 --no-slot
+add mesh cube --name Hull --size 1 --location 0 0 0.05
+scale 0.56 1.2 0.34
+apply --scale
+material assign Hull
+active Hull
+mode edit
+select vert where "pos.y < -0.5"
+scale 0.2 1 1
+select vert where "pos.z < -0.1"
+scale 0.7 0.85 1
+select face where "normal.z > 0.9"
+material assign Deck
+mode object
+add mesh cylinder --name Mast --vertices 4 --radius 0.06 --depth 1.1 --location 0 0.05 0.75
+material assign Mast
+add mesh cone --name Sail --vertices 3 --radius1 0.5 --radius2 0 --depth 0.95 --location 0 0 0
+scale 1 0.16 1
+apply --scale
+set rotation 0 0 90
+apply --rotation
+set location 0 0.32 0.72
+material assign Sail
+select all
+shade flat
+export sailboat.glb

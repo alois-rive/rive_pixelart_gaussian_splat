@@ -1,0 +1,39 @@
+# Market stall: four posts, a counter, a striped canopy sloping to the front, two jars. Up Z, facing -Y.
+new
+material new Post --base-color 0.647 0.541 0.384 --no-slot
+material new Counter --base-color 0.647 0.541 0.384 --no-slot
+material new Canopy --base-color 1 1 1 --no-slot
+material new Jar --base-color 0.663 0.663 0.580 --no-slot
+add mesh cube --name PostFL --size 1 --location -0.70 -0.45 0.75
+scale 0.14 0.14 1.50
+add mesh cube --name PostFR --size 1 --location 0.70 -0.45 0.75
+scale 0.14 0.14 1.50
+add mesh cube --name PostBL --size 1 --location -0.70 0.45 0.90
+scale 0.14 0.14 1.80
+add mesh cube --name PostBR --size 1 --location 0.70 0.45 0.90
+scale 0.14 0.14 1.80
+select PostFL PostFR PostBL PostBR
+material assign Post
+add mesh cube --name Counter --size 1 --location 0 -0.25 0.35
+scale 1.30 0.45 0.70
+material assign Counter
+# the canopy: scaled, applied, THEN tilted (front edge lower: +X rotation lifts +Y), stripes run front to back
+add mesh cube --name Canopy --size 1 --location 0 0 1.68
+scale 1.70 1.25 0.08
+apply --scale
+set rotation 9 0 0
+material assign Canopy
+active Canopy
+mode edit
+select all
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Canopy base-color ../../art/textures/canopy_16.png
+add mesh cylinder --name Jar1 --vertices 8 --radius 0.13 --depth 0.30 --location -0.35 -0.25 0.85
+material assign Jar
+add mesh cylinder --name Jar2 --vertices 8 --radius 0.11 --depth 0.24 --location 0.30 -0.20 0.82
+material assign Jar
+select all
+apply --scale
+shade flat
+export stall.glb

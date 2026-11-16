@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.044,
+  "fat": 1.0,
+  "out": "../../lookdev/knight.bin",
+  "objects": [
+    { "model": "knight.glb",
+      "materials": { "Armour": { "ramp": "steel" }, "Slit": { "ramp": "steel" }, "Gold": { "ramp": "gold" },
+                     "Tabard": { "ramp": "gold" }, "Leather": { "ramp": "rock" }, "Blade": { "ramp": "steel" } } }
+  ]
+}

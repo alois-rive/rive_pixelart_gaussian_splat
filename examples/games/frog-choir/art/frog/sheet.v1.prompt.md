@@ -1,0 +1,23 @@
+A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a chubby cartoon frog sitting upright, a singer in a frog choir.
+
+Canvas and layout, keep exactly:
+- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.
+- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).
+- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and sitting on the same invisible ground line in the three side views.
+- Every view sits whole inside its panel with a clear margin of background all round (at least a tenth of the panel): nothing touches or crosses a panel edge.
+- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).
+- The four panels show the SAME frog, only turned: FRONT: the frog faces the camera (we see its face, both eyes, its pale throat and belly). RIGHT: the camera has walked round to the frog's own right-hand side (not the image's right), so the frog's face points to the LEFT edge of the image. BACK: seen from behind (only green back, the eye bumps on top). TOP: seen from straight above, looking down, with its face towards the BOTTOM edge of the image. Each detail appears only in the views from which it is really visible.
+- One flat, uniform, mid grey background (#9a9a9a) everywhere: no floor, no lily pad, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.
+
+The object (identical in all four views), about 0.9 m wide, 0.85 m deep (front to back) and 0.75 m tall to the top of the eyes:
+- Body: a fat faceted pear shape sitting upright and leaning slightly back, wider at the bottom (0.8 m) than at the shoulders, 0.55 m tall.
+- Head: wide and flat-topped, merged into the body, with a wide closed mouth line across the front.
+- Two big round bulging eyes on top of the head, wide apart at the head's front corners, each a ball 0.22 m across, with a black horizontal slit pupil facing forward.
+- A pale cream throat and belly patch covering the front of the body, from under the mouth down to the ground.
+- Two front legs: thick straight short pillars standing down in front of the belly, feet with three blunt toes on the ground.
+- Two back legs: big folded thighs as round lumps at the left and right sides of the body at the bottom, back feet with three blunt toes pointing forward beside the front feet.
+
+Style, keep exactly:
+- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 500 triangles worth of detail. No smooth organic surfaces, no tiny details, no spots, no texture noise, no grain.
+- Flat colour areas only, ONLY these colours (from the 15-colour palette Eggy 15): skin green #3c9b87 (lit) and #2e403d (shade), with lighter top faces #afd87e; throat and belly #ddd4cb with lit faces #f0f2d0; eyes yellow #f9d955 with a #ea9d18 rim and #0e0c1b slit pupils; mouth line #0e0c1b.
+- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.

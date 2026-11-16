@@ -1,0 +1,6 @@
+# Walker, phase 3: the pole alone, its origin (the hands) moved to 0 0 0.
+select Body
+delete
+select Pole
+set location 0 0 0
+export walker_pole.glb

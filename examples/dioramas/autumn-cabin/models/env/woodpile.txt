@@ -1,0 +1,29 @@
+# Woodpile: six 1.1 m logs stacked 3-2-1 along X, pale cut ends, and a chopping stump. Up Z.
+new
+material new Bark --base-color 0.545 0.427 0.612
+material new Ends --base-color 0.949 0.827 0.671 --no-slot
+add mesh cylinder --name L0 --vertices 8 --radius 0.15 --depth 1.1 --location 0 -0.3 0.15 --rotation 0 90 0
+add mesh cylinder --name L1 --vertices 8 --radius 0.15 --depth 1.1 --location 0 0 0.15 --rotation 0 90 0
+add mesh cylinder --name L2 --vertices 8 --radius 0.15 --depth 1.1 --location 0 0.3 0.15 --rotation 0 90 0
+add mesh cylinder --name L3 --vertices 8 --radius 0.15 --depth 1.1 --location 0.04 -0.15 0.41 --rotation 0 90 0
+add mesh cylinder --name L4 --vertices 8 --radius 0.15 --depth 1.1 --location -0.03 0.15 0.41 --rotation 0 90 0
+add mesh cylinder --name L5 --vertices 8 --radius 0.15 --depth 1.1 --location 0.02 0 0.67 --rotation 0 90 0
+select L0 L1 L2 L3 L4 L5
+active L0
+join
+rename L0 Logs
+apply --rotation
+material assign Bark
+mode edit
+select face where "abs(normal.x) > 0.9"
+material assign Ends
+mode object
+add mesh cylinder --name Stump --vertices 8 --radius 0.3 --depth 0.45 --location 1.05 0.1 0.225
+material assign Bark
+mode edit
+select face where "normal.z > 0.9"
+material assign Ends
+mode object
+select all
+shade flat
+export woodpile.glb

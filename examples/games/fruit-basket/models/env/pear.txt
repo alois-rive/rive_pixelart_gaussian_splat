@@ -1,0 +1,21 @@
+# Golden pear (bonus, glows): a ball 0.36 m with a narrower top, unlit.
+# Origin at the fruit's centre (a game bone pool: the game drops, catches and pops it).
+new
+material new Body --base-color 0.9294 0.8824 0.6196 --no-slot --emission 0.9294 0.8824 0.6196
+material new Stem --base-color 0.2941 0.2549 0.3451 --no-slot
+add mesh ico-sphere --name Fruit --subdivisions 1 --radius 0.18 --location 0 0 0
+scale 1 1 0.95
+apply --scale
+material assign Body
+add mesh cube --name Stalk --size 1 --location 0.02 0 0.221
+scale 0.06 0.06 0.14
+apply --scale
+material assign Stem
+add mesh ico-sphere --name Top --subdivisions 1 --radius 0.11 --location 0 0 0.17
+material assign Body
+select all
+active Fruit
+join
+select all
+shade flat
+export pear.glb

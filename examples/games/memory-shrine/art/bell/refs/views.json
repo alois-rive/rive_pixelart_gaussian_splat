@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/memory-shrine/art/bell/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        221,
+        23,
+        326,
+        461
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4141,
+      "fill": 0.6425,
+      "background": "#929191"
+    },
+    "right": {
+      "box": [
+        989,
+        21,
+        326,
+        463
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4202,
+      "fill": 0.6417,
+      "background": "#929190"
+    },
+    "back": {
+      "box": [
+        221,
+        535,
+        326,
+        461
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4141,
+      "fill": 0.643,
+      "background": "#919090"
+    },
+    "top": {
+      "box": [
+        997,
+        582,
+        305,
+        352
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1541,
+      "fill": 0.7603,
+      "background": "#919090"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+# Lighthouse, phase 2: bands, door, window, mullions, materials (the two 1bit Monitor Glow colours,
+# sRGB 0..1), the lamp head joined with its origin on the tower's axis, and its turn: 8 s, linear,
+# clockwise from above (0 -> -360 about Z): against the demo / orbit camera, which turns the other way.
+material new White --base-color 0.941 0.965 0.941 --no-slot
+material new Dark --base-color 0.133 0.137 0.137 --no-slot
+material new Glass --base-color 0.941 0.965 0.941 --emission 0.941 0.965 0.941 --no-slot
+select Plinth Tower
+material assign White
+select Gallery Cap Finial
+material assign Dark
+select Glass
+material assign Glass
+# two dark bands, 1.22..1.65 and 2.26..2.64 m: cut the tower at their edges (world heights: apply location first)
+active Tower
+apply --location
+mode edit
+select all
+bisect --plane-co 0 0 1.22 --plane-no 0 0 1
+select all
+bisect --plane-co 0 0 1.65 --plane-no 0 0 1
+select all
+bisect --plane-co 0 0 2.26 --plane-no 0 0 1
+select all
+bisect --plane-co 0 0 2.64 --plane-no 0 0 1
+select face where "abs(normal.z) < 0.9 && ((pos.z > 1.22 && pos.z < 1.65) || (pos.z > 2.26 && pos.z < 2.64))"
+material assign Dark
+mode object
+add mesh cube --name Door --size 1 --location 0 -0.80 0.72
+scale 0.40 0.12 0.62
+apply --scale
+material assign Dark
+add mesh cube --name Window --size 1 --location 0.65 0 1.95
+scale 0.12 0.22 0.22
+apply --scale
+material assign Dark
+# mullions on the eight corners of the glass room (corners at 22.5 + 45 k degrees, radius 0.52)
+add mesh cube --name M0 --size 1 --location 0.480 0.199 3.76
+scale 0.08 0.08 0.44
+apply --scale
+material assign Dark
+duplicate
+rotate z 45 --pivot cursor
+duplicate
+rotate z 45 --pivot cursor
+duplicate
+rotate z 45 --pivot cursor
+duplicate
+rotate z 45 --pivot cursor
+duplicate
+rotate z 45 --pivot cursor
+duplicate
+rotate z 45 --pivot cursor
+duplicate
+rotate z 45 --pivot cursor
+select Glass Cap Finial M0 M0.001 M0.002 M0.003 M0.004 M0.005 M0.006 M0.007
+active Glass
+join
+rename Glass LampHead
+cursor set 0 0 3.76
+origin set --to cursor
+select all
+shade flat
+fps 24
+frame range 0 192
+select LampHead
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 0 -360
+keyframe insert --channels rot --frame 192
+keyframe interpolation linear --all
+frame set 0
+render shots/p2_iso.png --view iso --shading material --overlay none --size 500 500
+export lighthouse.glb --bake-animations

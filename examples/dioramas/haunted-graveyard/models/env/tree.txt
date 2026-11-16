@@ -1,0 +1,27 @@
+# Crooked dead tree (painted #565a75: lit to #c6b7be, shaded to #0f0f1b against the night): a leaning 5-sided trunk and four bare branches (0.16 thick: drawn with a smaller spacing). Up Z.
+new
+add mesh cone --name Trunk --vertices 5 --radius1 0.28 --radius2 0.11 --depth 2.0 --location 0 0 1.0
+cursor set 0 0 0
+rotate y 12 --pivot cursor
+add mesh cube --name B1 --size 1 --location -0.2 0 2.0
+scale 0.16 0.16 1.1
+apply --scale
+set rotation 0 -50 0
+add mesh cube --name B2 --size 1 --location 0.55 0 2.15
+scale 0.15 0.15 0.9
+apply --scale
+set rotation 15 35 0
+add mesh cube --name B3 --size 1 --location 0.12 -0.25 1.45
+scale 0.14 0.14 0.7
+apply --scale
+set rotation 50 0 20
+add mesh cube --name B4 --size 1 --location -0.55 0.1 2.45
+scale 0.12 0.12 0.6
+apply --scale
+set rotation -20 -15 0
+material new Bark --base-color 0.337 0.353 0.459
+select Trunk B1 B2 B3 B4
+material assign Bark
+select all
+shade flat
+export tree.glb

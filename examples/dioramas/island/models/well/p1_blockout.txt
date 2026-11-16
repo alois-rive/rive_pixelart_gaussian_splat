@@ -1,0 +1,29 @@
+# Phase 1, blockout: one primitive per named part, at the spec's sizes. Up Z, facing -Y.
+# v3: ring wall 0.42 (the sheet's 0.52 included the rim top seen from above), parts above it -0.10
+new
+add mesh cylinder --name Ring --vertices 8 --radius 0.6 --depth 0.42 --location 0 0 0.21 --rotation 0 0 22.5
+add mesh cube --name PostL --size 1 --location -0.48 0 0.60
+scale 0.13 0.13 1.20
+add mesh cube --name PostR --size 1 --location 0.48 0 0.60
+scale 0.13 0.13 1.20
+add mesh cube --name Beam --size 1 --location 0 0 0.97
+scale 1.06 0.09 0.09
+add mesh cube --name CrankArm --size 1 --location 0.60 0 0.88
+scale 0.07 0.07 0.24
+add mesh cube --name CrankGrip --size 1 --location 0.69 0 0.77
+scale 0.18 0.07 0.07
+add mesh cylinder --name Rope --vertices 6 --radius 0.02 --depth 0.28 --location 0 0 0.79
+add mesh cone --name Bucket --vertices 8 --radius1 0.12 --radius2 0.16 --depth 0.22 --location 0 0 0.53 --rotation 0 0 22.5
+# a slab is scaled, applied, THEN tilted: the front one rises towards the ridge (+Y)
+add mesh cube --name RoofF --size 1 --location 0 -0.26 1.38
+scale 1.41 0.74 0.08
+apply --scale
+set rotation 38 0 0
+add mesh cube --name RoofB --size 1 --location 0 0.26 1.38
+scale 1.41 0.74 0.08
+apply --scale
+set rotation -38 0 0
+add mesh cube --name Ridge --size 1 --location 0 0 1.60
+scale 1.45 0.09 0.07
+select all
+apply --scale

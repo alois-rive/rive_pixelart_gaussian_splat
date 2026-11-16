@@ -1,0 +1,53 @@
+{
+  "name": "Peachy Pop 16 (claw ramps only, for the colour gate)",
+  "colors": [
+    "#fdffff",
+    "#ff8686",
+    "#fb4771",
+    "#ce186a",
+    "#8f0b5f",
+    "#53034b",
+    "#ad6dea",
+    "#9fb9ff",
+    "#567feb",
+    "#0a547b",
+    "#278c7f",
+    "#0ce7a7",
+    "#acfcad",
+    "#ffec6d",
+    "#ffa763",
+    "#ff4040"
+  ],
+  "ramps": {
+    "red": [
+      "#53034b",
+      "#8f0b5f",
+      "#ce186a",
+      "#ff4040",
+      "#ffa763"
+    ],
+    "chrome": [
+      "#53034b",
+      "#0a547b",
+      "#567feb",
+      "#9fb9ff",
+      "#fdffff"
+    ],
+    "ink": [
+      "#53034b",
+      "#53034b",
+      "#8f0b5f"
+    ],
+    "glow": [
+      "#ffa763",
+      "#ffec6d",
+      "#fdffff"
+    ]
+  },
+  "roles": {
+    "sky_top": "#53034b",
+    "sky_bottom": "#53034b",
+    "fog": "#8f0b5f",
+    "void": "#53034b"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "EN4",
+  "source": "https://lospec.com/palette-list/en4",
+  "author": "ENDESGA",
+  "colors": ["#20283d", "#426e5d", "#e5b083", "#fbf7f3"],
+  "ramps": {
+    "rock":   ["#20283d", "#426e5d", "#e5b083"],
+    "wood":   ["#20283d", "#426e5d", "#e5b083", "#fbf7f3"],
+    "iron":   ["#20283d", "#20283d", "#426e5d", "#e5b083"],
+    "rail":   ["#20283d", "#426e5d", "#e5b083", "#fbf7f3"],
+    "gem":    ["#426e5d", "#e5b083", "#fbf7f3"],
+    "glow":   ["#e5b083", "#fbf7f3"],
+    "cave":   ["#20283d", "#426e5d"]
+  },
+  "roles": { "sky_top": "#20283d", "sky_bottom": "#20283d", "fog": "#20283d", "void": "#20283d" }
+}

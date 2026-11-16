@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "out": "../../lookdev/carousel.bin",
+  "objects": [
+    { "model": "carousel.glb", "fps": 12,
+      "materials": {
+        "Blue": { "ramp": "blue" }, "Orange": { "ramp": "gold" }, "Pink": { "ramp": "pink" },
+        "Yellow": { "ramp": "gold", "spacing": 0.06 }, "Red": { "ramp": "red" }, "Cream": { "ramp": "cream" },
+        "Mane": { "ramp": "red", "spacing": 0.06 }, "Flag": { "ramp": "green", "flags": ["double"], "spacing": 0.06 } } }
+  ]
+}

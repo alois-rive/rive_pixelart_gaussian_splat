@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/kite-day/art/kite/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        228,
+        17,
+        312,
+        460
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4744,
+      "fill": 0.4794,
+      "background": "#d2d1d2"
+    },
+    "right": {
+      "box": [
+        1127,
+        19,
+        47,
+        459
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 9.766,
+      "fill": 0.8251,
+      "background": "#d2d2d2"
+    },
+    "back": {
+      "box": [
+        229,
+        528,
+        310,
+        462
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4903,
+      "fill": 0.4744,
+      "background": "#d2d2d2"
+    },
+    "top": {
+      "box": [
+        943,
+        695,
+        418,
+        144
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.3445,
+      "fill": 0.4659,
+      "background": "#d3d2d2"
+    }
+  }
+}

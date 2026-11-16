@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.15,
+  "fat": 1.0,
+  "out": "../../lookdev/crypt.bin",
+  "objects": [
+    { "model": "crypt.glb",
+      "materials": {
+        "Stone": { "ramp": "stone" }, "Roof": { "ramp": "dark" }, "Trim": { "ramp": "stone", "spacing": 0.1 },
+        "Door": { "ramp": "dark", "spacing": 0.1 }, "Glow": { "ramp": "glow", "flags": ["unlit"], "spacing": 0.08 } } }
+  ]
+}

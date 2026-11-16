@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/archery-range/art/target/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        211,
+        24,
+        347,
+        474
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.366,
+      "fill": 0.6653,
+      "background": "#d4d3d3"
+    },
+    "right": {
+      "box": [
+        933,
+        13,
+        440,
+        484
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1,
+      "fill": 0.2922,
+      "background": "#d4d4d3"
+    },
+    "back": {
+      "box": [
+        211,
+        536,
+        347,
+        475
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3689,
+      "fill": 0.6923,
+      "background": "#d4d3d3"
+    },
+    "top": {
+      "box": [
+        979,
+        549,
+        346,
+        423
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2225,
+      "fill": 0.6138,
+      "background": "#d4d3d3"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+# Cabin, phase 2: materials (Oil 6 ramp steps, sRGB 0..1), log courses, glowing windows.
+material new Stone --base-color 0.545 0.427 0.612 --no-slot
+material new Logs --base-color 1 1 1 --no-slot
+material texture Logs base-color textures/logs.png
+material new Roof --base-color 0.286 0.302 0.494 --no-slot
+material new Door --base-color 0.153 0.153 0.267 --no-slot
+material new Glow --base-color 0.949 0.827 0.671 --emission 0.949 0.827 0.671 --no-slot
+select Footing Chimney ChimneyCap
+material assign Stone
+select Walls Attic
+material assign Logs
+# cube projection: on every wall u runs along it and v up it; 12 texels over 1.25 m (four logs)
+active Walls
+mode edit
+select all
+uv cube-project --size 1.25
+mode object
+active Attic
+mode edit
+select all
+uv cube-project --size 1.25
+mode object
+select RoofF RoofB
+material assign Roof
+select Door
+material assign Door
+select WinL WinR WinB
+material assign Glow
+select all
+shade flat
+export cabin.glb

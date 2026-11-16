@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "out": "../../lookdev/dragon.bin",
+  "objects": [
+    { "model": "dragon.glb",
+      "materials": { "Scale": { "ramp": "scale" }, "Blush": { "ramp": "blush" },
+                     "Horn": { "ramp": "stone", "spacing": 0.05, "specks": true }, "Eye": { "ramp": "stone", "spacing": 0.05, "specks": true } } }
+  ]
+}

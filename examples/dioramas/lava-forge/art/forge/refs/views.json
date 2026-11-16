@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/lava-forge/art/forge/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        171,
+        16,
+        421,
+        480
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1401,
+      "fill": 0.5891,
+      "background": "#d3d2d2"
+    },
+    "right": {
+      "box": [
+        911,
+        16,
+        484,
+        480
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9917,
+      "fill": 0.4885,
+      "background": "#d3d3d2"
+    },
+    "back": {
+      "box": [
+        169,
+        530,
+        433,
+        479
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1062,
+      "fill": 0.5877,
+      "background": "#d3d2d2"
+    },
+    "top": {
+      "box": [
+        937,
+        571,
+        428,
+        412
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9626,
+      "fill": 0.9934,
+      "background": "#d3d2d2"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+# Dragon, phase 3: the game parts. Run after p1 + p2 on a fresh model, once per part (build.sh).
+# body: delete the head; head: delete the body and move the head's origin (the neck) to 0 0 0.
+select Head
+delete
+export dragon_body.glb

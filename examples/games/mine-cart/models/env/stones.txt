@@ -1,0 +1,17 @@
+# Stones: the rockfall's boulder pile in the cave's green, for scenery (tan is kept for the hazard).
+new
+material new Stone --base-color 0.259 0.431 0.365 --no-slot
+add mesh ico-sphere --name B1 --subdivisions 1 --radius 0.34 --location -0.18 0.05 0.28
+add mesh ico-sphere --name B2 --subdivisions 1 --radius 0.28 --location 0.22 -0.1 0.22
+add mesh ico-sphere --name B3 --subdivisions 1 --radius 0.22 --location 0.1 0.22 0.45
+select B1 B2 B3
+active B1
+join
+mode edit
+select all
+randomize --amount 0.05 --seed 5
+mode object
+rename B1 Pile
+material assign Stone
+shade flat
+export stones.glb

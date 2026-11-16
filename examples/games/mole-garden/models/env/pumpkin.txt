@@ -1,0 +1,13 @@
+# A squash on the lawn: a squat faceted gourd and a short stem. Up Z.
+new
+add mesh uv-sphere --name Gourd --segments 8 --rings 5 --radius 1 --location 0 0 0.2
+scale 0.34 0.34 0.22
+apply --scale
+material new Gourd --base-color 0.467 0.455 0.310
+material assign Gourd
+add mesh cylinder --name Stem --vertices 5 --radius 0.045 --depth 0.14 --location 0 0 0.46
+material new Stem --base-color 0.227 0.376 0.290
+material assign Stem
+select all
+shade flat
+export pumpkin.glb

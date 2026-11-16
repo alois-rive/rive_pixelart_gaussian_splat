@@ -1,0 +1,23 @@
+# A beach umbrella: a white pole, an 8-gore canopy (pink and white), tilted. Origin at its foot.
+new
+material new Pole --base-color 0.9804 1.0000 1.0000 --no-slot
+material new Pink --base-color 1.0000 0.2549 0.4902 --no-slot
+material new White --base-color 0.9804 1.0000 1.0000 --no-slot
+add mesh cylinder --name Pole --vertices 6 --radius 0.06 --depth 2.6 --location 0 0 1.3
+material assign Pole
+add mesh cone --name Canopy --vertices 8 --radius1 1.5 --radius2 0.05 --depth 0.7 --location 0 0 2.45
+material assign White
+active Canopy
+mode edit
+select face where "pos.y > 0 && abs(pos.x) < 0.42 * pos.y || pos.y < 0 && abs(pos.x) < -0.42 * pos.y"
+material assign Pink
+select face where "pos.x > 0 && abs(pos.y) < 0.42 * pos.x || pos.x < 0 && abs(pos.y) < -0.42 * pos.x"
+material assign Pink
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select all
+set rotation 0 -12 0
+apply --rotation
+shade flat
+export umbrella.glb

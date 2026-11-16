@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/frog-choir/art/frog/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        124,
+        46,
+        520,
+        418
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8038,
+      "fill": 0.7282,
+      "background": "#908f8e"
+    },
+    "right": {
+      "box": [
+        918,
+        46,
+        450,
+        418
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9289,
+      "fill": 0.7232,
+      "background": "#908f8e"
+    },
+    "back": {
+      "box": [
+        125,
+        560,
+        520,
+        419
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8058,
+      "fill": 0.7309,
+      "background": "#908f8e"
+    },
+    "top": {
+      "box": [
+        902,
+        553,
+        500,
+        428
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.856,
+      "fill": 0.7418,
+      "background": "#908f8f"
+    }
+  }
+}

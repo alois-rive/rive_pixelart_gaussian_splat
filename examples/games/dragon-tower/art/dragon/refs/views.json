@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/dragon-tower/art/dragon/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        74,
+        23,
+        619,
+        450
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.727,
+      "fill": 0.5265,
+      "background": "#929192"
+    },
+    "right": {
+      "box": [
+        950,
+        23,
+        454,
+        451
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9934,
+      "fill": 0.5786,
+      "background": "#929192"
+    },
+    "back": {
+      "box": [
+        74,
+        536,
+        619,
+        451
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7286,
+      "fill": 0.5073,
+      "background": "#919091"
+    },
+    "top": {
+      "box": [
+        844,
+        585,
+        622,
+        383
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6158,
+      "fill": 0.5097,
+      "background": "#919091"
+    }
+  }
+}

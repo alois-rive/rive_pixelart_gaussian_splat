@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/mirror-beam/art/mirror/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        217,
+        20,
+        334,
+        466
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3952,
+      "fill": 0.673,
+      "background": "#d2d2d2"
+    },
+    "right": {
+      "box": [
+        1007,
+        20,
+        291,
+        466
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6014,
+      "fill": 0.3067,
+      "background": "#d3d2d2"
+    },
+    "back": {
+      "box": [
+        217,
+        533,
+        334,
+        466
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3952,
+      "fill": 0.6732,
+      "background": "#d3d2d2"
+    },
+    "top": {
+      "box": [
+        984,
+        599,
+        337,
+        304
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9021,
+      "fill": 0.7543,
+      "background": "#d3d3d3"
+    }
+  }
+}

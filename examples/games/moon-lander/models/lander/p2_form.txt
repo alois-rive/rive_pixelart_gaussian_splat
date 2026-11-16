@@ -1,0 +1,29 @@
+# Lander, phase 2: materials (Nyx8, sRGB 0..1 of the ramp steps), the triangular window and the hatch
+# on the cabin's front, joins (one object per material group), flat shading, export.
+material new Foil --base-color 0.600 0.459 0.467 --no-slot
+material new Cabin --base-color 0.765 0.639 0.541 --no-slot
+material new Pale --base-color 0.965 0.839 0.741 --no-slot
+material new Metal --base-color 0.306 0.286 0.373 --no-slot
+material new Glass --base-color 0.059 0.165 0.247 --no-slot
+material new Hatch --base-color 0.600 0.459 0.467 --no-slot
+select Descent
+material assign Foil
+select Cabin Roof
+material assign Cabin
+select Dish
+material assign Pale
+select Nozzle Mast LegBL LegBR LegFL LegFR PadBL PadBR PadFL PadFR
+material assign Metal
+# the window: a triangular plate pointing up, 0.04 proud of the cabin's front face (y -0.55)
+add mesh cylinder --name Window --vertices 3 --radius 0.27 --depth 0.06 --location 0 0 0 --rotation 0 0 90
+apply --rotation
+set rotation 90 0 0
+set location 0 -0.56 1.33
+material assign Glass
+add mesh cube --name Hatch --size 1 --location 0 -0.565 1.07
+scale 0.2 0.06 0.17
+apply --scale
+material assign Hatch
+select all
+shade flat
+export lander.glb

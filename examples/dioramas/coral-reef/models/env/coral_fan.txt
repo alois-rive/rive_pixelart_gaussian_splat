@@ -1,0 +1,21 @@
+# Sea fan: a flat, two-sided fan 1.4 m wide and 1.2 m tall on a short stalk, its edge notched;
+# 0.06 m thick (two-sided splats, `sway` in the scene). Up Z, the fan in the XZ plane.
+new
+material new Fan --base-color 0.0 0.373 0.549 --no-slot
+add mesh cylinder --name Fan --vertices 9 --radius 0.7 --depth 0.06 --location 0 0 0 --rotation 90 0 0
+apply --rotation
+mode edit
+select vert where "pos.z < -0.3"
+scale 0.25 1 0.4
+select all
+translate 0 0 0.85
+mode object
+add mesh cube --name Stalk --size 1 --location 0 0 0.12
+scale 0.12 0.12 0.26
+apply --scale
+select Fan Stalk
+material assign Fan
+active Fan
+join
+shade flat
+export coral_fan.glb

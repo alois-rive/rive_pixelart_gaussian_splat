@@ -1,0 +1,100 @@
+# Radar dish, phase 1: blockout of every named part at the spec's sizes. Up Z, facing -Y.
+# Two moving groups: Head (drum + yoke, turns about Z) and Dish (bowl, feed, counterweight;
+# pivot on the axle at (0, 0, 1.50), turns about Z with the head and tilts about X).
+new
+add mesh cylinder --name Pedestal --vertices 8 --radius 0.75 --depth 0.46 --location 0 0 0.23 --rotation 0 0 22.5
+apply --rotation
+add mesh cylinder --name Drum --vertices 8 --radius 0.48 --depth 0.24 --location 0 0 0.58 --rotation 0 0 22.5
+apply --rotation
+add mesh cube --name Cross --size 1 --location 0 0 0.7
+scale 1.74 0.3 0.16
+apply --scale
+add mesh cube --name ArmL --size 1 --location -0.8 0 1.1
+scale 0.17 0.28 0.96
+apply --scale
+add mesh cube --name ArmR --size 1 --location 0.8 0 1.1
+scale 0.17 0.28 0.96
+apply --scale
+add mesh cube --name CapL --size 1 --location -0.82 0 1.5
+scale 0.2 0.34 0.2
+apply --scale
+add mesh cube --name CapR --size 1 --location 0.82 0 1.5
+scale 0.2 0.34 0.2
+apply --scale
+material new Yoke --base-color 0.188 0.365 0.259 --no-slot
+select Drum Cross ArmL ArmR CapL CapR
+material assign Yoke
+active Drum
+join
+rename Drum Head
+cursor set 0 0 0
+origin set --to cursor
+# the dish, built untilted (axis along -Y): a 12-sided frustum, rim r 0.8 in front, back r 0.45
+add mesh cone --name Bowl --vertices 12 --radius1 0.45 --radius2 0.8 --depth 0.45 --location 0 -0.075 1.5 --rotation 90 0 0
+apply --rotation
+apply --location
+material new DishFace --base-color 0.537 0.635 0.341 --no-slot
+material new DishBack --base-color 0.302 0.502 0.380 --no-slot
+material assign DishBack
+active Bowl
+mode edit
+select face where "normal.y < -0.9"
+poke
+select vert where "abs(pos.x) < 0.01 && abs(pos.z - 1.5) < 0.01 && pos.y < -0.2"
+translate 0 0.3 0
+select face where "normal.y < -0.5"
+material assign DishFace
+mode object
+# the feed: three struts from the rim to a receiver in front of the dish and, as the sheet draws it,
+# below its axis (level with the pivot once the dish is tilted), with a glowing tip
+material new Strut --base-color 0.118 0.227 0.161 --no-slot
+material new Glow --base-color 0.933 1.0 0.8 --emission 0.933 1.0 0.8 --no-slot
+add mesh cube --name StrutB --size 1 --location 0 0 0
+scale 0.12 1 0.12
+apply --scale
+mode edit
+select vert where "pos.y < 0"
+translate 0 -0.3 1.15
+select vert where "pos.y > 0"
+translate 0 -0.8 0.72
+mode object
+material assign Strut
+add mesh cube --name StrutL --size 1 --location 0 0 0
+scale 0.12 1 0.12
+apply --scale
+mode edit
+select vert where "pos.y < 0"
+translate 0 -0.3 1.15
+select vert where "pos.y > 0"
+translate -0.68 -0.8 1.89
+mode object
+material assign Strut
+add mesh cube --name StrutR --size 1 --location 0 0 0
+scale 0.12 1 0.12
+apply --scale
+mode edit
+select vert where "pos.y < 0"
+translate 0 -0.3 1.15
+select vert where "pos.y > 0"
+translate 0.68 -0.8 1.89
+mode object
+material assign Strut
+add mesh cube --name Receiver --size 0.2 --location 0 -0.8 1.15
+material assign Strut
+add mesh cube --name Tip --size 0.12 --location 0 -0.94 1.1
+material assign Glow
+# the counterweight is level when the dish is at rest (-30): modelled turned +30 here
+add mesh cube --name Counter --size 1 --location 0 0.38 1.78
+scale 0.5 0.3 0.3
+apply --scale
+set rotation 30 0 0
+apply --rotation
+material assign DishBack
+select Bowl StrutB StrutL StrutR Receiver Tip Counter
+active Bowl
+join
+rename Bowl Dish
+cursor set 0 0 1.5
+origin set --to cursor
+select Dish
+set rotation -36 0 0

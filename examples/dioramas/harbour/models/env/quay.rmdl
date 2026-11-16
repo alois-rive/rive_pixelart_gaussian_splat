@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmdl format="1">
+  <ext_resource id="1_quay" type="Texture2D" path="textures/quay.png"/>
+  <ext_resource id="2_grass" type="Texture2D" path="textures/grass.png"/>
+
+  <sub_resource id="Material_0" type="Material">
+    <property name="name">"Quay"</property>
+    <property name="base_color">Color(1, 1, 1)</property>
+    <property name="base_color_texture">ExtResource("1_quay")</property>
+  </sub_resource>
+  <sub_resource id="Material_1" type="Material">
+    <property name="name">"Grass"</property>
+    <property name="base_color">Color(1, 1, 1)</property>
+    <property name="base_color_texture">ExtResource("2_grass")</property>
+  </sub_resource>
+  <sub_resource id="Mesh_0" type="Mesh">
+    <property name="verts">8</property>
+    <property name="co">PackedVector3Array(
+        -5, 2.1999998, -0.6,
+        -5, 2.1999998, 0.6,
+        -5, 4, -0.6,
+        -5, 4, 0.6,
+        5, 2.1999998, -0.6,
+        5, 2.1999998, 0.6,
+        5, 4, -0.6,
+        5, 4, 0.6)</property>
+    <property name="vert_flags">PackedInt32Array(1, 0, 1, 0, 1, 0, 1, 0)</property>
+    <property name="edges">12</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4)</property>
+    <property name="edge_flags">PackedInt32Array(0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1)</property>
+    <property name="faces">6</property>
+    <property name="face_holes">PackedInt32Array(4)</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        20, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, 1)</property>
+    <property name="face_materials">PackedInt32Array(0, 0, 0, 0, 1)</property>
+    <property name="loops">24</property>
+    <property name="loop_holes">PackedInt32Array(16, 17, 18, 19)</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.95000005, 0.19999999,
+        1, 0.95000005, 0.8,
+        1, 0.049999952, 0.8,
+        1, 0.049999952, 0.19999999,
+        1, 3, 0.19999999,
+        1, 3, 0.8,
+        1, -2, 0.8,
+        1, -2, 0.19999999,
+        1, 0.95000005, 0.19999999,
+        1, 0.95000005, 0.8,
+        1, 0.049999952, 0.8,
+        1, 0.049999952, 0.19999999,
+        1, 3, 0.19999999,
+        1, 3, 0.8,
+        1, -2, 0.8,
+        1, -2, 0.19999999,
+        1, 0.99999994, 1,
+        1, 0, 1,
+        1, 0, 0,
+        1, 0.99999994, 0)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1,
+        1, 1)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+
+  <scene>
+    <property name="active">"Quay"</property>
+  </scene>
+
+  <object name="Quay" type="mesh">
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_0")</property>
+    <property name="material_slots">[SubResource("Material_0"), SubResource("Material_1")]</property>
+  </object>
+</rmdl>

@@ -1,0 +1,69 @@
+{
+  "name": "Magik16",
+  "author": "Orbitron",
+  "source": "https://lospec.com/palette-list/magik16",
+  "colors": [
+    "#1c1e1f",
+    "#3c4348",
+    "#668b90",
+    "#bee5e1",
+    "#fbfceb",
+    "#e9cea8",
+    "#9b5a44",
+    "#591e37",
+    "#6d2fa7",
+    "#d454c6",
+    "#e98bb3",
+    "#f0f3c4",
+    "#bde9bf",
+    "#82d3b0",
+    "#58aaad",
+    "#234663"
+  ],
+  "ramps": {
+    "snow": [
+      "#1c1e1f",
+      "#3c4348",
+      "#668b90",
+      "#bee5e1",
+      "#fbfceb"
+    ],
+    "stone": [
+      "#1c1e1f",
+      "#3c4348",
+      "#668b90",
+      "#bee5e1"
+    ],
+    "pine": [
+      "#1c1e1f",
+      "#234663",
+      "#58aaad",
+      "#82d3b0",
+      "#bde9bf"
+    ],
+    "wood": [
+      "#1c1e1f",
+      "#591e37",
+      "#9b5a44",
+      "#e9cea8"
+    ],
+    "lamp": [
+      "#e9cea8",
+      "#f0f3c4",
+      "#fbfceb"
+    ],
+    "magic": [
+      "#1c1e1f",
+      "#591e37",
+      "#6d2fa7",
+      "#d454c6",
+      "#e98bb3"
+    ]
+  },
+  "roles": {
+    "sky_top": "#1c1e1f",
+    "sky_bottom": "#234663",
+    "fog": "#3c4348",
+    "void": "#1c1e1f"
+  }
+}

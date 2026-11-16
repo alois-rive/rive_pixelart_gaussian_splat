@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.034,
+  "fat": 1.0,
+  "out": "../../lookdev/pan.bin",
+  "objects": [
+    { "model": "pan_splat.glb",
+      "materials": { "Iron": { "ramp": "iron" }, "Rim": { "ramp": "iron" }, "Handle": { "ramp": "berry" },
+                     "Cap": { "ramp": "berry" }, "Golden": { "ramp": "golden" }, "Crust": { "ramp": "burnt" } } }
+  ]
+}

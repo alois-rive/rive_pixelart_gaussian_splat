@@ -1,0 +1,18 @@
+{
+  "name": "WoodSpark",
+  "source": "https://lospec.com/palette-list/woodspark",
+  "author": "Anubi",
+  "colors": ["#f5eeb0", "#fabf61", "#e08d51", "#8a5865", "#452b3f", "#2c5e3b", "#609c4f", "#c6cc54",
+             "#78c2d6", "#5479b0", "#56546e", "#839fa6", "#e0d3c8", "#f05b5b", "#8f325f", "#eb6c98"],
+  "ramps": {
+    "wood":   ["#452b3f", "#8a5865", "#e08d51", "#fabf61", "#f5eeb0"],
+    "leaf":   ["#2c5e3b", "#609c4f", "#c6cc54", "#f5eeb0"],
+    "glass":  ["#56546e", "#5479b0", "#78c2d6", "#e0d3c8"],
+    "steel":  ["#452b3f", "#56546e", "#839fa6", "#e0d3c8"],
+    "berry":  ["#452b3f", "#8f325f", "#f05b5b", "#eb6c98"],
+    "pit":    ["#452b3f", "#452b3f", "#8a5865"],
+    "flame":  ["#fabf61", "#f5eeb0"],
+    "spark":  ["#f5eeb0", "#f5eeb0"]
+  },
+  "roles": { "void": "#452b3f", "fog": "#8a5865", "sky_top": "#452b3f", "sky_bottom": "#8a5865" }
+}

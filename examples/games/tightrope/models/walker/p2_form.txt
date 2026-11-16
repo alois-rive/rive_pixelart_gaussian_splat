@@ -1,0 +1,39 @@
+# Tightrope walker, phase 2: materials in exact Dreamscape8 colours (sRGB 0..1), joined into the two game
+# parts (Body: the walker; Pole: the balance pole and its weights, its origin at the hands), flat
+# shading, export. Cloth #63787d (cool ramp step 2), Sash #8ea091 (cool step 3), Red #8b4049 (red
+# step 1), Skin #caa05a (red step 3), Hair #543344 (red step 0), Pole #c9cca1 (rope step 3),
+# Weight #ae6a47 (rope step 1).
+material new Cloth --base-color 0.388 0.471 0.490 --no-slot
+material new Sash --base-color 0.557 0.627 0.569 --no-slot
+material new Red --base-color 0.545 0.251 0.286 --no-slot
+material new Skin --base-color 0.792 0.627 0.353 --no-slot
+material new Hair --base-color 0.329 0.200 0.267 --no-slot
+material new Pole --base-color 0.788 0.800 0.631 --no-slot
+material new Weight --base-color 0.682 0.416 0.278 --no-slot
+select LegL LegR Hips Torso UpperArmL UpperArmR ForeArmL ForeArmR
+material assign Cloth
+select Sash
+material assign Sash
+select ShoeL ShoeR Scarf TailL TailR Cap Brim
+material assign Red
+select HandL HandR Head
+material assign Skin
+select Hair
+material assign Hair
+select Pole
+material assign Pole
+select WeightL WeightR
+material assign Weight
+select LegL LegR ShoeL ShoeR Hips Sash Torso UpperArmL UpperArmR ForeArmL ForeArmR HandL HandR Scarf TailL TailR Head Hair Cap Brim
+active Torso
+join
+rename Torso Body
+select Pole WeightL WeightR
+active Pole
+join
+cursor set 0 -0.16 0.97
+origin set --to cursor
+select all
+shade flat
+inspect stats
+export walker.glb

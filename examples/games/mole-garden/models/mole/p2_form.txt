@@ -1,0 +1,35 @@
+# Mole, phase 2: claws, eyes, the belly patch (painted on the body's front faces), materials
+# (Steam Lords), export.
+add mesh cone --name Claw0 --vertices 4 --radius1 0.024 --radius2 0 --depth 0.07 --location -0.215 -0.19 0.33
+add mesh cone --name Claw1 --vertices 4 --radius1 0.024 --radius2 0 --depth 0.07 --location -0.165 -0.2 0.335
+add mesh cone --name Claw2 --vertices 4 --radius1 0.024 --radius2 0 --depth 0.07 --location -0.115 -0.21 0.33
+add mesh cone --name Claw3 --vertices 4 --radius1 0.024 --radius2 0 --depth 0.07 --location 0.115 -0.21 0.33
+add mesh cone --name Claw4 --vertices 4 --radius1 0.024 --radius2 0 --depth 0.07 --location 0.165 -0.2 0.335
+add mesh cone --name Claw5 --vertices 4 --radius1 0.024 --radius2 0 --depth 0.07 --location 0.215 -0.19 0.33
+# tiny dark eyes above the snout (single art pixels on purpose: "specks")
+add mesh ico-sphere --name EyeL --subdivisions 1 --radius 0.024 --location -0.05 -0.16 0.415
+add mesh ico-sphere --name EyeR --subdivisions 1 --radius 0.024 --location 0.05 -0.16 0.415
+material new Fur --base-color 0.263 0.227 0.376 --no-slot
+material new Belly --base-color 0.310 0.322 0.467 --no-slot
+material new Snout --base-color 0.467 0.361 0.310 --no-slot
+material new Nose --base-color 0.631 0.624 0.486 --no-slot
+material new Claw --base-color 0.753 0.820 0.800 --no-slot
+material new Eye --base-color 0.090 0.055 0.098 --no-slot
+select Body
+material assign Fur
+active Body
+mode edit
+select face where "normal.y < -0.5 && pos.z < 0.2 && abs(pos.x) < 0.16"
+material assign Belly
+mode object
+select Snout PawL PawR
+material assign Snout
+select Nose
+material assign Nose
+select Claw0 Claw1 Claw2 Claw3 Claw4 Claw5
+material assign Claw
+select EyeL EyeR
+material assign Eye
+select all
+shade flat
+export mole.glb

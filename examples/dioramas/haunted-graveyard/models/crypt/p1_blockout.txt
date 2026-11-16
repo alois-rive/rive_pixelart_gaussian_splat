@@ -1,0 +1,99 @@
+# Crypt chapel, phase 1: blockout of every named part at the spec's sizes (metres). Up Z, front -Y.
+new
+add mesh cube --name Plinth --size 1 --location 0 0 0.075
+scale 2.3 3.0 0.15
+apply --scale
+add mesh cube --name Walls --size 1 --location 0 0 0.86
+scale 1.8 2.7 1.42
+apply --scale
+# the gables: a wedge 1.15 tall over the walls (a box whose top edge is squeezed to the ridge): 52 degrees
+add mesh cube --name Gable --size 1 --location 0 0 2.145
+scale 1.8 2.7 1.15
+apply --scale
+active Gable
+mode edit
+select vert where "pos.z > 0"
+scale 0 1 1
+merge --by-distance 0.001
+mode object
+# roof slabs 1.88 down the slope, 3.1 front to back, 0.2 thick, overhanging the walls by 0.26; scaled, applied, then tilted
+add mesh cube --name RoofL --size 1 --location -0.66 0 2.04
+scale 1.88 3.1 0.2
+apply --scale
+set rotation 0 -52 0
+add mesh cube --name RoofR --size 1 --location 0.66 0 2.04
+scale 1.88 3.1 0.2
+apply --scale
+set rotation 0 52 0
+# buttresses: two on each long wall, 0.55 out (the sheet splays them to 2.85 m across), 0.35 wide, 1.2 tall, their outer top edge sloped down
+add mesh cube --name ButLF --size 1 --location -1.15 -0.85 0.75
+scale 0.55 0.35 1.2
+apply --scale
+add mesh cube --name ButLB --size 1 --location -1.15 0.85 0.75
+scale 0.55 0.35 1.2
+apply --scale
+add mesh cube --name ButRF --size 1 --location 1.15 -0.85 0.75
+scale 0.55 0.35 1.2
+apply --scale
+add mesh cube --name ButRB --size 1 --location 1.15 0.85 0.75
+scale 0.55 0.35 1.2
+apply --scale
+active ButLF
+mode edit
+select vert where "pos.z > 0 && pos.x < 0"
+translate 0 0 -0.7
+mode object
+active ButLB
+mode edit
+select vert where "pos.z > 0 && pos.x < 0"
+translate 0 0 -0.7
+mode object
+active ButRF
+mode edit
+select vert where "pos.z > 0 && pos.x > 0"
+translate 0 0 -0.7
+mode object
+active ButRB
+mode edit
+select vert where "pos.z > 0 && pos.x > 0"
+translate 0 0 -0.7
+mode object
+# the door: a pale frame and a dark leaf standing out of the front wall, each a box with a diamond on top (a pointed arch)
+add mesh cube --name Frame --size 1 --location 0 -1.38 0.82
+scale 0.8 0.08 1.34
+apply --scale
+add mesh cube --name FrameTip --size 1 --location 0 -1.38 1.49
+scale 0.566 0.08 0.566
+apply --scale
+set rotation 0 45 0
+add mesh cube --name Door --size 1 --location 0 -1.43 0.75
+scale 0.54 0.08 1.2
+apply --scale
+add mesh cube --name DoorTip --size 1 --location 0 -1.43 1.35
+scale 0.382 0.08 0.382
+apply --scale
+set rotation 0 45 0
+# a narrow pointed window on each long wall
+add mesh cube --name WinL --size 1 --location -0.93 0 1.0
+scale 0.08 0.3 0.62
+apply --scale
+add mesh cube --name WinLTip --size 1 --location -0.93 0 1.31
+scale 0.08 0.212 0.212
+apply --scale
+set rotation 45 0 0
+add mesh cube --name WinR --size 1 --location 0.93 0 1.0
+scale 0.08 0.3 0.62
+apply --scale
+add mesh cube --name WinRTip --size 1 --location 0.93 0 1.31
+scale 0.08 0.212 0.212
+apply --scale
+set rotation 45 0 0
+# the bell tower on the front of the ridge, built upright, then leaned 15 degrees to +X and 8 to the front about its foot
+add mesh cube --name Tower --size 1 --location 0.3 -0.95 2.8
+scale 0.6 0.6 1.1
+apply --scale
+add mesh cube --name Belfry --size 1 --location 0.3 -0.95 3.05
+scale 0.66 0.66 0.36
+apply --scale
+add mesh cone --name Spire --vertices 4 --radius1 0.52 --radius2 0 --depth 0.45 --location 0.3 -0.95 3.575 --rotation 0 0 45
+apply --rotation

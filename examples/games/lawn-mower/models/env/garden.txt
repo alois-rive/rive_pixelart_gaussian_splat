@@ -1,0 +1,631 @@
+# The garden round the lawn: a white picket fence behind and at the sides, a red-roofed shed
+# back left, round bushes, a birdbath, flowers in the borders and the beds. make_env.py.
+new
+material new Fence --base-color 0.686 0.749 0.824 --no-slot
+material new Wood --base-color 0.455 0.247 0.224 --no-slot
+material new Roof --base-color 0.620 0.157 0.208 --no-slot
+material new Bush --base-color 0.196 0.451 0.271 --no-slot
+material new BushLit --base-color 0.388 0.776 0.302 --no-slot
+material new Stone --base-color 0.686 0.749 0.824 --no-slot
+material new Water --base-color 0.016 0.518 0.820 --no-slot
+material new Red --base-color 0.898 0.231 0.267 --no-slot
+material new Yellow --base-color 1.000 0.906 0.384 --no-slot
+material new Snow --base-color 1.000 1.000 1.000 --no-slot
+material new Leaf --base-color 0.196 0.451 0.271 --no-slot
+material new Orange --base-color 0.984 0.573 0.169 --no-slot
+material new Door --base-color 0.247 0.157 0.196 --no-slot
+add mesh cube --name Picket0 --size 1 --location -6.0500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket0t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -6.050 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket1 --size 1 --location -5.5000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket1t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -5.500 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket2 --size 1 --location -4.9500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket2t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -4.950 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket3 --size 1 --location -4.4000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket3t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -4.400 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket4 --size 1 --location -3.8500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket4t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -3.850 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket5 --size 1 --location -3.3000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket5t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -3.300 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket6 --size 1 --location -2.7500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket6t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -2.750 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket7 --size 1 --location -2.2000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket7t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -2.200 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket8 --size 1 --location -1.6500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket8t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -1.650 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket9 --size 1 --location -1.1000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket9t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -1.100 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket10 --size 1 --location -0.5500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket10t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location -0.550 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket11 --size 1 --location 0.0000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket11t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 0.000 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket12 --size 1 --location 0.5500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket12t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 0.550 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket13 --size 1 --location 1.1000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket13t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 1.100 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket14 --size 1 --location 1.6500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket14t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 1.650 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket15 --size 1 --location 2.2000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket15t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 2.200 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket16 --size 1 --location 2.7500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket16t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 2.750 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket17 --size 1 --location 3.3000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket17t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 3.300 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket18 --size 1 --location 3.8500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket18t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 3.850 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket19 --size 1 --location 4.4000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket19t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 4.400 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket20 --size 1 --location 4.9500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket20t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 4.950 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket21 --size 1 --location 5.5000 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket21t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 5.500 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name Picket22 --size 1 --location 6.0500 4.3500 0.4250
+scale 0.2200 0.1000 0.8500
+apply --scale
+material assign Fence
+add mesh cone --name Picket22t --vertices 4 --radius1 0.155 --radius2 0 --depth 0.18 --location 6.050 4.350 0.94 --rotation 0 0 45
+scale 1 0.45 1
+material assign Fence
+add mesh cube --name RailHi --size 1 --location 0.0000 4.2600 0.6100
+scale 12.4000 0.0800 0.1200
+apply --scale
+material assign Fence
+add mesh cube --name RailLo --size 1 --location 0.0000 4.2600 0.2600
+scale 12.4000 0.0800 0.1200
+apply --scale
+material assign Fence
+add mesh cube --name SPL0 --size 1 --location -5.7500 3.8000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL1 --size 1 --location -5.7500 3.2500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL2 --size 1 --location -5.7500 2.7000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL3 --size 1 --location -5.7500 2.1500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL4 --size 1 --location -5.7500 1.6000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL5 --size 1 --location -5.7500 1.0500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL6 --size 1 --location -5.7500 0.5000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL7 --size 1 --location -5.7500 -0.0500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL8 --size 1 --location -5.7500 -0.6000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPL9 --size 1 --location -5.7500 -1.1500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR0 --size 1 --location 5.7500 3.8000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR1 --size 1 --location 5.7500 3.2500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR2 --size 1 --location 5.7500 2.7000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR3 --size 1 --location 5.7500 2.1500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR4 --size 1 --location 5.7500 1.6000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR5 --size 1 --location 5.7500 1.0500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR6 --size 1 --location 5.7500 0.5000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR7 --size 1 --location 5.7500 -0.0500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR8 --size 1 --location 5.7500 -0.6000 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+add mesh cube --name SPR9 --size 1 --location 5.7500 -1.1500 0.4250
+scale 0.1000 0.2200 0.8500
+apply --scale
+material assign Fence
+select Picket0 Picket0t Picket1 Picket1t Picket2 Picket2t Picket3 Picket3t Picket4 Picket4t Picket5 Picket5t Picket6 Picket6t Picket7 Picket7t Picket8 Picket8t Picket9 Picket9t Picket10 Picket10t Picket11 Picket11t Picket12 Picket12t Picket13 Picket13t Picket14 Picket14t Picket15 Picket15t Picket16 Picket16t Picket17 Picket17t Picket18 Picket18t Picket19 Picket19t Picket20 Picket20t Picket21 Picket21t Picket22 Picket22t SPL0 SPL1 SPL2 SPL3 SPL4 SPL5 SPL6 SPL7 SPL8 SPL9 SPR0 SPR1 SPR2 SPR3 SPR4 SPR5 SPR6 SPR7 SPR8 SPR9
+active Picket0
+join
+rename Picket0 Fence
+add mesh cube --name Shed --size 1 --location -4.8500 3.5500 0.6250
+scale 1.5000 1.3000 1.2500
+apply --scale
+material assign Wood
+add mesh cube --name ShedDoor --size 1 --location -4.8500 2.8800 0.4750
+scale 0.5000 0.0800 0.9500
+apply --scale
+material assign Door
+add mesh cube --name RoofL --size 1 --location -4.85 3.550 1.5
+scale 1.8 0.9 0.12
+apply --scale
+set rotation 35 0 0
+apply --rotation
+translate 0 -0.36 0
+material assign Roof
+add mesh cube --name RoofR --size 1 --location -4.85 3.550 1.5
+scale 1.8 0.9 0.12
+apply --scale
+set rotation -35 0 0
+apply --rotation
+translate 0 0.36 0
+material assign Roof
+add mesh ico-sphere --name Bush0 --subdivisions 1 --radius 0.55 --location -5.10 -2.40 0.41 --rotation 27 34 55
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush1 --subdivisions 1 --radius 0.45 --location -5.00 -0.60 0.34 --rotation 28 30 35
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush2 --subdivisions 1 --radius 0.55 --location 5.00 -2.60 0.41 --rotation 11 31 38
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush3 --subdivisions 1 --radius 0.50 --location 5.10 1.20 0.38 --rotation 48 6 18
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush4 --subdivisions 1 --radius 0.70 --location 4.60 3.40 0.52 --rotation 5 49 42
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush5 --subdivisions 1 --radius 0.50 --location -2.60 -4.25 0.38 --rotation 3 59 58
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush6 --subdivisions 1 --radius 0.55 --location 0.20 -4.40 0.41 --rotation 39 37 9
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush7 --subdivisions 1 --radius 0.48 --location 3.00 -4.20 0.36 --rotation 1 32 4
+scale 1 1 0.85
+material assign Bush
+add mesh ico-sphere --name Bush8 --subdivisions 1 --radius 0.40 --location -5.30 1.60 0.30 --rotation 11 15 2
+scale 1 1 0.85
+material assign Bush
+add mesh cylinder --name BathFoot --vertices 6 --radius 0.12 --depth 0.5 --location 5.0 -0.8 0.25
+material assign Stone
+add mesh cylinder --name Bowl --vertices 8 --radius 0.38 --depth 0.12 --location 5.0 -0.8 0.55
+material assign Stone
+add mesh cylinder --name Water --vertices 8 --radius 0.28 --depth 0.04 --location 5.0 -0.8 0.6
+material assign Water
+add mesh cube --name Stem0 --size 1 --location 4.109 -0.572 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head0 --subdivisions 1 --radius 0.12 --location 4.109 -0.572 0.240
+material assign Red
+add mesh cube --name Stem1 --size 1 --location -2.662 -4.879 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head1 --subdivisions 1 --radius 0.12 --location -2.662 -4.879 0.240
+material assign Yellow
+add mesh cube --name Stem2 --size 1 --location 5.948 -3.462 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head2 --subdivisions 1 --radius 0.12 --location 5.948 -3.462 0.240
+material assign Snow
+add mesh cube --name Stem3 --size 1 --location -1.195 -3.519 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head3 --subdivisions 1 --radius 0.12 --location -1.195 -3.519 0.240
+material assign Orange
+add mesh cube --name Stem4 --size 1 --location -1.362 -4.522 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head4 --subdivisions 1 --radius 0.12 --location -1.362 -4.522 0.240
+material assign Red
+add mesh cube --name Stem5 --size 1 --location 4.168 4.095 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head5 --subdivisions 1 --radius 0.12 --location 4.168 4.095 0.240
+material assign Yellow
+add mesh cube --name Stem6 --size 1 --location -3.483 -4.092 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head6 --subdivisions 1 --radius 0.12 --location -3.483 -4.092 0.240
+material assign Snow
+add mesh cube --name Stem7 --size 1 --location -1.231 3.443 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head7 --subdivisions 1 --radius 0.12 --location -1.231 3.443 0.240
+material assign Orange
+add mesh cube --name Stem8 --size 1 --location -2.763 3.316 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head8 --subdivisions 1 --radius 0.12 --location -2.763 3.316 0.240
+material assign Red
+add mesh cube --name Stem9 --size 1 --location -2.009 -4.577 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head9 --subdivisions 1 --radius 0.12 --location -2.009 -4.577 0.240
+material assign Yellow
+add mesh cube --name Stem10 --size 1 --location -5.281 -3.073 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head10 --subdivisions 1 --radius 0.12 --location -5.281 -3.073 0.240
+material assign Snow
+add mesh cube --name Stem11 --size 1 --location 4.618 2.204 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head11 --subdivisions 1 --radius 0.12 --location 4.618 2.204 0.240
+material assign Orange
+add mesh cube --name Stem12 --size 1 --location 5.872 2.181 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head12 --subdivisions 1 --radius 0.12 --location 5.872 2.181 0.240
+material assign Red
+add mesh cube --name Stem13 --size 1 --location -0.562 -4.532 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head13 --subdivisions 1 --radius 0.12 --location -0.562 -4.532 0.240
+material assign Yellow
+add mesh cube --name Stem14 --size 1 --location -4.150 -4.076 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head14 --subdivisions 1 --radius 0.12 --location -4.150 -4.076 0.240
+material assign Snow
+add mesh cube --name Stem15 --size 1 --location 5.285 2.331 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head15 --subdivisions 1 --radius 0.12 --location 5.285 2.331 0.240
+material assign Orange
+add mesh cube --name Stem16 --size 1 --location 5.402 -3.840 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head16 --subdivisions 1 --radius 0.12 --location 5.402 -3.840 0.240
+material assign Red
+add mesh cube --name Stem17 --size 1 --location 5.552 1.954 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head17 --subdivisions 1 --radius 0.12 --location 5.552 1.954 0.240
+material assign Yellow
+add mesh cube --name Stem18 --size 1 --location 2.644 3.481 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head18 --subdivisions 1 --radius 0.12 --location 2.644 3.481 0.240
+material assign Snow
+add mesh cube --name Stem19 --size 1 --location 4.229 -1.429 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head19 --subdivisions 1 --radius 0.12 --location 4.229 -1.429 0.240
+material assign Orange
+add mesh cube --name Stem20 --size 1 --location -3.552 3.951 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head20 --subdivisions 1 --radius 0.12 --location -3.552 3.951 0.240
+material assign Red
+add mesh cube --name Stem21 --size 1 --location -5.275 2.514 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head21 --subdivisions 1 --radius 0.12 --location -5.275 2.514 0.240
+material assign Yellow
+add mesh cube --name Stem22 --size 1 --location -4.421 0.841 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head22 --subdivisions 1 --radius 0.12 --location -4.421 0.841 0.240
+material assign Snow
+add mesh cube --name Stem23 --size 1 --location 4.691 -4.724 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head23 --subdivisions 1 --radius 0.12 --location 4.691 -4.724 0.240
+material assign Orange
+add mesh cube --name Stem24 --size 1 --location 5.553 3.909 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head24 --subdivisions 1 --radius 0.12 --location 5.553 3.909 0.240
+material assign Red
+add mesh cube --name Stem25 --size 1 --location 5.992 3.423 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head25 --subdivisions 1 --radius 0.12 --location 5.992 3.423 0.240
+material assign Yellow
+add mesh cube --name Stem26 --size 1 --location 2.222 -4.008 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head26 --subdivisions 1 --radius 0.12 --location 2.222 -4.008 0.240
+material assign Snow
+add mesh cube --name Stem27 --size 1 --location 4.453 0.346 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head27 --subdivisions 1 --radius 0.12 --location 4.453 0.346 0.240
+material assign Orange
+add mesh cube --name Stem28 --size 1 --location 3.486 -3.671 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head28 --subdivisions 1 --radius 0.12 --location 3.486 -3.671 0.240
+material assign Red
+add mesh cube --name Stem29 --size 1 --location 1.306 3.378 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head29 --subdivisions 1 --radius 0.12 --location 1.306 3.378 0.240
+material assign Yellow
+add mesh cube --name Stem30 --size 1 --location 1.673 -4.840 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head30 --subdivisions 1 --radius 0.12 --location 1.673 -4.840 0.240
+material assign Snow
+add mesh cube --name Stem31 --size 1 --location 3.003 3.832 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head31 --subdivisions 1 --radius 0.12 --location 3.003 3.832 0.240
+material assign Orange
+add mesh cube --name Stem32 --size 1 --location 5.046 1.798 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head32 --subdivisions 1 --radius 0.12 --location 5.046 1.798 0.240
+material assign Red
+add mesh cube --name Stem33 --size 1 --location -5.864 1.391 0.100
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head33 --subdivisions 1 --radius 0.12 --location -5.864 1.391 0.240
+material assign Yellow
+add mesh cube --name Stem34 --size 1 --location -2.179 1.400 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head34 --subdivisions 1 --radius 0.12 --location -2.179 1.400 0.440
+material assign Yellow
+add mesh cube --name Stem35 --size 1 --location -2.208 1.130 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head35 --subdivisions 1 --radius 0.12 --location -2.208 1.130 0.440
+material assign Yellow
+add mesh cube --name Stem36 --size 1 --location -1.880 1.400 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head36 --subdivisions 1 --radius 0.12 --location -1.880 1.400 0.440
+material assign Red
+add mesh cube --name Stem37 --size 1 --location -1.836 1.130 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head37 --subdivisions 1 --radius 0.12 --location -1.836 1.130 0.440
+material assign Red
+add mesh cube --name Stem38 --size 1 --location -1.520 1.400 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head38 --subdivisions 1 --radius 0.12 --location -1.520 1.400 0.440
+material assign Yellow
+add mesh cube --name Stem39 --size 1 --location -1.533 1.130 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head39 --subdivisions 1 --radius 0.12 --location -1.533 1.130 0.440
+material assign Yellow
+add mesh cube --name Stem40 --size 1 --location -1.176 1.400 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head40 --subdivisions 1 --radius 0.12 --location -1.176 1.400 0.440
+material assign Red
+add mesh cube --name Stem41 --size 1 --location -1.210 1.130 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head41 --subdivisions 1 --radius 0.12 --location -1.210 1.130 0.440
+material assign Red
+add mesh cube --name Stem42 --size 1 --location 1.220 -1.150 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head42 --subdivisions 1 --radius 0.12 --location 1.220 -1.150 0.440
+material assign Yellow
+add mesh cube --name Stem43 --size 1 --location 1.192 -1.420 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head43 --subdivisions 1 --radius 0.12 --location 1.192 -1.420 0.440
+material assign Yellow
+add mesh cube --name Stem44 --size 1 --location 1.536 -1.150 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head44 --subdivisions 1 --radius 0.12 --location 1.536 -1.150 0.440
+material assign Red
+add mesh cube --name Stem45 --size 1 --location 1.558 -1.420 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head45 --subdivisions 1 --radius 0.12 --location 1.558 -1.420 0.440
+material assign Red
+add mesh cube --name Stem46 --size 1 --location 1.895 -1.150 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head46 --subdivisions 1 --radius 0.12 --location 1.895 -1.150 0.440
+material assign Yellow
+add mesh cube --name Stem47 --size 1 --location 1.893 -1.420 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head47 --subdivisions 1 --radius 0.12 --location 1.893 -1.420 0.440
+material assign Yellow
+add mesh cube --name Stem48 --size 1 --location 2.193 -1.150 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head48 --subdivisions 1 --radius 0.12 --location 2.193 -1.150 0.440
+material assign Red
+add mesh cube --name Stem49 --size 1 --location 2.205 -1.420 0.300
+scale 0.07 0.07 0.2
+apply --scale
+material assign Leaf
+add mesh ico-sphere --name Head49 --subdivisions 1 --radius 0.12 --location 2.205 -1.420 0.440
+material assign Red
+select Stem0 Head0 Stem1 Head1 Stem2 Head2 Stem3 Head3 Stem4 Head4 Stem5 Head5 Stem6 Head6 Stem7 Head7 Stem8 Head8 Stem9 Head9 Stem10 Head10 Stem11 Head11 Stem12 Head12 Stem13 Head13 Stem14 Head14 Stem15 Head15 Stem16 Head16 Stem17 Head17 Stem18 Head18 Stem19 Head19 Stem20 Head20 Stem21 Head21 Stem22 Head22 Stem23 Head23 Stem24 Head24 Stem25 Head25 Stem26 Head26 Stem27 Head27 Stem28 Head28 Stem29 Head29 Stem30 Head30 Stem31 Head31 Stem32 Head32 Stem33 Head33 Stem34 Head34 Stem35 Head35 Stem36 Head36 Stem37 Head37 Stem38 Head38 Stem39 Head39 Stem40 Head40 Stem41 Head41 Stem42 Head42 Stem43 Head43 Stem44 Head44 Stem45 Head45 Stem46 Head46 Stem47 Head47 Stem48 Head48 Stem49 Head49
+active Stem0
+join
+rename Stem0 Flowers
+select all
+shade flat
+export garden.glb

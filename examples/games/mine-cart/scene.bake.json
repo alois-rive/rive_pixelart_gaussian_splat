@@ -1,0 +1,349 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.09,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -5.6,
+   -0.8,
+   -4.3
+  ],
+  [
+   5.6,
+   3.2,
+   3.5
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/floor.glb",
+   "materials": {
+    "Floor": {
+     "ramp": "rock"
+    },
+    "Rock": {
+     "ramp": "cave"
+    }
+   }
+  },
+  {
+   "model": "models/env/rails.glb",
+   "materials": {
+    "Rail": {
+     "ramp": "rail",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/stands.glb",
+   "materials": {
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/walls.glb",
+   "materials": {
+    "Rock": {
+     "ramp": "cave"
+    }
+   }
+  },
+  {
+   "model": "models/env/timber.glb",
+   "position": [
+    -3.4,
+    0,
+    -3.05
+   ],
+   "scale": 0.75,
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Iron": {
+     "ramp": "iron",
+     "step": 1,
+     "spacing": 0.06
+    },
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/timber.glb",
+   "position": [
+    0.0,
+    0,
+    -3.1
+   ],
+   "scale": 0.75,
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Iron": {
+     "ramp": "iron",
+     "step": 1,
+     "spacing": 0.06
+    },
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/timber.glb",
+   "position": [
+    3.4,
+    0,
+    -3.05
+   ],
+   "scale": 0.75,
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Iron": {
+     "ramp": "iron",
+     "step": 1,
+     "spacing": 0.06
+    },
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/crystals.glb",
+   "position": [
+    -4.45,
+    0,
+    -2.45
+   ],
+   "yaw": 20,
+   "scale": 1.1,
+   "materials": {
+    "Rock": {
+     "ramp": "cave"
+    },
+    "Crystal": {
+     "ramp": "glow",
+     "step": -1,
+     "flags": [
+      "unlit"
+     ]
+    },
+    "CrystalTan": {
+     "ramp": "rock",
+     "step": -1,
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/crystals.glb",
+   "position": [
+    4.5,
+    0,
+    2.45
+   ],
+   "yaw": 150,
+   "scale": 1.0,
+   "materials": {
+    "Rock": {
+     "ramp": "cave"
+    },
+    "Crystal": {
+     "ramp": "glow",
+     "step": -1,
+     "flags": [
+      "unlit"
+     ]
+    },
+    "CrystalTan": {
+     "ramp": "rock",
+     "step": -1,
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/stones.glb",
+   "position": [
+    -0.7,
+    0,
+    0.0
+   ],
+   "yaw": -20,
+   "scale": 0.7,
+   "materials": {
+    "Stone": {
+     "ramp": "cave"
+    }
+   }
+  },
+  {
+   "model": "models/env/stones.glb",
+   "position": [
+    -4.55,
+    0,
+    2.5
+   ],
+   "yaw": 40,
+   "scale": 0.75,
+   "materials": {
+    "Stone": {
+     "ramp": "cave"
+    }
+   }
+  },
+  {
+   "model": "models/env/stones.glb",
+   "position": [
+    1.1,
+    0,
+    0.35
+   ],
+   "yaw": 160,
+   "scale": 0.55,
+   "materials": {
+    "Stone": {
+     "ramp": "cave"
+    }
+   }
+  },
+  {
+   "model": "models/env/stones.glb",
+   "position": [
+    4.6,
+    0,
+    -2.4
+   ],
+   "yaw": 250,
+   "scale": 0.65,
+   "materials": {
+    "Stone": {
+     "ramp": "cave"
+    }
+   }
+  },
+  {
+   "model": "models/cart/cart.glb",
+   "bone": "cart",
+   "materials": {
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Iron": {
+     "ramp": "iron",
+     "step": 1,
+     "spacing": 0.06
+    },
+    "Gem": {
+     "ramp": "gem"
+    },
+    "GemTan": {
+     "ramp": "gem"
+    },
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/lever.glb",
+   "bone": "lever",
+   "copies": 4,
+   "materials": {
+    "Iron": {
+     "ramp": "iron",
+     "step": 1,
+     "spacing": 0.06
+    },
+    "Knob": {
+     "ramp": "gem",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/gem.glb",
+   "bone": "gem",
+   "copies": 6,
+   "position": [
+    0,
+    -3,
+    0
+   ],
+   "materials": {
+    "Gem": {
+     "ramp": "gem",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/rocks.glb",
+   "bone": "rock",
+   "copies": 3,
+   "position": [
+    0,
+    -3,
+    0
+   ],
+   "materials": {
+    "Boulder": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "bone": "puff",
+   "copies": 3,
+   "position": [
+    0,
+    -3,
+    0
+   ],
+   "materials": {
+    "Dust": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.07,
+     "specks": true
+    }
+   }
+  }
+ ]
+}

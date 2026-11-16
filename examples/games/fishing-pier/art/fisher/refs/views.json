@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/fishing-pier/art/fisher/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        245,
+        9,
+        277,
+        484
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.7473,
+      "fill": 0.8049,
+      "background": "#919191"
+    },
+    "right": {
+      "box": [
+        949,
+        13,
+        353,
+        479
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3569,
+      "fill": 0.6747,
+      "background": "#919191"
+    },
+    "back": {
+      "box": [
+        245,
+        522,
+        277,
+        484
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.7473,
+      "fill": 0.8147,
+      "background": "#919191"
+    },
+    "top": {
+      "box": [
+        1001,
+        570,
+        305,
+        395
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2951,
+      "fill": 0.7545,
+      "background": "#919090"
+    }
+  }
+}

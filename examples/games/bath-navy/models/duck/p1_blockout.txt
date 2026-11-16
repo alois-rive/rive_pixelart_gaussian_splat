@@ -1,0 +1,37 @@
+# Rubber duck, phase 1: blockout. Sizes from the sheet at 640 px a metre (duck.spec.md).
+new
+add mesh uv-sphere --name Body --segments 10 --rings 6 --radius 1 --location 0 0 0
+scale 0.26 0.35 0.2
+apply --scale
+set location 0 0.01 0.19
+apply --location
+add mesh uv-sphere --name Head --segments 10 --rings 6 --radius 0.2 --location 0 -0.125 0.53
+add mesh cube --name Beak --size 1 --location 0 -0.37 0.47
+scale 0.25 0.16 0.08
+apply --scale
+add mesh uv-sphere --name EyeL --segments 6 --rings 4 --radius 0.05 --location 0.15 -0.22 0.58
+scale 0.6 1 1
+apply --scale
+add mesh uv-sphere --name EyeR --segments 6 --rings 4 --radius 0.05 --location -0.15 -0.22 0.58
+scale 0.6 1 1
+apply --scale
+add mesh uv-sphere --name WingL --segments 6 --rings 4 --radius 1 --location 0 0 0
+scale 0.07 0.17 0.08
+apply --scale
+set location 0.29 0.06 0.25
+set rotation 0 0 -8
+add mesh uv-sphere --name WingR --segments 6 --rings 4 --radius 1 --location 0 0 0
+scale 0.07 0.17 0.08
+apply --scale
+set location -0.29 0.06 0.25
+set rotation 0 0 8
+add mesh cone --name Tail --vertices 4 --radius1 0.13 --radius2 0.0 --depth 0.26 --location 0 0 0
+scale 1 0.7 1
+apply --scale
+set rotation 0 0 45
+apply --rotation
+set rotation -50 0 0
+apply --rotation
+set location 0 0.3 0.33
+select all
+shade flat

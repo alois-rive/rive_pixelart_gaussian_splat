@@ -1,0 +1,38 @@
+# Satellite, phase 2: form and surfacing. The body's vertical edges chamfered 0.1 (the octagonal
+# footprint of the top view) and its top and bottom edges 0.045 (the front view's bevels). Materials
+# are exact Berry Nebula colours: Body #6e5181 (metal, step 3), Dome #6d85a5 (metal, step 4), Dark
+# #4f1446 (barrel, struts, plate: metal, step 2), Muzzle #6ceded (glow, unlit), Panel #6cb9c9 (panel,
+# step 3), Stripe #2e0a30 (panel, step 0).
+material new Body --base-color 0.431 0.318 0.506 --no-slot
+material new Dome --base-color 0.427 0.522 0.647 --no-slot
+material new Dark --base-color 0.310 0.078 0.275 --no-slot
+material new Muzzle --base-color 0.424 0.929 0.929 --emission 0.424 0.929 0.929 --no-slot
+material new Panel --base-color 0.424 0.725 0.788 --no-slot
+material new Stripe --base-color 0.180 0.039 0.188 --no-slot
+active Body
+mode edit
+select edge where "abs(pos.x) > 0.2 && abs(pos.y) > 0.2 && abs(pos.z) < 0.1"
+bevel 0.1 --segments 1
+select edge where "abs(pos.z) > 0.19"
+bevel 0.045 --segments 1
+mode object
+select Body
+material assign Body
+select Dome
+material assign Dome
+select Barrel StrutL StrutR Plate
+material assign Dark
+select Muzzle
+material assign Muzzle
+select PanelLT PanelLB PanelRT PanelRB
+material assign Panel
+select StripeL StripeR
+material assign Stripe
+select Body Dome Barrel Muzzle Plate StrutL StrutR PanelLT PanelLB PanelRT PanelRB StripeL StripeR
+active Body
+join
+rename Body Satellite
+select all
+shade flat
+inspect stats
+export satellite.glb

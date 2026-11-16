@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/moon-lander/art/lander/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        132,
+        14,
+        501,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9541,
+      "fill": 0.4286,
+      "background": "#929191"
+    },
+    "right": {
+      "box": [
+        900,
+        14,
+        502,
+        476
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9482,
+      "fill": 0.4397,
+      "background": "#929191"
+    },
+    "back": {
+      "box": [
+        133,
+        524,
+        501,
+        479
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9561,
+      "fill": 0.4365,
+      "background": "#929191"
+    },
+    "top": {
+      "box": [
+        930,
+        541,
+        441,
+        424
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9615,
+      "fill": 0.5861,
+      "background": "#929191"
+    }
+  }
+}

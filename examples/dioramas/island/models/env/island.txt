@@ -1,0 +1,27 @@
+# Floating island: a grass top, dirt sides, a rocky underside tapering to a point. Up Z.
+new
+add mesh cylinder --name Top --vertices 10 --radius 3.0 --depth 0.5 --location 0 0 -0.25
+material new Grass --base-color 1 1 1
+material new Dirt --base-color 0.518 0.427 0.349 --no-slot
+material new Rock --base-color 0.549 0.486 0.475 --no-slot
+material slot add
+mode edit
+select face where "normal.z < 0.9"
+material assign Dirt
+# the grass texture: 32 texels over the 6 m top (0.19 m a texel, ~2 splats), projected from above
+select face where "normal.z > 0.9"
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Grass base-color ../../art/textures/grass_32.png
+add mesh cone --name Under --vertices 10 --radius1 0.6 --radius2 2.9 --depth 1.8 --location 0 0 -1.4
+material assign Rock
+active Under
+mode edit
+select vert where "pos.z < -0.5"
+randomize --amount 0.25 --seed 3
+mode object
+# no flat path disc on the grass: near-coplanar layers fight at splat size (one depth per disc);
+# a path belongs in the grass texture, or raised a full splat spacing as stepping stones
+select all
+shade flat
+export island.glb

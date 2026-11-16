@@ -1,0 +1,7 @@
+# A cannonball 0.36 m across (exaggerated), iron. Origin at its centre.
+new
+material new Ball --base-color 0.1255 0.2353 0.3373 --no-slot
+add mesh ico-sphere --name Ball --subdivisions 1 --radius 0.18 --location 0 0 0
+material assign Ball
+shade flat
+export ball.glb

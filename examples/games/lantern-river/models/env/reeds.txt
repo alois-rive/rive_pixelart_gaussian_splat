@@ -1,0 +1,49 @@
+# A clump of reeds: nine thin tilted blades (4-sided cones), 0.6-1.1 m tall, two with seed heads. Up Z.
+new
+material new Reed --base-color 0.1216 0.0196 0.0627 --no-slot
+material new Head --base-color 0.1922 0.0196 0.1176 --no-slot
+add mesh cone --name R0 --vertices 4 --radius1 0.06 --radius2 0 --depth 1.06 --location -0.03 0.03 0.53
+set rotation 0.2 -1.0 0
+material assign Reed
+add mesh cube --name S0 --size 1 --location -0.05 0.03 0.90
+scale 0.08 0.08 0.2
+apply --scale
+set rotation 0.2 -1.0 0
+material assign Head
+add mesh cone --name R1 --vertices 4 --radius1 0.06 --radius2 0 --depth 0.86 --location 0.06 -0.16 0.43
+set rotation 5.9 3.6 0
+material assign Reed
+add mesh cone --name R2 --vertices 4 --radius1 0.06 --radius2 0 --depth 0.65 --location -0.28 -0.10 0.32
+set rotation 3.9 8.7 0
+material assign Reed
+add mesh cone --name R3 --vertices 4 --radius1 0.06 --radius2 0 --depth 1.08 --location -0.32 0.24 0.54
+set rotation 2.3 4.3 0
+material assign Reed
+add mesh cone --name R4 --vertices 4 --radius1 0.06 --radius2 0 --depth 0.86 --location -0.24 -0.24 0.43
+set rotation -6.2 -12.3 0
+material assign Reed
+add mesh cube --name S4 --size 1 --location -0.39 -0.17 0.73
+scale 0.08 0.08 0.2
+apply --scale
+set rotation -6.2 -12.3 0
+material assign Head
+add mesh cone --name R5 --vertices 4 --radius1 0.06 --radius2 0 --depth 0.83 --location -0.18 -0.23 0.42
+set rotation 6.8 -1.7 0
+material assign Reed
+add mesh cone --name R6 --vertices 4 --radius1 0.06 --radius2 0 --depth 0.85 --location 0.01 0.07 0.42
+set rotation -0.9 4.5 0
+material assign Reed
+add mesh cone --name R7 --vertices 4 --radius1 0.06 --radius2 0 --depth 1.10 --location -0.16 0.25 0.55
+set rotation 4.2 9.5 0
+material assign Reed
+add mesh cone --name R8 --vertices 4 --radius1 0.06 --radius2 0 --depth 0.74 --location -0.13 -0.14 0.37
+set rotation 5.3 -12.0 0
+material assign Reed
+add mesh cube --name S8 --size 1 --location -0.25 -0.19 0.63
+scale 0.08 0.08 0.2
+apply --scale
+set rotation 5.3 -12.0 0
+material assign Head
+select all
+shade flat
+export reeds.glb

@@ -1,0 +1,9 @@
+# Frog, phase 3 (splat fit): the form (p2) is gated against the sheet; this phase only compensates the
+# splat spread before the bake. At the scene's spacing the thin foot tips (the widest parts) erode while
+# the eyes and the back grow a radius upward: the p2 frog bakes narrow and tall (splat aspect drift
+# 0.13 back, 0.13 top; 1.12 x 0.94 overshot to 0.095). Widen it 6 % and lower it 3 % about the ground.
+select all
+cursor set 0 0 0
+scale 1.06 1 0.97 --pivot cursor
+apply --scale
+export frog.glb

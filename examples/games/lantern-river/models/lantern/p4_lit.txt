@@ -1,0 +1,6 @@
+# Sky lantern, phase 4: the lit lantern, the same shrunk bake solid (after p3_bake.txt) repainted in
+# the glow ramp: paper coral #ff8274, frame and band rose #d53c6a, fuel coral. Baked unlit as the
+# game's "lit" pool. Exported as lantern_lit.glb.
+material set Paper base-color 1 0.510 0.455
+material set Frame base-color 0.835 0.235 0.416
+export lantern_lit.glb

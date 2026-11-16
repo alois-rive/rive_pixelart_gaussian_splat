@@ -1,0 +1,18 @@
+# A beach towel lying on the sand: 2.2 x 1.1 m, pink and white stripes (textures/towel.png).
+new
+material new Towel --base-color 1 1 1 --no-slot
+add mesh cube --name Towel --size 1 --location 0 0 0.04
+scale 2.2 1.1 0.08
+apply --scale
+material assign Towel
+active Towel
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+select all
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Towel base-color textures/towel.png
+select all
+shade flat
+export towel.glb

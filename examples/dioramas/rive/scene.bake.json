@@ -1,0 +1,12 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.06,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "objects": [
+    { "model": "models/logo/wordmark.glb",
+      "materials": { "Mark": { "ramp": "mark", "flags": ["fx"], "spacing": 0.04 },
+                     "PlinthTop": { "ramp": "floor" }, "Plinth": { "ramp": "floor" } } }
+  ]
+}

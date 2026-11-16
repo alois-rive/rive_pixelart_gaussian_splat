@@ -1,0 +1,16 @@
+{
+  "name": "Mist GB",
+  "source": "https://lospec.com/palette-list/mist-gb",
+  "author": "Kerrie Lake",
+  "colors": ["#2d1b00", "#1e606e", "#5ab9a8", "#c4f0c2"],
+  "ramps": {
+    "snow":    ["#1e606e", "#5ab9a8", "#c4f0c2"],
+    "ice":     ["#1e606e", "#5ab9a8", "#c4f0c2"],
+    "water":   ["#1e606e", "#5ab9a8"],
+    "feather": ["#2d1b00", "#1e606e"],
+    "belly":   ["#1e606e", "#5ab9a8", "#c4f0c2"],
+    "seal":    ["#2d1b00", "#1e606e", "#5ab9a8", "#c4f0c2"],
+    "glint":   ["#5ab9a8", "#c4f0c2"]
+  },
+  "roles": { "sky_top": "#c4f0c2", "sky_bottom": "#5ab9a8", "fog": "#5ab9a8", "void": "#c4f0c2" }
+}

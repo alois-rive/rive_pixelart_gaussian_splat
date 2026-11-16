@@ -1,0 +1,16 @@
+# Pan, phase 1: blockout of every named part at the spec's sizes (pan.spec.md: 483 px per metre off
+# the RIGHT panel). Up Z, the handle towards the front (-Y), origin on the ground under the pan's centre.
+new
+# the pan: a 12-sided body (bottom r 0.39, z 0..0.17) under a rolled rim band (z 0.17..0.215)
+add mesh cone --name Body --vertices 12 --radius1 0.39 --radius2 0.455 --depth 0.17 --location 0 0 0.085
+add mesh cone --name Rim --vertices 12 --radius1 0.455 --radius2 0.465 --depth 0.045 --location 0 0 0.1925
+# the handle: a box 0.5 long, 0.15 wide, 0.1 tall from the wall to the front, rising 5 degrees,
+# narrower at the pan end; an octagonal end cap
+add mesh cube --name Handle --size 1 --location 0 -0.69 0.125
+scale 0.15 0.52 0.1
+apply --scale
+add mesh cylinder --name Cap --vertices 8 --radius 0.075 --depth 0.08 --location 0 -0.97 0.14 --rotation 90 22.5 0
+apply --rotation
+# the pancake: a 12-sided disc 0.68 across, 0.07 thick, its top 0.05 under the rim
+add mesh cylinder --name Pancake --vertices 12 --radius 0.34 --depth 0.07 --location 0 0 0.13
+inspect stats

@@ -1,0 +1,52 @@
+# Diamond kite, phase 1: the parts at the spec's sizes (metres). Up Z, front -Y. Origin at the spar
+# crossing (the kite's pivot: the game turns it about this point).
+# Sail: a 0.08 m plate, subdivided once into a 3 x 3 vertex grid per face, its edge midpoints pulled
+# out to the four tips (top z 0.57, sides x 0.5 at z 0, bottom z -0.78) and its corners onto the
+# rhombus edges: the four quads of the front face are the four triangular panels.
+new
+add mesh cube --name Sail --size 1 --location 0 0 0
+scale 1 0.08 1
+apply --scale
+mode edit
+select all
+subdivide --cuts 1
+select vert where "abs(pos.x) < 0.1 && pos.z > 0.4"
+translate 0 0 0.07
+select vert where "abs(pos.x) < 0.1 && pos.z < -0.4"
+translate 0 0 -0.28
+select vert where "pos.x < -0.4 && pos.z > 0.4"
+translate 0.25 0 -0.215
+select vert where "pos.x > 0.4 && pos.z > 0.4"
+translate -0.25 0 -0.215
+select vert where "pos.x < -0.4 && pos.z < -0.4"
+translate 0.25 0 0.11
+select vert where "pos.x > 0.4 && pos.z < -0.4"
+translate -0.25 0 0.11
+# the bow: the side tips 0.2 m back, the corners (half way out) 0.1 m: each panel stays planar
+select vert where "abs(pos.x) > 0.4"
+translate 0 0.2 0
+select vert where "abs(pos.x) > 0.2 && abs(pos.x) < 0.3"
+translate 0 0.1 0
+mode object
+# spars, 0.07 m square, proud of the front face: the vertical one tip to tip, the cross one in two
+# halves following the bow (21.8 degrees back)
+add mesh cube --name SparV --size 1 --location 0 -0.075 -0.105
+scale 0.07 0.07 1.37
+apply --scale
+add mesh cube --name SparL --size 1 --location 0 0 0
+scale 0.54 0.07 0.07
+apply --scale
+set rotation 0 0 -21.8
+set location -0.25 0.025 0
+add mesh cube --name SparR --size 1 --location 0 0 0
+scale 0.54 0.07 0.07
+apply --scale
+set rotation 0 0 21.8
+set location 0.25 0.025 0
+# the knot where the spars cross, and the tail stub under the bottom tip
+add mesh cube --name Knot --size 1 --location 0 -0.085 0
+scale 0.15 0.07 0.15
+apply --scale
+add mesh cube --name Stub --size 1 --location 0 0 -0.85
+scale 0.09 0.09 0.16
+apply --scale

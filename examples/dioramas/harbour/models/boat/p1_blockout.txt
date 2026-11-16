@@ -1,0 +1,47 @@
+# Phase 1, blockout: one primitive per named part, at the spec's sizes. Up Z, facing -Y (bow at -Y).
+# Waterline at z 0 (the sheet cuts the hull there). The hull's plan (parallel body + pointed bow)
+# is the silhouette, so its bow taper and raked stem are part of the blockout.
+new
+add mesh cube --name Hull --size 1 --location 0 0.47 0.30
+scale 1.22 2.0 0.60
+# location applied too: the hull's local coordinates are the boat's (every `where` below is in metres)
+apply
+active Hull
+mode edit
+select face where "normal.y < -0.9"
+extrude 0 -0.97 0
+scale x 0
+merge --by-distance 0.001
+# the stem rakes back: the bow's foot is 0.55 behind its tip
+select vert where "pos.y < -1.4 && pos.z < 0.1"
+translate y 0.55
+# the hull is wall-sided down to z 0.30 (the red band), then flares in to 0.97 at the waterline
+select all
+bisect --plane-co 0 0 0.30 --plane-no 0 0 1
+select vert where "pos.z < 0.01"
+scale x 0.80
+mode object
+add mesh cube --name Cabin --size 1 --location 0 0.83 0.86
+scale 0.91 0.88 0.72
+add mesh cube --name Roof --size 1 --location 0 0.83 1.285
+scale 1.03 0.98 0.13
+add mesh cube --name Mast --size 1 --location 0 -0.06 1.25
+scale 0.12 0.12 1.50
+add mesh cube --name SparX --size 1 --location 0 -0.06 1.63
+scale 0.42 0.10 0.10
+add mesh cube --name SparY --size 1 --location 0 -0.06 1.63
+scale 0.10 0.42 0.10
+# the flag streams forward and a little to +X (top view), 30 degrees off the bow line
+add mesh cube --name Flag --size 1 --location 0.083 -0.203 1.85
+scale 0.05 0.33 0.20
+apply --scale
+set rotation 0 0 30
+add mesh cube --name CrateA --size 1 --location 0.26 -0.05 0.65
+scale 0.38 0.38 0.30
+apply --scale
+set rotation 0 0 10
+add mesh cube --name CrateB --size 1 --location -0.24 -0.40 0.62
+scale 0.30 0.30 0.24
+add mesh cylinder --name Coil --vertices 8 --radius 0.18 --depth 0.14 --location 0 -0.80 0.57 --rotation 0 0 22.5
+select all
+apply --scale

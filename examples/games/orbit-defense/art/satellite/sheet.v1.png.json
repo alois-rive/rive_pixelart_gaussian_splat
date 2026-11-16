@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v1.png",
+  "sha256": "92b82602805430f9ad591e088d096e4e8cfc2693e300a26e1f672af809d9f9c2",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v1.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small orbital defence satellite, a boxy body with a cannon turret pointing straight up and two flat solar panel wings to its left and right.\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).\n- The four panels show the SAME object, only turned: FRONT: the object faces the camera, the solar panels seen face-on as wide flat rectangles to the left and right. RIGHT: the camera has walked round to the object's own right-hand side, so the panels point towards and away from the camera, so in the RIGHT view only the near panel's thin edge shows, overlapping the body. BACK: seen from behind, panels face-on again. TOP: seen from straight above, looking down: the barrel is a small circle in the middle, the panels thin bars to the left and right, front towards the BOTTOM edge of the image.\n- One flat, uniform background (#d9d9d9) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views):\n- Body: a chunky box 0.5 m wide, 0.4 m deep, 0.4 m tall, its four vertical edges chamfered (an octagonal footprint), colour #6e5181.\n- On top of the body, centred: a low half-dome turret 0.36 m across and 0.18 m tall, colour #6d85a5.\n- From the dome's top, a straight cannon barrel pointing STRAIGHT UP: a hexagonal tube 0.12 m thick and 0.42 m long, colour #4f1446, ending in a slightly wider glowing muzzle ring #6ceded.\n- Two solar panel wings, one on the left and one on the right of the body, each on a short strut 0.12 m long (#4f1446): each panel a flat slab 0.5 m long (outwards), 0.32 m tall and 0.06 m thick, colour #6cb9c9 with one dark #2e0a30 stripe dividing it into two halves. The panels' flat faces face the FRONT and BACK.\n- Under the body: a small flat octagonal thruster plate 0.3 m across, 0.06 m thick, colour #4f1446.\n- Left-right symmetric. Total about 1.7 m wide and 1.1 m tall.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 300 triangles worth of detail. No smooth organic surfaces, no tiny details, no rivets, no antennas, no texture noise, no grain.\n- Flat colour areas only, ONLY these colours (Berry Nebula palette): body #6e5181 (lit) and #4f1446 (shade), dome #6d85a5, barrel and struts #4f1446, muzzle #6ceded, panels #6cb9c9 with a #2e0a30 stripe.\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e56d-270e-7b70-a368-0b46ebcfb56b",
+    "source": "/Users/alois/.codex/generated_images/01a1e56d-270e-7b70-a368-0b46ebcfb56b/exec-e3409e12-904a-42c7-894b-4c4fd52568a7.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e56d-270e-7b70-a368-0b46ebcfb56b/exec-e3409e12-904a-42c7-894b-4c4fd52568a7.png"
+    ]
+  },
+  "seconds": 59.2,
+  "created": "2026-11-16T18:35:57+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/orbit-defense/art/satellite/sheet.v1.png",
+  "reviewed": false
+}

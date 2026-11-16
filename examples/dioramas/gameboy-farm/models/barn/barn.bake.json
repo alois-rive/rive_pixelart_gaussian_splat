@@ -1,0 +1,34 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.12,
+  "fat": 1.0,
+  "out": "../../lookdev/barn.bin",
+  "objects": [
+    {
+      "model": "barn.glb",
+      "materials": {
+        "Roof": {
+          "ramp": "roof"
+        },
+        "WallFront": {
+          "ramp": "barn"
+        },
+        "WallBack": {
+          "ramp": "barn"
+        },
+        "WallRight": {
+          "ramp": "barn"
+        },
+        "WallLeft": {
+          "ramp": "barn"
+        },
+        "GableFront": {
+          "ramp": "barn"
+        },
+        "Walls": {
+          "ramp": "barn"
+        }
+      }
+    }
+  ]
+}

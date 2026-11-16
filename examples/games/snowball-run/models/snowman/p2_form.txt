@@ -1,0 +1,44 @@
+# Snowman, phase 2: materials (Ice Cream GB, sRGB 0..1 of the ramp steps), the hat band, scarf and its
+# tail on the snowman's right, eyes, buttons, twig forks; joins and export.
+material new Snow --base-color 1.000 0.965 0.827 --no-slot
+material new Plum --base-color 0.486 0.247 0.345 --no-slot
+material new Coral --base-color 0.922 0.420 0.435 --no-slot
+select Bottom Middle Head
+material assign Snow
+select Brim Crown ArmR ArmL
+material assign Plum
+select Nose
+material assign Coral
+add mesh cylinder --name Band --vertices 8 --radius 0.19 --depth 0.07 --location 0 0 1.775
+material assign Coral
+add mesh torus --name Scarf --major-segments 8 --minor-segments 4 --major-radius 0.25 --minor-radius 0.075 --location 0 0 1.235
+material assign Coral
+add mesh cube --name Tail --size 1 --location -0.2 -0.24 1.03
+scale 0.13 0.07 0.36
+apply --scale
+set rotation 8 0 -10
+material assign Coral
+add mesh ico-sphere --name EyeR --subdivisions 1 --radius 0.05 --location -0.1 -0.255 1.52
+material assign Plum
+add mesh ico-sphere --name EyeL --subdivisions 1 --radius 0.05 --location 0.1 -0.255 1.52
+material assign Plum
+add mesh ico-sphere --name Btn1 --subdivisions 1 --radius 0.05 --location 0 -0.37 1.08
+material assign Plum
+add mesh ico-sphere --name Btn2 --subdivisions 1 --radius 0.05 --location 0 -0.385 0.96
+material assign Plum
+add mesh ico-sphere --name Btn3 --subdivisions 1 --radius 0.05 --location 0 -0.37 0.84
+material assign Plum
+# twig forks at the arm tips: one short box angled up from each tip
+add mesh cube --name TwigR --size 1 --location -0.78 0 1.34
+scale 0.07 0.07 0.2
+apply --scale
+set rotation 0 -20 0
+material assign Plum
+add mesh cube --name TwigL --size 1 --location 0.78 0 1.34
+scale 0.07 0.07 0.2
+apply --scale
+set rotation 0 20 0
+material assign Plum
+select all
+shade flat
+export snowman.glb

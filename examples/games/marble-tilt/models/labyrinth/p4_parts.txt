@@ -1,0 +1,20 @@
+# Labyrinth box, phase 4 (run with --no-save on p3): the game's parts. frame.glb (walls, feet,
+# axles: static), floor.glb (the plank floor: the tilting board, origin at its top centre, moved to 0 0 0: the bake
+# places it at y 1.188),
+# knob.glb (one knob, origin on its axle, facing -Y: the game turns it about that axis).
+select Frame
+export frame.glb --selection
+select Floor
+active Floor
+cursor set 0 0 1.188
+origin set --to cursor
+set location 0 0 0
+export floor.glb --selection
+select KnobR
+delete
+select KnobF
+active KnobF
+cursor set 0 -3.74 0.994
+origin set --to cursor
+set location 0 0 0
+export knob.glb --selection

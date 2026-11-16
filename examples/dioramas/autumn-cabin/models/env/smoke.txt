@@ -1,0 +1,34 @@
+# One smoke puff (a jittered icosphere, r 0.34 at full size) on a seamless 4 s rising loop. Its life
+# t runs 0..1: it rises 2.6 m and drifts 0.8 m along +X (the wind) at constant speed, grows from
+# scale 0.25 (born inside the chimney) to 1.0 at t 0.85, then shrinks to 0.05 at the top and is
+# reborn at the bottom. Frame 0 is t 0.85, the full size: the bake samples the splats at frame 0
+# (a smaller puff would be thin when it grows) and inverts frame 0's matrix (scale 0 is not allowed
+# there). Keys at 0 (t .85), 14 (t 1.0), 15 (t 0), 96 (t .85 again), all linear. Three copies with
+# phases 0, 1.33, 2.67 s make a column of separate puffs (0.87 m apart, 0.68 m across at most). Up Z; origin = the birth point.
+new
+add mesh ico-sphere --name Puff --subdivisions 1 --radius 0.34 --location 0 0 0
+material new Smoke --base-color 0.984 0.961 0.937
+active Puff
+mode edit
+select all
+randomize --amount 0.05 --seed 6
+mode object
+shade flat
+fps 24
+frame range 0 96
+select Puff
+set location 0.68 0 2.21
+set scale 1 1 1
+keyframe insert --channels loc,scale --frame 0
+set location 0.8 0 2.6
+set scale 0.05 0.05 0.05
+keyframe insert --channels loc,scale --frame 14
+set location 0 0 0
+set scale 0.25 0.25 0.25
+keyframe insert --channels loc,scale --frame 15
+set location 0.68 0 2.21
+set scale 1 1 1
+keyframe insert --channels loc,scale --frame 96
+keyframe interpolation linear --all
+frame set 0
+export smoke.glb --bake-animations

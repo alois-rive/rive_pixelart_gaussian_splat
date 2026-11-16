@@ -1,0 +1,22 @@
+# Mole, phase 1: one primitive per named part (metres). Up Z, front -Y, origin on the ground (where
+# it leaves the hole) under its centre. Scale from the sheet: 0.49 m wide at the bottom = 420 px (840 px/m).
+new
+# the body: a faceted egg, 0.49 wide, 0.47 deep, its top 0.51 m up, cut flat at the ground
+add mesh uv-sphere --name Body --segments 10 --rings 8 --radius 1 --location 0 0 0.12
+scale 0.245 0.235 0.39
+apply --scale
+apply --location
+mode edit
+select all
+bisect --plane-co 0 0 0 --plane-no 0 0 1 --clear-inner
+mode object
+# the snout: a cone pointing forward (-Y) from the face, and the nose ball at its tip
+add mesh cone --name Snout --vertices 6 --radius1 0.07 --radius2 0.035 --depth 0.13 --location 0 -0.235 0.33 --rotation 90 0 0
+add mesh ico-sphere --name Nose --subdivisions 1 --radius 0.056 --location 0 -0.31 0.31
+# the big spade paws held up beside the snout
+add mesh cube --name PawL --size 1 --location -0.165 -0.17 0.24 --rotation 0 0 -20
+scale 0.16 0.1 0.12
+apply --scale
+add mesh cube --name PawR --size 1 --location 0.165 -0.17 0.24 --rotation 0 0 20
+scale 0.16 0.1 0.12
+apply --scale

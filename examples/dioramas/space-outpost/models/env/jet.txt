@@ -1,0 +1,13 @@
+# Jet: an engine's exhaust flame (emissive, unlit), a cone 0.6 m long pointing backwards (+Y) from
+# its pivot at the nozzle, a bright collar at the nozzle. Four copies are game bones that game.as
+# puts on the ships' nozzles and scales (a stepped flicker, longer under full thrust). Up Z.
+new
+material new Flame --base-color 0.745 0.863 0.498 --emission 0.745 0.863 0.498 --no-slot
+material new Core --base-color 0.933 1.0 0.8 --emission 0.933 1.0 0.8 --no-slot
+add mesh cone --name Flame --vertices 6 --radius1 0.13 --radius2 0.02 --depth 0.6 --location 0 0.34 0 --rotation -90 0 0
+material assign Flame
+add mesh cylinder --name Core --vertices 6 --radius 0.14 --depth 0.1 --location 0 0.06 0 --rotation -90 0 0
+material assign Core
+select all
+shade flat
+export jet.glb

@@ -1,0 +1,215 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.12,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "objects": [
+    {
+      "model": "models/env/plateau.glb",
+      "materials": {
+        "Grass": {
+          "ramp": "grass"
+        },
+        "Water": {
+          "ramp": "water"
+        },
+        "Earth": {
+          "ramp": "wood"
+        },
+        "Rock": {
+          "ramp": "roof"
+        }
+      }
+    },
+    {
+      "model": "models/barn/barn.glb",
+      "position": [
+        -1.7,
+        0,
+        -0.5
+      ],
+      "yaw": 0,
+      "materials": {
+        "Roof": {
+          "ramp": "roof"
+        },
+        "WallFront": {
+          "ramp": "barn"
+        },
+        "WallBack": {
+          "ramp": "barn"
+        },
+        "WallRight": {
+          "ramp": "barn"
+        },
+        "WallLeft": {
+          "ramp": "barn"
+        },
+        "GableFront": {
+          "ramp": "barn"
+        },
+        "Walls": {
+          "ramp": "barn"
+        }
+      }
+    },
+    {
+      "model": "models/env/windpump.glb",
+      "position": [
+        3.9,
+        0,
+        -0.6
+      ],
+      "yaw": 35,
+      "fps": 12,
+      "materials": {
+        "Iron": {
+          "ramp": "roof",
+          "flags": [
+            "nocast"
+          ]
+        },
+        "Blade": {
+          "ramp": "wood",
+          "flags": [
+            "double",
+            "nocast"
+          ]
+        },
+        "Vane": {
+          "ramp": "paint",
+          "flags": [
+            "double",
+            "nocast"
+          ]
+        }
+      }
+    },
+    {
+      "model": "models/env/field.glb",
+      "position": [
+        2.5,
+        0,
+        1.7
+      ],
+      "materials": {
+        "Soil": {
+          "ramp": "roof"
+        },
+        "Crop": {
+          "ramp": "grass"
+        }
+      }
+    },
+    {
+      "model": "models/env/fence.glb",
+      "position": [
+        -3.7,
+        0,
+        3.45
+      ],
+      "materials": {
+        "Wood": {
+          "ramp": "roof"
+        }
+      }
+    },
+    {
+      "model": "models/env/fence.glb",
+      "position": [
+        -1.5,
+        0,
+        3.45
+      ],
+      "materials": {
+        "Wood": {
+          "ramp": "roof"
+        }
+      }
+    },
+    {
+      "model": "models/env/fence.glb",
+      "position": [
+        -4.75,
+        0,
+        2.15
+      ],
+      "yaw": 90,
+      "materials": {
+        "Wood": {
+          "ramp": "roof"
+        }
+      }
+    },
+    {
+      "model": "models/env/haystack.glb",
+      "position": [
+        -3.6,
+        0,
+        1.9
+      ],
+      "materials": {
+        "Hay": {
+          "ramp": "paint"
+        }
+      }
+    },
+    {
+      "model": "models/env/haystack.glb",
+      "position": [
+        -2.4,
+        0,
+        2.5
+      ],
+      "yaw": 40,
+      "scale": 0.7,
+      "materials": {
+        "Hay": {
+          "ramp": "paint"
+        }
+      }
+    },
+    {
+      "model": "models/env/tree.glb",
+      "position": [
+        -4.1,
+        0,
+        -2.7
+      ],
+      "scale": 1.1,
+      "materials": {
+        "Bark": {
+          "ramp": "roof"
+        },
+        "Leaves": {
+          "ramp": "wood",
+          "flags": [
+            "sway"
+          ]
+        }
+      }
+    },
+    {
+      "model": "models/env/tree.glb",
+      "position": [
+        4.3,
+        0,
+        -2.9
+      ],
+      "yaw": 120,
+      "scale": 0.9,
+      "materials": {
+        "Bark": {
+          "ramp": "roof"
+        },
+        "Leaves": {
+          "ramp": "wood",
+          "flags": [
+            "sway"
+          ]
+        }
+      }
+    }
+  ]
+}

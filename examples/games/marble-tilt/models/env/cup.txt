@@ -1,0 +1,27 @@
+# Pencil cup: an eight-sided slate cup with three pencils leaning out. Origin on the ground.
+new
+material new Cup --base-color 0.3373 0.3294 0.4314 --no-slot
+material new Pen0 --base-color 0.7765 0.8000 0.3294 --no-slot
+material new Pen1 --base-color 0.9412 0.3569 0.3569 --no-slot
+material new Pen2 --base-color 0.4706 0.7608 0.8392 --no-slot
+add mesh cylinder --name Cup --vertices 8 --radius 0.5 --depth 1.2 --location 0 0 0.6
+material assign Cup
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name P0 --vertices 6 --radius 0.1 --depth 2.2 --location 0.15 0.1 1.10
+set rotation -8 10 0
+apply --rotation
+material assign Pen0
+add mesh cylinder --name P1 --vertices 6 --radius 0.1 --depth 2.0 --location -0.18 0.05 1.00
+set rotation 0 2 0
+apply --rotation
+material assign Pen1
+add mesh cylinder --name P2 --vertices 6 --radius 0.1 --depth 2.35 --location 0.0 -0.2 1.18
+set rotation 8 -6 0
+apply --rotation
+material assign Pen2
+select all
+shade flat
+export cup.glb

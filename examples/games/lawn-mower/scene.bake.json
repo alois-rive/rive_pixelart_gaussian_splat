@@ -1,0 +1,32 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.075,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "bounds": [[-6.4, -0.3, -5.2], [6.4, 2.0, 5.4]],
+  "objects": [
+    { "model": "models/env/ground.glb",
+      "materials": { "Light": { "ramp": "lawn" }, "Mid": { "ramp": "lawn" }, "Sand": { "ramp": "wood", "spacing": 0.09 },
+                     "Soil": { "ramp": "wood", "spacing": 0.1 }, "Edge": { "ramp": "stone", "spacing": 0.06 }, "BedSoil": { "ramp": "wood" } } },
+    { "model": "models/env/garden.glb",
+      "materials": { "Fence": { "ramp": "stone", "spacing": 0.06 }, "Wood": { "ramp": "wood" }, "Roof": { "ramp": "red" },
+                     "Bush": { "ramp": "lawn", "flags": ["sway"] }, "BushLit": { "ramp": "lawn" }, "Stone": { "ramp": "stone", "spacing": 0.06 },
+                     "Water": { "ramp": "blue", "spacing": 0.06 }, "Red": { "ramp": "red", "spacing": 0.06 }, "Yellow": { "ramp": "straw", "spacing": 0.06 },
+                     "Snow": { "ramp": "stone", "spacing": 0.06 }, "Orange": { "ramp": "straw", "spacing": 0.06 },
+                     "Leaf": { "ramp": "lawn", "spacing": 0.05, "specks": true }, "Door": { "ramp": "wood" } } },
+    { "model": "models/env/tuft.glb", "position": [0, 0, 0], "bone": "tile", "copies": 44,
+      "materials": { "Turf": { "ramp": "rough", "step": 1 }, "Tuft": { "ramp": "rough", "spacing": 0.058 } } },
+    { "model": "models/mower/mower.glb", "position": [0, 0, 3.4], "bone": "mower",
+      "materials": { "Red": { "ramp": "red" }, "Tyre": { "ramp": "wood" }, "Hub": { "ramp": "stone", "spacing": 0.05 },
+                     "Deck": { "ramp": "stone" }, "Seat": { "ramp": "wood", "spacing": 0.06 }, "Shirt": { "ramp": "blue", "spacing": 0.06 },
+                     "Skin": { "ramp": "skin", "spacing": 0.06 }, "Hat": { "ramp": "straw", "spacing": 0.06 } } },
+    { "model": "models/env/gnome.glb", "position": [0, 0, 6], "scale": 1.4, "bone": "gnome", "copies": 4,
+      "materials": { "Boot": { "ramp": "wood", "spacing": 0.06 }, "Coat": { "ramp": "blue", "spacing": 0.065 }, "Face": { "ramp": "skin", "spacing": 0.06 },
+                     "Beard": { "ramp": "stone", "spacing": 0.06 }, "Hat": { "ramp": "red", "spacing": 0.06 } } },
+    { "model": "models/env/clip.glb", "position": [0, 0, 6], "bone": "clip", "copies": 8,
+      "materials": { "Clip": { "ramp": "lawn", "flags": ["nocast"], "spacing": 0.05, "specks": true } } },
+    { "model": "models/env/petal.glb", "position": [0, 0, 6], "bone": "petal", "copies": 4,
+      "materials": { "Petal": { "ramp": "red", "flags": ["nocast"], "spacing": 0.05, "specks": true } } }
+  ]
+}

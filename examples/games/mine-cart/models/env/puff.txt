@@ -1,0 +1,26 @@
+# Dust puff: eight chunky motes in a ring (0.9 m across), unlit. A pool of game bones: scaled out
+# and hidden by the game when rocks land, gems pop or the cart crashes.
+new
+material new Dust --base-color 0.898 0.690 0.514 --emission 0.898 0.690 0.514 --no-slot
+add mesh cube --name M0 --size 0.14 --location 0.420 0.000 0.120
+material assign Dust
+add mesh cube --name M1 --size 0.14 --location 0.297 0.297 0.200
+material assign Dust
+add mesh cube --name M2 --size 0.14 --location 0.000 0.420 0.120
+material assign Dust
+add mesh cube --name M3 --size 0.14 --location -0.297 0.297 0.200
+material assign Dust
+add mesh cube --name M4 --size 0.14 --location -0.420 0.000 0.120
+material assign Dust
+add mesh cube --name M5 --size 0.14 --location -0.297 -0.297 0.200
+material assign Dust
+add mesh cube --name M6 --size 0.14 --location -0.000 -0.420 0.120
+material assign Dust
+add mesh cube --name M7 --size 0.14 --location 0.297 -0.297 0.200
+material assign Dust
+select M0 M1 M2 M3 M4 M5 M6 M7
+active M0
+join
+rename M0 Puff
+shade flat
+export puff.glb

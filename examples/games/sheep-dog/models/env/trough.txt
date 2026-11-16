@@ -1,0 +1,27 @@
+# A water trough: a wooden box 1.2 x 0.5 x 0.4 m with water inside. Up Z.
+new
+material new Wood --base-color 0.522 0.298 0.188 --no-slot
+material new Water --base-color 0.427 0.761 0.792 --no-slot
+add mesh cube --name A --size 1 --location 0.000 -0.200 0.200
+scale 1.200 0.080 0.400
+apply --scale
+material assign Wood
+add mesh cube --name B --size 1 --location 0.000 0.200 0.200
+scale 1.200 0.080 0.400
+apply --scale
+material assign Wood
+add mesh cube --name C --size 1 --location 0.560 0.000 0.200
+scale 0.080 0.480 0.400
+apply --scale
+material assign Wood
+add mesh cube --name D --size 1 --location -0.560 0.000 0.200
+scale 0.080 0.480 0.400
+apply --scale
+material assign Wood
+add mesh cube --name E --size 1 --location 0.000 0.000 0.300
+scale 1.040 0.320 0.040
+apply --scale
+material assign Water
+select all
+shade flat
+export trough.glb

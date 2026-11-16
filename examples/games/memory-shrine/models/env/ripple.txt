@@ -1,0 +1,9 @@
+# Ripple: a ring wave facing the camera, at its LARGEST size (radius 1.6 m): the game scales it up
+# from small (bone scale moves splats apart but does not grow them). Origin at its centre.
+new
+material new Wave --base-color 1.0000 1.0000 1.0000 --no-slot
+add mesh torus --name Ripple --major-segments 20 --minor-segments 4 --major-radius 1.6 --minor-radius 0.07 --location 0 0 0 --rotation 90 0 0
+apply --rotation
+material assign Wave
+shade flat
+export ripple.glb

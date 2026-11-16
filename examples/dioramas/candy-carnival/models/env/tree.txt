@@ -1,0 +1,10 @@
+# Lollipop tree: a short cream trunk, a round faceted green crown. Up Z.
+new
+add mesh cylinder --name Trunk --vertices 6 --radius 0.1 --depth 0.8 --location 0 0 0.4
+material new Trunk --base-color 0.671 0.322 0.212
+add mesh ico-sphere --name Crown --subdivisions 1 --radius 0.6 --location 0 0 1.25
+material new Leaves --base-color 0 0.894 0.212
+material assign Leaves
+select all
+shade flat
+export tree.glb

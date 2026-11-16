@@ -1,0 +1,67 @@
+{
+  "name": "Rive brand",
+  "source": "the Rive brand guidelines (rive-branding skill): greyscale, Rive Amber, Portal Prism",
+  "colors": [
+    "#000000",
+    "#141414",
+    "#5c5c5c",
+    "#a0a0a0",
+    "#e0e0e0",
+    "#ffffff",
+    "#ffa41c",
+    "#f30058",
+    "#ff483c",
+    "#71ff19",
+    "#19f2ff",
+    "#3084ff"
+  ],
+  "ramps": {
+    "mark": [
+      "#141414",
+      "#5c5c5c",
+      "#a0a0a0",
+      "#e0e0e0",
+      "#ffffff"
+    ],
+    "floor": [
+      "#000000",
+      "#141414",
+      "#5c5c5c",
+      "#a0a0a0"
+    ],
+    "amber": [
+      "#141414",
+      "#ffa41c",
+      "#ffffff"
+    ],
+    "pink": [
+      "#f30058"
+    ],
+    "red": [
+      "#ff483c"
+    ],
+    "prism_amber": [
+      "#ffa41c"
+    ],
+    "green": [
+      "#71ff19"
+    ],
+    "cyan": [
+      "#19f2ff"
+    ],
+    "blue": [
+      "#3084ff"
+    ],
+    "star": [
+      "#5c5c5c",
+      "#a0a0a0",
+      "#ffffff"
+    ]
+  },
+  "roles": {
+    "sky_top": "#000000",
+    "sky_bottom": "#000000",
+    "fog": "#141414",
+    "void": "#000000"
+  }
+}

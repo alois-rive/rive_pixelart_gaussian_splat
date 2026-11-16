@@ -1,0 +1,26 @@
+# Lever stands: an iron box at every junction (the handles are separate game bones). Generated.
+new
+material new Iron --base-color 0.125 0.157 0.239 --no-slot
+material new Wood --base-color 0.898 0.690 0.514 --no-slot
+add mesh cube --name Stand0 --size 1 --location -2.259 1.060 0.08
+scale 0.3 0.3 0.16
+apply --scale
+material assign Wood
+add mesh cube --name Stand1 --size 1 --location 2.300 2.340 0.08
+scale 0.3 0.3 0.16
+apply --scale
+material assign Wood
+add mesh cube --name Stand2 --size 1 --location 2.259 -1.060 0.08
+scale 0.3 0.3 0.16
+apply --scale
+material assign Wood
+add mesh cube --name Stand3 --size 1 --location -2.300 -2.340 0.08
+scale 0.3 0.3 0.16
+apply --scale
+material assign Wood
+select Stand0 Stand1 Stand2 Stand3
+active Stand0
+join
+rename Stand0 Stands
+shade flat
+export stands.glb

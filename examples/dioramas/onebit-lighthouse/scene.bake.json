@@ -1,0 +1,181 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "objects": [
+    {
+      "model": "models/env/sea.glb",
+      "materials": {
+        "Sea": {
+          "ramp": "lit",
+          "spacing": 0.22,
+          "flags": [
+            "sway"
+          ]
+        },
+        "SeaFar": {
+          "ramp": "lit",
+          "spacing": 1.0
+        }
+      }
+    },
+    {
+      "model": "models/env/cliff.glb",
+      "materials": {
+        "Rock": {
+          "ramp": "lit"
+        },
+        "Turf": {
+          "ramp": "lit"
+        }
+      }
+    },
+    {
+      "model": "models/lighthouse/lighthouse.glb",
+      "position": [
+        1.2,
+        4,
+        -0.6
+      ],
+      "yaw": 0,
+      "fps": 12,
+      "materials": {
+        "White": {
+          "ramp": "pale",
+          "step": 1
+        },
+        "Dark": {
+          "ramp": "tar"
+        },
+        "Glass": {
+          "ramp": "glow",
+          "flags": [
+            "unlit"
+          ]
+        }
+      },
+      "scale": 1.4
+    },
+    {
+      "model": "models/env/beam.glb",
+      "position": [
+        1.2,
+        4,
+        -0.6
+      ],
+      "yaw": 0,
+      "fps": 12,
+      "materials": {
+        "Beam": {
+          "ramp": "glow",
+          "flags": [
+            "unlit",
+            "double"
+          ]
+        }
+      },
+      "scale": 1.4
+    },
+    {
+      "model": "models/env/hut.glb",
+      "position": [
+        -3.0,
+        4,
+        -1.4
+      ],
+      "yaw": 30,
+      "materials": {
+        "White": {
+          "ramp": "pale",
+          "step": 1
+        },
+        "Dark": {
+          "ramp": "tar"
+        }
+      },
+      "scale": 0.9
+    },
+    {
+      "model": "models/env/rock.glb",
+      "position": [
+        6.4,
+        0,
+        3.0
+      ],
+      "yaw": 10,
+      "scale": 1.3,
+      "materials": {
+        "Rock": {
+          "ramp": "lit"
+        }
+      }
+    },
+    {
+      "model": "models/env/rock.glb",
+      "position": [
+        -6.3,
+        0,
+        2.4
+      ],
+      "yaw": 80,
+      "scale": 1.0,
+      "materials": {
+        "Rock": {
+          "ramp": "lit"
+        }
+      }
+    },
+    {
+      "model": "models/env/rock.glb",
+      "position": [
+        4.2,
+        0,
+        5.4
+      ],
+      "yaw": 150,
+      "scale": 0.7,
+      "materials": {
+        "Rock": {
+          "ramp": "lit"
+        }
+      }
+    },
+    {
+      "model": "models/env/rock.glb",
+      "position": [
+        -3.6,
+        0,
+        5.9
+      ],
+      "yaw": 230,
+      "scale": 0.9,
+      "materials": {
+        "Rock": {
+          "ramp": "lit"
+        }
+      }
+    },
+    {
+      "model": "models/env/boat.glb",
+      "position": [
+        8.5,
+        0,
+        -11.0
+      ],
+      "yaw": 60,
+      "fps": 12,
+      "materials": {
+        "Hull": {
+          "ramp": "pale",
+          "step": 1
+        },
+        "Inside": {
+          "ramp": "tar"
+        }
+      },
+      "scale": 1.5
+    }
+  ]
+}

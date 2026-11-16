@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/winter/art/windmill/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        206,
+        14,
+        355,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3465,
+      "fill": 0.7461,
+      "background": "#d2d1d1"
+    },
+    "right": {
+      "box": [
+        977,
+        14,
+        358,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3352,
+      "fill": 0.802,
+      "background": "#d2d2d2"
+    },
+    "back": {
+      "box": [
+        211,
+        532,
+        346,
+        472
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3642,
+      "fill": 0.704,
+      "background": "#d2d2d2"
+    },
+    "top": {
+      "box": [
+        977,
+        545,
+        350,
+        406
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.16,
+      "fill": 0.7516,
+      "background": "#d3d2d2"
+    }
+  }
+}

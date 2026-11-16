@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/peg-drop/art/dropper/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        144,
+        21,
+        425,
+        465
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0941,
+      "fill": 0.59,
+      "background": "#a09f9f"
+    },
+    "right": {
+      "box": [
+        1005,
+        21,
+        295,
+        465
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5763,
+      "fill": 0.6324,
+      "background": "#a1a09f"
+    },
+    "back": {
+      "box": [
+        199,
+        533,
+        425,
+        465
+      ],
+      "flipped": true,
+      "rotated": 0,
+      "aspect": 1.0941,
+      "fill": 0.5896,
+      "background": "#a09f9f"
+    },
+    "top": {
+      "box": [
+        913,
+        597,
+        409,
+        292
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7139,
+      "fill": 0.7281,
+      "background": "#a0a0a0"
+    }
+  }
+}

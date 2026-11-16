@@ -1,0 +1,24 @@
+# The clearing: a 12-sided slab 10 m across (top at z 0) with the earth, leaf litter and path
+# painted in one texture, dark earth sides, a rocky underside tapering to a point. Up Z.
+new
+add mesh cylinder --name Top --vertices 12 --radius 5.0 --depth 0.5 --location 0 0 -0.25
+material new Ground --base-color 1 1 1
+material new Dirt --base-color 0.286 0.302 0.494 --no-slot
+active Top
+mode edit
+select face where "normal.z < 0.9"
+material assign Dirt
+select face where "normal.z > 0.9"
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Ground base-color textures/ground_48.png
+add mesh cone --name Under --vertices 12 --radius1 0.8 --radius2 4.9 --depth 2.2 --location 0 0 -1.6
+material assign Dirt
+active Under
+mode edit
+select vert where "pos.z < 0.5"
+randomize --amount 0.35 --seed 2
+mode object
+select all
+shade flat
+export ground.glb

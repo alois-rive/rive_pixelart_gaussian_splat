@@ -1,0 +1,26 @@
+# Rotten apple: a sickly grey ball 0.38 m across with big dark mould patches (light enough to read against the dark fence).
+# Origin at the fruit's centre (a game bone pool: the game drops, catches and pops it).
+new
+material new Body --base-color 0.5255 0.5059 0.5333 --no-slot
+material new Stem --base-color 0.2941 0.2549 0.3451 --no-slot
+add mesh ico-sphere --name Fruit --subdivisions 1 --radius 0.19 --location 0 0 0
+scale 1 1 0.92
+apply --scale
+material assign Body
+add mesh cube --name Stalk --size 1 --location 0.02 0 0.225
+scale 0.06 0.06 0.14
+apply --scale
+material assign Stem
+material new Mould --base-color 0.3059 0.3451 0.2902 --no-slot
+add mesh ico-sphere --name M0 --subdivisions 1 --radius 0.11 --location -0.08 -0.14 0.05
+material assign Mould
+add mesh ico-sphere --name M1 --subdivisions 1 --radius 0.1 --location 0.11 -0.11 -0.07
+material assign Mould
+add mesh ico-sphere --name M2 --subdivisions 1 --radius 0.09 --location 0.13 0.1 0.08
+material assign Mould
+select all
+active Fruit
+join
+select all
+shade flat
+export rotten.glb

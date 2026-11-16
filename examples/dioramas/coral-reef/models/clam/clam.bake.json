@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "out": "../../lookdev/clam.bin",
+  "objects": [
+    { "model": "clam.glb", "fps": 12,
+      "materials": { "Shell": { "ramp": "shell" }, "Groove": { "ramp": "shell" }, "Mantle": { "ramp": "shell" },
+                     "Pearl": { "ramp": "glow", "flags": ["unlit"] } } }
+  ]
+}

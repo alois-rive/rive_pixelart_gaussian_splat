@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "out": "../../lookdev/lighthouse.bin",
+  "objects": [
+    { "model": "lighthouse.glb", "fps": 12,
+      "materials": { "White": { "ramp": "pale", "step": 1 }, "Dark": { "ramp": "tar" },
+                     "Glass": { "ramp": "glow", "flags": ["unlit"] } } }
+  ]
+}

@@ -1,0 +1,36 @@
+# Frog, phase 2: the wedge of the head, the rounded rump, pupils, materials in Sweetie 16, export.
+# Back: lower the snout's top edge (the head slopes down to the mouth), pull the rump's top edge in.
+active Back
+mode edit
+select vert where "pos.y < 0 && pos.z > 0"
+translate 0 0 -0.06
+select vert where "pos.y > 0.2 && pos.z > 0"
+translate 0 -0.05 -0.03
+mode object
+active Lower
+mode edit
+select vert where "pos.y > 0.1 && pos.z < 0"
+translate 0 -0.04 0
+mode object
+# pupils: dark, looking forward out of the eyes (single art pixels on purpose: "specks")
+add mesh ico-sphere --name PupilL --subdivisions 1 --radius 0.036 --location -0.113 -0.225 0.39
+add mesh ico-sphere --name PupilR --subdivisions 1 --radius 0.036 --location 0.113 -0.225 0.39
+# materials: the palette's colours (sRGB 0..1) so the bake snaps exactly
+material new Skin --base-color 0.655 0.941 0.439 --no-slot
+material new Feet --base-color 0.220 0.718 0.392 --no-slot
+material new Belly --base-color 1.0 0.804 0.459 --no-slot
+material new Eye --base-color 1.0 0.804 0.459 --no-slot
+material new Pupil --base-color 0.102 0.110 0.173 --no-slot
+select Back Lower ThighL ThighR ArmL ArmR
+material assign Skin
+select HandL HandR FootL FootR
+material assign Feet
+select Throat
+material assign Belly
+select EyeL EyeR
+material assign Eye
+select PupilL PupilR
+material assign Pupil
+select all
+shade flat
+export frog.glb

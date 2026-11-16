@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/haunted-graveyard/art/crypt/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        217,
+        22,
+        351,
+        462
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3162,
+      "fill": 0.5416,
+      "background": "#d3d2d2"
+    },
+    "right": {
+      "box": [
+        957,
+        16,
+        381,
+        468
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2283,
+      "fill": 0.6809,
+      "background": "#d3d2d2"
+    },
+    "back": {
+      "box": [
+        215,
+        531,
+        348,
+        463
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3305,
+      "fill": 0.5512,
+      "background": "#d3d2d2"
+    },
+    "top": {
+      "box": [
+        989,
+        537,
+        324,
+        436
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3457,
+      "fill": 0.7928,
+      "background": "#d3d3d3"
+    }
+  }
+}

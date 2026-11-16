@@ -1,0 +1,348 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "bounds": [
+    [
+      -5.8,
+      -3.4,
+      -5.8
+    ],
+    [
+      5.8,
+      2.6,
+      5.8
+    ]
+  ],
+  "objects": [
+    {
+      "model": "models/env/arena.glb",
+      "materials": {
+        "Sand": {
+          "ramp": "sand"
+        },
+        "Mark": {
+          "ramp": "sand"
+        },
+        "Stone": {
+          "ramp": "stone"
+        },
+        "Pave": {
+          "ramp": "stone"
+        },
+        "Rock": {
+          "ramp": "rock"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        4.09,
+        1.54,
+        2.606
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        2.606,
+        1.54,
+        4.09
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        -2.606,
+        1.54,
+        4.09
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        -4.09,
+        1.54,
+        2.606
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        -4.09,
+        1.54,
+        -2.606
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        -2.606,
+        1.54,
+        -4.09
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        2.606,
+        1.54,
+        -4.09
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/brazier.glb",
+      "position": [
+        4.09,
+        1.54,
+        -2.606
+      ],
+      "materials": {
+        "Iron": {
+          "ramp": "stone"
+        }
+      }
+    },
+    {
+      "model": "models/env/banner.glb",
+      "position": [
+        -1.354,
+        1.3,
+        -4.166
+      ],
+      "yaw": 18.0,
+      "materials": {
+        "Cloth": {
+          "ramp": "gold",
+          "flags": [
+            "double"
+          ]
+        },
+        "Trim": {
+          "ramp": "gold",
+          "flags": [
+            "double"
+          ]
+        },
+        "Pole": {
+          "ramp": "rock"
+        }
+      },
+      "scale": 0.8
+    },
+    {
+      "model": "models/env/banner.glb",
+      "position": [
+        0.0,
+        1.3,
+        -4.38
+      ],
+      "yaw": 0.0,
+      "materials": {
+        "Cloth": {
+          "ramp": "gold",
+          "flags": [
+            "double"
+          ]
+        },
+        "Trim": {
+          "ramp": "gold",
+          "flags": [
+            "double"
+          ]
+        },
+        "Pole": {
+          "ramp": "rock"
+        }
+      },
+      "scale": 0.8
+    },
+    {
+      "model": "models/env/banner.glb",
+      "position": [
+        1.354,
+        1.3,
+        -4.166
+      ],
+      "yaw": -18.0,
+      "materials": {
+        "Cloth": {
+          "ramp": "gold",
+          "flags": [
+            "double"
+          ]
+        },
+        "Trim": {
+          "ramp": "gold",
+          "flags": [
+            "double"
+          ]
+        },
+        "Pole": {
+          "ramp": "rock"
+        }
+      },
+      "scale": 0.8
+    },
+    {
+      "model": "models/env/flame.glb",
+      "bone": "flame",
+      "copies": 8,
+      "position": [
+        0,
+        1.78,
+        0
+      ],
+      "materials": {
+        "Fire": {
+          "ramp": "fire",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.07
+        },
+        "Core": {
+          "ramp": "fire",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.07
+        }
+      }
+    },
+    {
+      "model": "models/env/boulder.glb",
+      "bone": "boulder",
+      "copies": 6,
+      "position": [
+        0,
+        0.5,
+        0
+      ],
+      "materials": {
+        "Rock": {
+          "ramp": "rock"
+        },
+        "Vein": {
+          "ramp": "rock"
+        }
+      }
+    },
+    {
+      "model": "models/env/coin.glb",
+      "bone": "coin",
+      "copies": 2,
+      "position": [
+        0,
+        0.45,
+        0
+      ],
+      "materials": {
+        "Gold": {
+          "ramp": "gold",
+          "spacing": 0.06
+        },
+        "Face": {
+          "ramp": "gold",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/dust.glb",
+      "bone": "dust",
+      "copies": 12,
+      "position": [
+        0,
+        0.3,
+        0
+      ],
+      "materials": {
+        "Dust": {
+          "ramp": "sand",
+          "flags": [
+            "nocast"
+          ],
+          "spacing": 0.06,
+          "specks": true
+        }
+      }
+    },
+    {
+      "model": "models/knight/knight.glb",
+      "bone": "knight",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1.5,
+      "materials": {
+        "Armour": {
+          "ramp": "steel",
+          "spacing": 0.065
+        },
+        "Slit": {
+          "ramp": "steel",
+          "spacing": 0.065
+        },
+        "Gold": {
+          "ramp": "gold",
+          "spacing": 0.065
+        },
+        "Tabard": {
+          "ramp": "gold",
+          "spacing": 0.065
+        },
+        "Leather": {
+          "ramp": "rock",
+          "spacing": 0.065
+        },
+        "Blade": {
+          "ramp": "steel",
+          "spacing": 0.065
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# A lily pad: a flat 10-sided disc 1.2 m across with the classic notch cut out (towards +X). Up Z.
+new
+add mesh cylinder --name Pad --vertices 10 --radius 0.6 --depth 0.07 --cap-fill triangle-fan --location 0 0 0.035 --rotation 0 0 18
+apply --rotation
+mode edit
+select face where "pos.x > 0.15 && abs(pos.y) < 0.12"
+delete face
+select face where "normal.z < -0.9"
+delete face
+mode object
+material new Pad --base-color 0.145 0.443 0.475
+material assign Pad
+shade flat
+export pad.glb

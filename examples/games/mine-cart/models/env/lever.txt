@@ -1,0 +1,14 @@
+# Switch lever: an iron handle with a cream knob, pivot at its foot. One game bone per junction: the game
+# tilts it towards the lane the switch sends the cart down. Up Z; the knob leans with roll.
+new
+material new Iron --base-color 0.125 0.157 0.239 --no-slot
+material new Knob --base-color 0.984 0.969 0.953 --no-slot
+add mesh cube --name Handle --size 1 --location 0 0 0.25
+scale 0.09 0.09 0.5
+apply --scale
+material assign Iron
+add mesh uv-sphere --name Knob --segments 6 --rings 4 --radius 0.11 --location 0 0 0.55
+material assign Knob
+select all
+shade flat
+export lever.glb

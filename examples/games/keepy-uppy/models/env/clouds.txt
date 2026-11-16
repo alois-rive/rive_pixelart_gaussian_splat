@@ -1,0 +1,50 @@
+# Sunset clouds: long flat low-poly slabs in pink, coral and amber, unlit, facing the camera.
+new
+material new CloudA --base-color 1.0000 0.4784 0.4902 --emission 1.0000 0.4784 0.4902 --no-slot
+material new CloudB --base-color 0.9608 0.6314 0.3647 --emission 0.9608 0.6314 0.3647 --no-slot
+material new CloudC --base-color 0.8392 0.1020 0.5333 --emission 0.8392 0.1020 0.5333 --no-slot
+add mesh cylinder --name Cloud0 --vertices 6 --radius 1 --depth 0.1 --location 0 0 0
+scale 2.0 0.25 1
+apply --scale
+set rotation 90 0 0
+apply --rotation
+set location -5.5 0 5.2
+material assign CloudA
+add mesh cylinder --name Cloud1 --vertices 6 --radius 1 --depth 0.1 --location 0 0 0
+scale 1.3 0.2 1
+apply --scale
+set rotation 90 0 0
+apply --rotation
+set location -3.2 0 4.7
+material assign CloudC
+add mesh cylinder --name Cloud2 --vertices 6 --radius 1 --depth 0.1 --location 0 0 0
+scale 2.3 0.275 1
+apply --scale
+set rotation 90 0 0
+apply --rotation
+set location 4.8 0 6.1
+material assign CloudB
+add mesh cylinder --name Cloud3 --vertices 6 --radius 1 --depth 0.1 --location 0 0 0
+scale 1.2 0.2 1
+apply --scale
+set rotation 90 0 0
+apply --rotation
+set location 6.6 0 5.5
+material assign CloudA
+add mesh cylinder --name Cloud4 --vertices 6 --radius 1 --depth 0.1 --location 0 0 0
+scale 1.5 0.225 1
+apply --scale
+set rotation 90 0 0
+apply --rotation
+set location 0.8 0 6.8
+material assign CloudC
+add mesh cylinder --name Cloud5 --vertices 6 --radius 1 --depth 0.1 --location 0 0 0
+scale 1.1 0.16 1
+apply --scale
+set rotation 90 0 0
+apply --rotation
+set location -1.0 0 3.9
+material assign CloudB
+select all
+shade flat
+export clouds.glb

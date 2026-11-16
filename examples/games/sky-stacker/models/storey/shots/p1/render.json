@@ -1,0 +1,14 @@
+{
+  "hedra": "storey.rmdl",
+  "rive": null,
+  "blob": "splats",
+  "views": "front,right,back,top",
+  "size": 480,
+  "pixel": 2,
+  "arg": [],
+  "advance": "2",
+  "real_sky": false,
+  "look": "lit",
+  "texel": 0,
+  "elevation": 0
+}

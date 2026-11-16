@@ -1,0 +1,11 @@
+# A smoke puff: a faceted ball 0.7 m across, sunset-lit. Origin at its centre.
+new
+material new Smoke --base-color 1.0000 0.8314 0.6392 --no-slot
+add mesh ico-sphere --name Puff --subdivisions 1 --radius 0.35 --location 0 0 0
+mode edit
+select all
+randomize --amount 0.05 --seed 4
+mode object
+material assign Smoke
+shade flat
+export smoke.glb

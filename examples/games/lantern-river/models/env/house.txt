@@ -1,0 +1,30 @@
+# A riverside house: 1.6 x 1.2 x 1.0 m walls, a hipped roof with wide eaves, two glowing windows
+# on the front, one on the right side (standing 6 cm proud, 0.7 m apart so they stay apart as splats). Up Z, front -Y.
+new
+material new Wall --base-color 0.2745 0.0549 0.1686 --no-slot
+material new Roof --base-color 0.1216 0.0196 0.0627 --no-slot
+material new Window --base-color 0.8353 0.2353 0.4157 --emission 0.8353 0.2353 0.4157 --no-slot
+add mesh cube --name Walls --size 1 --location 0.000 0.000 0.500
+scale 1.600 1.200 1.000
+apply --scale
+material assign Wall
+add mesh cone --name Roof --vertices 4 --radius1 1.35 --radius2 0.25 --depth 0.7 --location 0 0 1.35 --rotation 0 0 45
+apply --rotation
+scale 1.0 0.75 1
+apply --scale
+material assign Roof
+add mesh cube --name W1 --size 1 --location -0.480 -0.630 0.550
+scale 0.240 0.060 0.260
+apply --scale
+material assign Window
+add mesh cube --name W2 --size 1 --location 0.480 -0.630 0.550
+scale 0.240 0.060 0.260
+apply --scale
+material assign Window
+add mesh cube --name W3 --size 1 --location 0.830 -0.000 0.550
+scale 0.060 0.260 0.260
+apply --scale
+material assign Window
+select all
+shade flat
+export house.glb

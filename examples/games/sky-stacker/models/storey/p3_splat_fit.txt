@@ -1,0 +1,10 @@
+# Pagoda storey, phase 3 (splat fit): the form (p2) is gated against the sheet; this phase only
+# compensates the splat spread before the bake. The discs reach about one radius (0.11 m at the scene's
+# 0.09 spacing) past the deck's top and the walls' foot, so the p2 storey bakes 0.24 m taller than its
+# mesh (splat aspect drift 0.18-0.25). Shrink the solid vertically about the ground: 0.86 -> 0.67 m.
+# game.as stacks storeys at this height (0.67 m pitch).
+select all
+cursor set 0 0 0
+scale 1 1 0.78 --pivot cursor
+apply --scale
+export storey.glb

@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/penguin-slide/art/penguin/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        203,
+        157,
+        362,
+        233
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6436,
+      "fill": 0.6017,
+      "background": "#919090"
+    },
+    "right": {
+      "box": [
+        913,
+        177,
+        471,
+        206
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4374,
+      "fill": 0.6083,
+      "background": "#919190"
+    },
+    "back": {
+      "box": [
+        205,
+        642,
+        360,
+        251
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6972,
+      "fill": 0.5912,
+      "background": "#919090"
+    },
+    "top": {
+      "box": [
+        1027,
+        564,
+        248,
+        408
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6452,
+      "fill": 0.5985,
+      "background": "#929191"
+    }
+  }
+}

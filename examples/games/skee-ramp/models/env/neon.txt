@@ -1,0 +1,45 @@
+# Neon signs for the back wall: a five-point star, a ring, a zigzag bolt. Flat, 6 cm thick, facing
+# the camera (-Y). Each centred on its own origin, placed in the bake. Up Z.
+new
+material new Star --base-color 1.0000 0.8196 0.0000 --emission 1.0000 0.8196 0.0000 --no-slot
+material new Ring --base-color 1.0000 0.1490 0.4549 --emission 1.0000 0.1490 0.4549 --no-slot
+material new Bolt --base-color 0.0627 0.8235 0.4588 --emission 0.0627 0.8235 0.4588 --no-slot
+add mesh circle --name Star --vertices 10 --radius 0.45 --cap-fill triangle-fan --location -2.6 0 0 --rotation 90 0 18
+apply --rotation
+active Star
+mode edit
+select vert where "index % 2 == 1 && index < 10"
+push-pull -0.24
+select all
+extrude 0 -0.06 0
+mode object
+material assign Star
+add mesh torus --name Ring --major-radius 0.38 --minor-radius 0.07 --major-segments 14 --minor-segments 4 --location 2.6 0 0 --rotation 90 0 0
+apply --rotation
+material assign Ring
+add mesh cube --name B0 --size 1 --location 0.0 0 0.32
+scale 0.5 0.06 0.12
+apply --scale
+set rotation 0 30 0
+apply --rotation
+material assign Bolt
+add mesh cube --name B1 --size 1 --location 0.0 0 0.0
+scale 0.5 0.06 0.12
+apply --scale
+set rotation 0 -30 0
+apply --rotation
+material assign Bolt
+add mesh cube --name B2 --size 1 --location 0.0 0 -0.32
+scale 0.5 0.06 0.12
+apply --scale
+set rotation 0 30 0
+apply --rotation
+material assign Bolt
+select B0 B1 B2
+active B0
+join
+rename B0 Bolt
+translate 0 0 0
+select all
+shade flat
+export neon.glb

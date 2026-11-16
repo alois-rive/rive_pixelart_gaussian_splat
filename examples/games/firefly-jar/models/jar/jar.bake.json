@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.035,
+  "fat": 1.0,
+  "out": "../../lookdev/jar.bin",
+  "objects": [
+    { "model": "jar.glb",
+      "materials": { "Glass": { "ramp": "glass" }, "Cloth": { "ramp": "cloth" }, "String": { "ramp": "glass", "spacing": 0.025 },
+                     "Wire": { "ramp": "wood", "spacing": 0.025 }, "Label": { "ramp": "wood" } } }
+  ]
+}

@@ -1,0 +1,32 @@
+# Fisher, phase 2: materials (Pollen8, sRGB 0..1 of the ramp steps), beard, nose and eyes on the
+# front of the head; flat shading, export.
+material new Coat --base-color 1.000 0.878 0.494 --no-slot
+material new Skin --base-color 1.000 0.655 0.647 --no-slot
+material new Beard --base-color 1.000 0.906 0.839 --no-slot
+material new Boot --base-color 0.671 0.337 0.459 --no-slot
+material new Bucket --base-color 0.204 0.675 0.729 --no-slot
+material new Rim --base-color 0.447 0.863 0.733 --no-slot
+material new Eye --base-color 0.451 0.275 0.298 --no-slot
+select Body ThighR ThighL ArmR ArmL Crown Brim
+material assign Coat
+select HandR HandL Head
+material assign Skin
+select BootR BootL FootR FootL
+material assign Boot
+select Bucket
+material assign Bucket
+select Rim
+material assign Rim
+add mesh ico-sphere --name Beard --subdivisions 1 --radius 0.19 --location 0 -0.16 0.85
+scale 1.05 0.7 0.85
+apply --scale
+material assign Beard
+add mesh ico-sphere --name Nose --subdivisions 1 --radius 0.085 --location 0 -0.27 0.95
+material assign Skin
+add mesh cube --name EyeR --size 0.06 --location -0.08 -0.24 1.02
+material assign Eye
+add mesh cube --name EyeL --size 0.06 --location 0.08 -0.24 1.02
+material assign Eye
+select all
+shade flat
+export fisher.glb

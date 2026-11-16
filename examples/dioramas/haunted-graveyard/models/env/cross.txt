@@ -1,0 +1,22 @@
+# Grave cross: a 0.22 square shaft 1.15 tall, a 0.7 arm, on a low base; leaning 10 degrees to its right. Up Z, front -Y.
+new
+add mesh cube --name Base --size 1 --location 0 0 0.08
+scale 0.5 0.4 0.16
+apply --scale
+add mesh cube --name Shaft --size 1 --location 0 0 0.72
+scale 0.22 0.22 1.15
+apply --scale
+add mesh cube --name Arm --size 1 --location 0 0 0.95
+scale 0.72 0.22 0.22
+apply --scale
+material new Stone --base-color 0.776 0.718 0.745
+select Base Shaft Arm
+material assign Stone
+active Base
+join
+cursor set 0 0 0
+origin set --to cursor
+set rotation 0 10 0
+apply --rotation
+shade flat
+export cross.glb

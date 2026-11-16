@@ -1,0 +1,404 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.09,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "objects": [
+  {
+   "model": "models/env/plaza.glb",
+   "materials": {
+    "Tiles": {
+     "ramp": "pink"
+    },
+    "Kerb": {
+     "ramp": "stone"
+    },
+    "Grass": {
+     "ramp": "green"
+    },
+    "Earth": {
+     "ramp": "wood"
+    }
+   }
+  },
+  {
+   "model": "models/carousel/carousel.glb",
+   "position": [
+    0,
+    0,
+    -0.4
+   ],
+   "yaw": 0,
+   "fps": 12,
+   "materials": {
+    "Blue": {
+     "ramp": "blue"
+    },
+    "Orange": {
+     "ramp": "gold"
+    },
+    "Pink": {
+     "ramp": "pink"
+    },
+    "Yellow": {
+     "ramp": "gold",
+     "spacing": 0.06
+    },
+    "Red": {
+     "ramp": "red"
+    },
+    "Cream": {
+     "ramp": "cream"
+    },
+    "Mane": {
+     "ramp": "red",
+     "spacing": 0.06
+    },
+    "Flag": {
+     "ramp": "green",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/tent.glb",
+   "position": [
+    -3.39,
+    0,
+    0.3
+   ],
+   "yaw": -30,
+   "materials": {
+    "Cream": {
+     "ramp": "cream"
+    },
+    "Blue": {
+     "ramp": "blue"
+    },
+    "Door": {
+     "ramp": "red"
+    },
+    "Red": {
+     "ramp": "red"
+    },
+    "Yellow": {
+     "ramp": "gold",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/stall.glb",
+   "position": [
+    2.86,
+    0,
+    -1.65
+   ],
+   "yaw": 40,
+   "materials": {
+    "Pink": {
+     "ramp": "pink"
+    },
+    "Cream": {
+     "ramp": "cream"
+    },
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "Awning": {
+     "ramp": "red"
+    },
+    "Gold": {
+     "ramp": "gold"
+    },
+    "Red": {
+     "ramp": "red"
+    },
+    "Green": {
+     "ramp": "green"
+    },
+    "Blue": {
+     "ramp": "blue"
+    },
+    "Stick": {
+     "ramp": "cream",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/balloons.glb",
+   "position": [
+    -1.27,
+    0,
+    3.15
+   ],
+   "yaw": 20,
+   "fps": 12,
+   "materials": {
+    "Post": {
+     "ramp": "stone",
+     "spacing": 0.07
+    },
+    "String": {
+     "ramp": "cream",
+     "spacing": 0.05
+    },
+    "Red": {
+     "ramp": "red"
+    },
+    "Blue": {
+     "ramp": "blue"
+    },
+    "Yellow": {
+     "ramp": "gold"
+    }
+   }
+  },
+  {
+   "model": "models/env/balloons.glb",
+   "position": [
+    1.2,
+    0,
+    -3.29
+   ],
+   "yaw": -40,
+   "fps": 12,
+   "phase": 1.3,
+   "materials": {
+    "Post": {
+     "ramp": "stone",
+     "spacing": 0.07
+    },
+    "String": {
+     "ramp": "cream",
+     "spacing": 0.05
+    },
+    "Red": {
+     "ramp": "red"
+    },
+    "Blue": {
+     "ramp": "blue"
+    },
+    "Yellow": {
+     "ramp": "gold"
+    }
+   }
+  },
+  {
+   "model": "models/env/lamp.glb",
+   "position": [
+    4.13,
+    0,
+    1.5
+   ],
+   "yaw": 70,
+   "materials": {
+    "Iron": {
+     "ramp": "stone",
+     "spacing": 0.07
+    },
+    "Bulb": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/lamp.glb",
+   "position": [
+    -3.37,
+    0,
+    2.83
+   ],
+   "yaw": -50,
+   "materials": {
+    "Iron": {
+     "ramp": "stone",
+     "spacing": 0.07
+    },
+    "Bulb": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/lamp.glb",
+   "position": [
+    -1.5,
+    0,
+    -4.13
+   ],
+   "yaw": 200,
+   "materials": {
+    "Iron": {
+     "ramp": "stone",
+     "spacing": 0.07
+    },
+    "Bulb": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    5.26,
+    -0.2,
+    1.92
+   ],
+   "yaw": 140,
+   "scale": 0.85,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    1.45,
+    -0.2,
+    5.41
+   ],
+   "yaw": 165,
+   "scale": 0.97,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -1.92,
+    -0.2,
+    5.26
+   ],
+   "yaw": 50,
+   "scale": 0.9,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -5.41,
+    -0.2,
+    1.45
+   ],
+   "yaw": 75,
+   "scale": 0.99,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -5.26,
+    -0.2,
+    -1.92
+   ],
+   "yaw": 320,
+   "scale": 1.0,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -1.92,
+    -0.2,
+    -5.26
+   ],
+   "yaw": 310,
+   "scale": 0.78,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    1.92,
+    -0.2,
+    -5.26
+   ],
+   "yaw": 230,
+   "scale": 0.76,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    5.26,
+    -0.2,
+    -1.92
+   ],
+   "yaw": 220,
+   "scale": 1.08,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Leaves": {
+     "ramp": "green"
+    }
+   }
+  }
+ ]
+}

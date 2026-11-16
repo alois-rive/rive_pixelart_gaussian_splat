@@ -1,0 +1,32 @@
+# Pagoda storey, phase 1: one primitive per named part (metres). Up Z, front -Y, origin on the
+# ground at the centre. Scale from the sheet: the eave 2.0 m = 568 px in the front panel (284 px/m).
+new
+# red lacquer walls 1.5 m square between the posts, 0.45 m tall, then the gold band to 0.535
+add mesh cube --name Walls --size 1 --location 0 0 0.225
+scale 1.5 1.5 0.45
+apply --scale
+add mesh cube --name Band --size 1 --location 0 0 0.4925
+scale 1.5 1.5 0.085
+apply --scale
+# four dark corner posts, 0.16 m square, proud of the walls
+add mesh cube --name Post0 --size 1 --location -0.72 -0.72 0.2675
+scale 0.16 0.16 0.535
+apply --scale
+add mesh cube --name Post1 --size 1 --location 0.72 -0.72 0.2675
+scale 0.16 0.16 0.535
+apply --scale
+add mesh cube --name Post2 --size 1 --location 0.72 0.72 0.2675
+scale 0.16 0.16 0.535
+apply --scale
+add mesh cube --name Post3 --size 1 --location -0.72 0.72 0.2675
+scale 0.16 0.16 0.535
+apply --scale
+# the eave: a dark fascia 2.0 m square under a tiled frustum roof up to a 1.3 m deck
+add mesh cube --name Fascia --size 1 --location 0 0 0.5775
+scale 2.0 2.0 0.085
+apply --scale
+add mesh cone --name Roof --vertices 4 --radius1 1.414 --radius2 0.919 --depth 0.18 --cap-fill none --location 0 0 0.71 --rotation 0 0 45
+apply --rotation
+add mesh cube --name Deck --size 1 --location 0 0 0.83
+scale 1.3 1.3 0.06
+apply --scale

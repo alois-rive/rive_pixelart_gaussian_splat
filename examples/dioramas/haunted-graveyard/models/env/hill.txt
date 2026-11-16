@@ -1,0 +1,25 @@
+# Graveyard hilltop: a 12-sided slab (r 5.5) with a flat top at z 0 (a pale path and dark patches painted in a
+# 24 px texture), a ragged rim, and a rocky underside tapering below. Up Z.
+new
+add mesh cylinder --name Top --vertices 12 --radius 5.5 --depth 0.6 --location 0 0 -0.3
+material new Ground --base-color 1 1 1
+material new Rock --base-color 0.337 0.353 0.459 --no-slot
+material slot add
+active Top
+mode edit
+select face where "normal.z < 0.9"
+material assign Rock
+select face where "normal.z > 0.9"
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Ground base-color textures/ground.png
+add mesh cone --name Under --vertices 12 --radius1 0.9 --radius2 5.4 --depth 2.6 --location 0 0 -1.9
+material assign Rock
+active Under
+mode edit
+select vert where "pos.z < -0.5"
+randomize --amount 0.4 --seed 11
+mode object
+select all
+shade flat
+export hill.glb

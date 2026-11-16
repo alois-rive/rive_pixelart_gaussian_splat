@@ -1,0 +1,17 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/camel.bin",
+  "objects": [
+    { "model": "camel.glb", "fps": 10, "loop": 1.2,
+      "materials": {
+        "Fur":         { "ramp": "fur" },
+        "Hoof":        { "ramp": "fur", "spacing": 0.06 },
+        "Muzzle":      { "ramp": "fur" },
+        "BlanketSide": { "ramp": "stone" },
+        "BlanketTop":  { "ramp": "stone" },
+        "Stripe":      { "ramp": "cloth" } } }
+  ]
+}

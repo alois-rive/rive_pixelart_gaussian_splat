@@ -1,0 +1,12 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "crypt",
+  "views": "front,right,back,top,iso",
+  "size": 320,
+  "pixel": 2,
+  "arg": [],
+  "look": "lit",
+  "texel": 0,
+  "elevation": 0
+}

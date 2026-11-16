@@ -1,0 +1,424 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.1,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "objects": [
+  {
+   "model": "models/env/sea.glb",
+   "materials": {
+    "SeaTop": {
+     "ramp": "sea",
+     "flags": [
+      "sway"
+     ]
+    },
+    "SeaSide": {
+     "ramp": "navy"
+    }
+   }
+  },
+  {
+   "model": "models/env/quay.glb",
+   "materials": {
+    "Grass": {},
+    "Quay": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/pier.glb",
+   "materials": {
+    "Planks": {
+     "ramp": "deck"
+    },
+    "Post": {
+     "ramp": "deck"
+    }
+   }
+  },
+  {
+   "model": "models/env/islet.glb",
+   "materials": {
+    "Rock": {
+     "ramp": "rock"
+    },
+    "Grass": {
+     "ramp": "grass"
+    }
+   }
+  },
+  {
+   "model": "models/env/lighthouse.glb",
+   "position": [
+    -3.0,
+    0.55,
+    2.2
+   ],
+   "yaw": 30,
+   "materials": {
+    "White": {
+     "ramp": "white"
+    },
+    "Red": {
+     "ramp": "hull"
+    },
+    "Door": {
+     "ramp": "rock",
+     "spacing": 0.05
+    },
+    "Trim": {
+     "ramp": "navy"
+    },
+    "Lamp": {
+     "ramp": "lamp",
+     "flags": [
+      "unlit"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/boat/boat.glb",
+   "position": [
+    2.8,
+    0,
+    0.4
+   ],
+   "yaw": 112,
+   "fps": 12,
+   "loop": 4.0,
+   "materials": {
+    "HullRed": {
+     "ramp": "hull"
+    },
+    "HullOrange": {
+     "ramp": "hull"
+    },
+    "Rail": {
+     "ramp": "navy"
+    },
+    "Deck": {
+     "ramp": "deck"
+    },
+    "CabinWhite": {
+     "ramp": "white"
+    },
+    "CabinTrim": {
+     "ramp": "white"
+    },
+    "Roof": {
+     "ramp": "navy"
+    },
+    "Window": {
+     "ramp": "navy"
+    },
+    "Mast": {
+     "ramp": "rock",
+     "spacing": 0.06
+    },
+    "Flag": {
+     "ramp": "grass",
+     "spacing": 0.06,
+     "flags": [
+      "double"
+     ]
+    },
+    "Crate": {
+     "ramp": "hull"
+    },
+    "CrateRed": {
+     "ramp": "deck"
+    },
+    "Rope": {
+     "ramp": "deck"
+    }
+   }
+  },
+  {
+   "model": "models/gull/gull.glb",
+   "position": [
+    0.6,
+    2.5,
+    0.8
+   ],
+   "yaw": 0,
+   "fps": 12,
+   "loop": 8.0,
+   "phase": 0.0,
+   "materials": {
+    "GullWhite": {
+     "ramp": "white",
+     "spacing": 0.06
+    },
+    "WingTip": {
+     "ramp": "rock",
+     "spacing": 0.06
+    },
+    "Beak": {
+     "ramp": "hull",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/gull/gull.glb",
+   "position": [
+    -0.3,
+    3.0,
+    0.6
+   ],
+   "yaw": 130,
+   "scale": 0.8,
+   "fps": 12,
+   "loop": 8.0,
+   "phase": 2.7,
+   "materials": {
+    "GullWhite": {
+     "ramp": "white",
+     "spacing": 0.06
+    },
+    "WingTip": {
+     "ramp": "rock",
+     "spacing": 0.06
+    },
+    "Beak": {
+     "ramp": "hull",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/gull/gull.glb",
+   "position": [
+    1.6,
+    2.2,
+    1.6
+   ],
+   "yaw": 250,
+   "scale": 0.9,
+   "fps": 12,
+   "loop": 8.0,
+   "phase": 5.3,
+   "materials": {
+    "GullWhite": {
+     "ramp": "white",
+     "spacing": 0.06
+    },
+    "WingTip": {
+     "ramp": "rock",
+     "spacing": 0.06
+    },
+    "Beak": {
+     "ramp": "hull",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    4.0,
+    0,
+    2.8
+   ],
+   "yaw": 30,
+   "scale": 1.2,
+   "materials": {
+    "Rock": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -1.8,
+    0,
+    -2.0
+   ],
+   "yaw": 80,
+   "scale": 0.9,
+   "materials": {
+    "Rock": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    3.7,
+    0,
+    -2.0
+   ],
+   "yaw": 150,
+   "scale": 1.0,
+   "materials": {
+    "Rock": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    -1.9,
+    0,
+    1.5
+   ],
+   "yaw": 200,
+   "scale": 0.7,
+   "materials": {
+    "Rock": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/rock.glb",
+   "position": [
+    4.5,
+    0,
+    1.7
+   ],
+   "yaw": 260,
+   "scale": 0.6,
+   "materials": {
+    "Rock": {
+     "ramp": "rock"
+    }
+   }
+  },
+  {
+   "model": "models/env/crate.glb",
+   "position": [
+    0.0,
+    0.5,
+    0.7
+   ],
+   "yaw": 10,
+   "scale": 1.0,
+   "materials": {
+    "Crate": {
+     "ramp": "hull"
+    }
+   }
+  },
+  {
+   "model": "models/env/crate.glb",
+   "position": [
+    0.0,
+    1.0,
+    0.7
+   ],
+   "yaw": 35,
+   "scale": 0.8,
+   "materials": {
+    "Crate": {
+     "ramp": "hull"
+    }
+   }
+  },
+  {
+   "model": "models/env/crate.glb",
+   "position": [
+    -2.1,
+    0.6,
+    -3.2
+   ],
+   "yaw": 20,
+   "scale": 1.0,
+   "materials": {
+    "Crate": {
+     "ramp": "hull"
+    }
+   }
+  },
+  {
+   "model": "models/env/crate.glb",
+   "position": [
+    3.4,
+    0.6,
+    -3.4
+   ],
+   "yaw": -15,
+   "scale": 1.0,
+   "materials": {
+    "Crate": {
+     "ramp": "hull"
+    }
+   }
+  },
+  {
+   "model": "models/env/barrel.glb",
+   "position": [
+    0.65,
+    0.5,
+    1.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Barrel": {
+     "ramp": "hull"
+    },
+    "Lid": {
+     "ramp": "deck"
+    }
+   }
+  },
+  {
+   "model": "models/env/barrel.glb",
+   "position": [
+    0.68,
+    0.5,
+    0.45
+   ],
+   "yaw": 20,
+   "materials": {
+    "Barrel": {
+     "ramp": "hull"
+    },
+    "Lid": {
+     "ramp": "deck"
+    }
+   }
+  },
+  {
+   "model": "models/env/barrel.glb",
+   "position": [
+    -1.4,
+    0.6,
+    -3.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Barrel": {
+     "ramp": "hull"
+    },
+    "Lid": {
+     "ramp": "deck"
+    }
+   }
+  },
+  {
+   "model": "models/env/barrel.glb",
+   "position": [
+    2.8,
+    0.6,
+    -3.3
+   ],
+   "yaw": 40,
+   "materials": {
+    "Barrel": {
+     "ramp": "hull"
+    },
+    "Lid": {
+     "ramp": "deck"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.05,
+  "fat": 1.0,
+  "out": "../../lookdev/ball.bin",
+  "objects": [
+    { "model": "ball.glb",
+      "materials": { "Red": { "ramp": "red" }, "Blue": { "ramp": "blue" }, "Yellow": { "ramp": "yellow" },
+                     "White": { "ramp": "white" }, "Cap": { "ramp": "white", "spacing": 0.025 }, "Green": { "ramp": "green" } } }
+  ]
+}

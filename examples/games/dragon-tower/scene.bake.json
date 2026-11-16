@@ -1,0 +1,388 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.08,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -8,
+   -4.6,
+   -5
+  ],
+  [
+   8,
+   4,
+   5
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/ground.glb",
+   "position": [
+    0,
+    -4.4,
+    0
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "scale",
+     "spacing": 0.11
+    },
+    "Path": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/env/hills.glb",
+   "position": [
+    0,
+    -5.9,
+    -16
+   ],
+   "scale": 1.15,
+   "materials": {
+    "Hill": {
+     "ramp": "scale",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/tower.glb",
+   "position": [
+    0,
+    -4.4,
+    0
+   ],
+   "materials": {
+    "Stone": {
+     "ramp": "stone"
+    },
+    "Dark": {
+     "ramp": "stone"
+    }
+   }
+  },
+  {
+   "model": "models/env/ladder.glb",
+   "position": [
+    -1.025,
+    -4.4,
+    1.025
+   ],
+   "yaw": -45,
+   "materials": {
+    "Wood": {
+     "ramp": "stone",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/ladder.glb",
+   "position": [
+    0.0,
+    -4.4,
+    1.45
+   ],
+   "yaw": 0,
+   "materials": {
+    "Wood": {
+     "ramp": "stone",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/ladder.glb",
+   "position": [
+    1.025,
+    -4.4,
+    1.025
+   ],
+   "yaw": 45,
+   "materials": {
+    "Wood": {
+     "ramp": "stone",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -5.6,
+    -4.4,
+    -1.2
+   ],
+   "yaw": 20,
+   "scale": 1.0,
+   "materials": {
+    "Bark": {
+     "ramp": "armor",
+     "step": 1
+    },
+    "Bloom": {
+     "ramp": "blush"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -3.7,
+    -4.4,
+    -3.6
+   ],
+   "yaw": 70,
+   "scale": 0.8,
+   "materials": {
+    "Bark": {
+     "ramp": "armor",
+     "step": 1
+    },
+    "Bloom": {
+     "ramp": "blush"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    4.9,
+    -4.4,
+    -2.2
+   ],
+   "yaw": 140,
+   "scale": 1.05,
+   "materials": {
+    "Bark": {
+     "ramp": "armor",
+     "step": 1
+    },
+    "Bloom": {
+     "ramp": "blush"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    6.4,
+    -4.4,
+    0.8
+   ],
+   "yaw": 200,
+   "scale": 0.85,
+   "materials": {
+    "Bark": {
+     "ramp": "armor",
+     "step": 1
+    },
+    "Bloom": {
+     "ramp": "blush"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    3.4,
+    -4.4,
+    -4.6
+   ],
+   "yaw": 300,
+   "scale": 0.7,
+   "materials": {
+    "Bark": {
+     "ramp": "armor",
+     "step": 1
+    },
+    "Bloom": {
+     "ramp": "blush"
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -6.8,
+    -4.4,
+    2.2
+   ],
+   "yaw": 250,
+   "scale": 0.75,
+   "materials": {
+    "Bark": {
+     "ramp": "armor",
+     "step": 1
+    },
+    "Bloom": {
+     "ramp": "blush"
+    }
+   }
+  },
+  {
+   "model": "models/dragon/dragon_body.glb",
+   "position": [
+    0,
+    0.3,
+    0
+   ],
+   "bone": "dragon",
+   "materials": {
+    "Scale": {
+     "ramp": "scale"
+    },
+    "Blush": {
+     "ramp": "wing"
+    },
+    "Horn": {
+     "ramp": "stone",
+     "spacing": 0.05,
+     "specks": true
+    },
+    "Eye": {
+     "ramp": "stone",
+     "spacing": 0.05,
+     "specks": true
+    }
+   },
+   "scale": 1.2
+  },
+  {
+   "model": "models/dragon/dragon_head.glb",
+   "position": [
+    0,
+    1.86,
+    0.06
+   ],
+   "bone": "head",
+   "materials": {
+    "Scale": {
+     "ramp": "scale"
+    },
+    "Blush": {
+     "ramp": "blush"
+    },
+    "Horn": {
+     "ramp": "stone",
+     "spacing": 0.05,
+     "specks": true
+    },
+    "Eye": {
+     "ramp": "stone",
+     "spacing": 0.05,
+     "specks": true
+    }
+   },
+   "scale": 1.2
+  },
+  {
+   "model": "models/env/knight.glb",
+   "position": [
+    0,
+    -4.4,
+    5
+   ],
+   "bone": "knight",
+   "copies": 9,
+   "materials": {
+    "Steel": {
+     "ramp": "armor",
+     "step": 1,
+     "spacing": 0.05
+    },
+    "Tunic": {
+     "ramp": "scale",
+     "spacing": 0.05
+    },
+    "Shield": {
+     "ramp": "blush",
+     "spacing": 0.05
+    },
+    "Boss": {
+     "ramp": "stone",
+     "spacing": 0.05,
+     "specks": true
+    },
+    "Plume": {
+     "ramp": "blush",
+     "spacing": 0.05,
+     "specks": true
+    }
+   },
+   "scale": 1.25
+  },
+  {
+   "model": "models/env/fireball.glb",
+   "position": [
+    0,
+    2.5,
+    1
+   ],
+   "bone": "fire",
+   "copies": 16,
+   "materials": {
+    "Core": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.06
+    },
+    "Flame": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.06,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/poof.glb",
+   "position": [
+    0,
+    2.5,
+    1
+   ],
+   "bone": "poof",
+   "copies": 6,
+   "materials": {
+    "Puff": {
+     "ramp": "cloud",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/cloud.glb",
+   "position": [
+    -5,
+    3,
+    -7
+   ],
+   "bone": "cloud",
+   "copies": 3,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "flags": [
+      "unlit",
+      "nocast"
+     ]
+    }
+   }
+  }
+ ]
+}

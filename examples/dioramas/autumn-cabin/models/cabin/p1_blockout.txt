@@ -1,0 +1,57 @@
+# Cabin, phase 1: blockout of every named part at the spec's sizes. Up Z, facing -Y.
+# Ridge along X (parallel to the front wall); chimney outside the right (+X) gable.
+new
+add mesh cube --name Footing --size 1 --location 0 0 0.1
+scale 3.1 2.44 0.2
+apply --scale
+add mesh cube --name Walls --size 1 --location 0 0 0.825
+scale 3.0 2.34 1.25
+apply --scale
+# the attic: a box whose top face is squeezed to the ridge line (y 0): gables on the left and right
+add mesh cube --name Attic --size 1 --location 0 0 2.0
+scale 3.0 2.34 1.1
+apply --scale
+active Attic
+mode edit
+select vert where "pos.z > 0"
+scale 1 0 1
+merge --by-distance 0.001
+mode object
+# roof slabs: 3.5 long at the eave, 2.95 at the ridge (the sheet's trapezoid), 1.75 down the slope,
+# scaled and shaped first, then placed and tilted 41.2 degrees about X
+add mesh cube --name RoofF --size 1 --location 0 0 0
+scale 3.5 1.75 0.14
+apply --scale
+mode edit
+select vert where "pos.y > 0"
+scale 0.843 1 1
+mode object
+set location 0 -0.62 2.1
+set rotation 41.2 0 0
+add mesh cube --name RoofB --size 1 --location 0 0 0
+scale 3.5 1.75 0.14
+apply --scale
+mode edit
+select vert where "pos.y < 0"
+scale 0.843 1 1
+mode object
+set location 0 0.62 2.1
+set rotation -41.2 0 0
+add mesh cube --name Door --size 1 --location 0 -1.2 0.76
+scale 0.66 0.1 1.12
+apply --scale
+add mesh cube --name WinL --size 1 --location -0.82 -1.2 1.0
+scale 0.48 0.1 0.48
+apply --scale
+add mesh cube --name WinR --size 1 --location 0.82 -1.2 1.0
+scale 0.48 0.1 0.48
+apply --scale
+add mesh cube --name WinB --size 1 --location 0 1.2 1.0
+scale 0.48 0.1 0.48
+apply --scale
+add mesh cube --name Chimney --size 1 --location 1.6 0 1.42
+scale 0.52 0.54 2.84
+apply --scale
+add mesh cube --name ChimneyCap --size 1 --location 1.6 0 2.8
+scale 0.62 0.64 0.14
+apply --scale

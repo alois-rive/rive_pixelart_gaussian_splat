@@ -1,0 +1,13 @@
+# A rock: jittered icosphere 1.0 x 0.8 x 0.7, half in the water when placed at y 0. Rock ramp (876672).
+new
+add mesh ico-sphere --name Rock --subdivisions 1 --radius 0.5 --location 0 0 0.1
+scale 1.0 0.8 0.7
+apply
+active Rock
+mode edit
+select all
+randomize --amount 0.08 --seed 9
+mode object
+material new Rock --base-color 0.529 0.400 0.447
+shade flat
+export rock.glb

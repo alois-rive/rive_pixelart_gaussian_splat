@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/dioramas/autumn-cabin/art/cabin/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        113,
+        35,
+        541,
+        451
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8336,
+      "fill": 0.8573,
+      "background": "#d2d1d1"
+    },
+    "right": {
+      "box": [
+        947,
+        35,
+        430,
+        453
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0535,
+      "fill": 0.6733,
+      "background": "#d2d2d1"
+    },
+    "back": {
+      "box": [
+        117,
+        547,
+        547,
+        449
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8208,
+      "fill": 0.859,
+      "background": "#d2d2d2"
+    },
+    "top": {
+      "box": [
+        890,
+        578,
+        533,
+        374
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7017,
+      "fill": 0.9475,
+      "background": "#d2d2d2"
+    }
+  }
+}

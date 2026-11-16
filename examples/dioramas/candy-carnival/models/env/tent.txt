@@ -1,0 +1,34 @@
+# Striped fair tent: an 8-sided wall (r 1.2, 1.3 tall) in blue and cream stripes, a red and cream cone roof,
+# a dark doorway on the front face, a yellow pennant on top. Up Z, front -Y.
+new
+add mesh cylinder --name Wall --vertices 8 --radius 1.2 --depth 1.3 --location 0 0 0.65 --rotation 0 0 22.5
+apply --rotation
+material new Cream --base-color 1 0.945 0.910
+material new Blue --base-color 0.161 0.678 1 --no-slot
+material new Door --base-color 0.494 0.145 0.325 --no-slot
+active Wall
+mode edit
+select face where "abs(normal.z) < 0.5 && index % 2 == 1"
+material assign Blue
+select face where "normal.y < -0.9"
+material assign Door
+mode object
+add mesh cone --name Roof --vertices 8 --radius1 1.45 --radius2 0 --depth 1.1 --location 0 0 1.85 --rotation 0 0 22.5
+apply --rotation
+material new Red --base-color 1 0 0.302 --no-slot
+material assign Cream
+active Roof
+mode edit
+select face where "normal.z > -0.5 && index % 2 == 0"
+material assign Red
+mode object
+add mesh cylinder --name Pole --vertices 6 --radius 0.04 --depth 0.4 --location 0 0 2.55
+material new Yellow --base-color 1 0.925 0.153 --no-slot
+material assign Yellow
+add mesh cube --name Pennant --size 1 --location 0.15 0 2.66
+scale 0.28 0.05 0.16
+apply --scale
+material assign Yellow
+select all
+shade flat
+export tent.glb

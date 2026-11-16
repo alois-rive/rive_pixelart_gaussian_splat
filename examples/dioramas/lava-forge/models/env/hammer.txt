@@ -1,0 +1,120 @@
+# Trip-hammer: two posts and an axle, a beam pivoting on it with a heavy iron head at its end and a
+# counterweight at its tail. Rigid: beam, head and counterweight are one object (one bone) whose origin
+# is the axle. Rest pose (frame 0) = the head down on the anvil. The beam lifts 30 degrees and drops
+# in a 1.5 s loop (18 frames at 12 fps): slow lift, a pause, a two-frame drop. Up Z, the beam along +X.
+# A hot bar (unlit) lies on the anvil under the head, and a burst of sparks (unlit, its own bone) flies
+# off it for four frames round each strike (16, 17, 0, 1), hidden inside the anvil the rest of the loop.
+# Placed in the scene with the axle 1.6 m from the anvil, back-left of it (yaw -22.4), so the beam
+# passes above the furnace mouth (z 1.37): the head lands on the anvil face (z 0.84).
+new
+fps 12
+frame range 0 18
+material new Wood --base-color 0.290 0.141 0.502 --no-slot
+material new Iron --base-color 0.020 0.122 0.224 --no-slot
+material new Hot --base-color 1.0 0.557 0.502 --emission 1.0 0.557 0.502 --no-slot
+add mesh cube --name PostF --size 1 --location 0 -0.24 0.83
+scale 0.18 0.14 1.66
+apply --scale
+material assign Wood
+add mesh cube --name PostB --size 1 --location 0 0.24 0.83
+scale 0.18 0.14 1.66
+apply --scale
+material assign Wood
+add mesh cube --name Base --size 1 --location 0 0 0.08
+scale 0.5 0.75 0.16
+apply --scale
+material assign Iron
+select PostF PostB Base
+active Base
+join
+rename Base Frame
+# the beam: axle at (0, 0, 1.52), the head's centre 1.6 m out, 0.6 tall, its face 0.68 below the axle
+add mesh cube --name Beam --size 1 --location 0.62 0 1.52
+scale 2.25 0.16 0.16
+apply --scale
+material assign Wood
+add mesh cube --name Head --size 1 --location 1.6 0 1.14
+scale 0.36 0.32 0.6
+apply --scale
+material assign Iron
+add mesh cube --name Weight --size 1 --location -0.38 0 1.52
+scale 0.24 0.26 0.3
+apply --scale
+material assign Iron
+add mesh cylinder --name Axle --vertices 6 --radius 0.08 --depth 0.62 --location 0 0 1.52 --rotation 90 0 0
+apply --rotation
+material assign Iron
+select Beam Head Weight Axle
+active Beam
+join
+rename Beam Arm
+cursor set 0 0 1.52
+origin set --to cursor
+# the hot bar on the anvil face (z 0.84), across the head's footprint, and the sparks: eight small
+# cubes around the strike point (1.6, 0, 0.9), their origin there; frame 0 (sampled) is the full burst
+add mesh cube --name Bar --size 1 --location 1.6 0 0.87
+scale 0.62 0.14 0.07
+apply --scale
+material assign Hot
+add mesh cube --name S0 --size 0.09 --location 2.005 -0.056 1.081
+add mesh cube --name S1 --size 0.09 --location 1.884 0.317 0.990
+add mesh cube --name S2 --size 0.09 --location 1.718 0.452 1.048
+add mesh cube --name S3 --size 0.09 --location 1.299 0.398 1.111
+add mesh cube --name S4 --size 0.09 --location 1.211 -0.069 1.162
+add mesh cube --name S5 --size 0.09 --location 1.248 -0.242 1.230
+add mesh cube --name S6 --size 0.09 --location 1.605 -0.448 1.171
+add mesh cube --name S7 --size 0.09 --location 1.839 -0.383 1.147
+select S0 S1 S2 S3 S4 S5 S6 S7
+active S0
+join
+rename S0 Sparks
+material assign Hot
+cursor set 1.6 0 0.9
+origin set --to cursor
+select Sparks
+frame set 0
+set location 1.6 0 0.9
+set scale 1 1 1
+keyframe insert --channels loc,scale
+frame set 1
+set location 1.6 0 0.84
+set scale 1.35 1.35 1.1
+keyframe insert --channels loc,scale
+frame set 2
+set location 1.6 0 0.74
+set scale 0.05 0.05 0.05
+keyframe insert --channels loc,scale
+frame set 16
+set location 1.6 0 0.88
+set scale 0.55 0.55 0.6
+keyframe insert --channels loc,scale
+frame set 17
+set location 1.6 0 0.9
+set scale 0.8 0.8 0.85
+keyframe insert --channels loc,scale
+frame set 18
+set location 1.6 0 0.9
+set scale 1 1 1
+keyframe insert --channels loc,scale
+keyframe interpolation constant --all
+select Arm
+frame set 0
+set rotation 0 0 0
+keyframe insert --channels rot
+frame set 9
+set rotation 0 -30 0
+keyframe insert --channels rot
+frame set 14
+set rotation 0 -30 0
+keyframe insert --channels rot
+frame set 16
+set rotation 0 0 0
+keyframe insert --channels rot
+frame set 18
+set rotation 0 0 0
+keyframe insert --channels rot
+keyframe interpolation linear --all
+frame set 0
+select all
+shade flat
+export hammer.glb --bake-animations

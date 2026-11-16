@@ -1,0 +1,43 @@
+# A small jetty: a 0.9 m wide plank deck 3 m long running from the far bank into the river, on
+# six posts, with a glowing lamp post at its end. Up Z, along world +z.
+new
+material new Wood --base-color 0.2745 0.0549 0.1686 --no-slot
+material new Post --base-color 0.1922 0.0196 0.1176 --no-slot
+material new Lamp --base-color 1.0000 0.5098 0.4549 --emission 1.0000 0.5098 0.4549 --no-slot
+add mesh cube --name Deck --size 1 --location 0.000 -1.500 0.450
+scale 0.900 3.000 0.100
+apply --scale
+material assign Wood
+add mesh cube --name P00 --size 1 --location -0.380 -0.300 0.200
+scale 0.120 0.120 0.650
+apply --scale
+material assign Post
+add mesh cube --name P02 --size 1 --location 0.380 -0.300 0.200
+scale 0.120 0.120 0.650
+apply --scale
+material assign Post
+add mesh cube --name P10 --size 1 --location -0.380 -1.500 0.200
+scale 0.120 0.120 0.650
+apply --scale
+material assign Post
+add mesh cube --name P12 --size 1 --location 0.380 -1.500 0.200
+scale 0.120 0.120 0.650
+apply --scale
+material assign Post
+add mesh cube --name P20 --size 1 --location -0.380 -2.800 0.200
+scale 0.120 0.120 0.650
+apply --scale
+material assign Post
+add mesh cube --name P22 --size 1 --location 0.380 -2.800 0.200
+scale 0.120 0.120 0.650
+apply --scale
+material assign Post
+add mesh cube --name LampPost --size 1 --location 0.380 -2.900 0.950
+scale 0.100 0.100 1.000
+apply --scale
+material assign Post
+add mesh ico-sphere --name Lamp --subdivisions 1 --radius 0.13 --location 0.38 -2.9 1.5
+material assign Lamp
+select all
+shade flat
+export jetty.glb

@@ -1,0 +1,59 @@
+# Crystal cluster: five glowing six-sided crystals leaning out of a rock (1.1 m across, 1.0 m tall). Static.
+new
+material new Rock --base-color 0.259 0.431 0.365 --no-slot
+material new Crystal --base-color 0.984 0.969 0.953 --emission 0.984 0.969 0.953 --no-slot
+material new CrystalTan --base-color 0.898 0.690 0.514 --emission 0.898 0.690 0.514 --no-slot
+add mesh ico-sphere --name Base --subdivisions 1 --radius 0.45 --location 0 0 0.1
+scale 1.2 1 0.6
+apply --scale
+mode edit
+select all
+randomize --amount 0.05 --seed 2
+mode object
+material assign Rock
+add mesh uv-sphere --name C0 --segments 6 --rings 3 --radius 0.13 --location 0 0 0
+scale 1 1 2.885
+apply --scale
+set rotation 0 0 0
+apply --rotation
+set location 0 0 0.500
+material assign Crystal
+add mesh uv-sphere --name C1 --segments 6 --rings 3 --radius 0.13 --location 0 0 0
+scale 1 1 2.115
+apply --scale
+set rotation 20 25 0
+apply --rotation
+set location 0.3 0.1 0.420
+material assign CrystalTan
+add mesh uv-sphere --name C2 --segments 6 --rings 3 --radius 0.13 --location 0 0 0
+scale 1 1 2.308
+apply --scale
+set rotation 10 -28 0
+apply --rotation
+set location -0.32 0.05 0.440
+material assign Crystal
+add mesh uv-sphere --name C3 --segments 6 --rings 3 --radius 0.13 --location 0 0 0
+scale 1 1 1.731
+apply --scale
+set rotation -30 10 0
+apply --rotation
+set location 0.1 -0.25 0.380
+material assign CrystalTan
+add mesh uv-sphere --name C4 --segments 6 --rings 3 --radius 0.13 --location 0 0 0
+scale 1 1 1.923
+apply --scale
+set rotation 28 -10 0
+apply --rotation
+set location -0.12 0.28 0.400
+material assign Crystal
+select C0 C2 C4
+active C0
+join
+rename C0 Crystals
+select C1 C3
+active C1
+join
+rename C1 CrystalsTan
+select all
+shade flat
+export crystals.glb

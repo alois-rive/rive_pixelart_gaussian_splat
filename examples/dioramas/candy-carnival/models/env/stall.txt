@@ -1,0 +1,65 @@
+# Candy stall: a pink counter, four posts, a red and cream striped awning sloping to the front, a candy-floss cloud
+# and three lollipops on the counter, a gold sign board on top. Up Z, front -Y.
+new
+add mesh cube --name Counter --size 1 --location 0 0 0.5
+scale 1.8 0.8 1.0
+apply --scale
+material new Pink --base-color 1 0.467 0.659
+add mesh cube --name Top --size 1 --location 0 -0.05 1.04
+scale 1.95 0.95 0.08
+apply --scale
+material new Cream --base-color 1 0.945 0.910
+add mesh cube --name PostFL --size 1 --location -0.85 -0.35 1.55
+scale 0.1 0.1 1.0
+apply --scale
+add mesh cube --name PostFR --size 1 --location 0.85 -0.35 1.55
+scale 0.1 0.1 1.0
+apply --scale
+add mesh cube --name PostBL --size 1 --location -0.85 0.35 1.65
+scale 0.1 0.1 1.2
+apply --scale
+add mesh cube --name PostBR --size 1 --location 0.85 0.35 1.65
+scale 0.1 0.1 1.2
+apply --scale
+material new Wood --base-color 0.671 0.322 0.212 --no-slot
+select PostFL PostFR PostBL PostBR
+material assign Wood
+# the awning: six stripes (a 6 x 2 texture) running front to back, 0.35 wide, sloping 15 degrees down to the front
+add mesh cube --name Awning --size 1 --location 0 -0.05 2.15
+scale 2.1 1.15 0.1
+apply --scale
+material new Awning --base-color 1 1 1 --no-slot
+material assign Awning
+active Awning
+mode edit
+select all
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Awning base-color textures/awning.png
+set rotation -15 0 0
+add mesh cube --name Sign --size 1 --location 0 0.38 2.55
+scale 1.2 0.1 0.4
+apply --scale
+material new Gold --base-color 1 0.639 0 --no-slot
+material assign Gold
+# candy on the counter
+add mesh ico-sphere --name Floss --subdivisions 1 --radius 0.22 --location -0.5 -0.1 1.35
+material assign Pink
+add mesh cylinder --name Stick1 --vertices 4 --radius 0.035 --depth 0.35 --location 0.1 -0.15 1.25
+add mesh cylinder --name Stick2 --vertices 4 --radius 0.035 --depth 0.45 --location 0.4 -0.1 1.3
+add mesh cylinder --name Stick3 --vertices 4 --radius 0.035 --depth 0.35 --location 0.7 -0.15 1.25
+material new Stick --base-color 1 0.945 0.910 --no-slot
+select Stick1 Stick2 Stick3
+material assign Stick
+add mesh cylinder --name Pop1 --vertices 8 --radius 0.16 --depth 0.08 --location 0.1 -0.15 1.5 --rotation 90 0 0
+material new Red --base-color 1 0 0.302 --no-slot
+material assign Red
+add mesh cylinder --name Pop2 --vertices 8 --radius 0.16 --depth 0.08 --location 0.4 -0.1 1.6 --rotation 90 0 0
+material new Green --base-color 0 0.894 0.212 --no-slot
+material assign Green
+add mesh cylinder --name Pop3 --vertices 8 --radius 0.16 --depth 0.08 --location 0.7 -0.15 1.5 --rotation 90 0 0
+material new Blue --base-color 0.161 0.678 1 --no-slot
+material assign Blue
+select all
+shade flat
+export stall.glb

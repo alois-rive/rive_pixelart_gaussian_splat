@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/mole-garden/art/mole/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        175,
+        45,
+        420,
+        428
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.019,
+      "fill": 0.8014,
+      "background": "#d2d2d2"
+    },
+    "right": {
+      "box": [
+        879,
+        44,
+        494,
+        428
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8664,
+      "fill": 0.6962,
+      "background": "#d3d2d2"
+    },
+    "back": {
+      "box": [
+        173,
+        555,
+        423,
+        428
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0118,
+      "fill": 0.8026,
+      "background": "#d2d2d1"
+    },
+    "top": {
+      "box": [
+        952,
+        552,
+        398,
+        444
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1156,
+      "fill": 0.6766,
+      "background": "#d3d3d2"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Eggy 15",
+  "source": "https://lospec.com/palette-list/eggy-15",
+  "author": "",
+  "colors": [
+    "#2e403d",
+    "#0e0c1b",
+    "#4609a1",
+    "#495266",
+    "#f0f2d0",
+    "#ca1e0f",
+    "#3c9b87",
+    "#c41be3",
+    "#9e7e74",
+    "#f63468",
+    "#2bcff2",
+    "#ea9d18",
+    "#afd87e",
+    "#ddd4cb",
+    "#f9d955"
+  ],
+  "ramps": {
+    "frog_green": ["#0e0c1b", "#2e403d", "#3c9b87", "#afd87e", "#f0f2d0"],
+    "frog_red":   ["#0e0c1b", "#4609a1", "#ca1e0f", "#f63468", "#f9d955"],
+    "frog_gold":  ["#0e0c1b", "#ca1e0f", "#ea9d18", "#f9d955", "#f0f2d0"],
+    "frog_blue":  ["#0e0c1b", "#4609a1", "#495266", "#2bcff2", "#f0f2d0"],
+    "frog_violet":["#0e0c1b", "#4609a1", "#c41be3", "#f63468", "#f9d955"],
+    "belly":      ["#495266", "#9e7e74", "#ddd4cb", "#f0f2d0"],
+    "eye":        ["#ca1e0f", "#ea9d18", "#f9d955", "#f0f2d0"],
+    "ink":        ["#0e0c1b", "#0e0c1b", "#495266"],
+    "pad":        ["#0e0c1b", "#2e403d", "#3c9b87", "#afd87e"],
+    "water":      ["#0e0c1b", "#4609a1", "#c41be3", "#f63468"],
+    "glint":      ["#ea9d18", "#f9d955", "#f0f2d0"],
+    "wood":       ["#0e0c1b", "#495266", "#9e7e74", "#ddd4cb"],
+    "stone":      ["#0e0c1b", "#2e403d", "#495266", "#9e7e74", "#ddd4cb"],
+    "lotus":      ["#4609a1", "#c41be3", "#f63468", "#f0f2d0"],
+    "sun":        ["#f9d955", "#f9d955"],
+    "mist":       ["#ddd4cb", "#ddd4cb"]
+  },
+  "roles": {
+    "void": "#0e0c1b",
+    "fog": "#ddd4cb",
+    "sky_top": "#f63468",
+    "sky_bottom": "#ea9d18"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.046,
+  "fat": 1.0,
+  "out": "../../lookdev/frog.bin",
+  "objects": [
+    {
+      "model": "frog.glb",
+      "materials": {
+        "Skin": {
+          "ramp": "frog_green"
+        },
+        "Belly": {
+          "ramp": "belly"
+        },
+        "Eye": {
+          "ramp": "eye",
+          "spacing": 0.033
+        },
+        "Pupil": {
+          "ramp": "ink",
+          "spacing": 0.029,
+          "specks": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+# Antenna mast: a 2.4 m post on a footing, two crossbars, a top cap and a beacon light that pops on
+# and off (rigid, constant keys: on for 6 of every 24 frames; off = shrunk into the cap). Up Z.
+new
+material new Mast --base-color 0.302 0.502 0.380
+material new Foot --base-color 0.188 0.365 0.259 --no-slot
+material new Beacon --base-color 0.933 1.0 0.8 --emission 0.933 1.0 0.8 --no-slot
+add mesh cube --name Foot --size 1 --location 0 0 0.1
+scale 0.5 0.5 0.2
+apply --scale
+material assign Foot
+add mesh cube --name Post --size 1 --location 0 0 1.25
+scale 0.14 0.14 2.3
+apply --scale
+material assign Mast
+add mesh cube --name BarA --size 1 --location 0 0 1.55
+scale 0.7 0.12 0.12
+apply --scale
+material assign Mast
+add mesh cube --name BarB --size 1 --location 0 0 2.0
+scale 0.5 0.12 0.12
+apply --scale
+material assign Mast
+add mesh cube --name Cap --size 1 --location 0 0 2.42
+scale 0.24 0.24 0.12
+apply --scale
+material assign Foot
+add mesh cube --name Light --size 0.2 --location 0 0 2.58
+material assign Beacon
+fps 24
+frame range 0 24
+select Light
+set location 0 0 2.58
+set scale 1 1 1
+keyframe insert --channels loc,scale --frame 0
+set location 0 0 2.42
+set scale 0.05 0.05 0.05
+keyframe insert --channels loc,scale --frame 6
+set location 0 0 2.58
+set scale 1 1 1
+keyframe insert --channels loc,scale --frame 24
+keyframe interpolation constant --all
+frame set 0
+select all
+shade flat
+export antenna.glb --bake-animations

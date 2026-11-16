@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "out": "../../lookdev/labyrinth.bin",
+  "objects": [
+    { "model": "labyrinth.glb",
+      "materials": { "Frame": { "ramp": "wood" }, "Rim": { "ramp": "wood" }, "Plank": { "ramp": "wood" },
+                     "Seam": { "ramp": "wood", "spacing": 0.07 }, "Dark": { "ramp": "wood" }, "Knob": { "ramp": "berry" } } }
+  ]
+}

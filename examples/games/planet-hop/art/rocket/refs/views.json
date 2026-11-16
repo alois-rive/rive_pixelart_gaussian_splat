@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/planet-hop/art/rocket/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        226,
+        20,
+        314,
+        453
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4427,
+      "fill": 0.5792,
+      "background": "#908f8f"
+    },
+    "right": {
+      "box": [
+        995,
+        20,
+        314,
+        453
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4427,
+      "fill": 0.5901,
+      "background": "#90908f"
+    },
+    "back": {
+      "box": [
+        227,
+        532,
+        314,
+        455
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.449,
+      "fill": 0.5757,
+      "background": "#90908f"
+    },
+    "top": {
+      "box": [
+        969,
+        564,
+        367,
+        370
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0082,
+      "fill": 0.379,
+      "background": "#919090"
+    }
+  }
+}

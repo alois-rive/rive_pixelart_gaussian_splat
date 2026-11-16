@@ -1,0 +1,82 @@
+{
+  "name": "vanilla milkshake",
+  "source": "https://lospec.com/palette-list/vanilla-milkshake",
+  "author": "Space Sandwich",
+  "colors": [
+    "#28282e",
+    "#6c5671",
+    "#d9c8bf",
+    "#f98284",
+    "#b0a9e4",
+    "#accce4",
+    "#b3e3da",
+    "#feaae4",
+    "#87a889",
+    "#b0eb93",
+    "#e9f59d",
+    "#ffe6c6",
+    "#dea38b",
+    "#ffc384",
+    "#fff7a0",
+    "#fff7e4"
+  ],
+  "ramps": {
+    "batter": [
+      "#d9c8bf",
+      "#ffe6c6",
+      "#fff7e4"
+    ],
+    "golden": [
+      "#dea38b",
+      "#ffc384",
+      "#fff7a0"
+    ],
+    "burnt": [
+      "#28282e",
+      "#6c5671",
+      "#dea38b"
+    ],
+    "iron": [
+      "#28282e",
+      "#6c5671",
+      "#b0a9e4"
+    ],
+    "berry": [
+      "#6c5671",
+      "#f98284",
+      "#feaae4"
+    ],
+    "mint": [
+      "#87a889",
+      "#b0eb93",
+      "#e9f59d"
+    ],
+    "tile": [
+      "#b0a9e4",
+      "#accce4",
+      "#b3e3da"
+    ],
+    "cream": [
+      "#dea38b",
+      "#d9c8bf",
+      "#ffe6c6",
+      "#fff7e4"
+    ],
+    "flame": [
+      "#f98284",
+      "#ffc384",
+      "#fff7a0"
+    ],
+    "cake": [
+      "#dea38b",
+      "#ffc384",
+      "#ffc384"
+    ]
+  },
+  "roles": {
+    "void": "#28282e",
+    "fog": "#b0a9e4",
+    "sky_top": "#b0a9e4",
+    "sky_bottom": "#accce4"
+  }
+}

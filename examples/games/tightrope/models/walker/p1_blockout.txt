@@ -1,0 +1,72 @@
+# Tightrope walker, phase 1: blockout of every named part at the spec's sizes (walker.spec.md, 276 px
+# per metre in the sheet's front panel). Up Z, facing -Y, origin on the ground between the feet.
+# The pole is 0.08 m thick (the sheet draws 0.045: exaggerated so it survives as splats).
+new
+add mesh cube --name LegL --size 1 --location 0.065 0 0.46
+scale 0.12 0.14 0.76
+apply --scale
+add mesh cube --name LegR --size 1 --location -0.065 0 0.46
+scale 0.12 0.14 0.76
+apply --scale
+add mesh cube --name ShoeL --size 1 --location 0.07 -0.06 0.045
+scale 0.13 0.3 0.09
+apply --scale
+add mesh cube --name ShoeR --size 1 --location -0.07 -0.06 0.045
+scale 0.13 0.3 0.09
+apply --scale
+add mesh cube --name Hips --size 1 --location 0 0 0.86
+scale 0.3 0.2 0.14
+apply --scale
+add mesh cube --name Sash --size 1 --location 0 0 0.96
+scale 0.33 0.23 0.12
+apply --scale
+add mesh cube --name Torso --size 1 --location 0 0 1.16
+scale 0.34 0.22 0.3
+apply --scale
+# the torso widens to the shoulders
+active Torso
+mode edit
+select face where "normal.z > 0.9"
+scale 1.15 1 1
+mode object
+add mesh cube --name UpperArmL --size 1 --location 0.235 0.0 1.14
+scale 0.1 0.12 0.3
+apply --scale
+add mesh cube --name UpperArmR --size 1 --location -0.235 0.0 1.14
+scale 0.1 0.12 0.3
+apply --scale
+add mesh cube --name ForeArmL --size 1 --location 0.235 -0.07 0.98
+scale 0.1 0.18 0.1
+apply --scale
+add mesh cube --name ForeArmR --size 1 --location -0.235 -0.07 0.98
+scale 0.1 0.18 0.1
+apply --scale
+add mesh cube --name HandL --size 1 --location 0.235 -0.16 0.97
+scale 0.12 0.12 0.12
+apply --scale
+add mesh cube --name HandR --size 1 --location -0.235 -0.16 0.97
+scale 0.12 0.12 0.12
+apply --scale
+add mesh cylinder --name Scarf --vertices 6 --radius 0.12 --depth 0.1 --location 0 0 1.36
+add mesh cube --name TailL --size 1 --location 0.05 0.2 1.12
+scale 0.08 0.04 0.46
+apply --scale
+add mesh cube --name TailR --size 1 --location -0.05 0.2 1.1
+scale 0.08 0.04 0.5
+apply --scale
+add mesh cube --name Head --size 1 --location 0 0 1.5
+scale 0.22 0.24 0.24
+apply --scale
+add mesh cube --name Hair --size 1 --location 0 0.06 1.52
+scale 0.235 0.15 0.2
+apply --scale
+add mesh cone --name Cap --vertices 8 --radius1 0.135 --radius2 0.07 --depth 0.13 --location 0 0.01 1.64
+add mesh cube --name Brim --size 1 --location 0 -0.18 1.6
+scale 0.2 0.2 0.04
+apply --scale
+add mesh cylinder --name Pole --vertices 6 --radius 0.04 --depth 1.96 --location 0 -0.16 0.97 --rotation 0 90 0
+apply --rotation
+add mesh ico-sphere --name WeightL --subdivisions 1 --radius 0.09 --location 1.0 -0.16 0.97
+add mesh ico-sphere --name WeightR --subdivisions 1 --radius 0.09 --location -1.0 -0.16 0.97
+select all
+inspect stats

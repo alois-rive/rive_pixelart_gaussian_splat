@@ -1,0 +1,59 @@
+# Low hills behind the village: flattened, jittered icospheres along world z -8..-10. Up Z.
+new
+material new Hill --base-color 0.1216 0.0196 0.0627 --no-slot
+add mesh ico-sphere --name H0 --subdivisions 2 --radius 1 --location -7.5 9 0
+scale 2.6 1.6 1.3
+apply --scale
+mode edit
+select all
+randomize --amount 0.08 --seed 1
+select vert where "pos.z < -0.05"
+delete vert
+mode object
+material assign Hill
+add mesh ico-sphere --name H1 --subdivisions 2 --radius 1 --location -3.6 8.6 0
+scale 2.4 1.6 1.0
+apply --scale
+mode edit
+select all
+randomize --amount 0.08 --seed 2
+select vert where "pos.z < -0.05"
+delete vert
+mode object
+material assign Hill
+add mesh ico-sphere --name H2 --subdivisions 2 --radius 1 --location 0.4 9.4 0
+scale 3.0 1.6 1.5
+apply --scale
+mode edit
+select all
+randomize --amount 0.08 --seed 3
+select vert where "pos.z < -0.05"
+delete vert
+mode object
+material assign Hill
+add mesh ico-sphere --name H3 --subdivisions 2 --radius 1 --location 4.4 8.8 0
+scale 2.3 1.6 0.9
+apply --scale
+mode edit
+select all
+randomize --amount 0.08 --seed 4
+select vert where "pos.z < -0.05"
+delete vert
+mode object
+material assign Hill
+add mesh ico-sphere --name H4 --subdivisions 2 --radius 1 --location 7.8 9.2 0
+scale 2.8 1.6 1.3
+apply --scale
+mode edit
+select all
+randomize --amount 0.08 --seed 5
+select vert where "pos.z < -0.05"
+delete vert
+mode object
+material assign Hill
+select all
+active H0
+join
+rename H0 Hills
+shade flat
+export hills.glb

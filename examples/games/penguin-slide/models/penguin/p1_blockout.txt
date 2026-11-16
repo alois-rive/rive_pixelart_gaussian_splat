@@ -1,0 +1,51 @@
+# Penguin, phase 1: blockout of every named part at the spec's sizes (penguin.spec.md). Up Z,
+# facing -Y (the head), origin on the ground under the body's centre. 0.80 m beak tip to feet.
+new
+# body: a low 8-sided egg lying on its belly, 0.36 wide, 0.66 long, 0.26 tall
+add mesh uv-sphere --name Body --segments 8 --rings 6 --radius 0.5 --location 0 0.04 0.13
+scale 0.36 0.68 0.26
+apply --scale
+apply --location
+# head: raised at the front, 0.31 wide, 0.26 long, 0.27 tall, top 0.35 above the ground
+add mesh uv-sphere --name Head --segments 8 --rings 6 --radius 0.5 --location 0 -0.2 0.215
+scale 0.31 0.26 0.27
+apply --scale
+apply --location
+# beak: a 4-sided wedge 0.12 long (0.02 past the sheet: tips erode under the splats) pointing forward
+add mesh cone --name Beak --vertices 4 --radius1 0.05 --radius2 0 --depth 0.12 --location 0 -0.365 0.19 --rotation 90 45 0
+apply --rotation
+scale 1 1 0.8
+apply --scale
+apply --location
+# flippers: flat paddles 0.3 long swept back and out, drooping to the ice
+add mesh cube --name FlipperR --size 1 --location -0.175 0.07 0.105
+scale 0.1 0.3 0.06
+apply --scale
+set rotation 0 -36 -15
+apply --rotation
+apply --location
+add mesh cube --name FlipperL --size 1 --location 0.175 0.07 0.105
+scale 0.1 0.3 0.06
+apply --scale
+set rotation 0 36 15
+apply --rotation
+apply --location
+# feet: two flat paddles behind the tail
+add mesh cube --name FootR --size 1 --location -0.06 0.36 0.045
+scale 0.075 0.09 0.045
+apply --scale
+apply --location
+add mesh cube --name FootL --size 1 --location 0.06 0.36 0.045
+scale 0.075 0.09 0.045
+apply --scale
+apply --location
+# scarf: a ring round the neck and one end trailing back over the LEFT (+X) shoulder
+add mesh torus --name Scarf --major-segments 8 --minor-segments 4 --major-radius 0.13 --minor-radius 0.035 --location 0 -0.09 0.165 --rotation 90 0 0
+apply --rotation
+apply --location
+add mesh cube --name ScarfEnd --size 1 --location 0.1 0.05 0.235
+scale 0.075 0.22 0.035
+apply --scale
+set rotation 0 22 -25
+apply --rotation
+apply --location

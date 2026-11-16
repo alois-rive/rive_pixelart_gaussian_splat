@@ -1,0 +1,15 @@
+{
+  "name": "Dreamscape8",
+  "source": "https://lospec.com/palette-list/dreamscape8",
+  "author": "Kerrie Lake",
+  "colors": ["#c9cca1", "#caa05a", "#ae6a47", "#8b4049", "#543344", "#515262", "#63787d", "#8ea091"],
+  "ramps": {
+    "rock":  ["#543344", "#8b4049", "#ae6a47", "#caa05a", "#c9cca1"],
+    "cool":  ["#543344", "#515262", "#63787d", "#8ea091", "#c9cca1"],
+    "red":   ["#543344", "#8b4049", "#ae6a47", "#caa05a"],
+    "rope":  ["#8b4049", "#ae6a47", "#caa05a", "#c9cca1"],
+    "water": ["#515262", "#63787d", "#8ea091", "#c9cca1"],
+    "wind":  ["#8ea091", "#c9cca1"]
+  },
+  "roles": { "sky_top": "#63787d", "sky_bottom": "#8ea091", "fog": "#8ea091", "void": "#543344" }
+}

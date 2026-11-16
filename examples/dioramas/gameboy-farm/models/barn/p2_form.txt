@@ -1,0 +1,46 @@
+# Barn, phase 2: materials in the Kirokaze Gameboy colours (sRGB 0..1) and the painted walls. Each wall
+# face gets its own material and texture (textures/make_textures.py: 0.1 m a texel, the scene's texel),
+# projected from its own view so the texture fills the face.
+material new Roof --base-color 0.200 0.173 0.314 --no-slot
+material new WallFront --base-color 1 1 1 --no-slot
+material new WallBack --base-color 1 1 1 --no-slot
+material new WallRight --base-color 1 1 1 --no-slot
+material new WallLeft --base-color 1 1 1 --no-slot
+material new GableFront --base-color 1 1 1 --no-slot
+material new Walls --base-color 0.275 0.529 0.561 --no-slot
+material texture WallFront base-color textures/wall_front.png
+material texture WallBack base-color textures/wall_back.png
+material texture WallRight base-color textures/wall_right.png
+material texture WallLeft base-color textures/wall_left.png
+material texture GableFront base-color textures/gable_front.png
+select RoofL RoofR
+material assign Roof
+select Walls
+material assign Walls
+active Walls
+mode edit
+select face where "normal.y < -0.9"
+material assign WallFront
+uv project-from-view front --scale-to-bounds
+select face where "normal.y > 0.9"
+material assign WallBack
+uv project-from-view back --scale-to-bounds
+select face where "normal.x > 0.9"
+material assign WallRight
+uv project-from-view right --scale-to-bounds
+select face where "normal.x < -0.9"
+material assign WallLeft
+uv project-from-view left --scale-to-bounds
+mode object
+select Gable
+material assign Walls
+active Gable
+mode edit
+select face where "normal.y < -0.9"
+material assign GableFront
+uv project-from-view front --scale-to-bounds
+mode object
+select all
+shade flat
+render shots/p2_iso.png --view iso --shading material --overlay none --size 500 500
+export barn.glb

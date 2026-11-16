@@ -1,0 +1,13 @@
+{
+  "name": "Hollow",
+  "source": "https://lospec.com/palette-list/hollow",
+  "author": "Poltergasm",
+  "colors": ["#0f0f1b", "#565a75", "#c6b7be", "#fafbf6"],
+  "ramps": {
+    "stone": ["#0f0f1b", "#565a75", "#c6b7be", "#fafbf6"],
+    "earth": ["#0f0f1b", "#565a75", "#c6b7be"],
+    "dark":  ["#0f0f1b", "#565a75"],
+    "glow":  ["#c6b7be", "#fafbf6"]
+  },
+  "roles": { "sky_top": "#565a75", "sky_bottom": "#0f0f1b", "fog": "#565a75", "void": "#0f0f1b" }
+}

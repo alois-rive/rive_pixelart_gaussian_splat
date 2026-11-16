@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "out": "../../lookdev/cart.bin",
+  "objects": [
+    { "model": "cart.glb",
+      "materials": { "Wood": { "ramp": "wood" }, "Iron": { "ramp": "iron", "step": 1, "spacing": 0.06 },
+                     "Gem": { "ramp": "gem" }, "GemTan": { "ramp": "gem" },
+                     "Glow": { "ramp": "glow", "flags": ["unlit"], "spacing": 0.06 } } }
+  ]
+}

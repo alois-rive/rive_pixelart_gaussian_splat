@@ -1,0 +1,156 @@
+# Palm: a curved trunk of five stacked 6-sided rings, seven drooping fronds, a skinned sway.
+# Up Z; the crown leans towards +X. Rigid weights per part (hedra's `join` maps vertex groups by
+# index, so every part gets the same group list first, as in models/camel/p3_rig.txt).
+new
+fps 20
+material new Bark --base-color 0.647 0.541 0.384 --no-slot
+material new Frond --base-color 0.678 0.616 0.384 --no-slot
+material new Nut --base-color 0.349 0.290 0.271 --no-slot
+add mesh cone --name Seg0 --vertices 6 --radius1 0.17 --radius2 0.12 --depth 0.62 --location 0 0 0.30 --rotation 0 0 0
+material assign Bark
+add mesh cone --name Seg1 --vertices 6 --radius1 0.17 --radius2 0.12 --depth 0.62 --location 0.04 0 0.88 --rotation 0 6 30
+material assign Bark
+add mesh cone --name Seg2 --vertices 6 --radius1 0.17 --radius2 0.12 --depth 0.62 --location 0.12 0 1.46 --rotation 0 12 60
+material assign Bark
+add mesh cone --name Seg3 --vertices 6 --radius1 0.17 --radius2 0.12 --depth 0.62 --location 0.24 0 2.04 --rotation 0 18 90
+material assign Bark
+add mesh cone --name Seg4 --vertices 6 --radius1 0.17 --radius2 0.12 --depth 0.62 --location 0.4 0 2.62 --rotation 0 24 120
+material assign Bark
+# one frond: a 3-segment strip 1.4 m long that rises, then droops to a narrow tip; origin at its root
+add mesh grid --name Frond0 --x-subdivisions 3 --y-subdivisions 1 --size 1
+scale 1.4 0.40 1
+apply
+mode edit
+select all
+translate 0.7 0 0
+select vert where "pos.x > 0.3 && pos.x < 0.6"
+translate 0 0 0.10
+select vert where "pos.x > 0.6 && pos.x < 1.0"
+translate 0 0 -0.12
+select vert where "pos.x > 1.2"
+translate 0 0 -0.55
+scale 1 0.35 1
+mode object
+material assign Frond
+select Frond0
+set location 0.52 0 2.9
+set rotation 0 0 10.0
+select Frond0
+duplicate
+rename Frond0.001 Frond1
+select Frond1
+set location 0.52 0 2.9
+set rotation 0 8 61.4
+select Frond0
+duplicate
+rename Frond0.001 Frond2
+select Frond2
+set location 0.52 0 2.9
+set rotation 0 -6 112.9
+select Frond0
+duplicate
+rename Frond0.001 Frond3
+select Frond3
+set location 0.52 0 2.9
+set rotation 0 4 164.3
+select Frond0
+duplicate
+rename Frond0.001 Frond4
+select Frond4
+set location 0.52 0 2.9
+set rotation 0 -4 215.7
+select Frond0
+duplicate
+rename Frond0.001 Frond5
+select Frond5
+set location 0.52 0 2.9
+set rotation 0 10 267.1
+select Frond0
+duplicate
+rename Frond0.001 Frond6
+select Frond6
+set location 0.52 0 2.9
+set rotation 0 -2 318.6
+# coconuts under the crown, two splats across
+add mesh ico-sphere --name Nut0 --subdivisions 1 --radius 0.11 --location 0.4 0.08 2.78
+material assign Nut
+add mesh ico-sphere --name Nut1 --subdivisions 1 --radius 0.11 --location 0.62 -0.10 2.76
+material assign Nut
+select all
+apply
+# one mesh per bone
+select Seg0 Seg1
+active Seg0
+join
+select Seg2 Seg3
+active Seg2
+join
+select Frond0 Frond1 Frond2 Frond3 Frond4 Frond5 Frond6 Nut0 Nut1
+active Frond0
+join
+add armature --name Rig --location 0 0 0
+mode edit
+bone select all
+bone delete
+bone add Trunk0 --head 0 0 0 --tail 0.06 0 1.17
+bone add Trunk1 --head 0.06 0 1.17 --tail 0.3 0 2 --parent Trunk0 --connected
+bone add Trunk2 --head 0.3 0 2 --tail 0.52 0 2.9 --parent Trunk1 --connected
+bone add Crown --head 0.52 0 2.9 --tail 0.52 0 3.3 --parent Trunk2 --connected
+mode object
+select Seg0 Seg2 Seg4 Frond0 Rig
+parent set Rig --type armature --empty-groups
+active Seg0
+mode edit
+select all
+vgroup assign Trunk0 --weight 1
+mode object
+active Seg2
+mode edit
+select all
+vgroup assign Trunk1 --weight 1
+mode object
+active Seg4
+mode edit
+select all
+vgroup assign Trunk2 --weight 1
+mode object
+active Frond0
+mode edit
+select all
+vgroup assign Crown --weight 1
+mode object
+select Seg0 Seg2 Seg4 Frond0
+active Seg0
+join
+rename Seg0 Palm
+vgroup list
+# the sway: 4 s (80 frames), bending more towards the crown; bezier keys ease at the ends of
+# each swing, which is what a sway wants (the loop's first and last keys are equal)
+frame range 0 80
+active Rig
+mode pose
+pose select all
+frame set 0
+pose set Trunk0 rotation 0.5 0.6 1
+pose set Trunk1 rotation 1 1.2 2
+pose set Trunk2 rotation 1.5 1.8 3
+pose set Crown rotation 2 2.4 4
+keyframe insert --channels rot
+frame set 40
+pose set Trunk0 rotation -0.5 -0.6 -1
+pose set Trunk1 rotation -1 -1.2 -2
+pose set Trunk2 rotation -1.5 -1.8 -3
+pose set Crown rotation -2 -2.4 -4
+keyframe insert --channels rot
+frame set 80
+pose set Trunk0 rotation 0.5 0.6 1
+pose set Trunk1 rotation 1 1.2 2
+pose set Trunk2 rotation 1.5 1.8 3
+pose set Crown rotation 2 2.4 4
+keyframe insert --channels rot
+action rename RigAction Sway
+frame set 0
+mode object
+select all
+shade flat
+export palm.glb --bake-animations

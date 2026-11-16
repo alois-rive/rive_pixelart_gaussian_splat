@@ -1,0 +1,18 @@
+# Headstone: a round-topped slab 0.6 wide, 0.26 thick (thickened: 1.7 splats), 0.95 tall, leaning back 8 degrees. Up Z, front -Y.
+new
+add mesh cube --name Slab --size 1 --location 0 0 0.35
+scale 0.6 0.26 0.7
+apply --scale
+add mesh cylinder --name Crown --vertices 8 --radius 0.3 --depth 0.26 --location 0 0 0.7 --rotation 90 0 0
+apply --rotation
+material new Stone --base-color 0.776 0.718 0.745
+select Slab Crown
+material assign Stone
+active Slab
+join
+cursor set 0 0 0
+origin set --to cursor
+set rotation 8 0 0
+apply --rotation
+shade flat
+export headstone.glb

@@ -1,0 +1,37 @@
+# The pond: open water between a near and a far grassy bank with stone edges. Up Z, the camera's side
+# (the near bank) at -Y. Lanes of lily pads drift at world z 2.3 .. -2.3 (hedra y -2.3 .. 2.3), 1.15 m apart.
+new
+add mesh plane --name Water --size 1 --location 0 0 0
+scale 17 6.0 1
+apply --scale
+material new Water --base-color 1 1 1
+material texture Water base-color textures/water.png
+material assign Water
+# near bank (hedra y -2.95 .. -7) and far bank (y 2.95 .. 7.5), 0.3 m above the water
+add mesh cube --name NearBank --size 1 --location 0 -4.975 0.1
+scale 17 4.05 0.4
+apply --scale
+add mesh cube --name FarBank --size 1 --location 0 5.225 0.1
+scale 17 4.55 0.4
+apply --scale
+material new Grass --base-color 0.220 0.718 0.392 --no-slot
+material new Stone --base-color 0.337 0.424 0.525 --no-slot
+select NearBank FarBank
+material assign Stone
+active NearBank
+mode edit
+select face where "normal.z > 0.9"
+material assign Grass
+select face where "normal.z < -0.9"
+delete face
+mode object
+active FarBank
+mode edit
+select face where "normal.z > 0.9"
+material assign Grass
+select face where "normal.z < -0.9"
+delete face
+mode object
+select all
+shade flat
+export pond.glb

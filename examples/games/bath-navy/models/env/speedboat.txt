@@ -1,0 +1,25 @@
+# A toy speedboat: a low ochre wedge with a sage windscreen and a rust stripe along the deck.
+new
+material new Hull --base-color 0.7294 0.5686 0.3451 --no-slot
+material new Stripe --base-color 0.6824 0.3647 0.2510 --no-slot
+material new Screen --base-color 0.5490 0.6706 0.6314 --no-slot
+add mesh cube --name Hull --size 1 --location 0 0 0.04
+scale 0.6 1.4 0.3
+apply --scale
+material assign Hull
+active Hull
+mode edit
+select vert where "pos.y < -0.6"
+scale 0.15 1 0.6
+mode object
+add mesh cube --name Stripe --size 1 --location 0 0.15 0.22
+scale 0.22 0.9 0.06
+apply --scale
+material assign Stripe
+add mesh cube --name Screen --size 1 --location 0 -0.12 0.32
+scale 0.5 0.1 0.22
+apply --scale
+material assign Screen
+select all
+shade flat
+export speedboat.glb

@@ -1,0 +1,53 @@
+# Phase 2, form and surfacing: the ring's hole and water, materials, moss, roof tiles.
+# Colours are the palette's (sRGB 0..1) so the bake snaps them exactly.
+active Ring
+mode edit
+select face where "normal.z > 0.9"
+inset 0.13
+extrude --along-normal -0.12
+mode object
+add mesh cylinder --name Water --vertices 8 --radius 0.47 --depth 0.02 --location 0 0 0.30 --rotation 0 0 22.5
+material new Stone --base-color 0.549 0.486 0.475 --no-slot
+material new Moss --base-color 0.557 0.624 0.490 --no-slot
+material new Gap --base-color 0.294 0.239 0.267 --no-slot
+material new Post --base-color 0.392 0.325 0.333 --no-slot
+material new Beam --base-color 0.659 0.541 0.369 --no-slot
+material new Rope --base-color 0.800 0.659 0.482 --no-slot
+material new Roof --base-color 1 1 1 --no-slot
+material new RoofDark --base-color 0.467 0.259 0.318 --no-slot
+material texture Roof base-color textures/roof_tiles.png
+select Ring
+material slot add
+material assign Stone
+material slot add
+mode edit
+select face where "normal.z > 0.9 && pos.z > 0.1 && (pos.x < -0.3 || pos.y > 0.3 || pos.x > 0.45)"
+material assign Moss
+mode object
+select Water
+material assign Gap
+select PostL PostR
+material assign Post
+select Ridge
+material assign RoofDark
+select Beam CrankArm CrankGrip Bucket
+material assign Beam
+select Rope
+material assign Rope
+select RoofF RoofB
+material assign Roof
+# edit mode works on the ACTIVE object only: give each slab the whole texture, one at a time
+active RoofF
+mode edit
+select all
+uv reset
+mode object
+active RoofB
+mode edit
+select all
+uv reset
+mode object
+select all
+shade flat
+render shots/p2_iso.png --view iso --shading material --overlay none --size 640 640
+inspect stats

@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette_bench.json",
+  "spacing": 0.0565,
+  "fat": 1.0,
+  "out": "../../lookdev/cat.bin",
+  "objects": [
+    { "model": "cat_fit.glb",
+      "materials": { "Fur": { "ramp": "fur" }, "Slate": { "ramp": "metal" },
+                     "Eye": { "ramp": "light", "flags": ["unlit"], "spacing": 0.035, "specks": true } } }
+  ]
+}

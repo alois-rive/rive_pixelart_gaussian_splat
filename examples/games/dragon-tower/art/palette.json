@@ -1,0 +1,53 @@
+{
+  "name": "Blessing",
+  "source": "https://lospec.com/palette-list/blessing",
+  "author": "clarigariccus",
+  "colors": [
+    "#74569b",
+    "#96fbc7",
+    "#f7ffae",
+    "#ffb3cb",
+    "#d8bfd8"
+  ],
+  "ramps": {
+    "stone": [
+      "#74569b",
+      "#d8bfd8",
+      "#f7ffae"
+    ],
+    "scale": [
+      "#74569b",
+      "#96fbc7",
+      "#f7ffae"
+    ],
+    "blush": [
+      "#74569b",
+      "#ffb3cb",
+      "#f7ffae"
+    ],
+    "armor": [
+      "#74569b",
+      "#74569b",
+      "#d8bfd8"
+    ],
+    "fire": [
+      "#ffb3cb",
+      "#f7ffae"
+    ],
+    "cloud": [
+      "#d8bfd8",
+      "#f7ffae"
+    ],
+    "wing": [
+      "#74569b",
+      "#ffb3cb",
+      "#ffb3cb"
+    ]
+  },
+  "roles": {
+    "sky_top": "#d8bfd8",
+    "sky_bottom": "#f7ffae",
+    "fog": "#d8bfd8",
+    "void": "#74569b"
+  }
+}

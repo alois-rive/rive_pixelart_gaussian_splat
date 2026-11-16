@@ -1,0 +1,48 @@
+# Forge, phase 1: blockout of every named part at the spec's sizes. Up Z, facing -Y, origin at the
+# ground under the plinth's centre. Sizes from forge.spec.md (165 px per metre in the front panel).
+new
+add mesh cube --name Plinth --size 1 --location 0 0 0.125
+scale 2.55 2.85 0.25
+apply --scale
+add mesh cube --name Furnace --size 1 --location 0 0.62 0.85
+scale 1.8 1.5 1.2
+apply --scale
+# the hood: a box whose top face is squeezed to 0.8 x 0.6
+add mesh cube --name Hood --size 1 --location 0 0.62 1.7
+scale 1.8 1.5 0.5
+apply --scale
+active Hood
+mode edit
+select face where "normal.z > 0.9"
+scale 0.48 0.46 1
+mode object
+add mesh cube --name Chimney --size 1 --location 0 0.62 2.325
+scale 0.58 0.58 0.75
+apply --scale
+add mesh cube --name Cap --size 1 --location 0 0.62 2.8
+scale 0.84 0.84 0.2
+apply --scale
+# the furnace mouth: an octagon of glowing rim, the fire a smaller octagon in front of it
+add mesh cylinder --name Rim --vertices 8 --radius 0.5 --depth 0.08 --location 0 -0.15 0.92 --rotation 90 22.5 0
+apply --rotation
+scale 1.2 1 0.9
+apply --scale
+add mesh cylinder --name Fire --vertices 8 --radius 0.5 --depth 0.08 --location 0 -0.18 0.9 --rotation 90 22.5 0
+apply --rotation
+scale 0.98 1 0.74
+apply --scale
+add mesh cube --name Block --size 1 --location 0 -0.85 0.36
+scale 0.7 0.47 0.22
+apply --scale
+# the anvil: foot, waist, face, and a horn pointing to the object's right (+X)
+add mesh cube --name AnvilFoot --size 1 --location 0 -0.85 0.52
+scale 0.6 0.36 0.1
+apply --scale
+add mesh cube --name AnvilWaist --size 1 --location 0 -0.85 0.645
+scale 0.34 0.2 0.15
+apply --scale
+add mesh cube --name AnvilFace --size 1 --location 0 -0.85 0.78
+scale 0.76 0.36 0.12
+apply --scale
+add mesh cone --name Horn --vertices 6 --radius1 0.15 --radius2 0 --depth 0.42 --location 0.59 -0.85 0.78 --rotation 0 90 0
+apply --rotation

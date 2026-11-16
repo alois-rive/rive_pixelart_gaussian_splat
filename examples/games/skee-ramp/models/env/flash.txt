@@ -1,0 +1,8 @@
+# The score flash: a flat yellow disc r 0.1, 2 cm thick, lying in the XY plane (the game tilts it onto
+# the target board and scales it to the ring that scored). Unlit in the bake. Up Z.
+new
+add mesh cylinder --name Flash --vertices 14 --radius 0.1 --depth 0.02 --location 0 0 0
+material new Flash --base-color 1.0000 0.8196 0.0000 --emission 1.0000 0.8196 0.0000
+material assign Flash
+shade flat
+export flash.glb

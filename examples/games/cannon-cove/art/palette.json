@@ -1,0 +1,74 @@
+{
+  "name": "SLSO8",
+  "source": "https://lospec.com/palette-list/slso8",
+  "author": "Luis Miguel Maldonado",
+  "colors": [
+    "#0d2b45",
+    "#203c56",
+    "#544e68",
+    "#8d697a",
+    "#d08159",
+    "#ffaa5e",
+    "#ffd4a3",
+    "#ffecd6"
+  ],
+  "ramps": {
+    "sea": [
+      "#0d2b45",
+      "#203c56",
+      "#544e68",
+      "#8d697a"
+    ],
+    "rock": [
+      "#0d2b45",
+      "#203c56",
+      "#544e68",
+      "#8d697a",
+      "#d08159"
+    ],
+    "sand": [
+      "#544e68",
+      "#8d697a",
+      "#d08159",
+      "#ffaa5e",
+      "#ffd4a3"
+    ],
+    "wood": [
+      "#0d2b45",
+      "#203c56",
+      "#544e68",
+      "#8d697a",
+      "#d08159"
+    ],
+    "sail": [
+      "#8d697a",
+      "#d08159",
+      "#ffaa5e",
+      "#ffd4a3",
+      "#ffecd6"
+    ],
+    "iron": [
+      "#0d2b45",
+      "#203c56",
+      "#544e68",
+      "#8d697a"
+    ],
+    "glow": [
+      "#d08159",
+      "#ffaa5e",
+      "#ffd4a3",
+      "#ffecd6"
+    ],
+    "palm": [
+      "#0d2b45",
+      "#203c56",
+      "#544e68"
+    ]
+  },
+  "roles": {
+    "sky_top": "#8d697a",
+    "sky_bottom": "#ffaa5e",
+    "fog": "#8d697a",
+    "void": "#0d2b45"
+  }
+}

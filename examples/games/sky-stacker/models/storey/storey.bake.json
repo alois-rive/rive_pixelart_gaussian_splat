@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.09,
+  "fat": 1.0,
+  "out": "../../lookdev/storey.bin",
+  "objects": [
+    { "model": "storey.glb",
+      "materials": { "Lacquer": { "ramp": "lacquer" }, "Post": { "ramp": "lacquer" }, "Gold": { "ramp": "gold", "spacing": 0.07, "specks": true },
+                     "Door": { "ramp": "lacquer" }, "Roof": { "ramp": "roof" }, "Fascia": { "ramp": "roof" },
+                     "Deck": { "ramp": "stone" } } }
+  ]
+}

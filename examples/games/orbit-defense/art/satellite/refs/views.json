@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/orbit-defense/art/satellite/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        43,
+        35,
+        683,
+        420
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6149,
+      "fill": 0.4074,
+      "background": "#d2d1d1"
+    },
+    "right": {
+      "box": [
+        1047,
+        35,
+        211,
+        420
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.9905,
+      "fill": 0.6451,
+      "background": "#d2d2d2"
+    },
+    "back": {
+      "box": [
+        44,
+        547,
+        681,
+        420
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6167,
+      "fill": 0.4083,
+      "background": "#d2d2d1"
+    },
+    "top": {
+      "box": [
+        813,
+        661,
+        679,
+        217
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.3196,
+      "fill": 0.3955,
+      "background": "#d2d2d2"
+    }
+  }
+}

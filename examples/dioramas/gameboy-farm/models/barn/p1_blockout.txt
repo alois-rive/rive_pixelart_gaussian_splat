@@ -1,0 +1,38 @@
+# Barn, phase 1: blockout of the parts that make the silhouette, at the spec's sizes. Up Z, facing -Y.
+# Pitch 36.6 deg. Doors, windows and corner boards are painted in phase 2 (textures), not modelled.
+new
+add mesh cube --name Walls --size 1 --location 0 0 0.9
+scale 3.0 3.55 1.8
+apply --scale
+# the gable: a wedge (a box whose top face is squeezed to the ridge), 1.8 .. 2.84 m
+add mesh cube --name Gable --size 1 --location 0 0 2.32
+scale 3.0 3.55 1.04
+apply --scale
+active Gable
+mode edit
+select vert where "pos.z > 0"
+scale 0 1 1
+merge --by-distance 0.001
+mode object
+# roof slabs, 0.22 thick, 2.24 down the slope: the eaves reach 0.3 past the walls, not the sheet's 0.2,
+# and the slabs are thicker than its 0.16, because the splats eat the pointed eave tips (exaggerated to
+# keep the splat silhouette's width). 4.0 long at the eave, 3.57 at the ridge (the sheet's side view is
+# a trapezoid). Scaled, the ridge end narrowed, applied, then tilted.
+add mesh cube --name RoofR --size 1 --location 0.834 0 2.354
+scale 2.24 4.0 0.22
+apply --scale
+active RoofR
+mode edit
+select vert where "pos.x < 0"
+scale 1 0.89 1
+mode object
+set rotation 0 36.6 0
+add mesh cube --name RoofL --size 1 --location -0.834 0 2.354
+scale 2.24 4.0 0.22
+apply --scale
+active RoofL
+mode edit
+select vert where "pos.x > 0"
+scale 1 0.89 1
+mode object
+set rotation 0 -36.6 0

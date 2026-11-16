@@ -1,0 +1,16 @@
+# Syrup bottle: a pink bottle with a cream label band and a mauve cap. Up Z.
+new
+material new Glass --base-color 0.9765 0.5098 0.5176 --no-slot
+material new Label --base-color 1.0000 0.9020 0.7765 --no-slot
+material new Cap --base-color 0.4235 0.3373 0.4431 --no-slot
+add mesh cylinder --name Body --vertices 8 --radius 0.17 --depth 0.42 --location 0 0 0.21
+material assign Glass
+add mesh cylinder --name Band --vertices 8 --radius 0.18 --depth 0.16 --location 0 0 0.2
+material assign Label
+add mesh cone --name Neck --vertices 8 --radius1 0.17 --radius2 0.07 --depth 0.16 --location 0 0 0.5
+material assign Glass
+add mesh cylinder --name Cap --vertices 8 --radius 0.08 --depth 0.08 --location 0 0 0.62
+material assign Cap
+select all
+shade flat
+export bottle.glb

@@ -1,0 +1,37 @@
+# The lighthouse: an 8-sided tapered tower (r 0.50 -> 0.36, 2.4 m) in four bands, white (ece8c2)
+# and red (c33846), a door, a gallery (5f3a60), an unlit lamp room (f7d554, emissive) and a red
+# conical roof. 3.3 m tall, origin at its foot. Flat faces to the front (-Y): every ring turned 22.5.
+new
+add mesh cone --name Tower --vertices 8 --radius1 0.50 --radius2 0.36 --depth 2.4 --location 0 0 1.2 --rotation 0 0 22.5
+apply
+material new White --base-color 0.925 0.910 0.761 --no-slot
+material new Red --base-color 0.765 0.220 0.275 --no-slot
+material new Door --base-color 0.373 0.227 0.376 --no-slot
+material new Trim --base-color 0.373 0.227 0.376 --no-slot
+material new Lamp --base-color 0.969 0.835 0.329 --emission 0.969 0.835 0.329 --no-slot
+active Tower
+material assign White
+mode edit
+select all
+bisect --plane-co 0 0 0.6
+select all
+bisect --plane-co 0 0 1.2
+select all
+bisect --plane-co 0 0 1.8
+select face where "abs(normal.z) < 0.9 && ((pos.z > 0.6 && pos.z < 1.2) || pos.z > 1.8)"
+material assign Red
+select face where "normal.y < -0.9 && pos.z < 0.6"
+inset 0.06
+material assign Door
+mode object
+add mesh cylinder --name Gallery --vertices 8 --radius 0.5 --depth 0.1 --location 0 0 2.45 --rotation 0 0 22.5
+material assign Trim
+add mesh cylinder --name LampRoom --vertices 8 --radius 0.28 --depth 0.42 --location 0 0 2.71 --rotation 0 0 22.5
+material assign Lamp
+add mesh cone --name Cap --vertices 8 --radius1 0.42 --radius2 0 --depth 0.38 --location 0 0 3.11 --rotation 0 0 22.5
+material assign Red
+select all
+apply
+shade flat
+inspect stats
+export lighthouse.glb

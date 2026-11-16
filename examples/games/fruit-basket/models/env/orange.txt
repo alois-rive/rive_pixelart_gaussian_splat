@@ -1,0 +1,19 @@
+# Orange (an apricot-orange): a faceted ball 0.36 m across with a stalk.
+# Origin at the fruit's centre (a game bone pool: the game drops, catches and pops it).
+new
+material new Body --base-color 0.8275 0.6275 0.4078 --no-slot
+material new Stem --base-color 0.2941 0.2549 0.3451 --no-slot
+add mesh ico-sphere --name Fruit --subdivisions 1 --radius 0.18 --location 0 0 0
+scale 1 1 1.0
+apply --scale
+material assign Body
+add mesh cube --name Stalk --size 1 --location 0.02 0 0.230
+scale 0.06 0.06 0.14
+apply --scale
+material assign Stem
+select all
+active Fruit
+join
+select all
+shade flat
+export orange.glb

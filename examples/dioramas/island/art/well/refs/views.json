@@ -1,0 +1,50 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/example/art/well/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        184,
+        20,
+        427,
+        474
+      ],
+      "aspect": 1.1101,
+      "fill": 0.6532,
+      "background": "#d2d1d1"
+    },
+    "right": {
+      "box": [
+        989,
+        16,
+        319,
+        476
+      ],
+      "aspect": 1.4922,
+      "fill": 0.5414,
+      "background": "#d2d2d2"
+    },
+    "back": {
+      "box": [
+        149,
+        533,
+        435,
+        475
+      ],
+      "aspect": 1.092,
+      "fill": 0.6356,
+      "background": "#d2d2d2"
+    },
+    "top": {
+      "box": [
+        944,
+        582,
+        464,
+        372
+      ],
+      "aspect": 0.8017,
+      "fill": 0.7235,
+      "background": "#d2d2d2"
+    }
+  }
+}

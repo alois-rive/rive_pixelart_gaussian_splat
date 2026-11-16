@@ -1,0 +1,42 @@
+# The cannon's ledge: a flat-topped rock 6 x 3.4 m, top at z 0.8, with a sand top face, a powder keg
+# and a pyramid of six cannonballs beside the cannon. The cannon stands at the origin.
+new
+material new Rock --base-color 0.3294 0.3059 0.4078 --no-slot
+material new Sand --base-color 0.8157 0.5059 0.3490 --no-slot
+material new Keg --base-color 0.5529 0.4118 0.4784 --no-slot
+material new Hoop --base-color 0.1255 0.2353 0.3373 --no-slot
+material new Ball --base-color 0.1255 0.2353 0.3373 --no-slot
+add mesh cylinder --name Ledge --vertices 9 --radius 2.6 --depth 1.6 --location 0 0.2 0
+scale 1.25 0.7 1
+apply --scale
+material assign Rock
+mode edit
+select face where "normal.z > 0.9"
+material assign Sand
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name Keg --vertices 8 --radius 0.3 --depth 0.6 --location -1.6 0.3 1.1
+material assign Keg
+add mesh cylinder --name Hoop0 --vertices 8 --radius 0.32 --depth 0.08 --location -1.6 0.3 0.95
+material assign Hoop
+add mesh cylinder --name Hoop1 --vertices 8 --radius 0.32 --depth 0.08 --location -1.6 0.3 1.25
+material assign Hoop
+add mesh ico-sphere --name B0 --subdivisions 1 --radius 0.17 --location 1.35 0.1 0.96
+material assign Ball
+add mesh ico-sphere --name B1 --subdivisions 1 --radius 0.17 --location 1.71 0.1 0.96
+material assign Ball
+add mesh ico-sphere --name B2 --subdivisions 1 --radius 0.17 --location 1.53 0.42 0.96
+material assign Ball
+add mesh ico-sphere --name B3 --subdivisions 1 --radius 0.17 --location 1.53 -0.22 0.96
+material assign Ball
+add mesh ico-sphere --name B4 --subdivisions 1 --radius 0.17 --location 1.53 0.1 1.24
+material assign Ball
+add mesh ico-sphere --name B5 --subdivisions 1 --radius 0.17 --location 1.89 0.42 0.96
+material assign Ball
+select Ledge Keg Hoop0 Hoop1 B0 B1 B2 B3 B4 B5
+active Ledge
+join
+select all
+shade flat
+export ledge.glb

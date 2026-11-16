@@ -1,0 +1,28 @@
+# A picket fence section, 2.0 m long along X: five pickets on two rails. Up Z.
+new
+add mesh cube --name RailLow --size 1 --location 0 0 0.2
+scale 2.0 0.06 0.1
+apply --scale
+add mesh cube --name RailHigh --size 1 --location 0 0 0.5
+scale 2.0 0.06 0.1
+apply --scale
+add mesh cube --name P0 --size 1 --location -0.8 -0.05 0.36
+scale 0.13 0.05 0.72
+apply --scale
+add mesh cube --name P1 --size 1 --location -0.4 -0.05 0.36
+scale 0.13 0.05 0.72
+apply --scale
+add mesh cube --name P2 --size 1 --location 0 -0.05 0.36
+scale 0.13 0.05 0.72
+apply --scale
+add mesh cube --name P3 --size 1 --location 0.4 -0.05 0.36
+scale 0.13 0.05 0.72
+apply --scale
+add mesh cube --name P4 --size 1 --location 0.8 -0.05 0.36
+scale 0.13 0.05 0.72
+apply --scale
+material new Wood --base-color 0.467 0.361 0.310
+select all
+material assign Wood
+shade flat
+export fence.glb

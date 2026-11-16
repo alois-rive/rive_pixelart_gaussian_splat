@@ -1,0 +1,12 @@
+# Rock: a jittered icosahedron, flattened, flat shaded. Up Z, resting on z 0.
+new
+add mesh ico-sphere --name Rock --subdivisions 1 --radius 0.32 --location 0 0 0.12
+scale 1 0.8 0.65
+apply
+material new Stone --base-color 0.663 0.663 0.580
+mode edit
+select all
+randomize --amount 0.06 --seed 7
+mode object
+shade flat
+export rock.glb

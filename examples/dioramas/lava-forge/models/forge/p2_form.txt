@@ -1,0 +1,33 @@
+# Forge, phase 2: form and surfacing. Materials are exact Lava-GB colours (sRGB 0..1):
+# Stone #4a2480 (stone ramp, step 1), Iron #051f39 (iron ramp, step 0), Rim #c53a9d (ember, unlit),
+# Fire #ff8e80 (lava, unlit). The anvil's parts are joined into one mesh; the stone parts into another.
+material new Stone --base-color 0.290 0.141 0.502 --no-slot
+material new Iron --base-color 0.020 0.122 0.224 --no-slot
+material new Rim --base-color 0.773 0.227 0.616 --emission 0.773 0.227 0.616 --no-slot
+material new Fire --base-color 1.0 0.557 0.502 --emission 1.0 0.557 0.502 --no-slot
+select Plinth Furnace Hood Chimney Cap Block
+material assign Stone
+select AnvilFoot AnvilWaist AnvilFace Horn
+material assign Iron
+select Rim
+material assign Rim
+select Fire
+material assign Fire
+# a chamfer on the plinth top edges (object-local z: the plinth sits at z 0.125, top at +0.125)
+active Plinth
+mode edit
+select edge where "pos.z > 0.1"
+bevel 0.06 --segments 1
+mode object
+select AnvilFoot AnvilWaist AnvilFace Horn
+active AnvilFace
+join
+rename AnvilFace Anvil
+select Plinth Furnace Hood Chimney Cap Block
+active Furnace
+join
+rename Furnace Masonry
+select all
+shade flat
+inspect stats
+export forge.glb

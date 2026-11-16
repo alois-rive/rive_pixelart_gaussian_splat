@@ -1,0 +1,7 @@
+# Smoke puff: a faceted ball (the game grows, lifts and shrinks it). Up Z.
+new
+material new Smoke --base-color 0.8510 0.7843 0.7490 --no-slot
+add mesh ico-sphere --name Puff --subdivisions 1 --radius 0.14 --location 0 0 0
+material assign Smoke
+shade flat
+export smoke.glb

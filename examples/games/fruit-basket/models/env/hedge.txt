@@ -1,0 +1,51 @@
+# Hedge: a 15 m row of faceted lumps (0.9 to 1.3 m tall) behind the fence. Static, sways.
+new
+material new Leaf --base-color 0.3373 0.4824 0.4745 --no-slot
+add mesh ico-sphere --name H0 --subdivisions 1 --radius 0.67 --location -7.60 0.07 0.54
+material assign Leaf
+add mesh ico-sphere --name H1 --subdivisions 1 --radius 0.71 --location -6.72 0.13 0.57
+material assign Leaf
+add mesh ico-sphere --name H2 --subdivisions 1 --radius 0.70 --location -5.80 0.13 0.56
+material assign Leaf
+add mesh ico-sphere --name H3 --subdivisions 1 --radius 0.56 --location -4.89 -0.01 0.44
+material assign Leaf
+add mesh ico-sphere --name H4 --subdivisions 1 --radius 0.74 --location -4.17 0.04 0.59
+material assign Leaf
+add mesh ico-sphere --name H5 --subdivisions 1 --radius 0.73 --location -3.21 -0.12 0.58
+material assign Leaf
+add mesh ico-sphere --name H6 --subdivisions 1 --radius 0.64 --location -2.26 -0.08 0.52
+material assign Leaf
+add mesh ico-sphere --name H7 --subdivisions 1 --radius 0.66 --location -1.42 0.02 0.53
+material assign Leaf
+add mesh ico-sphere --name H8 --subdivisions 1 --radius 0.55 --location -0.57 -0.08 0.44
+material assign Leaf
+add mesh ico-sphere --name H9 --subdivisions 1 --radius 0.61 --location 0.15 0.12 0.48
+material assign Leaf
+add mesh ico-sphere --name H10 --subdivisions 1 --radius 0.70 --location 0.94 -0.10 0.56
+material assign Leaf
+add mesh ico-sphere --name H11 --subdivisions 1 --radius 0.71 --location 1.85 -0.11 0.57
+material assign Leaf
+add mesh ico-sphere --name H12 --subdivisions 1 --radius 0.67 --location 2.77 -0.11 0.54
+material assign Leaf
+add mesh ico-sphere --name H13 --subdivisions 1 --radius 0.55 --location 3.65 0.11 0.44
+material assign Leaf
+add mesh ico-sphere --name H14 --subdivisions 1 --radius 0.59 --location 4.36 -0.09 0.47
+material assign Leaf
+add mesh ico-sphere --name H15 --subdivisions 1 --radius 0.75 --location 5.13 0.11 0.60
+material assign Leaf
+add mesh ico-sphere --name H16 --subdivisions 1 --radius 0.61 --location 6.10 0.14 0.49
+material assign Leaf
+add mesh ico-sphere --name H17 --subdivisions 1 --radius 0.66 --location 6.89 0.05 0.53
+material assign Leaf
+add mesh ico-sphere --name H18 --subdivisions 1 --radius 0.59 --location 7.75 0.13 0.47
+material assign Leaf
+select all
+active H0
+join
+mode edit
+select face where "pos.z < 0.02"
+delete only-faces
+mode object
+select all
+shade flat
+export hedge.glb

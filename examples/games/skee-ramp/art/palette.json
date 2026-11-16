@@ -1,0 +1,67 @@
+{
+  "name": "Bubblegum 16",
+  "source": "https://lospec.com/palette-list/bubblegum-16",
+  "author": "\ud83c\udf4dPineappleOnPizza\ud83c\udf4d(Comissions Open)",
+  "colors": [
+    "#16171a",
+    "#7f0622",
+    "#d62411",
+    "#ff8426",
+    "#ffd100",
+    "#fafdff",
+    "#ff80a4",
+    "#ff2674",
+    "#94216a",
+    "#430067",
+    "#234975",
+    "#68aed4",
+    "#bfff3c",
+    "#10d275",
+    "#007899",
+    "#002859"
+  ],
+  "ramps": {
+    "pink": [
+      "#430067",
+      "#94216a",
+      "#ff2674",
+      "#ff80a4",
+      "#fafdff"
+    ],
+    "fire": [
+      "#7f0622",
+      "#d62411",
+      "#ff8426",
+      "#ffd100"
+    ],
+    "blue": [
+      "#002859",
+      "#234975",
+      "#68aed4",
+      "#fafdff"
+    ],
+    "mint": [
+      "#002859",
+      "#007899",
+      "#10d275",
+      "#bfff3c"
+    ],
+    "dusk": [
+      "#16171a",
+      "#430067",
+      "#94216a"
+    ],
+    "wood": [
+      "#430067",
+      "#7f0622",
+      "#d62411",
+      "#ff8426"
+    ]
+  },
+  "roles": {
+    "void": "#16171a",
+    "fog": "#94216a",
+    "sky_top": "#16171a",
+    "sky_bottom": "#430067"
+  }
+}

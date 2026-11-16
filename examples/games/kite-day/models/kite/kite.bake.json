@@ -1,0 +1,10 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.083,
+  "fat": 1.0,
+  "out": "../../lookdev/kite.bin",
+  "objects": [
+    { "model": "kite.glb",
+      "materials": { "Pink": { "ramp": "kite" }, "Peach": { "ramp": "kite" }, "Spar": { "ramp": "bird", "spacing": 0.05 } } }
+  ]
+}

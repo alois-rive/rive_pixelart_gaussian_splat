@@ -1,0 +1,71 @@
+# Labyrinth box, phase 2: the tray hollowed (the top inset by the 0.45 m walls and sunk 0.6 m), the
+# plank floor inside (light and pale planks across), materials in WoodSpark's colours, hidden faces
+# deleted (the box's underside, the floor's underside and sides, axle ends inside the walls), export.
+material new Frame --base-color 0.8784 0.5529 0.3176 --no-slot
+material new Rim --base-color 0.9804 0.7490 0.3804 --no-slot
+material new Plank --base-color 0.9804 0.7490 0.3804 --no-slot
+material new Seam --base-color 0.8784 0.5529 0.3176 --no-slot
+material new Dark --base-color 0.5412 0.3451 0.3961 --no-slot
+material new Knob --base-color 0.9412 0.3569 0.3569 --no-slot
+select Box
+active Box
+material assign Frame
+mode edit
+select face where "normal.z > 0.9"
+inset 0.45
+extrude 0 0 -0.6
+material assign Frame
+select face where "normal.z > 0.9 && pos.z < 0.5"
+delete only-faces
+select face where "normal.z > 0.9"
+material assign Rim
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Floor
+active Floor
+mode edit
+select face where "normal.z < 0.9"
+delete only-faces
+select face where "normal.z > 0.9"
+subdivide --cuts 29
+select face where "normal.z > 0.9"
+material assign Plank
+select face where "normal.z > 0.9 && ((pos.y > -1.8 && pos.y < -1.6) || (pos.y > -0.95 && pos.y < -0.75) || (pos.y > -0.1 && pos.y < 0.1) || (pos.y > 0.75 && pos.y < 0.95) || (pos.y > 1.6 && pos.y < 1.8))"
+material assign Seam
+mode object
+select Foot0 Foot1 Foot2 Foot3 AxleF AxleR
+material assign Dark
+select KnobF KnobR
+material assign Knob
+select Foot0
+active Foot0
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+mode object
+select Foot1
+active Foot1
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+mode object
+select Foot2
+active Foot2
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+mode object
+select Foot3
+active Foot3
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+mode object
+select Box Foot0 Foot1 Foot2 Foot3 AxleF AxleR
+active Box
+join
+rename Box Frame
+select all
+shade flat
+export labyrinth.glb

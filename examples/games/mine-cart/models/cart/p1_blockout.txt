@@ -1,0 +1,52 @@
+# Mine cart, phase 1: blockout of every named part at the spec's sizes. Up Z, facing -Y (the cart
+# rolls towards -Y), origin on the ground under the cart's centre. Sizes from cart.spec.md
+# (456 px per metre in the front and right panels of art/cart/sheet.v1.png).
+new
+# the tub: an upside-down frustum, 0.68 x 1.04 at the top (z 0.62), 0.50 x 0.92 at the bottom (z 0.21)
+add mesh cube --name Tub --size 1 --location 0 0 0.415
+scale 0.68 1.04 0.41
+apply --scale
+active Tub
+mode edit
+select face where "normal.z < -0.9"
+scale 0.735 0.885 1
+mode object
+# the iron rim band round the top: a frame of four bars, 0.07 wide (the heap shows inside it)
+add mesh cube --name Rim --size 1 --location -0.34 0 0.64
+scale 0.07 1.105 0.06
+apply --scale
+add mesh cube --name RimR --size 1 --location 0.34 0 0.64
+scale 0.07 1.105 0.06
+apply --scale
+add mesh cube --name RimF --size 1 --location 0 -0.5175 0.64
+scale 0.75 0.07 0.06
+apply --scale
+add mesh cube --name RimB --size 1 --location 0 0.5175 0.64
+scale 0.75 0.07 0.06
+apply --scale
+# four octagonal wheels (axis X), 0.29 across, 0.09 thick, centres 0.29 m before and behind the middle
+add mesh cylinder --name WheelFL --vertices 8 --radius 0.145 --depth 0.09 --location -0.285 -0.29 0.145 --rotation 0 90 0
+add mesh cylinder --name WheelFR --vertices 8 --radius 0.145 --depth 0.09 --location 0.285 -0.29 0.145 --rotation 0 90 0
+add mesh cylinder --name WheelBL --vertices 8 --radius 0.145 --depth 0.09 --location -0.285 0.29 0.145 --rotation 0 90 0
+add mesh cylinder --name WheelBR --vertices 8 --radius 0.145 --depth 0.09 --location 0.285 0.29 0.145 --rotation 0 90 0
+select WheelFL WheelFR WheelBL WheelBR
+apply --rotation
+# axles (exaggerated: 0.08 across so they survive as splats)
+add mesh cylinder --name AxleF --vertices 6 --radius 0.04 --depth 0.5 --location 0 -0.29 0.145 --rotation 0 90 0
+add mesh cylinder --name AxleB --vertices 6 --radius 0.04 --depth 0.5 --location 0 0.29 0.145 --rotation 0 90 0
+select AxleF AxleB
+apply --rotation
+# the gem mound: faceted gems over the rim, peak at z 0.88
+add mesh ico-sphere --name Gem1 --subdivisions 1 --radius 0.17 --location -0.10 -0.18 0.66
+add mesh ico-sphere --name Gem2 --subdivisions 1 --radius 0.19 --location 0.08 0.05 0.71
+add mesh ico-sphere --name Gem3 --subdivisions 1 --radius 0.16 --location -0.12 0.30 0.64
+add mesh ico-sphere --name Gem4 --subdivisions 1 --radius 0.15 --location 0.14 -0.30 0.63
+add mesh ico-sphere --name Gem5 --subdivisions 1 --radius 0.15 --location 0.14 0.33 0.63
+add mesh ico-sphere --name Gem6 --subdivisions 1 --radius 0.13 --location -0.17 0.07 0.66
+add mesh ico-sphere --name Gem7 --subdivisions 1 --radius 0.12 --location 0.18 -0.05 0.64
+add mesh ico-sphere --name Gem8 --subdivisions 1 --radius 0.13 --location -0.05 0.42 0.62
+# the lantern hanging from the front rim: cap, glass, base (cap and base exaggerated so they bake to
+# more than a few splats; the sheet's hook is one art pixel at the scene's texel: the cap touches the rim)
+add mesh cone --name LampCap --vertices 8 --radius1 0.095 --radius2 0.045 --depth 0.08 --location 0 -0.63 0.6
+add mesh cylinder --name LampGlass --vertices 8 --radius 0.065 --depth 0.17 --location 0 -0.63 0.48
+add mesh cylinder --name LampBase --vertices 8 --radius 0.09 --depth 0.05 --location 0 -0.63 0.385

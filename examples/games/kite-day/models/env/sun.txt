@@ -1,0 +1,11 @@
+# The setting sun: a 12-sided disc 3.2 m across, facing the camera (unlit), sinking behind the far hills.
+new
+material new Sun --base-color 0.9843 0.7333 0.6784 --no-slot
+add mesh cylinder --name Sun --vertices 12 --radius 1.6 --depth 0.1 --location 0 0 0 --rotation 90 0 0
+material assign Sun
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+shade flat
+export sun.glb

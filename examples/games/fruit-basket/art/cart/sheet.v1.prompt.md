@@ -1,0 +1,21 @@
+A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small wooden two-wheeled fruit cart (a hand cart for an orchard harvest), open at the top.
+
+Canvas and layout, keep exactly:
+- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.
+- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).
+- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.
+- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).
+- The four panels show the SAME object, only turned: FRONT: the object faces the camera. RIGHT: the camera has walked round to the object's own right-hand side (not the image's right), so the object faces the LEFT edge of the image. BACK: seen from behind. TOP: seen from straight above, looking down, with its front towards the BOTTOM edge of the image and no wall showing. Each detail appears only in the views from which it is really visible (a part seen side-on in one view is seen end-on in another).
+- One flat, uniform background (#9a9a9a) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.
+
+The object (identical in all four views):
+- An open-topped box body, 1.4 m long (left to right in the FRONT view), 0.8 m deep, 0.45 m tall, its bottom 0.35 m above the ground. Its long sides face the FRONT and the BACK views. The sides are painted blue with a thick light wooden rim along the top edge (0.08 m) and wooden corner posts.
+- Two large solid wooden wheels, 0.7 m across and 0.12 m thick, one on the FRONT side and one on the BACK side of the body, both under the body's middle, on one axle running front to back. In the FRONT view one wheel is seen as a flat octagon disc in front of the body, with a dark red hub.
+- Two wooden handle shafts, 0.06 m thick, sticking out 0.6 m from the body's LEFT end (the image's left in the FRONT view), slightly rising, with a short crossbar grip at their ends.
+- One short wooden leg (0.35 m) under the body's left end, so the cart stands level.
+- A small heap of three red apples peeking over the rim in the middle of the body.
+
+Style, keep exactly:
+- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 300 to 500 triangles worth of detail. No smooth organic surfaces, no tiny details, no texture noise, no grain, no plank lines.
+- Flat colour areas only, ONLY these colours: body sides blue #4b80ca, rim, corner posts, handles and leg light wood #a77b5b, wheels darker wood #80493a, wheel hubs red #b45252, apples red #b45252.
+- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.

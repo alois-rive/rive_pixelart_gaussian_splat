@@ -1,0 +1,56 @@
+# A little red crab that scuttles along the sand: a squat body, two claws, six legs, stalk eyes.
+# Faces -Y; origin on the sand under its body.
+new
+material new Shell --base-color 0.8314 0.1176 0.2353 --no-slot
+material new Eye --base-color 0.9804 1.0000 1.0000 --no-slot
+add mesh uv-sphere --name Body --segments 8 --rings 4 --radius 1 --location 0 0 0
+scale 0.32 0.22 0.15
+apply --scale
+set location 0 0 0.2
+apply --location
+material assign Shell
+add mesh ico-sphere --name ClawL --subdivisions 1 --radius 0.12 --location -0.38 -0.22 0.22
+material assign Shell
+add mesh cylinder --name StalkL --vertices 4 --radius 0.03 --depth 0.16 --location -0.1 -0.12 0.36
+material assign Shell
+add mesh ico-sphere --name EyeL --subdivisions 1 --radius 0.06 --location -0.1 -0.13 0.45
+material assign Eye
+add mesh cube --name LegL0 --size 1 --location -0.38 -0.08 0.08
+scale 0.22 0.05 0.05
+apply --scale
+set rotation 0 30 0
+material assign Shell
+add mesh cube --name LegL1 --size 1 --location -0.38 0.04 0.08
+scale 0.22 0.05 0.05
+apply --scale
+set rotation 0 30 0
+material assign Shell
+add mesh cube --name LegL2 --size 1 --location -0.38 0.16 0.08
+scale 0.22 0.05 0.05
+apply --scale
+set rotation 0 30 0
+material assign Shell
+add mesh ico-sphere --name ClawR --subdivisions 1 --radius 0.12 --location 0.38 -0.22 0.22
+material assign Shell
+add mesh cylinder --name StalkR --vertices 4 --radius 0.03 --depth 0.16 --location 0.1 -0.12 0.36
+material assign Shell
+add mesh ico-sphere --name EyeR --subdivisions 1 --radius 0.06 --location 0.1 -0.13 0.45
+material assign Eye
+add mesh cube --name LegR0 --size 1 --location 0.38 -0.08 0.08
+scale 0.22 0.05 0.05
+apply --scale
+set rotation 0 -30 0
+material assign Shell
+add mesh cube --name LegR1 --size 1 --location 0.38 0.04 0.08
+scale 0.22 0.05 0.05
+apply --scale
+set rotation 0 -30 0
+material assign Shell
+add mesh cube --name LegR2 --size 1 --location 0.38 0.16 0.08
+scale 0.22 0.05 0.05
+apply --scale
+set rotation 0 -30 0
+material assign Shell
+select all
+shade flat
+export crab.glb

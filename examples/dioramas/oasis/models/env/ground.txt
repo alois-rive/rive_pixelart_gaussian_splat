@@ -1,0 +1,47 @@
+# Ground: a floating dune chunk with a sunken pond. Up Z, top at z 0, pond at the origin.
+new
+add mesh cylinder --name Ground --vertices 12 --radius 4.2 --depth 0.4 --location 0 0 -0.2
+apply
+material new Sand --base-color 1 1 1
+material new SandSide --base-color 0.647 0.541 0.384 --no-slot
+material new Shore --base-color 0.792 0.675 0.467 --no-slot
+material new Water --base-color 1 1 1 --no-slot
+material new Rock --base-color 0.647 0.541 0.384 --no-slot
+mode edit
+# the bottom cap is hidden by the underside: no splats there
+select face where "normal.z < -0.9"
+delete only-faces
+select face where "normal.z < 0.9"
+material assign SandSide
+# the top: three insets (outer dune ring, inner dune ring, wet shore), the last face is the pond
+select face where "normal.z > 0.9"
+inset 1.4
+inset 1.25
+inset 0.3
+# the pond face sinks 0.12 m: water is part of the surface, never a coplanar overlay
+translate 0 0 -0.12
+material assign Water
+uv project-from-view top --scale-to-bounds
+select face where "normal.z > 0.5 && sqrt(pos.x*pos.x + pos.y*pos.y) > 1.2 && sqrt(pos.x*pos.x + pos.y*pos.y) < 1.5"
+material assign Shore
+# gentle dunes: the two middle rings of verts bump up and down
+select vert where "pos.z > -0.01 && sqrt(pos.x*pos.x + pos.y*pos.y) > 1.6 && sqrt(pos.x*pos.x + pos.y*pos.y) < 4.0"
+randomize --amount 0.12 --seed 5
+select face where "normal.z > 0.5 && sqrt(pos.x*pos.x + pos.y*pos.y) > 1.5"
+uv project-from-view top --scale-to-bounds
+mode object
+material texture Sand base-color ../../art/textures/sand_48.png
+material texture Water base-color ../../art/textures/water_16.png
+# the rocky underside, tapering to a point; deep enough to show below the rim at 30 degrees pitch
+add mesh cone --name Under --vertices 12 --radius1 0.5 --radius2 4.1 --depth 3.4 --location 0 0 -2.1
+material assign Rock
+active Under
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+select vert where "pos.z < 0.9"
+randomize --amount 0.25 --seed 3
+mode object
+select all
+shade flat
+export ground.glb

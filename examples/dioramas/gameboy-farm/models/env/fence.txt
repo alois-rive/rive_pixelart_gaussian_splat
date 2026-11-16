@@ -1,0 +1,23 @@
+# Dark wooden fence section, 2.4 m: three posts and two rails, rails 0.15 thick (exaggerated: a real rail is a
+# speck at 0.11 m spacing). Up Z.
+new
+material new Wood --base-color 0.200 0.173 0.314 --no-slot
+add mesh cube --name Post1 --size 1 --location -1.1 0 0.42
+scale 0.2 0.2 0.84
+apply --scale
+add mesh cube --name Post2 --size 1 --location 0 0 0.42
+scale 0.2 0.2 0.84
+apply --scale
+add mesh cube --name Post3 --size 1 --location 1.1 0 0.42
+scale 0.2 0.2 0.84
+apply --scale
+add mesh cube --name Rail1 --size 1 --location 0 -0.1 0.66
+scale 2.4 0.08 0.15
+apply --scale
+add mesh cube --name Rail2 --size 1 --location 0 -0.1 0.32
+scale 2.4 0.08 0.15
+apply --scale
+select all
+material assign Wood
+shade flat
+export fence.glb

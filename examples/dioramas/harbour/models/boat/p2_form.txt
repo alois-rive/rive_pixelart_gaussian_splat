@@ -1,0 +1,85 @@
+# Phase 2, form and surfacing: deck well, hull bands, cabin windows and corner posts, rope coil,
+# materials in Summers Past-16 colours (sRGB 0..1, exact palette entries so the bake snaps with 0 error).
+# Edit mode acts on the ACTIVE object only: every edit below starts with `active <part>`.
+material new HullRed --base-color 0.765 0.220 0.275 --no-slot
+material new HullOrange --base-color 0.906 0.549 0.357 --no-slot
+material new Rail --base-color 0.373 0.227 0.376 --no-slot
+material new Deck --base-color 0.910 0.749 0.573 --no-slot
+material new CabinWhite --base-color 0.925 0.910 0.761 --no-slot
+material new CabinTrim --base-color 0.718 0.639 0.616 --no-slot
+material new Roof --base-color 0.369 0.502 0.698 --no-slot
+material new Window --base-color 0.196 0.000 0.067 --no-slot
+material new Mast --base-color 0.373 0.227 0.376 --no-slot
+material new Flag --base-color 0.824 0.796 0.243 --no-slot
+material new Crate --base-color 0.969 0.835 0.329 --no-slot
+material new CrateRed --base-color 0.776 0.435 0.369 --no-slot
+material new Rope --base-color 0.776 0.435 0.369 --no-slot
+
+# --- hull: a deck well 0.10 deep inside a 0.07 rail, then the three paint bands
+active Hull
+mode edit
+select face where "normal.z > 0.9 && pos.z > 0.55"
+inset 0.07
+extrude 0 0 -0.10
+select all
+bisect --plane-co 0 0 0.47 --plane-no 0 0 1
+mode object
+select Hull
+material assign HullRed
+mode edit
+select face where "pos.z > 0.30 && pos.z < 0.47"
+material assign HullOrange
+select face where "pos.z > 0.47"
+material assign Rail
+select face where "normal.z > 0.9 && pos.z > 0.45 && pos.z < 0.55"
+material assign Deck
+mode object
+
+# --- cabin: a recessed window in each wall, corner posts
+active Cabin
+mode edit
+select face where "abs(normal.z) < 0.1"
+inset 0.17 --individual
+extrude --individual --along-normal -0.03
+mode object
+select Cabin
+material assign CabinWhite
+mode edit
+select face where "abs(normal.z) < 0.1 && area < 0.25 && abs(abs(pos.x) - 0.455) > 0.02 && abs(abs(pos.y) - 0.44) > 0.02"
+material assign Window
+mode object
+add mesh cube --name PostFL --size 1 --location -0.45 0.40 0.86
+scale 0.12 0.12 0.72
+add mesh cube --name PostFR --size 1 --location 0.45 0.40 0.86
+scale 0.12 0.12 0.72
+add mesh cube --name PostBL --size 1 --location -0.45 1.26 0.86
+scale 0.12 0.12 0.72
+add mesh cube --name PostBR --size 1 --location 0.45 1.26 0.86
+scale 0.12 0.12 0.72
+select PostFL PostFR PostBL PostBR
+apply --scale
+material assign CabinTrim
+
+# --- coil: a ring of rope (8 sides), its hole 0.08 deep
+active Coil
+mode edit
+select face where "normal.z > 0.9"
+inset 0.08
+extrude 0 0 -0.08
+mode object
+
+select Roof
+material assign Roof
+select Mast SparX SparY
+material assign Mast
+select Flag
+material assign Flag
+select CrateA
+material assign Crate
+select CrateB
+material assign CrateRed
+select Coil
+material assign Rope
+select all
+shade flat
+inspect stats

@@ -1,0 +1,35 @@
+# The lamp's two beams: 4-sided pyramids 5 m long, apex at the lamp (0, 0, 3.76 in the lighthouse's
+# frame), 0.9 m across at the far end, pointing +X and -X; they turn with the lamp head (8 s a turn,
+# linear, clockwise from above: the same keys as lighthouse/p2_form.txt). Unlit splats, stippled towards the tips. Up Z.
+new
+fps 24
+frame range 0 192
+add mesh cone --name BeamA --vertices 4 --radius1 0.65 --radius2 0 --depth 5 --location 2.5 0 3.76 --rotation 0 -90 0
+apply --rotation
+add mesh cone --name BeamB --vertices 4 --radius1 0.65 --radius2 0 --depth 5 --location -2.5 0 3.76 --rotation 0 90 0
+apply --rotation
+material new Beam --base-color 1 1 1 --emission 0.941 0.965 0.941
+material texture Beam base-color beam_stipple.png
+material set Beam alpha-mode mask
+material set Beam alpha-cutoff 0.5
+select BeamA BeamB
+material assign Beam
+active BeamA
+join
+# the stipple texture (beam_texture.py) laid over both beams from above: u runs tip to tip along X
+mode edit
+select all
+uv project-from-view top --scale-to-bounds
+mode object
+rename BeamA Beam
+cursor set 0 0 3.76
+origin set --to cursor
+shade flat
+select Beam
+set rotation 0 0 0
+keyframe insert --channels rot --frame 0
+set rotation 0 0 -360
+keyframe insert --channels rot --frame 192
+keyframe interpolation linear --all
+frame set 0
+export beam.glb --bake-animations

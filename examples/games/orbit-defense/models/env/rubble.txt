@@ -1,0 +1,25 @@
+# Rubble left where a house was hit: a few tilted dark blocks. Origin at the ground, up Z.
+new
+material new Rubble --base-color 0.310 0.078 0.275 --no-slot
+material new Ember --base-color 0.435 0.114 0.361 --emission 0.435 0.114 0.361 --no-slot
+add mesh cube --name R0 --size 1 --location -0.12 0 0.06
+scale 0.2 0.22 0.12
+apply --scale
+set rotation 0 18 0
+add mesh cube --name R1 --size 1 --location 0.1 0 0.07
+scale 0.22 0.2 0.14
+apply --scale
+set rotation 0 -25 10
+add mesh cube --name R2 --size 1 --location 0 -0.02 0.15
+scale 0.14 0.14 0.12
+apply --scale
+set rotation 30 0 40
+select R0 R1 R2
+material assign Rubble
+add mesh cube --name Glow --size 1 --location 0 -0.1 0.05
+scale 0.12 0.06 0.08
+apply --scale
+material assign Ember
+select all
+shade flat
+export rubble.glb

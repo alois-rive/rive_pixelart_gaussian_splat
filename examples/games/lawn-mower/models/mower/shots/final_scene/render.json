@@ -1,0 +1,20 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "mower",
+  "views": "front,right,back,top,iso",
+  "size": 100,
+  "pixel": 2,
+  "arg": [
+    "sunYaw=-38",
+    "sunPitch=52",
+    "keyLight=0.42",
+    "highlight=0.9",
+    "edgeDepth=0.35"
+  ],
+  "advance": "2",
+  "real_sky": true,
+  "look": "lit",
+  "texel": 0.056,
+  "elevation": 0
+}

@@ -1,0 +1,38 @@
+# Satellite, phase 1: blockout of every named part at the spec's sizes (satellite.spec.md, 458 px per
+# metre in the front panel). Up Z = the barrel (the game turns it to point away from the planet),
+# facing -Y (the camera), origin at the body's centre (the pivot the game orbits).
+new
+add mesh cube --name Body --size 1 --location 0 0 0
+scale 0.5 0.46 0.404
+apply --scale
+add mesh cone --name Dome --vertices 8 --radius1 0.215 --radius2 0.08 --depth 0.138 --location 0 0 0.271 --rotation 0 0 22.5
+apply --rotation
+add mesh cylinder --name Barrel --vertices 6 --radius 0.055 --depth 0.27 --location 0 0 0.476
+add mesh cylinder --name Muzzle --vertices 6 --radius 0.07 --depth 0.045 --location 0 0 0.634
+add mesh cylinder --name Plate --vertices 8 --radius 0.165 --depth 0.055 --location 0 0 -0.231 --rotation 0 0 22.5
+apply --rotation
+add mesh cube --name StrutL --size 1 --location -0.285 0 0.025
+scale 0.09 0.085 0.085
+apply --scale
+add mesh cube --name StrutR --size 1 --location 0.285 0 0.025
+scale 0.09 0.085 0.085
+apply --scale
+# each wing: a top half, the dark stripe at the strut's height, a bottom half (flush, 0.055 thick)
+add mesh cube --name PanelLT --size 1 --location -0.529 0 0.1145
+scale 0.437 0.055 0.119
+apply --scale
+add mesh cube --name StripeL --size 1 --location -0.529 0 0.025
+scale 0.437 0.055 0.06
+apply --scale
+add mesh cube --name PanelLB --size 1 --location -0.529 0 -0.064
+scale 0.437 0.055 0.118
+apply --scale
+add mesh cube --name PanelRT --size 1 --location 0.529 0 0.1145
+scale 0.437 0.055 0.119
+apply --scale
+add mesh cube --name StripeR --size 1 --location 0.529 0 0.025
+scale 0.437 0.055 0.06
+apply --scale
+add mesh cube --name PanelRB --size 1 --location 0.529 0 -0.064
+scale 0.437 0.055 0.118
+apply --scale
