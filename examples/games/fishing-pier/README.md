@@ -4,6 +4,8 @@
 bites, reel it out of the water to land it (deeper fish score more). A jellyfish on the hook snaps
 the line: three lines, and the day ends when the sun sets (60 s).
 
+**Touch:** press and hold anywhere to sink the hook, lift to reel it in.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli 0.167. Palette: [Pollen8](https://lospec.com/palette-list/pollen8) by Conker
 (plum, berry, rose, pink, gold, cream, mint, teal), loaded from Lospec (the spare, 2bit-demichrome,

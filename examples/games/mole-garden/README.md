@@ -2,6 +2,8 @@
 
 **How to play: click the moles as they pop up; spare the rabbits. 45 seconds.**
 
+**Touch:** tap the moles; the mallet strikes where you tap.
+
 Moles pop out of nine molehills in a vegetable bed at dusk; the mallet follows the pointer and a click
 brings it down. A mole hit scores 1 (2 from the fifth hit in a row: a streak); a bonked rabbit costs 3. The
 moles come faster, stay shorter and come in pairs as the clock runs down. Before the first click moles

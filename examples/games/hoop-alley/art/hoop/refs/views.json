@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/hoop-alley/art/hoop/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        128,
+        52,
+        513,
+        422
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8226,
+      "fill": 0.8414,
+      "background": "#b4b4b4"
+    },
+    "right": {
+      "box": [
+        907,
+        48,
+        505,
+        410
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8119,
+      "fill": 0.2925,
+      "background": "#b5b4b4"
+    },
+    "back": {
+      "box": [
+        129,
+        558,
+        513,
+        416
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8109,
+      "fill": 0.8339,
+      "background": "#b5b4b4"
+    },
+    "top": {
+      "box": [
+        919,
+        558,
+        466,
+        433
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9292,
+      "fill": 0.2578,
+      "background": "#b5b4b4"
+    }
+  }
+}

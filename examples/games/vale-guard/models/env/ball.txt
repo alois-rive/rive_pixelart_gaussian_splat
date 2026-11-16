@@ -1,0 +1,13 @@
+# A cannonball: a dark rock ball 0.26 m across, origin at its centre. make_env.py.
+new
+material new Iron --base-color 0.4353 0.4039 0.4627 --no-slot
+add mesh ico-sphere --name Ball --subdivisions 1 --radius 0.1300 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 1.000 1.000 1.000
+apply --scale
+translate 0.0000 0.0000 0.0000
+material assign Iron
+select all
+shade flat
+export ball.glb

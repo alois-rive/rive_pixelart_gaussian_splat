@@ -1,0 +1,111 @@
+# Windmill blockout: one primitive per named part at the spec's sizes (spec: windmill.spec.md).
+# Up Z, front -Y; origin on the ground under the tower's centre.
+new
+material new Wall --base-color 1.0 0.4235 0.4784 --no-slot
+material new Trim --base-color 0.9804 1.0 0.9882 --no-slot
+material new Roof --base-color 0.2667 0.5529 0.9059 --no-slot
+material new Finial --base-color 1.0 0.9216 0.2 --no-slot
+material new Hub --base-color 0.9608 0.5373 0.1922 --no-slot
+material new Spar --base-color 0.651 0.2392 0.3412 --no-slot
+material new Sail --base-color 0.9804 1.0 0.9882 --no-slot
+material new Dark --base-color 0.2118 0.2078 0.302 --no-slot
+# tower: eight-sided frustum, 2.2 across the flats at the ground, 1.92 at 2.02 m
+add mesh cone --name Tower --vertices 8 --radius1 1.1907 --radius2 1.0392 --depth 2.02 --location 0 0 1.01
+set rotation 0 0 22.5
+apply --rotation
+material assign Wall
+# trim band 2.02 .. 2.26
+add mesh cylinder --name Band --vertices 8 --radius 1.06 --depth 0.24 --location 0 0 2.14
+set rotation 0 0 22.5
+apply --rotation
+material assign Trim
+# roof cone 2.26 .. 3.16, finial on its point
+add mesh cone --name Roof --vertices 8 --radius1 1.12 --radius2 0 --depth 0.9 --location 0 0 2.71
+set rotation 0 0 22.5
+apply --rotation
+material assign Roof
+add mesh ico-sphere --name Finial --subdivisions 1 --radius 0.14 --location 0 0 3.28
+material assign Finial
+# hub and axle: the sails' plane 0.06 m in front of the base's front face
+add mesh cube --name Hub --size 0.24 --location 0 -1.16 1.62
+material assign Hub
+add mesh cylinder --name Axle --vertices 6 --radius 0.07 --depth 0.2 --location 0 -1.04 1.62 --rotation 90 0 0
+material assign Hub
+add mesh cube --name Spar0 --size 1 --location 0 0 0
+scale 0.1 0.1 1.580
+apply --scale
+translate 0 0 0.890
+apply --location
+material assign Spar
+add mesh cube --name Cloth0 --size 1 --location 0 0 0
+scale 0.46 0.05 1.200
+apply --scale
+translate -0.200 -0.02 1.080
+apply --location
+material assign Sail
+select Spar0 Cloth0
+active Spar0
+join
+set rotation 0 45 0
+apply --rotation
+translate 0 -1.16 1.62
+apply --location
+add mesh cube --name Spar1 --size 1 --location 0 0 0
+scale 0.1 0.1 1.580
+apply --scale
+translate 0 0 0.890
+apply --location
+material assign Spar
+add mesh cube --name Cloth1 --size 1 --location 0 0 0
+scale 0.46 0.05 1.200
+apply --scale
+translate -0.200 -0.02 1.080
+apply --location
+material assign Sail
+select Spar1 Cloth1
+active Spar1
+join
+set rotation 0 135 0
+apply --rotation
+translate 0 -1.16 1.62
+apply --location
+add mesh cube --name Spar2 --size 1 --location 0 0 0
+scale 0.1 0.1 1.580
+apply --scale
+translate 0 0 0.890
+apply --location
+material assign Spar
+add mesh cube --name Cloth2 --size 1 --location 0 0 0
+scale 0.46 0.05 1.200
+apply --scale
+translate -0.200 -0.02 1.080
+apply --location
+material assign Sail
+select Spar2 Cloth2
+active Spar2
+join
+set rotation 0 225 0
+apply --rotation
+translate 0 -1.16 1.62
+apply --location
+add mesh cube --name Spar3 --size 1 --location 0 0 0
+scale 0.1 0.1 1.580
+apply --scale
+translate 0 0 0.890
+apply --location
+material assign Spar
+add mesh cube --name Cloth3 --size 1 --location 0 0 0
+scale 0.46 0.05 1.200
+apply --scale
+translate -0.200 -0.02 1.080
+apply --location
+material assign Sail
+select Spar3 Cloth3
+active Spar3
+join
+set rotation 0 315 0
+apply --rotation
+translate 0 -1.16 1.62
+apply --location
+select all
+shade flat

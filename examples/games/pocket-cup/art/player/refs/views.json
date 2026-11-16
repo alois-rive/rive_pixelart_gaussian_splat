@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/pocket-cup/art/player/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        263,
+        34,
+        243,
+        439
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.8066,
+      "fill": 0.56,
+      "background": "#b6b6b5"
+    },
+    "right": {
+      "box": [
+        1096,
+        33,
+        115,
+        440
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 3.8261,
+      "fill": 0.6873,
+      "background": "#b6b6b5"
+    },
+    "back": {
+      "box": [
+        263,
+        546,
+        243,
+        439
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.8066,
+      "fill": 0.5595,
+      "background": "#b7b6b6"
+    },
+    "top": {
+      "box": [
+        1036,
+        694,
+        232,
+        142
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.6121,
+      "fill": 0.6861,
+      "background": "#b7b6b6"
+    }
+  }
+}

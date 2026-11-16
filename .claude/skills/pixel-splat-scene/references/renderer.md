@@ -80,7 +80,7 @@ For art pixel p, the four G-buffer samples `2p + (0|1, 0|1)`:
 
 ## Uniform layouts (std140-like, bytes)
 
-`Frame` (G-buffer and shadow, 1520 bytes; two buffers, one per pass):
+`Frame` (G-buffer and shadow, 2544 bytes; two buffers, one per pass):
 
 | Offset | Field | Contents |
 |---|---|---|
@@ -98,7 +98,8 @@ For art pixel p, the four G-buffer samples `2p + (0|1, 0|1)`:
 | 320 | `fxBox` | the FX splats' bounds: min x, max x, min y, max y |
 | 336 | `ramps` array<vec4u, 64> | ramp r step s at `[r*2 + s/4][s%4]` |
 | 1360 | `rampLen` array<vec4u, 8> | |
-| 1488 | `qmin`, `qstep` | splat dequantization (blob v3): box min / step xyz, sigma min / step w; 1520 bytes in all |
+| 1488 | `qmin`, `qstep` | splat dequantization (blob v3): box min / step xyz, sigma min / step w |
+| 1520 | `look[64]` | per bone (`GameApi.looks`): x step shift, y ramp + 1 (0: its own), z flash (unlit at the lightest step); 2544 bytes in all |
 
 `Look` (resolve, 2256 bytes): `palette` array<vec4f, 64> at 0, `ramps` at
 1024, `rampLen` at 2048, then `grid` (W, H, ink, edgeDepth), `depth` (near,

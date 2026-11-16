@@ -1,0 +1,80 @@
+# Plane (the biplane hero), phase 1: one primitive per named part at the spec's sizes
+# (plane.spec.md: front panel 314 px/m for heights and spans, top panel 268 px/m for the plan).
+# Up Z, nose to -Y (the camera), origin on the fuselage axis 0.45 m above the wheels' ground (the
+# pivot the game banks the plane about). d = distance behind the spinner tip: y = d - 0.79.
+new
+# fuselage: d 0.28..1.58, 0.36 wide and 0.40 tall at the front (tapered in phase 2)
+add mesh cube --name Fuselage --size 1 --location 0 0.14 -0.03
+scale 0.36 1.30 0.40
+apply --scale
+# engine cowling (octagon, flat top), spinner cone, two-blade propeller (its own part: a game bone)
+add mesh cylinder --name Cowling --vertices 8 --radius 0.2 --depth 0.18 --location 0 -0.60 -0.02 --rotation 90 22.5 0
+apply --rotation
+add mesh cone --name Spinner --vertices 6 --radius1 0.07 --radius2 0 --depth 0.10 --location 0 -0.74 -0.02 --rotation 90 0 0
+apply --rotation
+add mesh cube --name Prop --size 1 --location 0 -0.70 -0.02
+scale 0.70 0.03 0.08
+apply --scale
+set rotation 0 30 0
+apply --rotation
+# upper wing: 1.8 span, 0.36 chord, 0.09 thick; cream centre 1.4, orange tips 0.2 each
+add mesh cube --name UpperWing --size 1 --location 0 -0.19 0.235
+scale 1.40 0.36 0.09
+apply --scale
+add mesh cube --name TipL --size 1 --location -0.80 -0.19 0.235
+scale 0.20 0.36 0.09
+apply --scale
+add mesh cube --name TipR --size 1 --location 0.80 -0.19 0.235
+scale 0.20 0.36 0.09
+apply --scale
+# lower wing: 1.52 span, 0.34 chord, 0.08 thick, 0.08 forward of the upper one
+add mesh cube --name LowerWing --size 1 --location 0 -0.28 -0.20
+scale 1.52 0.34 0.08
+apply --scale
+# four struts between the wings (0.06 square), at x +-0.36 and +-0.56
+add mesh cube --name Strut0 --size 1 --location -0.56 -0.24 0.015
+scale 0.06 0.06 0.35
+apply --scale
+add mesh cube --name Strut1 --size 1 --location -0.36 -0.24 0.015
+scale 0.06 0.06 0.35
+apply --scale
+add mesh cube --name Strut2 --size 1 --location 0.36 -0.24 0.015
+scale 0.06 0.06 0.35
+apply --scale
+add mesh cube --name Strut3 --size 1 --location 0.56 -0.24 0.015
+scale 0.06 0.06 0.35
+apply --scale
+# cockpit (dark, 0.04 proud of the fuselage top) and a small windscreen in front of it
+add mesh cube --name Cockpit --size 1 --location 0 0.14 0.13
+scale 0.20 0.16 0.08
+apply --scale
+add mesh cube --name Screen --size 1 --location 0 0.03 0.18
+scale 0.18 0.03 0.07
+apply --scale
+# tailplane 0.70 span, 0.16 chord, 0.05 thick: cream centre 0.46, orange tips 0.12
+add mesh cube --name Tailplane --size 1 --location 0 0.58 0.015
+scale 0.46 0.16 0.05
+apply --scale
+add mesh cube --name TailTipL --size 1 --location -0.29 0.58 0.015
+scale 0.12 0.16 0.05
+apply --scale
+add mesh cube --name TailTipR --size 1 --location 0.29 0.58 0.015
+scale 0.12 0.16 0.05
+apply --scale
+# fin: base chord 0.33 at the fuselage, 0.43 tall (swept in phase 2)
+add mesh cube --name Fin --size 1 --location 0 0.625 0.265
+scale 0.06 0.33 0.43
+apply --scale
+# landing gear: two fat octagonal wheels (0.15 across, 0.11 wide) on short legs
+add mesh cylinder --name WheelL --vertices 8 --radius 0.075 --depth 0.11 --location -0.17 -0.39 -0.375 --rotation 0 90 0
+apply --rotation
+add mesh cylinder --name WheelR --vertices 8 --radius 0.075 --depth 0.11 --location 0.17 -0.39 -0.375 --rotation 0 90 0
+apply --rotation
+add mesh cube --name LegL --size 1 --location -0.15 -0.33 -0.30
+scale 0.05 0.05 0.14
+apply --scale
+add mesh cube --name LegR --size 1 --location 0.15 -0.33 -0.30
+scale 0.05 0.05 0.14
+apply --scale
+select all
+shade flat

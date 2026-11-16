@@ -1,0 +1,26 @@
+# Dust puff: eight chunky motes in a ring 0.8 m across, unlit cream. A pool of game bones: steps,
+# pushes, landings and solved pads pop them; stepped growth in four poses.
+new
+material new Dust --base-color 0.941 0.855 0.694 --emission 0.941 0.855 0.694 --no-slot
+add mesh cube --name M0 --size 0.13 --location 0.380 0.000 0.100
+material assign Dust
+add mesh cube --name M1 --size 0.13 --location 0.269 0.269 0.170
+material assign Dust
+add mesh cube --name M2 --size 0.13 --location 0.000 0.380 0.100
+material assign Dust
+add mesh cube --name M3 --size 0.13 --location -0.269 0.269 0.170
+material assign Dust
+add mesh cube --name M4 --size 0.13 --location -0.380 0.000 0.100
+material assign Dust
+add mesh cube --name M5 --size 0.13 --location -0.269 -0.269 0.170
+material assign Dust
+add mesh cube --name M6 --size 0.13 --location -0.000 -0.380 0.100
+material assign Dust
+add mesh cube --name M7 --size 0.13 --location 0.269 -0.269 0.170
+material assign Dust
+select M0 M1 M2 M3 M4 M5 M6 M7
+active M0
+join
+rename M0 Puff
+shade flat
+export puff.glb

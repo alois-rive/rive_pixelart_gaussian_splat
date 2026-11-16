@@ -3,6 +3,8 @@
 **How to play:** press on the ball, drag up and let go: a longer drag rolls it harder, sideways steers it.
 Nine balls; land them in the rings; 300 wins a prize.
 
+**Touch:** press anywhere, drag up and lift: a longer drag rolls harder, sideways steers.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra 0.1.0,
 codex-cli. Palette: [Bubblegum 16](https://lospec.com/palette-list/bubblegum-16) (loaded from Lospec; the spare
 `fantasy-24` was not needed), as six ramps (pink, fire, blue, mint, dusk, wood). A night arcade: three

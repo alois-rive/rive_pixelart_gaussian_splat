@@ -1,0 +1,23 @@
+# Plane, phase 3: the splat fit (modeling.md, "When the mesh gate and the splat gate disagree"). The gated
+# form (p2) stays as it is; this only thins the flat parts that the splats fatten by a disc radius on each
+# side: the upper wing to 0.055 m, the lower wing to 0.05 m, the tailplane to 0.03 m. Run on a copy:
+#   hedra model --no-save --to plane_fit.rmdl plane.rmdl run p3_splat_fit.txt
+select Plane
+active Plane
+apply --location
+mode edit
+select vert where "pos.z > 0.27 && pos.z < 0.29 && pos.y < 0 && pos.y > -0.4"
+translate 0 0 -0.0175
+select vert where "pos.z > 0.187 && pos.z < 0.193 && pos.y < 0 && pos.y > -0.4"
+translate 0 0 0.0175
+select vert where "pos.z > -0.163 && pos.z < -0.157 && pos.y < -0.1 && pos.y > -0.46"
+translate 0 0 -0.015
+select vert where "pos.z > -0.243 && pos.z < -0.237 && pos.y < -0.1 && pos.y > -0.46"
+translate 0 0 0.015
+select vert where "pos.z > 0.037 && pos.z < 0.043 && pos.y > 0.49 && pos.y < 0.67 && abs(pos.x) > 0.04"
+translate 0 0 -0.01
+select vert where "pos.z > -0.013 && pos.z < -0.007 && pos.y > 0.49 && pos.y < 0.67"
+translate 0 0 0.01
+mode object
+inspect stats
+export plane_fit.glb

@@ -1,0 +1,62 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.07,
+  "fat": 1.0,
+  "out": "../../lookdev/racer.bin",
+  "objects": [
+    {
+      "model": "racer.glb",
+      "materials": {
+        "Body": {
+          "ramp": "red"
+        },
+        "Trim": {
+          "ramp": "red",
+          "spacing": 0.045
+        },
+        "Stripe": {
+          "ramp": "white"
+        },
+        "Helmet": {
+          "ramp": "white"
+        },
+        "Tyre": {
+          "ramp": "tyre"
+        },
+        "Hub": {
+          "ramp": "white"
+        },
+        "Grille": {
+          "ramp": "tyre",
+          "spacing": 0.04
+        },
+        "Seat": {
+          "ramp": "tyre"
+        },
+        "Lamp": {
+          "ramp": "peach",
+          "spacing": 0.035
+        },
+        "Skin": {
+          "ramp": "peach"
+        },
+        "Glass": {
+          "ramp": "blue",
+          "flags": [
+            "double"
+          ]
+        },
+        "Jacket": {
+          "ramp": "navy"
+        },
+        "Goggles": {
+          "ramp": "navy",
+          "spacing": 0.045
+        },
+        "Pipe": {
+          "ramp": "stone"
+        }
+      }
+    }
+  ]
+}

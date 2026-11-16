@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.042,
+  "fat": 1.0,
+  "out": "../../lookdev/hero.bin",
+  "objects": [
+    { "model": "hero.glb",
+      "materials": { "Straw": { "ramp": "gold" }, "Band": { "ramp": "red" }, "Skin": { "ramp": "skin" },
+                     "Hair": { "ramp": "stone", "specks": true }, "Tunic": { "ramp": "water" }, "Belt": { "ramp": "wood", "spacing": 0.03 },
+                     "Legs": { "ramp": "stone" }, "Blade": { "ramp": "stone", "spacing": 0.026 }, "Gold": { "ramp": "gold" },
+                     "Shield": { "ramp": "gold", "spacing": 0.03 }, "Cape": { "ramp": "red" } } }
+  ]
+}

@@ -1,0 +1,5 @@
+# Plane, the scene's pieces 1/2: the fitted plane (p3) without its propeller, which spins on a bone of
+# its own. Run on a copy: hedra model --no-save plane_fit.rmdl run p4_body.txt
+select Prop
+delete
+export plane_body.glb

@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.126,
+  "fat": 1.0,
+  "out": "../../lookdev/sailboat.bin",
+  "objects": [
+    { "model": "sailboat_fit.glb",
+      "materials": { "HullRed": { "ramp": "red" }, "Deck": { "ramp": "white" }, "Wood": { "ramp": "wood", "spacing": 0.059 },
+                     "Spar": { "ramp": "rock", "spacing": 0.037 }, "Sail": { "ramp": "white", "spacing": 0.089, "flags": ["double"] },
+                     "Band": { "ramp": "blossom", "spacing": 0.089, "flags": ["double"] } } }
+  ]
+}

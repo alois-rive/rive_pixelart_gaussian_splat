@@ -1,0 +1,51 @@
+# Pip, phase 2: form and surfacing. Exact DawnBringer 32 colours (sRGB 0..1): Bulb #d95763 (radish ramp,
+# step 2), Cream #eec39a (cream ramp, step 2: the lower bulb, root, legs), Eye #222034 (ink, step 1),
+# Leaf #99e550 (sprout, step 2), Stem #6abe30 (sprout, step 1), Boot #45283c (ink, step 2).
+# Four objects stay separate for the game's bones: Body (bulb, root, eyes), Sprout (stem, leaves),
+# FootR and FootL (leg and boot each).
+material new Bulb --base-color 0.851 0.341 0.388 --no-slot
+material new Cream --base-color 0.933 0.765 0.604 --no-slot
+material new Eye --base-color 0.133 0.125 0.204 --no-slot
+material new Leaf --base-color 0.600 0.898 0.314 --no-slot
+material new Stem --base-color 0.416 0.745 0.188 --no-slot
+material new Boot --base-color 0.271 0.157 0.235 --no-slot
+select Bulb
+material assign Bulb
+select Root LegR LegL
+material assign Cream
+select EyeR EyeL
+material assign Eye
+select LeafR LeafL
+material assign Leaf
+select Stem
+material assign Stem
+select BootR BootL
+material assign Boot
+# the cream lower third of the bulb
+select Bulb
+active Bulb
+mode edit
+select face where "pos.z < 0.31"
+material assign Cream
+mode object
+# leaves: pinch the outer tip a little longer (tips erode under the splats)
+select Bulb Root EyeR EyeL
+active Bulb
+join
+rename Bulb Body
+select Stem LeafR LeafL
+active Stem
+join
+rename Stem Sprout
+select LegR BootR
+active BootR
+join
+rename BootR FootR
+select LegL BootL
+active BootL
+join
+rename BootL FootL
+select all
+shade flat
+inspect stats
+export pip.glb

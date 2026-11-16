@@ -41,7 +41,7 @@ const HEADER: u32 = 672;   // blob v3: 640 bytes of header + 32 of dequantizatio
 const STRIDE: u32 = 16;
 const MAX_BONES: i32 = 64;
 const BONE_BYTES: i32 = 48;   // 3 rows of vec4
-const FRAME_BYTES: i32 = 1520;
+const FRAME_BYTES: i32 = 2544; // 1520 + the per-bone looks (64 x vec4)
 const LOOK_BYTES: i32 = 2256;
 
 export class SplatScene extends Layout {
@@ -154,6 +154,10 @@ export class SplatScene extends Layout {
     api: GameApi = new GameApi();
     started: bool = false;
     demoYaw: f64 = 0;
+    pointerOwner: f64 = -1;
+    hoverPending: bool = false;
+    pressedThisFrame: bool = false;
+    upX: f32 = 0; upY: f32 = 0; upFrame: i32 = -1;   // the id of the pointer holding the current gesture (-1: none)
     sfxRing: Ring<SfxEvent>? = null;
     sfxHandle: AudioHandle? = null;
     sfxStarts: i32 = 0;
@@ -700,6 +704,13 @@ export class SplatScene extends Layout {
             }
             this.game.start(a);
         }
+        // a touch press arrives as a move then a down (and a lift as an up then a move) in one
+        // frame: only a bare move in a frame with no press or lift is a hovering mouse
+        if (this.hoverPending && !this.pressedThisFrame) {
+            a.hoverSeen = true;
+        }
+        this.hoverPending = false;
+        this.pressedThisFrame = false;
         this.game.update(a);
         this.fromApi();
         this.sendSounds();
@@ -756,6 +767,29 @@ export class SplatScene extends Layout {
         if (this.demo) {
             return true; // a game in demo mode ignores the pointer (and leaves it to the host)
         }
+        // one pointer at a time: the first finger (or the mouse) down owns the gesture; others are
+        // ignored until it lifts. A move with nothing pressed can only be a mouse: hoverSeen.
+        if (kind == POINTER_DOWN) {
+            if (this.pointerOwner >= 0 && event.id != this.pointerOwner) {
+                return true;
+            }
+            this.pointerOwner = event.id;
+        } else if (this.pointerOwner >= 0 && event.id != this.pointerOwner) {
+            return true;
+        } else if (kind == POINTER_MOVE && this.pointerOwner < 0) {
+            this.hoverPending = true; // confirmed at the next advance if no press or lift came with it
+        }
+        if (kind == POINTER_DOWN || kind == POINTER_UP) {
+            this.pressedThisFrame = true;
+        }
+        // a touch lift arrives as an UP then a MOVE at the same point: that move is not a hover
+        if (kind == POINTER_UP) {
+            this.upX = event.position.x; this.upY = event.position.y; this.upFrame = this.api.frame;
+        } else if (kind == POINTER_MOVE && this.pointerOwner < 0 && this.upFrame == this.api.frame
+                   && event.position.x == this.upX && event.position.y == this.upY) {
+            this.hoverPending = false;
+            return true;
+        }
         let px = <f32>Math.max(1, this.pixelSize);
         a.pointerX = (event.position.x - this.hudOX) / px;
         a.pointerY = (event.position.y - this.hudOY) / px;
@@ -763,6 +797,7 @@ export class SplatScene extends Layout {
             a.pointerDown = true;
         } else if (kind == POINTER_UP) {
             a.pointerDown = false;
+            this.pointerOwner = -1;
         }
         if (this.ready && this.canvas != null) {
             this.updateUniforms(); // the camera of this moment, for api.pick
@@ -854,8 +889,15 @@ export class SplatScene extends Layout {
     }
 
     override pointerExit(event: PointerEvent): void {
-        if (this.api.playable) {
-            this.api.pointerDown = false;
+        let a = this.api;
+        if (a.playable && a.pointerDown && !this.demo && (this.pointerOwner < 0 || event.id == this.pointerOwner)) {
+            // a finger that slides off the scene (or a cancelled touch) ends the gesture for the game
+            a.pointerDown = false;
+            this.pointerOwner = -1;
+            this.game.pointer(a, POINTER_UP, a.pointerX, a.pointerY);
+        } else if (a.playable && (this.pointerOwner < 0 || event.id == this.pointerOwner)) {
+            a.pointerDown = false;
+            this.pointerOwner = -1;
         }
         if (this.dragging && event.id == this.dragId) {
             this.dragging = false;
@@ -1115,6 +1157,10 @@ export class SplatScene extends Layout {
         this.writeTables(f, u, 84, 340);
         for (let k = 0; k < 8; k++) {
             f[372 + k] = this.quant[k];
+        }
+        let looks = this.api.looks;
+        for (let k = 0; k < 256; k++) {
+            f[380 + k] = looks[k];
         }
     }
 

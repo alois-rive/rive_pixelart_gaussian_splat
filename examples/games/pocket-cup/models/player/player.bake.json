@@ -1,0 +1,14 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.06,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/player.bin",
+  "objects": [
+    { "model": "player_fit.glb",
+      "materials": { "Shirt": { "ramp": "coral" }, "Sock": { "ramp": "coral" }, "Band": { "ramp": "gold" },
+                     "Trim": { "ramp": "chalk" }, "Shorts": { "ramp": "chalk" }, "Skin": { "ramp": "skin" },
+                     "Hair": { "ramp": "wood" }, "Boot": { "ramp": "boot" },
+                     "Eye": { "ramp": "navy", "spacing": 0.04, "specks": true } } }
+  ]
+}

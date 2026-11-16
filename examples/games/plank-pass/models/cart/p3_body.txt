@@ -1,0 +1,4 @@
+# Kettle cart, phase 3: the body alone (everything but the wheels and their hub caps).
+select WheelFL WheelFR WheelRL WheelRR HubFL HubFR HubRL HubRR
+delete
+export cart_body.glb

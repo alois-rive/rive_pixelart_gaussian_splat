@@ -5,7 +5,7 @@
 // and the session's best; the next click starts a new match at the same table.
 // Demo mode (api.demo) plays the left mallet with the same bot as the computer, a little slower and
 // a little less accurate, so the matches are close and both sides miss.
-import { GameApi, POINTER_DOWN, SFX_BLIP, SFX_CLICK, SFX_TICK, SFX_ZAP, SFX_WHOOSH, SFX_COIN, SFX_POWERUP,
+import { GameApi, POINTER_DOWN, POINTER_UP, SFX_BLIP, SFX_CLICK, SFX_TICK, SFX_ZAP, SFX_WHOOSH, SFX_COIN, SFX_POWERUP,
     SFX_HIT, SFX_THUD, SFX_LOSE, SFX_WIN, SFX_NOTE, SFX_BELL } from "./game_api";
 
 // ---------------------------------------------------------------- the table (world metres, Y up)
@@ -776,7 +776,11 @@ export class Game {
     }
 
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
-        if (api.pick(x, y, <f32>(SURF + 0.1))) {
+        // touch: while a finger is down the mallet follows a point a few art pixels above it, so the
+        // finger hides neither the mallet nor the puck it meets, and the finger's release leaves it
+        // there (a hovering mouse leads it to the pointer itself)
+        let lift: f32 = api.pointerDown ? <f32>(24.0 / Math.max(1.0, api.pixelSize)) : 0;
+        if (kind != POINTER_UP && api.pick(x, y - lift, <f32>(SURF + 0.1))) {
             this.ptx = <f64>api.hitX;
             this.ptz = <f64>api.hitZ;
         }

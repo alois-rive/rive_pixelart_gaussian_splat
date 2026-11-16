@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmdl format="1">
+  <sub_resource id="Material_0" type="Material">
+    <property name="name">"Banner"</property>
+    <property name="base_color">Color(0.851, 0.341, 0.388)</property>
+  </sub_resource>
+  <sub_resource id="Material_1" type="Material">
+    <property name="name">"Gold"</property>
+    <property name="base_color">Color(0.984, 0.949, 0.212)</property>
+  </sub_resource>
+  <sub_resource id="Mesh_0" type="Mesh">
+    <property name="verts">16</property>
+    <property name="co">PackedVector3Array(
+        0.004999995, -0.025, -0.28,
+        0.004999995, -0.025, 0.28,
+        0.004999995, 0.025, -0.28,
+        0.004999995, 0.025, 0.28,
+        0.955, -0.025, -0.042000003,
+        0.955, -0.025, 0.042000003,
+        0.955, 0.025, -0.042000003,
+        0.955, 0.025, 0.042000003,
+        0, -0.035, -0.3,
+        0, -0.035, 0.3,
+        0, 0.035, -0.3,
+        0, 0.035, 0.3,
+        0.1, -0.035, -0.3,
+        0.1, -0.035, 0.3,
+        0.1, 0.035, -0.3,
+        0.1, 0.035, 0.3)</property>
+    <property name="vert_flags">PackedInt32Array(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0)</property>
+    <property name="edges">24</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 3,
+        3, 2,
+        2, 0,
+        3, 7,
+        7, 6,
+        6, 2,
+        7, 5,
+        5, 4,
+        4, 6,
+        5, 1,
+        0, 4,
+        8, 9,
+        9, 11,
+        11, 10,
+        10, 8,
+        11, 15,
+        15, 14,
+        14, 10,
+        15, 13,
+        13, 12,
+        12, 14,
+        13, 9,
+        8, 12)</property>
+    <property name="edge_flags">PackedInt32Array(
+        0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0)</property>
+    <property name="faces">12</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 4,
+        4, 4,
+        8, 4,
+        12, 4,
+        16, 4,
+        20, 4,
+        24, 4,
+        28, 4,
+        32, 4,
+        36, 4,
+        40, 4,
+        44, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        -0.99999994, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0.24301612, 0, -0.97002226,
+        0.24301612, 0, 0.97002226,
+        -1, 0, 0,
+        0, 1, 0,
+        1, 0, 0,
+        0, -1, 0,
+        0, 0, -0.99999994,
+        0, 0, 0.99999994)</property>
+    <property name="face_flags">PackedInt32Array(0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0)</property>
+    <property name="face_materials">PackedInt32Array(0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1)</property>
+    <property name="loops">48</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        3, 2, 0,
+        2, 3, 0,
+        2, 2, 1,
+        3, 4, 1,
+        7, 5, 1,
+        6, 6, 1,
+        6, 5, 2,
+        7, 7, 2,
+        5, 8, 2,
+        4, 9, 2,
+        4, 8, 3,
+        5, 10, 3,
+        1, 0, 3,
+        0, 11, 3,
+        2, 6, 4,
+        6, 9, 4,
+        4, 11, 4,
+        0, 3, 4,
+        7, 4, 5,
+        3, 1, 5,
+        1, 10, 5,
+        5, 7, 5,
+        8, 12, 6,
+        9, 13, 6,
+        11, 14, 6,
+        10, 15, 6,
+        10, 14, 7,
+        11, 16, 7,
+        15, 17, 7,
+        14, 18, 7,
+        14, 17, 8,
+        15, 19, 8,
+        13, 20, 8,
+        12, 21, 8,
+        12, 20, 9,
+        13, 22, 9,
+        9, 12, 9,
+        8, 23, 9,
+        10, 18, 10,
+        14, 21, 10,
+        12, 23, 10,
+        8, 15, 10,
+        15, 16, 11,
+        11, 13, 11,
+        9, 22, 11,
+        13, 19, 11)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25,
+        1, 0.125, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0.5,
+        1, 0.125, 0.5,
+        1, 0.375, 0.75,
+        1, 0.375, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.75,
+        1, 0.875, 0.5,
+        1, 0.625, 0.5,
+        1, 0.625, 0.25,
+        1, 0.875, 0.25,
+        1, 0.625, 0,
+        1, 0.625, 0.25,
+        1, 0.375, 0.25,
+        1, 0.375, 0,
+        1, 0.375, 0.75,
+        1, 0.625, 0.75,
+        1, 0.625, 1,
+        1, 0.375, 1,
+        1, 0.625, 0.5,
+        1, 0.375, 0.5,
+        1, 0.375, 0.25,
+        1, 0.625, 0.25)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+    <property name="select_history">PackedInt32Array(
+        0, 4,
+        0, 5,
+        0, 6,
+        0, 7)</property>
+  </sub_resource>
+
+  <scene>
+    <property name="object_holes">PackedInt32Array(1)</property>
+    <property name="active">"Pennant"</property>
+  </scene>
+
+  <object name="Pennant" type="mesh">
+    <property name="rotation">Vector3(0, -0, 0)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_0")</property>
+    <property name="material_slots">[SubResource("Material_0"), SubResource("Material_1")]</property>
+  </object>
+</rmdl>

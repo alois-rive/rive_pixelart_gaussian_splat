@@ -3,6 +3,9 @@
 **How to play:** click, then steer the dog with the pointer (move or drag): the sheep flee from it; herd all
 six through the pen's gate before the 45 seconds run out.
 
+**Touch:** tap to start, then drag: the dog runs to a point a few pixels above your finger (so the sheep
+round it stay in sight) and stops where you lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra 0.1.0,
 codex-cli. Palette: [DawnBringer 16](https://lospec.com/palette-list/dawnbringer-16) (loaded from Lospec; the
 spare `fantasy-24` was not needed), as ten ramps (grass, leaf, wool, face, fur, cream, wood, stone, water, red).

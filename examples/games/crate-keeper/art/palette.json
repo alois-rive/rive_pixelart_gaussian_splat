@@ -1,0 +1,90 @@
+{
+  "name": "Fairydust 8",
+  "source": "https://lospec.com/palette-list/fairydust-8",
+  "author": "Yousurname",
+  "colors": [
+    "#f0dab1",
+    "#e39aac",
+    "#c45d9f",
+    "#634b7d",
+    "#6461c2",
+    "#2ba9b4",
+    "#93d4b5",
+    "#f0f6e8"
+  ],
+  "ramps": {
+    "tile": [
+      "#634b7d",
+      "#c45d9f",
+      "#e39aac",
+      "#f0dab1",
+      "#f0f6e8"
+    ],
+    "wood": [
+      "#634b7d",
+      "#c45d9f",
+      "#e39aac",
+      "#f0dab1"
+    ],
+    "planter": [
+      "#634b7d",
+      "#6461c2",
+      "#2ba9b4"
+    ],
+    "leaf": [
+      "#634b7d",
+      "#6461c2",
+      "#2ba9b4",
+      "#93d4b5",
+      "#f0f6e8"
+    ],
+    "cloth": [
+      "#634b7d",
+      "#6461c2",
+      "#2ba9b4",
+      "#93d4b5"
+    ],
+    "skin": [
+      "#634b7d",
+      "#c45d9f",
+      "#e39aac",
+      "#f0dab1"
+    ],
+    "straw": [
+      "#c45d9f",
+      "#e39aac",
+      "#f0dab1",
+      "#f0f6e8"
+    ],
+    "glow": [
+      "#93d4b5",
+      "#f0f6e8"
+    ],
+    "bloom": [
+      "#c45d9f",
+      "#e39aac",
+      "#f0f6e8"
+    ],
+    "mark": [
+      "#f0f6e8",
+      "#f0f6e8"
+    ],
+    "dusk": [
+      "#634b7d",
+      "#634b7d",
+      "#6461c2"
+    ],
+    "slate": [
+      "#634b7d",
+      "#6461c2",
+      "#2ba9b4",
+      "#93d4b5"
+    ]
+  },
+  "roles": {
+    "void": "#634b7d",
+    "fog": "#6461c2",
+    "sky_top": "#634b7d",
+    "sky_bottom": "#634b7d"
+  }
+}

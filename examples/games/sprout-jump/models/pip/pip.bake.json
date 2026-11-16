@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.05,
+  "fat": 1.0,
+  "out": "../../lookdev/pip.bin",
+  "objects": [
+    { "model": "pip.glb",
+      "materials": { "Bulb": { "ramp": "radish" }, "Cream": { "ramp": "cream", "spacing": 0.035 },
+                     "Eye": { "ramp": "ink", "spacing": 0.03, "specks": true },
+                     "Leaf": { "ramp": "sprout", "spacing": 0.03 }, "Stem": { "ramp": "sprout", "spacing": 0.035 },
+                     "Boot": { "ramp": "ink", "spacing": 0.04 } } }
+  ]
+}

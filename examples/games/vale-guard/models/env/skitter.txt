@@ -1,0 +1,40 @@
+# Skitter, the fast creep: a lean teal lizard with a red crest and a long tail. 0.3 x 0.78 x 0.34 m. make_env.py.
+new
+material new Hide --base-color 0.4078 0.6745 0.6627 --no-slot
+material new Crest --base-color 0.6039 0.3098 0.3137 --no-slot
+material new Foot --base-color 0.3647 0.4078 0.4471 --no-slot
+add mesh cube --name Body --size 1 --location 0.0000 0.0000 0.1800
+scale 0.2200 0.3800 0.1600
+apply --scale
+material assign Hide
+add mesh cube --name Head --size 1 --location 0.0000 -0.2700 0.2200
+scale 0.1700 0.2000 0.1400
+apply --scale
+material assign Hide
+add mesh cone --name Tail --vertices 4 --radius1 0.09 --radius2 0.0 --depth 0.36 --location 0 0 0 --rotation -90 0 45
+apply --rotation
+translate 0 0.36 0.17
+material assign Hide
+add mesh cube --name Crest --size 1 --location 0.0000 -0.0500 0.3000
+scale 0.0600 0.3200 0.0900
+apply --scale
+material assign Crest
+add mesh cube --name Leg0 --size 1 --location -0.1400 -0.1300 0.0500
+scale 0.0800 0.0900 0.1000
+apply --scale
+material assign Foot
+add mesh cube --name Leg1 --size 1 --location 0.1400 -0.1300 0.0500
+scale 0.0800 0.0900 0.1000
+apply --scale
+material assign Foot
+add mesh cube --name Leg2 --size 1 --location -0.1400 0.1300 0.0500
+scale 0.0800 0.0900 0.1000
+apply --scale
+material assign Foot
+add mesh cube --name Leg3 --size 1 --location 0.1400 0.1300 0.0500
+scale 0.0800 0.0900 0.1000
+apply --scale
+material assign Foot
+select all
+shade flat
+export skitter.glb

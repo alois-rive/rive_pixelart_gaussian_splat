@@ -3,6 +3,9 @@
 **How to play: click, then sweep the net with the pointer through the fireflies to catch them; keep
 the net away from the moths. 60 seconds.**
 
+**Touch:** tap to start, then drag to sweep the net: it rides a few pixels above your finger and stays
+where you lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [retrocal-8](https://lospec.com/palette-list/retrocal-8) by
 polyphrog, eight colours; it loaded from Lospec, so the spare (`nanner-pancakes`) was not needed. A

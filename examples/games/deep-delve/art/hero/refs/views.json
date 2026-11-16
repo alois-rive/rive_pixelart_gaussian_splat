@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/deep-delve/art/hero/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        215,
+        26,
+        339,
+        457
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3481,
+      "fill": 0.689,
+      "background": "#d3d3d3"
+    },
+    "right": {
+      "box": [
+        1005,
+        26,
+        300,
+        457
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5233,
+      "fill": 0.6748,
+      "background": "#d3d3d3"
+    },
+    "back": {
+      "box": [
+        215,
+        537,
+        338,
+        461
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3639,
+      "fill": 0.6945,
+      "background": "#d3d3d3"
+    },
+    "top": {
+      "box": [
+        970,
+        598,
+        363,
+        337
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9284,
+      "fill": 0.7376,
+      "background": "#d3d3d3"
+    }
+  }
+}

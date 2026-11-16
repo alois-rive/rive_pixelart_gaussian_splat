@@ -3,6 +3,8 @@
 **How to play: hold to charge the cannon, release to fire; lead the ships so the ball lands on a
 deck. Ten shots.**
 
+**Touch:** press and hold anywhere to charge, lift to fire.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [SLSO8](https://lospec.com/palette-list/slso8) by Luis Miguel
 Maldonado, eight colours from navy to cream, as eight ramps that share them (sea, rock, sand, wood,

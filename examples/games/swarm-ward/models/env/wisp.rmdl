@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rmdl format="1">
+  <sub_resource id="Material_0" type="Material">
+    <property name="name">"Wisp"</property>
+    <property name="base_color">Color(0.5725, 0.9098, 0.7529)</property>
+    <property name="emission">Color(0.5725, 0.9098, 0.7529)</property>
+  </sub_resource>
+  <sub_resource id="Mesh_0" type="Mesh">
+    <property name="verts">10</property>
+    <property name="co">PackedVector3Array(
+        0.15, 0, -0.085,
+        -0.0000000065567085, 0.15, -0.085,
+        -0.15, -0.000000013113417, -0.085,
+        0.0000000017887322, -0.15, -0.085,
+        0, 0, 0.085,
+        0.15, -0.000000007430936, -0.085,
+        -0.0000000065567085, -0.15, -0.085000016,
+        -0.15, 0.000000005682481, -0.085,
+        0.0000000017887322, 0.15, -0.084999986,
+        0, 0.000000007430936, -0.255)</property>
+    <property name="edges">16</property>
+    <property name="edge_verts">PackedInt32Array(
+        0, 1,
+        1, 4,
+        4, 0,
+        1, 2,
+        2, 4,
+        2, 3,
+        3, 4,
+        3, 0,
+        5, 6,
+        6, 9,
+        9, 5,
+        6, 7,
+        7, 9,
+        7, 8,
+        8, 9,
+        8, 5)</property>
+    <property name="faces">10</property>
+    <property name="face_loops">PackedInt32Array(
+        0, 3,
+        3, 3,
+        6, 3,
+        9, 3,
+        12, 4,
+        16, 3,
+        19, 3,
+        22, 3,
+        25, 3,
+        28, 4)</property>
+    <property name="face_normals">PackedVector3Array(
+        0.599917, 0.59991705, 0.5293385,
+        -0.599917, 0.5999169, 0.52933854,
+        -0.59991693, -0.599917, 0.52933854,
+        0.599917, -0.599917, 0.52933854,
+        0, 0, -1,
+        0.59991693, -0.599917, -0.52933854,
+        -0.59991693, -0.5999169, -0.5293386,
+        -0.59991693, 0.599917, -0.5293385,
+        0.5999171, 0.599917, -0.52933854,
+        0, -0.00000009934107, 1)</property>
+    <property name="loops">32</property>
+    <property name="loop_refs">PackedInt32Array(
+        0, 0, 0,
+        1, 1, 0,
+        4, 2, 0,
+        1, 3, 1,
+        2, 4, 1,
+        4, 1, 1,
+        2, 5, 2,
+        3, 6, 2,
+        4, 4, 2,
+        3, 7, 3,
+        0, 2, 3,
+        4, 6, 3,
+        3, 5, 4,
+        2, 3, 4,
+        1, 0, 4,
+        0, 7, 4,
+        5, 8, 5,
+        6, 9, 5,
+        9, 10, 5,
+        6, 11, 6,
+        7, 12, 6,
+        9, 9, 6,
+        7, 13, 7,
+        8, 14, 7,
+        9, 12, 7,
+        8, 15, 8,
+        5, 10, 8,
+        9, 14, 8,
+        8, 13, 9,
+        7, 11, 9,
+        6, 8, 9,
+        5, 15, 9)</property>
+    <property name="loop_uvs">PackedFloat32Array(
+        1, 0, 0,
+        1, 0.25, 0,
+        1, 0.125, 1,
+        1, 0.25, 0,
+        1, 0.5, 0,
+        1, 0.375, 1,
+        1, 0.5, 0,
+        1, 0.75, 0,
+        1, 0.625, 1,
+        1, 0.75, 0,
+        1, 1, 0,
+        1, 0.875, 1,
+        1, 0.5, 0,
+        1, 0, 0.49999997,
+        1, 0.49999997, 1,
+        1, 1, 0.5,
+        1, 0, 0,
+        1, 0.25, 0,
+        1, 0.125, 1,
+        1, 0.25, 0,
+        1, 0.5, 0,
+        1, 0.375, 1,
+        1, 0.5, 0,
+        1, 0.75, 0,
+        1, 0.625, 1,
+        1, 0.75, 0,
+        1, 1, 0,
+        1, 0.875, 1,
+        1, 0.5, 0,
+        1, 0, 0.49999997,
+        1, 0.49999997, 1,
+        1, 1, 0.5)</property>
+    <property name="loop_uv_flags">PackedInt32Array(
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0,
+        1, 0)</property>
+    <property name="uv_layers">["UVMap"]</property>
+  </sub_resource>
+
+  <scene>
+    <property name="object_holes">PackedInt32Array(1)</property>
+    <property name="active">"Wisp"</property>
+  </scene>
+
+  <object name="Wisp" type="mesh">
+    <property name="location">Vector3(0, 0, 0.085)</property>
+    <property name="select">true</property>
+    <property name="data">SubResource("Mesh_0")</property>
+    <property name="material_slots">[SubResource("Material_0")]</property>
+  </object>
+</rmdl>

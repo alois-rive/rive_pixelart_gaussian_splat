@@ -32,6 +32,7 @@ struct Frame {
     rampLen: array<vec4u, 8>, // steps of ramp r: rampLen[r / 4][r % 4]
     qmin: vec4f,              // dequantization of the 16-byte splats: box min xyz, sigma min
     qstep: vec4f,             // box step xyz, sigma step
+    look: array<vec4f, 64>,   // per bone (GameApi shade / recolor / flash): x step shift, y ramp + 1 (0: own), z flash
 }
 
 @group(0) @binding(0) var<uniform> F: Frame;
@@ -274,6 +275,16 @@ fn vs_main(raw: VRaw) -> VOut {
         if (fx.glow) {
             flags = flags | FLAG_UNLIT;
         }
+    }
+    // the bone's look (its first joint): a ramp swap, a step shift, a flash
+    let bl = F.look[min(v.joints[0], 63u)];
+    if (bl.y > 0.5) {
+        ramp = bl.y - 1.0;
+    }
+    base = base + bl.x;
+    if (bl.z > 0.5) {
+        base = 99.0; // clamped to the ramp's lightest step
+        flags = flags | FLAG_UNLIT;
     }
     var n = skinNormal(v);
     // face the camera: a one-sided splat that looks away is skipped, a two-sided one turns round

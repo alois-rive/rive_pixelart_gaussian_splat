@@ -3,6 +3,9 @@
 **How to play:** move the pointer left and right to roll the cart under the falling fruit; catch the
 good fruit, dodge the grey rotten apples. Click to start; click again after the game over.
 
+**Touch:** tap to start, then drag left and right anywhere on the screen: the cart rolls under your
+finger's x.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [CC-29](https://lospec.com/palette-list/cc-29) by Alpha6 (loaded first
 time, no spare needed), 29 colours as ten ramps (grass, leaf, wood, red, orange, pear, plum, rot, blue,

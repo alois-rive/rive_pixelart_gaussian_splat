@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.058,
+  "fat": 1.0,
+  "out": "../../lookdev/keep.bin",
+  "objects": [
+    { "model": "keep.glb",
+      "materials": { "Stone": { "ramp": "stone", "spacing": 0.058 }, "Door": { "ramp": "wood", "spacing": 0.042 }, "Wood": { "ramp": "wood", "spacing": 0.05 },
+                     "Brass": { "ramp": "gold", "spacing": 0.05 }, "Banner": { "ramp": "roof", "spacing": 0.046 } } }
+  ]
+}

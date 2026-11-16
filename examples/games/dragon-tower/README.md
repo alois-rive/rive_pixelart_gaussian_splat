@@ -3,6 +3,9 @@
 **How to play: hold the pointer to breathe fire where it points; burn the knights climbing the
 tower before they reach the top. Let go to let the fire recharge.**
 
+**Touch:** press and hold where the fire should land, slide to sweep it over the climbers, lift to
+recharge.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Blessing](https://lospec.com/palette-list/blessing) by
 clarigariccus, five pastel colours (purple, mint, pale yellow, pink, thistle); it loaded from Lospec,

@@ -4,6 +4,8 @@
 into the next planet's dashed pull ring, which catches you in a new orbit. Don't wait too long: orbits
 decay.
 
+**Touch:** tap anywhere to let go of the orbit.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli 0.167. Palette: [hept32](https://lospec.com/palette-list/hept32) by ENDESGA,
 32 colours in 15 ramps; it loaded from Lospec, so the spare (`marshmellow32`) was not needed. A bright

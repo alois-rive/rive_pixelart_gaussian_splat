@@ -3,6 +3,9 @@
 **How to play:** click to fly, then move the pointer to lead the bee over the flowers before they
 wilt; hover over one for a moment to pollinate it.
 
+**Touch:** tap to fly, then drag: the bee follows a point a few pixels above your finger; hold it over a
+flower to pollinate.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [FunkyFuture 8](https://lospec.com/palette-list/funkyfuture-8) by
 Shamaboy, eight colours (navy, plum, pink, white, orange, yellow, blue, cyan) in seven ramps; it loaded

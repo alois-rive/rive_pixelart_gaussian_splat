@@ -3,6 +3,8 @@
 **How to play: hold to draw the bow, release to shoot where the pointer is; lead the moving targets and
 lean into the wind.**
 
+**Touch:** press on the spot to aim at, hold to draw (slide to correct the aim), lift to shoot.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Island Joy 16](https://lospec.com/palette-list/island-joy-16) by
 Kerrie Lake (it loaded from Lospec: the spare, Cold Light, was not needed), nine ramps (grass, foliage,

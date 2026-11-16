@@ -2,6 +2,8 @@
 
 **How to play: hold the pointer to lift the kite, let go to let it dip; catch the stars, dodge the birds.**
 
+**Touch:** press and hold anywhere to lift the kite, lift your finger to let it dip.
+
 A kid flies a kite from a hilltop at dusk. Stars drift in on the wind (one point each); gulls cross
 faster, and a gull or the kite's tip touching the knoll costs one of three hearts (the kite blinks
 for a moment after a hit). The wind picks up as the run goes on: things come faster and the gulls

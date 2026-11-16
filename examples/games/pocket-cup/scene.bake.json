@@ -1,0 +1,1039 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.06,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -15.0,
+   0.0,
+   -12.5
+  ],
+  [
+   15.0,
+   4.6,
+   9.0
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/ground.glb",
+   "materials": {
+    "Pitch": {
+     "spacing": 0.1
+    },
+    "Verge": {
+     "ramp": "verge",
+     "spacing": 0.16
+    }
+   }
+  },
+  {
+   "model": "models/env/fence.glb",
+   "materials": {
+    "Post": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Rail": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Pennant": {
+     "ramp": "gold",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/goal.glb",
+   "position": [
+    -11.0,
+    0,
+    0
+   ],
+   "yaw": 90,
+   "materials": {
+    "Frame": {
+     "ramp": "chalk",
+     "spacing": 0.045
+    },
+    "NetBack": {
+     "ramp": "chalk",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.035
+    },
+    "NetSide": {
+     "ramp": "chalk",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.035
+    },
+    "NetTop": {
+     "ramp": "chalk",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/goal.glb",
+   "position": [
+    11.0,
+    0,
+    0
+   ],
+   "yaw": -90,
+   "materials": {
+    "Frame": {
+     "ramp": "chalk",
+     "spacing": 0.045
+    },
+    "NetBack": {
+     "ramp": "chalk",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.035
+    },
+    "NetSide": {
+     "ramp": "chalk",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.035
+    },
+    "NetTop": {
+     "ramp": "chalk",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -10.5,
+    0,
+    -11.0
+   ],
+   "yaw": 0,
+   "scale": 1.0,
+   "materials": {
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Crown": {
+     "ramp": "leaf",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -4.2,
+    0,
+    -11.6
+   ],
+   "yaw": 70,
+   "scale": 1.15,
+   "materials": {
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Crown": {
+     "ramp": "leaf",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    2.6,
+    0,
+    -11.2
+   ],
+   "yaw": 140,
+   "scale": 0.95,
+   "materials": {
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Crown": {
+     "ramp": "leaf",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    8.8,
+    0,
+    -11.4
+   ],
+   "yaw": 210,
+   "scale": 1.1,
+   "materials": {
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Crown": {
+     "ramp": "leaf",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    13.8,
+    0,
+    -9.4
+   ],
+   "yaw": 30,
+   "scale": 0.9,
+   "materials": {
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Crown": {
+     "ramp": "leaf",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -13.9,
+    0,
+    -9.0
+   ],
+   "yaw": 100,
+   "scale": 0.85,
+   "materials": {
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Crown": {
+     "ramp": "leaf",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "p0",
+   "position": [
+    -10.1,
+    0,
+    0.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "gold",
+     "step": 1
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": -1
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "gold"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p0L",
+   "position": [
+    -9.98768,
+    0.6,
+    0.0
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "gold",
+     "step": 1
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p0R",
+   "position": [
+    -10.21232,
+    0.6,
+    0.0
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "gold",
+     "step": 1
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "p1",
+   "position": [
+    -3.0,
+    0,
+    1.8
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "coral"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "chalk"
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood"
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "gold"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p1L",
+   "position": [
+    -2.88768,
+    0.6,
+    1.8
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "coral"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p1R",
+   "position": [
+    -3.11232,
+    0.6,
+    1.8
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "coral"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "p2",
+   "position": [
+    -3.5,
+    0,
+    -2.2
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "coral"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "chalk"
+    },
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": -1
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "coral",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p2L",
+   "position": [
+    -3.38768,
+    0.6,
+    -2.2
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Sock": {
+     "ramp": "coral"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p2R",
+   "position": [
+    -3.61232,
+    0.6,
+    -2.2
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Sock": {
+     "ramp": "coral"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "p3",
+   "position": [
+    10.1,
+    0,
+    0.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "violet"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "chalk"
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": 2
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "violet",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p3L",
+   "position": [
+    10.21232,
+    0.6,
+    0.0
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "violet"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p3R",
+   "position": [
+    9.98768,
+    0.6,
+    0.0
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "violet"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "p4",
+   "position": [
+    3.0,
+    0,
+    -1.8
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "sky"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": 2
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "gold"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p4L",
+   "position": [
+    3.11232,
+    0.6,
+    -1.8
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "sky"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p4R",
+   "position": [
+    2.88768,
+    0.6,
+    -1.8
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Sock": {
+     "ramp": "sky"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "p5",
+   "position": [
+    3.5,
+    0,
+    2.2
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "sky"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Hair": {
+     "ramp": "wood"
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "sky",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p5L",
+   "position": [
+    3.61232,
+    0.6,
+    2.2
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Sock": {
+     "ramp": "sky"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_leg.glb",
+   "bone": "p5R",
+   "position": [
+    3.38768,
+    0.6,
+    2.2
+   ],
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Sock": {
+     "ramp": "sky"
+    },
+    "Boot": {
+     "ramp": "boot"
+    }
+   }
+  },
+  {
+   "model": "models/env/ball.glb",
+   "bone": "ball",
+   "position": [
+    0,
+    0.2,
+    0
+   ],
+   "materials": {
+    "Ball": {
+     "ramp": "chalk",
+     "spacing": 0.035
+    },
+    "Patch": {
+     "ramp": "navy",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/ring.glb",
+   "bone": "ring",
+   "position": [
+    0,
+    0.04,
+    0
+   ],
+   "materials": {
+    "Mark": {
+     "ramp": "mark",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.045
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan0",
+   "position": [
+    -8.6,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "pink"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood"
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "pink",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan1",
+   "position": [
+    -7.4,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "teal"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": 2
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "teal",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan2",
+   "position": [
+    -2.6,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "coral"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": -1
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "coral",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan3",
+   "position": [
+    -1.5,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "gold",
+     "step": 1
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": 2
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "gold"
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan4",
+   "position": [
+    1.9,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "violet"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Hair": {
+     "ramp": "wood"
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "violet",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan5",
+   "position": [
+    5.2,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "sky"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": -1
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "sky",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan6",
+   "position": [
+    6.4,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "pink"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin"
+    },
+    "Hair": {
+     "ramp": "wood",
+     "step": 2
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "pink",
+     "step": -1
+    }
+   }
+  },
+  {
+   "model": "models/player/player_body.glb",
+   "bone": "fan7",
+   "position": [
+    9.3,
+    0,
+    -8.0
+   ],
+   "materials": {
+    "Shirt": {
+     "ramp": "teal"
+    },
+    "Trim": {
+     "ramp": "chalk"
+    },
+    "Shorts": {
+     "ramp": "navy",
+     "step": -1
+    },
+    "Skin": {
+     "ramp": "skin",
+     "step": -1
+    },
+    "Hair": {
+     "ramp": "wood"
+    },
+    "Eye": {
+     "ramp": "navy",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Band": {
+     "ramp": "teal",
+     "step": -1
+    }
+   }
+  }
+ ]
+}

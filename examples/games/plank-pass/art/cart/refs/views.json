@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/plank-pass/art/cart/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        229,
+        50,
+        311,
+        423
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3601,
+      "fill": 0.5772,
+      "background": "#d2d2d2"
+    },
+    "right": {
+      "box": [
+        839,
+        50,
+        601,
+        423
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7038,
+      "fill": 0.5786,
+      "background": "#d3d2d2"
+    },
+    "back": {
+      "box": [
+        226,
+        562,
+        315,
+        420
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3333,
+      "fill": 0.5817,
+      "background": "#d2d2d2"
+    },
+    "top": {
+      "box": [
+        1023,
+        554,
+        258,
+        414
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6047,
+      "fill": 0.8917,
+      "background": "#d2d2d2"
+    }
+  }
+}

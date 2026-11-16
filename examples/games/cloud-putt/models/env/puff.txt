@@ -1,0 +1,15 @@
+# Cloud puff: a faceted ball of cloud r 1 m (scaled per instance), white with its underside in
+# ice blue; the faces pointing straight down deleted (never seen). Origin at its centre.
+new
+material new Cloud --base-color 0.9804 1.0000 0.9882 --no-slot
+material new Under --base-color 0.6392 0.7529 0.9020 --no-slot
+add mesh ico-sphere --name Puff --subdivisions 2 --radius 1.0 --location 0 0 0
+material assign Cloud
+mode edit
+select face where "pos.z < -0.35"
+material assign Under
+select face where "normal.z < -0.8"
+delete only-faces
+mode object
+shade flat
+export puff.glb

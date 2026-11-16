@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/bubble-loft/art/puffer/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        103,
+        16,
+        541,
+        459
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8484,
+      "fill": 0.3904,
+      "background": "#c8c7c7"
+    },
+    "right": {
+      "box": [
+        1021,
+        16,
+        262,
+        459
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.7519,
+      "fill": 0.5841,
+      "background": "#c8c8c7"
+    },
+    "back": {
+      "box": [
+        124,
+        528,
+        541,
+        458
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8466,
+      "fill": 0.39,
+      "background": "#c8c8c8"
+    },
+    "top": {
+      "box": [
+        856,
+        624,
+        566,
+        268
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4735,
+      "fill": 0.5538,
+      "background": "#c8c8c8"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Kettle cart, phase 3: the front axle's two wheels and hub caps, the axle moved to the origin.
+select Body Boiler Stack Lamp Crate Band Lid Flare Cap Slat0 Slat1 WheelRL WheelRR HubRL HubRR
+delete
+select WheelFL WheelFR HubFL HubFR
+active WheelFL
+join
+apply --location
+select WheelFL
+set location 0 0.62 -0.228
+apply --location
+export cart_wheel.glb

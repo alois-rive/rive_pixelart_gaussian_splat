@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.055,
+  "fat": 1.0,
+  "out": "../../lookdev/hero.bin",
+  "objects": [
+    { "model": "hero.glb",
+      "materials": { "Steel": { "ramp": "steel" }, "Blade": { "ramp": "steel", "spacing": 0.04 }, "Dark": { "ramp": "leather" },
+                     "Plum": { "ramp": "leather" }, "Cape": { "ramp": "cloth" }, "Crest": { "ramp": "cloth", "spacing": 0.04 } } }
+  ]
+}

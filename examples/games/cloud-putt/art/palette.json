@@ -1,0 +1,83 @@
+{
+  "name": "Taffy 16",
+  "source": "https://lospec.com/palette-list/taffy-16",
+  "author": "PineappleOnPizza",
+  "colors": [
+    "#222533",
+    "#6275ba",
+    "#a3c0e6",
+    "#fafffc",
+    "#ffab7b",
+    "#ff6c7a",
+    "#dc435b",
+    "#3f48c2",
+    "#448de7",
+    "#2bdb72",
+    "#a7f547",
+    "#ffeb33",
+    "#f58931",
+    "#db4b3d",
+    "#a63d57",
+    "#36354d"
+  ],
+  "ramps": {
+    "felt": [
+      "#36354d",
+      "#2bdb72",
+      "#a7f547",
+      "#ffeb33"
+    ],
+    "cloud": [
+      "#36354d",
+      "#6275ba",
+      "#a3c0e6",
+      "#fafffc"
+    ],
+    "wood": [
+      "#36354d",
+      "#a63d57",
+      "#db4b3d",
+      "#f58931",
+      "#ffab7b"
+    ],
+    "candy": [
+      "#36354d",
+      "#a63d57",
+      "#dc435b",
+      "#ff6c7a",
+      "#ffab7b"
+    ],
+    "water": [
+      "#222533",
+      "#3f48c2",
+      "#448de7",
+      "#a3c0e6",
+      "#fafffc"
+    ],
+    "gold": [
+      "#db4b3d",
+      "#f58931",
+      "#ffeb33",
+      "#fafffc"
+    ],
+    "pit": [
+      "#222533",
+      "#36354d",
+      "#6275ba"
+    ],
+    "spark": [
+      "#ffeb33",
+      "#ffeb33"
+    ],
+    "spray": [
+      "#fafffc",
+      "#fafffc"
+    ]
+  },
+  "roles": {
+    "void": "#222533",
+    "fog": "#a3c0e6",
+    "sky_top": "#6275ba",
+    "sky_bottom": "#ffab7b"
+  }
+}

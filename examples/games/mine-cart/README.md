@@ -3,6 +3,8 @@
 **How to play: click a switch (or anywhere: the next one ahead) to send the rolling cart down the other
 lane: grab the gems, dodge the rockfalls.**
 
+**Touch:** tap a switch to flip it, or tap anywhere to flip the next one ahead.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra
 0.1.0, codex-cli. Palette: [EN4](https://lospec.com/palette-list/en4) by ENDESGA (loaded from Lospec; the
 spare was not needed), four colours shared by 7 ramps. A lantern-lit mine floor in the dark: green rock,

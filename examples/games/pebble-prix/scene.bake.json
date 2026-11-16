@@ -1,0 +1,722 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.24,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -50,
+   -1.5,
+   -60
+  ],
+  [
+   46,
+   9,
+   14
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/ground.glb",
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "spacing": 0.3
+    },
+    "Grass2": {
+     "ramp": "grass",
+     "spacing": 0.3
+    },
+    "Sand": {
+     "ramp": "sand",
+     "spacing": 0.3
+    },
+    "Paving": {
+     "ramp": "plaster",
+     "spacing": 0.3
+    },
+    "Rock": {
+     "ramp": "stone",
+     "spacing": 0.3
+    },
+    "Water": {
+     "ramp": "sea",
+     "spacing": 0.3
+    },
+    "Bank": {
+     "ramp": "sand",
+     "spacing": 0.24
+    },
+    "Cliff": {
+     "ramp": "stone",
+     "spacing": 0.26
+    },
+    "Quay": {
+     "ramp": "stone",
+     "spacing": 0.26
+    },
+    "Foam": {
+     "ramp": "foam",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.24
+    }
+   }
+  },
+  {
+   "model": "models/env/road.glb",
+   "materials": {
+    "Asphalt": {
+     "ramp": "road",
+     "spacing": 0.25
+    },
+    "KerbR": {
+     "ramp": "red",
+     "spacing": 0.25
+    },
+    "KerbW": {
+     "ramp": "white",
+     "spacing": 0.25
+    },
+    "Check": {
+     "ramp": "road",
+     "spacing": 0.25
+    },
+    "CheckW": {
+     "ramp": "white",
+     "spacing": 0.25
+    },
+    "Boost": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.25
+    },
+    "BoostY": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "step": 1,
+     "spacing": 0.25
+    }
+   }
+  },
+  {
+   "model": "models/env/town.glb",
+   "materials": {
+    "Plaster": {
+     "ramp": "white"
+    },
+    "Peach": {
+     "ramp": "peach"
+    },
+    "Rose": {
+     "ramp": "rose"
+    },
+    "Roof": {
+     "ramp": "roof"
+    },
+    "Window": {
+     "ramp": "navy"
+    },
+    "Door": {
+     "ramp": "wood"
+    },
+    "Stone": {
+     "ramp": "stone"
+    },
+    "StoneD": {
+     "ramp": "stone"
+    },
+    "Arch": {
+     "ramp": "navy"
+    },
+    "Lamp": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ]
+    },
+    "LhWhite": {
+     "ramp": "white"
+    },
+    "LhRed": {
+     "ramp": "red"
+    },
+    "Wood": {
+     "ramp": "wood"
+    },
+    "Hay": {
+     "ramp": "gold"
+    },
+    "Drum": {
+     "ramp": "sea"
+    },
+    "DrumR": {
+     "ramp": "red"
+    },
+    "Metal": {
+     "ramp": "navy"
+    },
+    "Net": {
+     "ramp": "sand"
+    },
+    "Crate": {
+     "ramp": "sand"
+    },
+    "Beam": {
+     "ramp": "plaster"
+    },
+    "Bell": {
+     "ramp": "gold"
+    }
+   }
+  },
+  {
+   "model": "models/env/trees.glb",
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    },
+    "LeafD": {
+     "ramp": "leaf",
+     "flags": [
+      "sway"
+     ]
+    },
+    "Trunk": {
+     "ramp": "wood"
+    },
+    "Vine": {
+     "ramp": "grass"
+    },
+    "Bush": {
+     "ramp": "leaf"
+    }
+   }
+  },
+  {
+   "model": "models/racer/racer.glb",
+   "bone": "car0",
+   "position": [
+    -14,
+    0,
+    -60
+   ],
+   "materials": {
+    "Body": {
+     "ramp": "red",
+     "spacing": 0.07
+    },
+    "Trim": {
+     "ramp": "red",
+     "spacing": 0.045
+    },
+    "Stripe": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Helmet": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Tyre": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Hub": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Grille": {
+     "ramp": "tyre",
+     "spacing": 0.04
+    },
+    "Seat": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Lamp": {
+     "ramp": "peach",
+     "spacing": 0.035
+    },
+    "Skin": {
+     "ramp": "peach",
+     "spacing": 0.07
+    },
+    "Glass": {
+     "ramp": "blue",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.07
+    },
+    "Jacket": {
+     "ramp": "navy",
+     "spacing": 0.07
+    },
+    "Goggles": {
+     "ramp": "navy",
+     "spacing": 0.045
+    },
+    "Pipe": {
+     "ramp": "stone",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/racer/racer_blue.glb",
+   "bone": "car1",
+   "position": [
+    -11,
+    0,
+    -60
+   ],
+   "materials": {
+    "Body": {
+     "ramp": "blue",
+     "spacing": 0.07
+    },
+    "Trim": {
+     "ramp": "blue",
+     "spacing": 0.045
+    },
+    "Stripe": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Helmet": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Tyre": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Hub": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Grille": {
+     "ramp": "tyre",
+     "spacing": 0.04
+    },
+    "Seat": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Lamp": {
+     "ramp": "peach",
+     "spacing": 0.035
+    },
+    "Skin": {
+     "ramp": "peach",
+     "spacing": 0.07
+    },
+    "Glass": {
+     "ramp": "blue",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.07
+    },
+    "Jacket": {
+     "ramp": "navy",
+     "spacing": 0.07
+    },
+    "Goggles": {
+     "ramp": "navy",
+     "spacing": 0.045
+    },
+    "Pipe": {
+     "ramp": "stone",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/racer/racer_pink.glb",
+   "bone": "car2",
+   "position": [
+    -8,
+    0,
+    -60
+   ],
+   "materials": {
+    "Body": {
+     "ramp": "pink",
+     "spacing": 0.07
+    },
+    "Trim": {
+     "ramp": "pink",
+     "spacing": 0.045
+    },
+    "Stripe": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Helmet": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Tyre": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Hub": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Grille": {
+     "ramp": "tyre",
+     "spacing": 0.04
+    },
+    "Seat": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Lamp": {
+     "ramp": "peach",
+     "spacing": 0.035
+    },
+    "Skin": {
+     "ramp": "peach",
+     "spacing": 0.07
+    },
+    "Glass": {
+     "ramp": "blue",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.07
+    },
+    "Jacket": {
+     "ramp": "navy",
+     "spacing": 0.07
+    },
+    "Goggles": {
+     "ramp": "navy",
+     "spacing": 0.045
+    },
+    "Pipe": {
+     "ramp": "stone",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/racer/racer_gold.glb",
+   "bone": "car3",
+   "position": [
+    -5,
+    0,
+    -60
+   ],
+   "materials": {
+    "Body": {
+     "ramp": "gold",
+     "spacing": 0.07
+    },
+    "Trim": {
+     "ramp": "gold",
+     "spacing": 0.045
+    },
+    "Stripe": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Helmet": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Tyre": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Hub": {
+     "ramp": "white",
+     "spacing": 0.07
+    },
+    "Grille": {
+     "ramp": "tyre",
+     "spacing": 0.04
+    },
+    "Seat": {
+     "ramp": "tyre",
+     "spacing": 0.07
+    },
+    "Lamp": {
+     "ramp": "peach",
+     "spacing": 0.035
+    },
+    "Skin": {
+     "ramp": "peach",
+     "spacing": 0.07
+    },
+    "Glass": {
+     "ramp": "blue",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.07
+    },
+    "Jacket": {
+     "ramp": "navy",
+     "spacing": 0.07
+    },
+    "Goggles": {
+     "ramp": "navy",
+     "spacing": 0.045
+    },
+    "Pipe": {
+     "ramp": "stone",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/flame.glb",
+   "materials": {
+    "Flame": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.08
+    },
+    "Core": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.08
+    }
+   },
+   "bone": "flame",
+   "copies": 4,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/puff.glb",
+   "materials": {
+    "Smoke": {
+     "ramp": "smoke",
+     "flags": [
+      "nocast"
+     ],
+     "spacing": 0.14
+    }
+   },
+   "bone": "puff",
+   "copies": 12,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/dust.glb",
+   "materials": {
+    "Dust": {
+     "ramp": "dust",
+     "flags": [
+      "nocast"
+     ],
+     "spacing": 0.14
+    }
+   },
+   "bone": "dust",
+   "copies": 6,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/spark.glb",
+   "materials": {
+    "Spark": {
+     "ramp": "glow",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "specks": true,
+     "spacing": 0.06
+    }
+   },
+   "bone": "spark",
+   "copies": 4,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/cone.glb",
+   "materials": {
+    "Cone": {
+     "ramp": "orange",
+     "spacing": 0.09
+    },
+    "Band": {
+     "ramp": "white",
+     "spacing": 0.09
+    },
+    "Foot": {
+     "ramp": "navy",
+     "spacing": 0.09
+    }
+   },
+   "bone": "cone",
+   "copies": 13,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/boat.glb",
+   "materials": {
+    "Hull": {
+     "ramp": "white",
+     "spacing": 0.18
+    },
+    "HullB": {
+     "ramp": "sea",
+     "spacing": 0.18
+    },
+    "Deck": {
+     "ramp": "wood",
+     "spacing": 0.18
+    },
+    "Cabin": {
+     "ramp": "pink",
+     "spacing": 0.18
+    },
+    "Roof": {
+     "ramp": "red",
+     "spacing": 0.18
+    }
+   },
+   "bone": "boat",
+   "copies": 2,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/flag.glb",
+   "materials": {
+    "Pole": {
+     "ramp": "navy",
+     "spacing": 0.1
+    },
+    "Chk": {
+     "ramp": "road",
+     "spacing": 0.1
+    },
+    "ChkW": {
+     "ramp": "white",
+     "spacing": 0.1
+    }
+   },
+   "bone": "flag",
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/lamp.glb",
+   "materials": {
+    "Glow": {
+     "ramp": "lamp",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.1
+    }
+   },
+   "bone": "lamp",
+   "copies": 3,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/golamp.glb",
+   "materials": {
+    "Go": {
+     "ramp": "lime",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.1
+    }
+   },
+   "bone": "golamp",
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  },
+  {
+   "model": "models/env/gull.glb",
+   "materials": {
+    "Wing": {
+     "ramp": "white",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.1
+    },
+    "Tip": {
+     "ramp": "navy",
+     "flags": [
+      "double"
+     ],
+     "spacing": 0.1
+    },
+    "Body": {
+     "ramp": "white",
+     "spacing": 0.1
+    }
+   },
+   "bone": "gull",
+   "copies": 2,
+   "position": [
+    0,
+    -20,
+    0
+   ]
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+# Orb puffer, phase 2: form (the cup hollowed, hidden caps deleted), flat shading, export.
+select Cup
+active Cup
+mode edit
+select face where "normal.z > 0.9"
+inset 0.06
+extrude 0 0 -0.26
+delete only-faces
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Drum
+active Drum
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Lid
+active Lid
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Barrel
+active Barrel
+mode edit
+select face where "abs(normal.z) > 0.9"
+delete only-faces
+mode object
+select Plinth
+active Plinth
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export puffer.glb

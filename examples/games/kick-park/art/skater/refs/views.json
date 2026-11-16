@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/kick-park/art/skater/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        215,
+        18,
+        338,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4142,
+      "fill": 0.4503,
+      "background": "#908f8e"
+    },
+    "right": {
+      "box": [
+        1080,
+        18,
+        143,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 3.3427,
+      "fill": 0.6406,
+      "background": "#908f8e"
+    },
+    "back": {
+      "box": [
+        215,
+        531,
+        338,
+        478
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4142,
+      "fill": 0.4489,
+      "background": "#8f8f8e"
+    },
+    "top": {
+      "box": [
+        914,
+        659,
+        475,
+        195
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4105,
+      "fill": 0.7674,
+      "background": "#8f8e8e"
+    }
+  }
+}

@@ -1,0 +1,898 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.1,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -10.2,
+   -1.0,
+   -29.6
+  ],
+  [
+   10.2,
+   8.0,
+   4.6
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/hall.glb",
+   "materials": {
+    "Floor": {
+     "ramp": "stone",
+     "spacing": 0.14
+    },
+    "Wall": {
+     "ramp": "stone",
+     "spacing": 0.17
+    },
+    "Dark": {
+     "ramp": "stone",
+     "spacing": 0.22
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.14
+    },
+    "Gloom": {
+     "ramp": "cloth",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.16
+    },
+    "Rune": {
+     "ramp": "rune",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/pillar.glb",
+   "position": [
+    -3.6,
+    0,
+    -6
+   ],
+   "yaw": 0,
+   "materials": {
+    "Column": {
+     "ramp": "stone",
+     "spacing": 0.11
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.12
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/pillar.glb",
+   "position": [
+    3.6,
+    0,
+    -6
+   ],
+   "yaw": 0,
+   "materials": {
+    "Column": {
+     "ramp": "stone",
+     "spacing": 0.11
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.12
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/pillar.glb",
+   "position": [
+    3.6,
+    0,
+    -13
+   ],
+   "yaw": 0,
+   "materials": {
+    "Column": {
+     "ramp": "stone",
+     "spacing": 0.11
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.12
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/pillar.glb",
+   "position": [
+    -3.6,
+    0,
+    -20
+   ],
+   "yaw": 0,
+   "materials": {
+    "Column": {
+     "ramp": "stone",
+     "spacing": 0.11
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.12
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/pillar.glb",
+   "position": [
+    3.6,
+    0,
+    -20
+   ],
+   "yaw": 0,
+   "materials": {
+    "Column": {
+     "ramp": "stone",
+     "spacing": 0.11
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.12
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/broken.glb",
+   "position": [
+    -3.6,
+    0,
+    -13
+   ],
+   "yaw": 0,
+   "materials": {
+    "Column": {
+     "ramp": "stone",
+     "spacing": 0.11
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.12
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.09
+    }
+   }
+  },
+  {
+   "model": "models/env/brazier.glb",
+   "position": [
+    -2.7,
+    0,
+    -22.0
+   ],
+   "materials": {
+    "Iron": {
+     "ramp": "stone",
+     "spacing": 0.06
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.08
+    },
+    "Coal": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Pool": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.09,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/brazier.glb",
+   "position": [
+    2.7,
+    0,
+    -22.0
+   ],
+   "materials": {
+    "Iron": {
+     "ramp": "stone",
+     "spacing": 0.06
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.08
+    },
+    "Coal": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Pool": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.09,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/brazier.glb",
+   "position": [
+    -5.6,
+    0,
+    -13.0
+   ],
+   "materials": {
+    "Iron": {
+     "ramp": "stone",
+     "spacing": 0.06
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.08
+    },
+    "Coal": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Pool": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.09,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/brazier.glb",
+   "position": [
+    5.6,
+    0,
+    -13.0
+   ],
+   "materials": {
+    "Iron": {
+     "ramp": "stone",
+     "spacing": 0.06
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.08
+    },
+    "Coal": {
+     "ramp": "fire",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    },
+    "Pool": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.09,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/banner.glb",
+   "position": [
+    -6.2,
+    5.9,
+    1.0
+   ],
+   "yaw": 90,
+   "materials": {
+    "Cloth": {
+     "ramp": "cloth",
+     "spacing": 0.08
+    },
+    "Stripe": {
+     "ramp": "cloth",
+     "spacing": 0.07
+    },
+    "Rod": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/banner.glb",
+   "position": [
+    6.2,
+    5.9,
+    1.0
+   ],
+   "yaw": -90,
+   "materials": {
+    "Cloth": {
+     "ramp": "cloth",
+     "spacing": 0.08
+    },
+    "Stripe": {
+     "ramp": "cloth",
+     "spacing": 0.07
+    },
+    "Rod": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/banner.glb",
+   "position": [
+    -6.2,
+    5.9,
+    -20.5
+   ],
+   "yaw": 90,
+   "materials": {
+    "Cloth": {
+     "ramp": "cloth",
+     "spacing": 0.08
+    },
+    "Stripe": {
+     "ramp": "cloth",
+     "spacing": 0.07
+    },
+    "Rod": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/banner.glb",
+   "position": [
+    6.2,
+    5.9,
+    -20.5
+   ],
+   "yaw": -90,
+   "materials": {
+    "Cloth": {
+     "ramp": "cloth",
+     "spacing": 0.08
+    },
+    "Stripe": {
+     "ramp": "cloth",
+     "spacing": 0.07
+    },
+    "Rod": {
+     "ramp": "stone",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/rubble.glb",
+   "position": [
+    5.0,
+    0,
+    1.6
+   ],
+   "yaw": 20,
+   "scale": 1.0,
+   "materials": {
+    "Block": {
+     "ramp": "stone",
+     "spacing": 0.1
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.1
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/rubble.glb",
+   "position": [
+    -5.2,
+    0,
+    -18.6
+   ],
+   "yaw": 140,
+   "scale": 1.0,
+   "materials": {
+    "Block": {
+     "ramp": "stone",
+     "spacing": 0.1
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.1
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/rubble.glb",
+   "position": [
+    -5.2,
+    0,
+    2.0
+   ],
+   "yaw": 250,
+   "scale": 0.7,
+   "materials": {
+    "Block": {
+     "ramp": "stone",
+     "spacing": 0.1
+    },
+    "Trim": {
+     "ramp": "stone",
+     "spacing": 0.1
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/golem/golem_body.glb",
+   "position": [
+    0,
+    0,
+    -26.5
+   ],
+   "bone": "body",
+   "copies": 5,
+   "materials": {
+    "Clay": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "ClayDark": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "Band": {
+     "ramp": "clay",
+     "spacing": 0.05
+    },
+    "Glow": {
+     "ramp": "rune",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.035
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/crack.glb",
+   "position": [
+    0,
+    0,
+    -26.5
+   ],
+   "bone": "crack",
+   "copies": 5,
+   "materials": {
+    "Crack": {
+     "ramp": "rune",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/golem/golem_arml.glb",
+   "position": [
+    0.72,
+    1.78,
+    -26.5
+   ],
+   "bone": "arml",
+   "copies": 5,
+   "materials": {
+    "Clay": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "ClayDark": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "Band": {
+     "ramp": "clay",
+     "spacing": 0.05
+    },
+    "Glow": {
+     "ramp": "rune",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.035
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/golem/golem_armr.glb",
+   "position": [
+    -0.72,
+    1.78,
+    -26.5
+   ],
+   "bone": "armr",
+   "copies": 5,
+   "materials": {
+    "Clay": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "ClayDark": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "Band": {
+     "ramp": "clay",
+     "spacing": 0.05
+    },
+    "Glow": {
+     "ramp": "rune",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.035
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/golem/golem_legl.glb",
+   "position": [
+    0.29,
+    0.62,
+    -26.5
+   ],
+   "bone": "legl",
+   "copies": 5,
+   "materials": {
+    "Clay": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "ClayDark": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "Band": {
+     "ramp": "clay",
+     "spacing": 0.05
+    },
+    "Glow": {
+     "ramp": "rune",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.035
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/golem/golem_legr.glb",
+   "position": [
+    -0.29,
+    0.62,
+    -26.5
+   ],
+   "bone": "legr",
+   "copies": 5,
+   "materials": {
+    "Clay": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "ClayDark": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "Band": {
+     "ramp": "clay",
+     "spacing": 0.05
+    },
+    "Glow": {
+     "ramp": "rune",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.035
+    },
+    "Moss": {
+     "ramp": "moss",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/bolt.glb",
+   "position": [
+    0,
+    1.5,
+    -26.5
+   ],
+   "bone": "bolt",
+   "copies": 4,
+   "materials": {
+    "Core": {
+     "ramp": "rune",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    },
+    "Tail": {
+     "ramp": "rune",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/chunk.glb",
+   "position": [
+    0,
+    0.3,
+    -26.5
+   ],
+   "bone": "chunk",
+   "copies": 12,
+   "materials": {
+    "Clay": {
+     "ramp": "clay",
+     "spacing": 0.06
+    },
+    "Inner": {
+     "ramp": "clay",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/spark.glb",
+   "position": [
+    0,
+    1.5,
+    -26.5
+   ],
+   "bone": "spark",
+   "copies": 3,
+   "materials": {
+    "Spark": {
+     "ramp": "glint",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flame.glb",
+   "position": [
+    -2.7,
+    1.2,
+    -22.0
+   ],
+   "bone": "flame0",
+   "materials": {
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    },
+    "Flame": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/flame.glb",
+   "position": [
+    2.7,
+    1.2,
+    -22.0
+   ],
+   "bone": "flame1",
+   "materials": {
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    },
+    "Flame": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/flame.glb",
+   "position": [
+    -5.6,
+    1.2,
+    -13.0
+   ],
+   "bone": "flame2",
+   "materials": {
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    },
+    "Flame": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/flame.glb",
+   "position": [
+    5.6,
+    1.2,
+    -13.0
+   ],
+   "bone": "flame3",
+   "materials": {
+    "Hot": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    },
+    "Flame": {
+     "ramp": "fire",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/staff.glb",
+   "position": [
+    0.3,
+    1.2,
+    -0.6
+   ],
+   "bone": "staff",
+   "materials": {
+    "Haft": {
+     "ramp": "stone",
+     "spacing": 0.012
+    },
+    "Band": {
+     "ramp": "clay",
+     "spacing": 0.012
+    },
+    "Prong": {
+     "ramp": "stone",
+     "spacing": 0.01
+    },
+    "Orb": {
+     "ramp": "rune",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.012
+    }
+   }
+  }
+ ]
+}

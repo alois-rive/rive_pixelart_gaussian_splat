@@ -1,0 +1,84 @@
+# The Manor, phase 2: form and surfacing on top of p1_blockout. Timber frames inset into the
+# walls (coplanar faces, no proud trim), the +X gable end in plaster, window slits, hidden faces
+# deleted (bottoms on the ground, the walls' top under the roof), Lospec500 colours (sRGB 0..1).
+material new Stone --base-color 0.549 0.471 0.647 --no-slot
+material new Plaster --base-color 0.910 0.824 0.510 --no-slot
+material new Timber --base-color 0.431 0.298 0.188 --no-slot
+material new Door --base-color 0.635 0.427 0.247 --no-slot
+material new Roof --base-color 0.220 0.349 0.702 --no-slot
+material new Banner --base-color 0.200 0.533 0.871 --no-slot
+material new Dark --base-color 0.173 0.118 0.192 --no-slot
+# plinth: stone, no bottom
+select Plinth
+active Plinth
+material assign Stone
+mode edit
+select face where "normal.z < -0.9"
+delete face
+mode object
+# walls: a timber frame round plaster panels (inset faces), no top or bottom
+select Walls
+active Walls
+material assign Timber
+mode edit
+select face where "abs(normal.z) > 0.9"
+delete face
+select face where "abs(normal.z) < 0.1"
+inset 0.1 --individual
+material assign Plaster
+mode object
+# roof: blue slopes, the +X gable end plaster, no bottom
+select Roof
+active Roof
+material assign Roof
+mode edit
+select face where "normal.z < -0.9"
+delete face
+select face where "normal.x > 0.9"
+material assign Plaster
+mode object
+select Door
+active Door
+material assign Door
+select Canopy
+active Canopy
+material assign Roof
+mode edit
+select face where "normal.z < -0.9"
+delete face
+mode object
+# window slits either side of the door, 2 cm proud
+add mesh cube --name WinL --size 1 --location -0.76 -0.665 0.625
+scale 0.14 0.04 0.22
+apply --scale
+material assign Dark
+add mesh cube --name WinR --size 1 --location 0.19 -0.665 0.625
+scale 0.14 0.04 0.22
+apply --scale
+material assign Dark
+# the tower: stone, its roof blue, pole timber, the banner lighter blue
+select Shaft Ring M1 M2 M3 M4 M5 M6 M7 M8
+active Shaft
+material assign Stone
+select Shaft
+active Shaft
+mode edit
+select face where "normal.z < -0.9"
+delete face
+mode object
+select Spire
+active Spire
+material assign Roof
+mode edit
+select face where "normal.z < -0.9"
+delete face
+mode object
+select Pole
+active Pole
+material assign Timber
+select Flag
+active Flag
+material assign Banner
+select all
+shade flat
+export manor.glb

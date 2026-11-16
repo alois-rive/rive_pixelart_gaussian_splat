@@ -1,0 +1,426 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.045,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -4.7,
+   -0.1,
+   -1.7
+  ],
+  [
+   4.7,
+   5.8,
+   11.0
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/court.glb",
+   "materials": {
+    "Court": {
+     "spacing": 0.075
+    }
+   }
+  },
+  {
+   "model": "models/env/walls.glb",
+   "materials": {
+    "Back": {
+     "spacing": 0.085
+    },
+    "Left": {
+     "spacing": 0.08
+    },
+    "Right": {
+     "spacing": 0.08
+    },
+    "Coping": {
+     "ramp": "asphalt",
+     "spacing": 0.08
+    },
+    "Rail": {
+     "ramp": "metal",
+     "spacing": 0.05
+    },
+    "Lamp": {
+     "ramp": "spark",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    },
+    "LampBox": {
+     "ramp": "asphalt",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/lights.glb",
+   "materials": {
+    "Wire": {
+     "ramp": "asphalt",
+     "spacing": 0.03,
+     "specks": true
+    },
+    "BulbY": {
+     "ramp": "spark",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    },
+    "BulbO": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    },
+    "BulbB": {
+     "ramp": "cool",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/bench.glb",
+   "materials": {
+    "Wood": {
+     "ramp": "brick",
+     "spacing": 0.04
+    },
+    "Leg": {
+     "ramp": "asphalt",
+     "spacing": 0.035
+    },
+    "Box": {
+     "ramp": "blue",
+     "spacing": 0.035
+    },
+    "Speaker": {
+     "ramp": "asphalt",
+     "spacing": 0.03
+    },
+    "Dial": {
+     "ramp": "spark",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/vend.glb",
+   "materials": {
+    "Body": {
+     "ramp": "blue",
+     "spacing": 0.045
+    },
+    "Window": {
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    },
+    "Header": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    },
+    "Panel": {
+     "ramp": "asphalt",
+     "spacing": 0.04
+    },
+    "Button": {
+     "ramp": "rim",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/hoop/hoop_body.glb",
+   "position": [
+    0,
+    3.05,
+    0
+   ],
+   "bone": "hoop",
+   "materials": {
+    "Board": {
+     "ramp": "paint"
+    },
+    "BoardFront": {},
+    "BoardBack": {},
+    "Rim": {
+     "ramp": "rim",
+     "spacing": 0.035
+    },
+    "Steel": {
+     "ramp": "metal"
+    }
+   }
+  },
+  {
+   "model": "models/hoop/net0.glb",
+   "position": [
+    0,
+    3.005,
+    0
+   ],
+   "bone": "net0",
+   "materials": {
+    "Net": {
+     "ramp": "metal",
+     "spacing": 0.035,
+     "flags": [
+      "double"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/hoop/net1.glb",
+   "position": [
+    0,
+    2.8433,
+    0
+   ],
+   "bone": "net1",
+   "materials": {
+    "Net": {
+     "ramp": "metal",
+     "spacing": 0.035,
+     "flags": [
+      "double"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/hoop/net2.glb",
+   "position": [
+    0,
+    2.6817,
+    0
+   ],
+   "bone": "net2",
+   "materials": {
+    "Net": {
+     "ramp": "metal",
+     "spacing": 0.035,
+     "flags": [
+      "double"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/rack.glb",
+   "position": [
+    -1.1,
+    0,
+    4.6
+   ],
+   "bone": "rack",
+   "materials": {
+    "Frame": {
+     "ramp": "metal",
+     "spacing": 0.03
+    },
+    "Wheel": {
+     "ramp": "asphalt",
+     "spacing": 0.03
+    },
+    "Ball": {
+     "ramp": "ball",
+     "spacing": 0.03
+    },
+    "Seam": {
+     "ramp": "ball",
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/env/body.glb",
+   "position": [
+    0,
+    0,
+    4.0
+   ],
+   "bone": "body",
+   "materials": {
+    "Shoe": {
+     "ramp": "paint",
+     "spacing": 0.03
+    },
+    "Skin": {
+     "ramp": "skin",
+     "spacing": 0.028
+    },
+    "Shorts": {
+     "ramp": "kit",
+     "spacing": 0.03
+    },
+    "Jersey": {
+     "ramp": "kit",
+     "spacing": 0.03
+    },
+    "Number": {
+     "spacing": 0.028
+    }
+   }
+  },
+  {
+   "model": "models/env/head.glb",
+   "position": [
+    0,
+    1.36,
+    4.0
+   ],
+   "bone": "head",
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "spacing": 0.028
+    },
+    "Hair": {
+     "ramp": "dusk",
+     "spacing": 0.028
+    },
+    "Band": {
+     "ramp": "rim",
+     "spacing": 0.025
+    }
+   }
+  },
+  {
+   "model": "models/env/arm.glb",
+   "position": [
+    0,
+    1.25,
+    4.0
+   ],
+   "bone": "arm",
+   "copies": 2,
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "spacing": 0.028
+    },
+    "Wrist": {
+     "ramp": "kit",
+     "spacing": 0.025
+    }
+   }
+  },
+  {
+   "model": "models/env/ball.glb",
+   "position": [
+    0,
+    -2,
+    0
+   ],
+   "bone": "ball",
+   "copies": 4,
+   "materials": {
+    "Ball": {
+     "ramp": "ball",
+     "spacing": 0.03
+    },
+    "Seam": {
+     "ramp": "ball",
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/env/fire.glb",
+   "position": [
+    0,
+    -2,
+    1
+   ],
+   "bone": "fire",
+   "copies": 4,
+   "materials": {
+    "Fire": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.03
+    },
+    "FireSeam": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/env/spark.glb",
+   "position": [
+    1,
+    -2,
+    0
+   ],
+   "bone": "spark",
+   "copies": 6,
+   "materials": {
+    "Spark": {
+     "ramp": "spark",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/ember.glb",
+   "position": [
+    1,
+    -2,
+    1
+   ],
+   "bone": "ember",
+   "copies": 6,
+   "materials": {
+    "Ember": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  }
+ ]
+}

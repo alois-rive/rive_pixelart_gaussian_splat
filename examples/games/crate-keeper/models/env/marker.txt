@@ -1,0 +1,17 @@
+# Direction marker: a flat arrowhead 0.55 m long pointing +X (the game turns it), 0.05 thick, floating
+# 0.06 m over the tile it points at (a flat overlay on the floor would fight the tiles' splats), unlit.
+# Baked twice: white (a step or a push) and pink (blocked).
+new
+material new Mark --base-color 0.941 0.965 0.910 --emission 0.941 0.965 0.910 --no-slot
+add mesh cylinder --name Head --vertices 3 --radius 0.3 --depth 0.05 --location 0.07 0 0.085
+material assign Mark
+add mesh cube --name Tail --size 1 --location -0.17 0 0.085
+scale 0.2 0.14 0.05
+apply --scale
+material assign Mark
+select Head Tail
+active Head
+join
+rename Head Marker
+shade flat
+export marker.glb

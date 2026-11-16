@@ -1,0 +1,72 @@
+<Rive version="1" kind="fragment">
+    <!-- One artboard filled by the splat renderer. Every ScriptInput* below is matched
+         to an @input of splat_scene.as BY NAME (a misspelled name is silently ignored);
+         leave one out and the script's default holds. All are bindable and keyable. -->
+    <Artboard defaultStateMachineId="0:7" viewModelId="0:60" width="640" height="400" styleId="0:5" name="Scene" id="0:2">
+        <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+        <Fill name="Background">
+            <SolidColor colorValue="FF464678" name="Void"/>
+        </Fill>
+        <LayoutComponent width="640" height="400" styleId="0:11" name="Root" id="0:10">
+            <LayoutComponentStyle layoutWidthScaleType="fill" layoutHeightScaleType="fill"
+                widthUnitsValue="auto" heightUnitsValue="auto" name="Style" id="0:11"/>
+            <ScriptedLayout scriptAssetId="0:80" name="Splats" id="0:12">
+                <ScriptInputString propertyValue="splats" name="blobName"/>
+                <ScriptInputBoolean propertyValue="false" name="orbit"/>
+                <!-- demo mode, bound to the Sample view model's `demo`: a host (the gallery) or
+                     `--arg demo=true` makes a game play itself and a diorama turn -->
+                <ScriptInputBoolean propertyValue="false" name="demo">
+                    <DataBindContext sourcePathIds="0:60-0:61" propertyKey="245"/>
+                </ScriptInputBoolean>
+                <ScriptInputNumber propertyValue="3" name="pixelSize"/>
+                <!-- a front view of the loft's big window: look-at, orthographic 11.2 m tall (texel
+                     0.082 m, spacing 0.1 = 1.2 texels), the eye 2.6 m above the target 25 m out (about
+                     6 degrees down), so the floor, the planter and the shelves show their tops. The
+                     game (game.as) owns the camera from here on (a whole-texel shake when the rafter drops). -->
+                <ScriptInputBoolean propertyValue="true" name="lookAt"/>
+                <ScriptInputNumber propertyValue="0" name="eyeX"/>
+                <ScriptInputNumber propertyValue="7.9" name="eyeY"/>
+                <ScriptInputNumber propertyValue="25" name="eyeZ"/>
+                <ScriptInputNumber propertyValue="0" name="targetX"/>
+                <ScriptInputNumber propertyValue="5.3" name="targetY"/>
+                <ScriptInputNumber propertyValue="0" name="targetZ"/>
+                <ScriptInputNumber propertyValue="11.2" name="orthoHeight"/>
+                <ScriptInputNumber propertyValue="0" name="spin"/>
+                <!-- the low sun from the left, a little in front: warm side light, long shadows to the right -->
+                <ScriptInputNumber propertyValue="-38" name="sunYaw"/>
+                <ScriptInputNumber propertyValue="34" name="sunPitch"/>
+                <ScriptInputNumber propertyValue="0.35" name="keyLight"/>
+                <ScriptInputNumber propertyValue="0.85" name="highlight"/>
+                <ScriptInputNumber propertyValue="1" name="shadeSteps"/>
+                <ScriptInputNumber propertyValue="1" name="lightSteps"/>
+                <ScriptInputNumber propertyValue="1" name="ink"/>
+                <ScriptInputNumber propertyValue="0.5" name="edgeDepth"/>
+                <ScriptInputNumber propertyValue="0" name="fogMax"/>
+                <ScriptInputNumber propertyValue="2048" name="shadowSize"/>
+                <!-- the dusk sky through the glass: plum above, pink low behind the rooftops -->
+                <ScriptInputNumber propertyValue="0.8" name="horizon"/>
+                <ScriptInputNumber propertyValue="0.05" name="skyBlend"/>
+            </ScriptedLayout>
+        </LayoutComponent>
+        <StateMachine name="SM" id="0:7">
+            <StateMachineLayer name="L" id="0:8">
+                <AnyState x="0" y="-120"/>
+                <ExitState x="300" y="-120"/>
+                <EntryState><StateTransition stateToId="0:9"/></EntryState>
+                <AnimationState x="150" y="0" animationId="0:6" id="0:9"/>
+            </StateMachineLayer>
+        </StateMachine>
+        <LinearAnimation loopValue="loop" duration="60" name="Idle" id="0:6"/>
+    </Artboard>
+    <!-- what a host may set on this sample: the gallery switches `demo` per tile -->
+    <ViewModel defaultInstanceId="0:62" name="Sample" id="0:60">
+        <ViewModelPropertyBoolean name="demo" id="0:61"/>
+        <ViewModelInstance exports="true" name="Default" id="0:62">
+            <ViewModelInstanceBoolean propertyValue="false" viewModelPropertyId="0:61"/>
+        </ViewModelInstance>
+    </ViewModel>
+    <ScriptAsset file="splat_scene.as" name="splat_scene" id="0:80"/>
+    <!-- In an RML project a blob must be declared; its name is what blobName looks up.
+         Add one BlobAsset per baked .bin the scene may switch to. -->
+    <BlobAsset file="splats.bin" name="splats" id="0:81"/>
+</Rive>

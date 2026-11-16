@@ -1,0 +1,19 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.02,
+  "fat": 1.0,
+  "out": "../../lookdev/table.bin",
+  "objects": [
+    { "model": "table.glb",
+      "materials": { "Felt": { "ramp": "felt", "spacing": 0.021 },
+                     "Cushion": { "ramp": "felt" },
+                     "Rail": { "ramp": "wood" },
+                     "Apron": { "ramp": "wood" },
+                     "Leg": { "ramp": "wood" },
+                     "Pocket": { "ramp": "hole" },
+                     "Shade": { "ramp": "felt", "flags": ["nocast"] },
+                     "ShadeTop": { "ramp": "felt", "flags": ["nocast"] },
+                     "Glow": { "ramp": "glow", "flags": ["unlit", "nocast"] },
+                     "Cord": { "ramp": "hole", "flags": ["nocast"] } } }
+  ]
+}

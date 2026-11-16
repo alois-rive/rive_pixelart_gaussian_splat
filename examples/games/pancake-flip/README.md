@@ -2,6 +2,8 @@
 
 **How to play:** click a pan when its pancake turns golden to flip it; burnt pancakes are strikes.
 
+**Touch:** tap a pan (its body or its handle) when its pancake turns golden.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Vanilla Milkshake](https://lospec.com/palette-list/vanilla-milkshake)
 by Space Sandwich, 16 pastel colours in ten ramps; it loaded from Lospec, so the spare (`apollo`) was

@@ -1,0 +1,10 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.028,
+  "fat": 1.0,
+  "out": "../../lookdev/loupe.bin",
+  "objects": [
+    { "model": "loupe.glb",
+      "materials": { "Brass": { "ramp": "brass" }, "Wood": { "ramp": "wood" } } }
+  ]
+}

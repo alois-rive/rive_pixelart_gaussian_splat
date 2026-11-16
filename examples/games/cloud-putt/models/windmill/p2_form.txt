@@ -1,0 +1,60 @@
+# Windmill form (after p1_blockout.txt): the putting tunnel through the base, round side windows
+# standing off the walls, dark insides, hidden faces deleted (caps in the ground or inside parts).
+# Tunnel: a doorway 0.67 m wide and tall straight through the base (the sheet's round top is
+# squared: see the spec). Bisect planes outline it on the front and back walls, those faces are
+# deleted, and a dark liner (a box without its ends and floor, facing inwards) lines the passage.
+select Tower
+active Tower
+apply --location
+mode edit
+select all
+bisect --plane-co 0.335 0 0 --plane-no 1 0 0
+select all
+bisect --plane-co -0.335 0 0 --plane-no 1 0 0
+select all
+bisect --plane-co 0 0 0.67 --plane-no 0 0 1
+select face where "abs(pos.x) < 0.335 && pos.z < 0.67 && abs(normal.y) > 0.9"
+delete only-faces
+select face where "normal.z < -0.9 && pos.z < 0.01"
+delete only-faces
+mode object
+add mesh cube --name Liner --size 1 --location 0 0 0.335
+scale 0.67 2.16 0.67
+apply --scale
+mode edit
+select face where "abs(normal.y) > 0.9 || normal.z < -0.9"
+delete only-faces
+select all
+normals flip
+mode object
+material assign Dark
+# hidden caps: the band's bottom and top (inside the tower and the roof), the roof's base
+select Band
+active Band
+mode edit
+select face where "abs(normal.z) > 0.9"
+delete only-faces
+mode object
+select Roof
+active Roof
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+# side windows: dark octagonal discs standing off the left and right walls, tilted with them
+add mesh cylinder --name WinR --vertices 8 --radius 0.19 --depth 0.08 --location 0 0 0 --rotation 0 90 0
+apply --rotation
+set rotation 0 -4.2 0
+apply --rotation
+translate 1.07 0 1.27
+apply --location
+material assign Dark
+add mesh cylinder --name WinL --vertices 8 --radius 0.19 --depth 0.08 --location 0 0 0 --rotation 0 90 0
+apply --rotation
+set rotation 0 4.2 0
+apply --rotation
+translate -1.07 0 1.27
+apply --location
+material assign Dark
+select all
+shade flat

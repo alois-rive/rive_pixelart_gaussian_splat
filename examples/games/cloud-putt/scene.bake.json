@@ -1,0 +1,1063 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.09,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -22.0,
+   -6.5,
+   -16.5
+  ],
+  [
+   22.0,
+   5.0,
+   16.5
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/course/island.glb",
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.17
+    },
+    "Puff": {
+     "ramp": "cloud",
+     "spacing": 0.17
+    },
+    "Skirt": {
+     "ramp": "cloud",
+     "spacing": 0.25
+    },
+    "SkirtPuff": {
+     "ramp": "cloud",
+     "spacing": 0.25
+    }
+   }
+  },
+  {
+   "model": "models/course/greens1.glb",
+   "materials": {
+    "Felt": {
+     "ramp": "felt",
+     "spacing": 0.11
+    },
+    "Stripe": {
+     "ramp": "felt",
+     "spacing": 0.11
+    },
+    "Tee": {
+     "ramp": "candy",
+     "spacing": 0.11
+    }
+   }
+  },
+  {
+   "model": "models/course/greens2.glb",
+   "materials": {
+    "Felt": {
+     "ramp": "felt",
+     "spacing": 0.11
+    },
+    "Stripe": {
+     "ramp": "felt",
+     "spacing": 0.11
+    },
+    "Tee": {
+     "ramp": "candy",
+     "spacing": 0.11
+    }
+   }
+  },
+  {
+   "model": "models/course/greens3.glb",
+   "materials": {
+    "Felt": {
+     "ramp": "felt",
+     "spacing": 0.11
+    },
+    "Stripe": {
+     "ramp": "felt",
+     "spacing": 0.11
+    },
+    "Tee": {
+     "ramp": "candy",
+     "spacing": 0.11
+    }
+   }
+  },
+  {
+   "model": "models/course/borders.glb",
+   "materials": {
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.1
+    },
+    "WoodTop": {
+     "ramp": "wood",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/course/cups.glb",
+   "materials": {
+    "Cup": {
+     "ramp": "pit",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/course/water.glb",
+   "materials": {
+    "Water": {
+     "ramp": "water",
+     "spacing": 0.1
+    },
+    "Ripple": {
+     "ramp": "water",
+     "spacing": 0.1
+    },
+    "Bank": {
+     "ramp": "cloud",
+     "spacing": 0.08
+    },
+    "Plank": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "Seam": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "Puff": {
+     "ramp": "cloud",
+     "spacing": 0.12
+    },
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/windmill/tower.glb",
+   "position": [
+    -13.6,
+    0.72,
+    -9.950000000000001
+   ],
+   "scale": 1.3,
+   "materials": {
+    "Wall": {
+     "ramp": "candy"
+    },
+    "Trim": {
+     "ramp": "cloud",
+     "spacing": 0.06
+    },
+    "Roof": {
+     "ramp": "water"
+    },
+    "Finial": {
+     "ramp": "gold",
+     "spacing": 0.05
+    },
+    "Hub": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "pit",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/windmill/sails.glb",
+   "position": [
+    -13.6,
+    2.8260000000000005,
+    -8.442
+   ],
+   "scale": 1.3,
+   "bone": "sails",
+   "materials": {
+    "Hub": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Spar": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Sail": {
+     "ramp": "cloud",
+     "spacing": 0.06,
+     "flags": [
+      "double"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/post.glb",
+   "position": [
+    -14.3,
+    0.15877551020408165,
+    9.4
+   ],
+   "materials": {
+    "Post": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Stripe": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "gold",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/post.glb",
+   "position": [
+    -13.0,
+    0.14816326530612248,
+    7.800000000000001
+   ],
+   "materials": {
+    "Post": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Stripe": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "gold",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/post.glb",
+   "position": [
+    -11.8,
+    0.13836734693877553,
+    9.5
+   ],
+   "materials": {
+    "Post": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Stripe": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "gold",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/post.glb",
+   "position": [
+    -10.7,
+    0.12938775510181952,
+    8.200000000000001
+   ],
+   "materials": {
+    "Post": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Stripe": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "gold",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/post.glb",
+   "position": [
+    -9.4,
+    0.11877551020362022,
+    9.3
+   ],
+   "materials": {
+    "Post": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Stripe": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "gold",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/post.glb",
+   "position": [
+    -9.5,
+    0.1192411220359662,
+    6.7
+   ],
+   "materials": {
+    "Post": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Stripe": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "gold",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/post.glb",
+   "position": [
+    -12.3,
+    0.14244897959183675,
+    6.4
+   ],
+   "materials": {
+    "Post": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Stripe": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    },
+    "Cap": {
+     "ramp": "gold",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/gate.glb",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "bone": "gate",
+   "copies": 2,
+   "materials": {
+    "Gate": {
+     "ramp": "candy",
+     "spacing": 0.07
+    },
+    "Top": {
+     "ramp": "cloud",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/flag.glb",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "bone": "flag",
+   "copies": 9,
+   "materials": {
+    "Pole": {
+     "ramp": "cloud",
+     "spacing": 0.045
+    },
+    "Knob": {
+     "ramp": "gold",
+     "spacing": 0.045
+    },
+    "Pennant": {
+     "ramp": "gold",
+     "spacing": 0.05,
+     "flags": [
+      "double"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/ball.glb",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "bone": "ball",
+   "materials": {
+    "Ball": {
+     "ramp": "cloud",
+     "spacing": 0.045
+    },
+    "Band": {
+     "ramp": "candy",
+     "spacing": 0.045
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -6.0,
+    0,
+    -4.2
+   ],
+   "yaw": 83.4,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Crown": {
+     "ramp": "candy",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    6.0,
+    0,
+    -4.2
+   ],
+   "yaw": 77.4,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Crown": {
+     "ramp": "candy",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    -6.0,
+    0,
+    4.2
+   ],
+   "yaw": 12.600000000000001,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Crown": {
+     "ramp": "candy",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/tree.glb",
+   "position": [
+    6.0,
+    0,
+    4.2
+   ],
+   "yaw": 6.599999999999994,
+   "materials": {
+    "Trunk": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Crown": {
+     "ramp": "candy",
+     "spacing": 0.08
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    19.558,
+    -0.6,
+    8.034
+   ],
+   "scale": 1.0,
+   "yaw": 0,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    19.268,
+    -0.8,
+    10.522
+   ],
+   "scale": 1.0,
+   "yaw": 47,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    18.663,
+    -1.0,
+    11.837
+   ],
+   "scale": 1.35,
+   "yaw": 94,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    17.682,
+    -0.6,
+    12.682
+   ],
+   "scale": 1.35,
+   "yaw": 141,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    16.178,
+    -0.8,
+    13.227
+   ],
+   "scale": 1.35,
+   "yaw": 188,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    13.705,
+    -1.0,
+    13.535
+   ],
+   "scale": 1.0,
+   "yaw": 235,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -0.002,
+    -0.6,
+    13.635
+   ],
+   "scale": 1.0,
+   "yaw": 282,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -13.705,
+    -0.8,
+    13.535
+   ],
+   "scale": 1.0,
+   "yaw": 329,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -16.178,
+    -1.0,
+    13.227
+   ],
+   "scale": 1.35,
+   "yaw": 16,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -17.682,
+    -0.6,
+    12.682
+   ],
+   "scale": 1.35,
+   "yaw": 63,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -18.663,
+    -0.8,
+    11.837
+   ],
+   "scale": 1.35,
+   "yaw": 110,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -19.268,
+    -1.0,
+    10.522
+   ],
+   "scale": 1.0,
+   "yaw": 157,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -19.558,
+    -0.6,
+    8.034
+   ],
+   "scale": 1.0,
+   "yaw": 204,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -19.558,
+    -0.8,
+    -8.034
+   ],
+   "scale": 1.0,
+   "yaw": 251,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -18.663,
+    -0.6,
+    -11.837
+   ],
+   "scale": 1.35,
+   "yaw": 345,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -17.682,
+    -0.8,
+    -12.682
+   ],
+   "scale": 1.35,
+   "yaw": 32,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -16.178,
+    -1.0,
+    -13.227
+   ],
+   "scale": 1.35,
+   "yaw": 79,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    16.178,
+    -0.6,
+    -13.227
+   ],
+   "scale": 1.35,
+   "yaw": 267,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    17.682,
+    -0.8,
+    -12.682
+   ],
+   "scale": 1.35,
+   "yaw": 314,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    18.663,
+    -1.0,
+    -11.837
+   ],
+   "scale": 1.35,
+   "yaw": 1,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    19.558,
+    -0.8,
+    -8.034
+   ],
+   "scale": 1.0,
+   "yaw": 95,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    -9.0,
+    -4.6,
+    6.0
+   ],
+   "scale": 2.6,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    8.0,
+    -5.0,
+    5.0
+   ],
+   "scale": 2.4,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    0.0,
+    -5.6,
+    9.0
+   ],
+   "scale": 2.2,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.2
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "scale": 0.85,
+   "bone": "cloudlet",
+   "copies": 3,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.12
+    },
+    "Under": {
+     "ramp": "cloud",
+     "spacing": 0.12
+    }
+   }
+  },
+  {
+   "model": "models/env/drop.glb",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "bone": "drop",
+   "copies": 6,
+   "materials": {
+    "Drop": {
+     "ramp": "spray",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "specks": true,
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/ripple.glb",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "bone": "ripple",
+   "materials": {
+    "Ring": {
+     "ramp": "spray",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/spark.glb",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "bone": "spark",
+   "copies": 10,
+   "materials": {
+    "Spark": {
+     "ramp": "spark",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "specks": true,
+     "spacing": 0.05
+    }
+   }
+  }
+ ]
+}

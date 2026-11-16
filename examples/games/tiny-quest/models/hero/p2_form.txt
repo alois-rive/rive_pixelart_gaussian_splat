@@ -1,0 +1,11 @@
+# Hero, phase 2: the shield's wooden face inside its gold rim, flat shading, export (make_hero.py).
+select Shield
+active Shield
+mode edit
+select face where "normal.x > 0.7 && normal.y < -0.5"
+inset 0.04
+material assign Shield
+mode object
+select all
+shade flat
+export hero.glb

@@ -3,6 +3,8 @@
 **How to play:** listen to the shrine's bells, then click them back in the same order; every round
 adds one note.
 
+**Touch:** tap the bells back in order (anywhere in a bell's column counts).
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Citrink](https://lospec.com/palette-list/citrink) by Inkpendude,
 eight colours (white, yellow, lime, green, teal, steel blue, navy, ink) in 13 ramps; it loaded from

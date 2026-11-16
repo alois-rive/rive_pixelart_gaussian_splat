@@ -1,0 +1,37 @@
+{
+  "name": "Sunset 8",
+  "source": "https://lospec.com/palette-list/sunset-8",
+  "author": "SamRI",
+  "colors": [
+    "#ffff78",
+    "#ffd647",
+    "#ffc247",
+    "#ffa936",
+    "#ff8b6f",
+    "#e67595",
+    "#9a6390",
+    "#464678"
+  ],
+  "ramps": {
+    "dusk":   ["#464678", "#464678", "#9a6390"],
+    "rose":   ["#9a6390", "#e67595", "#ffff78"],
+    "ember":  ["#ff8b6f", "#ffa936", "#ffa936"],
+    "sun":    ["#ffc247", "#ffff78", "#ffff78"],
+    "iron":   ["#464678", "#9a6390", "#e67595"],
+    "copper": ["#9a6390", "#ff8b6f", "#ffa936", "#ffc247"],
+    "brass":  ["#ff8b6f", "#ffa936", "#ffc247", "#ffd647", "#ffff78"],
+    "petal":  ["#464678", "#e67595", "#ff8b6f", "#ffa936"],
+    "rubber": ["#464678", "#9a6390", "#e67595"],
+    "wood":   ["#464678", "#9a6390", "#ff8b6f", "#ffa936", "#ffc247"],
+    "leaf":   ["#464678", "#9a6390", "#e67595", "#ff8b6f"],
+    "clay":   ["#9a6390", "#ff8b6f", "#ffa936", "#ffc247"],
+    "roofs":  ["#464678", "#464678", "#9a6390"],
+    "glow":   ["#ffd647", "#ffff78", "#ffff78"]
+  },
+  "roles": {
+    "void": "#464678",
+    "fog": "#e67595",
+    "sky_top": "#9a6390",
+    "sky_bottom": "#e67595"
+  }
+}

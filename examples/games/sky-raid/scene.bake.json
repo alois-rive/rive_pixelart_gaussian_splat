@@ -1,0 +1,1238 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.14,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -8.5,
+   -0.6,
+   -26.0
+  ],
+  [
+   8.5,
+   6.0,
+   10.0
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/fieldsA.glb",
+   "bone": "fieldsA",
+   "position": [
+    0,
+    0,
+    3
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/fieldsB.glb",
+   "bone": "fieldsB",
+   "position": [
+    0,
+    0,
+    -3
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/villageA.glb",
+   "bone": "villageA",
+   "position": [
+    0,
+    0,
+    -9
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/villageB.glb",
+   "bone": "villageB",
+   "position": [
+    0,
+    0,
+    -15
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/woodsA.glb",
+   "bone": "woodsA",
+   "position": [
+    0,
+    0,
+    -21
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/woodsB.glb",
+   "bone": "woodsB",
+   "position": [
+    0,
+    0,
+    -27
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/riverA.glb",
+   "bone": "riverA",
+   "position": [
+    0,
+    0,
+    -33
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/env/riverB.glb",
+   "bone": "riverB",
+   "position": [
+    0,
+    0,
+    -39
+   ],
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pasture": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Moss": {
+     "ramp": "grass",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Pine": {
+     "ramp": "leaf",
+     "spacing": 0.1
+    },
+    "Wheat": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "WheatRow": {
+     "ramp": "wheat",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Hay": {
+     "ramp": "wheat",
+     "spacing": 0.1
+    },
+    "Soil": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Furrow": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Sand": {
+     "ramp": "soil",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Trunk": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Water": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.1
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "wall",
+     "spacing": 0.1
+    },
+    "Lane": {
+     "ramp": "wall",
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Plank": {
+     "ramp": "wall",
+     "spacing": 0.1
+    }
+   }
+  },
+  {
+   "model": "models/plane/plane_body.glb",
+   "bone": "plane",
+   "position": [
+    0,
+    2.6,
+    4.5
+   ],
+   "yaw": 180,
+   "materials": {
+    "Canvas": {
+     "ramp": "canvas",
+     "spacing": 0.04
+    },
+    "Paint": {
+     "ramp": "paint",
+     "spacing": 0.045
+    },
+    "Cowl": {
+     "ramp": "metal",
+     "spacing": 0.035
+    },
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.04
+    },
+    "Pit": {
+     "ramp": "metal",
+     "spacing": 0.045
+    },
+    "Screen": {
+     "ramp": "metal",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/plane/prop.glb",
+   "bone": "prop",
+   "position": [
+    0,
+    2.58,
+    3.8
+   ],
+   "yaw": 180,
+   "materials": {
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/shot.glb",
+   "bone": "shot",
+   "copies": 14,
+   "position": [
+    0,
+    2.6,
+    2
+   ],
+   "materials": {
+    "Shot": {
+     "ramp": "shot",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/bullet.glb",
+   "bone": "bullet",
+   "copies": 12,
+   "position": [
+    2,
+    2.6,
+    0
+   ],
+   "materials": {
+    "Foe": {
+     "ramp": "foe",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.05,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/balloon.glb",
+   "bone": "balloon",
+   "copies": 3,
+   "position": [
+    -3,
+    3.4,
+    -2
+   ],
+   "materials": {
+    "Roof": {
+     "ramp": "roof"
+    },
+    "Canvas": {
+     "ramp": "canvas"
+    },
+    "Wicker": {
+     "ramp": "soil",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/supply.glb",
+   "bone": "supply",
+   "position": [
+    3,
+    3.4,
+    -2
+   ],
+   "materials": {
+    "Gold": {
+     "ramp": "wheat"
+    },
+    "Canvas": {
+     "ramp": "canvas"
+    },
+    "Wicker": {
+     "ramp": "soil",
+     "spacing": 0.06
+    },
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/boat.glb",
+   "bone": "boat",
+   "copies": 2,
+   "position": [
+    0,
+    0,
+    -1
+   ],
+   "yaw": 90,
+   "materials": {
+    "Metal": {
+     "ramp": "metal"
+    },
+    "Roof": {
+     "ramp": "roof"
+    },
+    "Wall": {
+     "ramp": "wall"
+    },
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.05
+    }
+   },
+   "scale": 1.25
+  },
+  {
+   "model": "models/env/turret.glb",
+   "bone": "turret",
+   "copies": 2,
+   "position": [
+    0,
+    0.25,
+    -1
+   ],
+   "yaw": 90,
+   "materials": {
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.05
+    },
+    "Steel": {
+     "ramp": "metal",
+     "spacing": 0.05
+    }
+   },
+   "scale": 1.25
+  },
+  {
+   "model": "models/env/drone.glb",
+   "bone": "drone",
+   "copies": 6,
+   "position": [
+    0,
+    2.6,
+    -3
+   ],
+   "yaw": 180,
+   "materials": {
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.05
+    },
+    "Steel": {
+     "ramp": "metal",
+     "spacing": 0.05
+    },
+    "Rotor": {
+     "ramp": "water",
+     "spacing": 0.06
+    },
+    "Glow": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/airship.glb",
+   "bone": "boss",
+   "position": [
+    0,
+    3.6,
+    -4
+   ],
+   "yaw": 90,
+   "materials": {
+    "Stone": {
+     "ramp": "wall"
+    },
+    "Band": {
+     "ramp": "roof"
+    },
+    "Roof": {
+     "ramp": "roof",
+     "spacing": 0.07
+    },
+    "Dark": {
+     "ramp": "metal"
+    },
+    "Metal": {
+     "ramp": "metal",
+     "spacing": 0.07
+    },
+    "Flame": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/bossgun.glb",
+   "bone": "bossgun",
+   "copies": 2,
+   "position": [
+    0,
+    4.4,
+    -4
+   ],
+   "yaw": 180,
+   "materials": {
+    "Metal": {
+     "ramp": "metal",
+     "spacing": 0.06
+    },
+    "Steel": {
+     "ramp": "metal",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.06
+    }
+   }
+  },
+  {
+   "model": "models/env/pop.glb",
+   "bone": "pop",
+   "copies": 5,
+   "position": [
+    0,
+    3,
+    0
+   ],
+   "materials": {
+    "Core": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.075
+    },
+    "Hot": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.075
+    },
+    "Flame": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.075
+    }
+   }
+  },
+  {
+   "model": "models/env/crate.glb",
+   "bone": "crate",
+   "position": [
+    1,
+    2.6,
+    0
+   ],
+   "materials": {
+    "Canvas": {
+     "ramp": "canvas",
+     "spacing": 0.06
+    },
+    "Paint": {
+     "ramp": "paint",
+     "spacing": 0.06
+    },
+    "Wicker": {
+     "ramp": "soil",
+     "spacing": 0.05
+    },
+    "Wall": {
+     "ramp": "wall",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "metal",
+     "spacing": 0.04
+    }
+   }
+  }
+ ]
+}

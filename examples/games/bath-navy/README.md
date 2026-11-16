@@ -2,6 +2,8 @@
 
 **How to play: click to fire a soap bubble where you point; pop the toy boats before they reach the duck.**
 
+**Touch:** tap where the bubble should go: the duck turns and fires at the tapped point.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Lost Century](https://lospec.com/palette-list/lost-century) by
 SurrealEmber (it loaded from Lospec: the spare, Cold Light, was not needed), ten ramps (enamel, water,

@@ -1,0 +1,15 @@
+# Run with --no-save after p1 + p2 (+ p3): writes the scene's two parts.
+# tower.glb: the static tower (walls, tunnel liner, band, roof, finial, windows, axle); origin on the ground.
+# sails.glb: the hub and the four sails, origin at the hub's centre and moved to the world origin
+# (the bake's position puts the hub where it belongs; the game turns them about it).
+select Hub Spar0 Spar1 Spar2 Spar3
+active Hub
+join
+rename Hub Sails
+cursor set 0 -1.16 1.62
+origin set --to cursor
+set location 0 0 0
+select Tower Band Roof Finial WinR WinL Axle Liner
+export tower.glb --selection
+select Sails
+export sails.glb --selection

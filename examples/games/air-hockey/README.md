@@ -3,6 +3,9 @@
 **How to play:** the pointer is your orange mallet: click to face off, then knock the glowing puck
 into the computer's goal on the right; first to 7 wins.
 
+**Touch:** tap to face off, then drag: the mallet follows a point a few pixels above your finger (so the
+finger hides neither it nor the puck) and stays where you lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [SLSO-CLR17](https://lospec.com/palette-list/slso-clr17) by Luis
 Miguel Maldonado, 17 colours (ink and slate greys, mint, teal, blue, greens, yellow, orange, red,

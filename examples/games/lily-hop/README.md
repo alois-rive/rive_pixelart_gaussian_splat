@@ -2,6 +2,8 @@
 
 **How to play: click to hop forward; land on a lily pad, not in the water.**
 
+**Touch:** tap anywhere to hop.
+
 A frog crosses a pond on drifting lily pads. Each hop that lands on a pad scores 1; reaching a bank scores 5
 more, turns the frog round and speeds the lanes up. A firefly hovering over a lane is worth 3 if the frog
 lands under it. Miss a pad, or ride one into the reeds at the pond's sides, and it is a splash: game over,

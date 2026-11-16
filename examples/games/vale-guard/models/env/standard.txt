@@ -1,0 +1,94 @@
+# Gilded standards: four poles with gold finials and red pennants at the corners of a build pad and
+# a gold band round its edge: a tower at level 3. Origin at the pad's centre. make_env.py.
+new
+material new Gold --base-color 0.7451 0.5843 0.3608 --no-slot
+material new Pole --base-color 0.7451 0.5843 0.3608 --no-slot
+material new Pennant --base-color 0.6039 0.3098 0.3137 --no-slot
+add mesh cube --name Pole0 --size 1 --location 0 0 0
+scale 0.0800 0.0800 1.0500
+apply --scale
+translate 0.4243 -0.4243 0.5250
+material assign Pole
+add mesh ico-sphere --name Fin0 --subdivisions 1 --radius 0.1000 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 1.000 1.000 1.000
+apply --scale
+translate 0.4243 -0.4243 1.1000
+material assign Gold
+add mesh cube --name Flag0 --size 1 --location 0 0 0
+scale 0.2000 0.0500 0.2200
+apply --scale
+set rotation 0 0 -45.00
+apply --rotation
+translate 0.5162 -0.5162 0.8900
+material assign Pennant
+add mesh cube --name Pole1 --size 1 --location 0 0 0
+scale 0.0800 0.0800 1.0500
+apply --scale
+translate -0.4243 -0.4243 0.5250
+material assign Pole
+add mesh ico-sphere --name Fin1 --subdivisions 1 --radius 0.1000 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 1.000 1.000 1.000
+apply --scale
+translate -0.4243 -0.4243 1.1000
+material assign Gold
+add mesh cube --name Flag1 --size 1 --location 0 0 0
+scale 0.2000 0.0500 0.2200
+apply --scale
+set rotation 0 0 -135.00
+apply --rotation
+translate -0.5162 -0.5162 0.8900
+material assign Pennant
+add mesh cube --name Pole2 --size 1 --location 0 0 0
+scale 0.0800 0.0800 1.0500
+apply --scale
+translate -0.4243 0.4243 0.5250
+material assign Pole
+add mesh ico-sphere --name Fin2 --subdivisions 1 --radius 0.1000 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 1.000 1.000 1.000
+apply --scale
+translate -0.4243 0.4243 1.1000
+material assign Gold
+add mesh cube --name Flag2 --size 1 --location 0 0 0
+scale 0.2000 0.0500 0.2200
+apply --scale
+set rotation 0 0 -225.00
+apply --rotation
+translate -0.5162 0.5162 0.8900
+material assign Pennant
+add mesh cube --name Pole3 --size 1 --location 0 0 0
+scale 0.0800 0.0800 1.0500
+apply --scale
+translate 0.4243 0.4243 0.5250
+material assign Pole
+add mesh ico-sphere --name Fin3 --subdivisions 1 --radius 0.1000 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 1.000 1.000 1.000
+apply --scale
+translate 0.4243 0.4243 1.1000
+material assign Gold
+add mesh cube --name Flag3 --size 1 --location 0 0 0
+scale 0.2000 0.0500 0.2200
+apply --scale
+set rotation 0 0 -315.00
+apply --rotation
+translate 0.5162 0.5162 0.8900
+material assign Pennant
+add mesh cylinder --vertices 8 --radius 0.7144 --depth 0.1200 --name Band --location 0 0 0
+set rotation 0 0 22.5
+apply --rotation
+translate 0.0000 0.0000 0.0600
+material assign Gold
+mode edit
+select face where "abs(normal.z) > 0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export standard.glb

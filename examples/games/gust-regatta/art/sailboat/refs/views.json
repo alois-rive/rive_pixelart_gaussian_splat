@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/gust-regatta/art/sailboat/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        294,
+        29,
+        180,
+        443
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.4611,
+      "fill": 0.2509,
+      "background": "#8d8d8c"
+    },
+    "right": {
+      "box": [
+        839,
+        29,
+        575,
+        452
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7861,
+      "fill": 0.4204,
+      "background": "#8d8d8c"
+    },
+    "back": {
+      "box": [
+        294,
+        543,
+        180,
+        454
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.5222,
+      "fill": 0.2363,
+      "background": "#8d8d8d"
+    },
+    "top": {
+      "box": [
+        1065,
+        542,
+        174,
+        444
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.5517,
+      "fill": 0.7141,
+      "background": "#8d8d8d"
+    }
+  }
+}

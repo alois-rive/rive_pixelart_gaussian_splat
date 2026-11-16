@@ -3,6 +3,8 @@
 **How to play: click to fire: the orbital cannon swings round the tiny planet and shoots at the pointer;
 pop the meteors before they flatten the four houses.**
 
+**Touch:** tap where to shoot: the cannon swings round and fires at the tapped point.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra
 0.1.0, codex-cli. Palette: [Berry Nebula](https://lospec.com/palette-list/berry-nebula) by LostInIndigo
 (loaded from Lospec; the spare was not needed), eight colours in one long run from night purple to cyan,

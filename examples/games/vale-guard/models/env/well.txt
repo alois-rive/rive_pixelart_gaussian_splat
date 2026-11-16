@@ -1,0 +1,60 @@
+# Rime Well, the frost tower: a round stone well, four short standing stones on its rim and a blue
+# ice crystal floating over it. Origin on the ground at its centre; 1.45 m tall. make_env.py.
+new
+material new Stone --base-color 0.6039 0.6039 0.5922 --no-slot
+material new Water --base-color 0.2549 0.4157 0.6392 --no-slot
+material new Ice --base-color 0.4863 0.6314 0.7529 --no-slot
+material new Rim --base-color 0.3647 0.4078 0.4471 --no-slot
+add mesh cylinder --vertices 8 --radius 0.5000 --depth 0.5000 --name Well --location 0 0 0
+set rotation 0 0 22.5
+apply --rotation
+translate 0.0000 0.0000 0.2500
+material assign Stone
+add mesh cylinder --vertices 8 --radius 0.4000 --depth 0.0300 --name Water --location 0 0 0
+set rotation 0 0 22.5
+apply --rotation
+translate 0.0000 0.0000 0.5150
+material assign Water
+add mesh cube --name Menhir0 --size 1 --location 0 0 0
+scale 0.1500 0.1500 0.3600
+apply --scale
+set rotation 0 0 45.00
+apply --rotation
+translate 0.2828 -0.2828 0.6800
+material assign Rim
+add mesh cube --name Menhir1 --size 1 --location 0 0 0
+scale 0.1500 0.1500 0.3600
+apply --scale
+set rotation 0 0 135.00
+apply --rotation
+translate -0.2828 -0.2828 0.6800
+material assign Rim
+add mesh cube --name Menhir2 --size 1 --location 0 0 0
+scale 0.1500 0.1500 0.3600
+apply --scale
+set rotation 0 0 225.00
+apply --rotation
+translate -0.2828 0.2828 0.6800
+material assign Rim
+add mesh cube --name Menhir3 --size 1 --location 0 0 0
+scale 0.1500 0.1500 0.3600
+apply --scale
+set rotation 0 0 315.00
+apply --rotation
+translate 0.2828 0.2828 0.6800
+material assign Rim
+add mesh cone --name CrystalUp --vertices 4 --radius1 0.22 --radius2 0 --depth 0.42 --location 0 0 1.16
+material assign Ice
+add mesh cone --name CrystalDn --vertices 4 --radius1 0.22 --radius2 0 --depth 0.26 --location 0 0 0.82 --rotation 180 0 0
+apply --rotation
+material assign Ice
+select Well
+active Well
+apply --location
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export well.glb

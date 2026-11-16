@@ -1,0 +1,22 @@
+# Delver, phase 3: the splat fit (modeling.md). Splats reach about a radius past every edge, which
+# widens the side view (brim, lamp, backpack) more than its height: shrink those for the bake only.
+# Run on the gated p2 model into hero_fit.rmdl; the bake uses hero.glb exported from the fit.
+select Brim
+scale 0.94 0.94 1
+apply --scale
+select Pack
+scale 1 0.88 1
+apply --scale
+translate 0 -0.012 0
+apply --location
+select Roll
+translate 0 -0.02 0.02
+apply --location
+select Lamp
+translate 0 0.02 0
+apply --location
+select Dome
+scale 1 1 1.12
+apply --scale
+select all
+shade flat

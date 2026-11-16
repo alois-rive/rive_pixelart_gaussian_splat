@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/pebble-prix/art/racer/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        190,
+        85,
+        388,
+        333
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8582,
+      "fill": 0.6114,
+      "background": "#929191"
+    },
+    "right": {
+      "box": [
+        799,
+        92,
+        661,
+        327
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4947,
+      "fill": 0.6067,
+      "background": "#929191"
+    },
+    "back": {
+      "box": [
+        190,
+        597,
+        388,
+        343
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.884,
+      "fill": 0.6084,
+      "background": "#929191"
+    },
+    "top": {
+      "box": [
+        1022,
+        538,
+        257,
+        437
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.7004,
+      "fill": 0.7844,
+      "background": "#929191"
+    }
+  }
+}

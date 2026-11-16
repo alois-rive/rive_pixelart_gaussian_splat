@@ -4,6 +4,9 @@
 it rattles down through the brass pegs and past the swinging pendulum into a cup. Ten coins a run; the
 cup under the glowing diamond pays double.
 
+**Touch:** tap above the board where the coin should fall: the dropper slides there and drops on
+arrival.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Pear36](https://lospec.com/palette-list/pear36) by PineappleOnPizza,
 36 colours in nine ramps (brass, gold, wood, felt, steel, copper, plum, jewel, lamp); it loaded from

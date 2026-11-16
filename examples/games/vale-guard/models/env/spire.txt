@@ -1,0 +1,63 @@
+# Thunder Spire, the storm tower: an octagonal plinth, a slate obelisk wound with two copper bands,
+# a teal storm orb on top held by three copper prongs. Origin on the ground; 1.7 m tall. make_env.py.
+new
+material new Stone --base-color 0.6039 0.6039 0.5922 --no-slot
+material new Slate --base-color 0.4353 0.4039 0.4627 --no-slot
+material new Copper --base-color 0.7451 0.5843 0.3608 --no-slot
+material new Orb --base-color 0.4078 0.6745 0.6627 --no-slot
+add mesh cylinder --vertices 8 --radius 0.4800 --depth 0.2400 --name Plinth --location 0 0 0
+set rotation 0 0 22.5
+apply --rotation
+translate 0.0000 0.0000 0.1200
+material assign Stone
+add mesh cone --name Obelisk --vertices 4 --radius1 0.36 --radius2 0.2 --depth 1.0 --location 0 0 0.74 --rotation 0 0 45
+apply --rotation
+material assign Slate
+add mesh cylinder --vertices 8 --radius 0.3600 --depth 0.0900 --name BandA --location 0 0 0
+set rotation 0 0 0
+apply --rotation
+translate 0.0000 0.0000 0.5450
+material assign Copper
+add mesh cylinder --vertices 8 --radius 0.3000 --depth 0.0900 --name BandB --location 0 0 0
+set rotation 0 0 0
+apply --rotation
+translate 0.0000 0.0000 0.9650
+material assign Copper
+add mesh cone --name Prong0 --vertices 4 --radius1 0.06 --radius2 0.0 --depth 0.34 --location 0 0 0
+set rotation 0 -22.0 0
+apply --rotation
+set rotation 0 0 90
+apply --rotation
+translate 0.000 0.130 1.38
+material assign Copper
+add mesh cone --name Prong1 --vertices 4 --radius1 0.06 --radius2 0.0 --depth 0.34 --location 0 0 0
+set rotation 0 -22.0 0
+apply --rotation
+set rotation 0 0 210
+apply --rotation
+translate -0.113 -0.065 1.38
+material assign Copper
+add mesh cone --name Prong2 --vertices 4 --radius1 0.06 --radius2 0.0 --depth 0.34 --location 0 0 0
+set rotation 0 -22.0 0
+apply --rotation
+set rotation 0 0 330
+apply --rotation
+translate 0.113 -0.065 1.38
+material assign Copper
+add mesh ico-sphere --name Orb --subdivisions 1 --radius 0.2100 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 1.000 1.000 1.000
+apply --scale
+translate 0.0000 0.0000 1.4700
+material assign Orb
+select Plinth
+active Plinth
+apply --location
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export spire.glb

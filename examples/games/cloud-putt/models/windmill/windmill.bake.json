@@ -1,0 +1,47 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.0615,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/windmill.bin",
+  "objects": [
+    {
+      "model": "windmill.glb",
+      "materials": {
+        "Wall": {
+          "ramp": "candy"
+        },
+        "Trim": {
+          "ramp": "cloud",
+          "spacing": 0.0462
+        },
+        "Roof": {
+          "ramp": "water"
+        },
+        "Finial": {
+          "ramp": "gold",
+          "spacing": 0.0385
+        },
+        "Hub": {
+          "ramp": "wood",
+          "spacing": 0.0385
+        },
+        "Spar": {
+          "ramp": "wood",
+          "spacing": 0.0385
+        },
+        "Sail": {
+          "ramp": "cloud",
+          "spacing": 0.0462,
+          "flags": [
+            "double"
+          ]
+        },
+        "Dark": {
+          "ramp": "pit",
+          "spacing": 0.0462
+        }
+      }
+    }
+  ]
+}

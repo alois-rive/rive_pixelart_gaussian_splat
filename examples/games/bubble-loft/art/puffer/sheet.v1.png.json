@@ -1,0 +1,24 @@
+{
+  "image": "sheet.v1.png",
+  "sha256": "4e339e6cfa1573dbb5494f0c8904c2dacf7c8f97e3bd4a102f7b3ab5958ee7c6",
+  "size": [
+    1536,
+    1024
+  ],
+  "brief_file": "sheet.v1.prompt.md",
+  "brief": "A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small copper \"orb puffer\", a greenhouse contraption shaped like a giant perfume atomizer that puffs glass orbs out of a flower-shaped mouth on top.\n\nCanvas and layout, keep exactly:\n- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.\n- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).\n- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.\n- Every view sits whole inside its panel with a clear margin of background all round (at least a tenth of the panel): nothing touches or crosses a panel edge.\n- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate).\n- The four panels show the SAME object, only turned: FRONT: the object faces the camera. RIGHT: the camera has walked round to the side that was on the RIGHT of the image in the front view (the object's own left-hand side, where the small cup is), so the cup is now nearest the camera, in the middle of the view, and the squeeze bulb is hidden behind the body. BACK: seen from behind: the bulb is now on the image's RIGHT and the cup on the image's LEFT. TOP: seen from straight above, looking down, with its front towards the BOTTOM edge of the image, the round body in the middle, the bulb to the image's LEFT and the cup to the image's RIGHT. Each detail appears only in the views from which it is really visible.\n- The RIGHT view is narrower than the front view (the object is about 1.1 m deep but 2.5 m wide): it is NOT a copy of the front view.\n- One flat, uniform, light grey background (#d0d0d0) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.\n\nThe object (identical in all four views; sizes in metres; total 2.5 m wide, 1.1 m deep, 2.4 m tall):\n- Plinth: a low eight-sided dark iron base 1.4 m across and 0.25 m tall on the ground.\n- Body: a fat eight-sided copper drum 1.1 m across and 0.8 m tall standing on the plinth (from 0.25 to 1.05 m high).\n- Lid: a low eight-sided brass cone on the drum, from 1.1 m across at the bottom to 0.45 m at the top, 0.25 m tall.\n- Barrel: a straight upright brass tube 0.36 m across rising from the lid's top up to 2.05 m high.\n- Mouth: a flared, eight-sided pink tulip-flower cup on top of the barrel, 0.36 m across at its bottom widening to 0.85 m across at its rim, 0.35 m tall (top at 2.4 m), with four chunky pointed petal tips around its rim.\n- Squeeze bulb: on the object's own RIGHT (the image's LEFT in the FRONT view): a big round plum-purple rubber bulb 0.7 m across, its centre 0.7 m high and 0.95 m left of the middle, joined to the drum by a short thick plum hose 0.2 m across.\n- Cup: on the object's own LEFT (the image's RIGHT in the FRONT view): a short brass arm 0.15 m thick sticking straight out of the drum at 0.75 m high, holding an open round brass ring-cup 0.6 m across and 0.2 m tall whose centre is 0.95 m right of the middle; the cup is empty.\n\nStyle, keep exactly:\n- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 600 triangles worth of detail. No smooth organic surfaces, no tiny details (no screws, no rivets, no gauges, no engraving), no texture noise, no grain, no writing.\n- Flat colour areas only, ONLY these colours (from the Sunset 8 palette): plinth dark iron #464678; drum copper #ffa936 (shaded faces #ff8b6f); lid, barrel, arm and cup brass #ffc247 (lit faces #ffd647); tulip mouth pink #e67595 (shade #9a6390); bulb and hose plum #9a6390 (shade #464678).\n- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.",
+  "inputs": [],
+  "generator": {
+    "cli": "codex-cli 0.167.0",
+    "model": null,
+    "session": "01a1e655-b43a-76f0-8358-b93b24fc7df2",
+    "source": "/Users/alois/.codex/generated_images/01a1e655-b43a-76f0-8358-b93b24fc7df2/exec-ce504e5c-e620-45a2-8614-3719e43ad72e.png",
+    "candidates": [
+      "/Users/alois/.codex/generated_images/01a1e655-b43a-76f0-8358-b93b24fc7df2/exec-ce504e5c-e620-45a2-8614-3719e43ad72e.png"
+    ]
+  },
+  "seconds": 63.1,
+  "created": "2026-11-16T22:50:01+0100",
+  "reply": "saved /Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/bubble-loft/art/puffer/sheet.v1.png",
+  "reviewed": false
+}

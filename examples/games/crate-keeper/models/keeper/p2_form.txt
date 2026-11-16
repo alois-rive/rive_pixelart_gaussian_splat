@@ -1,0 +1,60 @@
+# Keeper, phase 2: form and surfacing. Materials are exact Fairydust 8 colours (sRGB 0..1):
+# Overalls #2ba9b4 (cloth ramp, step 2), Skin #e39aac (skin ramp, step 2), Hat #f0dab1 (straw, step 2),
+# Ribbon #c45d9f (wood ramp, step 1), Leaf #93d4b5 (leaf ramp, step 3: the sprout and the can),
+# Boots #6461c2 (cloth ramp, step 1), Eye #634b7d (skin ramp, step 0).
+material new Overalls --base-color 0.169 0.663 0.706 --no-slot
+material new Skin --base-color 0.890 0.604 0.675 --no-slot
+material new Hat --base-color 0.941 0.855 0.694 --no-slot
+material new Ribbon --base-color 0.769 0.365 0.624 --no-slot
+material new Leaf --base-color 0.576 0.831 0.710 --no-slot
+material new Boots --base-color 0.392 0.380 0.761 --no-slot
+material new Eye --base-color 0.388 0.294 0.490 --no-slot
+# eyes: two dark dots on the face (one art pixel each in the game: specks on purpose)
+add mesh cube --name EyeL --size 0.04 --location 0.06 -0.15 0.535
+add mesh cube --name EyeR --size 0.04 --location -0.06 -0.15 0.535
+select EyeL EyeR
+material assign Eye
+# the bib: the front of the body pushed out a little, overall straps over the shoulders
+active Body
+select Body
+mode edit
+select face where "normal.y < -0.5 && pos.z > 0.12 && pos.z < 0.42"
+extrude --along-normal 0.02
+mode object
+select Body
+material assign Overalls
+select Head Nose ArmL ArmR HandL HandR
+material assign Skin
+select Brim Crown
+material assign Hat
+select Ribbon
+material assign Ribbon
+select Leaf Stem Can CanGrip Spout
+material assign Leaf
+select BootL BootR
+material assign Boots
+# joins: one mesh per material group (the keeper is one rigid game bone)
+select Head Nose ArmL ArmR HandL HandR
+active Head
+join
+rename Head Skin
+select Brim Crown
+active Brim
+join
+rename Brim Hat
+select Leaf Stem Can CanGrip Spout
+active Leaf
+join
+rename Leaf Greens
+select BootL BootR
+active BootL
+join
+rename BootL Boots
+select EyeL EyeR
+active EyeL
+join
+rename EyeL Eyes
+select all
+shade flat
+inspect stats
+export keeper.glb

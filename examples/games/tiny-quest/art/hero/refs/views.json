@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/tiny-quest/art/hero/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        202,
+        26,
+        367,
+        461
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2561,
+      "fill": 0.6294,
+      "background": "#d3d3d3"
+    },
+    "right": {
+      "box": [
+        973,
+        26,
+        357,
+        461
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2913,
+      "fill": 0.4891,
+      "background": "#d4d3d3"
+    },
+    "back": {
+      "box": [
+        202,
+        541,
+        367,
+        458
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.248,
+      "fill": 0.6063,
+      "background": "#d3d3d3"
+    },
+    "top": {
+      "box": [
+        948,
+        575,
+        387,
+        379
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.9793,
+      "fill": 0.7791,
+      "background": "#d4d3d3"
+    }
+  }
+}

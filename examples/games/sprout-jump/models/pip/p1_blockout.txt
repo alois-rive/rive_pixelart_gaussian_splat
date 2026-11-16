@@ -1,0 +1,51 @@
+# Pip, phase 1: blockout of every named part at the spec's sizes (pip.spec.md). Up Z, facing -Y
+# (the eyes), origin on the ground between the boots. 1.02 m from the boot soles to the leaf tips.
+new
+# bulb: a faceted, slightly squat radish 0.62 wide, 0.60 deep, 0.55 tall, its bottom 0.18 above the ground
+add mesh uv-sphere --name Bulb --segments 10 --rings 7 --radius 0.5 --location 0 0 0.455
+scale 0.62 0.60 0.55
+apply --scale
+apply --location
+# root point: a short blunt cone under the bulb, between the legs
+add mesh cone --name Root --vertices 5 --radius1 0.07 --radius2 0 --depth 0.1 --location 0 0 0.16 --rotation 180 0 0
+apply --rotation
+apply --location
+# eyes: two upright dark ovals on the front, 0.235 apart, centres 0.48 up, standing 0.03 proud
+add mesh cube --name EyeR --size 1 --location -0.117 -0.27 0.48
+scale 0.075 0.06 0.115
+apply --scale
+apply --location
+add mesh cube --name EyeL --size 1 --location 0.117 -0.27 0.48
+scale 0.075 0.06 0.115
+apply --scale
+apply --location
+# sprout: a short stem on top and two leaves out to the sides, up and a little back
+add mesh cylinder --name Stem --vertices 6 --radius 0.045 --depth 0.1 --location 0 0 0.76
+apply --location
+add mesh uv-sphere --name LeafR --segments 4 --rings 3 --radius 0.5 --location 0 0 0
+scale 0.17 0.10 0.43
+apply --scale
+set rotation 25 -60 0
+apply --rotation
+set location -0.185 0.07 0.885
+apply --location
+add mesh uv-sphere --name LeafL --segments 4 --rings 3 --radius 0.5 --location 0 0 0
+scale 0.17 0.10 0.43
+apply --scale
+set rotation 25 60 0
+apply --rotation
+set location 0.185 0.07 0.885
+apply --location
+# legs and boots: stubby cream legs into rounded dark boots 0.17 wide, 0.22 long (toes forward), 0.11 tall
+add mesh cylinder --name LegR --vertices 6 --radius 0.028 --depth 0.12 --location -0.128 0 0.16
+apply --location
+add mesh cylinder --name LegL --vertices 6 --radius 0.028 --depth 0.12 --location 0.128 0 0.16
+apply --location
+add mesh cube --name BootR --size 1 --location -0.128 -0.07 0.055
+scale 0.17 0.22 0.11
+apply --scale
+apply --location
+add mesh cube --name BootL --size 1 --location 0.128 -0.07 0.055
+scale 0.17 0.22 0.11
+apply --scale
+apply --location

@@ -1,0 +1,10 @@
+# Splash ring: a flat white ring 0.7 m across (baked at its largest, scaled down by the game).
+# Origin at its centre.
+new
+material new Ring --base-color 0.9804 1.0000 0.9882 --no-slot
+add mesh torus --name Ring --major-segments 16 --minor-segments 4 --major-radius 0.35 --minor-radius 0.05 --location 0 0 0
+scale 1 1 0.4
+apply --scale
+material assign Ring
+shade flat
+export ripple.glb

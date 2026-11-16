@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/cloud-putt/art/windmill/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        195,
+        28,
+        385,
+        449
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1662,
+      "fill": 0.6303,
+      "background": "#939392"
+    },
+    "right": {
+      "box": [
+        1012,
+        28,
+        299,
+        449
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5017,
+      "fill": 0.71,
+      "background": "#939392"
+    },
+    "back": {
+      "box": [
+        195,
+        541,
+        382,
+        451
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1806,
+      "fill": 0.6278,
+      "background": "#949393"
+    },
+    "top": {
+      "box": [
+        947,
+        611,
+        405,
+        314
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7753,
+      "fill": 0.5751,
+      "background": "#949392"
+    }
+  }
+}

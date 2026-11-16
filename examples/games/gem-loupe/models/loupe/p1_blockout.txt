@@ -1,0 +1,24 @@
+# Loupe, phase 1: one primitive per named part at the spec's sizes (loupe.spec.md). Standing upright
+# as the sheet draws it: the ring faces the front (-Y), the handle hangs below it. Up Z, origin on
+# the ground under the knob.
+new
+add mesh uv-sphere --name Knob --segments 8 --rings 4 --radius 0.105 --location 0 0 0.085
+scale 1 1 0.81
+apply --scale
+add mesh cone --name Handle --vertices 8 --radius1 0.063 --radius2 0.083 --depth 0.45 --location 0 0 0.375
+add mesh cylinder --name Ferrule --vertices 8 --radius 0.087 --depth 0.09 --location 0 0 0.645
+select Handle Ferrule
+set rotation 0 0 22.5
+apply --rotation
+add mesh cylinder --name Ring --vertices 12 --radius 0.3313 --depth 0.129 --location 0 0 1.003
+set rotation 0 0 15
+apply --rotation
+set rotation 90 0 0
+apply --rotation
+mode edit
+select face where "normal.y > 0.9 || normal.y < -0.9"
+inset 0.1036 --individual
+delete only-faces
+select edge where "pos.x * pos.x + pos.z * pos.z < 0.06"
+bridge
+mode object

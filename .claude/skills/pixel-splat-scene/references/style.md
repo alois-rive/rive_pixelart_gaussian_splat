@@ -112,3 +112,8 @@ backdrops, or give them some shading.
 fully shaded flat face sits exactly on a band edge, and the band dither turns
 it into a checker. Use `shadeSteps` 1 or 2 for scenes with big flat walls.
 
+**Light pools: sparse motes, not stipple.** A dense Bayer stipple of an unlit
+light colour on the floor merges into a blotch once neighbouring discs touch.
+Sparse motes (one texel on, every third texel, staggered) stay readable as
+light, and can twinkle with the flame's stepped clock.
+

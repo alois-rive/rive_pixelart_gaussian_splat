@@ -89,6 +89,7 @@ export class Game {
     dv: f64 = 0;
     tx: f64 = -1.2;
     reload: f64 = 0;
+    dropQ: f64 = -1;        // a press waiting for the dropper to reach it, seconds (-1: none)
     squash: f64 = 0;
 
     // coins
@@ -296,6 +297,17 @@ export class Game {
             }
         }
         this.updateDropper(api, dt);
+        if (this.dropQ >= 0) {
+            // a queued press: drop once the dropper is over it (at most 0.6 s later)
+            this.dropQ += dt;
+            let target = Math.max(RAIL_MIN, Math.min(RAIL_MAX, this.tx));
+            if (api.demo || this.state != ST_PLAY) {
+                this.dropQ = -1;
+            } else if ((Math.abs(this.dx - target) < 0.12 && Math.abs(this.dv) < 1.0) || this.dropQ > 0.6) {
+                this.dropQ = -1;
+                this.drop(api);
+            }
+        }
         this.updateClockwork(api);
         this.updateCoins(api, dt);
         this.updateSparks(api, dt);
@@ -700,8 +712,10 @@ export class Game {
                     api.sound(SFX_WIN, 1.0, 0.6);
                     this.beginRun(api);
                 }
-            } else {
-                this.drop(api);
+            } else if (this.state == ST_PLAY && this.reload <= 0) {
+                // the coin drops where the press is: the dropper slides there first and drops on
+                // arrival (a phone has no hover to lead it; under a mouse it is already there)
+                this.dropQ = 0;
             }
         }
         return true;

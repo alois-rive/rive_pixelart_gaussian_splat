@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/corner-pocket/art/table/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        126,
+        43,
+        517,
+        432
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8356,
+      "fill": 0.306,
+      "background": "#d4d3d3"
+    },
+    "right": {
+      "box": [
+        1005,
+        43,
+        294,
+        432
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4694,
+      "fill": 0.2933,
+      "background": "#d4d4d4"
+    },
+    "back": {
+      "box": [
+        126,
+        554,
+        516,
+        433
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8391,
+      "fill": 0.3074,
+      "background": "#d4d3d3"
+    },
+    "top": {
+      "box": [
+        898,
+        622,
+        508,
+        281
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.5531,
+      "fill": 0.9953,
+      "background": "#d5d4d4"
+    }
+  }
+}

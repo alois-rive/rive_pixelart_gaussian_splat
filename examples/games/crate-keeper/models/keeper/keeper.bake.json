@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.046,
+  "fat": 1.0,
+  "out": "../../lookdev/keeper.bin",
+  "objects": [
+    { "model": "keeper.glb",
+      "materials": { "Overalls": { "ramp": "cloth" }, "Skin": { "ramp": "skin", "spacing": 0.035 }, "Hat": { "ramp": "straw" },
+                     "Ribbon": { "ramp": "wood", "spacing": 0.038 }, "Leaf": { "ramp": "leaf", "spacing": 0.031 }, "Boots": { "ramp": "cloth" },
+                     "Eye": { "ramp": "skin", "specks": true, "spacing": 0.027 } } }
+  ]
+}

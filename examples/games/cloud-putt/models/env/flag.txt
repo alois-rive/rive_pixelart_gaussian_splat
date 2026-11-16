@@ -1,0 +1,27 @@
+# Flag: a white pole 1.35 m tall standing in the cup, a red knob on top and a yellow pennant
+# 0.6 m long (tapering to a point) near the top, pointing right. Origin at the pole's foot.
+new
+material new Pole --base-color 0.9804 1.0000 0.9882 --no-slot
+material new Knob --base-color 0.8588 0.2941 0.2392 --no-slot
+material new Pennant --base-color 1.0000 0.9216 0.2000 --no-slot
+add mesh cylinder --name Pole --vertices 6 --radius 0.04 --depth 1.35 --location 0 0 0.675
+material assign Pole
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Knob --subdivisions 1 --radius 0.07 --location 0 0 1.39
+material assign Knob
+add mesh cube --name Pennant --size 1 --location 0 0 0
+scale 0.62 0.05 0.42
+apply --scale
+translate 0.33 0 1.1
+apply --location
+mode edit
+select vert where "pos.x > 0.6"
+scale 1 1 0.12
+mode object
+material assign Pennant
+select all
+shade flat
+export flag.glb

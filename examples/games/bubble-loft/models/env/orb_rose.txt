@@ -1,0 +1,7 @@
+# A rose glass orb, r 0.4 (in a 0.46 cell), a faceted 80-face ball; origin at its centre. make_env.py.
+new
+material new Glass --base-color 0.902 0.459 0.584 --no-slot
+add mesh ico-sphere --name Orb --subdivisions 2 --radius 0.4
+material assign Glass
+shade flat
+export orb_rose.glb

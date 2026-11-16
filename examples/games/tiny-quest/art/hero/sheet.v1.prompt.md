@@ -1,0 +1,25 @@
+A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small, stubby, chibi-proportioned wandering adventurer for an isometric turn-based island RPG (an original character).
+
+Canvas and layout, keep exactly:
+- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.
+- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).
+- Orthographic cameras (no perspective), the same scale in every panel, the character centred in each panel and standing on the same invisible ground line in the three side views (the boots rest on it).
+- Every view sits whole inside its panel with a clear margin of background all round (at least a tenth of the panel): nothing touches or crosses a panel edge, including the hat brim and the sword.
+- Each side view is exactly frontal to its side: no other face of the character shows in it; the hat brim is seen exactly edge-on as a thin flat slab in the three side views (no ellipse of the brim's top visible).
+- The four panels show the SAME character, only turned: FRONT: the character faces the camera, the short sword held upright in the character's own RIGHT hand (on the LEFT of the image), the round shield on the character's own LEFT forearm (on the RIGHT of the image). RIGHT: the camera has walked round to the side that was on the RIGHT of the image in the front view (the character's own left-hand side), so the character faces the LEFT edge of the image; the round shield faces the camera and covers the arm, the sword is on the far side, only its tip shows above the shield. BACK: seen from behind: the cape covers the back, the sword now on the RIGHT of the image, the shield on the LEFT. TOP: seen from straight above: the round hat brim fills most of the view (a circle with the small crown in its centre), the boots' toes and the sword tip peek out at the BOTTOM edge of the circle (the character's front faces the BOTTOM edge of the image).
+- One flat, uniform, light grey background (#d9d9d9) everywhere: no floor, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.
+
+The character (identical in all four views), 0.95 m tall including the hat, 0.62 m wide at the hat brim:
+- Hat: a wide, flat, round traveller's hat: brim 0.62 m across and 0.05 m thick (an octagon), a low flat-topped crown 0.28 m across and 0.12 m tall in its centre, straw gold, with a red band round the crown.
+- Head: a big blocky head 0.34 m wide, 0.30 m tall, 0.30 m deep (chibi: the head is a third of the height), warm skin colour, two small dark eyes as flat squares on the front, no mouth, no hair visible except a dark fringe band under the brim.
+- Body: a short tapering tunic 0.34 m wide at the hem, 0.26 m at the shoulders, 0.30 m tall, blue, with a brown belt 0.05 m tall round the waist.
+- Cape: a short red scarf-cape hanging from the shoulders down the back to just above the hem, 0.30 m wide, 0.04 m thick, slightly flaring; seen from the front only its collar shows round the neck.
+- Arms: two stubby blue arms 0.08 m thick hanging at the sides, skin-coloured block hands.
+- Legs: two short legs 0.10 m thick, 0.12 m apart, blue-grey, with chunky dark brown boots 0.13 m long and 0.10 m tall.
+- Sword (in the character's own RIGHT hand, held upright beside the body): a short broad blade 0.07 m wide and 0.32 m long, light grey, a gold cross guard 0.16 m wide, a brown grip.
+- Shield (on the character's own LEFT forearm): a round wooden buckler 0.26 m across and 0.05 m thick, an octagon, orange-brown wood with a gold rim and a gold boss in the middle, facing outwards to the character's left side.
+
+Style, keep exactly:
+- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky blocky shapes, about 500 triangles worth of detail. No smooth organic surfaces, no tiny details, no texture noise, no grain, no outlines.
+- Flat colour areas only, ONLY these colours (a muted 32-colour palette, MarshMellow32): hat straw #e2b55f (lit) and #b68241 (shaded), hat band and cape #8c504d (lit) and #734141 (shaded); skin #b87a66; eyes and fringe #3c3a3f; tunic and arms #2d80a6 (lit) and #235b7c (shaded); belt and boots #593234; legs #4b5053; sword blade #b2b2b2 and #7c7c7c; guard and shield rim and boss #e2b55f; shield wood #a1623b.
+- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.

@@ -94,7 +94,13 @@ export class Game {
 | `place(b, x, y, z, yaw, pitch, roll, scale)` | puts the object's pivot (its bake `position`) at x, y, z, turned (degrees: yaw about Y, then pitch about X, then roll about Z) and scaled (1 = as baked) |
 | `placeScaled(b, x, y, z, yaw, sx, sy, sz, pitch, roll)` | the same with a per-axis squash and stretch |
 | `transform(b, x, y, z)` | where a point of a placed object is now (give it where the bake put it: `restX[b]` + an offset): `tx`, `ty`, `tz`. Attach a child bone (a jet on a nozzle, a hat on a head) by placing it there |
-| `hide(b)`, `reset(b)` | out of the picture (far below); back where the bake put it |
+| `placeMatrix(b, r00..r22, x, y, z, scale)` | place from a rotation matrix (rows: world from the object's baked axes): IK, rolling balls, matrices you already keep |
+| `placeChild(b, parent, x, y, z, yaw, pitch, roll, scale)` | attach to a moving parent: place b in the parent's REST world (a hand at the rest arm's tip), carried by the parent's current placement; place the parent first |
+| `shade(b, steps)` | move the whole object `steps` along its ramp (+ lighter, - darker): hurt, frozen, selected, a level-up glow |
+| `recolor(b, ramp)` | draw it with another ramp (palette.json order; -1 its own), steps kept and clamped: ONE pool for every team or colour instead of a pool per colour |
+| `flash(b, on)` | draw it unlit at its ramp's lightest step: a hit flash for a frame or two |
+| `lookReset(b)` | clear shade, recolor and flash (looks persist until changed; reset pooled bones on reuse) |
+| `hide(b)`, `reset(b)` | out of the picture (far below); back where the bake put it. Hide unused pool bones in `start()`: a never-placed copy is not reliably at its rest |
 | `restX/Y/Z[b]`, `restYaw[b]` | where the bake put it |
 | `pick(hx, hy, planeY)`, `pickPlane(hx, hy, nx, ny, nz, d)` | the pointer ray's hit on the plane y = planeY, or on any plane n · p = d (a wall facing the camera): `hitX`, `hitY`, `hitZ` |
 | `project(x, y, z)` | a world point in HUD pixels: `screenX`, `screenY` (labels, hit tests against objects) |
@@ -121,6 +127,15 @@ samples) switches it per tile; `--arg demo=true` forces it for captures. A
 diorama turns at `demoSpin` degrees a second instead. Write the demo as a
 plausible player: aims with a little error, misses sometimes, restarts after
 a game over by itself.
+
+**Never draw `api.rand()` in `hud()`.** `hud()` runs once per DRAWN frame, and
+how many frames are drawn differs between a live window, a screenshot and a
+`--commands` capture: a random draw there shifts every later draw and the demo
+diverges. Jitter in the HUD comes from a hash of `api.frame`.
+
+**Starting a demo mid-action** (a wave already running, a ball in the air):
+fast-forward the game's own state with a step function that draws nothing and
+keeps its own clock (not `api.time`), in `start()` or the first `update()`.
 
 **Determinism.** `api.time` advances in fixed steps headless, and `api.rand()`
 is seeded, so a capture at frame N is the same every time: goldens of a game
@@ -181,7 +196,8 @@ wind or hum is sparse repeated ticks keyed to `api.frame`. A headless
 is the expected silence, not a failure. Sounds never play in
 demo mode, so a gallery stays quiet until a tile is played; never decide a
 sound with `api.rand()` (it would change the demo). The `sound` and
-`soundVolume` inputs switch and scale them. Hear them headless: `rive <scene>
+`soundVolume` inputs switch and scale them. (`--render-audio` writes 32-bit FLOAT wav, which Python's `wave` module
+cannot open: read the `data` chunk with NumPy as `'<f4'`.) Hear them headless: `rive <scene>
 --render-audio=<abs>.wav --advance=8s` with `--pointer` input (play mode)
 writes what the synth renders, deterministically.
 
@@ -214,6 +230,27 @@ pointer arrives in them, and `pick` / `project` convert to and from the world.
 
 ## Input
 
+**Touch.** Phones deliver the pointer only while a finger is down (the press
+at the touched point, moves while dragging, the release on lift); there is no
+hover. Never require hovering; act on the press or the drag; a control that
+follows the finger can hold the controlled object a few art pixels above the
+finger while pressed (`24 / pixelSize`) so the finger hides neither it nor
+what it aims at. Tap targets at least ~12 art pixels (at `pixelSize` 3) in
+their smaller dimension: a phone shows a scene at 0.5 to 0.8 scale. The
+renderer gives one pointer at a time (the first finger owns the gesture), ends
+the gesture with a `POINTER_UP` when the pointer slides off the scene, and
+sets `api.hoverSeen` once a pointer has moved with nothing pressed (a mouse):
+keep hover-only niceties for that case. A touch press reaches `pointer()` as a
+`POINTER_MOVE` then a `POINTER_DOWN` in the same frame, and a lift as an UP
+then a MOVE: a game that steers on bare moves should wait for the frame's end
+(or for `hoverSeen`) before treating a move as hover. `console.log` goes to
+stderr and `--commands` answers to stdout (merge them for a closed-loop
+player), and `--quiet` hides the logs. Test touch with `touch down@x,y` /
+`touch up@x,y` / `touch move@x,y` lines in `--commands` (or `--touch=`), or
+`--pointer` with only `down@`, `drag@`, `up@`. Card and button games act on
+the press (`POINTER_DOWN`): it is the simplest touch-safe choice.
+
+
 A host may forward only the pointer to a nested artboard (Rive forwards
 pointer, scroll and gamepad events to nested artboards, not keys), so a game
 meant to be embedded plays with the pointer alone: click or tap, hold, drag.
@@ -241,3 +278,21 @@ multiples of `pixelSize`, colours from the palette.
 - Bone updates copy only changed frames; a game writing its own bones every
   frame costs one small upload per object.
 - Measure published builds in a browser (`rive docs gpu-performance`).
+
+**Traps seen building games.**
+- `<f64>(a / b)` with two `i32`s divides as floats in AssemblyScript: route
+  integer division through an `i32` (`let r: i32 = a / b`) before casting.
+- A game part exported with a moved origin keeps it as its node translation and
+  the bake adds the entry's `position` on top: export parts at the world origin.
+- In `--commands`, `touch drag@a>b` is a whole press-move-release gesture, like
+  `--pointer=drag@`.
+- Headless scripts run interpreted and slower than in a player: budget a demo's
+  search by step count, not by wall time.
+- A side-view camera under ~15° pitch culls one-sided splats on the tops of
+  platforms and planks (they face more than ~75° from the eye): use 20° or mark
+  those materials `double`.
+- Many-state cells (match-3 gems, tiles) fit one bone per cell as a "drum": every
+  look on a hidden ring under the board, turned so the needed one shows.
+- Big generated hedra meshes: run with `--undo-steps 0` and split a long command
+  file in parts (hedra's watchdog stops a run after ~30 s).
+

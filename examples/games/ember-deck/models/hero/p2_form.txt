@@ -1,0 +1,45 @@
+# Wick Knight, phase 2: materials in Ink-Crimson (exact sRGB of the ramp steps), the buckler's face
+# (an inset of both flat faces: crimson face, cyan rim), joins into the three game parts (HeroBody,
+# SwordArm, ShieldArm), flat shading, export of the whole knight. Run after p1_blockout.txt.
+material new Steel --base-color 0 0.5961 0.8588 --no-slot
+material new Blade --base-color 0.0471 0.9020 0.9490 --no-slot
+material new Dark --base-color 0.1529 0 0.1333 --no-slot
+material new Plum --base-color 0.2706 0.0118 0.1529 --no-slot
+material new Cape --base-color 0.6118 0.0902 0.2314 --no-slot
+material new Crest --base-color 1 0.0196 0.2745 --no-slot
+select Helm Torso Waist PauldronR PauldronL ArmR ArmL
+material assign Steel
+select VisorH VisorV Guard BootR BootL
+material assign Dark
+select LegR LegL FistR FistL
+material assign Plum
+select Cape
+material assign Cape
+select CrestLo CrestHi
+material assign Crest
+select Blade Tip
+material assign Blade
+select Shield
+material assign Blade
+active Shield
+mode edit
+select face where "abs(normal.x) > 0.9"
+inset 0.07
+material assign Cape
+mode object
+select ArmR FistR Guard Blade Tip
+active ArmR
+join
+rename ArmR SwordArm
+select ArmL FistL Shield
+active ArmL
+join
+rename ArmL ShieldArm
+select BootR BootL LegR LegL PauldronR PauldronL Torso Waist Cape Helm VisorH VisorV CrestLo CrestHi
+active Torso
+join
+rename Torso HeroBody
+select all
+shade flat
+inspect stats
+export hero.glb

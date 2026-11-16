@@ -641,7 +641,10 @@ export class Game {
             }
         }
         if ((kind == POINTER_DOWN || kind == POINTER_MOVE) && this.mode == MODE_RUN) {
-            if (api.pick(x, y, 0)) {
+            // touch: while a finger is down the cat runs to a point a few art pixels above it, so
+            // the finger does not hide her (a hovering mouse leads her to the pointer itself)
+            let lift: f32 = api.pointerDown ? <f32>(24.0 / Math.max(1.0, api.pixelSize)) : 0;
+            if (api.pick(x, y - lift, 0)) {
                 this.tx = api.hitX;
                 this.tz = api.hitZ;
             }

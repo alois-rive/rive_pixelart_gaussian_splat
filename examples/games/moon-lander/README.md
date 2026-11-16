@@ -4,6 +4,8 @@
 as the little moon turns it under you. Touching the bare moon, landing too fast or off the pad's
 middle is a crash.
 
+**Touch:** press and hold anywhere to fire the thruster, lift to fall.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli 0.167. Palette: [Nyx8](https://lospec.com/palette-list/nyx8) (navy-black,
 slates, mauves, tan, cream), loaded from Lospec (the spare, 2bit-demichrome, was not needed). Deep

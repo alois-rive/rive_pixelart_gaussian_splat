@@ -5,7 +5,7 @@
 // Coordinates: the world is Y up, metres (the bake's). The HUD and the pointer use HUD pixels:
 // art pixels from the top-left of the visible frame (hudW x hudH, e.g. 213 x 133 at pixelSize 3).
 
-const FONT: StaticArray<u16> = [0, 9346, 0, 24445, 0, 21157, 0, 9216, 10530, 8778, 24528, 1488, 20, 448, 2, 4772, 31599, 11415, 29671, 29647, 23497, 31183, 31215, 29330, 31727, 31695, 1040, 0, 5393, 3640, 17492, 25218, 0, 11245, 27566, 14627, 27502, 31143, 31140, 14699, 23533, 29847, 4714, 23469, 18727, 24557, 27501, 11114, 27556, 11123, 27565, 14478, 29842, 23407, 23402, 23549, 23213, 23186, 29351, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2728, 0, 0, 0, 0, 0, 0, 0];
+const FONT: StaticArray<u16> = [0, 9346, 0, 24445, 15518, 21157, 0, 9216, 10530, 8778, 24528, 1488, 20, 448, 2, 4772, 31599, 11415, 29671, 29647, 23497, 31183, 31215, 29330, 31727, 31695, 1040, 0, 5393, 3640, 17492, 25218, 0, 11245, 27566, 14627, 27502, 31143, 31140, 14699, 23533, 29847, 4714, 23469, 18727, 24557, 27501, 11114, 27556, 11123, 27565, 14478, 29842, 23407, 23402, 23549, 23213, 23186, 29351, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2728, 0, 0, 0, 0, 0, 0, 0];
 
 // sounds (sfx.as plays them): api.sound(SFX_COIN), api.soundAt(SFX_HIT, x, y, z), api.note(60)
 export const SFX_BLIP: i32 = 0;      // a menu blip, a select
@@ -46,6 +46,8 @@ export class GameApi {
     pointerX: f32 = -1;     // the last pointer position in HUD pixels (-1: none yet)
     pointerY: f32 = -1;
     pointerDown: bool = false;
+    hoverSeen: bool = false; // a pointer moved with nothing pressed: a mouse (touch never hovers);
+                             // keep hover-only conveniences (a preview, a highlight) for it
 
     // --- the camera and the look: copied from the scene's inputs before the game's first update;
     // what the game writes here is applied every frame
@@ -80,6 +82,8 @@ export class GameApi {
     restYaw: StaticArray<f32> = new StaticArray<f32>(64);
     mats: StaticArray<f32> = new StaticArray<f32>(64 * 12);
     dirty: StaticArray<bool> = new StaticArray<bool>(64);
+    // per-bone look, 4 per bone: step shift, ramp + 1 (0: its own), flash (1: unlit, top step), 0
+    looks: StaticArray<f32> = new StaticArray<f32>(64 * 4);
 
     constructor() {
         for (let b = 0; b < 64; b++) {
@@ -235,6 +239,81 @@ export class GameApi {
         this.tx = <f64>this.mats[m] * x + <f64>this.mats[m + 1] * y + <f64>this.mats[m + 2] * z + <f64>this.mats[m + 3];
         this.ty = <f64>this.mats[m + 4] * x + <f64>this.mats[m + 5] * y + <f64>this.mats[m + 6] * z + <f64>this.mats[m + 7];
         this.tz = <f64>this.mats[m + 8] * x + <f64>this.mats[m + 9] * y + <f64>this.mats[m + 10] * z + <f64>this.mats[m + 11];
+    }
+
+    // Places a game bone from a rotation matrix (rows r0*, r1*, r2*: world from the object's
+    // as-baked axes) instead of angles: leg IK, rolling balls, anything already kept as a matrix.
+    // The pivot lands at x, y, z; scale as in place().
+    placeMatrix(b: i32, r00: f64, r01: f64, r02: f64, r10: f64, r11: f64, r12: f64,
+                r20: f64, r21: f64, r22: f64, x: f64, y: f64, z: f64, scale: f64 = 1): void {
+        if (b <= 0 || b >= 64) {
+            return;
+        }
+        let y0 = <f64>this.restYaw[b] * Math.PI / 180;
+        let c0 = Math.cos(y0), s0 = Math.sin(y0);
+        let a00 = (r00 * c0 + r02 * s0) * scale, a01 = r01 * scale, a02 = (-r00 * s0 + r02 * c0) * scale;
+        let a10 = (r10 * c0 + r12 * s0) * scale, a11 = r11 * scale, a12 = (-r10 * s0 + r12 * c0) * scale;
+        let a20 = (r20 * c0 + r22 * s0) * scale, a21 = r21 * scale, a22 = (-r20 * s0 + r22 * c0) * scale;
+        let px = <f64>this.restX[b], py = <f64>this.restY[b], pz = <f64>this.restZ[b];
+        let m = b * 12;
+        this.mats[m] = <f32>a00; this.mats[m + 1] = <f32>a01; this.mats[m + 2] = <f32>a02;
+        this.mats[m + 3] = <f32>(x - (a00 * px + a01 * py + a02 * pz));
+        this.mats[m + 4] = <f32>a10; this.mats[m + 5] = <f32>a11; this.mats[m + 6] = <f32>a12;
+        this.mats[m + 7] = <f32>(y - (a10 * px + a11 * py + a12 * pz));
+        this.mats[m + 8] = <f32>a20; this.mats[m + 9] = <f32>a21; this.mats[m + 10] = <f32>a22;
+        this.mats[m + 11] = <f32>(z - (a20 * px + a21 * py + a22 * pz));
+        this.dirty[b] = true;
+        this.anyDirty = true;
+    }
+
+    // Attaches bone b to bone parent: b is placed as place() would put it while the parent sits at
+    // its baked rest (x, y, z and the angles are in that rest world: a hand at the rest arm's tip),
+    // then carried by wherever the parent is now. Place the parent first, every frame.
+    placeChild(b: i32, parent: i32, x: f64, y: f64, z: f64, yawDeg: f64 = 0, pitchDeg: f64 = 0,
+               rollDeg: f64 = 0, scale: f64 = 1): void {
+        if (b <= 0 || b >= 64 || parent < 0 || parent >= 64) {
+            return;
+        }
+        this.place(b, x, y, z, yawDeg, pitchDeg, rollDeg, scale);
+        let p = parent * 12, m = b * 12;
+        let c = new StaticArray<f32>(12);
+        for (let r = 0; r < 3; r++) {
+            for (let k = 0; k < 4; k++) {
+                let v = this.mats[p + r * 4] * this.mats[m + k] + this.mats[p + r * 4 + 1] * this.mats[m + 4 + k]
+                    + this.mats[p + r * 4 + 2] * this.mats[m + 8 + k];
+                c[r * 4 + k] = k == 3 ? v + this.mats[p + r * 4 + 3] : v;
+            }
+        }
+        for (let i = 0; i < 12; i++) {
+            this.mats[m + i] = c[i];
+        }
+    }
+
+    // Per-bone looks (the whole object; a skinned splat follows its first joint). They stay until
+    // changed; lookReset clears all three.
+    // shade: move every splat `steps` along its ramp (+ lighter, - darker): hurt, frozen, selected.
+    shade(b: i32, steps: f64): void {
+        if (b >= 0 && b < 64) {
+            this.looks[b * 4] = <f32>steps;
+        }
+    }
+    // recolor: draw the object with ramp `ramp` (palette.json order) instead of its own, keeping
+    // each splat's step (clamped to the new ramp): one pool for every team or colour. -1: its own.
+    recolor(b: i32, ramp: i32): void {
+        if (b >= 0 && b < 64) {
+            this.looks[b * 4 + 1] = <f32>(ramp + 1);
+        }
+    }
+    // flash: draw the object unlit at its ramp's lightest step (a hit flash: a frame or two).
+    flash(b: i32, on: bool): void {
+        if (b >= 0 && b < 64) {
+            this.looks[b * 4 + 2] = on ? 1 : 0;
+        }
+    }
+    lookReset(b: i32): void {
+        if (b >= 0 && b < 64) {
+            this.looks[b * 4] = 0; this.looks[b * 4 + 1] = 0; this.looks[b * 4 + 2] = 0;
+        }
     }
 
     // Takes a game bone's object out of the picture (moved far below everything).

@@ -1,0 +1,492 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.07,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -8,
+   -3.6,
+   -12.8
+  ],
+  [
+   184,
+   21,
+   1.6
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/level/level.glb",
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "spacing": 0.08
+    },
+    "Soil": {
+     "ramp": "soil",
+     "spacing": 0.1
+    },
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.1
+    },
+    "Cap": {
+     "ramp": "stone"
+    },
+    "Clay": {
+     "ramp": "clay",
+     "spacing": 0.09
+    },
+    "Wood": {
+     "ramp": "bark",
+     "spacing": 0.1
+    },
+    "Trunk": {
+     "ramp": "bark",
+     "spacing": 0.13
+    },
+    "Bark": {
+     "ramp": "bark",
+     "spacing": 0.08
+    },
+    "Canopy": {
+     "ramp": "leaf",
+     "spacing": 0.18
+    },
+    "Leafy": {
+     "ramp": "leaf",
+     "spacing": 0.07
+    },
+    "Petal": {
+     "ramp": "gold",
+     "spacing": 0.06
+    },
+    "Disc": {
+     "ramp": "bark",
+     "spacing": 0.06
+    },
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.05
+    },
+    "Tulip": {
+     "ramp": "petal",
+     "spacing": 0.05
+    },
+    "Bush": {
+     "ramp": "olive",
+     "spacing": 0.14
+    },
+    "Twig": {
+     "ramp": "bark",
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/pip/pip_body.glb",
+   "bone": "pip",
+   "position": [
+    0.5,
+    0,
+    0
+   ],
+   "materials": {
+    "Bulb": {
+     "ramp": "radish",
+     "spacing": 0.05
+    },
+    "Cream": {
+     "ramp": "cream",
+     "spacing": 0.035
+    },
+    "Eye": {
+     "ramp": "ink",
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/pip/pip_sprout.glb",
+   "bone": "sprout",
+   "position": [
+    0.5,
+    0.76,
+    0
+   ],
+   "materials": {
+    "Leaf": {
+     "ramp": "sprout",
+     "spacing": 0.03
+    },
+    "Stem": {
+     "ramp": "sprout",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/pip/pip_foot.glb",
+   "bone": "footR",
+   "position": [
+    0.5,
+    0,
+    0.128
+   ],
+   "materials": {
+    "Boot": {
+     "ramp": "ink",
+     "spacing": 0.04
+    },
+    "Cream": {
+     "ramp": "cream",
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/pip/pip_foot.glb",
+   "bone": "footL",
+   "position": [
+    0.5,
+    0,
+    -0.128
+   ],
+   "materials": {
+    "Boot": {
+     "ramp": "ink",
+     "spacing": 0.04
+    },
+    "Cream": {
+     "ramp": "cream",
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/env/seed.glb",
+   "bone": "seed",
+   "position": [
+    2.4,
+    0.45,
+    0
+   ],
+   "copies": 12,
+   "materials": {
+    "Seed": {
+     "ramp": "gold",
+     "spacing": 0.03
+    },
+    "Stripe": {
+     "ramp": "gold",
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/env/pop.glb",
+   "bone": "pop",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "copies": 2,
+   "materials": {
+    "Spark": {
+     "ramp": "gold",
+     "spacing": 0.045,
+     "flags": [
+      "unlit",
+      "nocast"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/shellbug.glb",
+   "bone": "bug",
+   "position": [
+    12,
+    0,
+    0
+   ],
+   "copies": 3,
+   "materials": {
+    "Shell": {
+     "ramp": "shell",
+     "spacing": 0.05
+    },
+    "Spot": {
+     "ramp": "shell",
+     "spacing": 0.035
+    },
+    "Head": {
+     "ramp": "ink",
+     "spacing": 0.035
+    },
+    "BugEye": {
+     "ramp": "cream",
+     "spacing": 0.025,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/moth.glb",
+   "bone": "moth",
+   "position": [
+    124,
+    9,
+    0
+   ],
+   "copies": 2,
+   "materials": {
+    "Moth": {
+     "ramp": "moth",
+     "spacing": 0.04
+    },
+    "Wing": {
+     "ramp": "moth",
+     "spacing": 0.035,
+     "flags": [
+      "double"
+     ]
+    },
+    "WingSpot": {
+     "ramp": "shell",
+     "spacing": 0.03,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/spring.glb",
+   "bone": "spring",
+   "position": [
+    25,
+    0.6,
+    0
+   ],
+   "copies": 3,
+   "materials": {
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.045
+    },
+    "Petal": {
+     "ramp": "petal",
+     "spacing": 0.045
+    },
+    "Gold": {
+     "ramp": "gold",
+     "spacing": 0.045
+    }
+   }
+  },
+  {
+   "model": "models/env/raft.glb",
+   "bone": "raft",
+   "position": [
+    33.4,
+    2.4,
+    0
+   ],
+   "copies": 6,
+   "materials": {
+    "Leafy": {
+     "ramp": "leaf",
+     "spacing": 0.07
+    },
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/plank.glb",
+   "bone": "plank",
+   "position": [
+    43.5,
+    2.5,
+    0
+   ],
+   "copies": 7,
+   "materials": {
+    "Wood": {
+     "ramp": "bark",
+     "spacing": 0.07
+    },
+    "Rope": {
+     "ramp": "straw",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/bloom.glb",
+   "bone": "bloom",
+   "position": [
+    36.6,
+    3.45,
+    -0.3
+   ],
+   "copies": 4,
+   "materials": {
+    "Gold": {
+     "ramp": "gold",
+     "spacing": 0.03
+    },
+    "Pink": {
+     "ramp": "petal",
+     "spacing": 0.03
+    },
+    "Stalk": {
+     "ramp": "leaf",
+     "spacing": 0.03
+    }
+   }
+  },
+  {
+   "model": "models/env/pennant.glb",
+   "bone": "pennant",
+   "position": [
+    177.5,
+    16.4,
+    -0.1
+   ],
+   "materials": {
+    "Banner": {
+     "ramp": "petal",
+     "spacing": 0.04,
+     "flags": [
+      "double"
+     ]
+    },
+    "Gold": {
+     "ramp": "gold",
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "bone": "puff",
+   "position": [
+    0,
+    -20,
+    0
+   ],
+   "copies": 3,
+   "materials": {
+    "Puff": {
+     "ramp": "cloud",
+     "spacing": 0.04,
+     "flags": [
+      "nocast"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/water.glb",
+   "bone": "water",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "materials": {
+    "Deep": {
+     "ramp": "water",
+     "spacing": 0.13,
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Ripple": {
+     "ramp": "water",
+     "spacing": 0.12,
+     "flags": [
+      "nocast"
+     ]
+    },
+    "Pad": {
+     "ramp": "leaf",
+     "spacing": 0.06,
+     "flags": [
+      "nocast"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/hills.glb",
+   "bone": "hills",
+   "position": [
+    0,
+    -1.0,
+    -9.0
+   ],
+   "copies": 2,
+   "materials": {
+    "Hill": {
+     "ramp": "hill",
+     "spacing": 0.18,
+     "flags": [
+      "nocast"
+     ]
+    },
+    "HillTop": {
+     "ramp": "hill",
+     "spacing": 0.18,
+     "flags": [
+      "nocast"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/grove.glb",
+   "bone": "grove",
+   "position": [
+    0,
+    -1.0,
+    -5.5
+   ],
+   "copies": 2,
+   "materials": {
+    "Grove": {
+     "ramp": "olive",
+     "spacing": 0.15,
+     "flags": [
+      "nocast"
+     ]
+    }
+   }
+  },
+  {
+   "model": "models/env/cloud.glb",
+   "bone": "cloud",
+   "position": [
+    0,
+    4.5,
+    -12.0
+   ],
+   "copies": 3,
+   "materials": {
+    "Cloud": {
+     "ramp": "cloud",
+     "spacing": 0.12,
+     "flags": [
+      "nocast"
+     ]
+    }
+   }
+  }
+ ]
+}

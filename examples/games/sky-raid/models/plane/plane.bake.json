@@ -1,0 +1,37 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.05,
+  "fat": 1.0,
+  "out": "../../lookdev/plane.bin",
+  "objects": [
+    {
+      "model": "plane_fit.glb",
+      "materials": {
+        "Canvas": {
+          "ramp": "canvas",
+          "spacing": 0.04
+        },
+        "Paint": {
+          "ramp": "paint",
+          "spacing": 0.045
+        },
+        "Cowl": {
+          "ramp": "metal",
+          "spacing": 0.035
+        },
+        "Dark": {
+          "ramp": "metal",
+          "spacing": 0.04
+        },
+        "Pit": {
+          "ramp": "metal",
+          "spacing": 0.045
+        },
+        "Screen": {
+          "ramp": "metal",
+          "spacing": 0.035
+        }
+      }
+    }
+  ]
+}

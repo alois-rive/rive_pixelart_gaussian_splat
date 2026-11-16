@@ -1,0 +1,14 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.055,
+  "fat": 1.0,
+  "out": "../../lookdev/skater.bin",
+  "objects": [
+    { "model": "skater_fit.glb",
+      "materials": { "Hoodie": { "ramp": "hoodie" }, "Denim": { "ramp": "denim" }, "Skin": { "ramp": "skin", "spacing": 0.045 },
+                     "Shoe": { "ramp": "white", "spacing": 0.045 }, "Beanie": { "ramp": "beanie" }, "Hair": { "ramp": "wood", "spacing": 0.045 },
+                     "Eye": { "ramp": "grip", "spacing": 0.03, "specks": true },
+                     "Deck": { "ramp": "deck", "spacing": 0.04 }, "Grip": { "ramp": "grip", "spacing": 0.045 },
+                     "Steel": { "ramp": "steel", "spacing": 0.035, "specks": true }, "Wheel": { "ramp": "wheel", "spacing": 0.035, "specks": true } } }
+  ]
+}

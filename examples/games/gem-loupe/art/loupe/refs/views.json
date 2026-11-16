@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/gem-loupe/art/loupe/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        270,
+        26,
+        229,
+        470
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.0524,
+      "fill": 0.3428,
+      "background": "#d3d2d2"
+    },
+    "right": {
+      "box": [
+        1115,
+        24,
+        75,
+        472
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 6.2933,
+      "fill": 0.6944,
+      "background": "#d3d3d2"
+    },
+    "back": {
+      "box": [
+        270,
+        537,
+        228,
+        470
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.0614,
+      "fill": 0.3444,
+      "background": "#d3d3d3"
+    },
+    "top": {
+      "box": [
+        1017,
+        726,
+        271,
+        77
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.2841,
+      "fill": 0.6586,
+      "background": "#d4d3d3"
+    }
+  }
+}

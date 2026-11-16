@@ -1,0 +1,551 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.1,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -6,
+   -1,
+   -6
+  ],
+  [
+   26,
+   4.5,
+   26
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/room0.glb",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "materials": {
+    "Tile": {
+     "ramp": "slate"
+    },
+    "TileB": {
+     "ramp": "slate"
+    },
+    "Pad": {
+     "ramp": "glow"
+    },
+    "Planter": {
+     "ramp": "planter"
+    },
+    "Hedge": {
+     "ramp": "leaf"
+    },
+    "Bench": {
+     "ramp": "dusk",
+     "spacing": 0.12
+    },
+    "Bush": {
+     "ramp": "leaf",
+     "spacing": 0.08
+    },
+    "Bloom": {
+     "ramp": "bloom",
+     "spacing": 0.06
+    },
+    "Pot": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/room1.glb",
+   "position": [
+    10,
+    0,
+    0
+   ],
+   "materials": {
+    "Tile": {
+     "ramp": "slate"
+    },
+    "TileB": {
+     "ramp": "slate"
+    },
+    "Pad": {
+     "ramp": "glow"
+    },
+    "Planter": {
+     "ramp": "planter"
+    },
+    "Hedge": {
+     "ramp": "leaf"
+    },
+    "Bench": {
+     "ramp": "dusk",
+     "spacing": 0.12
+    },
+    "Bush": {
+     "ramp": "leaf",
+     "spacing": 0.08
+    },
+    "Bloom": {
+     "ramp": "bloom",
+     "spacing": 0.06
+    },
+    "Pot": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/room2.glb",
+   "position": [
+    20,
+    0,
+    0
+   ],
+   "materials": {
+    "Tile": {
+     "ramp": "slate"
+    },
+    "TileB": {
+     "ramp": "slate"
+    },
+    "Pad": {
+     "ramp": "glow"
+    },
+    "Planter": {
+     "ramp": "planter"
+    },
+    "Hedge": {
+     "ramp": "leaf"
+    },
+    "Bench": {
+     "ramp": "dusk",
+     "spacing": 0.12
+    },
+    "Bush": {
+     "ramp": "leaf",
+     "spacing": 0.08
+    },
+    "Bloom": {
+     "ramp": "bloom",
+     "spacing": 0.06
+    },
+    "Pot": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/room3.glb",
+   "position": [
+    20,
+    0,
+    10
+   ],
+   "materials": {
+    "Tile": {
+     "ramp": "slate"
+    },
+    "TileB": {
+     "ramp": "slate"
+    },
+    "Pad": {
+     "ramp": "glow"
+    },
+    "Planter": {
+     "ramp": "planter"
+    },
+    "Hedge": {
+     "ramp": "leaf"
+    },
+    "Bench": {
+     "ramp": "dusk",
+     "spacing": 0.12
+    },
+    "Bush": {
+     "ramp": "leaf",
+     "spacing": 0.08
+    },
+    "Bloom": {
+     "ramp": "bloom",
+     "spacing": 0.06
+    },
+    "Pot": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/room4.glb",
+   "position": [
+    10,
+    0,
+    10
+   ],
+   "materials": {
+    "Tile": {
+     "ramp": "slate"
+    },
+    "TileB": {
+     "ramp": "slate"
+    },
+    "Pad": {
+     "ramp": "glow"
+    },
+    "Planter": {
+     "ramp": "planter"
+    },
+    "Hedge": {
+     "ramp": "leaf"
+    },
+    "Bench": {
+     "ramp": "dusk",
+     "spacing": 0.12
+    },
+    "Bush": {
+     "ramp": "leaf",
+     "spacing": 0.08
+    },
+    "Bloom": {
+     "ramp": "bloom",
+     "spacing": 0.06
+    },
+    "Pot": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/room5.glb",
+   "position": [
+    0,
+    0,
+    10
+   ],
+   "materials": {
+    "Tile": {
+     "ramp": "slate"
+    },
+    "TileB": {
+     "ramp": "slate"
+    },
+    "Pad": {
+     "ramp": "glow"
+    },
+    "Planter": {
+     "ramp": "planter"
+    },
+    "Hedge": {
+     "ramp": "leaf"
+    },
+    "Bench": {
+     "ramp": "dusk",
+     "spacing": 0.12
+    },
+    "Bush": {
+     "ramp": "leaf",
+     "spacing": 0.08
+    },
+    "Bloom": {
+     "ramp": "bloom",
+     "spacing": 0.06
+    },
+    "Pot": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/env/room6.glb",
+   "position": [
+    0,
+    0,
+    20
+   ],
+   "materials": {
+    "Tile": {
+     "ramp": "slate"
+    },
+    "TileB": {
+     "ramp": "slate"
+    },
+    "Pad": {
+     "ramp": "glow"
+    },
+    "Planter": {
+     "ramp": "planter"
+    },
+    "Hedge": {
+     "ramp": "leaf"
+    },
+    "Bench": {
+     "ramp": "dusk",
+     "spacing": 0.12
+    },
+    "Bush": {
+     "ramp": "leaf",
+     "spacing": 0.08
+    },
+    "Bloom": {
+     "ramp": "bloom",
+     "spacing": 0.06
+    },
+    "Pot": {
+     "ramp": "wood",
+     "spacing": 0.07
+    }
+   }
+  },
+  {
+   "model": "models/keeper/keeper.glb",
+   "position": [
+    -2.5,
+    0,
+    1.5
+   ],
+   "scale": 1.3,
+   "bone": "keeper",
+   "materials": {
+    "Overalls": {
+     "ramp": "cloth",
+     "spacing": 0.06
+    },
+    "Skin": {
+     "ramp": "skin",
+     "spacing": 0.045
+    },
+    "Hat": {
+     "ramp": "straw",
+     "spacing": 0.06
+    },
+    "Ribbon": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.04
+    },
+    "Boots": {
+     "ramp": "cloth",
+     "spacing": 0.06
+    },
+    "Eye": {
+     "ramp": "skin",
+     "specks": true,
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/crate/crate.glb",
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "bone": "crateA",
+   "copies": 4,
+   "materials": {
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "Slat": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "Soil": {
+     "ramp": "dusk",
+     "spacing": 0.07
+    },
+    "Sprout": {
+     "ramp": "leaf",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/crate/crate.glb",
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "bone": "crateB",
+   "copies": 4,
+   "materials": {
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "Slat": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "Soil": {
+     "ramp": "dusk",
+     "spacing": 0.07
+    },
+    "Sprout": {
+     "ramp": "leaf",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/crate/crate.glb",
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "bone": "glowA",
+   "copies": 4,
+   "materials": {
+    "Wood": {
+     "ramp": "straw",
+     "step": 2,
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    },
+    "Slat": {
+     "ramp": "straw",
+     "step": 2,
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    },
+    "Soil": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    },
+    "Sprout": {
+     "ramp": "glow",
+     "step": 1,
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/crate/crate.glb",
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "bone": "glowB",
+   "copies": 4,
+   "materials": {
+    "Wood": {
+     "ramp": "straw",
+     "step": 2,
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    },
+    "Slat": {
+     "ramp": "straw",
+     "step": 2,
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    },
+    "Soil": {
+     "ramp": "glow",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.07
+    },
+    "Sprout": {
+     "ramp": "glow",
+     "step": 1,
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/marker.glb",
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "bone": "markW",
+   "materials": {
+    "Mark": {
+     "ramp": "mark",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/marker.glb",
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "bone": "markP",
+   "materials": {
+    "Mark": {
+     "ramp": "bloom",
+     "step": -1,
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/puff.glb",
+   "position": [
+    0,
+    -8,
+    0
+   ],
+   "bone": "puff",
+   "copies": 5,
+   "materials": {
+    "Dust": {
+     "ramp": "straw",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "specks": true,
+     "spacing": 0.05
+    }
+   }
+  }
+ ]
+}

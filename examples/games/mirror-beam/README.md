@@ -3,6 +3,8 @@
 **How to play:** click a mirror to turn it a quarter turn; bounce the sunbeam through every crystal in
 the temple court before the sun sets.
 
+**Touch:** tap a mirror to turn it (the first tap on a mirror starts the sun's clock).
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli 0.167. Palette: [Sunset Red](https://lospec.com/palette-list/sunset-red) by
 Cabezinu, five colours of one hue (navy-black, plum, wine, crimson, red); it loaded from Lospec, so the

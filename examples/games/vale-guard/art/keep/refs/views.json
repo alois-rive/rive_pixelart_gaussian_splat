@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/vale-guard/art/keep/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        203,
+        21,
+        364,
+        454
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2473,
+      "fill": 0.7811,
+      "background": "#dfdfdf"
+    },
+    "right": {
+      "box": [
+        956,
+        28,
+        378,
+        447
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.1825,
+      "fill": 0.8044,
+      "background": "#e0dfdf"
+    },
+    "back": {
+      "box": [
+        203,
+        530,
+        363,
+        456
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2562,
+      "fill": 0.7829,
+      "background": "#e0dfdf"
+    },
+    "top": {
+      "box": [
+        950,
+        551,
+        404,
+        423
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.047,
+      "fill": 0.7681,
+      "background": "#e0e0df"
+    }
+  }
+}

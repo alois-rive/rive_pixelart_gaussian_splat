@@ -1,0 +1,48 @@
+# Boulder Keep, phase 2: hidden faces removed (the drum's and the parapet's buried bottoms,
+# the drum's top under the parapet), the muzzle's bore, flat shading, the export. make_keep.py.
+select Drum
+active Drum
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Parapet
+active Parapet
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Door
+active Door
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Banner
+active Banner
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Carriage
+active Carriage
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Drum
+active Drum
+mode edit
+select face where "normal.z > 0.9"
+delete only-faces
+mode object
+select Muzzle
+active Muzzle
+mode edit
+select face where "normal.y < -0.9"
+inset 0.035
+material assign Door
+mode object
+select all
+shade flat
+export keep.glb

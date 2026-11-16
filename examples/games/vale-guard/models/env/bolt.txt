@@ -1,0 +1,15 @@
+# A crossbow bolt: a chunky timber shaft and a brass head pointing -Y. 0.08 x 0.42 m. make_env.py.
+new
+material new Shaft --base-color 0.7608 0.5529 0.4588 --no-slot
+material new Head --base-color 0.7451 0.5843 0.3608 --no-slot
+add mesh cube --name Shaft --size 1 --location 0.0000 0.0500 0.0000
+scale 0.0800 0.3200 0.0800
+apply --scale
+material assign Shaft
+add mesh cone --name Head --vertices 4 --radius1 0.08 --radius2 0 --depth 0.14 --location 0 0 0 --rotation 90 0 45
+apply --rotation
+translate 0 -0.17 0
+material assign Head
+select all
+shade flat
+export bolt.glb

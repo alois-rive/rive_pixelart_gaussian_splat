@@ -3,9 +3,19 @@
 Every sample in one Rive file: a scrollable grid of live tiles, each the sample's own signed
 `.riv` (in `riv/`), decoded at runtime and shown in a nested artboard.
 
-- The grid follows the window: as many 640 x 400 columns as fit, centred, tiles at 1:1; a
-  window narrower than one tile gets one scaled-down column. Resizing keeps the same row at
-  the top.
+- The layout follows the window. Two columns or more: a scrollable grid of 640 x 400 tiles at
+  1:1, centred (the wheel or a drag on the background scrolls; Escape hands the played sample
+  back). One column (phones, narrow windows): ONE sample fitted to the screen (whole-step
+  upscales only, so pixels stay even), its number, name and palette, and big PREV / RANDOM /
+  NEXT buttons; swipe left or right to move; tap the sample to play it and STOP to hand it
+  back (phones have no Escape). A short screen (a phone in landscape) gets a one-line header so
+  the sample stays large.
+- The list is virtualized: a sample's `.riv` is decoded only when its tile comes within a row of
+  the view (one new decode a frame, two at most in flight, shown tiles first), its artboard is
+  made (and starts running) only when the tile is shown, tiles out of sight are hidden and
+  paused, and a sample three rows away (or, on a phone, three samples away) is unbound and its
+  decoded file released. The sample being played is never released. A phone keeps the shown
+  sample and its neighbours.
 - Tiles play in demo mode, dimmed: dioramas turn, games play themselves.
 - Click a tile: it becomes active (white border, full brightness) and takes the pointer: play
   the game, or drag to orbit a diorama.

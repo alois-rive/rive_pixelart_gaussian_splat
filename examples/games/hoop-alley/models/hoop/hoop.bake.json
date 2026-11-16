@@ -1,0 +1,13 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.045,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/hoop.bin",
+  "objects": [
+    { "model": "hoop.glb",
+      "materials": { "Board": { "ramp": "paint" }, "BoardFront": {}, "BoardBack": {},
+                     "Rim": { "ramp": "rim", "spacing": 0.035 }, "Steel": { "ramp": "metal" },
+                     "Net": { "ramp": "metal", "spacing": 0.035 } } }
+  ]
+}

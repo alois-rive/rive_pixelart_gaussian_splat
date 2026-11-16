@@ -1,0 +1,15 @@
+# Lollipop tree: a wine trunk 0.9 m and a pink faceted crown r 0.6 m. Origin at the trunk's foot.
+new
+material new Trunk --base-color 0.6510 0.2392 0.3412 --no-slot
+material new Crown --base-color 1.0000 0.4235 0.4784 --no-slot
+add mesh cylinder --name Trunk --vertices 6 --radius 0.09 --depth 0.95 --location 0 0 0.47
+material assign Trunk
+mode edit
+select face where "abs(normal.z) > 0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown --subdivisions 1 --radius 0.62 --location 0 0 1.35
+material assign Crown
+select all
+shade flat
+export tree.glb

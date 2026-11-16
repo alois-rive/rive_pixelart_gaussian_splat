@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/sprout-jump/art/pip/sheet.v2.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        232,
+        40,
+        304,
+        433
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4243,
+      "fill": 0.5875,
+      "background": "#919190"
+    },
+    "right": {
+      "box": [
+        1004,
+        33,
+        262,
+        440
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.6794,
+      "fill": 0.5503,
+      "background": "#929191"
+    },
+    "back": {
+      "box": [
+        232,
+        551,
+        304,
+        433
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.4243,
+      "fill": 0.5855,
+      "background": "#919090"
+    },
+    "top": {
+      "box": [
+        993,
+        625,
+        318,
+        269
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8459,
+      "fill": 0.704,
+      "background": "#919190"
+    }
+  }
+}

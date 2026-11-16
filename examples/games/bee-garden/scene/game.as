@@ -854,7 +854,10 @@ export class Game {
     // ------------------------------------------------------------------ input
 
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
-        let hit = api.pick(x, y, <f32>FLY_Y);
+        // touch: while a finger is down the bee flies to a point a few art pixels above it, so the
+        // finger hides neither the bee nor the flower it hovers (a mouse leads it to the pointer)
+        let lift: f32 = api.pointerDown ? <f32>(24.0 / Math.max(1.0, api.pixelSize)) : 0;
+        let hit = api.pick(x, y - lift, <f32>FLY_Y);
         if (kind == POINTER_DOWN) {
             if (this.state == ST_IDLE) {
                 this.beginRun(api);

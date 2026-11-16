@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/crate-keeper/art/keeper/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        208,
+        12,
+        370,
+        476
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2865,
+      "fill": 0.5468,
+      "background": "#919193"
+    },
+    "right": {
+      "box": [
+        972,
+        12,
+        341,
+        476
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3959,
+      "fill": 0.4711,
+      "background": "#919293"
+    },
+    "back": {
+      "box": [
+        209,
+        524,
+        348,
+        476
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.3678,
+      "fill": 0.5715,
+      "background": "#919092"
+    },
+    "top": {
+      "box": [
+        970,
+        560,
+        358,
+        379
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0587,
+      "fill": 0.7663,
+      "background": "#919192"
+    }
+  }
+}

@@ -3,6 +3,9 @@
 **How to play:** click to start, then move the pointer: the glowing worm crawls after it. Eat the
 crystals to grow; never let its head touch its own body or a stalagmite.
 
+**Touch:** tap to start, then drag: the worm crawls after your finger and keeps heading for where you
+lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1, codex-cli 0.167. Palette: [Cold Light](https://lospec.com/palette-list/cold-light) by
 A_Lamp, three colours: a near-black navy `#08001f`, a slate blue `#444d84` and a pale mint `#b2d5d1`.

@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/swarm-ward/art/lamplighter/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        227,
+        21,
+        300,
+        459
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.53,
+      "fill": 0.54,
+      "background": "#d2d1d1"
+    },
+    "right": {
+      "box": [
+        1045,
+        23,
+        204,
+        457
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.2402,
+      "fill": 0.5519,
+      "background": "#d2d2d2"
+    },
+    "back": {
+      "box": [
+        243,
+        531,
+        308,
+        463
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.5032,
+      "fill": 0.5299,
+      "background": "#d2d1d1"
+    },
+    "top": {
+      "box": [
+        962,
+        644,
+        324,
+        239
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.7377,
+      "fill": 0.6235,
+      "background": "#d2d2d2"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.06,
+  "fat": 1.0,
+  "out": "../../lookdev/golem.bin",
+  "objects": [
+    { "model": "golem.glb",
+      "materials": { "Clay": { "ramp": "clay" }, "ClayDark": { "ramp": "clay" }, "Band": { "ramp": "clay", "spacing": 0.05 },
+                     "Glow": { "ramp": "rune", "flags": ["unlit"], "spacing": 0.035 },
+                     "Moss": { "ramp": "moss", "spacing": 0.05 } } }
+  ]
+}

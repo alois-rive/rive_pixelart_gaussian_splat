@@ -1,0 +1,2155 @@
+# The static level of Sprout Jump: written by make_level.py from layout.py; do not edit by hand.
+new
+material new Grass --base-color 1 1 1 --no-slot
+material texture Grass base-color textures/grass.png
+material new Soil --base-color 1 1 1 --no-slot
+material texture Soil base-color textures/soil.png
+material new Stone --base-color 1 1 1 --no-slot
+material texture Stone base-color textures/bricks.png
+material new Cap --base-color 0.608 0.678 0.718 --no-slot
+material new Clay --base-color 0.875 0.443 0.149 --no-slot
+material new Wood --base-color 1 1 1 --no-slot
+material texture Wood base-color textures/planks.png
+material new Bark --base-color 1 1 1 --no-slot
+material texture Bark base-color textures/bark.png
+material new Canopy --base-color 0.216 0.580 0.431 --no-slot
+material new Leafy --base-color 0.416 0.745 0.188 --no-slot
+material new Petal --base-color 0.984 0.949 0.212 --no-slot
+material new Disc --base-color 0.400 0.224 0.192 --no-slot
+material new Trunk --base-color 1 1 1 --no-slot
+material texture Trunk base-color textures/bark.png
+material new Stalk --base-color 0.216 0.580 0.431 --no-slot
+material new Tulip --base-color 0.851 0.341 0.388 --no-slot
+material new Bush --base-color 0.294 0.412 0.184 --no-slot
+material new Twig --base-color 0.400 0.224 0.192 --no-slot
+add mesh cube --name Soil1 --size 1 --location 1.000 -0.000 -0.620
+scale 14.000 1.000 0.960
+apply --scale
+material assign Soil
+active Soil1
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh cube --name Turf2 --size 1 --location 1.000 -0.005 -0.080
+scale 14.100 1.110 0.160
+apply --scale
+material assign Grass
+active Turf2
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name TulipStem3 --vertices 4 --radius 0.035 --depth 0.470 --location -5.341 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip4 --subdivisions 1 --radius 0.5 --location -5.341 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip4
+mode edit
+select all
+randomize --amount 0.012 --seed 3
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem5 --vertices 4 --radius 0.035 --depth 0.470 --location -2.879 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip6 --subdivisions 1 --radius 0.5 --location -2.879 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip6
+mode edit
+select all
+randomize --amount 0.012 --seed 4
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem7 --vertices 4 --radius 0.035 --depth 0.470 --location 0.121 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip8 --subdivisions 1 --radius 0.5 --location 0.121 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip8
+mode edit
+select all
+randomize --amount 0.012 --seed 5
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem9 --vertices 4 --radius 0.035 --depth 0.470 --location 2.258 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip10 --subdivisions 1 --radius 0.5 --location 2.258 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip10
+mode edit
+select all
+randomize --amount 0.012 --seed 6
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem11 --vertices 4 --radius 0.035 --depth 0.470 --location 5.229 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip12 --subdivisions 1 --radius 0.5 --location 5.229 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip12
+mode edit
+select all
+randomize --amount 0.012 --seed 7
+mode object
+material assign Tulip
+add mesh cone --name Pot13 --vertices 8 --radius1 0.410 --radius2 0.475 --depth 1.740 --location 5.100 0.000 -0.230
+material assign Clay
+active Pot13
+mode edit
+select face where "normal.y > 0.5 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name Rim14 --vertices 8 --radius 0.530 --depth 0.160 --location 5.100 0.000 0.700
+material assign Clay
+active Rim14
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name PotSoil15 --vertices 8 --radius 0.460 --depth 0.060 --location 5.100 0.000 0.770
+material assign Soil
+active PotSoil15
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.z < 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Sprig16 --subdivisions 1 --radius 0.5 --location 5.000 0.250 0.920
+scale 0.320 0.200 0.280
+apply --scale
+active Sprig16
+mode edit
+select all
+randomize --amount 0.017 --seed 5
+mode object
+material assign Leafy
+active Sprig16
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cube --name Soil17 --size 1 --location 14.500 -0.000 -0.620
+scale 9.000 1.000 0.960
+apply --scale
+material assign Soil
+active Soil17
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh cube --name Turf18 --size 1 --location 14.500 -0.005 -0.080
+scale 9.100 1.110 0.160
+apply --scale
+material assign Grass
+active Turf18
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name TulipStem19 --vertices 4 --radius 0.035 --depth 0.470 --location 10.693 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip20 --subdivisions 1 --radius 0.5 --location 10.693 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip20
+mode edit
+select all
+randomize --amount 0.012 --seed 3
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem21 --vertices 4 --radius 0.035 --depth 0.470 --location 13.046 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip22 --subdivisions 1 --radius 0.5 --location 13.046 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip22
+mode edit
+select all
+randomize --amount 0.012 --seed 4
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem23 --vertices 4 --radius 0.035 --depth 0.470 --location 16.006 0.360 0.185
+material assign Stalk
+add mesh ico-sphere --name Tulip24 --subdivisions 1 --radius 0.5 --location 16.006 0.360 0.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip24
+mode edit
+select all
+randomize --amount 0.012 --seed 5
+mode object
+material assign Tulip
+add mesh cone --name Pot25 --vertices 8 --radius1 0.492 --radius2 0.570 --depth 2.240 --location 17.000 0.000 0.020
+material assign Clay
+active Pot25
+mode edit
+select face where "normal.y > 0.5 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name Rim26 --vertices 8 --radius 0.636 --depth 0.160 --location 17.000 0.000 1.200
+material assign Clay
+active Rim26
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name PotSoil27 --vertices 8 --radius 0.552 --depth 0.060 --location 17.000 0.000 1.270
+material assign Soil
+active PotSoil27
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.z < 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Sprig28 --subdivisions 1 --radius 0.5 --location 16.900 0.250 1.420
+scale 0.320 0.200 0.280
+apply --scale
+active Sprig28
+mode edit
+select all
+randomize --amount 0.017 --seed 17
+mode object
+material assign Leafy
+active Sprig28
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cube --name Soil29 --size 1 --location 24.700 -0.000 -0.320
+scale 6.600 1.000 1.560
+apply --scale
+material assign Soil
+active Soil29
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh cube --name Turf30 --size 1 --location 24.700 -0.005 0.520
+scale 6.700 1.110 0.160
+apply --scale
+material assign Grass
+active Turf30
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name TulipStem31 --vertices 4 --radius 0.035 --depth 0.470 --location 21.830 0.360 0.785
+material assign Stalk
+add mesh ico-sphere --name Tulip32 --subdivisions 1 --radius 0.5 --location 21.830 0.360 1.100
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip32
+mode edit
+select all
+randomize --amount 0.012 --seed 3
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem33 --vertices 4 --radius 0.035 --depth 0.470 --location 24.747 0.360 0.785
+material assign Stalk
+add mesh ico-sphere --name Tulip34 --subdivisions 1 --radius 0.5 --location 24.747 0.360 1.100
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip34
+mode edit
+select all
+randomize --amount 0.012 --seed 4
+mode object
+material assign Tulip
+add mesh cube --name Step35 --size 1 --location 28.800 -0.000 0.200
+scale 1.600 1.000 2.600
+apply --scale
+material assign Stone
+active Step35
+mode edit
+select all
+uv cube-project --size 3.00 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cube --name Step36 --size 1 --location 30.400 -0.000 0.650
+scale 1.600 1.000 3.500
+apply --scale
+material assign Stone
+active Step36
+mode edit
+select all
+uv cube-project --size 3.00 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cube --name Wall37 --size 1 --location 39.300 -0.000 0.670
+scale 7.400 0.900 3.540
+apply --scale
+material assign Stone
+active Wall37
+mode edit
+select all
+uv cube-project --size 3.00 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cube --name Coping38 --size 1 --location 39.300 -0.000 2.520
+scale 7.560 1.100 0.160
+apply --scale
+material assign Cap
+active Coping38
+mode edit
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cube --name Soil39 --size 1 --location 54.250 -0.000 -0.020
+scale 8.500 1.000 2.160
+apply --scale
+material assign Soil
+active Soil39
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh cube --name Turf40 --size 1 --location 54.250 -0.005 1.120
+scale 8.600 1.110 0.160
+apply --scale
+material assign Grass
+active Turf40
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name TulipStem41 --vertices 4 --radius 0.035 --depth 0.470 --location 50.456 0.360 1.385
+material assign Stalk
+add mesh ico-sphere --name Tulip42 --subdivisions 1 --radius 0.5 --location 50.456 0.360 1.700
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip42
+mode edit
+select all
+randomize --amount 0.012 --seed 3
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem43 --vertices 4 --radius 0.035 --depth 0.470 --location 53.073 0.360 1.385
+material assign Stalk
+add mesh ico-sphere --name Tulip44 --subdivisions 1 --radius 0.5 --location 53.073 0.360 1.700
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip44
+mode edit
+select all
+randomize --amount 0.012 --seed 4
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem45 --vertices 4 --radius 0.035 --depth 0.470 --location 55.940 0.360 1.385
+material assign Stalk
+add mesh ico-sphere --name Tulip46 --subdivisions 1 --radius 0.5 --location 55.940 0.360 1.700
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip46
+mode edit
+select all
+randomize --amount 0.012 --seed 5
+mode object
+material assign Tulip
+add mesh cube --name Soil47 --size 1 --location 69.250 -0.000 -0.120
+scale 5.500 1.000 1.960
+apply --scale
+material assign Soil
+active Soil47
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh cube --name Turf48 --size 1 --location 69.250 -0.005 0.920
+scale 5.600 1.110 0.160
+apply --scale
+material assign Grass
+active Turf48
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name TulipStem49 --vertices 4 --radius 0.035 --depth 0.470 --location 67.561 0.360 1.185
+material assign Stalk
+add mesh ico-sphere --name Tulip50 --subdivisions 1 --radius 0.5 --location 67.561 0.360 1.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip50
+mode edit
+select all
+randomize --amount 0.012 --seed 3
+mode object
+material assign Tulip
+add mesh cylinder --name TulipStem51 --vertices 4 --radius 0.035 --depth 0.470 --location 69.599 0.360 1.185
+material assign Stalk
+add mesh ico-sphere --name Tulip52 --subdivisions 1 --radius 0.5 --location 69.599 0.360 1.500
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip52
+mode edit
+select all
+randomize --amount 0.012 --seed 4
+mode object
+material assign Tulip
+add mesh cube --name Crate53 --size 1 --location 73.500 -0.000 0.550
+scale 3.000 1.100 3.300
+apply --scale
+material assign Wood
+active Crate53
+mode edit
+select all
+uv cube-project --size 2.00 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cone --name Pot54 --vertices 8 --radius1 0.492 --radius2 0.570 --depth 2.940 --location 78.000 0.000 0.370
+material assign Clay
+active Pot54
+mode edit
+select face where "normal.y > 0.5 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name Rim55 --vertices 8 --radius 0.636 --depth 0.160 --location 78.000 0.000 1.900
+material assign Clay
+active Rim55
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name PotSoil56 --vertices 8 --radius 0.552 --depth 0.060 --location 78.000 0.000 1.970
+material assign Soil
+active PotSoil56
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.z < 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Sprig57 --subdivisions 1 --radius 0.5 --location 77.900 0.250 2.120
+scale 0.320 0.200 0.280
+apply --scale
+active Sprig57
+mode edit
+select all
+randomize --amount 0.017 --seed 78
+mode object
+material assign Leafy
+active Sprig57
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cone --name Pot58 --vertices 8 --radius1 0.492 --radius2 0.570 --depth 3.740 --location 80.800 0.000 0.770
+material assign Clay
+active Pot58
+mode edit
+select face where "normal.y > 0.5 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name Rim59 --vertices 8 --radius 0.636 --depth 0.160 --location 80.800 0.000 2.700
+material assign Clay
+active Rim59
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name PotSoil60 --vertices 8 --radius 0.552 --depth 0.060 --location 80.800 0.000 2.770
+material assign Soil
+active PotSoil60
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.z < 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Sprig61 --subdivisions 1 --radius 0.5 --location 80.700 0.250 2.920
+scale 0.320 0.200 0.280
+apply --scale
+active Sprig61
+mode edit
+select all
+randomize --amount 0.017 --seed 80
+mode object
+material assign Leafy
+active Sprig61
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cube --name Step62 --size 1 --location 88.200 -0.000 0.750
+scale 3.600 1.000 3.700
+apply --scale
+material assign Stone
+active Step62
+mode edit
+select all
+uv cube-project --size 3.00 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cube --name Soil63 --size 1 --location 94.600 -0.000 0.180
+scale 4.800 1.000 2.560
+apply --scale
+material assign Soil
+active Soil63
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh cube --name Turf64 --size 1 --location 94.600 -0.005 1.520
+scale 4.900 1.110 0.160
+apply --scale
+material assign Grass
+active Turf64
+mode edit
+select all
+uv cube-project --size 3.84 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name TulipStem65 --vertices 4 --radius 0.035 --depth 0.470 --location 92.779 0.360 1.785
+material assign Stalk
+add mesh ico-sphere --name Tulip66 --subdivisions 1 --radius 0.5 --location 92.779 0.360 2.100
+scale 0.200 0.200 0.220
+apply --scale
+active Tulip66
+mode edit
+select all
+randomize --amount 0.012 --seed 3
+mode object
+material assign Tulip
+add mesh cube --name Crate67 --size 1 --location 98.500 -0.000 0.550
+scale 3.000 1.100 3.300
+apply --scale
+material assign Wood
+active Crate67
+mode edit
+select all
+uv cube-project --size 2.00 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cube --name Crate68 --size 1 --location 101.500 -0.000 1.050
+scale 3.000 1.100 4.300
+apply --scale
+material assign Wood
+active Crate68
+mode edit
+select all
+uv cube-project --size 2.00 --center 0 0 0
+select face where "normal.y > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh cylinder --name Head69 --vertices 12 --radius 0.730 --depth 0.100 --location 60.250 0.000 2.510
+material assign Petal
+active Head69
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name Disc70 --vertices 10 --radius 0.357 --depth 0.050 --location 60.250 0.000 2.575
+material assign Disc
+active Disc70
+mode edit
+select face where "normal.z < 0.5"
+delete only-faces
+mode object
+add mesh cone --name Under71 --vertices 8 --radius1 0.100 --radius2 0.455 --depth 0.280 --location 60.250 0.000 2.320
+material assign Stalk
+active Under71
+mode edit
+select face where "normal.z > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name Stalk72 --vertices 6 --radius 0.080 --depth 3.280 --location 60.250 0.050 0.540
+material assign Stalk
+active Stalk72
+mode edit
+select face where "normal.y > 0.5 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name SLeaf73 --subdivisions 1 --radius 0.5 --location 60.570 0.100 1.050
+scale 0.500 0.300 0.160
+apply --scale
+active SLeaf73
+mode edit
+select all
+randomize --amount 0.010 --seed 61
+mode object
+material assign Stalk
+active SLeaf73
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Head74 --vertices 12 --radius 0.730 --depth 0.100 --location 62.650 0.000 3.510
+material assign Petal
+active Head74
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name Disc75 --vertices 10 --radius 0.357 --depth 0.050 --location 62.650 0.000 3.575
+material assign Disc
+active Disc75
+mode edit
+select face where "normal.z < 0.5"
+delete only-faces
+mode object
+add mesh cone --name Under76 --vertices 8 --radius1 0.100 --radius2 0.455 --depth 0.280 --location 62.650 0.000 3.320
+material assign Stalk
+active Under76
+mode edit
+select face where "normal.z > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name Stalk77 --vertices 6 --radius 0.080 --depth 4.280 --location 62.650 0.050 1.040
+material assign Stalk
+active Stalk77
+mode edit
+select face where "normal.y > 0.5 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name SLeaf78 --subdivisions 1 --radius 0.5 --location 62.970 0.100 1.550
+scale 0.500 0.300 0.160
+apply --scale
+active SLeaf78
+mode edit
+select all
+randomize --amount 0.010 --seed 63
+mode object
+material assign Stalk
+active SLeaf78
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Head79 --vertices 12 --radius 0.730 --depth 0.100 --location 65.150 0.000 2.710
+material assign Petal
+active Head79
+mode edit
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name Disc80 --vertices 10 --radius 0.357 --depth 0.050 --location 65.150 0.000 2.775
+material assign Disc
+active Disc80
+mode edit
+select face where "normal.z < 0.5"
+delete only-faces
+mode object
+add mesh cone --name Under81 --vertices 8 --radius1 0.100 --radius2 0.455 --depth 0.280 --location 65.150 0.000 2.520
+material assign Stalk
+active Under81
+mode edit
+select face where "normal.z > 0.5"
+delete only-faces
+mode object
+add mesh cylinder --name Stalk82 --vertices 6 --radius 0.080 --depth 3.480 --location 65.150 0.050 0.640
+material assign Stalk
+active Stalk82
+mode edit
+select face where "normal.y > 0.5 || normal.z < -0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name SLeaf83 --subdivisions 1 --radius 0.5 --location 65.470 0.100 1.150
+scale 0.500 0.300 0.160
+apply --scale
+active SLeaf83
+mode edit
+select all
+randomize --amount 0.010 --seed 66
+mode object
+material assign Stalk
+active SLeaf83
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br84 --vertices 6 --radius 0.250 --depth 3.700 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 105.500 0.000 6.184
+apply --location
+material assign Bark
+active Br84
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft85 --subdivisions 1 --radius 0.5 --location 107.450 0.250 6.250
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft85
+mode edit
+select all
+randomize --amount 0.033 --seed 107
+mode object
+material assign Leafy
+active Tuft85
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft86 --subdivisions 1 --radius 0.5 --location 103.700 0.450 6.150
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft86
+mode edit
+select all
+randomize --amount 0.027 --seed 103
+mode object
+material assign Leafy
+active Tuft86
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br87 --vertices 6 --radius 0.250 --depth 3.500 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 110.400 0.000 6.984
+apply --location
+material assign Bark
+active Br87
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft88 --subdivisions 1 --radius 0.5 --location 112.250 0.250 7.050
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft88
+mode edit
+select all
+randomize --amount 0.033 --seed 112
+mode object
+material assign Leafy
+active Tuft88
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft89 --subdivisions 1 --radius 0.5 --location 108.700 0.450 6.950
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft89
+mode edit
+select all
+randomize --amount 0.027 --seed 108
+mode object
+material assign Leafy
+active Tuft89
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br90 --vertices 6 --radius 0.250 --depth 4.100 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 117.700 0.000 8.584
+apply --location
+material assign Bark
+active Br90
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft91 --subdivisions 1 --radius 0.5 --location 119.850 0.250 8.650
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft91
+mode edit
+select all
+randomize --amount 0.033 --seed 119
+mode object
+material assign Leafy
+active Tuft91
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft92 --subdivisions 1 --radius 0.5 --location 115.700 0.450 8.550
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft92
+mode edit
+select all
+randomize --amount 0.027 --seed 115
+mode object
+material assign Leafy
+active Tuft92
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br93 --vertices 6 --radius 0.250 --depth 2.500 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 122.100 0.000 7.983
+apply --location
+material assign Bark
+active Br93
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft94 --subdivisions 1 --radius 0.5 --location 123.450 0.250 8.050
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft94
+mode edit
+select all
+randomize --amount 0.033 --seed 123
+mode object
+material assign Leafy
+active Tuft94
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft95 --subdivisions 1 --radius 0.5 --location 120.900 0.450 7.950
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft95
+mode edit
+select all
+randomize --amount 0.027 --seed 121
+mode object
+material assign Leafy
+active Tuft95
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br96 --vertices 6 --radius 0.250 --depth 5.000 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 128.150 0.000 8.383
+apply --location
+material assign Bark
+active Br96
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft97 --subdivisions 1 --radius 0.5 --location 130.750 0.250 8.450
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft97
+mode edit
+select all
+randomize --amount 0.033 --seed 130
+mode object
+material assign Leafy
+active Tuft97
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft98 --subdivisions 1 --radius 0.5 --location 125.700 0.450 8.350
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft98
+mode edit
+select all
+randomize --amount 0.027 --seed 125
+mode object
+material assign Leafy
+active Tuft98
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br99 --vertices 6 --radius 0.250 --depth 4.100 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 137.500 0.000 9.184
+apply --location
+material assign Bark
+active Br99
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft100 --subdivisions 1 --radius 0.5 --location 139.650 0.250 9.250
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft100
+mode edit
+select all
+randomize --amount 0.033 --seed 139
+mode object
+material assign Leafy
+active Tuft100
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft101 --subdivisions 1 --radius 0.5 --location 135.500 0.450 9.150
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft101
+mode edit
+select all
+randomize --amount 0.027 --seed 135
+mode object
+material assign Leafy
+active Tuft101
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br102 --vertices 6 --radius 0.250 --depth 4.100 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 142.500 0.000 12.184
+apply --location
+material assign Bark
+active Br102
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft103 --subdivisions 1 --radius 0.5 --location 144.650 0.250 12.250
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft103
+mode edit
+select all
+randomize --amount 0.033 --seed 144
+mode object
+material assign Leafy
+active Tuft103
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft104 --subdivisions 1 --radius 0.5 --location 140.500 0.450 12.150
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft104
+mode edit
+select all
+randomize --amount 0.027 --seed 140
+mode object
+material assign Leafy
+active Tuft104
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Pad105 --subdivisions 1 --radius 0.5 --location 146.700 0.000 11.740
+scale 1.600 0.750 0.140
+apply --scale
+active Pad105
+mode edit
+select all
+randomize --amount 0.008 --seed 146
+mode object
+material assign Leafy
+active Pad105
+mode edit
+select face where "normal.z < -0.6"
+delete only-faces
+mode object
+add mesh cylinder --name PadStem106 --vertices 5 --radius 0.050 --depth 1.100 --location 146.500 0.350 11.150
+material assign Stalk
+add mesh ico-sphere --name Pad107 --subdivisions 1 --radius 0.5 --location 150.300 0.000 12.540
+scale 1.600 0.750 0.140
+apply --scale
+active Pad107
+mode edit
+select all
+randomize --amount 0.008 --seed 150
+mode object
+material assign Leafy
+active Pad107
+mode edit
+select face where "normal.z < -0.6"
+delete only-faces
+mode object
+add mesh cylinder --name PadStem108 --vertices 5 --radius 0.050 --depth 1.100 --location 150.100 0.350 11.950
+material assign Stalk
+add mesh cylinder --name Br109 --vertices 6 --radius 0.250 --depth 3.900 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 156.600 0.000 13.584
+apply --location
+material assign Bark
+active Br109
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft110 --subdivisions 1 --radius 0.5 --location 158.650 0.250 13.650
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft110
+mode edit
+select all
+randomize --amount 0.033 --seed 158
+mode object
+material assign Leafy
+active Tuft110
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft111 --subdivisions 1 --radius 0.5 --location 154.700 0.450 13.550
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft111
+mode edit
+select all
+randomize --amount 0.027 --seed 154
+mode object
+material assign Leafy
+active Tuft111
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Br112 --vertices 6 --radius 0.250 --depth 3.300 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 165.500 0.000 14.584
+apply --location
+material assign Bark
+active Br112
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft113 --subdivisions 1 --radius 0.5 --location 167.250 0.250 14.650
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft113
+mode edit
+select all
+randomize --amount 0.033 --seed 167
+mode object
+material assign Leafy
+active Tuft113
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft114 --subdivisions 1 --radius 0.5 --location 163.900 0.450 14.550
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft114
+mode edit
+select all
+randomize --amount 0.027 --seed 164
+mode object
+material assign Leafy
+active Tuft114
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Pad115 --subdivisions 1 --radius 0.5 --location 169.300 0.000 15.540
+scale 1.600 0.750 0.140
+apply --scale
+active Pad115
+mode edit
+select all
+randomize --amount 0.008 --seed 169
+mode object
+material assign Leafy
+active Pad115
+mode edit
+select face where "normal.z < -0.6"
+delete only-faces
+mode object
+add mesh cylinder --name PadStem116 --vertices 5 --radius 0.050 --depth 1.100 --location 169.100 0.350 14.950
+material assign Stalk
+add mesh cylinder --name Br117 --vertices 6 --radius 0.360 --depth 8.700 --location 0 0 0
+set rotation 0 0 30
+apply --rotation
+set rotation 0 90 0
+apply --rotation
+set location 175.800 0.000 15.888
+apply --location
+material assign Bark
+active Br117
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.6 || normal.z < -0.3"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft118 --subdivisions 1 --radius 0.5 --location 180.250 0.250 16.050
+scale 0.750 0.550 0.550
+apply --scale
+active Tuft118
+mode edit
+select all
+randomize --amount 0.033 --seed 180
+mode object
+material assign Leafy
+active Tuft118
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Tuft119 --subdivisions 1 --radius 0.5 --location 171.500 0.450 15.950
+scale 0.600 0.450 0.450
+apply --scale
+active Tuft119
+mode edit
+select all
+randomize --amount 0.027 --seed 171
+mode object
+material assign Leafy
+active Tuft119
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name CTuft120 --subdivisions 1 --radius 0.5 --location 172.400 0.750 16.250
+scale 1.100 0.600 0.700
+apply --scale
+active CTuft120
+mode edit
+select all
+randomize --amount 0.042 --seed 40
+mode object
+material assign Leafy
+active CTuft120
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name CTuft121 --subdivisions 1 --radius 0.5 --location 174.100 0.750 16.250
+scale 1.100 0.600 0.700
+apply --scale
+active CTuft121
+mode edit
+select all
+randomize --amount 0.042 --seed 41
+mode object
+material assign Leafy
+active CTuft121
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name CTuft122 --subdivisions 1 --radius 0.5 --location 175.800 0.750 16.250
+scale 1.100 0.600 0.700
+apply --scale
+active CTuft122
+mode edit
+select all
+randomize --amount 0.042 --seed 42
+mode object
+material assign Leafy
+active CTuft122
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name CTuft123 --subdivisions 1 --radius 0.5 --location 177.500 0.750 16.250
+scale 1.100 0.600 0.700
+apply --scale
+active CTuft123
+mode edit
+select all
+randomize --amount 0.042 --seed 43
+mode object
+material assign Leafy
+active CTuft123
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name CTuft124 --subdivisions 1 --radius 0.5 --location 179.200 0.750 16.250
+scale 1.100 0.600 0.700
+apply --scale
+active CTuft124
+mode edit
+select all
+randomize --amount 0.042 --seed 44
+mode object
+material assign Leafy
+active CTuft124
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Trunk125 --vertices 8 --radius 0.500 --depth 8.300 --location 106.500 1.400 6.050
+material assign Trunk
+active Trunk125
+mode edit
+select all
+uv cube-project --size 3.20 --center 0 0 0
+select face where "normal.y > 0.3 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown126 --subdivisions 2 --radius 0.5 --location 103.832 2.000 10.521
+scale 3.600 1.800 2.600
+apply --scale
+active Crown126
+mode edit
+select all
+randomize --amount 0.156 --seed 0
+mode object
+material assign Canopy
+active Crown126
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown127 --subdivisions 2 --radius 0.5 --location 106.608 2.000 10.831
+scale 3.600 1.800 2.600
+apply --scale
+active Crown127
+mode edit
+select all
+randomize --amount 0.156 --seed 1
+mode object
+material assign Canopy
+active Crown127
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown128 --subdivisions 2 --radius 0.5 --location 108.673 2.000 10.613
+scale 3.600 1.800 2.600
+apply --scale
+active Crown128
+mode edit
+select all
+randomize --amount 0.156 --seed 2
+mode object
+material assign Canopy
+active Crown128
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown129 --subdivisions 2 --radius 0.5 --location 107.424 2.200 2.900
+scale 3.200 1.600 2.000
+apply --scale
+active Crown129
+mode edit
+select all
+randomize --amount 0.120 --seed 7
+mode object
+material assign Canopy
+active Crown129
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Trunk130 --vertices 8 --radius 0.500 --depth 9.100 --location 119.500 1.400 7.250
+material assign Trunk
+active Trunk130
+mode edit
+select all
+uv cube-project --size 3.20 --center 0 0 0
+select face where "normal.y > 0.3 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown131 --subdivisions 2 --radius 0.5 --location 117.110 2.000 11.955
+scale 3.600 1.800 2.600
+apply --scale
+active Crown131
+mode edit
+select all
+randomize --amount 0.156 --seed 10
+mode object
+material assign Canopy
+active Crown131
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown132 --subdivisions 2 --radius 0.5 --location 119.289 2.000 12.003
+scale 3.600 1.800 2.600
+apply --scale
+active Crown132
+mode edit
+select all
+randomize --amount 0.156 --seed 11
+mode object
+material assign Canopy
+active Crown132
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown133 --subdivisions 2 --radius 0.5 --location 121.797 2.000 12.027
+scale 3.600 1.800 2.600
+apply --scale
+active Crown133
+mode edit
+select all
+randomize --amount 0.156 --seed 12
+mode object
+material assign Canopy
+active Crown133
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown134 --subdivisions 2 --radius 0.5 --location 118.208 2.200 3.700
+scale 3.200 1.600 2.000
+apply --scale
+active Crown134
+mode edit
+select all
+randomize --amount 0.120 --seed 17
+mode object
+material assign Canopy
+active Crown134
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Trunk135 --vertices 8 --radius 0.500 --depth 11.300 --location 133.000 1.400 9.750
+material assign Trunk
+active Trunk135
+mode edit
+select all
+uv cube-project --size 3.20 --center 0 0 0
+select face where "normal.y > 0.3 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown136 --subdivisions 2 --radius 0.5 --location 130.835 2.000 15.309
+scale 3.600 1.800 2.600
+apply --scale
+active Crown136
+mode edit
+select all
+randomize --amount 0.156 --seed 20
+mode object
+material assign Canopy
+active Crown136
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown137 --subdivisions 2 --radius 0.5 --location 132.786 2.000 15.638
+scale 3.600 1.800 2.600
+apply --scale
+active Crown137
+mode edit
+select all
+randomize --amount 0.156 --seed 21
+mode object
+material assign Canopy
+active Crown137
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown138 --subdivisions 2 --radius 0.5 --location 135.798 2.000 15.765
+scale 3.600 1.800 2.600
+apply --scale
+active Crown138
+mode edit
+select all
+randomize --amount 0.156 --seed 22
+mode object
+material assign Canopy
+active Crown138
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown139 --subdivisions 2 --radius 0.5 --location 134.125 2.200 5.100
+scale 3.200 1.600 2.000
+apply --scale
+active Crown139
+mode edit
+select all
+randomize --amount 0.120 --seed 27
+mode object
+material assign Canopy
+active Crown139
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Trunk140 --vertices 8 --radius 0.500 --depth 10.700 --location 146.000 1.400 10.250
+material assign Trunk
+active Trunk140
+mode edit
+select all
+uv cube-project --size 3.20 --center 0 0 0
+select face where "normal.y > 0.3 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown141 --subdivisions 2 --radius 0.5 --location 143.693 2.000 15.331
+scale 3.600 1.800 2.600
+apply --scale
+active Crown141
+mode edit
+select all
+randomize --amount 0.156 --seed 30
+mode object
+material assign Canopy
+active Crown141
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown142 --subdivisions 2 --radius 0.5 --location 145.863 2.000 16.248
+scale 3.600 1.800 2.600
+apply --scale
+active Crown142
+mode edit
+select all
+randomize --amount 0.156 --seed 31
+mode object
+material assign Canopy
+active Crown142
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown143 --subdivisions 2 --radius 0.5 --location 148.093 2.000 16.157
+scale 3.600 1.800 2.600
+apply --scale
+active Crown143
+mode edit
+select all
+randomize --amount 0.156 --seed 32
+mode object
+material assign Canopy
+active Crown143
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown144 --subdivisions 2 --radius 0.5 --location 145.605 2.200 5.900
+scale 3.200 1.600 2.000
+apply --scale
+active Crown144
+mode edit
+select all
+randomize --amount 0.120 --seed 37
+mode object
+material assign Canopy
+active Crown144
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Trunk145 --vertices 8 --radius 0.500 --depth 8.500 --location 160.000 1.400 13.550
+material assign Trunk
+active Trunk145
+mode edit
+select all
+uv cube-project --size 3.20 --center 0 0 0
+select face where "normal.y > 0.3 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown146 --subdivisions 2 --radius 0.5 --location 157.324 2.000 18.236
+scale 3.600 1.800 2.600
+apply --scale
+active Crown146
+mode edit
+select all
+randomize --amount 0.156 --seed 40
+mode object
+material assign Canopy
+active Crown146
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown147 --subdivisions 2 --radius 0.5 --location 159.700 2.000 18.835
+scale 3.600 1.800 2.600
+apply --scale
+active Crown147
+mode edit
+select all
+randomize --amount 0.156 --seed 41
+mode object
+material assign Canopy
+active Crown147
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown148 --subdivisions 2 --radius 0.5 --location 162.363 2.000 17.997
+scale 3.600 1.800 2.600
+apply --scale
+active Crown148
+mode edit
+select all
+randomize --amount 0.156 --seed 42
+mode object
+material assign Canopy
+active Crown148
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown149 --subdivisions 2 --radius 0.5 --location 159.529 2.200 10.300
+scale 3.200 1.600 2.000
+apply --scale
+active Crown149
+mode edit
+select all
+randomize --amount 0.120 --seed 47
+mode object
+material assign Canopy
+active Crown149
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Trunk150 --vertices 8 --radius 0.500 --depth 8.900 --location 174.500 1.400 14.750
+material assign Trunk
+active Trunk150
+mode edit
+select all
+uv cube-project --size 3.20 --center 0 0 0
+select face where "normal.y > 0.3 || normal.z < -0.9 || normal.z > 0.9"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown151 --subdivisions 2 --radius 0.5 --location 172.088 2.000 19.068
+scale 3.600 1.800 2.600
+apply --scale
+active Crown151
+mode edit
+select all
+randomize --amount 0.156 --seed 50
+mode object
+material assign Canopy
+active Crown151
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown152 --subdivisions 2 --radius 0.5 --location 174.130 2.000 20.179
+scale 3.600 1.800 2.600
+apply --scale
+active Crown152
+mode edit
+select all
+randomize --amount 0.156 --seed 51
+mode object
+material assign Canopy
+active Crown152
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown153 --subdivisions 2 --radius 0.5 --location 176.688 2.000 19.602
+scale 3.600 1.800 2.600
+apply --scale
+active Crown153
+mode edit
+select all
+randomize --amount 0.156 --seed 52
+mode object
+material assign Canopy
+active Crown153
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Crown154 --subdivisions 2 --radius 0.5 --location 173.626 2.200 11.300
+scale 3.200 1.600 2.000
+apply --scale
+active Crown154
+mode edit
+select all
+randomize --amount 0.120 --seed 57
+mode object
+material assign Canopy
+active Crown154
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb155 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 103.450 0.200 5.325
+apply --location
+material assign Bark
+active Limb155
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under156 --subdivisions 2 --radius 0.5 --location 102.700 0.800 4.200
+scale 1.900 1.000 1.300
+apply --scale
+active Under156
+mode edit
+select all
+randomize --amount 0.078 --seed 311
+mode object
+material assign Canopy
+active Under156
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb157 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 108.450 0.200 6.125
+apply --location
+material assign Bark
+active Limb157
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under158 --subdivisions 2 --radius 0.5 --location 107.700 0.800 5.000
+scale 1.900 1.000 1.300
+apply --scale
+active Under158
+mode edit
+select all
+randomize --amount 0.078 --seed 326
+mode object
+material assign Canopy
+active Under158
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb159 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 115.450 0.200 7.725
+apply --location
+material assign Bark
+active Limb159
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under160 --subdivisions 2 --radius 0.5 --location 114.700 0.800 6.600
+scale 1.900 1.000 1.300
+apply --scale
+active Under160
+mode edit
+select all
+randomize --amount 0.078 --seed 347
+mode object
+material assign Canopy
+active Under160
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb161 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 120.650 0.200 7.125
+apply --location
+material assign Bark
+active Limb161
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under162 --subdivisions 2 --radius 0.5 --location 119.900 0.800 6.000
+scale 1.900 1.000 1.300
+apply --scale
+active Under162
+mode edit
+select all
+randomize --amount 0.078 --seed 363
+mode object
+material assign Canopy
+active Under162
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb163 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 125.450 0.200 7.525
+apply --location
+material assign Bark
+active Limb163
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under164 --subdivisions 2 --radius 0.5 --location 124.700 0.800 6.400
+scale 1.900 1.000 1.300
+apply --scale
+active Under164
+mode edit
+select all
+randomize --amount 0.078 --seed 377
+mode object
+material assign Canopy
+active Under164
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb165 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 135.250 0.200 8.325
+apply --location
+material assign Bark
+active Limb165
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under166 --subdivisions 2 --radius 0.5 --location 134.500 0.800 7.200
+scale 1.900 1.000 1.300
+apply --scale
+active Under166
+mode edit
+select all
+randomize --amount 0.078 --seed 406
+mode object
+material assign Canopy
+active Under166
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb167 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 140.250 0.200 11.325
+apply --location
+material assign Bark
+active Limb167
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under168 --subdivisions 2 --radius 0.5 --location 139.500 0.800 10.200
+scale 1.900 1.000 1.300
+apply --scale
+active Under168
+mode edit
+select all
+randomize --amount 0.078 --seed 421
+mode object
+material assign Canopy
+active Under168
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb169 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 145.650 0.200 10.725
+apply --location
+material assign Bark
+active Limb169
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under170 --subdivisions 2 --radius 0.5 --location 144.900 0.800 9.600
+scale 1.900 1.000 1.300
+apply --scale
+active Under170
+mode edit
+select all
+randomize --amount 0.078 --seed 438
+mode object
+material assign Canopy
+active Under170
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb171 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 149.250 0.200 11.525
+apply --location
+material assign Bark
+active Limb171
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under172 --subdivisions 2 --radius 0.5 --location 148.500 0.800 10.400
+scale 1.900 1.000 1.300
+apply --scale
+active Under172
+mode edit
+select all
+randomize --amount 0.078 --seed 448
+mode object
+material assign Canopy
+active Under172
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb173 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 154.450 0.200 12.725
+apply --location
+material assign Bark
+active Limb173
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under174 --subdivisions 2 --radius 0.5 --location 153.700 0.800 11.600
+scale 1.900 1.000 1.300
+apply --scale
+active Under174
+mode edit
+select all
+randomize --amount 0.078 --seed 464
+mode object
+material assign Canopy
+active Under174
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb175 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 163.650 0.200 13.725
+apply --location
+material assign Bark
+active Limb175
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under176 --subdivisions 2 --radius 0.5 --location 162.900 0.800 12.600
+scale 1.900 1.000 1.300
+apply --scale
+active Under176
+mode edit
+select all
+randomize --amount 0.078 --seed 492
+mode object
+material assign Canopy
+active Under176
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb177 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 168.250 0.200 14.525
+apply --location
+material assign Bark
+active Limb177
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under178 --subdivisions 2 --radius 0.5 --location 167.500 0.800 13.400
+scale 1.900 1.000 1.300
+apply --scale
+active Under178
+mode edit
+select all
+randomize --amount 0.078 --seed 505
+mode object
+material assign Canopy
+active Under178
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Limb179 --vertices 5 --radius 0.11 --depth 1.983 --location 0 0 0
+set rotation 0 33.69 0
+apply --rotation
+set location 171.250 0.200 15.125
+apply --location
+material assign Bark
+active Limb179
+mode edit
+select all
+uv cube-project --size 2.40 --center 0 0 0
+select face where "normal.y > 0.5"
+delete only-faces
+mode object
+add mesh ico-sphere --name Under180 --subdivisions 2 --radius 0.5 --location 170.500 0.800 14.000
+scale 1.900 1.000 1.300
+apply --scale
+active Under180
+mode edit
+select all
+randomize --amount 0.078 --seed 514
+mode object
+material assign Canopy
+active Under180
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush181 --subdivisions 2 --radius 0.5 --location -2.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush181
+mode edit
+select all
+randomize --amount 0.096 --seed 100
+mode object
+material assign Bush
+active Bush181
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush182 --subdivisions 2 --radius 0.5 --location 7.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush182
+mode edit
+select all
+randomize --amount 0.096 --seed 101
+mode object
+material assign Bush
+active Bush182
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush183 --subdivisions 2 --radius 0.5 --location 15.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush183
+mode edit
+select all
+randomize --amount 0.096 --seed 102
+mode object
+material assign Bush
+active Bush183
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush184 --subdivisions 2 --radius 0.5 --location 24.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush184
+mode edit
+select all
+randomize --amount 0.096 --seed 103
+mode object
+material assign Bush
+active Bush184
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush185 --subdivisions 2 --radius 0.5 --location 33.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush185
+mode edit
+select all
+randomize --amount 0.096 --seed 104
+mode object
+material assign Bush
+active Bush185
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush186 --subdivisions 2 --radius 0.5 --location 46.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush186
+mode edit
+select all
+randomize --amount 0.096 --seed 105
+mode object
+material assign Bush
+active Bush186
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush187 --subdivisions 2 --radius 0.5 --location 55.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush187
+mode edit
+select all
+randomize --amount 0.096 --seed 106
+mode object
+material assign Bush
+active Bush187
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush188 --subdivisions 2 --radius 0.5 --location 70.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush188
+mode edit
+select all
+randomize --amount 0.096 --seed 107
+mode object
+material assign Bush
+active Bush188
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush189 --subdivisions 2 --radius 0.5 --location 84.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush189
+mode edit
+select all
+randomize --amount 0.096 --seed 108
+mode object
+material assign Bush
+active Bush189
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh ico-sphere --name Bush190 --subdivisions 2 --radius 0.5 --location 95.000 1.900 0.400
+scale 2.400 1.200 1.600
+apply --scale
+active Bush190
+mode edit
+select all
+randomize --amount 0.096 --seed 109
+mode object
+material assign Bush
+active Bush190
+mode edit
+select face where "normal.y > 0.35"
+delete only-faces
+mode object
+add mesh cylinder --name Stake191 --vertices 5 --radius 0.050 --depth 0.900 --location 36.600 0.300 3.000
+material assign Twig
+add mesh cylinder --name Stake192 --vertices 5 --radius 0.050 --depth 0.900 --location 67.600 0.300 1.400
+material assign Twig
+add mesh cylinder --name Stake193 --vertices 5 --radius 0.050 --depth 0.900 --location 86.800 0.300 3.000
+material assign Twig
+add mesh cylinder --name Stake194 --vertices 5 --radius 0.050 --depth 0.900 --location 127.000 0.300 9.000
+material assign Twig
+add mesh cylinder --name Pole195 --vertices 6 --radius 0.070 --depth 2.950 --location 177.500 0.100 17.625
+material assign Twig
+add mesh ico-sphere --name Knob196 --subdivisions 1 --radius 0.5 --location 177.500 0.100 19.150
+scale 0.220 0.220 0.220
+apply --scale
+active Knob196
+mode edit
+select all
+randomize --amount 0.013 --seed 5
+mode object
+material assign Petal
+add mesh cylinder --name Post197 --vertices 5 --radius 0.070 --depth 1.050 --location 43.000 0.350 2.725
+material assign Twig
+add mesh cylinder --name Post198 --vertices 5 --radius 0.070 --depth 1.050 --location 43.000 -0.350 2.725
+material assign Twig
+add mesh cylinder --name Post199 --vertices 5 --radius 0.070 --depth 1.050 --location 50.000 0.350 2.725
+material assign Twig
+add mesh cylinder --name Post200 --vertices 5 --radius 0.070 --depth 1.050 --location 50.000 -0.350 2.725
+material assign Twig
+select all
+active Soil1
+join
+rename Soil1 Level
+shade flat
+inspect stats
+export level.glb

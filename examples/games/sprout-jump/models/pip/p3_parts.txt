@@ -1,0 +1,16 @@
+# Pip, the game's parts: each object exported alone with its origin at its pivot and moved to the
+# world origin, so the bake (scene.bake.json) puts the pivot back where it was: Body at the ground
+# between the boots, Sprout at the top of the bulb (0.76 m), each foot at its boot's sole.
+# Run with --no-save on the p2 model (nothing here is kept in pip.rmdl).
+select Body
+export pip_body.glb --selection
+select Sprout
+cursor set 0 0 0.76
+origin set --to cursor
+set location 0 0 0
+export pip_sprout.glb --selection
+select FootR
+cursor set -0.128 -0.07 0
+origin set --to cursor
+set location 0 0 0
+export pip_foot.glb --selection

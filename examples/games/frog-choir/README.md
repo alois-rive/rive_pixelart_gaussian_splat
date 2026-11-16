@@ -2,6 +2,8 @@
 
 **How to play:** click each frog just as the beat ring closing on it reaches its dotted circle.
 
+**Touch:** tap each frog as its ring closes (a tap anywhere on or close to the frog counts).
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Eggy 15](https://lospec.com/palette-list/eggy-15), 15 colours in 16
 ramps; it loaded from Lospec, so the spare (`rosy-42`) was not needed. A marsh pond at dawn: a pink

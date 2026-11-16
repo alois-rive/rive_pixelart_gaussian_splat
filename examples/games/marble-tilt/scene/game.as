@@ -818,7 +818,10 @@ export class Game {
             }
         }
         if (kind == POINTER_DOWN || kind == POINTER_MOVE) {
-            if (api.pick(x, y, <f32>(FLOOR_Y + R))) {
+            // touch: while a finger is down the aim sits a few art pixels above it, so the finger
+            // hides neither the marble rolling to it nor the holes round it (a mouse: the pointer)
+            let lift: f32 = api.pointerDown ? <f32>(24.0 / Math.max(1.0, api.pixelSize)) : 0;
+            if (api.pick(x, y - lift, <f32>(FLOOR_Y + R))) {
                 this.aimU = <f64>api.hitX;
                 this.aimV = <f64>api.hitZ;
                 this.hasAim = true;

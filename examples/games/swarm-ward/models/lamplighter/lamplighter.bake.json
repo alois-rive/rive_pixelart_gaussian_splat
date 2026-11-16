@@ -1,0 +1,51 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.055,
+  "fat": 1.0,
+  "out": "../../lookdev/lamplighter.bin",
+  "objects": [
+    {
+      "model": "lamplighter.glb",
+      "materials": {
+        "Coat": {
+          "ramp": "coat"
+        },
+        "Belt": {
+          "ramp": "coat",
+          "spacing": 0.035
+        },
+        "Dark": {
+          "ramp": "coat",
+          "spacing": 0.035
+        },
+        "Hat": {
+          "ramp": "wood"
+        },
+        "Face": {
+          "ramp": "skin",
+          "spacing": 0.045
+        },
+        "Eye": {
+          "ramp": "coat",
+          "spacing": 0.03,
+          "specks": true
+        },
+        "Scarf": {
+          "ramp": "slate",
+          "spacing": 0.045
+        },
+        "Pole": {
+          "ramp": "wood",
+          "spacing": 0.035
+        },
+        "Glass": {
+          "ramp": "glow",
+          "spacing": 0.04,
+          "flags": [
+            "unlit"
+          ]
+        }
+      }
+    }
+  ]
+}

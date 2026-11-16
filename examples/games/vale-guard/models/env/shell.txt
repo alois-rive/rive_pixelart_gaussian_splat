@@ -1,0 +1,42 @@
+# Shellback, the armoured creep: an indigo dome shell with a lilac rim, a grey-teal head and four stubby
+# legs. 0.7 x 0.84 x 0.5 m. make_env.py.
+new
+material new Shell --base-color 0.4000 0.3765 0.5725 --no-slot
+material new Rim --base-color 0.6471 0.5765 0.6471 --no-slot
+material new Skin --base-color 0.4941 0.6196 0.6000 --no-slot
+material new Foot --base-color 0.3647 0.4078 0.4471 --no-slot
+add mesh ico-sphere --name Dome --subdivisions 1 --radius 0.3300 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 1.000 1.150 0.850
+apply --scale
+translate 0.0000 -0.0300 0.2000
+material assign Shell
+add mesh cylinder --vertices 8 --radius 0.3600 --depth 0.1000 --name Rim --location 0 0 0
+set rotation 0 0 22.5
+apply --rotation
+translate 0.0000 -0.0300 0.1700
+material assign Rim
+add mesh cube --name Head --size 1 --location 0.0000 -0.3600 0.2000
+scale 0.2000 0.1800 0.1700
+apply --scale
+material assign Skin
+add mesh cube --name Leg0 --size 1 --location -0.2400 -0.2000 0.0600
+scale 0.1300 0.1300 0.1200
+apply --scale
+material assign Foot
+add mesh cube --name Leg1 --size 1 --location 0.2400 -0.2000 0.0600
+scale 0.1300 0.1300 0.1200
+apply --scale
+material assign Foot
+add mesh cube --name Leg2 --size 1 --location -0.2400 0.2000 0.0600
+scale 0.1300 0.1300 0.1200
+apply --scale
+material assign Foot
+add mesh cube --name Leg3 --size 1 --location 0.2400 0.2000 0.0600
+scale 0.1300 0.1300 0.1200
+apply --scale
+material assign Foot
+select all
+shade flat
+export shell.glb

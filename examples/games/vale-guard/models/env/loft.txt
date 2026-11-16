@@ -1,0 +1,66 @@
+# Larch Loft, the arrow tower: a stone footing, four timber legs, a plank cabin, a red pyramid roof and
+# a brass crossbow poking out of the front (-Y). Origin on the ground at its centre; 1.62 m tall. make_env.py.
+new
+material new Stone --base-color 0.6039 0.6039 0.5922 --no-slot
+material new Leg --base-color 0.5529 0.3843 0.4078 --no-slot
+material new Plank --base-color 0.7608 0.5529 0.4588 --no-slot
+material new Roof --base-color 0.6039 0.3098 0.3137 --no-slot
+material new Brass --base-color 0.7451 0.5843 0.3608 --no-slot
+material new Dark --base-color 0.2627 0.2039 0.3333 --no-slot
+add mesh cylinder --vertices 8 --radius 0.5000 --depth 0.1400 --name Foot --location 0 0 0
+set rotation 0 0 22.5
+apply --rotation
+translate 0.0000 0.0000 0.0700
+material assign Stone
+add mesh cube --name Leg0 --size 1 --location 0 0 0
+scale 0.1200 0.1200 0.6600
+apply --scale
+translate -0.2500 0.2500 0.4700
+material assign Leg
+add mesh cube --name Leg1 --size 1 --location 0 0 0
+scale 0.1200 0.1200 0.6600
+apply --scale
+translate 0.2500 0.2500 0.4700
+material assign Leg
+add mesh cube --name Leg2 --size 1 --location 0 0 0
+scale 0.1200 0.1200 0.6600
+apply --scale
+translate -0.2500 -0.2500 0.4700
+material assign Leg
+add mesh cube --name Leg3 --size 1 --location 0 0 0
+scale 0.1200 0.1200 0.6600
+apply --scale
+translate 0.2500 -0.2500 0.4700
+material assign Leg
+add mesh cube --name Cabin --size 1 --location 0 0 0
+scale 0.7000 0.7000 0.4000
+apply --scale
+translate 0.0000 0.0000 0.9800
+material assign Plank
+add mesh cube --name Slit --size 1 --location 0 0 0
+scale 0.3600 0.0600 0.2000
+apply --scale
+translate 0.0000 -0.3600 0.9600
+material assign Dark
+add mesh cone --name Roof --vertices 4 --radius1 0.62 --radius2 0 --depth 0.46 --location 0 0 0 --rotation 0 0 45
+apply --rotation
+translate 0 0 1.41
+material assign Roof
+add mesh cube --name Stock --size 1 --location 0.0000 -0.4200 1.0000
+scale 0.1000 0.3600 0.1000
+apply --scale
+material assign Brass
+add mesh cube --name Bow --size 1 --location 0.0000 -0.5800 1.0000
+scale 0.5600 0.0800 0.0800
+apply --scale
+material assign Brass
+select Foot
+active Foot
+apply --location
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select all
+shade flat
+export loft.glb

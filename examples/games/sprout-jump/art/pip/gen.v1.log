@@ -1,0 +1,3 @@
+Reading additional input from stdin...
+2026-11-16T21:47:04.889416Z ERROR codex_core::tools::router: error=image generation failed: http 400 Bad Request: Some("{\n  \"error\": {\n    \"message\": \"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 16db9604-ee54-460b-883a-948a694414ce.\",\n    \"type\": \"image_generation_user_error\",\n    \"param\": null,\n    \"code\": \"moderation_blocked\",\n    \"moderation_details\": {\n      \"moderation_stage\": \"output\",\n      \"categories\": [\n        \"other\"\n      ]\n    }\n  }\n}")
+codex_image.py: no image: codex exited 0, session 01a1e653-34f9-7c40-9fbf-9fd44dcc43f1

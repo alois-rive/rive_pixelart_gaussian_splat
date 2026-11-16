@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/golem-hall/art/golem/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        168,
+        33,
+        436,
+        448
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0275,
+      "fill": 0.6613,
+      "background": "#38da6e"
+    },
+    "right": {
+      "box": [
+        1038,
+        33,
+        219,
+        448
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 2.0457,
+      "fill": 0.678,
+      "background": "#38da6e"
+    },
+    "back": {
+      "box": [
+        169,
+        543,
+        436,
+        449
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0298,
+      "fill": 0.6635,
+      "background": "#38da6e"
+    },
+    "top": {
+      "box": [
+        936,
+        626,
+        433,
+        252
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.582,
+      "fill": 0.7015,
+      "background": "#37da6e"
+    }
+  }
+}

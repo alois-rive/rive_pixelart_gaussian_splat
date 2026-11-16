@@ -12,7 +12,7 @@ examples/
   gallery.png     one frame of every example
   tools/          record_tour.py (the showcase reel)
   dioramas/       the diorama examples below: one floating or framed scene each, orbitable
-  games/          36 mini games, one world and one run each, played with the pointer
+  games/          56 mini games, one world and one run each, played with the pointer
   gallery/        a Rive project holding every sample's signed .riv in a scrollable grid
 ```
 
@@ -56,6 +56,15 @@ What every game is:
   a game-over line with the score, and the next click starts a new run in
   the same world.
 - **Pointer only**: the gallery forwards only the pointer to a tile. No keys.
+- **Touch-ready** (phones play the gallery too): on touch the pointer moves
+  ONLY while a finger is down, and a press arrives at the touched point. So:
+  never require hovering (moving without a press); a follow-the-pointer
+  control follows the finger while it drags; aiming happens at the press or
+  during the drag, not before it; never rely on `pointerExit`. Tap targets
+  (HUD buttons, cards, grid cells to click) are at least ~12 art pixels in
+  their smaller dimension at `pixelSize` 3 (a phone shows a tile at about
+  0.55 scale). Test a touch sequence: only `down@`, `drag@` and `up@`, no bare
+  `move@`.
 - **A demo mode** (`api.demo`, `--arg demo=true`): the game plays itself like
   a decent human (some misses, some near-misses), restarts by itself two
   seconds after a game over, and shows action within its first second: the
@@ -105,6 +114,26 @@ What every game is:
 | `games/sorting-belt/` | `paper-8` | `urbex-16` | parcels ride a post-office belt: flick each one into the chute of its colour before it falls off the end |
 | `games/glow-worm/` | `cold-light` | `rosy-42` | a glowing worm follows the pointer through a dark cave, eating crystals and growing; never cross its own tail |
 | `games/frog-choir/` | `eggy-15` | `rosy-42` | frogs on a dawn marsh: click each frog as its beat ring closes; keep the choir in time |
+| `games/sky-raid/` | `fantasy-24` | `zughy-32` | a shoot'em up: a biplane follows the pointer and fires on its own over scrolling countryside; waves, power-ups, a boss, 3 lives |
+| `games/golem-hall/` | `urbex-16` | `sheltzy32` | a first-person shooter: the pointer aims (the view turns near the edges), a click fires a bolt; clay golems advance through a torch-lit hall |
+| `games/tiny-quest/` | `marshmellow32` | `rosy-42` | a turn-based RPG: click a tile to walk an island map, random encounters on wild ground, turn-by-turn fights with on-screen buttons, level up, beat the shrine's guardian |
+| `games/deep-delve/` | `apollo` | `aap-64` | a roguelike: four-directional, energy-timed turns through procedurally generated dungeon levels; weapons, items, an inventory, varied monsters, stairs down |
+| `games/border-war/` | `lospec500` | `zughy-32` | a real-time strategy game: humans (you) against orcs (the computer); harvest gold and wood, build, train an army, destroy the enemy hall |
+| `games/swarm-ward/` | `rosy-42` | `sheltzy32` | a horde survival game: a lamplighter walks toward the pointer, weapons fire on their own; gather sparks, pick an upgrade at each level, last the night |
+| `games/kick-park/` | `aap-64` | `zughy-32` | a skateboard game: roll around a skatepark steered by the pointer; press and release to ollie, swipe in the air for tricks, chain clean landings into combos, 75 seconds |
+| `games/pocket-cup/` | `sheltzy32` | `zughy-32` | a small soccer game: 3-a-side against a computer team; your nearest player runs toward the pointer, click to pass, press and release to shoot; a 2-minute match |
+| `games/pebble-prix/` | `zughy-32` | `gb-chocolate` | a small racing game: the car steers toward the pointer, hold to drift, a long drift boosts; 3 laps against 3 computer cars on a coastal village circuit |
+| `games/vale-guard/` | `vinik24` | `resurrect-64` | a tower defense: creeps march a winding valley path; click build spots to place and upgrade towers; waves, lives |
+| `games/sprout-jump/` | `dawnbringer-32` | `endesga-64` | a platformer: a 2.5D side view, the hero runs toward the pointer, a click jumps; one handcrafted level with collectibles and a flag |
+| `games/cloud-putt/` | `taffy-16` | `rose-bush` | mini golf: 9 holes on one floating island; drag back to aim and putt past windmills, ramps and water |
+| `games/crate-keeper/` | `fairydust-8` | `rose-bush` | a push-puzzle: shove crates onto pads in small hand-made rooms, one step per click, with an undo button |
+| `games/gust-regatta/` | `mulfok32` | `endesga-64` | sailing: steer a sailboat between buoys and trim the sail against a shifting wind |
+| `games/corner-pocket/` | `chromatic16` | `neon-space` | billiards: drag back from the cue ball to aim and set power; pot your balls on a pub table against a computer player |
+| `games/gem-loupe/` | `galaxy-flame` | `lost-century-24` | a match-3: swap gems on a board in a jeweller's workshop; cascades, combos, special gems, a move limit |
+| `games/bubble-loft/` | `sunset-8` | `neon-space` | a bubble shooter: aim a launcher, match three or more bubbles to pop them and drop what hangs below; the ceiling creeps down |
+| `games/ember-deck/` | `ink-crimson` | `twilioquest-76` | a card battler: a short run of fights; click cards to play them with energy each turn, add cards after each win |
+| `games/plank-pass/` | `cretaceous-16` | `resurrect-64` | a bridge builder: place planks and beams within a budget, then a cart crosses; physics decides whether it holds |
+| `games/hoop-alley/` | `dinoknight-16` | `lost-century-24` | basketball shooting: flick the ball at the hoop on a street court before time runs out; moving hoops and streak bonuses |
 
 A palette that does not load from Lospec is replaced by the row's spare (each
 agent has its own spare); note the change in the game's README.
@@ -195,23 +224,26 @@ the last scene's authored front view. Captions name the scene and palette.
 The Rive scene goes last (a scene named twice keeps its last position):
 
 ```sh
-python3 tools/record_tour.py dioramas/*/scene dioramas/rive/scene -o ../showcase.mp4 --seconds 10 --loops 2 \
-  --overlap 1.2 --hold 1.5 --scene-arg dioramas/rive/scene:fxOffset=3.6 --scene-arg dioramas/rive/scene:fxStopAt=10.05
+python3 tools/record_tour.py dioramas/*/scene dioramas/rive/scene -o ../showcase.mp4 --seconds 5 --loops 1 \
+  --overlap 1.2 --hold 1.5 --scene-arg dioramas/rive/scene:fxOffset=8.6 --scene-arg dioramas/rive/scene:fxStopAt=5.05
 ```
 
 The Rive scene's FX cycle is 12 s (cascade 0-1.6, prism sweep to 5, glitch to
-7, scan to 10, dissolve to 12). With `--seconds 10`, `fxOffset` 3.6 makes the
-cascade land the letters at the moment the camera stops (scene time 10), and
-`fxStopAt` holds that clean wordmark through the hold. Change `--seconds`
-and these move with it: `fxOffset` = 1.6 − seconds (mod 12)
+7, scan to 10, dissolve to 12). With `--seconds 5`, `fxOffset` 8.6 makes the
+cascade land the letters at the moment the camera stops (scene time 5), and
+`fxStopAt` (5.05) holds that clean wordmark through the hold. Change `--seconds`
+and these move with it: `fxOffset` = 1.6 − seconds (mod 12), `fxStopAt` =
+seconds + 0.05. Keep `--loops` at seconds / 5 so the turn keeps its pace
+(one turn per 5 s); every scene stays one bar-aligned segment of the music
 
-It records the dioramas with the orbit camera. The games follow the tour, each
-played in demo mode from its first frame (`--demo`):
+It records the dioramas with the orbit camera. The games come first, each
+played in demo mode from its first frame (`--demo`), in the order of
+`tools/showcase_games.txt` (the most ambitious first; add a new game there):
 
 ```sh
-python3 tools/record_tour.py dioramas/*/scene dioramas/rive/scene -o ../showcase.mp4 --seconds 10 --loops 2 \
-  --overlap 1.2 --hold 1.5 --scene-arg dioramas/rive/scene:fxOffset=3.6 --scene-arg dioramas/rive/scene:fxStopAt=10.05 \
-  --demo games/*/scene --demo-seconds 8 --demo-first --music
+python3 tools/record_tour.py dioramas/*/scene dioramas/rive/scene -o ../showcase.mp4 --seconds 5 --loops 1 \
+  --overlap 1.2 --hold 1.5 --scene-arg dioramas/rive/scene:fxOffset=8.6 --scene-arg dioramas/rive/scene:fxStopAt=5.05 \
+  --demo $(grep -v '^#' tools/showcase_games.txt) --demo-seconds 4 --demo-first --music
 ```
 
 ## The gallery

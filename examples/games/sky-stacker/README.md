@@ -2,6 +2,8 @@
 
 **How to play: click to drop the sliding storey; what overhangs the one below is sliced off.**
 
+**Touch:** tap anywhere to drop the storey.
+
 A pagoda grows on a mountain top above a sea of sunset clouds. Each storey slides across the top of the
 tower (alternately along the two axes, a little faster each time); a click drops it. The part hanging
 over the storey below is cut off and tumbles away, and the next storey is only as big as what stayed. A

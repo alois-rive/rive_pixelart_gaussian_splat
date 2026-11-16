@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.08,
+  "fat": 1.0,
+  "out": "../../lookdev/cart.bin",
+  "objects": [
+    { "model": "cart.glb",
+      "materials": { "Red": { "ramp": "red" }, "Slate": { "ramp": "steel", "spacing": 0.055 }, "Cream": { "ramp": "cream", "spacing": 0.05 },
+                     "Wood": { "ramp": "wood" }, "Slat": { "ramp": "wood", "spacing": 0.05 } } }
+  ]
+}

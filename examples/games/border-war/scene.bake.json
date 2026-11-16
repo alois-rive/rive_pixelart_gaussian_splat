@@ -1,0 +1,806 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.07,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -9.8,
+   -0.4,
+   -9.2
+  ],
+  [
+   9.8,
+   3.4,
+   7.8
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/terrain.glb",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Grass": {
+     "ramp": "grass",
+     "spacing": 0.11
+    },
+    "GrassLt": {
+     "ramp": "grass",
+     "spacing": 0.11
+    },
+    "GrassDk": {
+     "ramp": "grass",
+     "spacing": 0.11
+    },
+    "Path": {
+     "ramp": "dirt",
+     "spacing": 0.11
+    },
+    "Bank": {
+     "ramp": "dirt",
+     "spacing": 0.11
+    },
+    "Sand": {
+     "ramp": "dirt",
+     "spacing": 0.11
+    },
+    "Water": {
+     "ramp": "water",
+     "spacing": 0.11
+    },
+    "Ripple": {
+     "ramp": "water",
+     "spacing": 0.11
+    }
+   }
+  },
+  {
+   "model": "models/env/woods.glb",
+   "position": [
+    0,
+    0,
+    0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.095,
+     "flags": [
+      "sway"
+     ]
+    },
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.08
+    },
+    "Rock": {
+     "ramp": "stone",
+     "spacing": 0.08
+    },
+    "Gold": {
+     "ramp": "gold",
+     "spacing": 0.06
+    },
+    "Timber": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Dark": {
+     "ramp": "stone",
+     "spacing": 0.06
+    },
+    "Stump": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Cut": {
+     "ramp": "cream",
+     "spacing": 0.05,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/manor/manor.glb",
+   "bone": "manor",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.07
+    },
+    "Plaster": {
+     "ramp": "cream",
+     "spacing": 0.07
+    },
+    "Timber": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Door": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Roof": {
+     "ramp": "royal",
+     "spacing": 0.07
+    },
+    "Banner": {
+     "ramp": "royal",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "stone",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/yard/yard.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.075
+    },
+    "Plaster": {
+     "ramp": "cream",
+     "spacing": 0.075
+    },
+    "Timber": {
+     "ramp": "wood",
+     "spacing": 0.055
+    },
+    "Door": {
+     "ramp": "wood",
+     "spacing": 0.075
+    },
+    "Roof": {
+     "ramp": "royal",
+     "spacing": 0.075
+    },
+    "Blade": {
+     "ramp": "steel",
+     "spacing": 0.045
+    },
+    "Gold": {
+     "ramp": "gold",
+     "spacing": 0.045,
+     "specks": true
+    },
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Thatch": {
+     "ramp": "cream",
+     "spacing": 0.05
+    },
+    "Bright": {
+     "ramp": "steel",
+     "spacing": 0.04,
+     "specks": true
+    }
+   },
+   "bone": "yard"
+  },
+  {
+   "model": "models/watchtower/watchtower.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.07
+    },
+    "Timber": {
+     "ramp": "wood",
+     "spacing": 0.045
+    },
+    "Roof": {
+     "ramp": "royal",
+     "spacing": 0.07
+    },
+    "Banner": {
+     "ramp": "royal",
+     "spacing": 0.045
+    },
+    "Door": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "stone",
+     "spacing": 0.04,
+     "specks": true
+    }
+   },
+   "bone": "htower",
+   "copies": 2
+  },
+  {
+   "model": "models/cottage/cottage.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Plaster": {
+     "ramp": "cream",
+     "spacing": 0.07
+    },
+    "Timber": {
+     "ramp": "wood",
+     "spacing": 0.06
+    },
+    "Thatch": {
+     "ramp": "cream",
+     "spacing": 0.07
+    },
+    "Stone": {
+     "ramp": "stone",
+     "spacing": 0.05
+    },
+    "Door": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "stone",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.05
+    }
+   },
+   "bone": "cottage",
+   "copies": 2
+  },
+  {
+   "model": "models/warcamp/warcamp.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Logs": {
+     "ramp": "wood",
+     "spacing": 0.075
+    },
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.075
+    },
+    "HideDk": {
+     "ramp": "crimson",
+     "spacing": 0.075
+    },
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Dark": {
+     "ramp": "stone",
+     "spacing": 0.05
+    },
+    "Bone": {
+     "ramp": "cream",
+     "spacing": 0.05
+    }
+   },
+   "bone": "warcamp"
+  },
+  {
+   "model": "models/pit/pit.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Logs": {
+     "ramp": "wood",
+     "spacing": 0.07
+    },
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.05,
+     "specks": true
+    },
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.07
+    },
+    "Bone": {
+     "ramp": "cream",
+     "spacing": 0.05
+    }
+   },
+   "bone": "pit"
+  },
+  {
+   "model": "models/lookout/lookout.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Logs": {
+     "ramp": "wood",
+     "spacing": 0.065
+    },
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.05
+    },
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.065
+    },
+    "Bone": {
+     "ramp": "cream",
+     "spacing": 0.05
+    }
+   },
+   "bone": "lookout",
+   "copies": 2
+  },
+  {
+   "model": "models/tent/tent.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.07
+    },
+    "HideDk": {
+     "ramp": "crimson",
+     "spacing": 0.07
+    },
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.045,
+     "specks": true
+    },
+    "Dark": {
+     "ramp": "stone",
+     "spacing": 0.05
+    },
+    "Bone": {
+     "ramp": "cream",
+     "spacing": 0.045,
+     "specks": true
+    }
+   },
+   "bone": "tent",
+   "copies": 2
+  },
+  {
+   "model": "models/yeoman/yeoman.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "spacing": 0.058
+    },
+    "Tunic": {
+     "ramp": "cream",
+     "spacing": 0.058
+    },
+    "Straw": {
+     "ramp": "cream",
+     "spacing": 0.058
+    },
+    "Trousers": {
+     "ramp": "wood",
+     "spacing": 0.058
+    },
+    "Team": {
+     "ramp": "royal",
+     "spacing": 0.058
+    },
+    "Leather": {
+     "ramp": "wood",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Bright": {
+     "ramp": "steel",
+     "spacing": 0.058,
+     "specks": true
+    }
+   },
+   "bone": "yeoman",
+   "copies": 5
+  },
+  {
+   "model": "models/swordsman/swordsman.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "spacing": 0.058
+    },
+    "Tabard": {
+     "ramp": "royal",
+     "spacing": 0.058
+    },
+    "Steel": {
+     "ramp": "steel",
+     "spacing": 0.058
+    },
+    "Bright": {
+     "ramp": "steel",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Blade": {
+     "ramp": "steel",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Gold": {
+     "ramp": "gold",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Leather": {
+     "ramp": "wood",
+     "spacing": 0.058
+    },
+    "Team": {
+     "ramp": "royal",
+     "spacing": 0.058
+    }
+   },
+   "bone": "sword",
+   "copies": 5
+  },
+  {
+   "model": "models/archer/archer.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Skin": {
+     "ramp": "skin",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Trousers": {
+     "ramp": "wood",
+     "spacing": 0.058
+    },
+    "Leather": {
+     "ramp": "wood",
+     "spacing": 0.058
+    },
+    "Hood": {
+     "ramp": "royal",
+     "spacing": 0.058
+    },
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Straw": {
+     "ramp": "cream",
+     "spacing": 0.058,
+     "specks": true
+    }
+   },
+   "bone": "archer",
+   "copies": 4
+  },
+  {
+   "model": "models/drudge/drudge.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Orc": {
+     "ramp": "orcskin",
+     "spacing": 0.058
+    },
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.058
+    },
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.058
+    },
+    "Bone": {
+     "ramp": "cream",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Leather": {
+     "ramp": "wood",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Steel": {
+     "ramp": "steel",
+     "spacing": 0.058,
+     "specks": true
+    }
+   },
+   "bone": "drudge",
+   "copies": 5
+  },
+  {
+   "model": "models/brute/brute.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Orc": {
+     "ramp": "orcskin",
+     "spacing": 0.058
+    },
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.058
+    },
+    "Bone": {
+     "ramp": "cream",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Hair": {
+     "ramp": "wood",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.058
+    }
+   },
+   "bone": "brute",
+   "copies": 5
+  },
+  {
+   "model": "models/thrower/thrower.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Orc": {
+     "ramp": "orcskin",
+     "spacing": 0.058
+    },
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.058
+    },
+    "Bone": {
+     "ramp": "cream",
+     "spacing": 0.058,
+     "specks": true
+    },
+    "Bright": {
+     "ramp": "steel",
+     "spacing": 0.058,
+     "specks": true
+    }
+   },
+   "bone": "thrower",
+   "copies": 4
+  },
+  {
+   "model": "models/grove/grove.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Leaf": {
+     "ramp": "leaf",
+     "spacing": 0.085,
+     "flags": [
+      "sway"
+     ]
+    },
+    "Bark": {
+     "ramp": "wood",
+     "spacing": 0.085
+    }
+   },
+   "bone": "grove",
+   "copies": 6
+  },
+  {
+   "model": "models/sack/sack.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Sack": {
+     "ramp": "cream",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.04,
+     "specks": true
+    },
+    "Gold": {
+     "ramp": "gold",
+     "spacing": 0.04,
+     "specks": true
+    }
+   },
+   "bone": "sack",
+   "copies": 3
+  },
+  {
+   "model": "models/logs/logs.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.05,
+     "specks": true
+    }
+   },
+   "bone": "logs",
+   "copies": 3
+  },
+  {
+   "model": "models/arrow/arrow.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Shaft": {
+     "ramp": "cream",
+     "spacing": 0.035,
+     "specks": true
+    },
+    "Blade": {
+     "ramp": "steel",
+     "spacing": 0.035,
+     "specks": true
+    },
+    "Team": {
+     "ramp": "royal",
+     "spacing": 0.035,
+     "specks": true
+    }
+   },
+   "bone": "arrow",
+   "copies": 4
+  },
+  {
+   "model": "models/spear/spear.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.035,
+     "specks": true
+    },
+    "Blade": {
+     "ramp": "steel",
+     "spacing": 0.035,
+     "specks": true
+    },
+    "Hide": {
+     "ramp": "crimson",
+     "spacing": 0.035,
+     "specks": true
+    }
+   },
+   "bone": "spear",
+   "copies": 4
+  },
+  {
+   "model": "models/scaffold/scaffold.glb",
+   "position": [
+    0,
+    0,
+    9.0
+   ],
+   "yaw": 0,
+   "materials": {
+    "LogsLt": {
+     "ramp": "wood",
+     "spacing": 0.07,
+     "specks": true
+    },
+    "Wood": {
+     "ramp": "wood",
+     "spacing": 0.07,
+     "specks": true
+    }
+   },
+   "bone": "scaf",
+   "copies": 3
+  }
+ ]
+}

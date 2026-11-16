@@ -1,0 +1,37 @@
+# The hanging rafter the orbs cling to, with brass bands and two ropes rising out of the frame.
+# Origin at the middle of its underside (the game lowers it a row at a time). make_env.py.
+new
+material new Wood --base-color 1.000 0.663 0.212 --no-slot
+material new Brass --base-color 1.000 0.761 0.278 --no-slot
+material new Rope --base-color 1.000 0.545 0.435 --no-slot
+add mesh cube --name Beam --size 1 --location 0.0000 0.0000 0.2250
+scale 7.2800 0.6000 0.4500
+apply --scale
+material assign Wood
+add mesh cube --name Band0 --size 1 --location -3.0000 0.0000 0.2250
+scale 0.1800 0.7000 0.5500
+apply --scale
+material assign Brass
+add mesh cube --name Band1 --size 1 --location -1.0000 0.0000 0.2250
+scale 0.1800 0.7000 0.5500
+apply --scale
+material assign Brass
+add mesh cube --name Band2 --size 1 --location 1.0000 0.0000 0.2250
+scale 0.1800 0.7000 0.5500
+apply --scale
+material assign Brass
+add mesh cube --name Band3 --size 1 --location 3.0000 0.0000 0.2250
+scale 0.1800 0.7000 0.5500
+apply --scale
+material assign Brass
+add mesh cube --name Rope0 --size 1 --location -2.6000 0.0000 4.0250
+scale 0.1200 0.1200 7.1500
+apply --scale
+material assign Rope
+add mesh cube --name Rope1 --size 1 --location 2.6000 0.0000 4.0250
+scale 0.1200 0.1200 7.1500
+apply --scale
+material assign Rope
+select all
+shade flat
+export beam.glb

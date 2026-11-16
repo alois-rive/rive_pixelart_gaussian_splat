@@ -685,7 +685,10 @@ export class Game {
             }
         }
         if (this.state == PLAY && (kind == POINTER_DOWN || kind == POINTER_MOVE)) {
-            if (api.pick(x, y, 0)) {
+            // touch: while a finger is down the dog runs to a point a few art pixels above it, so
+            // the finger hides neither the dog nor the sheep next to it (a mouse: the pointer itself)
+            let lift: f32 = api.pointerDown ? <f32>(24.0 / Math.max(1.0, api.pixelSize)) : 0;
+            if (api.pick(x, y - lift, 0)) {
                 this.tx = <f64>api.hitX;
                 this.tz = <f64>api.hitZ;
                 this.hasTarget = true;

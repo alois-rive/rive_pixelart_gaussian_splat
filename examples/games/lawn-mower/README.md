@@ -4,6 +4,9 @@
 over every patch of long grass before the clock runs out; bumping a garden gnome or a flower bed costs
 time.
 
+**Touch:** tap to start, then drag: the mower drives to a point a few pixels above your finger and keeps
+going there when you lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Endesga 16](https://lospec.com/palette-list/endesga-16) by ENDESGA,
 16 colours in eight ramps (lawn, rough, wood, red, straw, stone, blue, skin); it loaded from Lospec, so

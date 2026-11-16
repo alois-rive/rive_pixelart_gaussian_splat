@@ -5,7 +5,7 @@
 //
 // Game bones from scene.bake.json: the net, 16 fireflies, 12 fireflies shown in the jar, 5 moths and
 // 4 twinkles. Deterministic: api.rand() only. Demo mode plays itself like a decent human.
-import { GameApi, POINTER_DOWN, SFX_BELL, SFX_HIT, SFX_POP, SFX_POWERUP, SFX_TICK, SFX_WHOOSH, SFX_WIN, SFX_BLIP } from "./game_api";
+import { GameApi, POINTER_DOWN, POINTER_MOVE, SFX_BELL, SFX_HIT, SFX_POP, SFX_POWERUP, SFX_TICK, SFX_WHOOSH, SFX_WIN, SFX_BLIP } from "./game_api";
 
 // the jar's chime: a major pentatonic climbing two octaves with the catch count, then round again
 const PENTA: StaticArray<i32> = [0, 2, 4, 7, 9];
@@ -101,6 +101,7 @@ export class Game {
     nVZ: f64 = 0;
     tX: f64 = 0;            // where it is going (the pointer on the net's plane)
     tZ: f64 = 1.0;
+    lift: f32 = 0;          // touch: HUD pixels the net rides above a finger (0 for a hovering mouse)
     stun: f64 = 0;
     catchT: f64 = 9;
 
@@ -585,7 +586,7 @@ export class Game {
 
         if (api.demo) {
             this.updateDemo(api, dt);
-        } else if (api.pointerX >= 0 && api.pick(api.pointerX, api.pointerY, <f32>NET_Y)) {
+        } else if (api.pointerX >= 0 && api.pick(api.pointerX, api.pointerY - this.lift, <f32>NET_Y)) {
             this.tX = <f64>api.hitX;
             this.tZ = <f64>api.hitZ;
         } else if (this.mode == IDLE) {
@@ -616,6 +617,14 @@ export class Game {
     }
 
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
+        // touch: from a press on, the net sweeps a few art pixels above the finger, so the finger
+        // hides neither the net nor the fireflies it meets; it stays there after the lift, and a
+        // hovering mouse leads it at the pointer itself
+        if (kind == POINTER_DOWN) {
+            this.lift = <f32>(24.0 / Math.max(1.0, api.pixelSize));
+        } else if (kind == POINTER_MOVE && !api.pointerDown) {
+            this.lift = 0;
+        }
         if (kind == POINTER_DOWN) {
             if (this.mode == IDLE) {
                 this.newRun(api);

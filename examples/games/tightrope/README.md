@@ -3,6 +3,9 @@
 **How to play: click to start, then move the pointer to keep the walker upright: he leans towards
 the pointer, so when he tips one way, move it to his other side. Gusts blow down the gorge.**
 
+**Touch:** tap to start, then press and drag beside the walker: he leans towards your finger (his other
+side to correct), and the last place you touched keeps pulling after you lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Dreamscape8](https://lospec.com/palette-list/dreamscape8) by Kerrie
 Lake, eight colours; it loaded from Lospec, so the spare (`nanner-pancakes`) was not needed. A desert

@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/border-war/art/manor/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        165,
+        33,
+        444,
+        449
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0113,
+      "fill": 0.7064,
+      "background": "#8e8e90"
+    },
+    "right": {
+      "box": [
+        937,
+        33,
+        371,
+        449
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.2102,
+      "fill": 0.6426,
+      "background": "#8e8f90"
+    },
+    "back": {
+      "box": [
+        165,
+        547,
+        444,
+        447
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 1.0068,
+      "fill": 0.7021,
+      "background": "#8e8e90"
+    },
+    "top": {
+      "box": [
+        910,
+        587,
+        452,
+        368
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8142,
+      "fill": 0.9808,
+      "background": "#8e8e90"
+    }
+  }
+}

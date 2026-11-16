@@ -654,7 +654,10 @@ export class Game {
     // ------------------------------------------------------------------ input
 
     pointer(api: GameApi, kind: i32, x: f32, y: f32): bool {
-        let hit = api.pick(x, y, 0);
+        // touch: while a finger is down the knight runs to a point a few art pixels above it, so
+        // the finger does not hide him (a hovering mouse leads him to the pointer itself)
+        let lift: f32 = api.pointerDown ? <f32>(24.0 / Math.max(1.0, api.pixelSize)) : 0;
+        let hit = api.pick(x, y - lift, 0);
         if (kind == POINTER_DOWN) {
             if (this.state == ST_IDLE) {
                 this.beginRun(api);

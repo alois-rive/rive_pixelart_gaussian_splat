@@ -3,6 +3,9 @@
 **How to play:** click to start, then move the pointer: the knight runs to it. Dodge the boulders
 that roll in through the gates, grab the coins, stay alive.
 
+**Touch:** tap to start, then drag: the knight runs to a point a few pixels above your finger (so it
+stays in sight) and stops where you lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Rust Gold 8](https://lospec.com/palette-list/rust-gold-8) by Trigo
 Mathmancer, eight colours (gold, rust, brown, dark brown, tan, mauve, grey, black) in six ramps; it

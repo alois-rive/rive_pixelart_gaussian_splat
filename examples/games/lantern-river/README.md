@@ -3,6 +3,8 @@
 **How to play:** click the dark paper lanterns as they drift up from the river to light them; light them in
 quick succession for a chain. Don't let three dark ones escape into the sky.
 
+**Touch:** tap the dark lanterns to light them.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2, hedra 0.1.0,
 codex-cli. Palette: [Midnight Ablaze](https://lospec.com/palette-list/midnight-ablaze) by Inkpendude (loaded
 from Lospec; the spare `fantasy-24` was not needed): seven colours from near-black to coral, one long ramp cut

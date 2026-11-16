@@ -3,6 +3,8 @@
 **How to play:** move the pointer to steer the claw over the toy pile and click to drop it; a grab near
 a toy's middle holds, an edge grab wobbles and may slip. Win as many prizes as you can in 60 seconds.
 
+**Touch:** tap a toy: the claw slides over it and drops as it arrives (slide before lifting to re-aim).
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli 0.167. Palette: [Peachy Pop 16](https://lospec.com/palette-list/peachy-pop-16)
 by Kerrie Lake, 16 colours in ten ramps; it loaded from Lospec, so the spare (`marshmellow32`) was not

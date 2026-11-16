@@ -1,0 +1,22 @@
+A modeling reference sheet (turnaround) for ONE low-poly 3D game asset: a small round stone cannon tower (a squat keep) for a tower-defense game, with a brass cannon on its open roof.
+
+Canvas and layout, keep exactly:
+- 1536 x 1024 landscape image, a 2 x 2 grid of four equal panels.
+- Top-left panel: FRONT view. Top-right: RIGHT side view. Bottom-left: BACK view. Bottom-right: TOP view (looking straight down).
+- Orthographic cameras (no perspective), the same scale in every panel, the object centred in each panel and standing on the same invisible ground line in the three side views.
+- Every view sits whole inside its panel with a clear margin of background all round (at least a tenth of the panel): nothing touches or crosses a panel edge.
+- Each side view is exactly frontal to its side: no other face of the object shows in it (a slightly oblique view comes out wider and fails the aspect gate). No roof top or parapet floor is visible in the three side views.
+- The four panels show the SAME object, only turned: FRONT: the cannon's muzzle points straight at the camera and the door faces the camera. RIGHT: the camera has walked round to the side that was on the RIGHT of the image in the front view (the tower's own left-hand side), so the cannon barrel points to the LEFT edge of the image. BACK: seen from behind: no door, the cannon's rear end on top. TOP: seen from straight above, looking down, with the front (the muzzle and the door) towards the BOTTOM edge of the image. Each detail appears only in the views from which it is really visible.
+- One flat, uniform, light grey background (#e4e4e4) everywhere: no floor, no grass, no cast shadow, no gradient, no vignette, no frame lines, no text, no labels.
+
+The object (identical in all four views):
+- The drum: an eight-sided stone tower, 1.0 m across at the bottom, narrowing slightly to 0.86 m across at its top, 0.9 m tall, light grey stone.
+- The parapet: an eight-sided stone ring on top of the drum, 1.04 m across and 0.16 m tall, slightly wider than the drum top, with eight square stone merlons (battlement blocks) standing on it, each 0.16 m wide and 0.14 m tall, one at every corner of the octagon. Total stone height 1.2 m.
+- A dark brown wooden door on the FRONT face of the drum: 0.3 m wide and 0.42 m tall, standing on the ground, with a flat top.
+- A dark red cloth banner hanging on the FRONT face just under the parapet, above the door: 0.24 m wide and 0.26 m tall, its bottom cut into a V notch.
+- The cannon on the open roof, in the middle: a light-brown wooden block carriage 0.36 m wide, 0.4 m long and 0.16 m tall, and on it a thick eight-sided brass barrel 0.24 m across and 0.7 m long, pointing FORWARD and tilted up about 10 degrees, its muzzle sticking out 0.2 m past the front of the parapet, a slightly thicker brass ring at the muzzle. Top of the barrel 1.5 m above the ground.
+
+Style, keep exactly:
+- A clean low-poly 3D model render: faceted, flat-shaded faces, hard straight edges, big readable chunky shapes, about 500 triangles worth of detail. No smooth organic surfaces, no tiny details (no individual stone bricks, no bolts, no rivets, no hinges), no texture noise, no grain, no writing, no logos.
+- Flat colour areas only, ONLY these colours (from the Vinik24 palette): stone #9a9a97 (shade #5d6872, light #c5ccb8), door #8d6268, carriage #c28d75, cannon brass #be955c (shade #8d6268), banner #9a4f50.
+- Soft, even light from the upper left, so each face reads as one flat tone; no specular highlights, no ambient occlusion blur.

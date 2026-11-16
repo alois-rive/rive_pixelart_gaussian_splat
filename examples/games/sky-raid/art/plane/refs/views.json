@@ -1,0 +1,58 @@
+{
+  "sheet": "/Users/alois/Documents/Github/rive_pixelart_gaussian_splat/examples/games/sky-raid/art/plane/sheet.v1.png",
+  "grid": "2x2",
+  "views": {
+    "front": {
+      "box": [
+        101,
+        109,
+        567,
+        302
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.5326,
+      "fill": 0.3509,
+      "background": "#a6a5a5"
+    },
+    "right": {
+      "box": [
+        856,
+        159,
+        579,
+        252
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.4352,
+      "fill": 0.4416,
+      "background": "#a6a5a5"
+    },
+    "back": {
+      "box": [
+        101,
+        634,
+        566,
+        289
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.5106,
+      "fill": 0.3667,
+      "background": "#a6a5a5"
+    },
+    "top": {
+      "box": [
+        908,
+        543,
+        484,
+        427
+      ],
+      "flipped": false,
+      "rotated": 0,
+      "aspect": 0.8822,
+      "fill": 0.4119,
+      "background": "#a6a5a5"
+    }
+  }
+}

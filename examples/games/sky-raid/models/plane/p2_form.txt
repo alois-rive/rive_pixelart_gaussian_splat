@@ -1,0 +1,73 @@
+# Plane, phase 2: form and surfacing. The fuselage tapers to 0.10 x 0.12 m at the tail and its tail
+# end rises 0.06 (the sheet's sloping back), the fin's top is swept back to a 0.14 m chord, the wing
+# and tailplane tips are chamfered (the top view), the propeller turned 40 degrees (the front view).
+# Exact Fantasy 24 colours: Canvas #efd8a1 (canvas ramp, top step), Paint #ef692f (paint, step 3),
+# Cowl #684c3c (metal, 2), Dark #392a1c (metal, 1), Pit #2a1d0d (metal, 0), Screen #927e6a (metal, 3).
+# Exports plane.glb (everything, for the gates and the bench); p3_parts.txt splits body and prop.
+material new Canvas --base-color 0.937 0.847 0.631 --no-slot
+material new Paint --base-color 0.937 0.412 0.184 --no-slot
+material new Cowl --base-color 0.408 0.298 0.235 --no-slot
+material new Dark --base-color 0.224 0.165 0.110 --no-slot
+material new Pit --base-color 0.165 0.114 0.051 --no-slot
+material new Screen --base-color 0.573 0.494 0.416 --no-slot
+select Fuselage
+active Fuselage
+mode edit
+select vert where "pos.y > 0.5"
+scale 0.28 1 0.30
+translate 0 0 0.06
+mode object
+select Fin
+active Fin
+mode edit
+select vert where "pos.z > 0.1 && pos.y < 0"
+translate 0 0.19 0
+mode object
+select Prop
+active Prop
+set rotation 0 10 0
+apply --rotation
+select TipL
+active TipL
+mode edit
+select edge where "pos.x < -0.09 && abs(pos.y) > 0.1"
+bevel 0.06 --segments 1
+mode object
+select TipR
+active TipR
+mode edit
+select edge where "pos.x > 0.09 && abs(pos.y) > 0.1"
+bevel 0.06 --segments 1
+mode object
+select TailTipL
+active TailTipL
+mode edit
+select edge where "pos.x < -0.05 && abs(pos.y) > 0.05"
+bevel 0.04 --segments 1
+mode object
+select TailTipR
+active TailTipR
+mode edit
+select edge where "pos.x > 0.05 && abs(pos.y) > 0.05"
+bevel 0.04 --segments 1
+mode object
+select UpperWing LowerWing Tailplane
+material assign Canvas
+select Fuselage TipL TipR TailTipL TailTipR Fin
+material assign Paint
+select Cowling Strut0 Strut1 Strut2 Strut3 LegL LegR
+material assign Cowl
+select Spinner Prop WheelL WheelR
+material assign Dark
+select Cockpit
+material assign Pit
+select Screen
+material assign Screen
+select Fuselage Cowling Spinner UpperWing TipL TipR LowerWing Strut0 Strut1 Strut2 Strut3 Cockpit Screen Tailplane TailTipL TailTipR Fin WheelL WheelR LegL LegR
+active Fuselage
+join
+rename Fuselage Plane
+select all
+shade flat
+inspect stats
+export plane.glb

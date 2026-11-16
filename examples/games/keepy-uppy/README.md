@@ -2,6 +2,9 @@
 
 **How to play: click a ball to kick it up (hit its side to steer it); more balls join; none may land.**
 
+**Touch:** tap a ball to kick it (tap its side to steer it); the first tap anywhere kicks the resting
+ball.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Journey](https://lospec.com/palette-list/journey) by PineappleOnPizza,
 64 colours (it loaded from Lospec: the spare, Cold Light, was not needed), thirteen ramps (sand, sea, foam,

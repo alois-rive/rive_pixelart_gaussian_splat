@@ -1,0 +1,43 @@
+# Seed crate (prop, from the asset list): a wooden crate 0.76 x 0.76 x 0.64 m with a magenta frame and
+# pink panels sunk 0.04 m into each side, open at the top: dark soil 0.07 m down with three mint
+# sprouts. Up Z, origin on the ground under its centre. Pushed by the keeper; its unlit twin (the same
+# GLB baked on glow ramps) is swapped in while it sits on a pad.
+new
+material new Wood --base-color 0.769 0.365 0.624 --no-slot
+material new Slat --base-color 0.890 0.604 0.675 --no-slot
+material new Soil --base-color 0.388 0.294 0.490 --no-slot
+material new Sprout --base-color 0.576 0.831 0.710 --no-slot
+add mesh cube --name Crate --size 1 --location 0 0 0.32
+scale 0.76 0.76 0.64
+apply --scale
+material assign Wood
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+select face where "abs(normal.z) < 0.1"
+inset 0.1 --individual --depth -0.04
+material assign Slat
+select face where "normal.z > 0.9"
+inset 0.08
+extrude 0 0 -0.08
+material assign Soil
+mode object
+# three sprouts in the soil (chunky: 0.1 m leaves so they bake to more than a few splats)
+add mesh ico-sphere --name S1 --subdivisions 1 --radius 0.1 --location -0.14 0.1 0.63
+scale 1 0.6 1.3
+apply --scale
+add mesh ico-sphere --name S2 --subdivisions 1 --radius 0.11 --location 0.12 0.08 0.65
+scale 0.6 1 1.4
+apply --scale
+add mesh ico-sphere --name S3 --subdivisions 1 --radius 0.09 --location 0.0 -0.15 0.62
+scale 1 0.7 1.2
+apply --scale
+select S1 S2 S3
+material assign Sprout
+active S1
+join
+rename S1 Sprouts
+select all
+shade flat
+inspect stats
+export crate.glb

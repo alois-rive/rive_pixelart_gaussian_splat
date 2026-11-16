@@ -3,6 +3,9 @@
 **How to play:** click to drop the marble, then move the pointer where you want it to roll: the
 board tilts towards the pointer. Miss the holes, reach the flag.
 
+**Touch:** tap to drop the marble, then drag: the board tilts towards the reticle a few pixels above
+your finger, and keeps that aim when you lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [WoodSpark](https://lospec.com/palette-list/woodspark) by Anubi,
 sixteen colours in 8 ramps (wood, leaf, glass, steel, berry, pit, flame, spark); it loaded from

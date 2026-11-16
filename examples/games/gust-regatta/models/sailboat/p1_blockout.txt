@@ -1,0 +1,59 @@
+# Sailboat (the hero), phase 1: blockout. Up Z, bow towards -Y, origin at the waterline amidships.
+# Sizes from the sheet's front and right panels at 150 px per metre (spec: sailboat.spec.md).
+new
+# hull: 1.19 wide, 3.7 long, 0.5 tall; a section at 1.29 m behind the bow where the taper ends
+add mesh cube --name Hull --size 1 --location 0 0 0
+scale 1.19 3.7 0.5
+apply --scale
+set location 0 0 0.25
+apply --location
+mode edit
+select all
+bisect --plane-co 0 -0.56 0 --plane-no 0 1 0
+select all
+select vert where "pos.y < -1.8"
+scale 0.02 1 1
+select vert where "pos.y < -1.8 && pos.z < 0.01"
+translate 0 0.43 0
+select vert where "pos.y > 1.8"
+scale 0.8 1 1
+select vert where "pos.z < 0.01 && pos.y > -1.4"
+scale 0.82 1 1
+mode object
+# mast 0.12 square, 2.45 m above the deck, 0.87 m behind the bow tip
+add mesh cube --name Mast --size 1 --location 0 0 0
+scale 0.12 0.12 2.45
+apply --scale
+set location 0 -0.98 1.725
+apply --location
+# boom 0.1 square, 2.45 long, 0.29 m above the deck
+add mesh cube --name Boom --size 1 --location 0 0 0
+scale 0.1 2.45 0.1
+apply --scale
+set location 0 0.305 0.79
+apply --location
+# mainsail: a 0.05 plate, a triangle from the masthead (z 2.83) down the mast to the boom's end (y 1.5)
+add mesh cube --name Sail --size 1 --location 0 0 0
+scale 0.05 2.42 1.99
+apply --scale
+set location 0 0.29 1.835
+apply --location
+mode edit
+select vert where "pos.z > 0.9 && pos.y > 0"
+translate 0 -2.42 0
+select all
+merge --by-distance 0.001
+mode object
+# rudder blade on the transom and the tiller into the cockpit
+add mesh cube --name Rudder --size 1 --location 0 0 0
+scale 0.08 0.14 0.63
+apply --scale
+set location 0 1.92 0.3
+apply --location
+add mesh cube --name Tiller --size 1 --location 0 0 0
+scale 0.06 0.95 0.06
+apply --scale
+set location 0 1.45 0.62
+apply --location
+select all
+shade flat

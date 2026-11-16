@@ -1,0 +1,36 @@
+# Gloom moth, the flyer: a khaki body, two broad dusky-rose wings (two-sided cards) and pale feelers.
+# 0.86 x 0.5 x 0.2 m; origin at the body's centre (the game flies it 1.2 m up). make_env.py.
+new
+material new Body --base-color 0.6157 0.6235 0.4980 --no-slot
+material new Wing --base-color 0.5451 0.3333 0.5020 --no-slot
+material new Spot --base-color 0.7725 0.8000 0.7216 --no-slot
+add mesh ico-sphere --name Body --subdivisions 1 --radius 0.1200 --location 0 0 0
+set rotation 0.0 0.0 0.0
+apply --rotation
+scale 0.900 1.600 0.900
+apply --scale
+translate 0.0000 0.0000 0.0000
+material assign Body
+add mesh cube --name WingL --size 1 --location -0.2500 0.0200 0.0200
+scale 0.3600 0.3600 0.0350
+apply --scale
+material assign Wing
+add mesh cube --name WingR --size 1 --location 0.2500 0.0200 0.0200
+scale 0.3600 0.3600 0.0350
+apply --scale
+material assign Wing
+add mesh cube --name SpotL --size 1 --location -0.2800 0.0400 0.0450
+scale 0.1200 0.1200 0.0200
+apply --scale
+material assign Spot
+add mesh cube --name SpotR --size 1 --location 0.2800 0.0400 0.0450
+scale 0.1200 0.1200 0.0200
+apply --scale
+material assign Spot
+add mesh cube --name Feel --size 1 --location 0.0000 -0.2500 0.0700
+scale 0.2000 0.0600 0.0500
+apply --scale
+material assign Spot
+select all
+shade flat
+export moth.glb

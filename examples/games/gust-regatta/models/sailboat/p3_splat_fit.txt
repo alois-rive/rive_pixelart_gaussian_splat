@@ -1,0 +1,27 @@
+# Sailboat, phase 3: the splat fit (run on a copy: hedra model --no-save --to sailboat_fit.rmdl sailboat.rmdl run p3_splat_fit.txt).
+# Splats reach about one radius past every face, so a thin, tall boat seen end-on comes out fat: the hull
+# loses 0.08 m a side (x 0.87) and 0.07 m of height (z 0.86), the mast thins to 0.07 m (baked at 0.05 spacing),
+# the sail plate to 0.03 m, the boom to 0.07 m. Exports sailboat_fit.glb (the lookdev bench), hull.glb and
+# rig.glb (each alone: the scene's two bones; the rig keeps the mast where the hull carries it).
+select Hull
+active Hull
+scale 0.87 1 0.86
+apply --scale
+select Rig
+active Rig
+mode edit
+select vert where "pos.z > 0.6 && pos.y < -0.9 && pos.y > -1.06 && pos.z < 2.96"
+select vert where "pos.y > -1.05 && pos.y < -0.91 && abs(pos.x) > 0.055"
+scale 0.58 1 1
+select vert where "abs(pos.x) > 0.02 && abs(pos.x) < 0.03"
+scale 0.6 1 1
+select vert where "pos.y > -0.95 && pos.z > 0.7 && pos.z < 0.9 && abs(pos.x) > 0.045"
+scale 0.7 1 0.7
+mode object
+select all
+shade flat
+export sailboat_fit.glb
+select Hull
+export hull.glb --selection
+select Rig
+export rig.glb --selection

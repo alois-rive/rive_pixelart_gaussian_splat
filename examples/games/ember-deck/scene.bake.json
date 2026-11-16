@@ -1,0 +1,794 @@
+{
+ "palette": "art/palette.json",
+ "spacing": 0.07,
+ "fat": 1.0,
+ "seed": 1,
+ "out": "scene/splats.bin",
+ "bounds": [
+  [
+   -6.4,
+   -0.6,
+   -3.8
+  ],
+  [
+   6.4,
+   4.8,
+   3.0
+  ]
+ ],
+ "objects": [
+  {
+   "model": "models/env/crypt.glb",
+   "materials": {
+    "TileA": {
+     "ramp": "stone"
+    },
+    "TileB": {
+     "ramp": "stone"
+    },
+    "TileC": {
+     "ramp": "stone"
+    },
+    "Block": {
+     "ramp": "stone"
+    },
+    "BlockD": {
+     "ramp": "stone"
+    },
+    "BlockL": {
+     "ramp": "stone"
+    },
+    "Pillar": {
+     "ramp": "brick"
+    },
+    "Trim": {
+     "ramp": "brick"
+    },
+    "Altar": {
+     "ramp": "stone"
+    },
+    "AltarTop": {
+     "ramp": "stone"
+    },
+    "Recess": {
+     "ramp": "stone"
+    },
+    "Iron": {
+     "ramp": "leather",
+     "spacing": 0.05
+    },
+    "Rune": {
+     "ramp": "frost",
+     "spacing": 0.05
+    }
+   }
+  },
+  {
+   "model": "models/env/candles0.glb",
+   "position": [
+    0.0,
+    1.01,
+    -3.3
+   ],
+   "materials": {
+    "Wax": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Drip": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Wick": {
+     "ramp": "leather",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/candles1.glb",
+   "position": [
+    -3.2,
+    0.7,
+    -3.25
+   ],
+   "materials": {
+    "Wax": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Drip": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Wick": {
+     "ramp": "leather",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/candles2.glb",
+   "position": [
+    3.2,
+    0.7,
+    -3.25
+   ],
+   "materials": {
+    "Wax": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Drip": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Wick": {
+     "ramp": "leather",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/candles3.glb",
+   "position": [
+    -3.75,
+    0.0,
+    -1.55
+   ],
+   "materials": {
+    "Wax": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Drip": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Wick": {
+     "ramp": "leather",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/candles4.glb",
+   "position": [
+    3.75,
+    0.0,
+    -1.55
+   ],
+   "materials": {
+    "Wax": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Drip": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Wick": {
+     "ramp": "leather",
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flames0.glb",
+   "position": [
+    0.0,
+    1.75,
+    -3.3
+   ],
+   "bone": "flame0",
+   "materials": {
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flames1.glb",
+   "position": [
+    -3.2,
+    1.3199999999999998,
+    -3.25
+   ],
+   "bone": "flame1",
+   "materials": {
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flames2.glb",
+   "position": [
+    3.2,
+    1.2799999999999998,
+    -3.25
+   ],
+   "bone": "flame2",
+   "materials": {
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flames3.glb",
+   "position": [
+    -3.75,
+    0.74,
+    -1.55
+   ],
+   "bone": "flame3",
+   "materials": {
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/flames4.glb",
+   "position": [
+    3.75,
+    0.7,
+    -1.55
+   ],
+   "bone": "flame4",
+   "materials": {
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/sconce_fire.glb",
+   "position": [
+    -3.77,
+    1.94,
+    -2.3
+   ],
+   "bone": "soul0",
+   "materials": {
+    "Soul": {
+     "ramp": "soul",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/sconce_fire.glb",
+   "position": [
+    3.77,
+    1.94,
+    -2.3
+   ],
+   "bone": "soul1",
+   "materials": {
+    "Soul": {
+     "ramp": "soul",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/hero/hero_body.glb",
+   "position": [
+    -2.2,
+    0,
+    0
+   ],
+   "bone": "hero",
+   "materials": {
+    "Steel": {
+     "ramp": "steel"
+    },
+    "Blade": {
+     "ramp": "steel",
+     "spacing": 0.04
+    },
+    "Dark": {
+     "ramp": "cloth",
+     "spacing": 0.045,
+     "step": 1
+    },
+    "Plum": {
+     "ramp": "cloth",
+     "step": 1
+    },
+    "Cape": {
+     "ramp": "cloth"
+    },
+    "Crest": {
+     "ramp": "flame",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/hero/hero_armr.glb",
+   "position": [
+    -2.6,
+    0.9,
+    0
+   ],
+   "bone": "armr",
+   "materials": {
+    "Steel": {
+     "ramp": "steel"
+    },
+    "Blade": {
+     "ramp": "steel",
+     "spacing": 0.04
+    },
+    "Dark": {
+     "ramp": "cloth",
+     "spacing": 0.045,
+     "step": 1
+    },
+    "Plum": {
+     "ramp": "cloth",
+     "step": 1
+    },
+    "Cape": {
+     "ramp": "cloth"
+    },
+    "Crest": {
+     "ramp": "flame",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/hero/hero_arml.glb",
+   "position": [
+    -1.8,
+    0.9,
+    0
+   ],
+   "bone": "arml",
+   "materials": {
+    "Steel": {
+     "ramp": "steel"
+    },
+    "Blade": {
+     "ramp": "steel",
+     "spacing": 0.04
+    },
+    "Dark": {
+     "ramp": "cloth",
+     "spacing": 0.045,
+     "step": 1
+    },
+    "Plum": {
+     "ramp": "cloth",
+     "step": 1
+    },
+    "Cape": {
+     "ramp": "cloth"
+    },
+    "Crest": {
+     "ramp": "flame",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/mite.glb",
+   "position": [
+    2.2,
+    0,
+    0
+   ],
+   "bone": "mite",
+   "materials": {
+    "Wax": {
+     "ramp": "cloth"
+    },
+    "Drip": {
+     "ramp": "cloth",
+     "spacing": 0.045
+    },
+    "Leg": {
+     "ramp": "leather"
+    },
+    "Dark": {
+     "ramp": "leather",
+     "spacing": 0.04
+    },
+    "Eye": {
+     "ramp": "spark",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    },
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    }
+   }
+  },
+  {
+   "model": "models/env/moth.glb",
+   "position": [
+    2.2,
+    1.35,
+    0
+   ],
+   "bone": "moth",
+   "materials": {
+    "Fur": {
+     "ramp": "cloth",
+     "step": 1
+    },
+    "Band": {
+     "ramp": "cloth",
+     "step": 1
+    },
+    "Eye": {
+     "ramp": "spark",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.04
+    },
+    "Feeler": {
+     "ramp": "cloth",
+     "spacing": 0.035,
+     "step": 1
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/wing_l.glb",
+   "position": [
+    2.2,
+    1.35,
+    0
+   ],
+   "bone": "wingl",
+   "materials": {
+    "WingIn": {
+     "ramp": "cloth",
+     "flags": [
+      "double"
+     ],
+     "step": 1
+    },
+    "WingMid": {
+     "ramp": "cloth",
+     "flags": [
+      "double"
+     ],
+     "step": 1
+    },
+    "WingEye": {
+     "ramp": "steel",
+     "flags": [
+      "double"
+     ]
+    },
+    "WingOut": {
+     "ramp": "cloth",
+     "flags": [
+      "double"
+     ],
+     "step": 1
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/wing_r.glb",
+   "position": [
+    2.2,
+    1.35,
+    0
+   ],
+   "bone": "wingr",
+   "materials": {
+    "WingIn": {
+     "ramp": "cloth",
+     "flags": [
+      "double"
+     ],
+     "step": 1
+    },
+    "WingMid": {
+     "ramp": "cloth",
+     "flags": [
+      "double"
+     ],
+     "step": 1
+    },
+    "WingEye": {
+     "ramp": "steel",
+     "flags": [
+      "double"
+     ]
+    },
+    "WingOut": {
+     "ramp": "cloth",
+     "flags": [
+      "double"
+     ],
+     "step": 1
+    }
+   },
+   "scale": 1.3
+  },
+  {
+   "model": "models/env/warden.glb",
+   "position": [
+    2.2,
+    0,
+    0
+   ],
+   "bone": "warden",
+   "materials": {
+    "Stone": {
+     "ramp": "frost"
+    },
+    "Dark": {
+     "ramp": "frost"
+    },
+    "Face": {
+     "ramp": "steel"
+    },
+    "Eye": {
+     "ramp": "spark",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.035
+    }
+   }
+  },
+  {
+   "model": "models/env/king.glb",
+   "position": [
+    2.3,
+    0,
+    0
+   ],
+   "bone": "king",
+   "materials": {
+    "Wax": {
+     "ramp": "cloth"
+    },
+    "Pool": {
+     "ramp": "cloth"
+    },
+    "Drip": {
+     "ramp": "cloth"
+    },
+    "Dark": {
+     "ramp": "leather"
+    },
+    "Eye": {
+     "ramp": "spark",
+     "flags": [
+      "unlit"
+     ],
+     "spacing": 0.045
+    },
+    "Staff": {
+     "ramp": "leather",
+     "spacing": 0.045
+    }
+   }
+  },
+  {
+   "model": "models/env/king_fire.glb",
+   "position": [
+    2.3,
+    2.43,
+    0
+   ],
+   "bone": "kingfire",
+   "materials": {
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    },
+    "Soul": {
+     "ramp": "soul",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.035,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/slash.glb",
+   "position": [
+    0,
+    1,
+    0
+   ],
+   "bone": "slash",
+   "copies": 2,
+   "materials": {
+    "Slash": {
+     "ramp": "spark",
+     "flags": [
+      "unlit",
+      "nocast",
+      "double"
+     ],
+     "spacing": 0.045
+    }
+   }
+  },
+  {
+   "model": "models/env/spark.glb",
+   "position": [
+    0,
+    1,
+    0
+   ],
+   "bone": "spark",
+   "copies": 10,
+   "materials": {
+    "Spark": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/mote.glb",
+   "position": [
+    0,
+    1,
+    0
+   ],
+   "bone": "mote",
+   "copies": 8,
+   "materials": {
+    "Mote": {
+     "ramp": "spark",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  },
+  {
+   "model": "models/env/ward.glb",
+   "position": [
+    0,
+    1,
+    0
+   ],
+   "bone": "ward",
+   "materials": {
+    "Ward": {
+     "ramp": "spark",
+     "flags": [
+      "unlit",
+      "nocast",
+      "double"
+     ],
+     "spacing": 0.045
+    }
+   }
+  },
+  {
+   "model": "models/env/ward.glb",
+   "position": [
+    0,
+    1,
+    0
+   ],
+   "bone": "fward",
+   "materials": {
+    "Ward": {
+     "ramp": "ember",
+     "flags": [
+      "unlit",
+      "nocast",
+      "double"
+     ],
+     "spacing": 0.045
+    }
+   }
+  },
+  {
+   "model": "models/env/burn.glb",
+   "position": [
+    0,
+    1,
+    0
+   ],
+   "bone": "burn",
+   "copies": 3,
+   "materials": {
+    "Fire": {
+     "ramp": "flame",
+     "flags": [
+      "unlit",
+      "nocast"
+     ],
+     "spacing": 0.04,
+     "specks": true
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+  "hedra": null,
+  "rive": "lookdev",
+  "blob": "golem",
+  "views": "front,right,back,top,iso",
+  "size": 480,
+  "pixel": 2,
+  "arg": [
+    "sunYaw=-25",
+    "sunPitch=52",
+    "keyLight=0.25",
+    "highlight=0.85",
+    "shadeSteps=1"
+  ],
+  "advance": "2",
+  "real_sky": true,
+  "look": "lit",
+  "texel": 0,
+  "elevation": 0
+}

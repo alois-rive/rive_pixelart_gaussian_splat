@@ -3,6 +3,8 @@
 **How to play: click (or tap) to jump; the penguin belly-slides along an endless ice run, jump the
 holes between the floes and the seals lying on them, catch fish for +5.**
 
+**Touch:** tap anywhere to jump.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Mist GB](https://lospec.com/palette-list/mist-gb) by Kerrie Lake
 (loaded from Lospec; the spare was not needed), four colours (dark brown, teal, mint, pale) shared by

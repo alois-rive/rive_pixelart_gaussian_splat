@@ -3,6 +3,8 @@
 **How to play:** press on a parcel riding the belt, drag towards the chute whose sign has the
 parcel's colour, and let go: the parcel is flicked into it.
 
+**Touch:** press on a parcel, drag towards its chute and lift.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli. Palette: [Paper 8](https://lospec.com/palette-list/paper-8) by Frosty Rabbid,
 eight colours (navy, plum, brick, tan, cream, pale green, green, teal) in eight ramps; it loaded from

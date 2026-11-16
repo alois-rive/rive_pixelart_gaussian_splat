@@ -1,0 +1,12 @@
+# A frost shard: a pale-blue ice spindle 0.14 x 0.34 m pointing -Y, origin at its centre. make_env.py.
+new
+material new Ice --base-color 0.4863 0.6314 0.7529 --no-slot
+add mesh cone --name A --vertices 4 --radius1 0.08 --radius2 0 --depth 0.2 --location 0 -0.1 0 --rotation 90 0 0
+apply --rotation
+material assign Ice
+add mesh cone --name B --vertices 4 --radius1 0.08 --radius2 0 --depth 0.14 --location 0 0.07 0 --rotation -90 0 0
+apply --rotation
+material assign Ice
+select all
+shade flat
+export shard.glb

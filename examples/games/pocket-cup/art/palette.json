@@ -1,0 +1,134 @@
+{
+  "name": "Sheltzy32",
+  "source": "https://lospec.com/palette-list/sheltzy32",
+  "author": "\ud83d\udc9a NatTorpedia \ud83d\udc9a",
+  "colors": [
+    "#8cffde",
+    "#45b8b3",
+    "#839740",
+    "#c9ec85",
+    "#46c657",
+    "#158968",
+    "#2c5b6d",
+    "#222a5c",
+    "#566a89",
+    "#8babbf",
+    "#cce2e1",
+    "#ffdba5",
+    "#ccac68",
+    "#a36d3e",
+    "#683c34",
+    "#000000",
+    "#38002c",
+    "#663b93",
+    "#8b72de",
+    "#9cd8fc",
+    "#5e96dd",
+    "#3953c0",
+    "#800c53",
+    "#c34b91",
+    "#ff94b3",
+    "#bd1f3f",
+    "#ec614a",
+    "#ffa468",
+    "#fff6ae",
+    "#ffda70",
+    "#f4b03c",
+    "#ffffff"
+  ],
+  "ramps": {
+    "grass": [
+      "#222a5c",
+      "#2c5b6d",
+      "#158968",
+      "#46c657",
+      "#c9ec85"
+    ],
+    "chalk": [
+      "#566a89",
+      "#8babbf",
+      "#cce2e1",
+      "#ffffff"
+    ],
+    "verge": [
+      "#222a5c",
+      "#2c5b6d",
+      "#839740",
+      "#c9ec85"
+    ],
+    "leaf": [
+      "#222a5c",
+      "#158968",
+      "#839740",
+      "#c9ec85"
+    ],
+    "wood": [
+      "#38002c",
+      "#683c34",
+      "#a36d3e",
+      "#ccac68",
+      "#ffdba5"
+    ],
+    "skin": [
+      "#683c34",
+      "#a36d3e",
+      "#ffa468",
+      "#ffdba5"
+    ],
+    "coral": [
+      "#800c53",
+      "#bd1f3f",
+      "#ec614a",
+      "#ffa468"
+    ],
+    "sky": [
+      "#222a5c",
+      "#3953c0",
+      "#5e96dd",
+      "#9cd8fc"
+    ],
+    "navy": [
+      "#38002c",
+      "#222a5c",
+      "#3953c0",
+      "#5e96dd"
+    ],
+    "gold": [
+      "#a36d3e",
+      "#f4b03c",
+      "#ffda70",
+      "#fff6ae"
+    ],
+    "violet": [
+      "#38002c",
+      "#663b93",
+      "#8b72de",
+      "#9cd8fc"
+    ],
+    "pink": [
+      "#800c53",
+      "#c34b91",
+      "#ff94b3"
+    ],
+    "teal": [
+      "#2c5b6d",
+      "#45b8b3",
+      "#8cffde"
+    ],
+    "boot": [
+      "#000000",
+      "#38002c",
+      "#566a89"
+    ],
+    "mark": [
+      "#f4b03c",
+      "#ffda70"
+    ]
+  },
+  "roles": {
+    "sky_top": "#5e96dd",
+    "sky_bottom": "#9cd8fc",
+    "fog": "#8babbf",
+    "void": "#222a5c"
+  }
+}

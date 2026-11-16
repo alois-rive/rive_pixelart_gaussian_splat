@@ -1,0 +1,808 @@
+{
+  "palette": "art/palette.json",
+  "spacing": 0.085,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "scene/splats.bin",
+  "bounds": [
+    [
+      -7.6,
+      -0.4,
+      -6.2
+    ],
+    [
+      7.6,
+      3.6,
+      6.2
+    ]
+  ],
+  "objects": [
+    {
+      "model": "models/env/island.glb",
+      "materials": {
+        "Sand": {
+          "ramp": "sand"
+        },
+        "SandSide": {
+          "ramp": "sand"
+        },
+        "Grass": {
+          "ramp": "grass"
+        },
+        "Floor": {
+          "ramp": "grass"
+        },
+        "Road": {
+          "ramp": "sand"
+        },
+        "Plaza": {
+          "ramp": "cream"
+        },
+        "Cliff": {
+          "ramp": "soil"
+        },
+        "Slab": {
+          "ramp": "stone"
+        },
+        "StoneSide": {
+          "ramp": "stone"
+        },
+        "River": {
+          "ramp": "water",
+          "flags": [
+            "sway"
+          ]
+        },
+        "Shallow": {
+          "ramp": "water",
+          "spacing": 0.11,
+          "flags": [
+            "sway",
+            "nocast"
+          ]
+        },
+        "Foam": {
+          "ramp": "foam",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.07
+        },
+        "Wall": {
+          "ramp": "cream",
+          "spacing": 0.07
+        },
+        "Roof": {
+          "ramp": "red",
+          "spacing": 0.07
+        },
+        "Timber": {
+          "ramp": "wood",
+          "spacing": 0.05
+        },
+        "Door": {
+          "ramp": "wood",
+          "spacing": 0.05
+        },
+        "Plank": {
+          "ramp": "wood",
+          "spacing": 0.06
+        },
+        "Rock": {
+          "ramp": "stone",
+          "spacing": 0.07
+        },
+        "Tuft": {
+          "ramp": "grass",
+          "flags": [
+            "sway",
+            "double"
+          ],
+          "spacing": 0.05,
+          "specks": true
+        },
+        "Flower": {
+          "ramp": "gold",
+          "spacing": 0.05,
+          "specks": true
+        },
+        "Bloom": {
+          "ramp": "red",
+          "spacing": 0.05,
+          "specks": true
+        },
+        "Awning": {
+          "ramp": "red",
+          "flags": [
+            "double"
+          ],
+          "spacing": 0.06
+        },
+        "Cloth": {
+          "ramp": "cream",
+          "flags": [
+            "double"
+          ],
+          "spacing": 0.05
+        },
+        "Crystal": {
+          "ramp": "magic",
+          "flags": [
+            "unlit"
+          ],
+          "spacing": 0.05
+        },
+        "Brew": {
+          "ramp": "purple",
+          "spacing": 0.04
+        },
+        "Water": {
+          "ramp": "water",
+          "spacing": 0.05
+        }
+      }
+    },
+    {
+      "model": "models/env/grove0.glb",
+      "position": [
+        1.0,
+        0.45,
+        -2.5
+      ],
+      "bone": "grove0",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove1.glb",
+      "position": [
+        -1.0,
+        0.45,
+        -1.5
+      ],
+      "bone": "grove1",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove2.glb",
+      "position": [
+        1.0,
+        0.45,
+        -1.5
+      ],
+      "bone": "grove2",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove3.glb",
+      "position": [
+        2.0,
+        0.45,
+        -1.5
+      ],
+      "bone": "grove3",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove4.glb",
+      "position": [
+        -2.0,
+        0.45,
+        -0.5
+      ],
+      "bone": "grove4",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove5.glb",
+      "position": [
+        4.0,
+        0.45,
+        -0.5
+      ],
+      "bone": "grove5",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove6.glb",
+      "position": [
+        -3.0,
+        0.45,
+        0.5
+      ],
+      "bone": "grove6",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove7.glb",
+      "position": [
+        -2.0,
+        0.45,
+        0.5
+      ],
+      "bone": "grove7",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove8.glb",
+      "position": [
+        -2.0,
+        0.45,
+        1.5
+      ],
+      "bone": "grove8",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/env/grove9.glb",
+      "position": [
+        2.0,
+        0.45,
+        1.5
+      ],
+      "bone": "grove9",
+      "materials": {
+        "Leaf": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Pine": {
+          "ramp": "leaf",
+          "flags": [
+            "sway"
+          ],
+          "spacing": 0.08
+        },
+        "Trunk": {
+          "ramp": "wood",
+          "spacing": 0.06
+        }
+      }
+    },
+    {
+      "model": "models/hero/hero.glb",
+      "position": [
+        3.0,
+        0.45,
+        2.5
+      ],
+      "yaw": 0,
+      "bone": "hero",
+      "materials": {
+        "Straw": {
+          "ramp": "gold",
+          "spacing": 0.042
+        },
+        "Band": {
+          "ramp": "red",
+          "spacing": 0.042
+        },
+        "Skin": {
+          "ramp": "skin",
+          "spacing": 0.042
+        },
+        "Hair": {
+          "ramp": "stone",
+          "specks": true,
+          "spacing": 0.042
+        },
+        "Tunic": {
+          "ramp": "water",
+          "spacing": 0.042
+        },
+        "Belt": {
+          "ramp": "wood",
+          "spacing": 0.03
+        },
+        "Legs": {
+          "ramp": "stone",
+          "spacing": 0.042
+        },
+        "Blade": {
+          "ramp": "stone",
+          "spacing": 0.026
+        },
+        "Gold": {
+          "ramp": "gold",
+          "spacing": 0.042
+        },
+        "Shield": {
+          "ramp": "gold",
+          "spacing": 0.03
+        },
+        "Cape": {
+          "ramp": "red",
+          "spacing": 0.042
+        }
+      }
+    },
+    {
+      "model": "models/env/warden.glb",
+      "position": [
+        -3.0,
+        1.65,
+        -2.5
+      ],
+      "yaw": 45,
+      "bone": "warden",
+      "materials": {
+        "Rock": {
+          "ramp": "stone",
+          "spacing": 0.06
+        },
+        "Moss": {
+          "ramp": "grass",
+          "spacing": 0.05
+        },
+        "Eye": {
+          "ramp": "magic",
+          "flags": [
+            "unlit"
+          ],
+          "spacing": 0.035
+        },
+        "Crystal": {
+          "ramp": "magic",
+          "flags": [
+            "unlit"
+          ],
+          "spacing": 0.04
+        }
+      }
+    },
+    {
+      "model": "models/env/slime.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "slime",
+      "copies": 3,
+      "materials": {
+        "Jelly": {
+          "ramp": "jelly",
+          "spacing": 0.045
+        },
+        "Eye": {
+          "ramp": "stone",
+          "spacing": 0.03
+        },
+        "Sprout": {
+          "ramp": "grass",
+          "flags": [
+            "double"
+          ],
+          "spacing": 0.035
+        }
+      },
+      "scale": 1.15
+    },
+    {
+      "model": "models/env/bat.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "bat",
+      "copies": 3,
+      "materials": {
+        "Fur": {
+          "ramp": "purple",
+          "spacing": 0.04
+        },
+        "Wing": {
+          "ramp": "purple",
+          "flags": [
+            "double"
+          ],
+          "spacing": 0.04
+        },
+        "Glint": {
+          "ramp": "mark",
+          "flags": [
+            "unlit"
+          ],
+          "spacing": 0.03,
+          "specks": true
+        }
+      },
+      "scale": 1.35
+    },
+    {
+      "model": "models/env/shroom.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "shroom",
+      "copies": 3,
+      "materials": {
+        "Stem": {
+          "ramp": "cream",
+          "spacing": 0.04
+        },
+        "Cap": {
+          "ramp": "red",
+          "spacing": 0.04
+        },
+        "Spot": {
+          "ramp": "cream",
+          "spacing": 0.03
+        },
+        "Eye": {
+          "ramp": "stone",
+          "spacing": 0.03,
+          "specks": true
+        },
+        "Foot": {
+          "ramp": "wood",
+          "spacing": 0.035
+        }
+      },
+      "scale": 1.2
+    },
+    {
+      "model": "models/env/marker.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "marker",
+      "materials": {
+        "Mark": {
+          "ramp": "mark",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.05
+        }
+      }
+    },
+    {
+      "model": "models/env/pin.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "pin",
+      "materials": {
+        "Mark": {
+          "ramp": "mark",
+          "flags": [
+            "unlit",
+            "nocast",
+            "double"
+          ],
+          "spacing": 0.035
+        }
+      }
+    },
+    {
+      "model": "models/env/puff.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "puff",
+      "copies": 3,
+      "materials": {
+        "Puff": {
+          "ramp": "puff",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.05
+        }
+      }
+    },
+    {
+      "model": "models/env/spark.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "spark",
+      "copies": 6,
+      "materials": {
+        "Spark": {
+          "ramp": "magic",
+          "flags": [
+            "unlit",
+            "nocast",
+            "double"
+          ],
+          "spacing": 0.03
+        },
+        "Core": {
+          "ramp": "magic",
+          "flags": [
+            "unlit",
+            "nocast"
+          ],
+          "spacing": 0.03
+        }
+      }
+    },
+    {
+      "model": "models/env/coin.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "coin",
+      "copies": 4,
+      "materials": {
+        "Coin": {
+          "ramp": "gold",
+          "spacing": 0.03
+        }
+      }
+    },
+    {
+      "model": "models/env/potion.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "potion",
+      "materials": {
+        "Brew": {
+          "ramp": "purple",
+          "spacing": 0.035
+        },
+        "Glass": {
+          "ramp": "cream",
+          "spacing": 0.03
+        },
+        "Cork": {
+          "ramp": "wood",
+          "spacing": 0.03
+        }
+      }
+    },
+    {
+      "model": "models/env/slash.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "slash",
+      "materials": {
+        "Slash": {
+          "ramp": "puff",
+          "flags": [
+            "unlit",
+            "nocast",
+            "double"
+          ],
+          "spacing": 0.03
+        }
+      }
+    },
+    {
+      "model": "models/env/guard.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "guard",
+      "materials": {
+        "Mark": {
+          "ramp": "mark",
+          "flags": [
+            "unlit",
+            "nocast",
+            "double"
+          ],
+          "spacing": 0.035
+        }
+      }
+    },
+    {
+      "model": "models/env/dust.glb",
+      "position": [
+        0,
+        -6,
+        0
+      ],
+      "bone": "dust",
+      "copies": 2,
+      "materials": {
+        "Dust": {
+          "ramp": "cream",
+          "flags": [
+            "nocast"
+          ],
+          "spacing": 0.035
+        }
+      }
+    }
+  ]
+}

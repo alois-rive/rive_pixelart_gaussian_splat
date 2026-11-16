@@ -1,0 +1,11 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.1,
+  "fat": 1.0,
+  "out": "../../lookdev/puffer.bin",
+  "objects": [
+    { "model": "puffer_splat.glb",
+      "materials": { "Iron": { "ramp": "iron" }, "Copper": { "ramp": "copper" }, "Brass": { "ramp": "brass", "spacing": 0.07 },
+                     "Petal": { "ramp": "petal", "spacing": 0.07 }, "Rubber": { "ramp": "rubber", "spacing": 0.07 } } }
+  ]
+}

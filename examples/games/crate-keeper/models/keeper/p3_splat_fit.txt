@@ -1,0 +1,14 @@
+# Keeper, phase 3: the splat fit (modeling.md, "When the mesh gate and the splat gate disagree").
+# Each disc reaches about a splat radius past its face, so the wide flat brim and the nose bake wider
+# than the mesh: the brim is pulled in 9 % and the nose and spout tucked closer. Only shrinks; the
+# gated form (p2) is untouched in keeper.rmdl, this writes keeper_fit.rmdl and keeper.glb.
+select Hat
+apply --location
+set scale 0.91 0.91 1
+apply --scale
+select Ribbon
+set scale 0.97 0.97 1
+apply --scale
+select all
+shade flat
+export keeper.glb

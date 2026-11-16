@@ -13,11 +13,17 @@ How to render 3D scenes and games as pixel-art gaussian splats with Rive.
   own Lospec palette (2 to 16 colours) and its own style: a floating island,
   a winter windmill, a desert oasis, a harbour, a carnival, a graveyard, a space outpost, an autumn
   cabin, a Game Boy farm, a 1-bit lighthouse, a lava forge, a coral reef, and a Rive brand finale.
-- **The games**: [examples/games/](examples/AGENT.md), 36 tiny pointer-only games, one run in one
-  world each, each on its own palette, each with a demo mode that plays itself.
+- **The games**: [examples/games/](examples/AGENT.md), 56 small games played with the pointer or
+  a finger: one run in one world each, each on its own palette, each with sound and a demo mode
+  that plays itself. Arcade toys to bigger ones: a shoot'em up, a first-person shooter, a
+  turn-based RPG, a roguelike, a real-time strategy match, a survivor-like, a skate park, soccer,
+  racing, tower defense, a platformer, mini golf, a push-puzzle, sailing, billiards, match-3, a
+  bubble shooter, a card battler, a bridge builder and basketball.
 - **The gallery**: [examples/gallery/](examples/gallery/README.md), one Rive file holding every
-  sample's signed `.riv` in a scrollable grid: tiles play in demo mode until you click one, Escape
-  hands it back.
+  sample's signed `.riv` in a grid whose columns follow the window: tiles play in demo mode until
+  you click one, Escape hands it back. On a phone (one column) it shows one sample at a time with
+  previous / random / next. Only the samples near the view are loaded. Live at
+  https://gallery-v4ur71.rive.to
 
 [examples/AGENT.md](examples/AGENT.md) lists the samples, their palettes and styles, and how to
 work on them.
@@ -34,9 +40,9 @@ generated soundtrack whose downbeats land on the transitions):
 
 ```sh
 cd examples && python3 tools/record_tour.py dioramas/*/scene dioramas/rive/scene -o ../showcase.mp4 \
-  --seconds 10 --overlap 1.2 --hold 1.5 \
-  --scene-arg dioramas/rive/scene:fxOffset=3.6 --scene-arg dioramas/rive/scene:fxStopAt=10.05 \
-  --demo games/*/scene --demo-seconds 8 --demo-first --music
+  --seconds 5 --loops 1 --overlap 1.2 --hold 1.5 \
+  --scene-arg dioramas/rive/scene:fxOffset=8.6 --scene-arg dioramas/rive/scene:fxStopAt=5.05 \
+  --demo $(grep -v '^#' tools/showcase_games.txt) --demo-seconds 4 --demo-first --music
 ```
 
 Requirements: the Rive CLI 1.9+ (`rive`), hedra 0.1+ (`hedra`), the Codex CLI signed in

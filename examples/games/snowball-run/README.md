@@ -4,6 +4,9 @@
 flatten snowmen to grow and score, dodge the pines; a pine knocks a third of the ball off, and a ball
 too small to take another hit bursts.
 
+**Touch:** tap to start, then drag left and right anywhere on the screen: the snowball steers to your
+finger's x.
+
 Built with the `pixel-splat-scene` skill (`../../../.claude/skills/pixel-splat-scene`): rive 1.9.2,
 hedra 0.1.0, codex-cli 0.167. Palette: [Ice Cream GB](https://lospec.com/palette-list/ice-cream-gb) by
 Kerrie Lake (plum, coral, peach, cream), loaded from Lospec (the spare, 2bit-demichrome, was not

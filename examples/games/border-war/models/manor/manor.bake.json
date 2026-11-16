@@ -1,0 +1,14 @@
+{
+  "palette": "../../art/palette.json",
+  "spacing": 0.07,
+  "fat": 1.0,
+  "seed": 1,
+  "out": "../../lookdev/manor.bin",
+  "objects": [
+    { "model": "manor.glb",
+      "materials": { "Stone": { "ramp": "stone" }, "Plaster": { "ramp": "cream" },
+                     "Timber": { "ramp": "wood", "spacing": 0.05 }, "Door": { "ramp": "wood", "spacing": 0.05 },
+                     "Roof": { "ramp": "royal" }, "Banner": { "ramp": "royal", "spacing": 0.05 },
+                     "Dark": { "ramp": "stone", "spacing": 0.04, "specks": true } } }
+  ]
+}

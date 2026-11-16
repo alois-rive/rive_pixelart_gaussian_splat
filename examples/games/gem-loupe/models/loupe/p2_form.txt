@@ -1,0 +1,26 @@
+# Loupe, phase 2: materials in Galaxy Flame's colours (brass #b6834c, wood #704d2b), the caps buried
+# in the ferrule and the knob deleted, joined, flat shading, export. Runs on p1.
+material new Brass --base-color 0.7137 0.5137 0.2980 --no-slot
+material new Wood --base-color 0.4392 0.3020 0.1686 --no-slot
+select Ring Ferrule
+material assign Brass
+select Handle Knob
+material assign Wood
+select Handle
+active Handle
+mode edit
+select face where "normal.z > 0.9 || normal.z < -0.9"
+delete only-faces
+mode object
+select Ferrule
+active Ferrule
+mode edit
+select face where "normal.z < -0.9"
+delete only-faces
+mode object
+select Ring Ferrule Handle Knob
+active Ring
+join
+rename Ring Loupe
+shade flat
+export loupe.glb

@@ -162,3 +162,18 @@ instead of blending (blending would leave the palette).
 `jitter` (default 0) adds a random tone offset per splat: painterly mottling.
 It reaches the ramp's ends (the grass's yellow), so keep it ≤ 0.5 and use it
 on ramps without a loud top step.
+
+**Ramp order matters for textures.** A texture pixel with no ramp of its own
+snaps to the FIRST ramp holding its colour, so list a shared colour's main
+user first (a floor's moss ramp before the hero's cloak ramp that shares its
+greens).
+
+**Near-single-hue palettes** (Game-Boy-like, 4-16 colours of one hue): make
+floors dark and let actors carry the bright steps; a mid-value floor swallows
+a pale hero. Separate reads by value first (abyss, walls, floor, actors,
+lights, darkest to lightest), then add a one-texel lighter kerb round
+platform tops so their edges read.
+
+**Keep `highlight` clear of a flat floor's N·L** (`sin(sunPitch)` for a level
+floor): a highlight threshold within ~0.02 of it dithers the whole floor.
+
